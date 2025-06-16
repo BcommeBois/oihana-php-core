@@ -1,0 +1,109 @@
+Boolean (oihana\enums\Boolean)
+ [x] Constants exist
+ [x] Values are strings
+ [x] True is not false
+ [x] Get all returns constants
+ [x] Enums returns sorted unique values
+ [x] Get constant
+
+Compress (oihana\core\objects\Compress)
+ [x] Compress removes null properties
+ [x] Compress keeps excluded null properties
+ [x] Compress keeps all if no nulls
+ [x] Compress empty object
+ [x] Compress removes multiple nulls except excluded
+ [x] Compress with custom conditions
+ [x] Compress ignores invalid condition silently
+ [x] Compress recursively
+ [x] Compress with depth limit
+ [x] Compress array of objects
+
+Fast Format (oihana\core\strings\FastFormat)
+ [x] Null pattern
+ [x] Empty pattern
+ [x] No args
+ [x] First arg is array
+ [x] Basic replacement
+ [x] Multiple replacements
+ [x] Missing placeholder
+ [x] Extra args
+ [x] Non string args
+ [x] Non numeric placeholders
+ [x] No placeholders
+ [x] Empty array arg
+ [x] Multiple placeholders
+ [x] Non sequential placeholders
+ [x] Repeated placeholders
+ [x] Placeholders no args
+ [x] Placeholders empty array arg
+ [x] Complex pattern
+ [x] Large index
+ [x] Negative index
+ [x] Non integer index
+ [x] Array with gaps
+ [x] Instance argument
+ [x] Object argument
+ [x] Object argument with custom to string
+
+If Null (oihana\core\IfNull)
+ [x] Returns value when not null
+ [x] Returns default when value is null
+ [x] Returns null when both are null
+ [x] Returns value when it is an array
+ [x] Returns default when it is an array
+
+Is Date (oihana\core\date\IsDate)
+ [x] Valid dates
+ [x] Invalid dates
+ [x] Empty and null dates
+ [x] Custom formats
+ [x] Edge cases
+ [x] Special characters
+ [x] Different locales
+ [x] With custom separators
+ [x] With timezones
+
+Key Value Trait (oihana\traits\KeyValueTrait)
+ [x] Get key value from array
+ [x] Get key value from object
+ [x] Get key value with explicit is array flag
+ [x] Set key value on array
+ [x] Set key value on object
+ [x] Set key value with explicit is array flag
+
+Luhn (oihana\core\strings\Luhn)
+ [x] Valid luhn numbers
+ [x] Invalid luhn numbers
+ [x] Edge cases
+ [x] Non numeric string
+ [x] Valid luhn numbers lazy
+ [x] Invalid luhn numbers lazy
+
+To Camel Cast (oihana\core\strings\ToCamelCast)
+ [x] Basic cases
+ [x] Already camel case
+ [x] No separators
+ [x] Empty string
+ [x] With spaces
+ [x] Custom separators
+ [x] Consecutive separators
+ [x] Special characters
+ [x] Numbers
+ [x] Unicode characters
+
+To String Trait (oihana\traits\ToStringTrait)
+ [x] To string returns class name in brackets
+ [x] To string caches class name
+
+Unsupported Trait (oihana\traits\UnsupportedTrait)
+ [x] Unsupported throws exception with default method
+ [x] Unsupported throws exception with method name
+
+Uri Trait (oihana\traits\UriTrait)
+ [x] Build uri simple
+ [x] Build uri with query merge
+ [x] Build uri with fragment replace
+ [x] Build uri with user pass port
+ [x] Build uri invalid uri throws
+ [x] Build uri empty fragment and query
+
