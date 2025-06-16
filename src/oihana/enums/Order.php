@@ -7,6 +7,7 @@ use oihana\reflections\traits\ConstantsTrait;
 class Order
 {
     use ConstantsTrait ;
+
     /**
      * The ascending order.
      */
