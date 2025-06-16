@@ -2,6 +2,9 @@
 
 namespace oihana\core\arrays ;
 
+use function oihana\core\helpers\conditions;
+use function oihana\core\objects\compress as compressObject ;
+
 /**
  * Compress the passed in indexed object and remove all the empty properties.
  * <p>Usage :</p>
@@ -15,25 +18,58 @@ namespace oihana\core\arrays ;
  *   'description' => null
  * ];
  * echo json_encode( compress( $array , [ 'description' ] ) ) ;
- * @param array $array The array to compress
- * @param ?array $excludes The list of properties to exclude.
- * @param bool $clone Indicates if the array is cloned or not.
+ * @param array|null $options Optional configuration:
+ * - 'clone' (bool>) : Indicates if the array is cloned or not.
+ * - 'conditions' (callable|array<callable>) : One or more functions used to determine whether a value should be removed.
+ * - 'excludes'   (array<string>) : List of property names to exclude from filtering.
+ * - 'recursive'  (bool) : If true (default), recursively compress nested objects.
+ * - 'throwable'  (bool) : If true (default), throws InvalidArgumentException for invalid callbacks.
  * @return array The passed-in array or a clone reference compressed.
  */
-function compress( array $array , ?array $excludes = null , bool $clone = false ): array
+function compress( array $array ,  ?array $options = [], int $currentDepth = 0 ): array
 {
-    $ar = $clone ? [ ...$array ] : $array ;
-    foreach( $ar as $key => $value )
+    $clone      = $options[ 'clone'     ] ?? false ;
+    $excludes   = $options[ 'excludes'  ] ?? null ;
+    $maxDepth   = $options[ 'depth'     ] ?? null ;
+    $recursive  = $options[ 'recursive' ] ?? false ;
+    $throwable  = $options[ 'throwable' ] ?? true ;
+
+    $array = $clone ? [ ...$array ] : $array ;
+
+    $conditions = conditions( $options[ 'conditions' ] ?? null , $throwable ) ;
+
+    foreach ( $array as $key => $value )
     {
-        if( is_array( $excludes ) && in_array( $key , $excludes ) )
+        if (is_array( $excludes ) && in_array( $key , $excludes , true ) )
         {
-            continue ;
+            continue;
         }
 
-        if( !isset( $value ) )
+        if ( is_object($value) && $recursive && ( $maxDepth === null || $currentDepth < $maxDepth ) )
         {
-            unset( $ar[$key] );
+            $array[ $key ] = compressObject( $value , $options , $currentDepth + 1) ;
+            continue;
+        }
+        elseif ( is_array( $value ) && $recursive && ($maxDepth === null || $currentDepth < $maxDepth))
+        {
+            $array[$key] = compress( $value , $options , $currentDepth + 1 ) ;
+            continue;
+        }
+
+        foreach ( $conditions as $condition )
+        {
+            if ( $condition( $value ) )
+            {
+                unset( $array[ $key ] ) ;
+                break ;
+            }
         }
     }
-    return $ar ;
+
+    if ( array_keys( $array ) !== range(0, count($array) - 1 ) )
+    {
+        $array = array_values( $array ) ;
+    }
+
+    return $array;
 }

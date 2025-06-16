@@ -3,6 +3,8 @@
 namespace oihana\core\objects ;
 
 use InvalidArgumentException;
+use function oihana\core\helpers\conditions;
+use function oihana\core\arrays\compress as compressArray ;
 
 /**
  * Compress the passed in object and remove all the empty properties.
@@ -31,43 +33,12 @@ use InvalidArgumentException;
  */
 function compress( object $object , ?array $options = [] , int $currentDepth = 0 ): object
 {
-    $conditions = $options[ 'conditions' ] ?? null  ;
     $excludes   = $options[ 'excludes'   ] ?? null  ;
     $maxDepth   = $options[ 'depth'      ] ?? null  ;
     $recursive  = $options[ 'recursive'  ] ?? false ;
     $throwable  = $options[ 'throwable'  ] ?? true  ;
 
-    if ( $conditions === null )
-    {
-        $conditions = [ fn( $value ) => is_null( $value ) ] ;
-    }
-    elseif ( is_callable( $conditions ) )
-    {
-        $conditions = [ $conditions ] ;
-    }
-    elseif ( is_array( $conditions ) )
-    {
-        $conditions = array_filter( $conditions , function ( $condition ) use ( $throwable )
-        {
-            if ( !is_callable( $condition ) )
-            {
-                if ( $throwable )
-                {
-                    throw new InvalidArgumentException("All conditions must be callable.");
-                }
-                return false ;
-            }
-            return true ;
-        });
-    }
-    else
-    {
-        if ( $throwable )
-        {
-            throw new InvalidArgumentException("Le paramètre conditions doit être callable, tableau ou null");
-        }
-        $conditions = [];
-    }
+    $conditions = conditions( $options[ 'conditions' ] ?? null , $throwable ) ;
 
     $properties = get_object_vars( $object );
     foreach( $properties as $key => $value )
@@ -84,7 +55,7 @@ function compress( object $object , ?array $options = [] , int $currentDepth = 0
         }
         elseif ( is_array($value) && $recursive && ($maxDepth === null || $currentDepth < $maxDepth ) )
         {
-            $object->{ $key } = array_map( fn( $item ) => is_object( $item )? compress( $item , $options , $currentDepth + 1 ) : $item , $value ) ;
+            $object->{ $key } = compressArray( $value , $options , $currentDepth + 1 ) ;
             continue;
         }
 

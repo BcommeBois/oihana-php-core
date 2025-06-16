@@ -20,6 +20,10 @@ namespace oihana\core\arrays ;
  */
 function isAssociative( array $array ): bool
 {
+    if ( empty( $array ) )
+    {
+        return false ; // by default an empty array is indexed
+    }
     $keys = array_keys( $array );
-    return array_keys($keys) !== $keys;
+    return array_keys( $keys ) !== $keys ;
 }
