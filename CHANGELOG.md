@@ -43,3 +43,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds core.exceptions.Reflection
 - Adds core.exceptions.traits.ConstantTrait
 - Adds core.exceptions.traits.ReflectionTrait
+- Unit tests
