@@ -2,9 +2,7 @@
 Oihana PHP - Core library
 
 ## Licences
-Under tree licences : MPL 1.1/GPL 2.0/LGPL 2.1
-
- * Licence MPL 1.1 : http://www.mozilla.org/MPL/MPL-1.1.html
+ * Licence MPL 2.0 : Mozilla Public License Version 2.0
 
 ## About
  * Author : Marc ALCARAZ (aka eKameleon)

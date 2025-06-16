@@ -1,5 +1,5 @@
 {
-    "name" : "oihana/odbc-php" ,
+    "name" : "oihana/php-core" ,
     "version" : "1.0" ,
     "type" : "library" ,
     "description" : "The Oihana PHP Core library" ,
