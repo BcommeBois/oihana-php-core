@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ## [1.0.0] - 2025-06-16
+
 ### Added
 - Adds core.isNull
 - Adds core.arrays.compress
@@ -43,4 +44,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds core.exceptions.Reflection
 - Adds core.exceptions.traits.ConstantTrait
 - Adds core.exceptions.traits.ReflectionTrait
+- Adds core.traits.KeyValueTrait
+- Adds core.traits.ToStringTrait
+- Adds core.traits.UnsupportedTrait
+- Adds core.traits.UriTrait
 - Unit tests

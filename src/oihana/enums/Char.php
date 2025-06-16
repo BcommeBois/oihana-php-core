@@ -25,6 +25,7 @@ class Char
     const string DOUBLE_COLON      = '::' ;
     const string DOUBLE_PIPE       = '||' ;
     const string DOUBLE_QUOTE      = '"' ;
+    const string DOUBLE_SLASH      = '//' ;
     const string EMPTY             = '' ;
     const string EOL               = PHP_EOL ;
     const string EQUAL             = '=' ;
