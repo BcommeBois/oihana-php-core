@@ -2,8 +2,8 @@
 
 namespace oihana\traits;
 
-use ReflectionClass;
 use oihana\enums\Char;
+use ReflectionClass;
 
 /**
  * Trait ToStringTrait

@@ -40,6 +40,7 @@ trait KeyValueTrait
         {
             $isArray = is_array( $document );
         }
+
         return $isArray ? ( $document[ $key ] ?? null ) : ( $document->{ $key } ?? null );
     }
 
@@ -66,6 +67,7 @@ trait KeyValueTrait
         {
             $document->{ $key } = $value ;
         }
+
         return $document ;
     }
 }

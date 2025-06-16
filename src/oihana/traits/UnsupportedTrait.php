@@ -45,6 +45,11 @@ trait UnsupportedTrait
      */
     protected function unsupported( string $method = Char::EMPTY ) : void
     {
-        throw new UnsupportedOperationException( __METHOD__ . ', the ' . $method . ' method is not supported.' ) ;
+        if( $method === Char::EMPTY )
+        {
+            throw new UnsupportedOperationException( __METHOD__ ) ;
+        }
+
+        throw new UnsupportedOperationException( __METHOD__ . Char::DOUBLE_COLON . $method ) ;
     }
 }

@@ -63,7 +63,7 @@ trait UriTrait
      *  - $query : Query parameters to merge with existing ones.
      *  - $fragment : Fragment parameters to build a new fragment string.
      *
-     * @throws \InvalidArgumentException If the URI is malformed or cannot be parsed.
+     * @throws InvalidArgumentException If the URI is malformed or cannot be parsed.
      *
      * @return string The resulting URI with merged query and fragment parameters.
      *
@@ -76,22 +76,21 @@ trait UriTrait
      */
     public function buildUri( string $uri , array $options = [] ) :string
     {
-        $parts = parse_url( $uri ) ;
-
-        if ( $parts === false )
+        if ( filter_var( $uri , FILTER_VALIDATE_URL ) === false )
         {
-            throw new InvalidArgumentException("buildUri failed with an invalid URI : " . $uri ) ;
+            throw new InvalidArgumentException(__METHOD__ . " failed with an invalid URI : " . $uri ) ;
         }
 
-        // Build query string
+        $parts = parse_url( $uri ) ;
+
         $existingQuery = [];
         if ( isset( $parts['query'] ) )
         {
-            parse_str($parts['query'], $existingQuery);
+            parse_str( $parts['query'] , $existingQuery );
         }
 
         $newQuery = $options['query'] ?? [];
-        $mergedQuery = http_build_query(array_merge($existingQuery, $newQuery));
+        $mergedQuery = http_build_query( array_merge( $existingQuery , $newQuery ) );
 
         // Build fragment
         $newFragment = $options['fragment'] ?? [] ;
