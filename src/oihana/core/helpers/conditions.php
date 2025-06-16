@@ -39,7 +39,7 @@ use InvalidArgumentException;
  * $conditions = conditions([fn($value) => true, 'not_callable'], false);
  * // Returns: [fn($value) => true]
  */
-function conditions( array|callable|null $conditions = null , bool $throwable = false ): array
+function conditions( array|callable|string|null $conditions = null , bool $throwable = false ): array
 {
     if ( $conditions === null )
     {
@@ -64,12 +64,9 @@ function conditions( array|callable|null $conditions = null , bool $throwable = 
             return true ;
         });
     }
-    else
+    else if ( $throwable )
     {
-        if ( $throwable )
-        {
-            throw new InvalidArgumentException("The condition must be callable and array or null");
-        }
-        return [] ;
+        throw new InvalidArgumentException("The condition must be callable and array or null");
     }
+    return [] ;
 }

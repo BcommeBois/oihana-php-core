@@ -30,6 +30,8 @@
             "src/oihana/core/arrays/delete.php",
             "src/oihana/core/arrays/exists.php",
             "src/oihana/core/arrays/get.php",
+            "src/oihana/core/arrays/hasIntKeys.php",
+            "src/oihana/core/arrays/hasStringKeys.php",
             "src/oihana/core/arrays/isAssociative.php",
             "src/oihana/core/arrays/isIndexed.php",
             "src/oihana/core/arrays/removeKeys.php",

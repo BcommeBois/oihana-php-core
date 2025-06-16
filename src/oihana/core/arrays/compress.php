@@ -40,7 +40,7 @@ function compress( array $array ,  ?array $options = [], int $currentDepth = 0 )
 
     foreach ( $array as $key => $value )
     {
-        if (is_array( $excludes ) && in_array( $key , $excludes , true ) )
+        if ( is_array( $excludes ) && in_array( $key , $excludes , true ) )
         {
             continue;
         }
@@ -50,9 +50,10 @@ function compress( array $array ,  ?array $options = [], int $currentDepth = 0 )
             $array[ $key ] = compressObject( $value , $options , $currentDepth + 1) ;
             continue;
         }
-        elseif ( is_array( $value ) && $recursive && ($maxDepth === null || $currentDepth < $maxDepth))
+
+        if( is_array( $value ) && $recursive && ($maxDepth === null || $currentDepth < $maxDepth))
         {
-            $array[$key] = compress( $value , $options , $currentDepth + 1 ) ;
+            $array[ $key ] = compress( $value , $options , $currentDepth + 1 ) ;
             continue;
         }
 
@@ -66,7 +67,7 @@ function compress( array $array ,  ?array $options = [], int $currentDepth = 0 )
         }
     }
 
-    if ( array_keys( $array ) !== range(0, count($array) - 1 ) )
+    if ( hasIntKeys( $array ) )
     {
         $array = array_values( $array ) ;
     }
