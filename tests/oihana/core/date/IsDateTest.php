@@ -2,7 +2,6 @@
 
 namespace oihana\core\date ;
 
-use oihana\enums\Char;
 use PHPUnit\Framework\TestCase;
 
 class IsDateTest extends TestCase
