@@ -23,6 +23,7 @@ class Char
     const string DOLLAR            = '$' ;
     const string DOT               = '.' ;
     const string DOUBLE_COLON      = '::' ;
+    const string DOUBLE_DOT        = '..' ;
     const string DOUBLE_PIPE       = '||' ;
     const string DOUBLE_QUOTE      = '"' ;
     const string DOUBLE_SLASH      = '//' ;
@@ -51,5 +52,6 @@ class Char
     const string SLASH             = '/' ;
     const string SPACE             = ' ' ;
     const string TILDE             = '~' ;
+    const string TRIPLE_DOT        = '...' ;
     const string UNDERLINE         = '_' ;
 }

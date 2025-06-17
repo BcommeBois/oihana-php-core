@@ -13,7 +13,34 @@ use Stringable;
 use Throwable;
 
 /**
- * A basic logger implementation.
+ * A simple PSR-3-compliant file-based logger.
+ * This Logger implementation provides support for logging messages
+ * to individual daily log files, categorized by severity level.
+ * It supports dynamic message interpolation with context values,
+ * and includes hooks for global error and exception handling.
+ *
+ * Example usage:
+ * ```php
+ * use oihana\logging\Logger;
+ *
+ * $logger = new Logger(__DIR__ . '/logs', Logger::DEBUG);
+ *
+ * $logger->info('Application started');
+ * $logger->error('An error occurred: {error}', ['error' => $exception->getMessage()]);
+ * ```
+ *
+ * Features:
+ * - Supports standard PSR-3 log levels (emergency to debug)
+ * - Writes logs to a file named by date (e.g., `log_2025-06-17.log`)
+ * - Automatically creates the logging directory if it doesn’t exist
+ * - Includes a message buffer for introspection
+ * - Provides optional methods for clearing logs and capturing global errors
+ *
+ * Notes:
+ * - This logger is not asynchronous or thread-safe.
+ * - Make sure the log directory is writable by the PHP process.
+ *
+ * @package oihana\logging
  */
 class Logger implements LoggerInterface
 {
@@ -86,7 +113,7 @@ class Logger implements LoggerInterface
     /////////////////////////// constants
 
     /**
-     * Error severity, from low to high. From BSD syslog RFC, secion 4.1.1
+     * Error severity, from low to high. From BSD syslog RFC, section 4.1.1
      * @link http://www.faqs.org/rfcs/rfc3164.html
      */
     public const int EMERGENCY  = 0 ;  // Emergency: system is unusable
@@ -205,16 +232,27 @@ class Logger implements LoggerInterface
      */
     public function clear() :void
     {
-        $logs = scandir( $this->_directory ) ;
+        $logs = $this->getLogFiles() ;
         foreach( $logs as $log )
         {
-            if ( $log == '.' || $log == '..' )
-            {
-                continue ;
-            }
-
-            unlink( $this->_directory . '/' . $log ) ;
+            unlink( $this->_directory . Char::SLASH . $log ) ;
         }
+    }
+
+    /**
+     * Returns the list of all log files in the logger directory.
+     * @return array
+     */
+    public function getLogFiles():array
+    {
+        return array_values
+        (
+            array_filter
+            (
+                scandir( $this->_directory ) ,
+                fn( $file ) => $file != Char::DOT && $file != Char::DOUBLE_DOT
+            )
+        ) ;
     }
 
     /**
