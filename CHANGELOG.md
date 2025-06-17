@@ -11,6 +11,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 
 - Adds date\TimeInterval
+- Adds enums\ArithmeticOperator
+- Adds enums\Boolean
+- Adds enums\Char
+- Adds enums\CharacterSet
+- Adds enums\JsonParam
+- Adds enums\Order
+- Adds enums\Param
 - Adds exceptions\ExceptionTrait
 - Adds exceptions\FileException
 - Adds exceptions\ResponseException
