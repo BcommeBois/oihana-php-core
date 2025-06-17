@@ -7,7 +7,6 @@ use oihana\enums\Char;
 
 /**
  * An exception thrown when a validation failed.
- * @package xyz\exceptions
  */
 class ValidationException extends Exception
 {

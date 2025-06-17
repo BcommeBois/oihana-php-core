@@ -8,12 +8,11 @@ use oihana\exceptions\ExceptionTrait;
 
 /**
  * Throw an 'not found error' (404).
- * @package xyz\exceptions
  */
 class Error404 extends Exception
 {
     /**
-     * Creates a new NotFoundException instance.
+     * Creates a new Error404 instance.
      * @param string $message
      * @param int $code
      * @param Throwable|null $notFound
