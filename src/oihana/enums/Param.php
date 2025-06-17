@@ -41,6 +41,7 @@ class Param
     public const string DOC_REF                   = 'docRef' ;
     public const string DOCUMENT_KEY              = 'documentKey' ;
     public const string ENABLE                    = 'enable' ;
+    public const string ENABLED                   = 'enabled' ;
     public const string EXIST                     = 'exist' ;
     public const string EXTRA_QUERY               = 'extraQuery' ;
     public const string FACET                     = 'facet' ;
