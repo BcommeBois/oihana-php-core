@@ -1,0 +1,346 @@
+<?php
+
+namespace oihana\logging;
+
+use Psr\Log\LoggerInterface ;
+use Psr\Log\LoggerTrait;
+use Psr\Log\LogLevel ;
+
+use oihana\enums\Char;
+use oihana\traits\ToStringTrait;
+
+use Stringable;
+use Throwable;
+
+/**
+ * A basic logger implementation.
+ */
+class Logger implements LoggerInterface
+{
+    use LoggerTrait ,
+        ToStringTrait ;
+
+    /**
+     * Creates a new Logger instance.
+     * @param string $directory File path to the logging directory
+     * @param int $level One of the pre-defined level constants
+     * @return void
+     */
+    public function __construct( string $directory , int $level = 7 )
+    {
+        $this->_directory = rtrim( $directory , Char::BACK_SLASH ) ;
+
+        if ( $level === self::OFF )
+        {
+            return ;
+        }
+
+        $this->_path = $this->createPath( date( $this->fileDateFormat ) ) ;
+
+        $this->_severityThreshold = $level ;
+
+        if ( !file_exists( $this->_directory ) )
+        {
+            mkdir( $this->_directory, self::$_defaultPermissions, true ) ;
+        }
+
+        if ( file_exists( $this->_path ) && !is_writable( $this->_path ) )
+        {
+            $this->_status   = self::STATUS_OPEN_FAILED ;
+            $this->_buffer[] = $this->_messages['writefail'] ;
+            return ;
+        }
+
+        if ( ( $this->_file = fopen( $this->_path , 'a' ) ) )
+        {
+            $this->_status   = self::STATUS_LOG_OPEN ;
+            $this->_buffer[] = $this->_messages['opensuccess'] ;
+        }
+        else
+        {
+            $this->_status   = self::STATUS_OPEN_FAILED ;
+            $this->_buffer[] = $this->_messages['openfail'] ;
+        }
+    }
+
+    /**
+     * Destruct the instance.
+     * @return void
+     */
+    public function __destruct()
+    {
+        if ( $this->_file )
+        {
+            fclose( $this->_file ) ;
+        }
+    }
+
+    /////////////////////////// properties
+
+    public string $prefix = 'log_' ;
+
+    public string $fileDateFormat = 'Y-m-d' ;
+
+    public string $extension = '.log' ;
+
+    /////////////////////////// constants
+
+    /**
+     * Error severity, from low to high. From BSD syslog RFC, secion 4.1.1
+     * @link http://www.faqs.org/rfcs/rfc3164.html
+     */
+    public const int EMERGENCY  = 0 ;  // Emergency: system is unusable
+    public const int ALERT      = 1 ;  // Alert: action must be taken immediately
+    public const int CRITICAL   = 2 ;  // Critical: critical conditions
+    public const int ERROR      = 3 ;  // Error: error conditions
+    public const int WARNING    = 4 ;  // Warning: warning conditions
+    public const int NOTICE     = 5 ;  // Notice: normal but significant condition
+    public const int INFO       = 6 ;  // Informational: informational messages
+    public const int DEBUG      = 7 ;  // Debug: debug messages
+    public const int OFF        = 8 ;  // Log nothing at all
+
+    /**
+     * Internal status codes
+     */
+    public const int STATUS_LOG_OPEN    = 1 ;
+    public const int STATUS_OPEN_FAILED = 2 ;
+    public const int STATUS_LOG_CLOSED  = 3 ;
+
+    /**
+     * @var array
+     */
+    public const array LEVELS =
+    [
+        LogLevel::EMERGENCY => self::EMERGENCY,
+        LogLevel::ALERT     => self::ALERT,
+        LogLevel::CRITICAL  => self::CRITICAL,
+        LogLevel::ERROR     => self::ERROR,
+        LogLevel::WARNING   => self::WARNING,
+        LogLevel::NOTICE    => self::NOTICE,
+        LogLevel::INFO      => self::INFO,
+        LogLevel::DEBUG     => self::DEBUG
+    ];
+
+    ///////////////////////////
+
+    /**
+     * Creates the log file path with a specific name.
+     * @param string $name
+     * @return string
+     */
+    public function createPath( string $name ) : string
+    {
+        return $this->_directory . DIRECTORY_SEPARATOR . $this->prefix . $name . $this->extension ;
+    }
+
+    /**
+     * Writes a message to the log with the given severity.
+     * @param int $level Severity level of log message (use constants)
+     * @param string|Stringable $message Text to add to the log
+     * @param array $context
+     * @return void
+     */
+    public function log( mixed $level , string|Stringable $message , array $context = [] ):void
+    {
+        $num = self::LEVELS[ $level ] ?? self::OFF ;
+
+        if ( $this->_severityThreshold >= $num )
+        {
+            // ------- status
+
+            $status = date( self::$_dateFormat ) . Char::SPACE ;
+
+            if( array_key_exists( $level , self::LEVELS ) )
+            {
+                $status .= strtoupper( $level ) ;
+            }
+
+            // ------- message
+
+            $message = $status . Char::SPACE . $message ;
+
+            if( is_array( $context ) && count( $context ) > 0 )
+            {
+                $replace = [] ;
+                foreach ( $context as $key => $value )
+                {
+                    if ( !is_array($value) && (!is_object($value) || method_exists( $value, '__toString') ) )
+                    {
+                        $replace[ Char::LEFT_BRACE . $key . Char::RIGHT_BRACE ] = $value ;
+                    }
+                }
+                $message = strtr( $message , $replace ) ;
+            }
+
+            // ------- write
+
+            $this->writeFreeFormLine( $message . PHP_EOL ) ;
+        }
+    }
+
+    /////////////////////////// global error callback methods
+
+    /**
+     * Invoked when a global error is sending.
+     */
+    public function onError( string|int $code , string $message , string|int $file , string|int $line , string $pattern = '[%s] - L:%s - C:%s - %s' ):true
+    {
+        $this->error( sprintf( $pattern , $file , $line , $code , $message ) ) ;
+        return true ;
+    }
+
+    /**
+     * Invoked when a global exception is sending.
+     */
+    public function onException( Throwable $exception ):true
+    {
+        $this->critical( Char::LEFT_BRACKET . get_class($exception) . Char::RIGHT_BRACKET . Char::SPACE . $exception->getMessage() ) ;
+        return true ;
+    }
+
+    ///////////////////////////
+
+    /**
+     * Clear all logs in the log path.
+     */
+    public function clear() :void
+    {
+        $logs = scandir( $this->_directory ) ;
+        foreach( $logs as $log )
+        {
+            if ( $log == '.' || $log == '..' )
+            {
+                continue ;
+            }
+
+            unlink( $this->_directory . '/' . $log ) ;
+        }
+    }
+
+    /**
+     * Returns (and removes) the last message from the queue buffer.
+     * @return string
+     */
+    public function getMessage() :string
+    {
+        return array_pop( $this->_buffer ) ;
+    }
+
+    /**
+     * Returns the entire message queue (leaving it intact)
+     * @return array
+     */
+    public function getMessages() : array
+    {
+        return $this->_buffer ;
+    }
+
+    /**
+     * Returns the directory of the logs files.
+     * @return string
+     */
+    public function getDirectory() : string
+    {
+        return $this->_directory ;
+    }
+
+    /**
+     * Returns the path of the logs files.
+     * @return string
+     */
+    public function getPath() :string
+    {
+        return $this->_path ;
+    }
+
+    /**
+     * Indicates the status of the logger instance.
+     */
+    public function getStatus() : int
+    {
+        return $this->_status ;
+    }
+
+    /**
+     * Writes a line to the log without prepending a status or timestamp.
+     * @param string $line Line to write to the log
+     * @return void
+     */
+    public function writeFreeFormLine( string $line ) :void
+    {
+        if ( $this->_status == self::STATUS_LOG_OPEN && $this->_severityThreshold != self::OFF )
+        {
+            if ( fwrite( $this->_file , $line ) === false )
+            {
+                $this->_buffer[] = $this->_messages['writefail'] ;
+            }
+        }
+    }
+
+    ///////////////////////////
+
+    /**
+     * Holds messages generated by the class
+     * @var array
+     */
+    private array $_buffer = [];
+
+    /**
+     * Default severity of log messages, if not specified
+     * @var int
+     */
+    private static int $_defaultSeverity = self::DEBUG ;
+
+    /**
+     * Valid PHP date() format string for log timestamps
+     * @var string
+     */
+    private static string $_dateFormat = 'Y-m-d H:i:s';
+
+    /**
+     * Octal notation for default permissions of the log file
+     * @var int
+     */
+    private static int $_defaultPermissions = 0777 ;
+
+    /**
+     * The directory to the log file
+     * @var string
+     */
+    private string $_directory ;
+
+    /**
+     * This holds the file handle for this instance's log file
+     * @var resource
+     */
+    private $_file = null ;
+
+    /**
+     * Standard messages produced by the class. Can be modified for il8n
+     * @var array
+     */
+    private array $_messages = array
+    (
+        'writefail'   => 'The file could not be written to. Check that appropriate permissions have been set.',
+        'opensuccess' => 'The log file was opened successfully.',
+        'openfail'    => 'The file could not be opened. Check permissions.'
+    );
+
+    /**
+     * Path to the log file
+     * @var ?string
+     */
+    private ?string $_path = null ;
+
+    /**
+     * Current minimum logging threshold
+     * @var int
+     */
+    private int $_severityThreshold = self::DEBUG ;
+
+    /**
+     * Current status of the log file
+     * @var int
+     */
+    private int $_status = self::STATUS_LOG_CLOSED ;
+}

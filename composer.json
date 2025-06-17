@@ -55,7 +55,9 @@
         ]
     },
     "require": {
-        "php": ">=8.4"
+        "php": ">=8.4",
+        "php-di/php-di": "^7.0",
+        "psr/log": "^3.0"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit"
