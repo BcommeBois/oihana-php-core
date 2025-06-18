@@ -83,6 +83,7 @@ class Param
     public const string MAX_INTERVAL              = 'maxInterval' ;
     public const string MAX_LIMIT                 = 'maxLimit' ;
     public const string MAX_RANGE                 = 'max_range' ;
+    public const string MEMCACHED                 = 'memcached' ;
     public const string METHOD                    = 'method' ;
     public const string METHODS                   = 'methods' ;
     public const string MIN_LIMIT                 = 'minLimit' ;
