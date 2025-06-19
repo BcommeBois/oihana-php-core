@@ -55,7 +55,7 @@ class Logger implements LoggerInterface
      */
     public function __construct( string $directory , int $level = 7 )
     {
-        $this->_directory = rtrim( $directory , Char::BACK_SLASH ) ;
+        $this->_directory = rtrim( $directory , Char::SLASH ) ;
 
         if ( $level === self::OFF )
         {
@@ -66,7 +66,7 @@ class Logger implements LoggerInterface
         $this->_path = $this->createPath( date( $this->fileDateFormat ) ) ;
 
         echo 'Logger >> format:' . $this->_path . PHP_EOL ;
-        
+
         $this->_severityThreshold = $level ;
 
         if ( !file_exists( $this->_directory ) )
