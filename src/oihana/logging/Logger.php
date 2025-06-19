@@ -88,8 +88,6 @@ class Logger implements LoggerInterface
             $this->_status   = self::STATUS_OPEN_FAILED ;
             $this->_buffer[] = $this->_messages['openfail'] ;
         }
-
-        echo '>>>>> logger status '. $this->_status . PHP_EOL ;
     }
 
     /**
