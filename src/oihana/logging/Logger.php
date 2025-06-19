@@ -57,7 +57,6 @@ class Logger implements LoggerInterface
     {
         $this->_directory = rtrim( $directory , Char::BACK_SLASH ) ;
 
-        echo 'Logger >> ' . json_encode( is_dir( $directory ) ) . PHP_EOL ;
 
         if ( $level === self::OFF )
         {
@@ -72,6 +71,8 @@ class Logger implements LoggerInterface
         {
             mkdir( $this->_directory, self::$_defaultPermissions, true ) ;
         }
+
+        echo 'Logger >> ' . json_encode($this->_directory ) . PHP_EOL ;
 
         if ( file_exists( $this->_path ) && !is_writable( $this->_path ) )
         {
