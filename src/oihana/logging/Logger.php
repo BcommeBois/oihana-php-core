@@ -65,7 +65,8 @@ class Logger implements LoggerInterface
 
         $this->_path = $this->createPath( date( $this->fileDateFormat ) ) ;
 
-        echo 'Logger >> format:' . json_encode( $this->_path ) . PHP_EOL ;
+        echo 'Logger >> format:' . $this->_path . PHP_EOL ;
+        
         $this->_severityThreshold = $level ;
 
         if ( !file_exists( $this->_directory ) )
