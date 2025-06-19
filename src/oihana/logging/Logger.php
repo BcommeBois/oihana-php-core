@@ -57,6 +57,8 @@ class Logger implements LoggerInterface
     {
         $this->_directory = rtrim( $directory , Char::BACK_SLASH ) ;
 
+        echo 'Logger >> ' . json_encode( is_dir( $directory ) ) . PHP_EOL ;
+
         if ( $level === self::OFF )
         {
             return ;
