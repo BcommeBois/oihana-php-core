@@ -71,8 +71,6 @@ class Logger implements LoggerInterface
             mkdir( $this->_directory, self::$_defaultPermissions, true ) ;
         }
 
-        // echo 'Logger >> ' . $this->_path . PHP_EOL ;
-
         if ( file_exists( $this->_path ) && !is_writable( $this->_path ) )
         {
             $this->_status   = self::STATUS_OPEN_FAILED ;
@@ -90,6 +88,8 @@ class Logger implements LoggerInterface
             $this->_status   = self::STATUS_OPEN_FAILED ;
             $this->_buffer[] = $this->_messages['openfail'] ;
         }
+
+        echo 'Logger >> status:' . $this->_status . PHP_EOL ;
     }
 
     /**
