@@ -201,6 +201,8 @@ class Logger implements LoggerInterface
 
             // ------- write
 
+            echo $message . PHP_EOL ;
+
             $this->writeFreeFormLine( $message . PHP_EOL ) ;
         }
     }
