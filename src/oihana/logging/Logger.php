@@ -306,9 +306,9 @@ class Logger implements LoggerInterface
      */
     public function writeFreeFormLine( string $line ) :void
     {
+        echo $line . ' ------- '. $this->_status . ' ----- ' . $this->_severityThreshold . PHP_EOL ;
         if ( $this->_status == self::STATUS_LOG_OPEN && $this->_severityThreshold != self::OFF )
         {
-            echo $line . PHP_EOL ;
             if ( fwrite( $this->_file , $line ) === false )
             {
                 $this->_buffer[] = $this->_messages['writefail'] ;
