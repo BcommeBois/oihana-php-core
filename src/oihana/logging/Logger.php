@@ -57,6 +57,8 @@ class Logger implements LoggerInterface
     {
         $this->_directory = rtrim( $directory , Char::BACK_SLASH ) ;
 
+        echo 'Logger >> status:' . json_encode( $level ) . PHP_EOL ;
+
         if ( $level === self::OFF )
         {
             return ;
@@ -64,7 +66,6 @@ class Logger implements LoggerInterface
 
         $this->_path = $this->createPath( date( $this->fileDateFormat ) ) ;
 
-        echo 'Logger >> status:' . $this->_path . PHP_EOL ;
 
         $this->_severityThreshold = $level ;
 
