@@ -64,6 +64,8 @@ class Logger implements LoggerInterface
 
         $this->_path = $this->createPath( date( $this->fileDateFormat ) ) ;
 
+        echo 'Logger >> status:' . $this->_path . PHP_EOL ;
+
         $this->_severityThreshold = $level ;
 
         if ( !file_exists( $this->_directory ) )
@@ -89,7 +91,6 @@ class Logger implements LoggerInterface
             $this->_buffer[] = $this->_messages['openfail'] ;
         }
 
-        echo 'Logger >> status:' . $this->_status . PHP_EOL ;
     }
 
     /**
