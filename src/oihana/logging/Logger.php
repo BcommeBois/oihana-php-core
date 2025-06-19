@@ -71,7 +71,7 @@ class Logger implements LoggerInterface
             mkdir( $this->_directory, self::$_defaultPermissions, true ) ;
         }
 
-        echo 'Logger >> ' . json_encode( $this->_directory ) . PHP_EOL ;
+        echo 'Logger >> ' . $this->_path . PHP_EOL ;
 
         if ( file_exists( $this->_path ) && !is_writable( $this->_path ) )
         {
