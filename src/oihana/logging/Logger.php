@@ -62,10 +62,10 @@ class Logger implements LoggerInterface
             return ;
         }
         echo 'Logger >> level:' . json_encode( $level ) . PHP_EOL ;
-        echo 'Logger >> format:' . json_encode( $this->fileDateFormat ) . PHP_EOL ;
 
         $this->_path = $this->createPath( date( $this->fileDateFormat ) ) ;
 
+        echo 'Logger >> format:' . json_encode( $this->fileDateFormat ) . PHP_EOL ;
         $this->_severityThreshold = $level ;
 
         if ( !file_exists( $this->_directory ) )
