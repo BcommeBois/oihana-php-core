@@ -150,8 +150,6 @@ class Logger implements LoggerInterface
         LogLevel::DEBUG     => self::DEBUG
     ];
 
-    ///////////////////////////
-
     /**
      * Creates the log file path with a specific name.
      * @param string $name
