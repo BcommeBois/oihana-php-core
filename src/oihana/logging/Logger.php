@@ -55,6 +55,8 @@ class Logger implements LoggerInterface
      */
     public function __construct( string $directory , int $level = 7 )
     {
+        echo '>>>>> logger constructor directory :: '. $directory ;
+
         $this->_directory = rtrim( $directory , Char::BACK_SLASH ) ;
 
         if ( $level === self::OFF )
