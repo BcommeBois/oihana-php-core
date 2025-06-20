@@ -27,6 +27,7 @@
         [
             "src/oihana/core/ifNull.php",
             "src/oihana/core/arrays/compress.php",
+            "src/oihana/core/arrays/deepMerge.php",
             "src/oihana/core/arrays/delete.php",
             "src/oihana/core/arrays/exists.php",
             "src/oihana/core/arrays/get.php",
