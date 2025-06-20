@@ -42,6 +42,7 @@
             "src/oihana/core/date/isValidTimezone.php",
             "src/oihana/core/helpers/conditions.php",
             "src/oihana/core/files/loadAndMergeArrayFiles.php",
+            "src/oihana/core/files/recursiveFilePaths.php",
             "src/oihana/core/maths/ceilValue.php" ,
             "src/oihana/core/maths/floorValue.php" ,
             "src/oihana/core/maths/roundValue.php" ,
