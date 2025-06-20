@@ -9,7 +9,7 @@ class SymbolProcessor
 {
     private array $symbolMap =
     [
-        Level::Debug->value     => '→' , // 100
+        Level::Debug->value     => '›' , // 100
         Level::Info->value      => 'i' , // 200
         Level::Notice->value    => '※' , // 250
         Level::Warning->value   => '▲' , // 300
