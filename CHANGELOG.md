@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds core\arrays\deepMerge
 - Adds core\files\loadAndMergeArrayFiles
 - Adds core\files\recursiveFilePaths
+- Adds logging\monolog\processors\EmojiProcessor
+- Adds logging\monolog\processors\SymbolProcessor
 
 ## [1.0.1] - 2025-06-17
 
