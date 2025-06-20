@@ -56,7 +56,7 @@ class MonoLogManager extends LoggerManager
      * The line formatter.
      * @var ?FormatterInterface
      */
-    protected ?FormatterInterface $formatter ;
+    protected ?FormatterInterface $formatter = null ;
 
     /**
      * The default level of the logger.
