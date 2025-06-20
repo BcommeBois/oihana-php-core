@@ -118,7 +118,7 @@ class MonoLogManager extends LoggerManager
         {
             $this->setFormatter() ;
         }
-        return $this->getFormatter() ;
+        return $this->formatter
     }
 
     /**
