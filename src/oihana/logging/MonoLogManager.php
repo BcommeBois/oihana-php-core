@@ -2,6 +2,7 @@
 
 namespace oihana\logging;
 
+use Monolog\Formatter\FormatterInterface;
 use Psr\Log\LoggerInterface;
 
 use Monolog\ErrorHandler;
@@ -52,6 +53,12 @@ class MonoLogManager extends LoggerManager
     public int|float $filePermissions = 00664 ;
 
     /**
+     * The line formatter.
+     * @var ?FormatterInterface
+     */
+    protected ?FormatterInterface $formatter ;
+
+    /**
      * The default level of the logger.
      * @var int|Level
      */
@@ -63,7 +70,14 @@ class MonoLogManager extends LoggerManager
      */
     public int $maxFiles = 0 ;
 
-
+    /**
+     * Creates and configures a logger instance.
+     *
+     * This method sets up a logger with a rotating file handler, custom formatter,
+     * and registers it for error handling to capture system errors and exceptions.
+     *
+     * @return LoggerInterface The configured logger instance.
+     */
     public function createLogger():LoggerInterface
     {
         $directory = $this->directory ;
@@ -85,7 +99,35 @@ class MonoLogManager extends LoggerManager
             $this->filePermissions
         ) ;
 
-        $formatter = new LineFormatter
+        $handler->setFormatter( $this->getFormatter() );
+
+        $logger->pushHandler( $handler );
+
+        ErrorHandler::register( $logger ) ;
+
+        return $logger ;
+    }
+
+    /**
+     * Retrieves the formatter instance.
+     * @return FormatterInterface
+     */
+    public function getFormatter():FormatterInterface
+    {
+        if ( $this->formatter === null )
+        {
+            $this->setFormatter() ;
+        }
+        return $this->getFormatter() ;
+    }
+
+    /**
+     * Sets the formatter for log entries.
+     * @return void
+     */
+    public function setFormatter():void
+    {
+        $this->formatter = new LineFormatter
         (
             "%datetime% %channel% %level_name% %message% %context% %extra%\n",
             "Y-m-d H:i:s",
@@ -93,13 +135,5 @@ class MonoLogManager extends LoggerManager
             true ,
             false
         );
-
-        $handler->setFormatter( $formatter );
-
-        $logger->pushHandler( $handler );
-
-        ErrorHandler::register( $logger  ) ;
-
-        return $logger ;
     }
 }
