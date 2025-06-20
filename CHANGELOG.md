@@ -8,7 +8,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [1.0.2] - 2025-06-20
 - Adds core\arrays\deepMerge
-- 
+- Adds core\files\loadAndMergeArrayFiles
+
 ## [1.0.1] - 2025-06-17
 
 ### Added
