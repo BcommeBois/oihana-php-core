@@ -11,6 +11,7 @@ use oihana\traits\ToStringTrait;
 
 use Stringable;
 use Throwable;
+use function oihana\core\strings\fastFormat;
 
 /**
  * A simple PSR-3-compliant file-based logger.
@@ -61,33 +62,44 @@ class Logger implements LoggerInterface
         {
             return ;
         }
-        $this->_path = $this->createPath( date( $this->fileDateFormat ) ) ;
 
-        // echo 'Logger >> format:' . $this->_path . PHP_EOL ;
+        $this->path = $this->createPath( date( $this->fileDateFormat ) ) ;
 
-        $this->_severityThreshold = $level ;
+        $this->severityThreshold = $level ;
 
         if ( !file_exists( $this->_directory ) )
         {
-            mkdir( $this->_directory, self::$_defaultPermissions, true ) ;
+            if( !mkdir( $this->_directory, self::$_defaultPermissions, true ) )
+            {
+                $this->status   = self::STATUS_OPEN_FAILED ;
+                $this->_buffer[] = $this->getErrorMessage( self::ERROR_DIR_WRITE_FAILED , $this->_directory ) ;
+                return;
+            }
         }
 
-        if ( file_exists( $this->_path ) && !is_writable( $this->_path ) )
+        if ( file_exists( $this->path ) && !is_writable( $this->path ) )
         {
-            $this->_status   = self::STATUS_OPEN_FAILED ;
-            $this->_buffer[] = $this->_messages['writefail'] ;
-            return ;
+            if ( !chmod( $this->path, 0664 ) )
+            {
+                $this->status   = self::STATUS_OPEN_FAILED ;
+                $this->_buffer[] = $this->getErrorMessage( self::ERROR_FILE_WRITE_FAILED , $this->path ) ;
+                return ;
+            }
         }
 
-        if ( ( $this->_file = fopen( $this->_path , 'a' ) ) )
+        if ( ( $this->_file = fopen( $this->path , 'a' ) ) )
         {
-            $this->_status   = self::STATUS_LOG_OPEN ;
-            $this->_buffer[] = $this->_messages['opensuccess'] ;
+            $this->status   = self::STATUS_LOG_OPEN ;
+            $this->_buffer[] = $this->getErrorMessage( self::ERROR_FILE_OPEN_SUCCESS , $this->path ) ;
+            if ( !chmod( $this->path, 0664 ) )
+            {
+                $this->_buffer[] = $this->getErrorMessage( self::ERROR_FILE_PERMISSION_FAILED , $this->path , 'after opening' ) ;
+            }
         }
         else
         {
-            $this->_status   = self::STATUS_OPEN_FAILED ;
-            $this->_buffer[] = $this->_messages['openfail'] ;
+            $this->status   = self::STATUS_OPEN_FAILED ;
+            $this->_buffer[] = $this->getErrorMessage( self::ERROR_FILE_OPEN_FAILED , $this->path ) ;
         }
 
     }
@@ -127,6 +139,12 @@ class Logger implements LoggerInterface
     public const int INFO       = 6 ;  // Informational: informational messages
     public const int DEBUG      = 7 ;  // Debug: debug messages
     public const int OFF        = 8 ;  // Log nothing at all
+
+    public const string ERROR_DIR_WRITE_FAILED       = 'dir:write:failed' ;
+    public const string ERROR_FILE_OPEN_FAILED       = 'fil:open:failed'  ;
+    public const string ERROR_FILE_OPEN_SUCCESS      = 'fil:open:success' ;
+    public const string ERROR_FILE_PERMISSION_FAILED = 'fil:permission:failed' ;
+    public const string ERROR_FILE_WRITE_FAILED      = 'fil:write:failed' ;
 
     /**
      * Internal status codes
@@ -171,7 +189,7 @@ class Logger implements LoggerInterface
     {
         $num = self::LEVELS[ $level ] ?? self::OFF ;
 
-        if ( $this->_severityThreshold >= $num )
+        if ( $this->severityThreshold >= $num )
         {
             // ------- status
 
@@ -268,7 +286,7 @@ class Logger implements LoggerInterface
      * Returns the entire message queue (leaving it intact)
      * @return array
      */
-    public function getMessages() : array
+    public function getErrors() : array
     {
         return $this->_buffer ;
     }
@@ -288,7 +306,7 @@ class Logger implements LoggerInterface
      */
     public function getPath() :string
     {
-        return $this->_path ;
+        return $this->path ;
     }
 
     /**
@@ -296,7 +314,7 @@ class Logger implements LoggerInterface
      */
     public function getStatus() : int
     {
-        return $this->_status ;
+        return $this->status ;
     }
 
     /**
@@ -306,11 +324,11 @@ class Logger implements LoggerInterface
      */
     public function writeFreeFormLine( string $line ) :void
     {
-        if ( $this->_status == self::STATUS_LOG_OPEN && $this->_severityThreshold != self::OFF )
+        if ( $this->status == self::STATUS_LOG_OPEN && $this->severityThreshold != self::OFF )
         {
             if ( fwrite( $this->_file , $line . PHP_EOL ) === false )
             {
-                $this->_buffer[] = $this->_messages['writefail'] ;
+                $this->_buffer[] = $this->errors['writefail'] ;
             }
         }
     }
@@ -339,7 +357,7 @@ class Logger implements LoggerInterface
      * Octal notation for default permissions of the log file
      * @var int
      */
-    private static int $_defaultPermissions = 0777 ;
+    private static int $_defaultPermissions = 0775 ;
 
     /**
      * The directory to the log file
@@ -353,32 +371,51 @@ class Logger implements LoggerInterface
      */
     private $_file = null ;
 
+
     /**
      * Standard messages produced by the class. Can be modified for il8n
      * @var array
      */
-    private array $_messages = array
-    (
-        'writefail'   => 'The file could not be written to. Check that appropriate permissions have been set.',
-        'opensuccess' => 'The log file was opened successfully.',
-        'openfail'    => 'The file could not be opened. Check permissions.'
-    );
+    private array $errors =
+    [
+        self::ERROR_DIR_WRITE_FAILED       => 'Failed to create log directory: {0}' ,
+        self::ERROR_FILE_OPEN_SUCCESS      => 'The log file was opened successfully.',
+        self::ERROR_FILE_OPEN_FAILED       => 'The file could not be opened. Check permissions.' ,
+        self::ERROR_FILE_PERMISSION_FAILED => 'Failed to set correct permissions (0664) on log file {0} {1}.',
+        self::ERROR_FILE_WRITE_FAILED      => 'The file {0} could not be written to. Failed to change permissions for existing file, check that appropriate permissions have been set.',
+    ];
+
 
     /**
      * Path to the log file
      * @var ?string
      */
-    private ?string $_path = null ;
+    private ?string $path = null ;
 
     /**
      * Current minimum logging threshold
      * @var int
      */
-    private int $_severityThreshold = self::DEBUG ;
+    private int $severityThreshold = self::DEBUG ;
 
     /**
      * Current status of the log file
      * @var int
      */
-    private int $_status = self::STATUS_LOG_CLOSED ;
+    private int $status = self::STATUS_LOG_CLOSED ;
+
+    /**
+     * Returns an error message with a specific error status.
+     * @param string $errorStatus
+     * @param ...$args
+     * @return string
+     */
+    protected function getErrorMessage( string $errorStatus , ...$args ):string
+    {
+        if( isset( $this->errors[ $errorStatus ]  ) )
+        {
+            return fastFormat( $this->errors[ $errorStatus ] , ...$args ) ;
+        }
+        return Char::EMPTY ;
+    }
 }

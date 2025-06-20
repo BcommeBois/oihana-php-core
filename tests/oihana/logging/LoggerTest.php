@@ -115,7 +115,7 @@ class LoggerTest extends TestCase
     public function testGetMessageAndMessages(): void
     {
         $logger = new Logger($this->logDir);
-        $messages = $logger->getMessages();
+        $messages = $logger->getErrors();
 
         $this->assertIsArray($messages);
         $this->assertNotEmpty($messages);

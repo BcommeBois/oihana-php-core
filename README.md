@@ -11,6 +11,12 @@ This library using [Composer](https://getcomposer.org):
 composer require oihana/php-core
 ```
 
+## Unit tests
+
+```bash
+composer run-script test
+```
+
 ## Licences
  * Licence MPL 2.0 : Mozilla Public License Version 2.0
 

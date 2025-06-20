@@ -25,9 +25,9 @@ use Throwable;
  */
 function fastFormat( ?string $pattern , ...$args ) :string
 {
-    if( !isset( $pattern ) || ( $pattern == "" ) )
+    if( !isset( $pattern ) || ( $pattern == Char::EMPTY  ) )
     {
-        return "" ;
+        return Char::EMPTY ;
     }
 
     if( count( $args ) && is_array( $args[0] ) )
