@@ -9,14 +9,14 @@ class SymbolProcessor
 {
     /**
      * Creates a new SymbolProcessor.
-     * @param bool $useColor Indicates if the level symbol use colors.
+     * @param bool $useColors Indicates if the level symbol use colors.
      */
-    public function __construct( bool $useColor = true )
+    public function __construct( bool $useColors = true )
     {
-        $this->useColor = $useColor ;
+        $this->useColors = $useColors ;
     }
 
-    public bool $useColor ;
+    public bool $useColors ;
 
     private array $symbolMap =
     [
