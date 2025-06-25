@@ -38,7 +38,7 @@ class MonoLogManager extends LoggerManager
      * Indicates if the bubbling is active.
      * @var bool
      */
-    public bool $bubbles = false ;
+    public bool $bubbles = true ;
 
     /**
      * The directory permission.
