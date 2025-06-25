@@ -22,6 +22,11 @@ trait LoggerTrait
     public const string LOGGER = 'logger' ;
 
     /**
+     * The 'loggable' parameter constant.
+     */
+    public const string LOGGABLE = 'loggable' ;
+
+    /**
      * The loggable flag.
      * @var bool
      */
@@ -132,6 +137,16 @@ trait LoggerTrait
     public function log( mixed $level , string|Stringable $message, array $context = [] ):void
     {
         $this->logger?->log( $level , $message , $context );
+    }
+
+    /**
+     * Initialize the loggable flag.
+     * @param array $init
+     * @return bool
+     */
+    protected function initLoggable( array $init = [] ) :bool
+    {
+        return $init[ self::LOGGABLE ] ?? $this->loggable ;
     }
 
     /**

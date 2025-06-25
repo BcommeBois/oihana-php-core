@@ -2,6 +2,8 @@
 
 namespace oihana\traits;
 
+use oihana\logging\LoggerTrait;
+
 /**
  * Provides debugging and mock-related functionality.
  */
