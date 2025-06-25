@@ -29,7 +29,7 @@ class MonoLogManager extends LoggerManager
         parent::__construct( $directory , $init , $name ) ;
         $this->bubbles         = boolval( $init[ MonoLogConfig::BUBBLES  ] ?? $this->bubbles ) ;
         $this->dirPermissions  = octdec( $init[ MonoLogConfig::DIR_PERMISSIONS ] ?? '0775' ) ;
-        $this->filePermissions = octdec( $init[ MonoLogConfig::FILE_PERMISSIONS ] ?? '00664' ) ;
+        $this->filePermissions = octdec( $init[ MonoLogConfig::FILE_PERMISSIONS ] ?? '0664' ) ;
         $this->level           = intval( $init[ MonoLogConfig::LEVEL ] ?? Level::Debug ) ;
         $this->maxFiles        = intval( $init[ MonoLogConfig::MAX_FILES ] ?? $this->maxFiles ) ;
     }
@@ -50,7 +50,7 @@ class MonoLogManager extends LoggerManager
      * The file permission.
      * @var int|float
      */
-    public int|float $filePermissions = 00664 ;
+    public int|float $filePermissions = 0664 ;
 
     /**
      * The line formatter.
