@@ -59,9 +59,10 @@
     },
     "require": {
         "php": ">=8.4",
+        "monolog/monolog": "^3.9",
         "php-di/php-di": "^7.0",
         "psr/log": "^3.0",
-        "monolog/monolog": "^3.9"
+        "psr/simple-cache": "^3.0"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit"
