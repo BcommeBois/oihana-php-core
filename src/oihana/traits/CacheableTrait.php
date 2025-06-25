@@ -9,6 +9,11 @@ use DI\NotFoundException;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 
+/**
+ * Provides caching functionality through a PSR-16 compliant cache implementation.
+ * This trait enables caching support for classes by defining methods for interacting
+ * with a cache store as well as initialization of cache-related properties.
+ */
 trait CacheableTrait
 {
     /**

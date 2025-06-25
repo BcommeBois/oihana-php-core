@@ -9,6 +9,9 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
+/**
+ * Provides functionality for managing a configuration setup.
+ */
 trait ConfigTrait
 {
     /**

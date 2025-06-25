@@ -10,6 +10,12 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\LoggerInterface;
 
+/**
+ * Provides logging capabilities via a LoggerInterface, with various log levels
+ * such as emergency, alert, critical, error, warning, notice, info, and debug.
+ * Offers a method to initialize a logger instance from a given configuration
+ * or DI container.
+ */
 trait LoggerTrait
 {
     /**
