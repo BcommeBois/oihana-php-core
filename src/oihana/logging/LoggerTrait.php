@@ -5,6 +5,7 @@ namespace oihana\logging;
 use DI\DependencyException;
 use DI\NotFoundException;
 
+use oihana\enums\Char;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -150,7 +151,7 @@ trait LoggerTrait
     }
 
     /**
-     * Initialize the internal logger reference.
+     * Initialize the logger reference.
      * @param array $init
      * @param ContainerInterface|null $container
      * @throws ContainerExceptionInterface
@@ -168,9 +169,14 @@ trait LoggerTrait
             return $logger ;
         }
 
-        if( isset( $container ) && $container->has( LoggerInterface::class ) )
+        if( !is_string( $logger ) || $logger == Char::EMPTY )
         {
-            $logger = $container->get( LoggerInterface::class ) ;
+            $logger = LoggerInterface::class ;
+        }
+
+        if( isset( $container ) && $container->has( $logger ) )
+        {
+            $logger = $container->get( $logger ) ;
             if( $logger instanceof LoggerInterface )
             {
                 return $logger ;
