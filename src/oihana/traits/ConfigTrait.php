@@ -37,7 +37,7 @@ trait ConfigTrait
 
         if( is_string( $config ) && isset( $container ) && $container->has( $config ) )
         {
-            $config = $container->get($config ) ;
+            $config = $container->get( $config ) ;
         }
 
         return is_array( $config ) ? $config : $this->config ;
