@@ -81,18 +81,17 @@ class MonoLogManager extends LoggerManager
     public function createLogger():LoggerInterface
     {
         $directory = $this->directory ;
+
         if ( !file_exists( $directory ) )
         {
-            mkdir( dirname( $directory ) , 0775, true ) ;
+            mkdir( dirname( $directory ) , $this->dirPermissions , true ) ;
         }
-
-        $filename = $this->getFilePath() ;
 
         $logger = new Logger( $this->getFileName() );
 
         $handler = new RotatingFileHandler
         (
-            $filename ,
+            $this->getFilePath() ,
             $this->maxFiles ,
             $this->level ,
             $this->bubbles ,
