@@ -3,7 +3,9 @@
 namespace oihana\traits;
 
 use oihana\enums\Char;
+use oihana\reflections\traits\ReflectionTrait;
 use ReflectionClass;
+use ReflectionException;
 
 /**
  * Trait ToStringTrait
@@ -30,30 +32,19 @@ use ReflectionClass;
  */
 trait ToStringTrait
 {
+    use ReflectionTrait ;
+
     /**
      * Returns a String representation of the object.
      * @return string A string representation of the object.
+     * @throws ReflectionException
      */
     public function __toString():string
     {
         if( !isset( $__className ) )
         {
-            $this->__className = $this->__getType() ;
+            $this->__className = $this->getShortName( $this ) ;
         }
         return Char::LEFT_BRACKET . $this->__className . Char::RIGHT_BRACKET ;
-    }
-
-    /**
-     * @var string|null
-     */
-    private ?string $__className ;
-
-    /**
-     * Retrieves the short name of the class for the current instance.
-     * @return string The short class name of the current object.
-     */
-    private function __getType(): string
-    {
-        return new ReflectionClass( $this )->getShortName() ;
     }
 }

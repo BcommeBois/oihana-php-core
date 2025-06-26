@@ -68,6 +68,21 @@ trait ReflectionTrait
     }
 
     /**
+     * Returns the class short name.
+     * @param object|string $class The object or the classname reference.
+     * @return string
+     * @throws ReflectionException
+     */
+    protected function getShortName( object|string $class ) : string
+    {
+        if( !isset( $this->__reflection ) )
+        {
+            $this->__reflection = new Reflection() ;
+        }
+        return $this->__reflection->shortName( $class ) ;
+    }
+
+    /**
      * Populates an object of the given class with data from the provided array.
      *
      * @param array $thing The data array used to hydrate the object.

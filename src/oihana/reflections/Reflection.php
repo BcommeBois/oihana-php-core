@@ -48,14 +48,14 @@ class Reflection
      * Special handling is included for PHP 8.0+ union types (e.g., `Type|null`).
      *
      * @param array $thing An associative array containing the data to hydrate the object.
-     * Keys should ideally match the public property names of the `$className`.
-     * @param string $className The fully qualified class name of the object to be instantiated and hydrated (e.g., `App\Entity\User::class`).
+     * Keys should ideally match the public property names of the `$class`.
+     * @param string $class The fully qualified class name of the object to be instantiated and hydrated (e.g., `App\Entity\User::class`).
      * This can be passed to optimize performance by avoiding re-instantiation
      * during recursive calls. If not provided, it will be created internally.
      *
-     * @return object The newly instantiated and hydrated object of type `$className`.
+     * @return object The newly instantiated and hydrated object of type `$class`.
      *
-     * @throws InvalidArgumentException If the provided `$className` does not exist or is not a valid class.
+     * @throws InvalidArgumentException If the provided `$class` does not exist or is not a valid class.
      * @throws ReflectionException If a property reflection fails (e.g., due to an invalid property name, though unlikely with `hasProperty` check).
      * This is explicitly tagged as per your request, even if direct `ReflectionException`
      * throws aren't immediately visible in the provided snippet.
@@ -156,6 +156,17 @@ class Reflection
         }
 
         return $this->reflections[ $className ];
+    }
+
+    /**
+     * Returns the class short name.
+     * @param object|string $class The object or class to reflect upon.
+     * @return string
+     * @throws ReflectionException If the reflection class cannot be created.
+     */
+    public function shortName( object|string $class ): string
+    {
+        return $this->reflection( $class )->getShortName();
     }
 
     /**
