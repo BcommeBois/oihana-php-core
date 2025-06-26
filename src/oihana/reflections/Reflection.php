@@ -2,11 +2,14 @@
 
 namespace oihana\reflections;
 
+use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionException;
 use ReflectionMethod;
+use ReflectionNamedType;
 use ReflectionProperty;
+use ReflectionUnionType;
 
 class Reflection
 {
@@ -33,6 +36,82 @@ class Reflection
     public function constants( object|string $class, int $filter = ReflectionClassConstant::IS_PUBLIC ): array
     {
         return $this->reflection( $class )->getConstants( $filter );
+    }
+
+    /**
+     * Hydrates an object of the specified class from an associative array of data.
+     *
+     * This method attempts to map array keys to public properties of the target object.
+     * It supports recursive hydration for nested objects, provided that the nested
+     * properties have type hints (e.g., `public ?GeoCoordinates $geo;`).
+     *
+     * Special handling is included for PHP 8.0+ union types (e.g., `Type|null`).
+     *
+     * @param array $thing An associative array containing the data to hydrate the object.
+     * Keys should ideally match the public property names of the `$className`.
+     * @param string $className The fully qualified class name of the object to be instantiated and hydrated (e.g., `App\Entity\User::class`).
+     * This can be passed to optimize performance by avoiding re-instantiation
+     * during recursive calls. If not provided, it will be created internally.
+     *
+     * @return object The newly instantiated and hydrated object of type `$className`.
+     *
+     * @throws InvalidArgumentException If the provided `$className` does not exist or is not a valid class.
+     * @throws ReflectionException If a property reflection fails (e.g., due to an invalid property name, though unlikely with `hasProperty` check).
+     * This is explicitly tagged as per your request, even if direct `ReflectionException`
+     * throws aren't immediately visible in the provided snippet.
+     */
+    public function hydrate( array $thing , string $class ): object
+    {
+        if ( !class_exists( $class ) )
+        {
+            throw new InvalidArgumentException("hydrate failed, the class '{$class}' does not exist.");
+        }
+
+        $reflectionClass = $this->reflection( $class ) ;
+
+        $object = new $class() ;
+
+        foreach ( $thing as $key => $value )
+        {
+            if ( $reflectionClass->hasProperty( $key ) )
+            {
+                $property = $reflectionClass->getProperty( $key ) ;
+
+                if ( is_array($value) && $property->hasType() )
+                {
+                    $propertyType = $property->getType();
+                    $targetTypeName = null;
+
+                    if ($propertyType instanceof ReflectionNamedType )
+                    {
+                        $targetTypeName = $propertyType->getName();
+                    }
+                    elseif ($propertyType instanceof ReflectionUnionType )
+                    {
+                        foreach ( $propertyType->getTypes() as $singleType )
+                        {
+                            if ( !$singleType->isBuiltin() && class_exists($singleType->getName()))
+                            {
+                                $targetTypeName = $singleType->getName();
+                                break;
+                            }
+                        }
+                    }
+
+                    if ( $targetTypeName && class_exists( $targetTypeName ) )
+                    {
+                        $value = $this->hydrate( $value, $targetTypeName ) ;
+                    }
+                }
+
+                if ( $property->isPublic() )
+                {
+                    $object->{ $key } = $value ;
+                }
+            }
+        }
+
+        return $object;
     }
 
     /**

@@ -66,4 +66,21 @@ trait ReflectionTrait
         }
         return $this->__reflection->properties( $class ) ;
     }
+
+    /**
+     * Populates an object of the given class with data from the provided array.
+     *
+     * @param array $thing The data array used to hydrate the object.
+     * @param string $class The classname of the object to be hydrated.
+     * @return object The hydrated object of the given class.
+     * @throws ReflectionException
+     */
+    protected function hydrate( array $thing , string $class ): object
+    {
+        if( !isset( $this->__reflection ) )
+        {
+            $this->__reflection = new Reflection() ;
+        }
+        return $this->__reflection->hydrate( $thing , $class ) ;
+    }
 }
