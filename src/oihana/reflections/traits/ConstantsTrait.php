@@ -3,7 +3,7 @@
 namespace oihana\reflections\traits;
 
 use ReflectionClass;
-use oihana\exceptions\ValidationException;
+use oihana\reflections\exceptions\ConstantException;
 
 /**
  * The helper to creates constants enumeration classes.
@@ -120,13 +120,13 @@ trait ConstantsTrait
      * types of the needle in the haystack.
      * </p>
      * @return void
-     * @throws ValidationException
+     * @throws ConstantException Thrown when the passed-in value is not a valid constant.
      */
     public static function validate( mixed $value , bool $strict = true ) : void
     {
         if( !self::isValid( $value , $strict ) )
         {
-            throw new ValidationException( 'Invalid constant : ' . json_encode( $value ) ) ;
+            throw new ConstantException( 'Invalid constant : ' . json_encode( $value ) ) ;
         }
     }
 }

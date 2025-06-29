@@ -6,85 +6,97 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.3] - 2025-06-29
+
+### Added
+
+- Adds oihana\reflections\exceptions\ConstantException
+- Adds oihana\reflections\ReflectionTrait::hydrate
+- Adds oihana\reflections\ReflectionTrait::jsonSerializeFromPublicProperties
+- Change oihana\reflections\Version : Unit tests
+- 
+### Changed
+- Change oihana\reflections\Version : use PHP 8.4 hooks with the build, major, minor and revision properties.
+
 ## [1.0.2] - 2025-06-20
-- Adds core\arrays\deepMerge
-- Adds core\files\loadAndMergeArrayFiles
-- Adds core\files\recursiveFilePaths
-- Adds logging\monolog\processors\EmojiProcessor
-- Adds logging\monolog\processors\SymbolProcessor
+- Adds oihana\core\arrays\deepMerge
+- Adds oihana\core\files\loadAndMergeArrayFiles
+- Adds oihana\core\files\recursiveFilePaths
+- Adds oihana\logging\monolog\processors\EmojiProcessor
+- Adds oihana\logging\monolog\processors\SymbolProcessor
 
 ## [1.0.1] - 2025-06-17
 
 ### Added
 
-- Adds date\TimeInterval
-- Adds enums\ArithmeticOperator
-- Adds enums\Boolean
-- Adds enums\Char
-- Adds enums\CharacterSet
-- Adds enums\JsonParam
-- Adds enums\Order
-- Adds enums\Param
-- Adds exceptions\ExceptionTrait
-- Adds exceptions\FileException
-- Adds exceptions\ResponseException
-- Adds exceptions\UnsupportedOperationException
-- Adds exceptions\ValidationException
-- Adds exceptions\http\Error403
-- Adds exceptions\http\Error404
-- Adds exceptions\http\Error500
-- Adds interfaces\Equatable
-- Adds logging\Logger
-- Adds logging\LoggerTrait
-- Adds reflections\Reflection
-- Adds reflections\Version
-- Adds reflections\traits\ConstantTrait
-- Adds reflections\traits\ReflectionTrait
-- Adds traits\KeyValueTrait
-- Adds traits\ToStringTrait
-- Adds traits\UnsupportedTrait
-- Adds traits\UriTrait
+- Adds oihana\date\TimeInterval
+- Adds oihana\enums\ArithmeticOperator
+- Adds oihana\enums\Boolean
+- Adds oihana\enums\Char
+- Adds oihana\enums\CharacterSet
+- Adds oihana\enums\JsonParam
+- Adds oihana\enums\Order
+- Adds oihana\enums\Param
+- Adds oihana\exceptions\ExceptionTrait
+- Adds oihana\exceptions\FileException
+- Adds oihana\exceptions\ResponseException
+- Adds oihana\exceptions\UnsupportedOperationException
+- Adds oihana\exceptions\ValidationException
+- Adds oihana\exceptions\http\Error403
+- Adds oihana\exceptions\http\Error404
+- Adds oihana\exceptions\http\Error500
+- Adds oihana\interfaces\Equatable
+- Adds oihana\logging\Logger
+- Adds oihana\logging\LoggerTrait
+- Adds oihana\reflections\Reflection
+- Adds oihana\reflections\Version
+- Adds oihana\reflections\traits\ConstantTrait
+- Adds oihana\reflections\traits\ReflectionTrait
+- Adds oihana\traits\KeyValueTrait
+- Adds oihana\traits\ToStringTrait
+- Adds oihana\traits\UnsupportedTrait
+- Adds oihana\traits\UriTrait
 
 ## [1.0.0] - 2025-06-16
 
 ### Added
 
-- Adds core\isNull
-- Adds core\arrays\compress
-- Adds core\array\delete
-- Adds core\array\exists
-- Adds core\array\get
-- Adds core\array\isAssociative
-- Adds core\array\removeKeys
-- Adds core\array\set
-- Adds core\array\toArray
-- Adds core\date\isDate
-- Adds core\date\isValidTimezone
-- Adds core\maths\ceilValue
-- Adds core\maths\floorValue
-- Adds core\maths\roundValue
-- Adds core\numbers\clip
-- Adds core\objects\compress
-- Adds core\strings\fastFormat
-- Adds core\strings\formatRequestArgs
-- Adds core\strings\latinize
-- Adds core\strings\luhn
-- Adds core\strings\randomKey
-- Adds core\strings\toCamelCase
-- Adds core\strings\urlencode
-- Adds core\enums\Boolean
-- Adds core\enums\Char
-- Adds core\exceptions\ExceptionTrait
-- Adds core\exceptions\FileException
-- Adds core\exceptions\ResponseException
-- Adds core\exceptions\UnsupportedOperationException
-- Adds core\exceptions\ValidationException
-- Adds core\exceptions\http\Error404
-- Adds core\exceptions\http\Error500
-- Adds core\exceptions\Reflection
-- Adds core\exceptions\traits\ConstantTrait
-- Adds core\exceptions\traits\ReflectionTrait
-- Adds core\traits\KeyValueTrait
-- Adds core\traits\ToStringTrait
-- Adds core\traits\UnsupportedTrait
-- Adds core\traits\UriTrait
+- Adds oihana\core\isNull
+- Adds oihana\core\arrays\compress
+- Adds oihana\core\array\delete
+- Adds oihana\core\array\exists
+- Adds oihana\core\array\get
+- Adds oihana\core\array\isAssociative
+- Adds oihana\core\array\removeKeys
+- Adds oihana\core\array\set
+- Adds oihana\core\array\toArray
+- Adds oihana\core\date\isDate
+- Adds oihana\core\date\isValidTimezone
+- Adds oihana\core\maths\ceilValue
+- Adds oihana\core\maths\floorValue
+- Adds oihana\core\maths\roundValue
+- Adds oihana\core\numbers\clip
+- Adds oihana\core\objects\compress
+- Adds oihana\core\strings\fastFormat
+- Adds oihana\core\strings\formatRequestArgs
+- Adds oihana\core\strings\latinize
+- Adds oihana\core\strings\luhn
+- Adds oihana\core\strings\randomKey
+- Adds oihana\core\strings\toCamelCase
+- Adds oihana\core\strings\urlencode
+- Adds oihana\core\enums\Boolean
+- Adds oihana\core\enums\Char
+- Adds oihana\core\exceptions\ExceptionTrait
+- Adds oihana\core\exceptions\FileException
+- Adds oihana\core\exceptions\ResponseException
+- Adds oihana\core\exceptions\UnsupportedOperationException
+- Adds oihana\core\exceptions\ValidationException
+- Adds oihana\core\exceptions\http\Error404
+- Adds oihana\core\exceptions\http\Error500
+- Adds oihana\core\exceptions\Reflection
+- Adds oihana\core\exceptions\traits\ConstantTrait
+- Adds oihana\core\exceptions\traits\ReflectionTrait
+- Adds oihana\core\traits\KeyValueTrait
+- Adds oihana\core\traits\ToStringTrait
+- Adds oihana\core\traits\UnsupportedTrait
+- Adds oihana\core\traits\UriTrait

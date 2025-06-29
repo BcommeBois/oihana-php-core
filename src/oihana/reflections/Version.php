@@ -12,7 +12,7 @@ use oihana\interfaces\Equatable;
  * These components are internally encoded into a single 32-bit integer for compact storage and efficient comparison.
  *
  * ### Usage Example:
- * * ```php
+ * <code>
  * use oihana\reflections\Version ;
  *
  * $version1 = new Version( 2 , 1 , 1 , 110 ) ;
@@ -22,10 +22,10 @@ use oihana\interfaces\Equatable;
  * $version1->major = 3 ;
  *
  * echo('version   : ' . $version1 ) ;
- * echo( 'major    : ' . $version1->getMajor() ) ;
- * echo( 'minor    : ' . $version1->getMinor() ) ;
- * echo( 'build    : ' . $version1->getBuild() ) ;
- * echo( 'revision : ' . $version1->getRevision() ) ;
+ * echo( 'major    : ' . $version1->major ) ;
+ * echo( 'minor    : ' . $version1->minor ) ;
+ * echo( 'build    : ' . $version1->build ) ;
+ * echo( 'revision : ' . $version1->revision ) ;
  *
  * echo( 'version 1 : ' . $version1->valueOf() ) ;
  * echo( 'version 2 : ' . $version2->valueOf() ) ;
@@ -34,7 +34,7 @@ use oihana\interfaces\Equatable;
  * echo( "equals( 'toto' )    : " . ($version1->equals('toto')    ? 'true' : 'false' )) ;
  * echo( "equals( $version2 ) : " . ($version1->equals($version2) ? 'true' : 'false' )) ;
  * echo( "equals( $version3 ) : " . ($version1->equals($version3) ? 'true' : 'false' )) ;
- * ```
+ * </code>
  * ### Key Features:
  * - Supports dynamic property access (`$version->major`, `$version->minor`, etc.) through magic methods.
  * - Efficiently encodes and decodes version components using bitwise operations.
@@ -87,35 +87,52 @@ class Version implements Equatable
     }
 
     /**
-     * Indicates the build value of this version.
+     * The build component value of this version.
+     * @var int
      */
-    public function getBuild():int
+    public int $build
     {
-        return $this->RRR( ( $this->_value & 0x00FF0000 ) , 16 );
+        get => $this->RRR( ( $this->_value & 0x00FF0000 ) , 16 ) ;
+        set( int $value )
+        {
+            $this->_value = ( $this->_value & 0xFF00FFFF ) | ( $value << 16 ) ;
+        }
     }
 
     /**
-     * Indicates the major value of this version.
+     * The major component value of this version.
      */
-    public function getMajor():int
+    public int $major
     {
-        return $this->RRR( $this->_value , 28 ) ;
+        get => $this->RRR( $this->_value , 28 ) ;
+        set( int $value )
+        {
+            $this->_value = ( $this->_value & 0x0FFFFFFF ) | ( $value << 28 ) ;
+        }
     }
 
     /**
-     * Indicates the minor value of this version.
+     * The minor component value of this version.
      */
-    public function getMinor():int
+    public int $minor
     {
-        return $this->RRR( ( $this->_value & 0x0F000000 ) , 24 ) ;
+        get => $this->RRR( ( $this->_value & 0x0F000000 ) , 24 ) ;
+        set( int $value )
+        {
+            $this->_value = ( $this->_value & 0xF0FFFFFF ) | ( $value << 24 ) ;
+        }
     }
 
     /**
-     * Indicates the revision value of this version.
+     * The revision component value of this version.
      */
-    public function getRevision():int
+    public int $revision
     {
-        return $this->_value & 0x0000FFFF;
+        get => $this->_value & 0x0000FFFF ;
+        set( int $value )
+        {
+            $this->_value = ( $this->_value & 0xFFFF0000 ) | $value;
+        }
     }
 
     /**
@@ -126,12 +143,12 @@ class Version implements Equatable
      */
     public static function fromString( string $value , string $separator = Char::DOT ) :?string
     {
-        $v = new Version() ;
-
-        if( $value == null || $value == "" )
+        if( $value == null || $value == Char::EMPTY )
         {
             return null ;
         }
+
+        $v = new Version() ;
 
         if( strpos( $value , $separator ) > -1 )
         {
@@ -140,22 +157,22 @@ class Version implements Equatable
 
             if( $len > 0 )
             {
-                $v->setMajor( (int) $values[0] ) ;
+                $v->major = (int) $values[0] ;
             }
 
             if( $len > 1 )
             {
-                $v->setMinor( (int) $values[1] ) ;
+                $v->minor = (int) $values[1] ;
             }
 
             if( $len > 2 )
             {
-                $v->setBuild( (int) $values[2] ) ;
+                $v->build = (int) $values[2] ;
             }
 
             if( $len > 3 )
             {
-                $v->setRevision( (int) $values[3] ) ;
+                $v->revision = (int) $values[3] ;
             }
         }
         else
@@ -163,7 +180,7 @@ class Version implements Equatable
             $vv = (int) $value ;
             if( $vv != 0 )
             {
-                $v->setMajor( $vv ) ;
+                $v->major = $vv ;
             }
             else
             {
@@ -174,37 +191,6 @@ class Version implements Equatable
         return (string) $v ;
     }
 
-    /**
-     * Set the build value.
-     */
-    public function setBuild( int $value ):void
-    {
-        $this->_value = ( $this->_value & 0xFF00FFFF ) | ($value << 16) ;
-    }
-
-    /**
-     * Set the major value.
-     */
-    public function setMajor( $value ):void
-    {
-        $this->_value = ( $this->_value & 0x0FFFFFFF ) | ( $value << 28 ) ;
-    }
-
-    /**
-     * Set the minor value.
-     */
-    public function setMinor( $value ):void
-    {
-        $this->_value = ( $this->_value & 0xF0FFFFFF ) | ( $value << 24 ) ;
-    }
-
-    /**
-     * Set the revision value.
-     */
-    public function setRevision( $value ):void
-    {
-        $this->_value = ( $this->_value & 0xFFFF0000 ) | $value;
-    }
 
     /**
      * Returns the string representation of the object.
@@ -212,21 +198,15 @@ class Version implements Equatable
      */
     public function __toString() :string
     {
-        $data =
-        [
-            $this->getMajor() ,
-            $this->getMinor() ,
-            $this->getBuild() ,
-            $this->getRevision()
-        ];
+        $data = [ $this->major , $this->minor , $this->build , $this->revision ] ;
 
-        if( ( $this->fields > 0) && ( $this->fields < 5 ) )
+        if( ( $this->fields > 0 ) && ( $this->fields < 5 ) )
         {
             $data = array_slice( $data , 0 , $this->fields ) ;
         }
         else
         {
-            $l = count($data);
+            $l = count( $data ) ;
             for( $i = $l-1 ; $i>0 ; $i-- )
             {
                 if( $data[$i] == 0 )
@@ -252,51 +232,16 @@ class Version implements Equatable
         return $this->_value ;
     }
 
-    public function __get( $name ) :mixed
-    {
-        $method = null ;
-
-        if( $name != '' )
-        {
-            $method = 'get' . ucfirst($name) ;
-        }
-
-        if( method_exists( $this, $method ) )
-        {
-            return $this->{ $method }();
-        }
-
-        trigger_error( 'Undefined property: ' . get_class( $this ) . '::$' . $name ) ;
-
-        return 0 ;
-    }
-
-    public function __set( $name , $value )
-    {
-        $method = null ;
-
-        if( $name != Char::EMPTY )
-        {
-            $method = 'set' . ucfirst( $name ) ;
-        }
-
-        if( method_exists( $this, $method ) )
-        {
-            $this->{ $method }( $value );
-        }
-        else
-        {
-            trigger_error( 'Undefined property: ' . get_class( $this ) . '::$' . $name ) ;
-        }
-    }
-
+    /**
+     * @var int
+     */
     private int $_value ;
 
     /**
      * Emulates the >>> binary operator.
      */
-    private function RRR( $a , $b ) :int
+    private function RRR( int $a , int $b ) :int
     {
-        return (int)( (float) $a / pow( 2 , (int) $b ) );
+        return (int) ( (float) $a / pow( 2 , $b ) );
     }
 }
