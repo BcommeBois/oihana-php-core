@@ -77,30 +77,51 @@ class Reflection
             {
                 $property = $reflectionClass->getProperty( $key ) ;
 
-                if ( is_array($value) && $property->hasType() )
+                if ( $property->hasType() )
                 {
-                    $propertyType = $property->getType();
-                    $targetTypeName = null;
+                    $propertyType = $property->getType() ;
+                    $types        = [] ;
 
-                    if ($propertyType instanceof ReflectionNamedType )
+                    if ( $propertyType instanceof ReflectionUnionType )
                     {
-                        $targetTypeName = $propertyType->getName();
-                    }
-                    elseif ($propertyType instanceof ReflectionUnionType )
-                    {
-                        foreach ( $propertyType->getTypes() as $singleType )
+                        foreach ($propertyType->getTypes() as $type)
                         {
-                            if ( !$singleType->isBuiltin() && class_exists($singleType->getName()))
-                            {
-                                $targetTypeName = $singleType->getName();
-                                break;
-                            }
+                            $types[] = $type ;
                         }
                     }
-
-                    if ( $targetTypeName && class_exists( $targetTypeName ) )
+                    else
                     {
-                        $value = $this->hydrate( $value, $targetTypeName ) ;
+                        $types[] = $propertyType ;
+                    }
+
+                    foreach ( $types as $type )
+                    {
+                        $typeName = $type->getName() ;
+
+                        if ( $typeName === 'null' && $value === null )
+                        {
+                            break;
+                        }
+
+                        if ( class_exists( $typeName ) )
+                        {
+                            if ( is_array($value ) )
+                            {
+                                if ( $this->isAssoc( $value ) )
+                                {
+                                    $value = $this->hydrate( $value , $typeName ) ;
+                                }
+                                else {
+                                    $value = array_map( fn($v) => $this->hydrate( $v , $typeName ) , $value ) ;
+                                }
+                            }
+                            break;
+                        }
+
+                        if ( $typeName === 'array' && is_array($value) )
+                        {
+                            break;
+                        }
                     }
                 }
 
