@@ -7,9 +7,10 @@ use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionException;
 use ReflectionMethod;
-use ReflectionNamedType;
 use ReflectionProperty;
 use ReflectionUnionType;
+
+use function oihana\core\arrays\isAssociative;
 
 class Reflection
 {
@@ -107,7 +108,7 @@ class Reflection
                         {
                             if ( is_array($value ) )
                             {
-                                if ( $this->isAssoc( $value ) )
+                                if ( isAssociative( $value ) )
                                 {
                                     $value = $this->hydrate( $value , $typeName ) ;
                                 }
