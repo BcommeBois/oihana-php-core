@@ -6,10 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-## [1.0.3] - 2025-06-29
-
+## [1.0.4] - 2025-07-03
 ### Added
+- Adds oihana\core\arrays\unique
 
+## [1.0.3] - 2025-06-29
+### Added
 - Adds oihana\reflections\exceptions\ConstantException
 - Adds oihana\reflections\ReflectionTrait::hydrate
 - Adds oihana\reflections\ReflectionTrait::jsonSerializeFromPublicProperties

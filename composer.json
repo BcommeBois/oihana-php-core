@@ -1,6 +1,6 @@
 {
     "name" : "oihana/php-core" ,
-    "version" : "1.0.3" ,
+    "version" : "1.0.4" ,
     "type" : "library" ,
     "description" : "The Oihana PHP Core library" ,
     "keywords" : [ "php" , "core" ] ,
@@ -38,6 +38,7 @@
             "src/oihana/core/arrays/removeKeys.php",
             "src/oihana/core/arrays/set.php",
             "src/oihana/core/arrays/toArray.php",
+            "src/oihana/core/arrays/unique.php",
             "src/oihana/core/date/isDate.php",
             "src/oihana/core/date/isValidTimezone.php",
             "src/oihana/core/helpers/conditions.php",
