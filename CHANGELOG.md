@@ -6,9 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-## [1.0.4] - 2025-07-03
 ### Added
-- Adds oihana\core\arrays\unique
+- Adds oihana\exceptions\DirectoryException
+- Adds oihana\exceptions\MissingPassphraseException
+
+## [1.0.4] - 2025-07-03
+**### Added
+- Adds oihana\core\arrays\unique**
 
 ## [1.0.3] - 2025-06-29
 ### Added
