@@ -2,8 +2,6 @@
 
 namespace oihana\core\strings ;
 
-use oihana\enums\Char;
-
 /**
  * Indicates if the passed-in string is a valid luhn code.
  * @param array $params The array of parameters
@@ -12,7 +10,7 @@ use oihana\enums\Char;
  */
 function formatRequestArgs( array $params, bool $useNow = false ): string
 {
-    $str = Char::EMPTY ;
+    $str = "" ;
 
     if( count( $params ) > 0 )
     {
@@ -27,15 +25,15 @@ function formatRequestArgs( array $params, bool $useNow = false ): string
 
             if( $first )
             {
-                $str  .= Char::QUESTION_MARK ;
+                $str  .= "?" ;
                 $first = false;
             }
             else
             {
-                $str .= Char::AMPERSAND ;
+                $str .= "&" ;
             }
 
-            $str .= $key . Char::EQUAL . $value ;
+            $str .= $key . "=" . $value ;
         }
     }
 

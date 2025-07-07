@@ -7,8 +7,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- Adds oihana\core\arrays\flatten
+- Adds oihana\core\strings\camel
+- Adds oihana\core\strings\kebab
+- Adds oihana\core\strings\hyphenate
+- Adds oihana\core\strings\snake
+- Adds oihana\core\strings\helpers\SnakeCache
+- Adds oihana\core\strings\toString
 - Adds oihana\exceptions\DirectoryException
 - Adds oihana\exceptions\MissingPassphraseException
+
+### Removed
+- Adds oihana\core\strings\toCamelCase
 
 ## [1.0.4] - 2025-07-03
 **### Added

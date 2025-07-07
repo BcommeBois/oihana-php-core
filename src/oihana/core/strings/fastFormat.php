@@ -3,7 +3,6 @@
 namespace oihana\core\strings ;
 
 use oihana\enums\Char;
-use Throwable;
 
 /**
  * Quick and fast format of a string using indexed parameters only.
@@ -25,9 +24,9 @@ use Throwable;
  */
 function fastFormat( ?string $pattern , ...$args ) :string
 {
-    if( !isset( $pattern ) || ( $pattern == Char::EMPTY  ) )
+    if( !isset( $pattern ) || ( $pattern === "" ) )
     {
-        return Char::EMPTY ;
+        return "" ;
     }
 
     if( count( $args ) && is_array( $args[0] ) )
@@ -65,7 +64,7 @@ function fastFormat( ?string $pattern , ...$args ) :string
                 {
                     return $toStringFunc() ;
                 }
-                return Char::LEFT_BRACKET . 'object ' . get_class($value) . Char::RIGHT_BRACKET ;
+                return '[object ' . get_class($value) . ']' ;
             }
         }
 

@@ -13,8 +13,14 @@ composer require oihana/php-core
 
 ## Unit tests
 
+Run all unit tests.
 ```bash
 composer run-script test
+```
+
+Run a unique unit test.
+```bash
+composer run test ./tests/oihana/core/arrays/FlattenTest.php
 ```
 
 ## Licences

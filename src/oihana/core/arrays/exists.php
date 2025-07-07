@@ -3,7 +3,6 @@
 namespace oihana\core\arrays ;
 
 use ArrayAccess ;
-use oihana\enums\Char;
 
 /**
  * Checks if the given key exists in the provided array.
@@ -13,7 +12,7 @@ use oihana\enums\Char;
  */
 function exists( array|ArrayAccess $array , null|string|int $key ) :bool
 {
-    if( is_null( $key ) || $key == Char::EMPTY )
+    if( !isset( $key ) || $key === '' )
     {
         return false ;
     }
@@ -22,5 +21,6 @@ function exists( array|ArrayAccess $array , null|string|int $key ) :bool
     {
         return $array->offsetExists( $key ) ;
     }
+
     return array_key_exists( $key , $array );
 }
