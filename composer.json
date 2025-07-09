@@ -66,6 +66,7 @@
     },
     "require": {
         "php": ">=8.4",
+        "ext-openssl" : "*" ,
         "monolog/monolog": "^3.9",
         "php-di/php-di": "^7.0",
         "psr/log": "^3.0",
