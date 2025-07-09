@@ -13,7 +13,7 @@ use function oihana\core\arrays\deepMerge;
  * @return array The merged array.
  * @throws RuntimeException If a specified file is missing or does not return an array.
  */
-function loadAndMergeArrayFiles( array $filePaths , bool $recursive = true ): array
+function loadAndMergeArrayFromPHPFiles( array $filePaths , bool $recursive = true ): array
 {
     $result = [];
 

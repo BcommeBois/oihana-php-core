@@ -14,7 +14,7 @@ use SplFileInfo;
  * @param string $directory The base path of the file to be scanned.
  * @param array $options The optional parameter to send in the function.
  *  - excludes (array) : The enumeration of all files to excludes
- *  - extensions (array) : The list of the extensions to use to scan the folder(s). By default, scan the '.php' files.
+ *  - extensions (array) : The optional list of the extensions to use to scan the folder(s).
  *  - maxDepth (int) : The maximum allowed depth. Default -1 is used
  *  - sortable (bool) : Indicates if the list of file paths is sorted before returned.
  * @return array The list of the full paths to all files found.
@@ -31,7 +31,7 @@ function recursiveFilePaths( string $directory , array $options = [] ): array
     $maxDepth   = $options[ 'maxDepth'   ] ?? -1 ;
     $sortable   = $options[ 'sortable'   ] ?? true ;
 
-    $extensions        = is_array( $extensions ) ? array_map('strtolower' , array_filter( $extensions) ) : [] ;
+    $extensions        = is_array( $extensions ) ? array_map('strtolower' , array_filter( $extensions ) ) : [] ;
     $filterByExtension = !empty( $extensions ) ;
 
     $files = [] ;

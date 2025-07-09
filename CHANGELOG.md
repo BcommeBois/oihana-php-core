@@ -17,6 +17,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\exceptions\DirectoryException
 - Adds oihana\exceptions\MissingPassphraseException
 
+### Changed
+- Rename oihana\core\files loadAndMergeArrayFiles -> loadAndMergeArrayFromPHPFiles
+
 ### Removed
 - Adds oihana\core\strings\toCamelCase
 
