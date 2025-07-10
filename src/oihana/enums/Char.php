@@ -24,6 +24,8 @@ class Char
     const string DOT               = '.' ;
     const string DOUBLE_COLON      = '::' ;
     const string DOUBLE_DOT        = '..' ;
+    const string DOUBLE_EQUAL      = '==' ;
+    const string DOUBLE_HYPHEN     = '--' ;
     const string DOUBLE_PIPE       = '||' ;
     const string DOUBLE_QUOTE      = '"' ;
     const string DOUBLE_SLASH      = '//' ;

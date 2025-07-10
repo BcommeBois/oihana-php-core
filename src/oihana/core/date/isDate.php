@@ -3,7 +3,6 @@
 namespace oihana\core\date ;
 
 use DateTime;
-use oihana\enums\Char;
 
 /**
  * Indicates if the passed-in expression is a valid date with a specific format (default 'Y-m-d').
@@ -13,7 +12,7 @@ use oihana\enums\Char;
  */
 function isDate( ?string $date , string $format = 'Y-m-d' ):bool
 {
-    if( is_string( $date ) && $date != Char::EMPTY )
+    if( is_string( $date ) && $date != '' )
     {
         $dateObj = DateTime::createFromFormat( $format , $date );
         return $dateObj && $dateObj->format($format) === $date;

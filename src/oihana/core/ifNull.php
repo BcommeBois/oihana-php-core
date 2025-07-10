@@ -10,5 +10,5 @@ namespace oihana\core ;
  */
 function ifNull( mixed $value , mixed $default = null ): mixed
 {
-    return $value ?? $default;
+    return $value ?? $default ;
 }
