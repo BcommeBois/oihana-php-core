@@ -38,6 +38,7 @@
             "src/oihana/core/arrays/isIndexed.php",
             "src/oihana/core/arrays/removeKeys.php",
             "src/oihana/core/arrays/set.php",
+            "src/oihana/core/arrays/stub.php",
             "src/oihana/core/arrays/toArray.php",
             "src/oihana/core/arrays/unique.php",
             "src/oihana/core/date/isDate.php",

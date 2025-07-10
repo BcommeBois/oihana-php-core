@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
 - Adds oihana\core\arrays\flatten
+- Adds oihana\core\arrays\stub
 - Adds oihana\core\strings\camel
 - Adds oihana\core\strings\kebab
 - Adds oihana\core\strings\hyphenate
