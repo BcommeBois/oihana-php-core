@@ -15,15 +15,15 @@ final class GetDirectoryTest extends TestCase
 
     protected function setUp(): void
     {
-        // Crée un dossier temporaire unique pour chaque test
+
         $this->tmpDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'oihana_' . uniqid();
         mkdir($this->tmpDir, 0o777, true);
     }
 
     protected function tearDown(): void
     {
-        // Rétablit les droits si besoin puis supprime le dossier temporaire
-        if (is_dir($this->tmpDir)) {
+        if ( is_dir($this->tmpDir ) )
+        {
             @chmod($this->tmpDir, 0o777);
             @rmdir($this->tmpDir);
         }
@@ -36,7 +36,6 @@ final class GetDirectoryTest extends TestCase
     {
         $withTrailing = $this->tmpDir . DIRECTORY_SEPARATOR;
         $result       = getDirectory($withTrailing);
-
         $this->assertSame($this->tmpDir, $result, 'Le séparateur de fin doit être supprimé.');
     }
 
@@ -46,7 +45,6 @@ final class GetDirectoryTest extends TestCase
     public function testReturnsSamePathWhenAlreadyNormalized(): void
     {
         $result = getDirectory($this->tmpDir);
-
         $this->assertSame($this->tmpDir, $result, 'Un chemin déjà normalisé doit être retourné tel quel.');
     }
 
