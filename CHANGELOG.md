@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.5] - 2025-07-10
+
 ### Added
 - Adds oihana\core\arrays\flatten
 - Adds oihana\core\arrays\inBetween
