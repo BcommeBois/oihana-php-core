@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - Adds oihana\core\arrays\flatten
 - Adds oihana\core\arrays\inBetween
+- Adds oihana\core\arrays\shuffle
 - Adds oihana\core\arrays\stub
 - Adds oihana\core\arrays\swap
 - Adds oihana\core\arrays\tail

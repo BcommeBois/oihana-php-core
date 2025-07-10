@@ -39,6 +39,7 @@
             "src/oihana/core/arrays/isIndexed.php",
             "src/oihana/core/arrays/removeKeys.php",
             "src/oihana/core/arrays/set.php",
+            "src/oihana/core/arrays/shuffle.php",
             "src/oihana/core/arrays/stub.php",
             "src/oihana/core/arrays/swap.php",
             "src/oihana/core/arrays/tail.php",

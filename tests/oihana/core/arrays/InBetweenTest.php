@@ -1,7 +1,6 @@
 <?php
 namespace oihana\core\arrays;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class InBetweenTest extends TestCase
@@ -29,7 +28,7 @@ class InBetweenTest extends TestCase
         $result = inBetween(['a', 'b', 'c'], null);
         $this->assertEquals(['a', null, 'b', null, 'c'], $result);
     }
-        
+
     public function testInBetweenWithDifferentElementTypes()
     {
         $input = ['a', 'b', 'c'];
