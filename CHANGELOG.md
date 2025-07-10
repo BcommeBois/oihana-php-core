@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+- Adds oihana\core\files\assertDirectory
+- Adds oihana\core\files\assertFile
+- Adds oihana\core\files\assertWritableDirectory
+- Adds oihana\core\files\createDirectory
+- Adds oihana\core\files\deleteDirectory
+- Adds oihana\enums\FileExtension
+- Adds oihana\files\TarFile
+
 ## [1.0.5] - 2025-07-10
 
 ### Added
