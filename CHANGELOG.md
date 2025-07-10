@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\toString
 - Adds oihana\exceptions\DirectoryException
 - Adds oihana\exceptions\MissingPassphraseException
+- Adds oihana\files\OpenSSLFileEncryption
 
 ### Changed
 - Rename oihana\core\files loadAndMergeArrayFiles -> loadAndMergeArrayFromPHPFiles
