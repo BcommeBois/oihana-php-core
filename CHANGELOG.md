@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\arrays\flatten
 - Adds oihana\core\arrays\stub
 - Adds oihana\core\arrays\swap
+- Adds oihana\core\arrays\tail
 - Adds oihana\core\strings\camel
 - Adds oihana\core\strings\kebab
 - Adds oihana\core\strings\hyphenate
