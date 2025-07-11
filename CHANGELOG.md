@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\files\deleteDirectory
 - Adds oihana\core\files\getDirectory
 - Adds oihana\enums\FileExtension
+- Adds oihana\enums\FileMimeType
 - Adds oihana\files\TarFile
 
 ## [1.0.5] - 2025-07-10

@@ -6,7 +6,10 @@ use oihana\reflections\traits\ConstantsTrait;
 
 class FileExtension
 {
-    use ConstantsTrait ;
+    use ConstantsTrait
+    {
+        resetCaches as internalResetCaches ;
+    }
 
     // --- Audio ---
 
@@ -69,6 +72,7 @@ class FileExtension
     public const string RAR              = '.rar';
     public const string SEVEN_Z          = '.7z';
     public const string TAR              = '.tar';
+    public const string TAR_BZ2          = '.tar.bz2';
     public const string TAR_GZ           = '.tar.gz';
     public const string TAR_GZ_ENCRYPTED = '.tar.gz.enc';
     public const string TGZ              = '.tgz' ;
@@ -117,7 +121,44 @@ class FileExtension
     /**
      * @var array|null
      */
+    private static ?array $MIME_TYPES = null ;
+
+    /**
+     * @var array|null
+     */
     private static ?array $MULTIPLE_EXTENSIONS = null ;
+
+    /**
+     * Returns the extension(s) of the specific mime-type value.
+     * @param string $mimeType The mime-type to evaluates.
+     * @return array|string|null
+     */
+    public static function getFromMimeType( string $mimeType ): array|string|null
+    {
+        return FileMimeType::getExtension( $mimeType ) ;
+    }
+
+    /**
+     * Returns the mimetype(s) for a given extension.
+     * @param string $extension
+     * @return string|array|null
+     */
+    public static function getMimeType( string $extension ):string|array|null
+    {
+        if( empty( $extension ) )
+        {
+            return null ;
+        }
+
+        $extension = Char::DOT . strtolower(  ltrim( trim( $extension ) , Char::DOT ) );
+
+        if( static::$MIME_TYPES === null )
+        {
+            static::$MIME_TYPES = FileMimeType::getAll() ;
+        }
+
+        return static::$MIME_TYPES[ self::getConstant( $extension ) ] ?? null;
+    }
 
     /**
      * Returns the list of all multiple part extensions, ex: [ '.tar.gz.enc' , '.tar.gz' , ... ]
@@ -140,5 +181,16 @@ class FileExtension
             }
         }
         return static::$MULTIPLE_EXTENSIONS ;
+    }
+
+    /**
+     * Reset the internal cache of the static methods.
+     * @return void
+     */
+    public static function resetCaches(): void
+    {
+        static::internalResetCaches() ;
+        static::$MIME_TYPES = null ;
+        static::$MULTIPLE_EXTENSIONS = null ;
     }
 }

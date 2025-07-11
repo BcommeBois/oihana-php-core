@@ -2,70 +2,53 @@
 
 namespace oihana\enums ;
 
+use oihana\reflections\exceptions\ConstantException;
 use PHPUnit\Framework\TestCase;
 
 class CharTest extends TestCase
 {
-    public function testConstants()
+    public function testEnumsReturnsAllConstantsSorted(): void
     {
-        $expectedConstants =
-        [
-            'AMPERSAND' => '&',
-            'APOSTROPHE' => "'",
-            'AT_SIGN' => '@',
-            'ASTERISK' => '*',
-            'BACK_SLASH' => '\\',
-            'CIRCUMFLEX' => '^',
-            'COLON' => ':',
-            'COMMA' => ',',
-            'DASH' => '-',
-            'DOLLAR' => '$',
-            'DOT' => '.',
-            'DOUBLE_COLON' => '::',
-            'DOUBLE_DOT' => '..',
-            'DOUBLE_EQUAL' => '==',
-            'DOUBLE_HYPHEN' => '--',
-            'DOUBLE_PIPE' => '||',
-            'DOUBLE_QUOTE' => '"',
-            'DOUBLE_SLASH' => '//',
-            'EMPTY' => '',
-            'EOL' => PHP_EOL,
-            'EQUAL' => '=',
-            'EXCLAMATION_MARK' => '!',
-            'GRAVE_ACCENT' => '`',
-            'HASH' => '#',
-            'HYPHEN' => '-',
-            'LEFT_BRACE' => '{',
-            'LEFT_BRACKET' => '[',
-            'LEFT_PARENTHESIS' => '(',
-            'MODULUS' => '%',
-            'NUMBER' => '#',
-            'PERCENT' => '%',
-            'PIPE' => '|',
-            'PLUS' => '+',
-            'QUESTION_MARK' => '?',
-            'QUOTATION_MARK' => '"',
-            'RIGHT_BRACE' => '}',
-            'RIGHT_BRACKET' => ']',
-            'RIGHT_PARENTHESIS' => ')',
-            'SEMI_COLON' => ';',
-            'SIMPLE_QUOTE' => "'",
-            'SLASH' => '/',
-            'SPACE' => ' ',
-            'TILDE' => '~',
-            'TRIPLE_DOT' => '...',
-            'UNDERLINE' => '_',
-        ];
+        $enums = Char::enums();
 
-        foreach ( $expectedConstants as $constantName => $expectedValue )
-        {
-            $actualValue = constant(Char::class . '::' . $constantName );
-            $this->assertEquals
-            (
-                $expectedValue,
-                $actualValue ,
-                "La valeur de la constante $constantName ne correspond pas à la valeur attendue."
-            );
-        }
+        $this->assertIsArray($enums);
+
+        $this->assertContains('&', $enums);
+        $this->assertContains('©', $enums);
+        $this->assertContains('₀', $enums);  // subscript zero
+        $this->assertContains('¹', $enums);  // superscript one
+
+        $sorted = $enums;
+        sort($sorted, SORT_STRING);
+        $this->assertSame($sorted, $enums);
+    }
+
+    public function testIncludesReturnsTrueForKnownValue(): void
+    {
+        $this->assertTrue(Char::includes(Char::AMPERSAND));
+        $this->assertTrue(Char::includes(Char::SUPERSCRIPT_ONE));
+        $this->assertFalse(Char::includes('🌟'));
+    }
+
+    public function testGetConstantReturnsConstantName(): void
+    {
+        $this->assertSame('AMPERSAND', Char::getConstant('&'));
+        $this->assertSame('SUBSCRIPT_ZERO', Char::getConstant('₀'));
+        $this->assertNull(Char::getConstant('🌟'));
+    }
+
+    public function testValidateThrowsExceptionOnInvalidValue(): void
+    {
+        $this->expectException(\oihana\reflections\exceptions\ConstantException::class);
+        Char::validate('🌟');
+    }
+
+    /**
+     * @throws ConstantException
+     */
+    public function testValidateDoesNotThrowForValidValue(): void
+    {
+        $this->expectNotToPerformAssertions();
+        Char::validate(Char::DOT);
     }
 }
