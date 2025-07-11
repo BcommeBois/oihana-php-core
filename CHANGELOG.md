@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\files\getDirectory
 - Adds oihana\files\getFileExtension
 - Adds oihana\files\listFiles
+- Adds oihana\files\sortFiles
 - Adds oihana\files\enums\FileExtension
 - Adds oihana\files\enums\FileMimeType
 - Adds oihana\files\TarFile

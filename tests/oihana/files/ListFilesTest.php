@@ -109,7 +109,7 @@ class ListFilesTest extends TestCase
      */
     public function testListFilesWithMapper()
     {
-        $files = listFiles($this->testDir, [ 'patterns' => '*.php' , 'callback' => fn(SplFileInfo $f) => $f->getFilename() ] );
+        $files = listFiles($this->testDir, [ 'patterns' => '*.php' , 'filter' => fn(SplFileInfo $f) => $f->getFilename() ] );
         $this->assertContains('foo.php', $files);
         $this->assertContains('test123.php', $files);
         $this->assertContains('bar.blade.php', $files);
@@ -187,7 +187,7 @@ class ListFilesTest extends TestCase
     {
         $files = listFiles($this->testDir, [
             'patterns' => '*.php',
-            'callback' => fn(SplFileInfo $f) => strtoupper($f->getFilename()),
+            'filter'   => fn(SplFileInfo $f) => strtoupper($f->getFilename()),
         ]);
         $this->assertContains('FOO.PHP', $files);
         $this->assertContains('TEST123.PHP', $files);
