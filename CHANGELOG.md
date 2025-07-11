@@ -42,6 +42,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\toString
 - Adds oihana\exceptions\DirectoryException
 - Adds oihana\exceptions\MissingPassphraseException
+
+- Adds oihana\date\traits\DateTrait
 - Adds oihana\files\OpenSSLFileEncryption
 
 ### Changed
