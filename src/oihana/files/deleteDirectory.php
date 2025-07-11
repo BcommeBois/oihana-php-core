@@ -1,10 +1,10 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
 use Exception;
 use FilesystemIterator;
-use oihana\exceptions\DirectoryException;
+use oihana\files\exceptions\DirectoryException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 

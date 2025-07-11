@@ -1,7 +1,8 @@
 <?php
 
-namespace oihana\enums;
+namespace oihana\files\enums;
 
+use oihana\enums\Char;
 use oihana\reflections\traits\ConstantsTrait;
 
 class FileExtension

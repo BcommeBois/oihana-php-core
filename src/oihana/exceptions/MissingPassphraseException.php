@@ -18,7 +18,7 @@ class MissingPassphraseException extends Exception
      */
     public function __construct( string $message = "The passphrase is required.", int $code = 0 , ?Throwable $previous = null )
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct( $message , $code , $previous ) ;
     }
 
     use ExceptionTrait;

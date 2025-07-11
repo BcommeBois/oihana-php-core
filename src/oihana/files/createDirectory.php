@@ -1,8 +1,8 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
-use oihana\exceptions\DirectoryException;
+use oihana\files\exceptions\DirectoryException;
 
 /**
  * Creates a directory if it does not exist and returns the path of the directory.

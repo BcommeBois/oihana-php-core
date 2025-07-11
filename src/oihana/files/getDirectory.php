@@ -1,8 +1,8 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
-use oihana\exceptions\DirectoryException;
+use oihana\files\exceptions\DirectoryException;
 
 /**
  * Returns a normalized directory path by trimming trailing directory separators.

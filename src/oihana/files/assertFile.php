@@ -1,8 +1,8 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
-use oihana\exceptions\FileException;
+use oihana\files\exceptions\FileException;
 
 /**
  * Asserts that a file exists and is accessible.

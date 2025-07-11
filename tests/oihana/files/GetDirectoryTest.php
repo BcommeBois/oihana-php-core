@@ -1,13 +1,9 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
+use oihana\files\exceptions\DirectoryException;
 use PHPUnit\Framework\TestCase;
-
-use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
-
-use oihana\exceptions\DirectoryException;
 
 final class GetDirectoryTest extends TestCase
 {

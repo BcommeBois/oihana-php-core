@@ -7,18 +7,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
-- Adds oihana\core\files\assertDirectory
-- Adds oihana\core\files\assertFile
-- Adds oihana\core\files\assertWritableDirectory
-- Adds oihana\core\files\createDirectory
-- Adds oihana\core\files\deleteDirectory
-- Adds oihana\core\files\getDirectory
-- Adds oihana\enums\FileExtension
-- Adds oihana\enums\FileMimeType
+- Adds oihana\files\assertDirectory
+- Adds oihana\files\assertFile
+- Adds oihana\files\assertWritableDirectory
+- Adds oihana\files\createDirectory
+- Adds oihana\files\deleteDirectory
+- Adds oihana\files\getDirectory
+- Adds oihana\files\enums\FileExtension
+- Adds oihana\files\enums\FileMimeType
 - Adds oihana\files\TarFile
 
 ### Changed
-- Rename oihana\core\files\loadAndMergeArrayFromPHPFiles -> requireAndMergeArrays
+- Rename oihana\core\files\loadAndMergeArrayFromPHPFiles -> oihana\files\requireAndMergeArrays
 
 ## [1.0.5] - 2025-07-10
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
-use oihana\exceptions\DirectoryException;
+use oihana\files\exceptions\DirectoryException;
 
 /**
  * Asserts that a directory exists and is readable and writable.

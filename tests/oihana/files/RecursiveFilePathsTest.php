@@ -1,9 +1,9 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
 use PHPUnit\Framework\TestCase;
-use RuntimeException ;
+use RuntimeException;
 
 class RecursiveFilePathsTest extends TestCase
 {

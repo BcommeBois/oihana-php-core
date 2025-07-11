@@ -1,12 +1,11 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
-use oihana\exceptions\FileException;
-use PHPUnit\Framework\TestCase;
-
+use oihana\files\exceptions\FileException;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
+use PHPUnit\Framework\TestCase;
 
 class AssertFileTest extends TestCase
 {

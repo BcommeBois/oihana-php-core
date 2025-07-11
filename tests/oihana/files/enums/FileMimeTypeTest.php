@@ -1,6 +1,6 @@
 <?php
 
-namespace oihana\enums ;
+namespace oihana\files\enums ;
 
 use PHPUnit\Framework\TestCase;
 

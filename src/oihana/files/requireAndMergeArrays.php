@@ -1,6 +1,6 @@
 <?php
 
-namespace oihana\core\files ;
+namespace oihana\files ;
 
 use RuntimeException;
 

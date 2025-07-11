@@ -2,16 +2,11 @@
 
 namespace oihana\files;
 
-use RuntimeException;
-
 use oihana\enums\Char;
-use oihana\enums\FileExtension;
-use oihana\exceptions\DirectoryException;
-use oihana\exceptions\FileException;
-
-use function oihana\core\files\assertDirectory;
-use function oihana\core\files\assertFile;
-use function oihana\core\files\createDirectory;
+use oihana\files\enums\FileExtension;
+use oihana\files\exceptions\DirectoryException;
+use oihana\files\exceptions\FileException;
+use RuntimeException;
 
 /**
  * Manage creating and extracting Unix tar (optionally gz‑compressed) archives.
