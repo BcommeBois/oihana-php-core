@@ -163,9 +163,10 @@ class FileExtension
 
     /**
      * Returns the list of all multiple part extensions, ex: [ '.tar.gz.enc' , '.tar.gz' , ... ]
+     * @param array|null $customs A list of custom multiple part extensions to append in the final list.
      * @return array
      */
-    public static function getMultiplePartExtensions():array
+    public static function getMultiplePartExtensions( ?array $customs = [] ):array
     {
         if( !isset( static::$MULTIPLE_EXTENSIONS ) )
         {
@@ -180,8 +181,18 @@ class FileExtension
                     static::$MULTIPLE_EXTENSIONS[] = $extension ;
                 }
             }
+            sort( static::$MULTIPLE_EXTENSIONS , SORT_STRING ) ;
         }
-        return static::$MULTIPLE_EXTENSIONS ;
+
+        $extensions = static::$MULTIPLE_EXTENSIONS ;
+
+        if( is_array( $customs ) && count( $customs ) > 0 )
+        {
+            $extensions = array_unique( [ ...$extensions , ...$customs ] , SORT_STRING ) ;
+            sort( $extensions , SORT_STRING ) ;
+        }
+
+        return $extensions ;
     }
 
     /**

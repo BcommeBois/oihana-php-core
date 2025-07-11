@@ -12,7 +12,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\files\assertWritableDirectory
 - Adds oihana\files\createDirectory
 - Adds oihana\files\deleteDirectory
+- Adds oihana\files\getBaseFileName
 - Adds oihana\files\getDirectory
+- Adds oihana\files\getFileExtension
 - Adds oihana\files\enums\FileExtension
 - Adds oihana\files\enums\FileMimeType
 - Adds oihana\files\TarFile
