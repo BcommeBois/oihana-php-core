@@ -206,7 +206,7 @@ class OpenSSLFileEncryptionTest extends TestCase
         file_put_contents($plainFile, 'This is plain text data');
 
         $encryptedFile = $this->testDir . '/encrypted.txt';
-        $encryption->encrypt($this->inputFile, $encryptedFile);
+        $encryption->encrypt( $this->inputFile, $encryptedFile);
 
         $emptyFile = $this->testDir . '/empty.txt';
         file_put_contents($emptyFile, '');

@@ -55,9 +55,9 @@ class OpenSSLFileEncryption
     private string $passphrase;
 
     /**
-     * @var string The length of the initialization vector (IV) used for encryption and decryption.
+     * @var int The length of the initialization vector (IV) used for encryption and decryption.
      */
-    private string $ivLength;
+    private int $ivLength;
 
     /**
      * Encrypt a file with the OpenSSL tool.
@@ -250,7 +250,7 @@ class OpenSSLFileEncryption
      */
     public function isEncryptedFile( string $filePath ): bool
     {
-        if (!file_exists($filePath))
+        if (!file_exists( $filePath ) )
         {
             return false;
         }
@@ -283,10 +283,9 @@ class OpenSSLFileEncryption
                 }
             }
 
-            // If more than 50% of the bytes are printable characters,
+            // If more than 80%% of the bytes are printable characters,
             // it may look like text rather than an IV
-            if ( $printable > $this->ivLength / 2 )
-            {
+            if ($printable > $this->ivLength * 0.8) {
                 return false;
             }
 
