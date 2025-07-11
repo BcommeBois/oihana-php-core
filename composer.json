@@ -54,7 +54,7 @@
             "src/oihana/core/files/createDirectory.php" ,
             "src/oihana/core/files/deleteDirectory.php" ,
             "src/oihana/core/files/getDirectory.php" ,
-            "src/oihana/core/files/loadAndMergeArrayFromPHPFiles.php" ,
+            "src/oihana/core/files/requireAndMergeArrays.php" ,
             "src/oihana/core/files/recursiveFilePaths.php",
             "src/oihana/core/maths/ceilValue.php" ,
             "src/oihana/core/maths/floorValue.php" ,

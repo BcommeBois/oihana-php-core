@@ -7,13 +7,13 @@ use RuntimeException;
 use function oihana\core\arrays\deepMerge;
 
 /**
- * Loads multiple PHP files, each expected to return an array, and merges them.
+ * Requires multiple PHP files (each returning an array) and merges the results.
  * @param array $filePaths An array of absolute or relative file paths to load.
  * @param bool $recursive Whether to perform a deep (recursive) merge (true) or a simple merge (false).
  * @return array The merged array.
  * @throws RuntimeException If a specified file is missing or does not return an array.
  */
-function loadAndMergeArrayFromPHPFiles( array $filePaths , bool $recursive = true ): array
+function requireAndMergeArrays( array $filePaths , bool $recursive = true ): array
 {
     $result = [];
 

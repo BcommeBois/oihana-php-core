@@ -17,6 +17,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\enums\FileMimeType
 - Adds oihana\files\TarFile
 
+### Changed
+- Rename oihana\core\files\loadAndMergeArrayFromPHPFiles -> requireAndMergeArrays
+
 ## [1.0.5] - 2025-07-10
 
 ### Added
