@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- Adds oihana\core\strings\isRegexp
 - Adds oihana\files\assertDirectory
 - Adds oihana\files\assertFile
 - Adds oihana\files\assertWritableDirectory
@@ -15,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\files\getBaseFileName
 - Adds oihana\files\getDirectory
 - Adds oihana\files\getFileExtension
+- Adds oihana\files\listFiles
 - Adds oihana\files\enums\FileExtension
 - Adds oihana\files\enums\FileMimeType
 - Adds oihana\files\TarFile
