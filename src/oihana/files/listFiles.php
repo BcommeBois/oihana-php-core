@@ -15,12 +15,12 @@ use function oihana\core\strings\isRegexp;
 /**
  * List the files in a directory (non-recursive), ignoring dotfiles.
  * @param ?string $directory The directory path.
- * @param array{ patterns:null|array|string , filter:null|callable , followLinks:null|bool , includeDots:null|bool , order:null|string  , recursive:null|bool , sort:null|callable|string } $options
+ * @param array{ pattern:null|array|string , filter:null|callable , followLinks:null|bool , includeDots:null|bool , order:null|string  , recursive:null|bool , sort:null|callable|string } $options
  *  <li><b>filter</b> : The optional function to filter all files, ex: <code>fn( $file ) => $file->getFileName()</code></li>
  *  <li><b>followLinks</b> : Indicates if the dot files are ignored (default false).</li>
  *  <li><b>includeDots</b> : Indicates if the dot files are included (default false).</li>
  *  <li><b>order</b> : The order of the file sorting : default 'ASC' or 'DESC'.
- *  <li><b>patterns</b> : A pattern (a regexp, a glob, or a string) or an array of patterns.</li>
+ *  <li><b>pattern</b> : A pattern (a regexp, a glob, or a string) or an array of patterns.</li>
  *  <li><b>recursive</b> : Indicates if all sub-directories are browsed (default false).</li>
  *  <li><b>sort</b> : The optional sort option to sort all files, ex: <code>fn( SplFileInfo $a, SplFileInfo $b ) => return strcmp($a->getRealPath(), $b->getRealPath())</code></li>
  * @return SplFileInfo[]
@@ -44,7 +44,7 @@ use function oihana\core\strings\isRegexp;
  *
  *  // 5) Recursive search for *.log and *.txt, ignore dot‑files, follow symlinks
  *  $files = listFiles('/var/log', [
- *      'patterns'    => ['*.log', '*.txt'],
+ *      'pattern'    => ['*.log', '*.txt'],
  *      'recursive'   => true,
  *      'followLinks' => true,
  *  ]);
@@ -57,7 +57,7 @@ use function oihana\core\strings\isRegexp;
  *
  *  // 7) Mixed glob + regexp filter
  *  $files = listFiles('/data', [
- *      'patterns' => ['*.csv', '/^report_\d{4}\.xlsx$/i'],
+ *      'pattern' => ['*.csv', '/^report_\d{4}\.xlsx$/i'],
  *  ]);
  *  ```
  * </code>
@@ -67,11 +67,11 @@ function listFiles( ?string $directory, array $options = [] ): array
 {
     assertDirectory( $directory );
 
-    $filter    = $options[ 'filter'    ] ?? null ;
+    $filter      = $options[ 'filter'      ] ?? null  ;
     $followLinks = $options[ 'followLinks' ] ?? false ;
     $includeDots = $options[ 'includeDots' ] ?? false ;
-    $order      =  $options[ 'order'       ] ?? 'asc' ;
-    $patterns    = $options[ 'patterns'    ] ?? null ;
+    $order       = $options[ 'order'       ] ?? 'asc' ;
+    $patterns    = $options[ 'pattern'     ] ?? null  ;
     $recursive   = $options[ 'recursive'   ] ?? false ;
     $sort        = $options[ 'sort'        ] ?? false ;
 

@@ -63,7 +63,7 @@ class ListFilesTest extends TestCase
     {
         // ------- *.php
 
-        $names = listFiles( $this->testDir, [ 'patterns' => '*.php' ] ) ;
+        $names = listFiles( $this->testDir, [ 'pattern' => '*.php' ] ) ;
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $names);
 
         $this->assertContains('foo.php', $names);
@@ -73,7 +73,7 @@ class ListFilesTest extends TestCase
 
         // ------- *.txt
 
-        $names = listFiles( $this->testDir, [ 'patterns' => '*.txt' ] ) ;
+        $names = listFiles( $this->testDir, [ 'pattern' => '*.txt' ] ) ;
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $names );
 
         $this->assertNotContains('foo.php', $names);
@@ -85,7 +85,7 @@ class ListFilesTest extends TestCase
      */
     public function testListFilesWithRegexPattern()
     {
-        $files = listFiles($this->testDir, [ 'patterns' =>'/^test\d+\.php$/i' ] );
+        $files = listFiles($this->testDir, [ 'pattern' =>'/^test\d+\.php$/i' ] );
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
         $this->assertEquals(['test123.php'], $names);
     }
@@ -96,7 +96,7 @@ class ListFilesTest extends TestCase
     public function testListFilesWithMixedPatterns()
     {
         $patterns = ['*.php', '/^bar.*\.blade\.php$/i'];
-        $files =  listFiles($this->testDir, [ 'patterns' => $patterns ] );
+        $files =  listFiles($this->testDir, [ 'pattern' => $patterns ] );
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
 
         $this->assertContains('foo.php', $names);
@@ -109,7 +109,7 @@ class ListFilesTest extends TestCase
      */
     public function testListFilesWithMapper()
     {
-        $files = listFiles($this->testDir, [ 'patterns' => '*.php' , 'filter' => fn(SplFileInfo $f) => $f->getFilename() ] );
+        $files = listFiles($this->testDir, [ 'pattern' => '*.php' , 'filter' => fn(SplFileInfo $f) => $f->getFilename() ] );
         $this->assertContains('foo.php', $files);
         $this->assertContains('test123.php', $files);
         $this->assertContains('bar.blade.php', $files);
@@ -186,8 +186,8 @@ class ListFilesTest extends TestCase
     public function testListFilesWithCallbackMapping()
     {
         $files = listFiles($this->testDir, [
-            'patterns' => '*.php',
-            'filter'   => fn(SplFileInfo $f) => strtoupper($f->getFilename()),
+            'pattern' => '*.php',
+            'filter'  => fn(SplFileInfo $f) => strtoupper($f->getFilename()),
         ]);
         $this->assertContains('FOO.PHP', $files);
         $this->assertContains('TEST123.PHP', $files);
@@ -199,7 +199,7 @@ class ListFilesTest extends TestCase
     public function testListFilesWithMultiplePatterns()
     {
         $patterns = ['*.php', '*.txt'];
-        $files = listFiles($this->testDir, ['patterns' => $patterns]);
+        $files = listFiles($this->testDir, ['pattern' => $patterns ] );
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
 
         $this->assertContains('foo.php', $names);
