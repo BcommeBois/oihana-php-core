@@ -11,14 +11,12 @@ use InvalidArgumentException;
  * and returns a normalized array of callable conditions. It is useful for validating
  * or filtering data based on multiple conditions.
  *
- * @param array|callable|null $conditions The conditions to normalize. Can be:
+ * @param array|callable|string|null $conditions The conditions to normalize. Can be:
  *  - null: defaults to a condition that checks for null values.
  *  - callable: a single condition function.
  *  - array: an array of condition functions.
  * @param bool $throwable If true, throws exceptions for invalid conditions. If false, silently filters out invalid conditions.
  * @return array An array of callable conditions.
- * @throws InvalidArgumentException If invalid condition callbacks are provided and 'throwable' is true.
- *
  * @example
  * // Basic usage with default condition
  * $conditions = conditions();
@@ -29,7 +27,8 @@ use InvalidArgumentException;
  * // Returns: [fn($value) => $value === '']
  *
  * // Usage with an array of conditions
- * $conditions = conditions([
+ * $conditions = conditions
+ * ([
  *     fn($value) => $value === null,
  *     fn($value) => $value === false
  * ]);

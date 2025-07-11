@@ -6,25 +6,65 @@ use function oihana\core\helpers\conditions;
 use function oihana\core\objects\compress as compressObject ;
 
 /**
- * Compress the passed in indexed object and remove all the empty properties.
- * <p>Usage :</p>
- * <pre>
- * use function core\arrays\compress ;
- * $array =
- * [
- *   'id'          => 1 ,
- *   'created'     => null ,
- *   'name'        => 'hello world' ,
- *   'description' => null
- * ];
- * echo json_encode( compress( $array , [ 'description' ] ) ) ;
+ * Compresses the given array by removing values that match one or more conditions.
+ *
+ * Useful for cleaning up associative arrays (e.g., from form submissions or object exports)
+ * by removing nulls, empty strings, or other unwanted values. Supports recursion into nested arrays or objects.
+ *
+ * @param array $array        The input array to compress.
  * @param array|null $options Optional configuration:
- * - 'clone' (bool>) : Indicates if the array is cloned or not.
- * - 'conditions' (callable|array<callable>) : One or more functions used to determine whether a value should be removed.
- * - 'excludes'   (array<string>) : List of property names to exclude from filtering.
- * - 'recursive'  (bool) : If true (default), recursively compress nested objects.
- * - 'throwable'  (bool) : If true (default), throws InvalidArgumentException for invalid callbacks.
- * @return array The passed-in array or a clone reference compressed.
+ * - **clone** (bool)         If `true`, works on a cloned copy of the array. Original remains unchanged. *(default: false)*
+ * - **conditions** (callable|array<callable>)
+ *                            One or more callbacks: `(mixed $value): bool`.
+ *                            If any condition returns `true`, the value is removed.
+ *                            *( default: `fn($v) => is_null($v)` )*
+ * - **excludes** (string[])  List of keys to exclude from filtering, even if matched by a condition.
+ * - **recursive** (bool)     Whether to recursively compress nested arrays or objects. *(default: true)*
+ * - **depth** (int|null)     Maximum depth for recursion. `null` means no limit.
+ * - **throwable** (bool)     If `true`, throws `InvalidArgumentException` for invalid conditions. *(default: true)*
+ * @param int $currentDepth (Internal) Tracks current recursion depth. You usually don’t need to set this.
+ *
+ * @return array The compressed array (or its clone if `clone=true`).
+ *
+ * @example <caption>Basic cleanup of null values</caption>
+ * use function oihana\core\arrays\compress;
+ * $data = ['id' => 1, 'name' => 'hello', 'description' => null];
+ * $clean = compress($data);
+ * // Result: ['id' => 1, 'name' => 'hello']
+ *
+ * @example <caption>Exclude a specific key from filtering</caption>
+ * $data = ['id' => 1, 'name' => null];
+ * $clean = compress($data, ['excludes' => ['name']]);
+ * // Result: ['id' => 1, 'name' => null]  // "name" is preserved
+ *
+ * @example <caption>Remove null or empty strings</caption>
+ * $conditions =
+ * [
+ *     fn($v) => is_null($v),
+ *     fn($v) => is_string($v) && $v === ''
+ * ];
+ * $data  = ['a' => '', 'b' => 0, 'c' => null];
+ * $clean = compress($data, ['conditions' => $conditions]);
+ * // Result: ['b' => 0]
+ *
+ * @example <caption>Recursive compression with depth limit</caption>
+ * $nested =
+ * [
+ *     'id'   => 2,
+ *     'meta' => ['created' => null, 'tags' => []],
+ * ];
+ *
+ * $clean = compress($nested,
+ * [
+ *     'conditions' => fn($v) => $v === [] || $v === null,
+ *     'depth'      => 1
+ * ]);
+ * // Result: ['id' => 2]
+ *
+ * @example <caption>Clone input before compressing</caption>
+ * $original = ['x' => null, 'y' => 5];
+ * $copy     = compress($original, ['clone' => true]);
+ * // $original remains unchanged; $copy == ['y' => 5]
  */
 function compress( array $array ,  ?array $options = [], int $currentDepth = 0 ): array
 {
