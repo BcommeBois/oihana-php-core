@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- Adds oihana\core\date\formatDateTime
 - Adds oihana\core\strings\isRegexp
 - Adds oihana\files\assertDirectory
 - Adds oihana\files\assertFile

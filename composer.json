@@ -45,6 +45,7 @@
             "src/oihana/core/arrays/tail.php",
             "src/oihana/core/arrays/toArray.php",
             "src/oihana/core/arrays/unique.php",
+            "src/oihana/core/date/formatDateTime.php",
             "src/oihana/core/date/isDate.php",
             "src/oihana/core/date/isValidTimezone.php",
             "src/oihana/core/helpers/conditions.php",
