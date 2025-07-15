@@ -103,7 +103,7 @@ final class TarFile
     {
         $this->assertFile( $tarFile ) ;
 
-        createDirectory( $directory ) ;
+        makeDirectory( $directory ) ;
 
         $command = "tar -xzf $tarFile -C $directory" ;
 

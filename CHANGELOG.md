@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\date\formatDateTime
 - Adds oihana\core\strings\isRegexp
 - Adds oihana\files\assertDirectory
+- Adds oihana\files\enums\FileExtension
+- Adds oihana\files\enums\FileMimeType
+- Adds oihana\files\enums\FindFileOption
+- Adds oihana\files\enums\FindMode
 - Adds oihana\files\assertFile
 - Adds oihana\files\assertWritableDirectory
 - Adds oihana\files\createDirectory
@@ -20,8 +24,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\files\getFileExtension
 - Adds oihana\files\makeTimestampedDirectory
 - Adds oihana\files\sortFiles
-- Adds oihana\files\enums\FileExtension
-- Adds oihana\files\enums\FileMimeType
 - Adds oihana\files\TarFile
 
 ### Changed

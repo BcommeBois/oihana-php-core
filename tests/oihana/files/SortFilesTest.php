@@ -15,7 +15,7 @@ class SortFilesTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->testDir = createDirectory( sys_get_temp_dir() . '/oihana/SortFilesTest_' . uniqid() ) ;
+        $this->testDir = makeDirectory( sys_get_temp_dir() . '/oihana/SortFilesTest_' . uniqid() ) ;
 
         // Fichiers de tailles / extensions différentes
         file_put_contents($this->testDir . '/foo.php',          str_repeat('A', 10));   // 10 o
@@ -23,7 +23,6 @@ class SortFilesTest extends TestCase
         file_put_contents($this->testDir . '/test123.php',      str_repeat('A', 20));   // 20 o
         file_put_contents($this->testDir . '/z_last.txt',       str_repeat('A',  5));   // 5 o
         file_put_contents($this->testDir . '/a_first.TXT',      str_repeat('A', 15));   // 15 o
-
     }
 
     /**

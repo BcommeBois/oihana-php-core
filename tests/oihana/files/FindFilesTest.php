@@ -15,7 +15,7 @@ class FindFilesTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->testDir = createDirectory( sys_get_temp_dir() . '/oihana/ListFilesTest_' . uniqid() ) ;
+        $this->testDir = makeDirectory( sys_get_temp_dir() . '/oihana/ListFilesTest_' . uniqid() ) ;
 
         // Nettoyer avant chaque test
         array_map('unlink', glob($this->testDir . '/*'));
@@ -27,7 +27,7 @@ class FindFilesTest extends TestCase
         file_put_contents($this->testDir . '/.hiddenfile'   , 'hidden' ) ;
         file_put_contents($this->testDir . '/text.txt'      , 'text' ) ;
 
-        createDirectory  ($this->testDir . '/subdir') ;
+        makeDirectory  ($this->testDir . '/subdir') ;
         file_put_contents($this->testDir . '/subdir/ignore.php', '<?php // ignore' ) ;
     }
 

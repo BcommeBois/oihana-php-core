@@ -57,7 +57,13 @@ class OpenSSLFileEncryption
     /**
      * @var int The length of the initialization vector (IV) used for encryption and decryption.
      */
-    private int $ivLength;
+    public int $ivLength
+    {
+        get
+        {
+            return $this->ivLength;
+        }
+    }
 
     /**
      * Encrypt a file with the OpenSSL tool.
@@ -72,7 +78,6 @@ class OpenSSLFileEncryption
      */
     public function encrypt( string $inputFile , string $outputFile ):bool
     {
-        // Validate input file
         if( !file_exists( $inputFile ) )
         {
             throw new RuntimeException( 'Encryption failed, the input file not exist.' ) ;
@@ -203,15 +208,6 @@ class OpenSSLFileEncryption
     }
 
     /**
-     * Returns the Iv length.
-     * @return int
-     */
-    public function getIvLength(): int
-    {
-        return $this->ivLength;
-    }
-
-    /**
      * Checks if a file has the minimum size to be an encrypted file.
      *
      * This makes a best-effort check that the file contains at least an IV
@@ -277,7 +273,7 @@ class OpenSSLFileEncryption
             for ( $i = 0; $i < $this->ivLength; $i++ )
             {
                 $byte = ord( $iv[$i] ) ;
-                if ($byte >= 32 && $byte <= 126 ) // Printable ASCII range
+                if ( $byte >= 32 && $byte <= 126 ) // Printable ASCII range
                 {
                     $printable++ ;
                 }

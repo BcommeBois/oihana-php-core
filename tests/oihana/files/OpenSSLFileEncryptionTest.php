@@ -175,12 +175,12 @@ class OpenSSLFileEncryptionTest extends TestCase
         file_put_contents($emptyFile, '');
 
         $shortFile = $this->testDir . '/short.txt';
-        file_put_contents($shortFile, str_repeat('a', $encryption->getIvLength() - 1)); // 1 octet de moins que l'IV
+        file_put_contents($shortFile, str_repeat('a', $encryption->ivLength - 1)); // 1 octet de moins que l'IV
 
         $nonExistentFile = $this->testDir . '/nonexistent.txt';
 
         $ivSizeFile = $this->testDir . '/ivsize.txt';
-        file_put_contents($ivSizeFile, str_repeat('a', $encryption->getIvLength()));
+        file_put_contents($ivSizeFile, str_repeat('a', $encryption->ivLength ));
 
         $this->assertTrue ( $encryption->hasEncryptedFileSize( $encryptedFile   ) , 'Should detect valid encrypted file size' ) ;
         $this->assertTrue ( $encryption->hasEncryptedFileSize( $plainFile       ) , 'File with sufficient size returns true' ) ;
@@ -221,7 +221,7 @@ class OpenSSLFileEncryptionTest extends TestCase
         file_put_contents($corruptedFile, substr($data, 0, 10));
 
         $ivSizeFile = $this->testDir . '/ivsize.txt';
-        file_put_contents($ivSizeFile, str_repeat("\0", $encryption->getIvLength())); // IV rempli de zéros
+        file_put_contents($ivSizeFile, str_repeat("\0", $encryption->ivLength )); // IV rempli de zéros
 
         $this->assertTrue ( $encryption->isEncryptedFile( $encryptedFile ), 'Should detect valid encrypted file' ) ;
         $this->assertFalse( $encryption->isEncryptedFile( $plainFile ), 'Should not detect plain text file as encrypted' ) ;

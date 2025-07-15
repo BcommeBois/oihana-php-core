@@ -12,7 +12,7 @@ use oihana\files\exceptions\DirectoryException;
  * @return ?string Returns the path of the directory.
  * @throws DirectoryException If the directory cannot be created.
  */
-function createDirectory( ?string $directory , int $permissions = 0755 , bool $recursive = true ): ?string
+function makeDirectory( ?string $directory , int $permissions = 0755 , bool $recursive = true ): ?string
 {
     if ( empty( $directory ) )
     {
