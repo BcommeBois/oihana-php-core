@@ -19,7 +19,7 @@ use oihana\files\exceptions\DirectoryException;
  */
 function getTemporaryDirectory( string|array|null $path = null , bool $assertable = false , bool $isReadable = true , bool $isWritable = false ): string
 {
-    $base = sys_get_temp_dir();
+    $base = sys_get_temp_dir() ;
 
     if ( is_array( $path ) )
     {

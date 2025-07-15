@@ -80,6 +80,7 @@
             "src/oihana/files/getTimestampedDirectory.php" ,
             "src/oihana/files/getTimestampedFile.php" ,
             "src/oihana/files/makeDirectory.php" ,
+            "src/oihana/files/makeTemporaryDirectory.php" ,
             "src/oihana/files/makeTimestampedDirectory.php" ,
             "src/oihana/files/makeTimestampedFile.php" ,
             "src/oihana/files/requireAndMergeArrays.php" ,
