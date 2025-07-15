@@ -2,8 +2,10 @@
 
 namespace oihana\files\enums ;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(FileMimeType::class)]
 class FileMimeTypeTest extends TestCase
 {
     protected function setUp(): void

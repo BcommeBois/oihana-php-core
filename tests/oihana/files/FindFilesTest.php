@@ -6,7 +6,7 @@ use oihana\files\exceptions\DirectoryException;
 use PHPUnit\Framework\TestCase;
 use SplFileInfo;
 
-class ListFilesTest extends TestCase
+class FindFilesTest extends TestCase
 {
     private string $testDir;
 
@@ -42,9 +42,9 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesWithoutFilter()
+    public function testFindFilesWithoutFilter()
     {
-        $files = listFiles($this->testDir);
+        $files = findFiles( $this->testDir );
 
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
 
@@ -59,11 +59,11 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesWithGlobPattern()
+    public function testFindFilesWithGlobPattern()
     {
         // ------- *.php
 
-        $names = listFiles( $this->testDir, [ 'pattern' => '*.php' ] ) ;
+        $names = findFiles( $this->testDir, [ 'pattern' => '*.php' ] ) ;
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $names);
 
         $this->assertContains('foo.php', $names);
@@ -73,7 +73,7 @@ class ListFilesTest extends TestCase
 
         // ------- *.txt
 
-        $names = listFiles( $this->testDir, [ 'pattern' => '*.txt' ] ) ;
+        $names = findFiles( $this->testDir, [ 'pattern' => '*.txt' ] ) ;
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $names );
 
         $this->assertNotContains('foo.php', $names);
@@ -83,9 +83,9 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesWithRegexPattern()
+    public function testFindFilesWithRegexPattern()
     {
-        $files = listFiles($this->testDir, [ 'pattern' =>'/^test\d+\.php$/i' ] );
+        $files = findFiles($this->testDir, [ 'pattern' =>'/^test\d+\.php$/i' ] );
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
         $this->assertEquals(['test123.php'], $names);
     }
@@ -93,10 +93,10 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesWithMixedPatterns()
+    public function testFindFilesWithMixedPatterns()
     {
         $patterns = ['*.php', '/^bar.*\.blade\.php$/i'];
-        $files =  listFiles($this->testDir, [ 'pattern' => $patterns ] );
+        $files =  findFiles($this->testDir, [ 'pattern' => $patterns ] );
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
 
         $this->assertContains('foo.php', $names);
@@ -107,26 +107,26 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesWithMapper()
+    public function testFindFilesWithMapper()
     {
-        $files = listFiles($this->testDir, [ 'pattern' => '*.php' , 'filter' => fn(SplFileInfo $f) => $f->getFilename() ] );
+        $files = findFiles($this->testDir, [ 'pattern' => '*.php' , 'filter' => fn( SplFileInfo $f) => $f->getFilename() ] );
         $this->assertContains('foo.php', $files);
         $this->assertContains('test123.php', $files);
         $this->assertContains('bar.blade.php', $files);
     }
 
-    public function testListFilesThrowsOnInvalidDirectory()
+    public function testFindFilesThrowsOnInvalidDirectory()
     {
         $this->expectException(DirectoryException::class);
-        listFiles('/path/to/invalid/dir' ) ;
+        findFiles('/path/to/invalid/dir' ) ;
     }
 
     /**
      * @throws DirectoryException
      */
-    public function testListFilesRecursive()
+    public function testFindFilesRecursive()
     {
-        $files = listFiles($this->testDir, ['recursive' => true]);
+        $files = findFiles($this->testDir, ['recursive' => true]);
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
 
         $this->assertContains('foo.php', $names);
@@ -136,9 +136,9 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesIncludeDotFiles()
+    public function testFindFilesIncludeDotFiles()
     {
-        $files = listFiles($this->testDir, ['includeDots' => true]);
+        $files = findFiles($this->testDir, ['includeDots' => true]);
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
 
         $this->assertContains('.hiddenfile', $names);
@@ -147,7 +147,7 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesWithFollowLinks()
+    public function testFindFilesWithFollowLinks()
     {
         // Créer un lien symbolique dans le temp dir
         $link = $this->testDir . '/link_to_subdir';
@@ -155,7 +155,7 @@ class ListFilesTest extends TestCase
             symlink($this->testDir . '/subdir', $link);
         }
 
-        $files = listFiles($this->testDir, ['recursive' => true, 'followLinks' => true]);
+        $files = findFiles($this->testDir, ['recursive' => true, 'followLinks' => true]);
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
 
         $this->assertContains('ignore.php', $names);
@@ -167,15 +167,15 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesSorting()
+    public function testFindFilesSorting()
     {
-        $filesByName = listFiles($this->testDir, ['sort' => 'name']);
+        $filesByName = findFiles($this->testDir, ['sort' => 'name']);
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $filesByName);
         $sortedNames = $names;
         sort($sortedNames);
         $this->assertEquals($sortedNames, $names);
 
-        $filesByMTime = listFiles($this->testDir, ['sort' => 'mtime']);
+        $filesByMTime = findFiles($this->testDir, ['sort' => 'mtime']);
         $namesByMTime = array_map(fn(SplFileInfo $f) => $f->getFilename(), $filesByMTime);
         $this->assertCount(count($names), $namesByMTime); // Simple vérification, difficile de prévoir ordre exact sans sleep
     }
@@ -183,9 +183,9 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesWithCallbackMapping()
+    public function testFindFilesWithCallbackMapping()
     {
-        $files = listFiles($this->testDir, [
+        $files = findFiles($this->testDir, [
             'pattern' => '*.php',
             'filter'  => fn(SplFileInfo $f) => strtoupper($f->getFilename()),
         ]);
@@ -196,13 +196,63 @@ class ListFilesTest extends TestCase
     /**
      * @throws DirectoryException
      */
-    public function testListFilesWithMultiplePatterns()
+    public function testFindFilesWithMultiplePatterns()
     {
         $patterns = ['*.php', '*.txt'];
-        $files = listFiles($this->testDir, ['pattern' => $patterns ] );
+        $files = findFiles($this->testDir, ['pattern' => $patterns ] );
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
 
         $this->assertContains('foo.php', $names);
         $this->assertContains('text.txt', $names);
+    }
+
+    /**
+     * @throws DirectoryException
+     */
+    public function testFindFilesWithTypeFiles()
+    {
+        // Par défaut, type = 'files'
+        $files = findFiles($this->testDir, ['mode' => 'files']);
+        $this->assertNotEmpty($files);
+        foreach ($files as $file)
+        {
+            $this->assertTrue($file->isFile());
+        }
+    }
+
+    /**
+     * @throws DirectoryException
+     */
+    public function testFindFilesWithTypeDirs()
+    {
+        $dirs = findFiles($this->testDir, ['mode' => 'dirs']);
+        $this->assertNotEmpty($dirs);
+        foreach ( $dirs as $dir )
+        {
+            $this->assertTrue($dir->isDir());
+        }
+    }
+
+    /**
+     * @throws DirectoryException
+     */
+    public function testFindFilesWithTypeBoth()
+    {
+        $items = findFiles($this->testDir, ['mode' => 'both']);
+        $this->assertNotEmpty( $items );
+
+        $hasFile = false;
+        $hasDir = false;
+        foreach ($items as $item)
+        {
+            if ($item->isFile()) {
+                $hasFile = true;
+            }
+            if ($item->isDir()) {
+                $hasDir = true;
+            }
+        }
+        $this->assertTrue($hasFile, 'Should find at least one file');
+        $this->assertTrue($hasDir, 'Should find at least one directory');
     }
 }

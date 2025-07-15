@@ -2,8 +2,10 @@
 
 namespace oihana\files\enums ;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(FileExtension::class)]
 class FileExtensionTest extends TestCase
 {
     public function testGetAllReturnsAllExtensions(): void

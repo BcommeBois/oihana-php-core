@@ -3,6 +3,7 @@
 namespace oihana\files ;
 
 use SplFileInfo ;
+use function oihana\core\strings\lower;
 
 /**
  * Sorts an array of SplFileInfo objects.
@@ -13,7 +14,7 @@ use SplFileInfo ;
  *  <li><b>string</b> : single built‑in key</br><code>'name' | 'ci_name' | 'extension' | 'size' | 'type' | 'atime' | 'ctime' | 'mtime'</code></li></li>
  *  <li><b>array</b> : ordered list of such keys for multi‑criteria sorting e.g. ['type', 'name']   or  ['extension','size']</li>
  * </ul>
- * @param string $order  <p>The direction of the sort method 'asc' (default) or 'desc'.</p>
+ * @param ?string $order <p>The direction of the sort method 'asc' (default) or 'desc'.</p>
  * @return void
  * @examples
  * ```php
@@ -33,8 +34,10 @@ use SplFileInfo ;
  * sortFiles($files, ['type', 'ci_name']);
  * ```
  */
-function sortFiles( array &$files, callable|string|array $sort , string $order = 'asc' ): void
+function sortFiles( array &$files, callable|string|array $sort , ?string $order = 'asc' ): void
 {
+    $order = lower( $order ?? 'asc' ) ;
+
     if ( is_callable( $sort ) )
     {
         usort($files, $sort) ;
@@ -47,7 +50,7 @@ function sortFiles( array &$files, callable|string|array $sort , string $order =
 
     /** @var string[] $criteria */
     $criteria = (array) $sort ; // normalise
-    $ratio   = strtolower($order) === 'desc' ? -1 : 1 ;
+    $ratio   = strtolower( $order ) === 'desc' ? -1 : 1 ;
 
     usort($files, function ( SplFileInfo $a , SplFileInfo $b ) use ( $criteria , $ratio ): int
     {

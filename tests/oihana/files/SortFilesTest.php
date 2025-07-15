@@ -39,7 +39,7 @@ class SortFilesTest extends TestCase
      */
     public function testSortByNameAsc(): void
     {
-        $files = listFiles($this->testDir, ['includeDots' => false]);
+        $files = findFiles($this->testDir, ['includeDots' => false]);
         sortFiles($files, 'name');
 
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
@@ -54,7 +54,7 @@ class SortFilesTest extends TestCase
      */
     public function testSortByNameDesc(): void
     {
-        $files = listFiles($this->testDir);
+        $files = findFiles($this->testDir);
         sortFiles($files, 'name', 'desc');
 
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
@@ -69,7 +69,7 @@ class SortFilesTest extends TestCase
      */
     public function testSortByExtensionThenName(): void
     {
-        $files = listFiles($this->testDir);
+        $files = findFiles($this->testDir);
         sortFiles($files, ['extension', 'ci_name']);
 
         $names = array_map(fn(SplFileInfo $f) => $f->getFilename(), $files);
@@ -90,7 +90,7 @@ class SortFilesTest extends TestCase
      */
     public function testSortBySizeDescCustom(): void
     {
-        $files = listFiles($this->testDir);
+        $files = findFiles($this->testDir);
         sortFiles(
             $files,
             fn(SplFileInfo $a, SplFileInfo $b) => $a->getSize() <=> $b->getSize(),
