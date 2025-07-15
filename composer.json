@@ -86,6 +86,8 @@
             "src/oihana/files/makeTimestampedFile.php" ,
             "src/oihana/files/path/canonicalizePath.php" ,
             "src/oihana/files/path/extractCanonicalParts.php" ,
+            "src/oihana/files/path/isLocalPath.php" ,
+            "src/oihana/files/path/joinPaths.php" ,
             "src/oihana/files/path/normalizePath.php" ,
             "src/oihana/files/path/splitPath.php" ,
             "src/oihana/files/requireAndMergeArrays.php" ,

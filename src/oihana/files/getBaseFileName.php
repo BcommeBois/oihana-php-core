@@ -6,6 +6,7 @@ use InvalidArgumentException;
 
 use oihana\enums\Char;
 use oihana\files\enums\FileExtension;
+use function oihana\core\strings\lower;
 
 /**
  * Returns the base file name without its extension from a given file path.
@@ -33,7 +34,7 @@ function getBaseFileName( string $file , ?array $multiplePartExtensions = null )
 
     $file = str_replace(Char::BACK_SLASH , Char::SLASH , $file ) ;
 
-    if ( is_dir( $file ) || str_ends_with( $file , '/' ) )
+    if ( is_dir( $file ) || str_ends_with( $file , Char::SLASH ) )
     {
         throw new InvalidArgumentException('The file path is invalid or points to a directory.');
     }
@@ -57,7 +58,7 @@ function getBaseFileName( string $file , ?array $multiplePartExtensions = null )
     foreach ( $multiplePartExtensions as $extension )
     {
         $length = strlen( $extension );
-        if ( strtolower( substr( $fileNameWithExtension , -$length ) ) === strtolower( $extension ) )
+        if ( strtolower( substr( $fileNameWithExtension , -$length ) ) === lower( $extension ) )
         {
             return substr( $fileNameWithExtension , 0 , -$length ) ;
         }

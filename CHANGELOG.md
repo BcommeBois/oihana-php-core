@@ -31,6 +31,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\files\makeTimestampedFile
 - Adds oihana\files\path\canonicalizePath
 - Adds oihana\files\path\extractCanonicalParts
+- Adds oihana\files\path\isLocalPath
+- Adds oihana\files\path\joinPaths
 - Adds oihana\files\path\normalizePath
 - Adds oihana\files\path\splitPath
 - Adds oihana\files\sortFiles
