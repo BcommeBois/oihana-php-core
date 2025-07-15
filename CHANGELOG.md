@@ -9,35 +9,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - Adds oihana\core\date\formatDateTime
 - Adds oihana\core\strings\isRegexp
-- Adds oihana\files\assertDirectory
-- Adds oihana\files\enums\FileExtension
-- Adds oihana\files\enums\FileMimeType
-- Adds oihana\files\enums\FindFileOption
-- Adds oihana\files\enums\FindMode
-- Adds oihana\files\assertFile
-- Adds oihana\files\assertWritableDirectory
-- Adds oihana\files\deleteDirectory
-- Adds oihana\files\deleteTemporaryDirectory
-- Adds oihana\files\findFiles
-- Adds oihana\files\getBaseFileName
-- Adds oihana\files\getDirectory
-- Adds oihana\files\getFileExtension
-- Adds oihana\files\getHomeDirectory
-- Adds oihana\files\getTemporaryDirectory
-- Adds oihana\files\getTimestampedDirectory
-- Adds oihana\files\getTimestampedFile
-- Adds oihana\files\makeDirectory
-- Adds oihana\files\makeTimestampedDirectory
-- Adds oihana\files\makeTimestampedFile
-- Adds oihana\files\path\canonicalizePath
-- Adds oihana\files\path\extractCanonicalParts
-- Adds oihana\files\path\isBasePath
-- Adds oihana\files\path\isLocalPath
-- Adds oihana\files\path\joinPaths
-- Adds oihana\files\path\normalizePath
-- Adds oihana\files\path\splitPath
-- Adds oihana\files\sortFiles
-- Adds oihana\files\TarFile
+
+### Removed
+- Keep only the core folder !
 
 ### Changed
 - Rename oihana\core\files\loadAndMergeArrayFromPHPFiles -> oihana\files\requireAndMergeArrays
