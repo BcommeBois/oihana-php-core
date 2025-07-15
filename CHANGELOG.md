@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\files\getBaseFileName
 - Adds oihana\files\getDirectory
 - Adds oihana\files\getFileExtension
+- Adds oihana\files\getTimestampedDirectory
 - Adds oihana\files\getTimestampedFile
 - Adds oihana\files\makeDirectory
 - Adds oihana\files\makeTimestampedDirectory

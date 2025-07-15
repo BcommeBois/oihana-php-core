@@ -75,6 +75,7 @@
             "src/oihana/files/getBaseFileName.php" ,
             "src/oihana/files/getDirectory.php" ,
             "src/oihana/files/getFileExtension.php" ,
+            "src/oihana/files/getTimestampedDirectory.php" ,
             "src/oihana/files/getTimestampedFile.php" ,
             "src/oihana/files/makeDirectory.php" ,
             "src/oihana/files/makeTimestampedDirectory.php" ,
