@@ -10,10 +10,12 @@ use oihana\enums\Char;
 use function oihana\core\date\formatDateTime;
 
 /**
- * Generates a timestamped file path using a formatted date and optional prefix/suffix.
+ * Get a timestamped file path using a formatted date and optional prefix/suffix.
  *
- * Combines a date/time string (or the current time) with optional prefix, suffix,
+ * Combines a date/time string (or the current time) with optional *extension, *prefix*, *suffix*,
  * and base path to generate a unique file name. The file is not created on disk.
+ *
+ * Asserts by default if the file exist, you can disabled the behavior with the boolean *assertable* argument.
  *
  * @param string|null $date Optional date/time string to use. If null or invalid, the current date/time is used ("now").
  * @param string $basePath Optional base path in which to place the file. Defaults to the current directory.
@@ -26,7 +28,7 @@ use function oihana\core\date\formatDateTime;
  *
  * @return string|null The full path of the generated file, or null on failure.
  *
- * @throws FileException If the file path is invalid or not writable.
+ * @throws FileException If the file path is invalid.
  *
  * @example
  * ```php
