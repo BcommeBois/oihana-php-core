@@ -29,11 +29,11 @@ function getTemporaryDirectory( string|array|null $path = null , bool $assertabl
 
     if ( $path !== null && $path !== Char::EMPTY )
     {
-        if (DIRECTORY_SEPARATOR === '/' && str_starts_with($path, DIRECTORY_SEPARATOR))
+        if ( DIRECTORY_SEPARATOR === Char::SLASH && str_starts_with($path, DIRECTORY_SEPARATOR ))
         {
             $path = rtrim($path, DIRECTORY_SEPARATOR); // Unix absolute path
         }
-        else if ( DIRECTORY_SEPARATOR === '\\' && preg_match('#^[A-Z]:\\\\#i', $path))
+        else if ( DIRECTORY_SEPARATOR === Char::BACK_SLASH && preg_match('#^[A-Z]:\\\\#i', $path))
         {
 
             $path = rtrim($path, DIRECTORY_SEPARATOR); // Windows absolute path (ex: C:\foo)
@@ -42,7 +42,10 @@ function getTemporaryDirectory( string|array|null $path = null , bool $assertabl
         {
             $path = rtrim($base . DIRECTORY_SEPARATOR . $path, DIRECTORY_SEPARATOR);
         }
-
+    }
+    else
+    {
+        $path = $base ;
     }
 
     return getDirectory( $path , $assertable , $isReadable , $isWritable ) ;

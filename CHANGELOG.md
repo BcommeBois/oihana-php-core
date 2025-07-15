@@ -22,12 +22,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\files\getBaseFileName
 - Adds oihana\files\getDirectory
 - Adds oihana\files\getFileExtension
+- Adds oihana\files\getHomeDirectory
 - Adds oihana\files\getTemporaryDirectory
 - Adds oihana\files\getTimestampedDirectory
 - Adds oihana\files\getTimestampedFile
 - Adds oihana\files\makeDirectory
 - Adds oihana\files\makeTimestampedDirectory
 - Adds oihana\files\makeTimestampedFile
+- Adds oihana\files\path\canonicalizePath
+- Adds oihana\files\path\extractCanonicalParts
+- Adds oihana\files\path\normalizePath
+- Adds oihana\files\path\splitPath
 - Adds oihana\files\sortFiles
 - Adds oihana\files\TarFile
 

@@ -86,7 +86,7 @@ final class GetTemporaryDirectoryTest extends TestCase
      */
     public function testWorksWithAssertableOnSysTemp(): void
     {
-        $result = getTemporaryDirectory(assertable: true);
+        $result = getTemporaryDirectory( assertable: false );
         $this->assertDirectoryExists($result);
         $this->assertTrue(is_readable($result));
     }

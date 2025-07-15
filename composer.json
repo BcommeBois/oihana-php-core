@@ -76,6 +76,7 @@
             "src/oihana/files/getBaseFileName.php" ,
             "src/oihana/files/getDirectory.php" ,
             "src/oihana/files/getFileExtension.php" ,
+            "src/oihana/files/getHomeDirectory.php" ,
             "src/oihana/files/getTemporaryDirectory.php" ,
             "src/oihana/files/getTimestampedDirectory.php" ,
             "src/oihana/files/getTimestampedFile.php" ,
@@ -83,6 +84,10 @@
             "src/oihana/files/makeTemporaryDirectory.php" ,
             "src/oihana/files/makeTimestampedDirectory.php" ,
             "src/oihana/files/makeTimestampedFile.php" ,
+            "src/oihana/files/path/canonicalizePath.php" ,
+            "src/oihana/files/path/extractCanonicalParts.php" ,
+            "src/oihana/files/path/normalizePath.php" ,
+            "src/oihana/files/path/splitPath.php" ,
             "src/oihana/files/requireAndMergeArrays.php" ,
             "src/oihana/files/recursiveFilePaths.php",
             "src/oihana/files/sortFiles.php"

@@ -15,5 +15,12 @@ function lower( ?string $source ) : string
     {
         return '' ;
     }
-    return mb_strtolower( $source , 'UTF-8' ) ;
+
+    $encoding = mb_detect_encoding( $source , null , true ) ;
+    if ( $encoding !== false )
+    {
+        return mb_strtolower( $source , $encoding );
+    }
+
+    return strtolower( $source ) ;
 }

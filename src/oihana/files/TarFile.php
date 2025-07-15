@@ -2,11 +2,12 @@
 
 namespace oihana\files;
 
+use RuntimeException;
+
 use oihana\enums\Char;
 use oihana\files\enums\FileExtension;
 use oihana\files\exceptions\DirectoryException;
 use oihana\files\exceptions\FileException;
-use RuntimeException;
 
 /**
  * Manage creating and extracting Unix tar (optionally gz‑compressed) archives.
@@ -70,7 +71,7 @@ final class TarFile
      * @throws DirectoryException
      * @throws RuntimeException
      */
-    public function create( string $directory, string $extension = FileExtension::TAR_GZ ): string
+    public function create( string $directory , string $extension = FileExtension::TAR_GZ ): string
     {
         assertDirectory( $directory ) ;
 
