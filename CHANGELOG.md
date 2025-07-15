@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\files\assertFile
 - Adds oihana\files\assertWritableDirectory
 - Adds oihana\files\deleteDirectory
+- Adds oihana\files\deleteTemporaryDirectory
 - Adds oihana\files\findFiles
 - Adds oihana\files\getBaseFileName
 - Adds oihana\files\getDirectory

@@ -4,74 +4,64 @@ namespace oihana\files ;
 
 use Exception;
 use FilesystemIterator;
-use oihana\files\exceptions\DirectoryException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
+use oihana\files\exceptions\DirectoryException;
+
 /**
  * Deletes a directory recursively.
- * @param ?string $directory The directory path to delete.
+ *
+ * @param string|array|null $path Directory or segments to remove.
+ * @param bool $assertable Whether to validate the resulting path. Defaults to true.
+ * @param bool $isReadable Check if the directory is readable (Default true).
+ * @param bool $isWritable Check if the directory is writable (Default false).
+ *
  * @return bool Returns true if the directory is removed.
  * @throws DirectoryException If the directory path is null, empty, or if the directory cannot be deleted.
  */
-function deleteDirectory( ?string $directory ): bool
+function deleteDirectory( string|array|null $path , bool $assertable = true , bool $isReadable = true , bool $isWritable = true ): bool
 {
-    assertWritableDirectory( $directory ) ;
-
-    // Normalize the directory path to avoid issues with trailing slashes
-    $directory = rtrim( $directory , DIRECTORY_SEPARATOR ) ;
+    $directory = getDirectory( $path , $assertable , $isReadable , $isWritable ) ;
 
     try
     {
-        $iterator = new RecursiveDirectoryIterator( $directory, FilesystemIterator::SKIP_DOTS ) ;
-        $files    = new RecursiveIteratorIterator( $iterator, RecursiveIteratorIterator::CHILD_FIRST ) ;
+        $iterator = new RecursiveIteratorIterator
+        (
+            new RecursiveDirectoryIterator( $directory , FilesystemIterator::SKIP_DOTS ) ,
+            RecursiveIteratorIterator::CHILD_FIRST
+        );
 
-        foreach ( $files as $file )
+        foreach ($iterator as $file)
         {
-            $path = $file->getPathname();
-            if ( empty( $path ) )
+            if ($file->isDir())
             {
-                continue; // Skip if path is empty (shouldn't happen, but just in case)
-            }
-
-            if ( !is_writable( $path ) )
-            {
-                throw new DirectoryException(sprintf('The path "%s" is not writable.', $path ) );
-            }
-
-            if ( $file->isDir() )
-            {
-                if ( !@rmdir( $path ) )
+                if (!@rmdir($file->getPathname()))
                 {
-                    throw new DirectoryException( sprintf('Failed to remove directory "%s".' , $file->getRealPath() ) ) ;
+                    throw new DirectoryException(sprintf('Failed to remove directory "%s".', $file->getRealPath()));
                 }
             }
             else
             {
-                if ( !@unlink( $path ) )
+                if ( !@unlink( $file->getPathname() ) )
                 {
-                    throw new DirectoryException(sprintf('Failed to remove file "%s".', $file->getRealPath()));
+                    throw new DirectoryException(sprintf('Failed to remove file "%s".', $file->getRealPath() ) ) ;
                 }
             }
         }
 
-        if ( !is_writable( $directory ) )
-        {
-            throw new DirectoryException(sprintf('The directory "%s" is not writable.' , $directory ) ) ;
-        }
-
         if ( !@rmdir( $directory ) )
         {
-            throw new DirectoryException(sprintf('Failed to remove directory "%s".', $directory));
+            throw new DirectoryException( sprintf('Failed to remove directory "%s".', $directory ) );
         }
     }
-    catch ( DirectoryException $e )
+    catch ( DirectoryException $exception )
     {
-        throw $e ;
+        throw $exception ;
     }
-    catch ( Exception $e )
+    catch ( Exception $exception )
     {
-        throw new DirectoryException( sprintf('An error occurred while deleting directory "%s": %s' , $directory , $e->getMessage() ) ) ;
+        throw new DirectoryException( sprintf('An error occurred while deleting directory "%s": %s' , $directory , $exception->getMessage() ) ) ;
     }
 
     return true ;

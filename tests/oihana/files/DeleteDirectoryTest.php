@@ -16,11 +16,6 @@ class DeleteDirectoryTest extends TestCase
         $this->root = vfsStream::setup('testDir' ) ; // Setup a virtual filesystem for testing
     }
 
-    protected function tearDown(): void
-    {
-        // Clean up if necessary
-    }
-
     /**
      * @throws DirectoryException
      */
@@ -87,7 +82,7 @@ class DeleteDirectoryTest extends TestCase
     public function testNullDirectoryPath():void
     {
         $this->expectException( DirectoryException::class ) ;
-        $this->expectExceptionMessage('The directory path must not be null.');
+        $this->expectExceptionMessage( 'The directory path must not be empty.' );
 
         // Call the function with null path
         deleteDirectory(null);
@@ -96,7 +91,7 @@ class DeleteDirectoryTest extends TestCase
     public function testEmptyDirectoryPath():void
     {
         $this->expectException( DirectoryException::class ) ;
-        $this->expectExceptionMessage('The directory path must not be empty.');
+        $this->expectExceptionMessage( 'The directory path must not be empty.' );
         deleteDirectory('' ) ;
     }
 

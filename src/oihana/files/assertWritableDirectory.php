@@ -12,9 +12,5 @@ use oihana\files\exceptions\DirectoryException;
  */
 function assertWritableDirectory( ?string $directory ): void
 {
-    assertDirectory( $directory ) ;
-    if ( !is_writable( $directory ) )
-    {
-        throw new DirectoryException( sprintf('The directory "%s" is not writable.' , $directory ) ) ;
-    }
+    assertDirectory( $directory , isWritable : true  ) ;
 }
