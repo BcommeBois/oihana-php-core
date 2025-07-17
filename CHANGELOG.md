@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
 - Adds oihana\core\date\formatDateTime
+- Adds oihana\core\reflections\getFunctionInfo
 - Adds oihana\core\strings\isRegexp
 
 ### Removed
