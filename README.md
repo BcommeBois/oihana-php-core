@@ -1,6 +1,11 @@
 # oihana-php-core
 Oihana PHP - Core library
 
+## Documentation
+
+Read the full documentation of the project on :
+https://bcommebois.github.io/oihana-php-core/
+
 ## Installation and Usage
 
 > **Requires [PHP 8.4+](https://php.net/releases/)**
