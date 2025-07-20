@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>Checks if the given key exists in the provided array.</dd>
+<dd>Checks whether a key exists in an array or an object implementing ArrayAccess.</dd>
 
     </dl>
 
@@ -156,18 +156,23 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/exists.php"><a href="files/src-oihana-core-arrays-exists.html"><abbr title="src/oihana/core/arrays/exists.php">exists.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Checks if the given key exists in the provided array.</p>
+        <p class="phpdocumentor-summary">Checks whether a key exists in an array or an object implementing ArrayAccess.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">exists</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\ArrayAccess">ArrayAccess</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">exists</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\ArrayAccess">ArrayAccess</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-    
+        <section class="phpdocumentor-description"><ul>
+<li>Returns <code class="prettyprint">false</code> if the key is <code class="prettyprint">null</code> or an empty string.</li>
+<li>Supports both native arrays and <code class="prettyprint">ArrayAccess</code> objects.</li>
+</ul>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,14 +180,27 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\ArrayAccess">ArrayAccess</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The array or object to inspect.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$key</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string|int|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The key to check for existence.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$separator</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The separator used in the key path. Default is '.'.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -194,6 +212,34 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use oihana\core\arrays\exists;
+
+// Flat array
+$data = ['name' =&gt; 'Alice'];
+var_dump(exists($data, 'name')); // true
+var_dump(exists($data, 'age'));  // false
+
+// Nested array
+$data = ['user' =&gt; ['address' =&gt; ['country' =&gt; 'France']]];
+var_dump(exists($data, 'user.address.country')); // true
+var_dump(exists($data, 'user.address.city'));    // false
+
+// Mixed with numeric keys
+$data = ['items' =&gt; [0 =&gt; ['id' =&gt; 1], 1 =&gt; ['id' =&gt; 2]]];
+var_dump(exists($data, 'items.1.id')); // true
+
+// With null or empty key
+var_dump(exists($data, null)); // false
+var_dump(exists($data, ''));   // false
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -215,6 +261,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True if the key exists, false otherwise.</p>
+</section>
+
             </section>
 
 </article>

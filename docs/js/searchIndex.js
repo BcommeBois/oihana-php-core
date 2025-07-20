@@ -13,12 +13,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\arrays\\delete\u0028\u0029",
             "name": "delete",
-            "summary": "Unset\u0020an\u0020item\u0020on\u0020an\u0020array\u0020or\u0020object\u0020using\u0020dot\u0020notation.",
+            "summary": "Unset\u0020a\u0020key\u0020or\u0020nested\u0020key\u0020in\u0020an\u0020array\u0020using\u0020dot\u0020notation.",
             "url": "namespaces/oihana-core-arrays.html#function_delete"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\exists\u0028\u0029",
             "name": "exists",
-            "summary": "Checks\u0020if\u0020the\u0020given\u0020key\u0020exists\u0020in\u0020the\u0020provided\u0020array.",
+            "summary": "Checks\u0020whether\u0020a\u0020key\u0020exists\u0020in\u0020an\u0020array\u0020or\u0020an\u0020object\u0020implementing\u0020ArrayAccess.",
             "url": "namespaces/oihana-core-arrays.html#function_exists"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\flatten\u0028\u0029",
@@ -53,27 +53,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\arrays\\isIndexed\u0028\u0029",
             "name": "isIndexed",
-            "summary": "Determines\u0020if\u0020an\u0020array\u0020is\u0020indexed.",
+            "summary": "Determines\u0020if\u0020an\u0020array\u0020is\u0020indexed\u0020\u0028i.e.,\u0020has\u0020sequential\u0020integer\u0020keys\u0020starting\u0020at\u00200\u0029.",
             "url": "namespaces/oihana-core-arrays.html#function_isIndexed"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\removeKeys\u0028\u0029",
             "name": "removeKeys",
-            "summary": "Removes\u0020in\u0020an\u0020array\u0020a\u0020set\u0020of\u0020keys.",
+            "summary": "Removes\u0020a\u0020set\u0020of\u0020keys\u0020from\u0020an\u0020array.",
             "url": "namespaces/oihana-core-arrays.html#function_removeKeys"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\set\u0028\u0029",
             "name": "set",
-            "summary": "Sets\u0020a\u0020value\u0020In\u0020an\u0020associative\u0020array\u0020using\u0020a\u0020key\u0020path.",
+            "summary": "Sets\u0020a\u0020value\u0020in\u0020an\u0020associative\u0020array\u0020using\u0020a\u0020key\u0020path.",
             "url": "namespaces/oihana-core-arrays.html#function_set"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\shuffle\u0028\u0029",
             "name": "shuffle",
-            "summary": "Shuffles\u0020an\u0020array\u0020using\u0020the\u0020Fisher\u002DYates\u0020algorithm.",
+            "summary": "Shuffles\u0020the\u0020elements\u0020of\u0020an\u0020array\u0020in\u0020place\u0020using\u0020the\u0020Fisher\u002DYates\u0020algorithm.",
             "url": "namespaces/oihana-core-arrays.html#function_shuffle"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\stub\u0028\u0029",
             "name": "stub",
-            "summary": "This\u0020function\u0020return\u0020an\u0020empty\u0020array.",
+            "summary": "Returns\u0020a\u0020new\u0020empty\u0020array.",
             "url": "namespaces/oihana-core-arrays.html#function_stub"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\swap\u0028\u0029",
@@ -83,17 +83,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\arrays\\tail\u0028\u0029",
             "name": "tail",
-            "summary": "Returns\u0020the\u0020elements\u0020of\u0020the\u0020array\u0020without\u0020the\u0020first\u0020in\u0020a\u0020new\u0020array\u0020representation.",
+            "summary": "Returns\u0020a\u0020new\u0020array\u0020containing\u0020all\u0020elements\u0020except\u0020the\u0020first\u0020one.",
             "url": "namespaces/oihana-core-arrays.html#function_tail"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\toArray\u0028\u0029",
             "name": "toArray",
-            "summary": "Takes\u0020a\u0020value\u0020and\u0020turns\u0020it\u0020into\u0020an\u0020array\u0020of\u0020that\u0020value,\u0020unless\u0020the\u0020value\u0020is\u0020already\u0020an\u0020array.",
+            "summary": "Ensures\u0020the\u0020given\u0020value\u0020is\u0020returned\u0020as\u0020an\u0020array.",
             "url": "namespaces/oihana-core-arrays.html#function_toArray"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\unique\u0028\u0029",
             "name": "unique",
-            "summary": "Removes\u0020duplicate\u0020values\u0020from\u0020an\u0020array\u0020and\u0020re\u002Dindexed\u0020it.",
+            "summary": "Removes\u0020duplicate\u0020values\u0020from\u0020an\u0020array\u0020and\u0020reindexes\u0020it.",
             "url": "namespaces/oihana-core-arrays.html#function_unique"
         },                {
             "fqsen": "\\oihana\\core\\date\\formatDateTime\u0028\u0029",
@@ -145,6 +145,11 @@ Search.appendIndex(
             "name": "compress",
             "summary": "Compress\u0020the\u0020passed\u0020in\u0020object\u0020by\u0020removing\u0020all\u0020properties\u0020that\u0020match\u0020given\u0020conditions.",
             "url": "namespaces/oihana-core-objects.html#function_compress"
+        },                {
+            "fqsen": "\\oihana\\core\\objects\\set\u0028\u0029",
+            "name": "set",
+            "summary": "Sets\u0020a\u0020value\u0020in\u0020an\u0020object\u0020using\u0020a\u0020key\u0020path.",
+            "url": "namespaces/oihana-core-objects.html#function_set"
         },                {
             "fqsen": "\\oihana\\core\\reflections\\getFunctionInfo\u0028\u0029",
             "name": "getFunctionInfo",

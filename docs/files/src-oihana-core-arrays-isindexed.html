@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>Determines if an array is indexed.</dd>
+<dd>Determines if an array is indexed (i.e., has sequential integer keys starting at 0).</dd>
 
     </dl>
 
@@ -156,22 +156,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/isIndexed.php"><a href="files/src-oihana-core-arrays-isindexed.html"><abbr title="src/oihana/core/arrays/isIndexed.php">isIndexed.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Determines if an array is indexed.</p>
+        <p class="phpdocumentor-summary">Determines if an array is indexed (i.e., has sequential integer keys starting at 0).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">isIndexed</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"><p>Usage :</p>
-<pre class="prettyprint">
-use function core\arrays\isIndexed ;
-$array = [ 'a', 'b' , 'c' ] ;
-echo json_encode( isIndexed( $array ) ) ;
+        <section class="phpdocumentor-description"><p>An array is considered indexed if its keys are exactly the sequence 0, 1, 2, ... n-1,
+where n is the number of elements in the array.
+This is typical for arrays used as lists.</p>
+<p>Empty arrays are considered indexed by definition.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -195,6 +194,19 @@ echo json_encode( isIndexed( $array ) ) ;
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function core\arrays\isIndexed ;
+
+$array = [ 'a', 'b' , 'c' ] ;
+echo json_encode( isIndexed( $array ) ) ;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -217,7 +229,7 @@ echo json_encode( isIndexed( $array ) ) ;
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Indicates if the array is indexed or not.</p>
+                <section class="phpdocumentor-description"><p>True if the array is indexed, false otherwise.</p>
 </section>
 
             </section>

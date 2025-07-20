@@ -2,6 +2,7 @@
 
 namespace oihana\core\arrays ;
 
+use ArrayObject;
 use oihana\core\arrays\mocks\MockArrayAccess;
 use PHPUnit\Framework\TestCase;
 
@@ -118,12 +119,60 @@ class ExistsTest extends TestCase
         $this->assertTrue( exists($array, $largeNumber ) ) ;
     }
 
-    // public function testExistsWorksWithSpecialFloatKeys(): void // deprecated
-    // {
-    //     // Note: En PHP, les floats sont convertis en entiers pour les clés
-    //     $array = [1.5 => 'float', 2.0 => 'int'];
-    //     $this->assertTrue( exists($array, 1 ) ) ;  // 1.5 est converti en 1
-    //     $this->assertTrue( exists($array, 2 ) ) ;  // 2.0 est converti en 2
-    //     $this->assertTrue( exists($array, 1.5 ) ) ; // car PHP convertit en 1
-    // }
+    public function testNullAndEmptyKey()
+    {
+        $data = ['x' => 123];
+        $this->assertFalse(exists($data, null));
+        $this->assertFalse(exists($data, ''));
+    }
+
+    public function testIntegerKeyInFlatArray()
+    {
+        $data = ['a', 'b', 'c'];
+        $this->assertTrue(exists($data, 1));
+        $this->assertFalse(exists($data, 5));
+    }
+
+    public function testFlatArrayKeyExists()
+    {
+        $data = ['name' => 'Alice'];
+        $this->assertTrue(exists($data, 'name'));
+        $this->assertFalse(exists($data, 'age'));
+    }
+
+    public function testNestedKeyExists()
+    {
+        $data = ['user' => ['address' => ['country' => 'France']]];
+        $this->assertTrue(exists($data, 'user.address.country'));
+        $this->assertFalse(exists($data, 'user.address.city'));
+    }
+
+    public function testNumericKeyPath()
+    {
+        $data = ['items' => [ ['id' => 1], ['id' => 2] ]];
+        $this->assertTrue(exists($data, 'items.1.id'));
+        $this->assertFalse(exists($data, 'items.2.id'));
+    }
+
+    public function testArrayAccessSupport()
+    {
+        $obj = new ArrayObject(['foo' => ['bar' => 42]]);
+        $this->assertTrue(exists($obj, 'foo.bar'));
+        $this->assertFalse(exists($obj, 'foo.baz'));
+    }
+
+    public function testArrayAccessWithFlatKey()
+    {
+        $obj = new ArrayObject(['alpha' => 1]);
+        $this->assertTrue(exists($obj, 'alpha'));
+        $this->assertFalse(exists($obj, 'beta'));
+    }
+
+    public function testSeparatorChange()
+    {
+        $data = ['foo' => ['bar' => ['baz' => true]]];
+        $this->assertTrue(exists($data, 'foo|bar|baz', '|'));
+        $this->assertFalse(exists($data, 'foo|bar|qux', '|'));
+    }
+
 }

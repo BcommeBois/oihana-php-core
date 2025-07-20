@@ -3,14 +3,26 @@
 namespace oihana\core\arrays ;
 
 /**
- * Returns the elements of the array without the first in a new array representation.
+ * Returns a new array containing all elements except the first one.
  *
- * @param array $array The input array
- * @return array A new array without the first element (empty array if input is empty or not an array)
+ * If the input array is empty, returns an empty array.
+ *
+ * @param array $array The input array.
+ *
+ * @return array A new array without the first element.
  *
  * @example
  * ```php
- * print_r(tail([2, 3, 4])); // [3, 4]
+ * use function oihana\core\arrays\tail;
+ *
+ * $arr = [2, 3, 4];
+ * print_r(tail($arr)); // Outputs: [3, 4]
+ *
+ * $empty = [];
+ * print_r(tail($empty)); // Outputs: []
+ *
+ * $single = [10];
+ * print_r(tail($single)); // Outputs: []
  * ```
  *
  * @package oihana\core\arrays

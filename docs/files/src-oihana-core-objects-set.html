@@ -98,7 +98,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">tail.php</h2>
+        <h2 class="phpdocumentor-content__title">set.php</h2>
 
         
         
@@ -109,7 +109,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-arrays-tail.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-objects-set.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -125,16 +125,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-arrays-tail.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-objects-set.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-arrays.html#function_tail">tail()</a>
+    <a class="" href="namespaces/oihana-core-objects.html#function_set">set()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: object    </span>
 </dt>
-<dd>Returns a new array containing all elements except the first one.</dd>
+<dd>Sets a value in an object using a key path.</dd>
 
     </dl>
 
@@ -144,40 +144,85 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-arrays-tail.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-objects-set.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_tail">
-        tail()
-        <a href="namespaces/oihana-core-arrays.html#function_tail" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_set">
+        set()
+        <a href="namespaces/oihana-core-objects.html#function_set" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/tail.php"><a href="files/src-oihana-core-arrays-tail.html"><abbr title="src/oihana/core/arrays/tail.php">tail.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/objects/set.php"><a href="files/src-oihana-core-objects-set.html"><abbr title="src/oihana/core/objects/set.php">set.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns a new array containing all elements except the first one.</p>
+        <p class="phpdocumentor-summary">Sets a value in an object using a key path.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">tail</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">set</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$object</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$copy</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string|callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$classFactory</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">object</span></code>
 
-        <section class="phpdocumentor-description"><p>If the input array is empty, returns an empty array.</p>
+        <section class="phpdocumentor-description"><p>Supports dot notation for nested properties. Intermediate objects are created if needed.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$array</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                <span class="phpdocumentor-signature__argument__name">$object</span>
+                : <span class="phpdocumentor-signature__argument__return-type">object</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The input array.</p>
+                    <section class="phpdocumentor-description"><p>The object to modify (or copy).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$key</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The key path to set (e.g. 'user.address.country'). If null, replaces entire object.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The value to set.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$separator</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The separator used in the key path. Default is '.'.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$copy</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>If true, returns a deep copy of the object with the modification.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$classFactory</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string|callable|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>A class name, factory callable, or array path =&gt; className to create intermediate objects (default: stdClass).</p>
 </section>
 
             </dd>
@@ -186,7 +231,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-arrays.html#function_tail#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-objects.html#function_set#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -195,16 +240,45 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\tail;
-
-$arr = [2, 3, 4];
-print_r(tail($arr)); // Outputs: [3, 4]
-
-$empty = [];
-print_r(tail($empty)); // Outputs: []
-
-$single = [10];
-print_r(tail($single)); // Outputs: []
+                                                 <section class="phpdocumentor-description"><ol>
+<li>Basic usage with nested keys and default stdClass</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">$obj = new \stdClass();
+$obj = set($obj, 'user.profile.name', 'Alice');
+echo $obj-&gt;user-&gt;profile-&gt;name; // Alice
+</code></pre>
+<ol start="2">
+<li>Replace the entire object when key is null</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">$original = (object)['foo' =&gt; 'bar'];
+$new = set($original, null, ['x' =&gt; 123]);
+echo $new-&gt;x; // 123
+</code></pre>
+<ol start="3">
+<li>Use a custom class as intermediate objects</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">class Node { public string $label = ''; }
+$obj = set(new Node(), 'tree.branch.leaf', 'green', '.', false, Node::class);
+echo $obj-&gt;tree-&gt;branch-&gt;leaf; // green
+</code></pre>
+<ol start="4">
+<li>Use a factory callable</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">$factory = fn() =&gt; new class { public string $value = ''; };
+$obj = set(new \stdClass(), 'x.y.z', 99, '.', false, $factory);
+echo $obj-&gt;x-&gt;y-&gt;z; // 99
+</code></pre>
+<ol start="5">
+<li>Use an array of path =&gt; class mappings</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">class Address { public string $city = ''; }
+class User    { public string $name = ''; }
+$obj = new \stdClass();
+$obj = set($obj, 'user.address.city', 'Paris', '.', false, [
+'user' =&gt; User::class,
+'user.address' =&gt; Address::class,
+]);
+echo $obj-&gt;user-&gt;address-&gt;city; // Paris
 </code></pre>
 </section>
 
@@ -230,9 +304,9 @@ print_r(tail($single)); // Outputs: []
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">object</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>A new array without the first element.</p>
+                <section class="phpdocumentor-description"><p>The modified (or copied and modified) object.</p>
 </section>
 
             </section>
@@ -244,7 +318,7 @@ print_r(tail($single)); // Outputs: []
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/arrays/tail.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/objects/set.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -343,7 +417,7 @@ print_r(tail($single)); // Outputs: []
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-arrays-tail.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-objects-set.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -351,7 +425,7 @@ print_r(tail($single)); // Outputs: []
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-arrays.html#function_tail">tail()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-objects.html#function_set">set()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -371,7 +445,7 @@ print_r(tail($single)); // Outputs: []
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-arrays-tail.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-objects-set.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

@@ -19,6 +19,28 @@ namespace oihana\core\arrays ;
  *
  * @return mixed The value found in the array or the default value if the key does not exist.
  *
+ * @example
+ * ```php
+ * $data =
+ * [
+ *     'user' =>
+ *     [
+ *         'name'    => 'Alice',
+ *         'address' =>
+ *         [
+ *             'city' => 'Paris',
+ *             'geo' => [ 'lat' => 48.8566, 'lng' => 2.3522 ],
+ *         ],
+ *     ],
+ * ];
+ *
+ * echo get($data, 'user.name');             // Alice
+ * echo get($data, 'user.address.city');     // Paris
+ * echo get($data, 'user.address.geo.lat');  // 48.8566
+ * echo get($data, 'user.phone', 'unknown'); // unknown
+ * echo get($data, null);                    // returns entire $data array
+ * ```
+ *
  * @package oihana\core\arrays
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0

@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Shuffles an array using the Fisher-Yates algorithm.</dd>
+<dd>Shuffles the elements of an array in place using the Fisher-Yates algorithm.</dd>
 
     </dl>
 
@@ -156,18 +156,23 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/shuffle.php"><a href="files/src-oihana-core-arrays-shuffle.html"><abbr title="src/oihana/core/arrays/shuffle.php">shuffle.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Shuffles an array using the Fisher-Yates algorithm.</p>
+        <p class="phpdocumentor-summary">Shuffles the elements of an array in place using the Fisher-Yates algorithm.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">shuffle</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$ar</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function randomizes the order of the elements in the given array.
+It operates directly on the passed array (by reference) and also returns it.
+The algorithm used ensures an unbiased shuffle.</p>
+<p>If the array has 0 or 1 element, it is returned as is without changes.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -189,6 +194,28 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\shuffle;
+
+$numbers = [1, 2, 3, 4, 5];
+shuffle($numbers);
+print_r($numbers); // e.g. [3, 1, 5, 2, 4] - order randomized
+
+$empty = [];
+shuffle($empty);
+var_dump($empty); // []
+
+$single = [42];
+shuffle($single);
+var_dump($single); // [42]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -211,7 +238,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The shuffled array, or null if input is not an array.</p>
+                <section class="phpdocumentor-description"><p>The shuffled array.</p>
 </section>
 
             </section>

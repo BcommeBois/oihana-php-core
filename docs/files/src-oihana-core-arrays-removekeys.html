@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Removes in an array a set of keys.</dd>
+<dd>Removes a set of keys from an array.</dd>
 
     </dl>
 
@@ -156,18 +156,22 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/removeKeys.php"><a href="files/src-oihana-core-arrays-removekeys.html"><abbr title="src/oihana/core/arrays/removeKeys.php">removeKeys.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Removes in an array a set of keys.</p>
+        <p class="phpdocumentor-summary">Removes a set of keys from an array.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">removeKeys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keys</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$clone</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function removes the specified keys from the given array.
+If <code class="prettyprint">$clone</code> is set to <code class="prettyprint">true</code>, the original array is not modified; instead, a new array is returned.
+Otherwise, the original array is modified directly (passed by value).</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,7 +179,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The array to evaluates</p>
+                    <section class="phpdocumentor-description"><p>The input array to modify or clone.</p>
 </section>
 
             </dd>
@@ -184,7 +188,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The list of all keys to remove</p>
+                    <section class="phpdocumentor-description"><p>An array of keys to remove from the input array.</p>
 </section>
 
             </dd>
@@ -193,7 +197,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Indicates if the array is cloned or not.</p>
+                    <section class="phpdocumentor-description"><p>If true, operates on a copy of the array and returns it; otherwise, modifies the array in place (by value).</p>
 </section>
 
             </dd>
@@ -207,6 +211,40 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\removeKeys;
+
+$input = ['name' =&gt; 'Alice', 'email' =&gt; 'alice@example.com', 'age' =&gt; 30];
+
+// Example 1: Remove one key (in-place behavior)
+$result = removeKeys($input, ['email']);
+// $result = ['name' =&gt; 'Alice', 'age' =&gt; 30]
+
+// Example 2: Remove multiple keys
+$result = removeKeys($input, ['name', 'age']);
+// $result = ['email' =&gt; 'alice@example.com']
+
+// Example 3: Use clone to preserve the original array
+$original = ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3];
+$copy = removeKeys($original, ['a'], true);
+// $original remains unchanged: ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3]
+// $copy = ['b' =&gt; 2, 'c' =&gt; 3]
+
+// Example 4: Key not found (no error)
+$result = removeKeys(['x' =&gt; 1], ['y']);
+// $result = ['x' =&gt; 1]
+
+// Example 5: Empty key list
+$result = removeKeys(['foo' =&gt; 'bar'], []);
+// $result = ['foo' =&gt; 'bar']
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -229,7 +267,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The passed-in array or a clone reference</p>
+                <section class="phpdocumentor-description"><p>The resulting array with specified keys removed.</p>
 </section>
 
             </section>

@@ -1,6 +1,7 @@
 <?php
 
 namespace oihana\core\maths ;
+
 /**
  * Rounds and returns the rounded value of the specified number or expression.
  *

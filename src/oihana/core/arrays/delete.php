@@ -3,10 +3,53 @@
 namespace oihana\core\arrays ;
 
 /**
- * Unset an item on an array or object using dot notation.
- * @param mixed $target The associative array to search within.
- * @param string|array $key The key path as a string or array. If key == '*' all the fields a removed.
- * @return mixed The object.
+ * Unset a key or nested key in an array using dot notation.
+ *
+ * - If the key is '*', clears the whole array.
+ * - Supports string path ("a.b.c") or array path (['a','b','c']).
+ * - If the path is partially invalid, the array is returned unchanged.
+ *
+ * @param mixed        $target    The array to modify (ignored if not an array).
+ * @param string|array $key       The key path to delete.
+ * @param string       $separator The separator for string key paths (default: '.').
+ *
+ * @return mixed The modified array (or original if not an array).
+ *
+ * @example
+ * ```php
+ * $data =
+ * [
+ *     'user' =>
+ *     [
+ *         'profile' =>
+ *         [
+ *             'name' => 'Alice',
+ *             'age' => 30
+ *         ],
+ *         'active' => true
+ *     ]
+ * ];
+ *
+ * // Remove a nested key
+ * $result = delete($data, 'user.profile.age');
+ * print_r($result);
+ * // [
+ * //     'user' => [
+ * //         'profile' => ['name' => 'Alice'],
+ * //         'active'  => true
+ * //     ]
+ * // ]
+ *
+ * // Remove a top-level key
+ * $result = delete($data, 'user.active');
+ *
+ * // Remove all keys
+ * $result = delete($data, '*');
+ * print_r($result); // []
+ *
+ * // Using array path
+ * $result = delete($data, ['user', 'profile', 'name']);
+ * ```
  *
  * @package oihana\core\arrays
  * @author  Marc Alcaraz (ekameleon)
@@ -19,24 +62,26 @@ function delete( mixed $target , string|array $key , string $separator = '.' ) :
         return $target ;
     }
 
-    $segments = is_array( $key ) ? $key : explode($separator , $key ) ;
+    $segments = is_array( $key ) ? $key : explode( $separator , $key ) ;
     $segment  = array_shift($segments );
 
     if( $segment == '*' ) // ALL
     {
-        $target = [] ;
-    }
-    elseif( $segments )
-    {
-        if ( array_key_exists( $segment , $target ) )
-        {
-            delete( $target[ $segment ] , $segments ) ;
-        }
-    }
-    elseif( array_key_exists( $segment , $target ) )
-    {
-        unset( $target[ $segment ] ) ;
+        return [] ;
     }
 
+    if ( !array_key_exists( $segment , $target ) )
+    {
+        return $target;
+    }
+
+    if ( count( $segments ) > 0)
+    {
+        $target[$segment] = delete( $target[ $segment ] , $segments , $separator ) ;
+    }
+    else
+    {
+        unset( $target[$segment] ) ; // Final segment: delete it
+    }
     return $target;
 }

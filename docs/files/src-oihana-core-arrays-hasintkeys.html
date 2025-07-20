@@ -156,7 +156,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/hasIntKeys.php"><a href="files/src-oihana-core-arrays-hasintkeys.html"><abbr title="src/oihana/core/arrays/hasIntKeys.php">hasIntKeys.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -167,7 +167,10 @@
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">hasIntKeys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function checks if every key in the provided array is an integer.
+Returns true only if <em>all</em> keys are integers, false otherwise.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,7 +178,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The array to check.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -187,6 +192,26 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$arr1 = [10 =&gt; 'a', 20 =&gt; 'b', 30 =&gt; 'c'];
+var_dump(hasIntKeys($arr1)); // true
+
+$arr2 = ['0' =&gt; 'a', 1 =&gt; 'b', 2 =&gt; 'c'];
+var_dump(hasIntKeys($arr2)); // false, because '0' is string key, not int
+
+$arr3 = ['foo' =&gt; 'bar', 42 =&gt; 'baz'];
+var_dump(hasIntKeys($arr3)); // false
+
+$arr4 = [];
+var_dump(hasIntKeys($arr4)); // true (no keys, so vacuously true)
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -208,6 +233,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True if all keys are integers, false otherwise.</p>
+</section>
+
             </section>
 
 </article>

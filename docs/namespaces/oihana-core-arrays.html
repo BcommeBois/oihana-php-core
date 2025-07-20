@@ -144,14 +144,14 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Unset an item on an array or object using dot notation.</dd>
+<dd>Unset a key or nested key in an array using dot notation.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_exists">exists()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>Checks if the given key exists in the provided array.</dd>
+<dd>Checks whether a key exists in an array or an object implementing ArrayAccess.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_flatten">flatten()</a>
@@ -200,35 +200,35 @@
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>Determines if an array is indexed.</dd>
+<dd>Determines if an array is indexed (i.e., has sequential integer keys starting at 0).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_removeKeys">removeKeys()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Removes in an array a set of keys.</dd>
+<dd>Removes a set of keys from an array.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_set">set()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Sets a value In an associative array using a key path.</dd>
+<dd>Sets a value in an associative array using a key path.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_shuffle">shuffle()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Shuffles an array using the Fisher-Yates algorithm.</dd>
+<dd>Shuffles the elements of an array in place using the Fisher-Yates algorithm.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_stub">stub()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>This function return an empty array.</dd>
+<dd>Returns a new empty array.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_swap">swap()</a>
@@ -242,21 +242,21 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Returns the elements of the array without the first in a new array representation.</dd>
+<dd>Returns a new array containing all elements except the first one.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_toArray">toArray()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Takes a value and turns it into an array of that value, unless the value is already an array.</dd>
+<dd>Ensures the given value is returned as an array.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_unique">unique()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Removes duplicate values from an array and re-indexed it.</dd>
+<dd>Removes duplicate values from an array and reindexes it.</dd>
 
     </dl>
 
@@ -427,7 +427,7 @@ $copy     = compress($original, ['clone' =&gt; true]);
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/deepMerge.php"><a href="files/src-oihana-core-arrays-deepmerge.html"><abbr title="src/oihana/core/arrays/deepMerge.php">deepMerge.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -438,8 +438,10 @@ $copy     = compress($original, ['clone' =&gt; true]);
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">deepMerge</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__variadic-operator">...</span><span class="phpdocumentor-signature__argument__name">$arrays</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>String keys in later arrays will overwrite values from earlier arrays.
-Numeric keys will have their values appended, maintaining the order.</p>
+        <section class="phpdocumentor-description"><ul>
+<li>Associative keys (strings) are merged deeply : sub-arrays are merged récursivement.</li>
+<li>Numeric keys (ints) are appended, maintaining order.</li>
+</ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -463,6 +465,30 @@ Numeric keys will have their values appended, maintaining the order.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$a = ['user' =&gt; ['name' =&gt; 'Alice', 'roles' =&gt; ['admin']]];
+$b = ['user' =&gt; ['roles' =&gt; ['editor'], 'active' =&gt; true]];
+$c = ['tags' =&gt; ['php', 'dev']];
+
+$merged = deepMerge($a, $b, $c);
+
+print_r($merged);
+// [
+//     'user' =&gt; [
+//         'name'   =&gt; 'Alice',
+//         'roles'  =&gt; ['admin', 'editor'],
+//         'active' =&gt; true
+//     ],
+//     'tags' =&gt; ['php', 'dev']
+// ]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -500,18 +526,24 @@ Numeric keys will have their values appended, maintaining the order.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/delete.php"><a href="files/src-oihana-core-arrays-delete.html"><abbr title="src/oihana/core/arrays/delete.php">delete.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Unset an item on an array or object using dot notation.</p>
+        <p class="phpdocumentor-summary">Unset a key or nested key in an array using dot notation.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">delete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$target</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"><ul>
+<li>If the key is '*', clears the whole array.</li>
+<li>Supports string path (&quot;a.b.c&quot;) or array path (['a','b','c']).</li>
+<li>If the path is partially invalid, the array is returned unchanged.</li>
+</ul>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -519,7 +551,7 @@ Numeric keys will have their values appended, maintaining the order.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The associative array to search within.</p>
+                    <section class="phpdocumentor-description"><p>The array to modify (ignored if not an array).</p>
 </section>
 
             </dd>
@@ -528,7 +560,7 @@ Numeric keys will have their values appended, maintaining the order.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The key path as a string or array. If key == '*' all the fields a removed.</p>
+                    <section class="phpdocumentor-description"><p>The key path to delete.</p>
 </section>
 
             </dd>
@@ -537,7 +569,9 @@ Numeric keys will have their values appended, maintaining the order.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The separator for string key paths (default: '.').</p>
+</section>
+
             </dd>
             </dl>
 
@@ -549,6 +583,47 @@ Numeric keys will have their values appended, maintaining the order.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$data =
+[
+    'user' =&gt;
+    [
+        'profile' =&gt;
+        [
+            'name' =&gt; 'Alice',
+            'age' =&gt; 30
+        ],
+        'active' =&gt; true
+    ]
+];
+
+// Remove a nested key
+$result = delete($data, 'user.profile.age');
+print_r($result);
+// [
+//     'user' =&gt; [
+//         'profile' =&gt; ['name' =&gt; 'Alice'],
+//         'active'  =&gt; true
+//     ]
+// ]
+
+// Remove a top-level key
+$result = delete($data, 'user.active');
+
+// Remove all keys
+$result = delete($data, '*');
+print_r($result); // []
+
+// Using array path
+$result = delete($data, ['user', 'profile', 'name']);
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -571,7 +646,7 @@ Numeric keys will have their values appended, maintaining the order.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">mixed</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The object.</p>
+                <section class="phpdocumentor-description"><p>The modified array (or original if not an array).</p>
 </section>
 
             </section>
@@ -586,18 +661,23 @@ Numeric keys will have their values appended, maintaining the order.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/exists.php"><a href="files/src-oihana-core-arrays-exists.html"><abbr title="src/oihana/core/arrays/exists.php">exists.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Checks if the given key exists in the provided array.</p>
+        <p class="phpdocumentor-summary">Checks whether a key exists in an array or an object implementing ArrayAccess.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">exists</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\ArrayAccess">ArrayAccess</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">exists</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\ArrayAccess">ArrayAccess</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-    
+        <section class="phpdocumentor-description"><ul>
+<li>Returns <code class="prettyprint">false</code> if the key is <code class="prettyprint">null</code> or an empty string.</li>
+<li>Supports both native arrays and <code class="prettyprint">ArrayAccess</code> objects.</li>
+</ul>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -605,14 +685,27 @@ Numeric keys will have their values appended, maintaining the order.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\ArrayAccess">ArrayAccess</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The array or object to inspect.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$key</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string|int|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The key to check for existence.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$separator</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The separator used in the key path. Default is '.'.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -624,6 +717,34 @@ Numeric keys will have their values appended, maintaining the order.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use oihana\core\arrays\exists;
+
+// Flat array
+$data = ['name' =&gt; 'Alice'];
+var_dump(exists($data, 'name')); // true
+var_dump(exists($data, 'age'));  // false
+
+// Nested array
+$data = ['user' =&gt; ['address' =&gt; ['country' =&gt; 'France']]];
+var_dump(exists($data, 'user.address.country')); // true
+var_dump(exists($data, 'user.address.city'));    // false
+
+// Mixed with numeric keys
+$data = ['items' =&gt; [0 =&gt; ['id' =&gt; 1], 1 =&gt; ['id' =&gt; 2]]];
+var_dump(exists($data, 'items.1.id')); // true
+
+// With null or empty key
+var_dump(exists($data, null)); // false
+var_dump(exists($data, ''));   // false
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -645,6 +766,10 @@ Numeric keys will have their values appended, maintaining the order.</p>
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True if the key exists, false otherwise.</p>
+</section>
+
             </section>
 
 </article>
@@ -657,7 +782,7 @@ Numeric keys will have their values appended, maintaining the order.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/flatten.php"><a href="files/src-oihana-core-arrays-flatten.html"><abbr title="src/oihana/core/arrays/flatten.php">flatten.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -668,7 +793,10 @@ Numeric keys will have their values appended, maintaining the order.</p>
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">flatten</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function recursively iterates through the nested arrays,
+concatenating all nested values into one flat array.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -690,6 +818,22 @@ Numeric keys will have their values appended, maintaining the order.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$nested = [1, [2, 3], [[4], 5], 6];
+$flat = flatten($nested);
+// Result: [1, 2, 3, 4, 5, 6]
+
+$complex = ['a', ['b', ['c', 'd']], 'e'];
+$flat = flatten($complex);
+// Result: ['a', 'b', 'c', 'd', 'e']
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -712,7 +856,7 @@ Numeric keys will have their values appended, maintaining the order.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The flattened array.</p>
+                <section class="phpdocumentor-description"><p>The flattened array, containing all nested values in order.</p>
 </section>
 
             </section>
@@ -727,7 +871,7 @@ Numeric keys will have their values appended, maintaining the order.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/get.php"><a href="files/src-oihana-core-arrays-get.html"><abbr title="src/oihana/core/arrays/get.php">get.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
@@ -794,6 +938,33 @@ Defaults to a dot ('.').</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$data =
+[
+    'user' =&gt;
+    [
+        'name'    =&gt; 'Alice',
+        'address' =&gt;
+        [
+            'city' =&gt; 'Paris',
+            'geo' =&gt; [ 'lat' =&gt; 48.8566, 'lng' =&gt; 2.3522 ],
+        ],
+    ],
+];
+
+echo get($data, 'user.name');             // Alice
+echo get($data, 'user.address.city');     // Paris
+echo get($data, 'user.address.geo.lat');  // 48.8566
+echo get($data, 'user.phone', 'unknown'); // unknown
+echo get($data, null);                    // returns entire $data array
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -831,7 +1002,7 @@ Defaults to a dot ('.').</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/hasIntKeys.php"><a href="files/src-oihana-core-arrays-hasintkeys.html"><abbr title="src/oihana/core/arrays/hasIntKeys.php">hasIntKeys.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -842,7 +1013,10 @@ Defaults to a dot ('.').</p>
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">hasIntKeys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function checks if every key in the provided array is an integer.
+Returns true only if <em>all</em> keys are integers, false otherwise.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -850,7 +1024,9 @@ Defaults to a dot ('.').</p>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The array to check.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -862,6 +1038,26 @@ Defaults to a dot ('.').</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$arr1 = [10 =&gt; 'a', 20 =&gt; 'b', 30 =&gt; 'c'];
+var_dump(hasIntKeys($arr1)); // true
+
+$arr2 = ['0' =&gt; 'a', 1 =&gt; 'b', 2 =&gt; 'c'];
+var_dump(hasIntKeys($arr2)); // false, because '0' is string key, not int
+
+$arr3 = ['foo' =&gt; 'bar', 42 =&gt; 'baz'];
+var_dump(hasIntKeys($arr3)); // false
+
+$arr4 = [];
+var_dump(hasIntKeys($arr4)); // true (no keys, so vacuously true)
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -883,6 +1079,10 @@ Defaults to a dot ('.').</p>
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True if all keys are integers, false otherwise.</p>
+</section>
+
             </section>
 
 </article>
@@ -895,7 +1095,7 @@ Defaults to a dot ('.').</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/hasStringKeys.php"><a href="files/src-oihana-core-arrays-hasstringkeys.html"><abbr title="src/oihana/core/arrays/hasStringKeys.php">hasStringKeys.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
@@ -906,7 +1106,10 @@ Defaults to a dot ('.').</p>
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">hasStringKeys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function checks if every key in the provided array is a string.
+Returns true only if <em>all</em> keys are strings, false otherwise.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -914,7 +1117,9 @@ Defaults to a dot ('.').</p>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The array to check.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -926,27 +1131,37 @@ Defaults to a dot ('.').</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
+                    <span class="phpdocumentor-tag__name">example</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$arr1 = ['foo' =&gt; 1, 'bar' =&gt; 2, 'baz' =&gt; 3];
+var_dump(hasStringKeys($arr1)); // true
+
+$arr2 = ['0' =&gt; 'a', '1' =&gt; 'b', '2' =&gt; 'c'];
+var_dump(hasStringKeys($arr2)); // true, keys are strings '0', '1', '2'
+
+$arr3 = [0 =&gt; 'zero', 1 =&gt; 'one', 2 =&gt; 'two'];
+var_dump(hasStringKeys($arr3)); // false, keys are integers
+
+$arr4 = ['foo' =&gt; 'bar', 42 =&gt; 'baz'];
+var_dump(hasStringKeys($arr4)); // false, mixed keys (string and int)
+
+$arr5 = [];
+var_dump(hasStringKeys($arr5)); // true (empty array, vacuously true)
+</code></pre>
 </section>
 
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
-                                                                                
-                                             
                                     </dd>
                                             </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True if all keys are strings, false otherwise.</p>
+</section>
+
             </section>
 
 </article>
@@ -1132,22 +1347,21 @@ echo json_encode( isAssociative( $array ) ) ;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/isIndexed.php"><a href="files/src-oihana-core-arrays-isindexed.html"><abbr title="src/oihana/core/arrays/isIndexed.php">isIndexed.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Determines if an array is indexed.</p>
+        <p class="phpdocumentor-summary">Determines if an array is indexed (i.e., has sequential integer keys starting at 0).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">isIndexed</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"><p>Usage :</p>
-<pre class="prettyprint">
-use function core\arrays\isIndexed ;
-$array = [ 'a', 'b' , 'c' ] ;
-echo json_encode( isIndexed( $array ) ) ;
+        <section class="phpdocumentor-description"><p>An array is considered indexed if its keys are exactly the sequence 0, 1, 2, ... n-1,
+where n is the number of elements in the array.
+This is typical for arrays used as lists.</p>
+<p>Empty arrays are considered indexed by definition.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1171,6 +1385,19 @@ echo json_encode( isIndexed( $array ) ) ;
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function core\arrays\isIndexed ;
+
+$array = [ 'a', 'b' , 'c' ] ;
+echo json_encode( isIndexed( $array ) ) ;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1193,7 +1420,7 @@ echo json_encode( isIndexed( $array ) ) ;
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Indicates if the array is indexed or not.</p>
+                <section class="phpdocumentor-description"><p>True if the array is indexed, false otherwise.</p>
 </section>
 
             </section>
@@ -1208,18 +1435,22 @@ echo json_encode( isIndexed( $array ) ) ;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/removeKeys.php"><a href="files/src-oihana-core-arrays-removekeys.html"><abbr title="src/oihana/core/arrays/removeKeys.php">removeKeys.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Removes in an array a set of keys.</p>
+        <p class="phpdocumentor-summary">Removes a set of keys from an array.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">removeKeys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keys</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$clone</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function removes the specified keys from the given array.
+If <code class="prettyprint">$clone</code> is set to <code class="prettyprint">true</code>, the original array is not modified; instead, a new array is returned.
+Otherwise, the original array is modified directly (passed by value).</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1227,7 +1458,7 @@ echo json_encode( isIndexed( $array ) ) ;
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The array to evaluates</p>
+                    <section class="phpdocumentor-description"><p>The input array to modify or clone.</p>
 </section>
 
             </dd>
@@ -1236,7 +1467,7 @@ echo json_encode( isIndexed( $array ) ) ;
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The list of all keys to remove</p>
+                    <section class="phpdocumentor-description"><p>An array of keys to remove from the input array.</p>
 </section>
 
             </dd>
@@ -1245,7 +1476,7 @@ echo json_encode( isIndexed( $array ) ) ;
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Indicates if the array is cloned or not.</p>
+                    <section class="phpdocumentor-description"><p>If true, operates on a copy of the array and returns it; otherwise, modifies the array in place (by value).</p>
 </section>
 
             </dd>
@@ -1259,6 +1490,40 @@ echo json_encode( isIndexed( $array ) ) ;
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\removeKeys;
+
+$input = ['name' =&gt; 'Alice', 'email' =&gt; 'alice@example.com', 'age' =&gt; 30];
+
+// Example 1: Remove one key (in-place behavior)
+$result = removeKeys($input, ['email']);
+// $result = ['name' =&gt; 'Alice', 'age' =&gt; 30]
+
+// Example 2: Remove multiple keys
+$result = removeKeys($input, ['name', 'age']);
+// $result = ['email' =&gt; 'alice@example.com']
+
+// Example 3: Use clone to preserve the original array
+$original = ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3];
+$copy = removeKeys($original, ['a'], true);
+// $original remains unchanged: ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3]
+// $copy = ['b' =&gt; 2, 'c' =&gt; 3]
+
+// Example 4: Key not found (no error)
+$result = removeKeys(['x' =&gt; 1], ['y']);
+// $result = ['x' =&gt; 1]
+
+// Example 5: Empty key list
+$result = removeKeys(['foo' =&gt; 'bar'], []);
+// $result = ['foo' =&gt; 'bar']
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1281,7 +1546,7 @@ echo json_encode( isIndexed( $array ) ) ;
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The passed-in array or a clone reference</p>
+                <section class="phpdocumentor-description"><p>The resulting array with specified keys removed.</p>
 </section>
 
             </section>
@@ -1296,16 +1561,16 @@ echo json_encode( isIndexed( $array ) ) ;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/set.php"><a href="files/src-oihana-core-arrays-set.html"><abbr title="src/oihana/core/arrays/set.php">set.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Sets a value In an associative array using a key path.</p>
+        <p class="phpdocumentor-summary">Sets a value in an associative array using a key path.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">set</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">set</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$copy</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
         <section class="phpdocumentor-description"><p>If no key is given to the method, the entire array will be replaced.</p>
 </section>
@@ -1317,7 +1582,7 @@ echo json_encode( isIndexed( $array ) ) ;
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The associative array to search within.</p>
+                    <section class="phpdocumentor-description"><p>The associative array to modify (by reference).</p>
 </section>
 
             </dd>
@@ -1326,7 +1591,7 @@ echo json_encode( isIndexed( $array ) ) ;
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The key path as a string. Can be null, in which case the function returns the entire array.</p>
+                    <section class="phpdocumentor-description"><p>The key path as a string. Can be null, in which case the function replaces the entire array.</p>
 </section>
 
             </dd>
@@ -1335,7 +1600,7 @@ echo json_encode( isIndexed( $array ) ) ;
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to apply.</p>
+                    <section class="phpdocumentor-description"><p>The value to set.</p>
 </section>
 
             </dd>
@@ -1345,6 +1610,15 @@ echo json_encode( isIndexed( $array ) ) ;
                  = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>The separator used to split the key into segments. Defaults to a dot ('.').</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$copy</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>If true, returns a modified copy instead of altering the original array.</p>
 </section>
 
             </dd>
@@ -1358,6 +1632,25 @@ echo json_encode( isIndexed( $array ) ) ;
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$data = [];
+set( $data , 'user.name' , 'Alice' ) ;
+// $data =&gt; ['user' =&gt; ['name' =&gt; 'Alice']]
+
+set( $data , null, ['id' =&gt; 1] ) ;
+// $data =&gt; ['id' =&gt; 1]
+
+$data = ['user' =&gt; ['name' =&gt; 'Marc']];
+$new = set($data, 'user.address.country', 'France', '.', true);
+print_r( $new ); // ['user' =&gt; ['name' =&gt; 'Marc', 'address' =&gt; ['country' =&gt; 'France']]]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1378,9 +1671,9 @@ echo json_encode( isIndexed( $array ) ) ;
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">mixed</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The value found in the array or the default value if the key does not exist.</p>
+                <section class="phpdocumentor-description"><p>The updated ( or copied and modified ) array.</p>
 </section>
 
             </section>
@@ -1395,18 +1688,23 @@ echo json_encode( isIndexed( $array ) ) ;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/shuffle.php"><a href="files/src-oihana-core-arrays-shuffle.html"><abbr title="src/oihana/core/arrays/shuffle.php">shuffle.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Shuffles an array using the Fisher-Yates algorithm.</p>
+        <p class="phpdocumentor-summary">Shuffles the elements of an array in place using the Fisher-Yates algorithm.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">shuffle</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$ar</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function randomizes the order of the elements in the given array.
+It operates directly on the passed array (by reference) and also returns it.
+The algorithm used ensures an unbiased shuffle.</p>
+<p>If the array has 0 or 1 element, it is returned as is without changes.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1428,6 +1726,28 @@ echo json_encode( isIndexed( $array ) ) ;
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\shuffle;
+
+$numbers = [1, 2, 3, 4, 5];
+shuffle($numbers);
+print_r($numbers); // e.g. [3, 1, 5, 2, 4] - order randomized
+
+$empty = [];
+shuffle($empty);
+var_dump($empty); // []
+
+$single = [42];
+shuffle($single);
+var_dump($single); // [42]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1450,7 +1770,7 @@ echo json_encode( isIndexed( $array ) ) ;
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The shuffled array, or null if input is not an array.</p>
+                <section class="phpdocumentor-description"><p>The shuffled array.</p>
 </section>
 
             </section>
@@ -1465,18 +1785,21 @@ echo json_encode( isIndexed( $array ) ) ;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/stub.php"><a href="files/src-oihana-core-arrays-stub.html"><abbr title="src/oihana/core/arrays/stub.php">stub.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">This function return an empty array.</p>
+        <p class="phpdocumentor-summary">Returns a new empty array.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">stub</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function is useful as a placeholder or default value generator
+when an empty array is needed.</p>
+</section>
+
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -1486,6 +1809,19 @@ echo json_encode( isIndexed( $array ) ) ;
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\stub;
+
+$emptyArray = stub();
+var_dump($emptyArray); // outputs: array(0) }
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1508,7 +1844,7 @@ echo json_encode( isIndexed( $array ) ) ;
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The new empty array.</p>
+                <section class="phpdocumentor-description"><p>An empty array.</p>
 </section>
 
             </section>
@@ -1523,7 +1859,7 @@ echo json_encode( isIndexed( $array ) ) ;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/swap.php"><a href="files/src-oihana-core-arrays-swap.html"><abbr title="src/oihana/core/arrays/swap.php">swap.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
@@ -1532,9 +1868,14 @@ echo json_encode( isIndexed( $array ) ) ;
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">swap</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ar</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$to</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$clone</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">swap</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ar</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$to</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$copy</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>Supports both integer and string keys.
+Negative indices are supported to count from the end (e.g. -1 is the last element).</p>
+<p>If <code class="prettyprint">$copy</code> is true, returns a new array with swapped values, leaving original intact.
+Otherwise, swaps values directly on the passed array.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1565,7 +1906,7 @@ echo json_encode( isIndexed( $array ) ) ;
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$clone</span>
+                <span class="phpdocumentor-signature__argument__name">$copy</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1588,9 +1929,12 @@ echo json_encode( isIndexed( $array ) ) ;
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
                                                  <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$ar = [1, 2, 3, 4];
-print_r($ar); // [1, 2, 3, 4]
-$result = swap($ar, 1, 3);
+swap($ar, 1, 3);
 print_r($ar); // [1, 4, 3, 2]
+
+$arAssoc = ['a' =&gt; 'apple', 'b' =&gt; 'banana', 'c' =&gt; 'cherry'];
+$swapped = swap($arAssoc, 'a', 'c', true);
+print_r($swapped); // ['c' =&gt; 'cherry', 'b' =&gt; 'banana', 'a' =&gt; 'apple']
 </code></pre>
 </section>
 
@@ -1633,18 +1977,20 @@ print_r($ar); // [1, 4, 3, 2]
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/tail.php"><a href="files/src-oihana-core-arrays-tail.html"><abbr title="src/oihana/core/arrays/tail.php">tail.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns the elements of the array without the first in a new array representation.</p>
+        <p class="phpdocumentor-summary">Returns a new array containing all elements except the first one.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">tail</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>If the input array is empty, returns an empty array.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1652,7 +1998,7 @@ print_r($ar); // [1, 4, 3, 2]
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The input array</p>
+                    <section class="phpdocumentor-description"><p>The input array.</p>
 </section>
 
             </dd>
@@ -1670,7 +2016,16 @@ print_r($ar); // [1, 4, 3, 2]
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">print_r(tail([2, 3, 4])); // [3, 4]
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\tail;
+
+$arr = [2, 3, 4];
+print_r(tail($arr)); // Outputs: [3, 4]
+
+$empty = [];
+print_r(tail($empty)); // Outputs: []
+
+$single = [10];
+print_r(tail($single)); // Outputs: []
 </code></pre>
 </section>
 
@@ -1698,7 +2053,7 @@ print_r($ar); // [1, 4, 3, 2]
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>A new array without the first element (empty array if input is empty or not an array)</p>
+                <section class="phpdocumentor-description"><p>A new array without the first element.</p>
 </section>
 
             </section>
@@ -1713,18 +2068,21 @@ print_r($ar); // [1, 4, 3, 2]
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/toArray.php"><a href="files/src-oihana-core-arrays-toarray.html"><abbr title="src/oihana/core/arrays/toArray.php">toArray.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Takes a value and turns it into an array of that value, unless the value is already an array.</p>
+        <p class="phpdocumentor-summary">Ensures the given value is returned as an array.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>If the value is already an array, it is returned unchanged.
+Otherwise, the value is wrapped inside a new array.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1746,6 +2104,28 @@ print_r($ar); // [1, 4, 3, 2]
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\toArray;
+
+$a = toArray(123);
+print_r($a); // [123]
+
+$b = toArray(&quot;hello&quot;);
+print_r($b); // [&quot;hello&quot;]
+
+$c = toArray([1, 2, 3]);
+print_r($c); // [1, 2, 3]
+
+$d = toArray(null);
+print_r($d); // [null]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1767,6 +2147,10 @@ print_r($ar); // [1, 4, 3, 2]
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The value wrapped in an array, or the original array if already an array.</p>
+</section>
+
             </section>
 
 </article>
@@ -1779,18 +2163,26 @@ print_r($ar); // [1, 4, 3, 2]
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/unique.php"><a href="files/src-oihana-core-arrays-unique.html"><abbr title="src/oihana/core/arrays/unique.php">unique.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Removes duplicate values from an array and re-indexed it.</p>
+        <p class="phpdocumentor-summary">Removes duplicate values from an array and reindexes it.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">unique</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">SORT_STRING</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>Combines the array_unique and array_values methods.</p>
+        <section class="phpdocumentor-description"><p>Combines the functionality of <abbr title="\oihana\core\arrays\array_unique()">array_unique()</abbr> and <abbr title="\oihana\core\arrays\array_values()">array_values()</abbr>:
+first removes duplicates, then reindexes the array numerically starting at 0.</p>
+<p>The optional <code class="prettyprint">$flags</code> parameter modifies the comparison behavior, possible values:</p>
+<ul>
+<li>SORT_REGULAR: Compare items normally (don't change types).</li>
+<li>SORT_NUMERIC: Compare items numerically.</li>
+<li>SORT_STRING: Compare items as strings.</li>
+<li>SORT_LOCALE_STRING: Compare items as strings, based on the current locale.</li>
+</ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1809,15 +2201,7 @@ print_r($ar); // [1, 4, 3, 2]
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">SORT_STRING</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>[optional]</p>
-<p>The optional second parameter sort_flags may be used to modify the sorting behavior using these values:</p>
-<p>Sorting type flags:</p>
-<ul>
-  <li><b>SORT_REGULAR</b> - compare items normally (don't change types)</li>
-  <li><b>SORT_NUMERIC</b> - compare items numerically</li>
-  <li><b>SORT_STRING</b> - compare items as strings</li>
-  <li><b>SORT_LOCALE_STRING</b> - compare items as strings, based on the current locale</li>
-</ul>
+                    <section class="phpdocumentor-description"><p>[optional] Comparison behavior flag. Default is SORT_STRING.</p>
 </section>
 
             </dd>
@@ -1831,17 +2215,35 @@ print_r($ar); // [1, 4, 3, 2]
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\unique;
+
+$array = ['a', 'b', 'a', 'c', 'b'];
+$result = unique($array);
+print_r($result); // ['a', 'b', 'c']
+
+$numericArray = [1, 2, '1', 3];
+$resultNumeric = unique($numericArray, SORT_NUMERIC);
+print_r($resultNumeric); // [1, 2, 3]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://php.net/manual/en/function.array-unique.php"> https://php.net/manual/en/function.array-unique.php </a>
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://www.php.net/manual/en/function.array-unique.php"> https://www.php.net/manual/en/function.array-unique.php </a>
                     
                                     </dd>
                             <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://php.net/manual/en/function.array-values.php"> https://php.net/manual/en/function.array-values.php </a>
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://www.php.net/manual/en/function.array-values.php"> https://www.php.net/manual/en/function.array-values.php </a>
                     
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
@@ -1867,7 +2269,7 @@ print_r($ar); // [1, 4, 3, 2]
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>the filtered and re-indexed array.</p>
+                <section class="phpdocumentor-description"><p>The filtered array with unique values, reindexed from 0.</p>
 </section>
 
             </section>

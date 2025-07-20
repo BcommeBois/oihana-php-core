@@ -132,6 +132,13 @@
 </dt>
 <dd>Compress the passed in object by removing all properties that match given conditions.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-objects.html#function_set">set()</a>
+    <span>
+                                &nbsp;: object    </span>
+</dt>
+<dd>Sets a value in an object using a key path.</dd>
+
     </dl>
 
         
@@ -270,6 +277,171 @@ echo json_encode($compressed);
             </section>
 
 </article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_set">
+        set()
+        <a href="namespaces/oihana-core-objects.html#function_set" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/objects/set.php"><a href="files/src-oihana-core-objects-set.html"><abbr title="src/oihana/core/objects/set.php">set.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">66</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sets a value in an object using a key path.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">set</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$object</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$copy</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string|callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$classFactory</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">object</span></code>
+
+        <section class="phpdocumentor-description"><p>Supports dot notation for nested properties. Intermediate objects are created if needed.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$object</span>
+                : <span class="phpdocumentor-signature__argument__return-type">object</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The object to modify (or copy).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$key</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The key path to set (e.g. 'user.address.country'). If null, replaces entire object.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The value to set.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$separator</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The separator used in the key path. Default is '.'.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$copy</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>If true, returns a deep copy of the object with the modification.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$classFactory</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string|callable|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>A class name, factory callable, or array path =&gt; className to create intermediate objects (default: stdClass).</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-objects.html#function_set#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><ol>
+<li>Basic usage with nested keys and default stdClass</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">$obj = new \stdClass();
+$obj = set($obj, 'user.profile.name', 'Alice');
+echo $obj-&gt;user-&gt;profile-&gt;name; // Alice
+</code></pre>
+<ol start="2">
+<li>Replace the entire object when key is null</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">$original = (object)['foo' =&gt; 'bar'];
+$new = set($original, null, ['x' =&gt; 123]);
+echo $new-&gt;x; // 123
+</code></pre>
+<ol start="3">
+<li>Use a custom class as intermediate objects</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">class Node { public string $label = ''; }
+$obj = set(new Node(), 'tree.branch.leaf', 'green', '.', false, Node::class);
+echo $obj-&gt;tree-&gt;branch-&gt;leaf; // green
+</code></pre>
+<ol start="4">
+<li>Use a factory callable</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">$factory = fn() =&gt; new class { public string $value = ''; };
+$obj = set(new \stdClass(), 'x.y.z', 99, '.', false, $factory);
+echo $obj-&gt;x-&gt;y-&gt;z; // 99
+</code></pre>
+<ol start="5">
+<li>Use an array of path =&gt; class mappings</li>
+</ol>
+<pre class="prettyprint"><code class="language-php">class Address { public string $city = ''; }
+class User    { public string $name = ''; }
+$obj = new \stdClass();
+$obj = set($obj, 'user.address.city', 'Paris', '.', false, [
+'user' =&gt; User::class,
+'user.address' =&gt; Address::class,
+]);
+echo $obj-&gt;user-&gt;address-&gt;city; // Paris
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">object</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The modified (or copied and modified) object.</p>
+</section>
+
+            </section>
+
+</article>
             </section>
 
         <div class="phpdocumentor-modal" id="source-view">
@@ -384,6 +556,7 @@ echo json_encode($compressed);
                 <li>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="namespaces/oihana-core-objects.html#function_compress">compress()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-objects.html#function_set">set()</a></li>
                                             </ul>
                 </li>
                     </ul>

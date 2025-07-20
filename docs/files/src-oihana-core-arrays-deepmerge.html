@@ -156,7 +156,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/deepMerge.php"><a href="files/src-oihana-core-arrays-deepmerge.html"><abbr title="src/oihana/core/arrays/deepMerge.php">deepMerge.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -167,8 +167,10 @@
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">deepMerge</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__variadic-operator">...</span><span class="phpdocumentor-signature__argument__name">$arrays</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>String keys in later arrays will overwrite values from earlier arrays.
-Numeric keys will have their values appended, maintaining the order.</p>
+        <section class="phpdocumentor-description"><ul>
+<li>Associative keys (strings) are merged deeply : sub-arrays are merged récursivement.</li>
+<li>Numeric keys (ints) are appended, maintaining order.</li>
+</ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -192,6 +194,30 @@ Numeric keys will have their values appended, maintaining the order.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$a = ['user' =&gt; ['name' =&gt; 'Alice', 'roles' =&gt; ['admin']]];
+$b = ['user' =&gt; ['roles' =&gt; ['editor'], 'active' =&gt; true]];
+$c = ['tags' =&gt; ['php', 'dev']];
+
+$merged = deepMerge($a, $b, $c);
+
+print_r($merged);
+// [
+//     'user' =&gt; [
+//         'name'   =&gt; 'Alice',
+//         'roles'  =&gt; ['admin', 'editor'],
+//         'active' =&gt; true
+//     ],
+//     'tags' =&gt; ['php', 'dev']
+// ]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">

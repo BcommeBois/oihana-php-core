@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Takes a value and turns it into an array of that value, unless the value is already an array.</dd>
+<dd>Ensures the given value is returned as an array.</dd>
 
     </dl>
 
@@ -156,18 +156,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/toArray.php"><a href="files/src-oihana-core-arrays-toarray.html"><abbr title="src/oihana/core/arrays/toArray.php">toArray.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Takes a value and turns it into an array of that value, unless the value is already an array.</p>
+        <p class="phpdocumentor-summary">Ensures the given value is returned as an array.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>If the value is already an array, it is returned unchanged.
+Otherwise, the value is wrapped inside a new array.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -189,6 +192,28 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\toArray;
+
+$a = toArray(123);
+print_r($a); // [123]
+
+$b = toArray(&quot;hello&quot;);
+print_r($b); // [&quot;hello&quot;]
+
+$c = toArray([1, 2, 3]);
+print_r($c); // [1, 2, 3]
+
+$d = toArray(null);
+print_r($d); // [null]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -210,6 +235,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The value wrapped in an array, or the original array if already an array.</p>
+</section>
+
             </section>
 
 </article>

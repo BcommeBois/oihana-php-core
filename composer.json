@@ -60,6 +60,7 @@
             "src/oihana/core/numbers/clip.php",
             "src/oihana/core/reflections/getFunctionInfo.php",
             "src/oihana/core/objects/compress.php",
+            "src/oihana/core/objects/set.php",
             "src/oihana/core/strings/fastFormat.php",
             "src/oihana/core/strings/formatRequestArgs.php",
             "src/oihana/core/strings/hyphenate.php",

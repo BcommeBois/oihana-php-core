@@ -156,7 +156,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/get.php"><a href="files/src-oihana-core-arrays-get.html"><abbr title="src/oihana/core/arrays/get.php">get.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
@@ -223,6 +223,33 @@ Defaults to a dot ('.').</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$data =
+[
+    'user' =&gt;
+    [
+        'name'    =&gt; 'Alice',
+        'address' =&gt;
+        [
+            'city' =&gt; 'Paris',
+            'geo' =&gt; [ 'lat' =&gt; 48.8566, 'lng' =&gt; 2.3522 ],
+        ],
+    ],
+];
+
+echo get($data, 'user.name');             // Alice
+echo get($data, 'user.address.city');     // Paris
+echo get($data, 'user.address.geo.lat');  // 48.8566
+echo get($data, 'user.phone', 'unknown'); // unknown
+echo get($data, null);                    // returns entire $data array
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">

@@ -4,10 +4,31 @@ namespace oihana\core\arrays ;
 
 /**
  * Recursively merges multiple arrays.
- * String keys in later arrays will overwrite values from earlier arrays.
- * Numeric keys will have their values appended, maintaining the order.
+ *
+ * - Associative keys (strings) are merged deeply : sub-arrays are merged récursivement.
+ * - Numeric keys (ints) are appended, maintaining order.
+ *
  * @param array ...$arrays The arrays to be merged.
  * @return array The deeply merged array.
+ *
+ * @example
+ * ```php
+ * $a = ['user' => ['name' => 'Alice', 'roles' => ['admin']]];
+ * $b = ['user' => ['roles' => ['editor'], 'active' => true]];
+ * $c = ['tags' => ['php', 'dev']];
+ *
+ * $merged = deepMerge($a, $b, $c);
+ *
+ * print_r($merged);
+ * // [
+ * //     'user' => [
+ * //         'name'   => 'Alice',
+ * //         'roles'  => ['admin', 'editor'],
+ * //         'active' => true
+ * //     ],
+ * //     'tags' => ['php', 'dev']
+ * // ]
+ * ```
  *
  * @package oihana\core\arrays
  * @author  Marc Alcaraz (ekameleon)

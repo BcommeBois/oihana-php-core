@@ -3,20 +3,50 @@
 namespace oihana\core\arrays ;
 
 /**
- * Sets a value In an associative array using a key path.
+ * Sets a value in an associative array using a key path.
  * If no key is given to the method, the entire array will be replaced.
- * @param array $array The associative array to search within.
- * @param string|null $key The key path as a string. Can be null, in which case the function returns the entire array.
- * @param mixed $value The value to apply.
- * @param string $separator The separator used to split the key into segments. Defaults to a dot ('.').
- * @return mixed The value found in the array or the default value if the key does not exist.
+ *
+ * @param array       $array     The associative array to modify (by reference).
+ * @param string|null $key       The key path as a string. Can be null, in which case the function replaces the entire array.
+ * @param mixed       $value     The value to set.
+ * @param string      $separator The separator used to split the key into segments. Defaults to a dot ('.').
+ * @param bool        $copy      If true, returns a modified copy instead of altering the original array.
+ *
+ * @return array The updated ( or copied and modified ) array.
+ *
+ * @example
+ * ```php
+ * $data = [];
+ * set( $data , 'user.name' , 'Alice' ) ;
+ * // $data => ['user' => ['name' => 'Alice']]
+ *
+ * set( $data , null, ['id' => 1] ) ;
+ * // $data => ['id' => 1]
+ *
+ * $data = ['user' => ['name' => 'Marc']];
+ * $new = set($data, 'user.address.country', 'France', '.', true);
+ * print_r( $new ); // ['user' => ['name' => 'Marc', 'address' => ['country' => 'France']]]
+ * ```
  *
  * @package oihana\core\arrays
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
-function set( array &$array , ?string $key , mixed $value , string $separator = '.' ) :mixed
+function set
+(
+      array &$array ,
+    ?string $key    ,
+      mixed $value  ,
+     string $separator = '.' ,
+       bool $copy = false
+)
+:array
 {
+    if ( $copy )
+    {
+        $array = unserialize( serialize( $array ) ) ; // Deep copy
+    }
+
     if ( is_null( $key ) )
     {
         return $array = $value ;
@@ -31,7 +61,7 @@ function set( array &$array , ?string $key , mixed $value , string $separator = 
         // If the key doesn't exist at this depth, we will just create an empty array
         // to hold the next value, allowing us to create the arrays to hold final
         // values at the correct depth. Then we'll keep digging into the array.
-        if ( !isset( $array[$key] ) || !is_array( $array[$key] ) )
+        if ( !isset( $array[ $key ] ) || !is_array( $array[ $key ] ) )
         {
             $array[ $key ] = [] ;
         }
