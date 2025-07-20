@@ -12,17 +12,13 @@ The oihana/php-core library provides pure utility functions (no side effects), o
 ### 🔢 Arrays (oihana\core\arrays)
 
 Advanced array utilities:
-- Access and mutation:
-- get(), set(), delete(), exists()
-- Transformations:
-- flatten(), tail(), unique(), shuffle(), swap()
-- toArray(), stub()
-- Structure detection:
-- isIndexed(), hasIntKeys(), hasStringKeys()
+- Access and mutation: get(), set(), delete(), exists()
+- Transformations: flatten(), tail(), unique(), shuffle(), swap(), toArray(), stub()
+- Structure detection: isIndexed(), hasIntKeys(), hasStringKeys()
 
 ### 📅 Date (oihana\core\date)
 
-Date manipulation and validation:
+Date manipulation and validation :
 - formatDateTime()
 - isDate(), isValidTimezone()
 
@@ -39,7 +35,7 @@ Lightweight object manipulation:
 - set() — deep set a value in a nested structure
 
 ### 🧠 Reflections (oihana\core\reflections)
-- Introspect callable/function definitions:
+Introspect callable/function definitions:
 - getFunctionInfo()
 
 ### ✍️ Strings (oihana\core\strings)
