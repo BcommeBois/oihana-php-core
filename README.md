@@ -5,6 +5,20 @@
 A lightweight and modular core library for modern PHP development.
 Designed for clarity, extensibility, and performance, with a consistent, functional-style API.
 
+## 📚 Documentation
+
+Full project documentation is available at:
+👉 https://bcommebois.github.io/oihana-php-core
+
+## Installation
+> **Requires [PHP 8.4+](https://php.net/releases/)**
+
+Install via [Composer](https://getcomposer.org):
+
+```bash
+composer require oihana/php-core
+```
+
 ## ✨ Features
 
 The oihana/php-core library provides pure utility functions (no side effects), organized into logical, reusable packages:
@@ -51,41 +65,6 @@ String formatting, case conversions, and utilities:
 
 ⚙️ Utils
 - ifNull() — return a fallback if a value is null
-
-## 📚 Documentation
-
-Full project documentation is available at:
-
-👉 https://bcommebois.github.io/oihana-php-core
-
-## Installation and Usage
-
-> **Requires [PHP 8.4+](https://php.net/releases/)**
-
-Install via [Composer](https://getcomposer.org):
-
-```bash
-composer require oihana/php-core
-```
-
-Usage example: 
-```php
-use function oihana\core\arrays\get;
-
-$array = [
-    'user' => [
-        'name' => 'Marc',
-        'address' => [
-            'city' => 'Paris',
-            'geo' => ['lat' => 48.8566, 'lng' => 2.3522],
-        ],
-    ],
-];
-
-// Retrieve nested value via dot notation:
-$city = get($array, 'user.address.city', 'Unknown');
-echo $city; // Outputs: Paris
-```
 
 ## ✅ Running Unit Tests
 
