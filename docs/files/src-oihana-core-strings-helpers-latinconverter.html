@@ -98,7 +98,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">kebab.php</h2>
+        <h2 class="phpdocumentor-content__title">LatinConverter.php</h2>
 
         
         
@@ -109,13 +109,20 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-strings-kebab.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-strings-helpers-latinconverter.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
 
 
 
+    <h4 id="toc-classes">
+        Classes
+        <a href="files/src-oihana-core-strings-helpers-latinconverter.html#toc-classes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/oihana-core-strings-helpers-LatinConverter.html"><abbr title="\oihana\core\strings\helpers\LatinConverter">LatinConverter</abbr></a></dt>    </dl>
 
 
 
@@ -123,107 +130,16 @@
 
 
 
-<h4 id="toc-functions">
-    Functions
-    <a href="files/src-oihana-core-strings-kebab.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
-
-</h4>
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-strings.html#function_kebab">kebab()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>Converts a camelCase or PascalCase string into kebab-case (lowercase with hyphens).</dd>
-
-    </dl>
 
 
         
 
-            <section class="phpdocumentor-functions">
-        <h3 class="phpdocumentor-elements__header" id="functions">
-            Functions
-            <a href="files/src-oihana-core-strings-kebab.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
-
-        </h3>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_kebab">
-        kebab()
-        <a href="namespaces/oihana-core-strings.html#function_kebab" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/kebab.php"><a href="files/src-oihana-core-strings-kebab.html"><abbr title="src/oihana/core/strings/kebab.php">kebab.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">24</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Converts a camelCase or PascalCase string into kebab-case (lowercase with hyphens).</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">kebab</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"><p>Internally uses the <code class="prettyprint">snake()</code> function with <code class="prettyprint">-</code> as the separator.
-Useful for URL slugs, CSS class names, or readable identifiers.</p>
-<p>If the input is <code class="prettyprint">null</code> or empty, an empty string is returned.</p>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$source</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The input string to transform.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="namespaces/oihana-core-strings.html#function_kebab#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo kebab(&quot;helloWorld&quot;);      // Outputs: &quot;hello-world&quot;
-echo kebab(&quot;HelloWorld&quot;);      // Outputs: &quot;hello-world&quot;
-echo kebab(&quot;XMLHttpRequest&quot;);  // Outputs: &quot;xml-http-request&quot;
-echo kebab(null);              // Outputs: &quot;&quot;
-</code></pre>
-</section>
-
-                                    </dd>
-                                            </dl>
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>The kebab-case representation of the input.</p>
-</section>
-
-            </section>
-
-</article>
-            </section>
-
+        
         <div class="phpdocumentor-modal" id="source-view">
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/kebab.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/helpers/LatinConverter.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -322,17 +238,11 @@ echo kebab(null);              // Outputs: &quot;&quot;
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-strings-kebab.html#toc-functions">Functions</a></li>
-                                    </ul>
+                                                                                                        <li><a href="files/src-oihana-core-strings-helpers-latinconverter.html#toc-classes">Classes</a></li>
+                                                                                                                    </ul>
             </li>
 
             
-                            <li class="phpdocumentor-on-this-page-section__title">Functions</li>
-                <li>
-                    <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_kebab">kebab()</a></li>
-                                            </ul>
-                </li>
                     </ul>
     </section>
 
@@ -350,7 +260,7 @@ echo kebab(null);              // Outputs: &quot;&quot;
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-strings-kebab.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-strings-helpers-latinconverter.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

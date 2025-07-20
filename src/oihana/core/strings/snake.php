@@ -5,26 +5,31 @@ namespace oihana\core\strings ;
 use oihana\core\strings\helpers\SnakeCache;
 
 /**
- * Convert a string to snake case.
+ * Converts a string to snake_case (or a custom delimiter).
  *
- * @param ?string $source The string expression to format.
- * @return string The snake string.
+ * This function transforms camelCase, PascalCase, and space-separated words
+ * into snake case or any delimiter specified.
+ *
+ * It uses an internal cache (via `SnakeCache`) to optimize repeated calls with the same input.
+ * The cache can be flushed by calling `SnakeCache::flush()`.
+ *
+ * @param ?string $source The input string to convert.
+ * @param string $delimiter The delimiter to use (default is underscore '_').
+ * @return string The converted snake_case (or custom delimiter) string.
  *
  * @example
- * <p>Basic Examples: </p>
- * <code>
- * echo snake("helloWorld"); // Outputs: "hello_world"
- * echo snake("HelloWorld"); // Outputs: "hello_world"
- * echo snake("Hello World"); // Outputs: "hello_world"
- * echo snake('helloWorld', '-'); // Outputs : "hello-world"
- * </code>
+ * ```php
+ * echo snake("helloWorld");     // Outputs: "hello_world"
+ * echo snake("HelloWorld");     // Outputs: "hello_world"
+ * echo snake("Hello World");    // Outputs: "hello_world"
+ * echo snake("helloWorld", "-"); // Outputs: "hello-world"
+ * ```
  *
- * <p>Flush the snake cache</p>
- * <p>The method use an internal cache by default, you can flush the snake cache with the static SnakeCache class.</p>
- * <code>
- * use oihana\core\strings\helpers\SnakeCache ;
- * SnakeCache::flush() ;
- * </code>
+ * Clear the internal cache if needed
+ * ```php
+ * use oihana\core\strings\helpers\SnakeCache;
+ * SnakeCache::flush();
+ * ```
  */
 function snake( ?string $source , string $delimiter = '_' ) : string
 {

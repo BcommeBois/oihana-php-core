@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Converts a value to string.</dd>
+<dd>Converts a value to a string representation.</dd>
 
     </dl>
 
@@ -156,19 +156,23 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/toString.php"><a href="files/src-oihana-core-strings-tostring.html"><abbr title="src/oihana/core/strings/toString.php">toString.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Converts a value to string.</p>
+        <p class="phpdocumentor-summary">Converts a value to a string representation.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">toString</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>An empty string is returned for null values.
-The sign of -0.0 is preserved as &quot;-0&quot;.</p>
+        <section class="phpdocumentor-description"><ul>
+<li>Returns an empty string for <code class="prettyprint">null</code> values.</li>
+<li>Preserves the sign of <code class="prettyprint">-0.0</code> as the string &quot;-0&quot;.</li>
+<li>Converts arrays recursively by flattening and joining with commas.</li>
+<li>Accepts objects implementing <code class="prettyprint">Stringable</code>.</li>
+</ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -185,12 +189,41 @@ The sign of -0.0 is preserved as &quot;-0&quot;.</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_toString#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo toString(null);        // Outputs: &quot;&quot;
+echo toString(&quot;hello&quot;);     // Outputs: &quot;hello&quot;
+echo toString(123);         // Outputs: &quot;123&quot;
+echo toString(-0.0);        // Outputs: &quot;-0&quot;
+echo toString([1, 2, 3]);   // Outputs: &quot;1,2,3&quot;
+echo toString([[1, 2], 3]); // Outputs: &quot;1,2,3&quot;
+</code></pre>
+<p>With Stringable object:</p>
+<pre class="prettyprint"><code class="language-php">class Foo implements Stringable
+{
+    public function __toString() { return &quot;foo&quot;; }
+}
+echo toString(new Foo()); // Outputs: &quot;foo&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The converted string.</p>
+                <section class="phpdocumentor-description"><p>The string representation of the value.</p>
 </section>
 
             </section>

@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Convert a string to snake case.</dd>
+<dd>Converts a string to snake_case (or a custom delimiter).</dd>
 
     </dl>
 
@@ -156,18 +156,23 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/snake.php"><a href="files/src-oihana-core-strings-snake.html"><abbr title="src/oihana/core/strings/snake.php">snake.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Convert a string to snake case.</p>
+        <p class="phpdocumentor-summary">Converts a string to snake_case (or a custom delimiter).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">snake</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$delimiter</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;_&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function transforms camelCase, PascalCase, and space-separated words
+into snake case or any delimiter specified.</p>
+<p>It uses an internal cache (via <code class="prettyprint">SnakeCache</code>) to optimize repeated calls with the same input.
+The cache can be flushed by calling <code class="prettyprint">SnakeCache::flush()</code>.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,7 +180,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The string expression to format.</p>
+                    <section class="phpdocumentor-description"><p>The input string to convert.</p>
 </section>
 
             </dd>
@@ -184,7 +189,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">&#039;_&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The delimiter to use (default is underscore '_').</p>
+</section>
+
             </dd>
             </dl>
 
@@ -200,19 +207,15 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Basic Examples: </p>
-<code class="prettyprint">
-echo snake("helloWorld"); // Outputs: "hello_world"
-echo snake("HelloWorld"); // Outputs: "hello_world"
-echo snake("Hello World"); // Outputs: "hello_world"
-echo snake('helloWorld', '-'); // Outputs : "hello-world"
-</code>
-<p>Flush the snake cache</p>
-<p>The method use an internal cache by default, you can flush the snake cache with the static SnakeCache class.</p>
-<code class="prettyprint">
-use oihana\core\strings\helpers\SnakeCache ;
-SnakeCache::flush() ;
-</code>
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo snake(&quot;helloWorld&quot;);     // Outputs: &quot;hello_world&quot;
+echo snake(&quot;HelloWorld&quot;);     // Outputs: &quot;hello_world&quot;
+echo snake(&quot;Hello World&quot;);    // Outputs: &quot;hello_world&quot;
+echo snake(&quot;helloWorld&quot;, &quot;-&quot;); // Outputs: &quot;hello-world&quot;
+</code></pre>
+<p>Clear the internal cache if needed</p>
+<pre class="prettyprint"><code class="language-php">use oihana\core\strings\helpers\SnakeCache;
+SnakeCache::flush();
+</code></pre>
 </section>
 
                                     </dd>
@@ -222,7 +225,7 @@ SnakeCache::flush() ;
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The snake string.</p>
+                <section class="phpdocumentor-description"><p>The converted snake_case (or custom delimiter) string.</p>
 </section>
 
             </section>

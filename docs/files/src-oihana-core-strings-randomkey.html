@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Generates a random key.</dd>
+<dd>Generates a random key string, optionally prefixed with a given string and separated by a custom separator.</dd>
 
     </dl>
 
@@ -156,18 +156,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/randomKey.php"><a href="files/src-oihana-core-strings-randomkey.html"><abbr title="src/oihana/core/strings/randomKey.php">randomKey.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Generates a random key.</p>
+        <p class="phpdocumentor-summary">Generates a random key string, optionally prefixed with a given string and separated by a custom separator.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">randomKey</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prefix</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;_&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>The random part is generated using <code class="prettyprint">mt_rand()</code> which provides a pseudo-random integer.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,7 +177,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The expression to format.</p>
+                    <section class="phpdocumentor-description"><p>Optional prefix to prepend to the key. If null or empty, no prefix is added.</p>
 </section>
 
             </dd>
@@ -184,19 +186,38 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">&#039;_&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The separator characters/expression of the random key.</p>
+                    <section class="phpdocumentor-description"><p>Separator string between the prefix and the random number. Defaults to underscore '_'.</p>
 </section>
 
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_randomKey#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo randomKey(&quot;user&quot;);       // Possible output: &quot;user_123456789&quot;
+echo randomKey(null);         // Possible output: &quot;987654321&quot;
+echo randomKey(&quot;order&quot;, &quot;-&quot;); // Possible output: &quot;order-456789123&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The new random key.</p>
+                <section class="phpdocumentor-description"><p>The generated random key.</p>
 </section>
 
             </section>

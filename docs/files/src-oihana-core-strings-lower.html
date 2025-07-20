@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Convert the given string to lower-case.</dd>
+<dd>Converts a string to lowercase using multibyte-safe methods when possible.</dd>
 
     </dl>
 
@@ -156,18 +156,22 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/lower.php"><a href="files/src-oihana-core-strings-lower.html"><abbr title="src/oihana/core/strings/lower.php">lower.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Convert the given string to lower-case.</p>
+        <p class="phpdocumentor-summary">Converts a string to lowercase using multibyte-safe methods when possible.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">lower</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function ensures proper transformation of characters beyond ASCII,
+such as accented letters (e.g., 'É' → 'é') or other UTF-8 characters.</p>
+<p>If the string is empty or null, an empty string is returned.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,7 +179,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The string expression to format.</p>
+                    <section class="phpdocumentor-description"><p>The string to convert to lowercase.</p>
 </section>
 
             </dd>
@@ -193,7 +197,18 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>echo lower(&quot;HELLO WORLD&quot;); // Outputs: &quot;hello world&quot;</p>
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo lower(&quot;HELLO WORLD&quot;);
+// Output: &quot;hello world&quot;
+
+echo lower(&quot;École Française&quot;);
+// Output: &quot;école française&quot;
+
+echo lower(null);
+// Output: &quot;&quot;
+
+echo lower(&quot;123-ABC&quot;);
+// Output: &quot;123-abc&quot;
+</code></pre>
 </section>
 
                                     </dd>
@@ -203,7 +218,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The lower-case string.</p>
+                <section class="phpdocumentor-description"><p>The lowercase version of the string.</p>
 </section>
 
             </section>

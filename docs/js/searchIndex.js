@@ -118,7 +118,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\ifNull\u0028\u0029",
             "name": "ifNull",
-            "summary": "If\u0020the\u0020value\u0020is\u0020null\u0020returns\u0020the\u0020default\u0020value\u0020or\u0020return\u0020the\u0020value.",
+            "summary": "Returns\u0020the\u0020given\u0020value\u0020if\u0020it\u0020is\u0020not\u0020null\u003B\u0020otherwise,\u0020returns\u0020the\u0020default\u0020value.",
             "url": "namespaces/oihana-core.html#function_ifNull"
         },                {
             "fqsen": "\\oihana\\core\\maths\\ceilValue\u0028\u0029",
@@ -153,18 +153,33 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\strings\\camel\u0028\u0029",
             "name": "camel",
-            "summary": "Returns\u0020the\u0020camel\u0020case\u0020representation\u0020of\u0020the\u0020specific\u0020expression.",
+            "summary": "Converts\u0020a\u0020string\u0020to\u0020camelCase\u0020format.",
             "url": "namespaces/oihana-core-strings.html#function_camel"
         },                {
             "fqsen": "\\oihana\\core\\strings\\fastFormat\u0028\u0029",
             "name": "fastFormat",
-            "summary": "Quick\u0020and\u0020fast\u0020format\u0020of\u0020a\u0020string\u0020using\u0020indexed\u0020parameters\u0020only.",
+            "summary": "Quickly\u0020formats\u0020a\u0020string\u0020using\u0020indexed\u0020placeholders\u0020and\u0020arguments.",
             "url": "namespaces/oihana-core-strings.html#function_fastFormat"
         },                {
             "fqsen": "\\oihana\\core\\strings\\formatRequestArgs\u0028\u0029",
             "name": "formatRequestArgs",
-            "summary": "Indicates\u0020if\u0020the\u0020passed\u002Din\u0020string\u0020is\u0020a\u0020valid\u0020luhn\u0020code.",
+            "summary": "Builds\u0020a\u0020query\u0020string\u0020\u0028\u0060\u003Fkey\u003Dvalue\u0026...\u0060\u0029\u0020from\u0020an\u0020associative\u0020array.",
             "url": "namespaces/oihana-core-strings.html#function_formatRequestArgs"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\helpers\\LatinConverter",
+            "name": "LatinConverter",
+            "summary": "",
+            "url": "classes/oihana-core-strings-helpers-LatinConverter.html"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\helpers\\LatinConverter\u003A\u003AtoAscii\u0028\u0029",
+            "name": "toAscii",
+            "summary": "Converts\u0020a\u0020string\u0020by\u0020replacing\u0020accented\u0020Latin\u0020characters\u0020with\u0020their\u0020ASCII\u0020equivalents.",
+            "url": "classes/oihana-core-strings-helpers-LatinConverter.html#method_toAscii"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\helpers\\LatinConverter\u003A\u003ALATINS",
+            "name": "LATINS",
+            "summary": "Mapping\u0020of\u0020accented\u0020Latin\u0020characters\u0020to\u0020simplified\u0020ASCII.",
+            "url": "classes/oihana-core-strings-helpers-LatinConverter.html#constant_LATINS"
         },                {
             "fqsen": "\\oihana\\core\\strings\\helpers\\SnakeCache",
             "name": "SnakeCache",
@@ -198,57 +213,52 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\strings\\hyphenate\u0028\u0029",
             "name": "hyphenate",
-            "summary": "Converts\u0020a\u0020camelCased\u0020string\u0020to\u0020a\u0020hyphenated\u0020\u0028kebab\u002Dcase\u0029\u0020string.",
+            "summary": "Converts\u0020a\u0020camelCase\u0020or\u0020PascalCase\u0020string\u0020to\u0020a\u0020hyphenated\u0020\u0028kebab\u002Dcase\u0029\u0020string.",
             "url": "namespaces/oihana-core-strings.html#function_hyphenate"
         },                {
             "fqsen": "\\oihana\\core\\strings\\isRegexp\u0028\u0029",
             "name": "isRegexp",
-            "summary": "Indicates\u0020if\u0020the\u0020passed\u002Din\u0020expression\u0020is\u0020a\u0020Regexp.",
+            "summary": "Determines\u0020whether\u0020a\u0020given\u0020string\u0020is\u0020a\u0020valid\u0020regular\u0020expression\u0020pattern.",
             "url": "namespaces/oihana-core-strings.html#function_isRegexp"
         },                {
             "fqsen": "\\oihana\\core\\strings\\kebab\u0028\u0029",
             "name": "kebab",
-            "summary": "Converts\u0020a\u0020string\u0020to\u0020a\u0020kebab\u0020cases\u0020string.",
+            "summary": "Converts\u0020a\u0020camelCase\u0020or\u0020PascalCase\u0020string\u0020into\u0020kebab\u002Dcase\u0020\u0028lowercase\u0020with\u0020hyphens\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_kebab"
-        },                {
-            "fqsen": "\\oihana\\core\\strings\\LATINS",
-            "name": "LATINS",
-            "summary": "",
-            "url": "namespaces/oihana-core-strings.html#constant_LATINS"
         },                {
             "fqsen": "\\oihana\\core\\strings\\latinize\u0028\u0029",
             "name": "latinize",
-            "summary": "Convert\u0020accents\u0020\u0028diacritics\u0029\u0020from\u0020strings\u0020to\u0020latin\u0020characters.",
+            "summary": "Converts\u0020a\u0020string\u0020by\u0020replacing\u0020accented\u0020Latin\u0020characters\u0020with\u0020their\u0020ASCII\u0020equivalents.",
             "url": "namespaces/oihana-core-strings.html#function_latinize"
         },                {
             "fqsen": "\\oihana\\core\\strings\\lower\u0028\u0029",
             "name": "lower",
-            "summary": "Convert\u0020the\u0020given\u0020string\u0020to\u0020lower\u002Dcase.",
+            "summary": "Converts\u0020a\u0020string\u0020to\u0020lowercase\u0020using\u0020multibyte\u002Dsafe\u0020methods\u0020when\u0020possible.",
             "url": "namespaces/oihana-core-strings.html#function_lower"
         },                {
             "fqsen": "\\oihana\\core\\strings\\luhn\u0028\u0029",
             "name": "luhn",
-            "summary": "Indicates\u0020if\u0020the\u0020passed\u002Din\u0020string\u0020is\u0020a\u0020valid\u0020luhn\u0020code.",
+            "summary": "Validates\u0020whether\u0020a\u0020given\u0020string\u0020is\u0020a\u0020valid\u0020Luhn\u0020code\u0020\u0028mod\u002010\u0020checksum\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_luhn"
         },                {
             "fqsen": "\\oihana\\core\\strings\\randomKey\u0028\u0029",
             "name": "randomKey",
-            "summary": "Generates\u0020a\u0020random\u0020key.",
+            "summary": "Generates\u0020a\u0020random\u0020key\u0020string,\u0020optionally\u0020prefixed\u0020with\u0020a\u0020given\u0020string\u0020and\u0020separated\u0020by\u0020a\u0020custom\u0020separator.",
             "url": "namespaces/oihana-core-strings.html#function_randomKey"
         },                {
             "fqsen": "\\oihana\\core\\strings\\snake\u0028\u0029",
             "name": "snake",
-            "summary": "Convert\u0020a\u0020string\u0020to\u0020snake\u0020case.",
+            "summary": "Converts\u0020a\u0020string\u0020to\u0020snake_case\u0020\u0028or\u0020a\u0020custom\u0020delimiter\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_snake"
         },                {
             "fqsen": "\\oihana\\core\\strings\\toString\u0028\u0029",
             "name": "toString",
-            "summary": "Converts\u0020a\u0020value\u0020to\u0020string.",
+            "summary": "Converts\u0020a\u0020value\u0020to\u0020a\u0020string\u0020representation.",
             "url": "namespaces/oihana-core-strings.html#function_toString"
         },                {
             "fqsen": "\\oihana\\core\\strings\\urlencode\u0028\u0029",
             "name": "urlencode",
-            "summary": "Encodes\u0020the\u0020specified\u0020uri\u0020according\u0020to\u0020RFC\u00203986.",
+            "summary": "Encodes\u0020the\u0020specified\u0020URI\u0020according\u0020to\u0020RFC\u00203986.",
             "url": "namespaces/oihana-core-strings.html#function_urlencode"
         },                {
             "fqsen": "\\",

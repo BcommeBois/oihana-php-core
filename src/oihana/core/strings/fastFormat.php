@@ -5,22 +5,41 @@ namespace oihana\core\strings ;
 use oihana\enums\Char;
 
 /**
- * Quick and fast format of a string using indexed parameters only.
- * <p>Usage :</p>
- * <ul>
- * <li><code>fastFormat( $pattern, ...args ):String</code></li>
- * <li><code>fastFormat( $pattern, [arg0,arg1,arg2,...] )</code></li>
- * </ul>
- * <pre>
- * use function core\strings\fastFormat ;
+ * Quickly formats a string using indexed placeholders and arguments.
  *
- * echo fastFormat( "hello {0}", "world" ) );
- * //output: "hello world"
+ * This function replaces indexed tokens like `{0}`, `{1}`, etc. in a pattern string
+ * with corresponding values from a list of arguments or an array.
  *
- * echo fastFormat( "hello {0} {1} {2}", [ "the", "big", "world" ] ) );
- * //output: "hello the big world"
- * </pre>
- * @return string The formatted string expression.
+ * - If arguments are passed as a list: `fastFormat("{0} {1}", "hello", "world")`
+ * - If passed as a single array: `fastFormat("{0} {1}", ["hello", "world"])`
+ *
+ * @param string|null $pattern The format string containing indexed placeholders.
+ * @param mixed ...$args       The values to insert, either as variadic args or a single array.
+ *
+ * @return string The formatted string with placeholders replaced by values.
+ *
+ * @example
+ * ```php
+ * echo fastFormat("Hello {0}", "World");
+ * // Output: "Hello World"
+ *
+ * echo fastFormat("Coordinates: {0}, {1}", [45.0, -73.0]);
+ * // Output: "Coordinates: 45, -73"
+ *
+ * echo fastFormat("User {0} has {1} points", "Alice", 1500);
+ * // Output: "User Alice has 1500 points"
+ *
+ * echo fastFormat("Missing: {0}, {1}", "only one");
+ * // Output: "Missing: only one, {1}" (missing index stays unchanged)
+ *
+ * class Person {
+ *     public function __toString(): string {
+ *         return "John Doe";
+ *     }
+ * }
+ * echo fastFormat("Name: {0}", new Person());
+ * // Output: "Name: John Doe"
+ * ```
  */
 function fastFormat( ?string $pattern , ...$args ) :string
 {

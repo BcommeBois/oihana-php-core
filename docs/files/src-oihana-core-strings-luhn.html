@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>Indicates if the passed-in string is a valid luhn code.</dd>
+<dd>Validates whether a given string is a valid Luhn code (mod 10 checksum).</dd>
 
     </dl>
 
@@ -156,18 +156,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/luhn.php"><a href="files/src-oihana-core-strings-luhn.html"><abbr title="src/oihana/core/strings/luhn.php">luhn.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Indicates if the passed-in string is a valid luhn code.</p>
+        <p class="phpdocumentor-summary">Validates whether a given string is a valid Luhn code (mod 10 checksum).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">luhn</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$number</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lazy</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>The Luhn algorithm is commonly used to validate credit card numbers,
+IMEI numbers, and other identification codes.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,7 +178,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The expression to evaluate.</p>
+                    <section class="phpdocumentor-description"><p>The input string to validate.</p>
 </section>
 
             </dd>
@@ -184,19 +187,39 @@
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Indicates if the validation is lazy (the none-numeric parameters are removed)</p>
+                    <section class="phpdocumentor-description"><p>If true, non-digit characters will be removed before validation.
+If false, the string must contain only digits.</p>
 </section>
 
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_luhn#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo luhn(&quot;79927398713&quot;);           // Outputs: true (valid Luhn)
+echo luhn(&quot;7992 7398 713&quot;, true);   // Outputs: true (valid Luhn, spaces removed)
+echo luhn(&quot;1234&quot;);                  // Outputs: false (invalid Luhn)
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Indicates if the string is a luhn expression.</p>
+                <section class="phpdocumentor-description"><p>Returns true if the input passes the Luhn check, false otherwise.</p>
 </section>
 
             </section>

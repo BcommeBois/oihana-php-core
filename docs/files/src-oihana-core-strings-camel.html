@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Returns the camel case representation of the specific expression.</dd>
+<dd>Converts a string to camelCase format.</dd>
 
     </dl>
 
@@ -156,18 +156,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/camel.php"><a href="files/src-oihana-core-strings-camel.html"><abbr title="src/oihana/core/strings/camel.php">camel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns the camel case representation of the specific expression.</p>
+        <p class="phpdocumentor-summary">Converts a string to camelCase format.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">camel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separators</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[&quot;_&quot;, &quot;-&quot;, &quot;/&quot;]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function transforms the input string by replacing specified separator characters
+with spaces, capitalizing each word, removing spaces, and then lowercasing the first character.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,7 +178,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The expression to camelcase.</p>
+                    <section class="phpdocumentor-description"><p>The input string to convert to camelCase. If null or empty, returns an empty string.</p>
 </section>
 
             </dd>
@@ -184,19 +187,41 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[&quot;_&quot;, &quot;-&quot;, &quot;/&quot;]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The enumeration of separators to replace in the word expression.</p>
+                    <section class="phpdocumentor-description"><p>An array of separator characters to be replaced by spaces before conversion.
+Defaults to [&quot;_&quot;, &quot;-&quot;, &quot;/&quot;].</p>
 </section>
 
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_camel#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo camel('hello_world');        // Outputs: helloWorld
+echo camel('foo-bar_baz');        // Outputs: fooBarBaz
+echo camel('user/name');          // Outputs: userName
+echo camel('alreadyCamelCase');   // Outputs: alreadyCamelCase
+echo camel(null);                 // Outputs: (empty string)
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The new camelCase representation.</p>
+                <section class="phpdocumentor-description"><p>The camelCase representation of the input string.</p>
 </section>
 
             </section>

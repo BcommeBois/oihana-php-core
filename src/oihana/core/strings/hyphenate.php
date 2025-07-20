@@ -3,28 +3,41 @@
 namespace oihana\core\strings ;
 
 /**
- * Converts a camelCased string to a hyphenated (kebab-case) string.
+ * Converts a camelCase or PascalCase string to a hyphenated (kebab-case) string.
  *
- * @param string|null $source The string to hyphenate.
- * @return string The hyphenated string.
+ * This is useful for transforming class names or identifiers into URL- or CSS-friendly format.
+ *
+ * Examples:
+ * - "helloWorld" → "hello-world"
+ * - "HTMLParser" → "html-parser"
+ * - "aTestString" → "a-test-string"
+ *
+ * @param string|null $source The camelCase or PascalCase string to convert.
+ * @return string The hyphenated (kebab-case) string.
  *
  * @example
- * echo hyphenate("helloWorld"); // Outputs: "hello-world"
+ * ```php
+ * echo hyphenate("helloWorld");
+ * // Output: "hello-world"
+ *
+ * echo hyphenate("SimpleXMLParser");
+ * // Output: "simple-xml-parser"
+ *
+ * echo hyphenate("AString");
+ * // Output: "a-string"
+ *
+ * echo hyphenate(null);
+ * // Output: ""
+ * ```
  */
 function hyphenate( ?string $source ): string
 {
-    if ( !is_string( $source ) || $source === '' )
+    if ( !is_string($source) || $source === '' )
     {
-        return '' ;
+        return '';
     }
-    return preg_replace_callback
-    (
-        '/[A-Z]/',
-        function ($matches) use ( $source )
-        {
-            $pos = strpos( $source , $matches[0] ) ;
-            return $pos === 0 ? strtolower($matches[0]) : '-' . strtolower($matches[0]);
-        },
-        $source
-    );
+
+    // Insert a hyphen before each uppercase letter (except the first char), then lowercase the result
+    $hyphenated = preg_replace('/(?<!^)[A-Z]/', '-$0', $source);
+    return strtolower($hyphenated);
 }

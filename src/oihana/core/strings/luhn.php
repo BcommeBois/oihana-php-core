@@ -3,10 +3,22 @@
 namespace oihana\core\strings ;
 
 /**
- * Indicates if the passed-in string is a valid luhn code.
- * @param string $number The expression to evaluate.
- * @param bool $lazy Indicates if the validation is lazy (the none-numeric parameters are removed)
- * @return bool Indicates if the string is a luhn expression.
+ * Validates whether a given string is a valid Luhn code (mod 10 checksum).
+ *
+ * The Luhn algorithm is commonly used to validate credit card numbers,
+ * IMEI numbers, and other identification codes.
+ *
+ * @param string $number The input string to validate.
+ * @param bool $lazy If true, non-digit characters will be removed before validation.
+ *                   If false, the string must contain only digits.
+ * @return bool Returns true if the input passes the Luhn check, false otherwise.
+ *
+ * @example
+ * ```php
+ * echo luhn("79927398713");           // Outputs: true (valid Luhn)
+ * echo luhn("7992 7398 713", true);   // Outputs: true (valid Luhn, spaces removed)
+ * echo luhn("1234");                  // Outputs: false (invalid Luhn)
+ * ```
  */
 function luhn( string $number , bool $lazy = false ): bool
 {

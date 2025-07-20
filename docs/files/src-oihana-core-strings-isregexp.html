@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>Indicates if the passed-in expression is a Regexp.</dd>
+<dd>Determines whether a given string is a valid regular expression pattern.</dd>
 
     </dl>
 
@@ -156,18 +156,22 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/isRegexp.php"><a href="files/src-oihana-core-strings-isregexp.html"><abbr title="src/oihana/core/strings/isRegexp.php">isRegexp.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Indicates if the passed-in expression is a Regexp.</p>
+        <p class="phpdocumentor-summary">Determines whether a given string is a valid regular expression pattern.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">isRegexp</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function checks if the string can be safely used in a <code class="prettyprint">preg_match()</code> call.
+It does not validate semantic correctness (e.g., useless patterns), only syntax.</p>
+<p>⚠️ Internally uses the <code class="prettyprint">@</code> operator to suppress warnings from <code class="prettyprint">preg_match()</code>.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,15 +179,41 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The string to test as a potential regex pattern.</p>
+</section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_isRegexp#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">isRegexp('/^[a-z]+$/');       // true
+isRegexp('/[0-9]{3,}/');      // true
+isRegexp('not a regex');      // false (missing delimiters)
+isRegexp('/unterminated');    // false
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p><code class="prettyprint">true</code> if the string is a valid PCRE regular expression, <code class="prettyprint">false</code> otherwise.</p>
+</section>
+
             </section>
 
 </article>

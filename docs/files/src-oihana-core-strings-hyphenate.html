@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Converts a camelCased string to a hyphenated (kebab-case) string.</dd>
+<dd>Converts a camelCase or PascalCase string to a hyphenated (kebab-case) string.</dd>
 
     </dl>
 
@@ -156,18 +156,26 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/hyphenate.php"><a href="files/src-oihana-core-strings-hyphenate.html"><abbr title="src/oihana/core/strings/hyphenate.php">hyphenate.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Converts a camelCased string to a hyphenated (kebab-case) string.</p>
+        <p class="phpdocumentor-summary">Converts a camelCase or PascalCase string to a hyphenated (kebab-case) string.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">hyphenate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This is useful for transforming class names or identifiers into URL- or CSS-friendly format.</p>
+<p>Examples:</p>
+<ul>
+<li>&quot;helloWorld&quot; → &quot;hello-world&quot;</li>
+<li>&quot;HTMLParser&quot; → &quot;html-parser&quot;</li>
+<li>&quot;aTestString&quot; → &quot;a-test-string&quot;</li>
+</ul>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,7 +183,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The string to hyphenate.</p>
+                    <section class="phpdocumentor-description"><p>The camelCase or PascalCase string to convert.</p>
 </section>
 
             </dd>
@@ -193,7 +201,18 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>echo hyphenate(&quot;helloWorld&quot;); // Outputs: &quot;hello-world&quot;</p>
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo hyphenate(&quot;helloWorld&quot;);
+// Output: &quot;hello-world&quot;
+
+echo hyphenate(&quot;SimpleXMLParser&quot;);
+// Output: &quot;simple-xml-parser&quot;
+
+echo hyphenate(&quot;AString&quot;);
+// Output: &quot;a-string&quot;
+
+echo hyphenate(null);
+// Output: &quot;&quot;
+</code></pre>
 </section>
 
                                     </dd>
@@ -203,7 +222,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The hyphenated string.</p>
+                <section class="phpdocumentor-description"><p>The hyphenated (kebab-case) string.</p>
 </section>
 
             </section>

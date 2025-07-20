@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Quick and fast format of a string using indexed parameters only.</dd>
+<dd>Quickly formats a string using indexed placeholders and arguments.</dd>
 
     </dl>
 
@@ -156,29 +156,23 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/fastFormat.php"><a href="files/src-oihana-core-strings-fastformat.html"><abbr title="src/oihana/core/strings/fastFormat.php">fastFormat.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Quick and fast format of a string using indexed parameters only.</p>
+        <p class="phpdocumentor-summary">Quickly formats a string using indexed placeholders and arguments.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">fastFormat</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__variadic-operator">...</span><span class="phpdocumentor-signature__argument__name">$args</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>Usage :</p>
+        <section class="phpdocumentor-description"><p>This function replaces indexed tokens like <code class="prettyprint">{0}</code>, <code class="prettyprint">{1}</code>, etc. in a pattern string
+with corresponding values from a list of arguments or an array.</p>
 <ul>
-<li><code class="prettyprint">fastFormat( $pattern, ...args ):String</code></li>
-<li><code class="prettyprint">fastFormat( $pattern, [arg0,arg1,arg2,...] )</code></li>
+<li>If arguments are passed as a list: <code class="prettyprint">fastFormat(&quot;{0} {1}&quot;, &quot;hello&quot;, &quot;world&quot;)</code></li>
+<li>If passed as a single array: <code class="prettyprint">fastFormat(&quot;{0} {1}&quot;, [&quot;hello&quot;, &quot;world&quot;])</code></li>
 </ul>
-<pre class="prettyprint">
-use function core\strings\fastFormat ;
-<p>echo fastFormat( &quot;hello {0}&quot;, &quot;world&quot; ) );
-//output: &quot;hello world&quot;</p>
-<p>echo fastFormat( &quot;hello {0} {1} {2}&quot;, [ &quot;the&quot;, &quot;big&quot;, &quot;world&quot; ] ) );
-//output: &quot;hello the big world&quot;
-</pre></p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -188,24 +182,63 @@ use function core\strings\fastFormat ;
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The format string containing indexed placeholders.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$args</span>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The values to insert, either as variadic args or a single array.</p>
+</section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_fastFormat#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo fastFormat(&quot;Hello {0}&quot;, &quot;World&quot;);
+// Output: &quot;Hello World&quot;
+
+echo fastFormat(&quot;Coordinates: {0}, {1}&quot;, [45.0, -73.0]);
+// Output: &quot;Coordinates: 45, -73&quot;
+
+echo fastFormat(&quot;User {0} has {1} points&quot;, &quot;Alice&quot;, 1500);
+// Output: &quot;User Alice has 1500 points&quot;
+
+echo fastFormat(&quot;Missing: {0}, {1}&quot;, &quot;only one&quot;);
+// Output: &quot;Missing: only one, {1}&quot; (missing index stays unchanged)
+
+class Person {
+    public function __toString(): string {
+        return &quot;John Doe&quot;;
+    }
+}
+echo fastFormat(&quot;Name: {0}&quot;, new Person());
+// Output: &quot;Name: John Doe&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The formatted string expression.</p>
+                <section class="phpdocumentor-description"><p>The formatted string with placeholders replaced by values.</p>
 </section>
 
             </section>

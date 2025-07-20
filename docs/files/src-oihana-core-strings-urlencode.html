@@ -132,9 +132,9 @@
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_urlencode">urlencode()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;|string    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd>Encodes the specified uri according to RFC 3986.</dd>
+<dd>Encodes the specified URI according to RFC 3986.</dd>
 
     </dl>
 
@@ -156,18 +156,22 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/urlencode.php"><a href="files/src-oihana-core-strings-urlencode.html"><abbr title="src/oihana/core/strings/urlencode.php">urlencode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Encodes the specified uri according to RFC 3986.</p>
+        <p class="phpdocumentor-summary">Encodes the specified URI according to RFC 3986.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">urlencode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uri</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|string</span></code>
+                    <span class="phpdocumentor-signature__name">urlencode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uri</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function applies PHP's built-in urlencode() and then
+decodes certain reserved characters back to their literal forms,
+matching RFC 3986 requirements.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -175,15 +179,42 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The URI string to encode.</p>
+</section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_urlencode#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo urlencode(&quot;https://example.com/foo?bar=baz&amp;qux=1&quot;);
+// Outputs: https%3A%2F%2Fexample.com%2Ffoo%3Fbar%3Dbaz%26qux%3D1
+
+echo urlencode(&quot;hello world!&quot;);
+// Outputs: hello%20world!
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|string</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The RFC 3986 compliant encoded URI string.</p>
+</section>
+
             </section>
 
 </article>
