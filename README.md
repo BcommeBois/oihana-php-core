@@ -6,7 +6,7 @@ Oihana PHP - Core library
 ## Documentation
 
 Read the full documentation of the project on :
-https://bcommebois.github.io/oihana-php-core/![oihana-php-core-logo-512x512.png](.phpdoc/template/assets/images/oihana-php-core-logo-512x512.png)
+- https://bcommebois.github.io/oihana-php-core/
 
 ## Installation and Usage
 
@@ -30,7 +30,7 @@ Run a unique unit test.
 composer run test ./tests/oihana/core/arrays/FlattenTest.php
 ```
 
-## Licences
+## Licence
  * Licence MPL 2.0 : Mozilla Public License Version 2.0
 
 ## About
