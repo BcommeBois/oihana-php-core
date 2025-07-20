@@ -30,6 +30,10 @@ use oihana\core\strings\helpers\SnakeCache;
  * use oihana\core\strings\helpers\SnakeCache;
  * SnakeCache::flush();
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function snake( ?string $source , string $delimiter = '_' ) : string
 {

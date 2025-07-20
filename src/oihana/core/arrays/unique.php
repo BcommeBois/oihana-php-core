@@ -15,9 +15,15 @@ namespace oihana\core\arrays ;
  *   <li><b>SORT_STRING</b> - compare items as strings</li>
  *   <li><b>SORT_LOCALE_STRING</b> - compare items as strings, based on the current locale</li>
  * </ul>
+ *
  * @return array the filtered and re-indexed array.
+ *
  * @link https://php.net/manual/en/function.array-unique.php
  * @link https://php.net/manual/en/function.array-values.php
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function unique( array $array , int $flags = SORT_STRING ) :array
 {

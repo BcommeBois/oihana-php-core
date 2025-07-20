@@ -8,6 +8,10 @@ namespace oihana\core\arrays ;
  * @param array $keys The list of all keys to remove
  * @param bool $clone Indicates if the array is cloned or not.
  * @return array The passed-in array or a clone reference
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function removeKeys( array $array , array $keys = [] , bool $clone = false ): array
 {

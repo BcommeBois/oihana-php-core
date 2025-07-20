@@ -130,7 +130,7 @@
     <span>
                                 &nbsp;: float    </span>
 </dt>
-<dd>Bounds a number value between 2 numbers.</dd>
+<dd>Bounds a number value between two numbers.</dd>
 
     </dl>
 
@@ -151,11 +151,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/numbers/clip.php"><a href="files/src-oihana-core-numbers-clip.html"><abbr title="src/oihana/core/numbers/clip.php">clip.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Bounds a number value between 2 numbers.</p>
+        <p class="phpdocumentor-summary">Bounds a number value between two numbers.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -170,9 +170,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">float</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><ul>
-<li>The value to clamp.</li>
-</ul>
+                    <section class="phpdocumentor-description"><p>The value to clamp.</p>
 </section>
 
             </dd>
@@ -181,9 +179,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">float</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><ul>
-<li>The min value of the range.</li>
-</ul>
+                    <section class="phpdocumentor-description"><p>The minimum value of the range.</p>
 </section>
 
             </dd>
@@ -192,9 +188,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">float</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><ul>
-<li>The max value of the range.</li>
-</ul>
+                    <section class="phpdocumentor-description"><p>The maximum value of the range.</p>
 </section>
 
             </dd>
@@ -208,29 +202,33 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">function</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">instance</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">example</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>clip(4, 5, 10)  ; // 5
-clip(12, 5, 10) ; // 10
-clip(6, 5, 10)  ; // 6</p>
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">clip( 4  , 5 , 10 ) ;  // Returns 5
+clip( 12 , 5 , 10 ) ; // Returns 10
+clip( 6  , 5 , 10 ) ;  // Returns 6
+</code></pre>
 </section>
 
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
                                     </dd>
                                             </dl>
 
@@ -238,7 +236,7 @@ clip(6, 5, 10)  ; // 6</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">float</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>A bound number value between 2 numbers.</p>
+                <section class="phpdocumentor-description"><p>A value bounded between $min and $max.</p>
 </section>
 
             </section>

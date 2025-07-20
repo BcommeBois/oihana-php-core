@@ -7,6 +7,10 @@ namespace oihana\core\arrays ;
  * @param mixed $target The associative array to search within.
  * @param string|array $key The key path as a string or array. If key == '*' all the fields a removed.
  * @return mixed The object.
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function delete( mixed $target , string|array $key , string $separator = '.' ) :mixed
 {

@@ -20,6 +20,10 @@ namespace oihana\core\strings ;
  * echo kebab("XMLHttpRequest");  // Outputs: "xml-http-request"
  * echo kebab(null);              // Outputs: ""
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function kebab( ?string $source): string
 {

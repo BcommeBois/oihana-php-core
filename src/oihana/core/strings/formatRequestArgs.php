@@ -27,6 +27,10 @@ namespace oihana\core\strings ;
  * echo formatRequestArgs(['search' => 'php functions', 'page' => 2]);
  * // Output: "?search=php functions&page=2"
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function formatRequestArgs( array $params, bool $useNow = false ): string
 {

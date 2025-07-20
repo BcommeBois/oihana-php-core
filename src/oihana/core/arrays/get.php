@@ -18,6 +18,10 @@ namespace oihana\core\arrays ;
  *                          Defaults to a dot ('.').
  *
  * @return mixed The value found in the array or the default value if the key does not exist.
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function get( array $array , ?string $key , mixed $default = null , string $separator = '.' ) :mixed
 {

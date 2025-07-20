@@ -23,6 +23,19 @@ use Exception;
  *
  * @throws DateInvalidTimeZoneException If the provided timezone string is invalid.
  * @throws DateMalformedStringException If the input date string is malformed or cannot be parsed.
+ *
+ * @example
+ * ```php
+ * echo formatDateTime('2025-07-20 15:30', 'Europe/Paris', 'Y-m-d H:i');
+ * // Output: '2025-07-20 15:30'
+ *
+ * echo formatDateTime(null, 'UTC');
+ * // Output: current date/time in UTC, e.g., '2025-07-20T13:30:00'
+ * ```
+ *
+ * @package oihana\core\date
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function formatDateTime( ?string $date = null , ?string $timezone = 'Europe/Paris' , ?string $format = 'Y-m-d\TH:i:s' ): string
 {

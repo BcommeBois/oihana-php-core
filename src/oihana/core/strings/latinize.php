@@ -18,6 +18,10 @@ use oihana\core\strings\helpers\LatinConverter;
  * echo latinize('Café Münsterländer'); // Outputs: Cafe Munsterlander
  * echo latinize('¡Hola señor!');      // Outputs: ¡Hola senor!
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function latinize( string $source = '' ): string
 {

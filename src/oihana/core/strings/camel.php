@@ -22,6 +22,10 @@ namespace oihana\core\strings ;
  * echo camel('alreadyCamelCase');   // Outputs: alreadyCamelCase
  * echo camel(null);                 // Outputs: (empty string)
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function camel( ?string $source , array $separators = [ "_" , "-" , "/" ] ): string
 {

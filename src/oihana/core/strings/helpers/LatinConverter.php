@@ -2,6 +2,11 @@
 
 namespace oihana\core\strings\helpers;
 
+/**
+ * @package oihana\core\strings\helpers
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
+ */
 final class LatinConverter
 {
     /**

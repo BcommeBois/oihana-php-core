@@ -12,10 +12,16 @@ namespace oihana\core\arrays ;
  * @return array The modified array reference.
  *
  * @example
+ * ```php
  * $ar = [1, 2, 3, 4];
  * print_r($ar); // [1, 2, 3, 4]
  * $result = swap($ar, 1, 3);
  * print_r($ar); // [1, 4, 3, 2]
+ * ```
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function swap( array $ar , int|string $from = 0, int|string $to = 0, bool $clone = false ): array
 {

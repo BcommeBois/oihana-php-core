@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;|null    </span>
 </dt>
-<dd>Returns detailed reflection information about a given function.</dd>
+<dd>Returns detailed reflection information about a given function or method.</dd>
 
     </dl>
 
@@ -156,11 +156,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/reflections/getFunctionInfo.php"><a href="files/src-oihana-core-reflections-getfunctioninfo.html"><abbr title="src/oihana/core/reflections/getFunctionInfo.php">getFunctionInfo.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns detailed reflection information about a given function.</p>
+        <p class="phpdocumentor-summary">Returns detailed reflection information about a given function or method.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -168,7 +168,8 @@
                     <span class="phpdocumentor-signature__name">getFunctionInfo</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span></code>
 
         <section class="phpdocumentor-description"><p>This function uses PHP's Reflection API to retrieve metadata about
-a function specified by its name, optionally including its namespace.</p>
+a callable (function, method, or closure), including its namespace,
+file location, line numbers, and docblock comment.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -178,30 +179,72 @@ a function specified by its name, optionally including its namespace.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">callable|string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The callable to reflect: function name, closure, or method.</p>
+                    <section class="phpdocumentor-description"><p>The callable to reflect: function name, closure, or method (as string or array).</p>
 </section>
 
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-reflections.html#function_getFunctionInfo#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$info = getFunctionInfo('strlen');
+print_r($info);
+
+$infoMethod = getFunctionInfo([DateTime::class, 'format']);
+print_r($infoMethod);
+
+$closure = function($x) { return $x * 2; };
+$infoClosure = getFunctionInfo($closure);
+print_r($infoClosure);
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>Returns an associative array of function details if the function exists, or null otherwise.
-The array includes:</p>
+The array contains:</p>
 <ul>
-<li>'name'       : Full function name including namespace.</li>
-<li>'namespace'  : Namespace the function belongs to.</li>
-<li>'alias'      : Short function name without namespace.</li>
-<li>'file'       : Path to the file where the function is defined.</li>
-<li>'startLine'  : The starting line number of the function definition.</li>
-<li>'endLine'    : The ending line number of the function definition.</li>
-<li>'isInternal' : Whether the function is internal to PHP.</li>
-<li>'isUser'     : Whether the function is user-defined.</li>
-<li>'comment'    : The function's docblock comment, or null if none.</li>
+<li>'name'       : Full function or method name including class if applicable.</li>
+<li>'namespace'  : Namespace the function or method belongs to.</li>
+<li>'alias'      : Short function or method name without namespace.</li>
+<li>'file'       : Path to the file where the function or method is defined.</li>
+<li>'startLine'  : The starting line number of the function or method definition.</li>
+<li>'endLine'    : The ending line number of the function or method definition.</li>
+<li>'isInternal' : Whether the function or method is internal to PHP.</li>
+<li>'isUser'     : Whether the function or method is user-defined.</li>
+<li>'comment'    : The function's or method's docblock comment, or null if none.</li>
 </ul>
 </section>
 

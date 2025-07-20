@@ -9,7 +9,13 @@ namespace oihana\core\arrays ;
  * @return array A new array without the first element (empty array if input is empty or not an array)
  *
  * @example
+ * ```php
  * print_r(tail([2, 3, 4])); // [3, 4]
+ * ```
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function tail( array $array ): array
 {

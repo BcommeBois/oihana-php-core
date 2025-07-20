@@ -151,7 +151,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/helpers/conditions.php"><a href="files/src-oihana-core-helpers-conditions.html"><abbr title="src/oihana/core/helpers/conditions.php">conditions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">55</span>
 
     </aside>
 
@@ -206,24 +206,45 @@ or filtering data based on multiple conditions.</p>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>// Basic usage with default condition
-$conditions = conditions();
-// Returns: [fn($value) =&gt; is_null($value)]</p>
-<p>// Usage with a single callable condition
-$conditions = conditions(fn($value) =&gt; $value === '');
-// Returns: [fn($value) =&gt; $value === '']</p>
-<p>// Usage with an array of conditions
-$conditions = conditions
+                                                 <section class="phpdocumentor-description"><p>Basic usage with default condition</p>
+<pre class="prettyprint"><code class="language-php">$conditions = conditions();
+// Returns: [fn($value) =&gt; is_null($value)]
+</code></pre>
+<p>Usage with a single callable condition</p>
+<pre class="prettyprint"><code class="language-php">$conditions = conditions(fn($value) =&gt; $value === '');
+// Returns: [fn($value) =&gt; $value === '']
+</code></pre>
+<p>Usage with an array of conditions</p>
+<pre class="prettyprint"><code class="language-php">$conditions = conditions
 ([
-fn($value) =&gt; $value === null,
-fn($value) =&gt; $value === false
+   fn($value) =&gt; $value === null,
+   fn($value) =&gt; $value === false
 ]);
-// Returns: [fn($value) =&gt; $value === null, fn($value) =&gt; $value === false]</p>
-<p>// Usage with non-callable in array and throwable=false
-$conditions = conditions([fn($value) =&gt; true, 'not_callable'], false);
-// Returns: [fn($value) =&gt; true]</p>
+// Returns: [fn($value) =&gt; $value === null, fn($value) =&gt; $value === false]
+</code></pre>
+<p>Usage with non-callable in array and throwable=false</p>
+<pre class="prettyprint"><code class="language-php">$conditions = conditions([fn($value) =&gt; true, 'not_callable'], false);
+// Returns: [fn($value) =&gt; true]
+</code></pre>
 </section>
 
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
                                     </dd>
                                             </dl>
 

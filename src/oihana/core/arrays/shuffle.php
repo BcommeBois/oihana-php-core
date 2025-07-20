@@ -6,6 +6,10 @@ namespace oihana\core\arrays ;
  * Shuffles an array using the Fisher-Yates algorithm.
  * @param array &$ar The array to shuffle (passed by reference).
  * @return array The shuffled array, or null if input is not an array.
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function shuffle( array &$ar ): array
 {

@@ -26,18 +26,24 @@ use function oihana\core\objects\compress as compressObject ;
  *
  * @return array The compressed array (or its clone if `clone=true`).
  *
- * @example <caption>Basic cleanup of null values</caption>
+ * @example
+ * Basic cleanup of null values
+ * ```php
  * use function oihana\core\arrays\compress;
  * $data = ['id' => 1, 'name' => 'hello', 'description' => null];
  * $clean = compress($data);
  * // Result: ['id' => 1, 'name' => 'hello']
+ * ```
  *
- * @example <caption>Exclude a specific key from filtering</caption>
+ * Exclude a specific key from filtering
+ * ```php
  * $data = ['id' => 1, 'name' => null];
  * $clean = compress($data, ['excludes' => ['name']]);
  * // Result: ['id' => 1, 'name' => null]  // "name" is preserved
+ * ```
  *
- * @example <caption>Remove null or empty strings</caption>
+ * Remove null or empty strings
+ * ```php
  * $conditions =
  * [
  *     fn($v) => is_null($v),
@@ -46,8 +52,10 @@ use function oihana\core\objects\compress as compressObject ;
  * $data  = ['a' => '', 'b' => 0, 'c' => null];
  * $clean = compress($data, ['conditions' => $conditions]);
  * // Result: ['b' => 0]
+ * ```
  *
- * @example <caption>Recursive compression with depth limit</caption>
+ * Recursive compression with depth limit
+ * ```php
  * $nested =
  * [
  *     'id'   => 2,
@@ -60,11 +68,18 @@ use function oihana\core\objects\compress as compressObject ;
  *     'depth'      => 1
  * ]);
  * // Result: ['id' => 2]
+ * ```
  *
- * @example <caption>Clone input before compressing</caption>
+ * Clone input before compressing
+ * ```php
  * $original = ['x' => null, 'y' => 5];
  * $copy     = compress($original, ['clone' => true]);
  * // $original remains unchanged; $copy == ['y' => 5]
+ * ```
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function compress( array $array ,  ?array $options = [], int $currentDepth = 0 ): array
 {

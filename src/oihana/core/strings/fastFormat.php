@@ -40,6 +40,10 @@ use oihana\enums\Char;
  * echo fastFormat("Name: {0}", new Person());
  * // Output: "Name: John Doe"
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function fastFormat( ?string $pattern , ...$args ) :string
 {

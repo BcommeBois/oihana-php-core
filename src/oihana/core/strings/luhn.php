@@ -19,6 +19,10 @@ namespace oihana\core\strings ;
  * echo luhn("7992 7398 713", true);   // Outputs: true (valid Luhn, spaces removed)
  * echo luhn("1234");                  // Outputs: false (invalid Luhn)
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function luhn( string $number , bool $lazy = false ): bool
 {

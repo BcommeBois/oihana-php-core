@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: object    </span>
 </dt>
-<dd>Compress the passed in object and remove all the empty properties.</dd>
+<dd>Compress the passed in object by removing all properties that match given conditions.</dd>
 
     </dl>
 
@@ -156,29 +156,18 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/objects/compress.php"><a href="files/src-oihana-core-objects-compress.html"><abbr title="src/oihana/core/objects/compress.php">compress.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Compress the passed in object and remove all the empty properties.</p>
+        <p class="phpdocumentor-summary">Compress the passed in object by removing all properties that match given conditions.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">compress</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$object</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$currentDepth</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">object</span></code>
+                    <span class="phpdocumentor-signature__name">compress</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$object</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array{conditions: callable|callable[], depth: null|int, excludes: string[], recursive: bool, throwable: bool}&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$currentDepth</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">object</span></code>
 
-        <section class="phpdocumentor-description"><p>Usage :</p>
-```
-use function core\objects\compress ;
-<p>$object = new stdClass();</p>
-<p>$object-&gt;id          = 1;
-$object-&gt;created     = null;
-$object-&gt;name        = &quot;hello world&quot;;
-$object-&gt;description = null;</p>
-<p>echo json_encode( Objects::compress( $object , [&quot;description&quot;] ) ) ;</p>
-<pre class="prettyprint"><code class="prettyprint"></code></pre>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -192,12 +181,13 @@ $object-&gt;description = null;</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$options</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|null</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array{conditions: callable|callable[], depth: null|int, excludes: string[], recursive: bool, throwable: bool}</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>Optional configuration:</p>
 <ul>
 <li>'conditions' (callable|array<callable>) : One or more functions used to determine whether a value should be removed.</li>
+<li>'depth'   (array<string>) : List of property names to exclude from filtering.</li>
 <li>'excludes'   (array<string>) : List of property names to exclude from filtering.</li>
 <li>'recursive'  (bool) : If true (default), recursively compress nested objects.</li>
 <li>'throwable'  (bool) : If true (default), throws InvalidArgumentException for invalid callbacks.</li>
@@ -232,6 +222,46 @@ $object-&gt;description = null;</p>
                                                  <section class="phpdocumentor-description"><p>If invalid condition callbacks are provided and 'throwable' is true.</p>
 </section>
 
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\objects\compress;
+
+$obj = new stdClass();
+$obj-&gt;id = 1;
+$obj-&gt;created = null;
+$obj-&gt;name = &quot;hello world&quot;;
+$obj-&gt;description = null;
+
+$compressed = compress($obj, [
+    'conditions' =&gt; [fn($v) =&gt; $v === null],
+    'excludes' =&gt; ['id'],
+    'recursive' =&gt; true,
+]);
+echo json_encode($compressed);
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
                                     </dd>
                                             </dl>
 

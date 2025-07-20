@@ -35,6 +35,10 @@ use function oihana\core\arrays\flatten;
  * }
  * echo toString(new Foo()); // Outputs: "foo"
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function toString( mixed $value): string
 {

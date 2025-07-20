@@ -20,6 +20,10 @@ namespace oihana\core\strings ;
  * echo urlencode("hello world!");
  * // Outputs: hello%20world!
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function urlencode( string $uri ): array|string
 {

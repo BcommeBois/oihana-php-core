@@ -16,27 +16,41 @@ use InvalidArgumentException;
  *  - callable: a single condition function.
  *  - array: an array of condition functions.
  * @param bool $throwable If true, throws exceptions for invalid conditions. If false, silently filters out invalid conditions.
+ *
  * @return array An array of callable conditions.
+ *
  * @example
- * // Basic usage with default condition
+ * Basic usage with default condition
+ * ```php
  * $conditions = conditions();
  * // Returns: [fn($value) => is_null($value)]
+ * ```
  *
- * // Usage with a single callable condition
+ * Usage with a single callable condition
+ * ```php
  * $conditions = conditions(fn($value) => $value === '');
  * // Returns: [fn($value) => $value === '']
+ * ```
  *
- * // Usage with an array of conditions
+ * Usage with an array of conditions
+ * ```php
  * $conditions = conditions
  * ([
- *     fn($value) => $value === null,
- *     fn($value) => $value === false
+ *    fn($value) => $value === null,
+ *    fn($value) => $value === false
  * ]);
  * // Returns: [fn($value) => $value === null, fn($value) => $value === false]
+ * ```
  *
- * // Usage with non-callable in array and throwable=false
+ * Usage with non-callable in array and throwable=false
+ * ```php
  * $conditions = conditions([fn($value) => true, 'not_callable'], false);
  * // Returns: [fn($value) => true]
+ * ```
+ *
+ * @package oihana\core\conditions
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function conditions( array|callable|string|null $conditions = null , bool $throwable = false ): array
 {

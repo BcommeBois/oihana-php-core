@@ -20,6 +20,10 @@ namespace oihana\core\strings ;
  * isRegexp('not a regex');      // false (missing delimiters)
  * isRegexp('/unterminated');    // false
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function isRegexp( string $pattern ): bool
 {

@@ -29,6 +29,10 @@ namespace oihana\core\strings ;
  * echo hyphenate(null);
  * // Output: ""
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function hyphenate( ?string $source ): string
 {

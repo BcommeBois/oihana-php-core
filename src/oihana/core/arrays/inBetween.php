@@ -10,7 +10,13 @@ namespace oihana\core\arrays ;
  * @return array A new array with elements inserted between original items
  *
  * @example
+ * ```php
  * print_r( inBetween(['a', 'b', 'c'], '/') ) ; // ["a", "/", "b", "/", "c"]
+ * ```
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function inBetween( array $source , mixed $element ): array
 {

@@ -27,6 +27,10 @@ namespace oihana\core\strings ;
  * echo lower("123-ABC");
  * // Output: "123-abc"
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function lower( ?string $source ) : string
 {

@@ -128,7 +128,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\maths\\floorValue\u0028\u0029",
             "name": "floorValue",
-            "summary": "Rounds\u0020and\u0020returns\u0020a\u0020number\u0020by\u0020a\u0020count\u0020of\u0020floating\u0020points.",
+            "summary": "Rounds\u0020and\u0020returns\u0020a\u0020number\u0020by\u0020a\u0020count\u0020of\u0020floating\u0020points,\u0020using\u0020floor.",
             "url": "namespaces/oihana-core-maths.html#function_floorValue"
         },                {
             "fqsen": "\\oihana\\core\\maths\\roundValue\u0028\u0029",
@@ -138,17 +138,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\numbers\\clip\u0028\u0029",
             "name": "clip",
-            "summary": "Bounds\u0020a\u0020number\u0020value\u0020between\u00202\u0020numbers.",
+            "summary": "Bounds\u0020a\u0020number\u0020value\u0020between\u0020two\u0020numbers.",
             "url": "namespaces/oihana-core-numbers.html#function_clip"
         },                {
             "fqsen": "\\oihana\\core\\objects\\compress\u0028\u0029",
             "name": "compress",
-            "summary": "Compress\u0020the\u0020passed\u0020in\u0020object\u0020and\u0020remove\u0020all\u0020the\u0020empty\u0020properties.",
+            "summary": "Compress\u0020the\u0020passed\u0020in\u0020object\u0020by\u0020removing\u0020all\u0020properties\u0020that\u0020match\u0020given\u0020conditions.",
             "url": "namespaces/oihana-core-objects.html#function_compress"
         },                {
             "fqsen": "\\oihana\\core\\reflections\\getFunctionInfo\u0028\u0029",
             "name": "getFunctionInfo",
-            "summary": "Returns\u0020detailed\u0020reflection\u0020information\u0020about\u0020a\u0020given\u0020function.",
+            "summary": "Returns\u0020detailed\u0020reflection\u0020information\u0020about\u0020a\u0020given\u0020function\u0020or\u0020method.",
             "url": "namespaces/oihana-core-reflections.html#function_getFunctionInfo"
         },                {
             "fqsen": "\\oihana\\core\\strings\\camel\u0028\u0029",

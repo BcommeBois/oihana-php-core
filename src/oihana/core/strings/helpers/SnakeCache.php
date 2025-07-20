@@ -4,6 +4,9 @@ namespace oihana\core\strings\helpers ;
 
 /**
  * The cache of snake-cased words.
+ * @package oihana\core\strings\helpers
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 class SnakeCache
 {

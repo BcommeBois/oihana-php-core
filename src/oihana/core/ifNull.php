@@ -18,6 +18,10 @@ namespace oihana\core ;
  * echo ifNull('hello', 'default'); // Outputs: hello
  * echo ifNull(0, 'default');       // Outputs: 0 (because 0 is not null)
  * ```
+ *
+ * @package oihana\core
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function ifNull( mixed $value , mixed $default = null ): mixed
 {

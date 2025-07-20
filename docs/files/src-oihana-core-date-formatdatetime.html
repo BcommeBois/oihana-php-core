@@ -156,7 +156,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/date/formatDateTime.php"><a href="files/src-oihana-core-date-formatdatetime.html"><abbr title="src/oihana/core/date/formatDateTime.php">formatDateTime.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
@@ -229,6 +229,37 @@ It then applies the specified timezone and returns the formatted date string.</p
                                                  <section class="phpdocumentor-description"><p>If the input date string is malformed or cannot be parsed.</p>
 </section>
 
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo formatDateTime('2025-07-20 15:30', 'Europe/Paris', 'Y-m-d H:i');
+// Output: '2025-07-20 15:30'
+
+echo formatDateTime(null, 'UTC');
+// Output: current date/time in UTC, e.g., '2025-07-20T13:30:00'
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
                                     </dd>
                                             </dl>
 

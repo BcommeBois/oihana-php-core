@@ -17,6 +17,10 @@ namespace oihana\core\strings ;
  * echo randomKey(null);         // Possible output: "987654321"
  * echo randomKey("order", "-"); // Possible output: "order-456789123"
  * ```
+ *
+ * @package oihana\core\strings
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function randomKey( ?string $prefix , string $separator = '_' ) :string
 {

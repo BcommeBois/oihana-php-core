@@ -9,6 +9,10 @@ use ArrayAccess ;
  * @param array|ArrayAccess $array
  * @param string|int|null $key
  * @return bool
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function exists( array|ArrayAccess $array , null|string|int $key ) :bool
 {

@@ -8,6 +8,10 @@ namespace oihana\core\arrays ;
  * Numeric keys will have their values appended, maintaining the order.
  * @param array ...$arrays The arrays to be merged.
  * @return array The deeply merged array.
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function deepMerge( array ...$arrays ): array
 {

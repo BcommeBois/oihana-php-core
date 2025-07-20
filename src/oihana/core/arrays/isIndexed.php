@@ -11,6 +11,10 @@ namespace oihana\core\arrays ;
  * echo json_encode( isIndexed( $array ) ) ;
  * @param array $array The array to evaluate.
  * @return bool Indicates if the array is indexed or not.
+ *
+ * @package oihana\core\arrays
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function isIndexed( array $array ): bool
 {

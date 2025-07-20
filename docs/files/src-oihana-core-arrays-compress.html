@@ -156,7 +156,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/compress.php"><a href="files/src-oihana-core-arrays-compress.html"><abbr title="src/oihana/core/arrays/compress.php">compress.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">69</span>
+    <span class="phpdocumentor-element-found-in__line">84</span>
 
     </aside>
 
@@ -225,74 +225,65 @@ If any condition returns <code class="prettyprint">true</code>, the value is rem
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><caption>Basic cleanup of null values</caption>
-use function oihana\core\arrays\compress;
-$data = ['id' => 1, 'name' => 'hello', 'description' => null];
+                                                 <section class="phpdocumentor-description"><p>Basic cleanup of null values</p>
+<pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\compress;
+$data = ['id' =&gt; 1, 'name' =&gt; 'hello', 'description' =&gt; null];
 $clean = compress($data);
-// Result: ['id' => 1, 'name' => 'hello']
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><caption>Exclude a specific key from filtering</caption>
-$data = ['id' => 1, 'name' => null];
-$clean = compress($data, ['excludes' => ['name']]);
-// Result: ['id' => 1, 'name' => null]  // "name" is preserved
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><caption>Remove null or empty strings</caption>
-$conditions =
+// Result: ['id' =&gt; 1, 'name' =&gt; 'hello']
+</code></pre>
+<p>Exclude a specific key from filtering</p>
+<pre class="prettyprint"><code class="language-php">$data = ['id' =&gt; 1, 'name' =&gt; null];
+$clean = compress($data, ['excludes' =&gt; ['name']]);
+// Result: ['id' =&gt; 1, 'name' =&gt; null]  // &quot;name&quot; is preserved
+</code></pre>
+<p>Remove null or empty strings</p>
+<pre class="prettyprint"><code class="language-php">$conditions =
 [
-    fn($v) => is_null($v),
-    fn($v) => is_string($v) && $v === ''
+    fn($v) =&gt; is_null($v),
+    fn($v) =&gt; is_string($v) &amp;&amp; $v === ''
 ];
-$data  = ['a' => '', 'b' => 0, 'c' => null];
-$clean = compress($data, ['conditions' => $conditions]);
-// Result: ['b' => 0]
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><caption>Recursive compression with depth limit</caption>
-$nested =
+$data  = ['a' =&gt; '', 'b' =&gt; 0, 'c' =&gt; null];
+$clean = compress($data, ['conditions' =&gt; $conditions]);
+// Result: ['b' =&gt; 0]
+</code></pre>
+<p>Recursive compression with depth limit</p>
+<pre class="prettyprint"><code class="language-php">$nested =
 [
-    'id'   => 2,
-    'meta' => ['created' => null, 'tags' => []],
+    'id'   =&gt; 2,
+    'meta' =&gt; ['created' =&gt; null, 'tags' =&gt; []],
 ];
-<p>$clean = compress($nested,
+
+$clean = compress($nested,
 [
-'conditions' =&gt; fn($v) =&gt; $v === [] || $v === null,
-'depth'      =&gt; 1
+    'conditions' =&gt; fn($v) =&gt; $v === [] || $v === null,
+    'depth'      =&gt; 1
 ]);
-// Result: ['id' =&gt; 2]</p>
+// Result: ['id' =&gt; 2]
+</code></pre>
+<p>Clone input before compressing</p>
+<pre class="prettyprint"><code class="language-php">$original = ['x' =&gt; null, 'y' =&gt; 5];
+$copy     = compress($original, ['clone' =&gt; true]);
+// $original remains unchanged; $copy == ['y' =&gt; 5]
+</code></pre>
 </section>
 
                                     </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><caption>Clone input before compressing</caption>
-$original = ['x' => null, 'y' => 5];
-$copy     = compress($original, ['clone' => true]);
-// $original remains unchanged; $copy == ['y' => 5]
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
 </section>
 
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
                                     </dd>
                                             </dl>
 
