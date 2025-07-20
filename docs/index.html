@@ -118,6 +118,63 @@
 <p>This library requires <a href="https://php.net/releases/" target="_blank">PHP 8.4+</a> and is installed via <a href="https://getcomposer.org/" target="_blank">Composer</a>:</p>
 <pre class="language-bash prettyprint">composer require oihana/php-core</pre>
 
+<h3>✨ Features</h3>
+<p>The <strong>oihana/php-core</strong> library provides pure utility functions (no side effects), organized into logical, reusable packages:</p>
+
+<h4>🔢 Arrays (<code>oihana\core\arrays</code>)</h4>
+<p>Advanced array utilities:</p>
+<ul>
+    <li><strong>Access and mutation:</strong> <code>get()</code>, <code>set()</code>, <code>delete()</code>, <code>exists()</code></li>
+    <li><strong>Transformations:</strong> <code>flatten()</code>, <code>tail()</code>, <code>unique()</code>, <code>shuffle()</code>, <code>swap()</code>, <code>toArray()</code>, <code>stub()</code></li>
+    <li><strong>Structure detection:</strong> <code>isIndexed()</code>, <code>hasIntKeys()</code>, <code>hasStringKeys()</code></li>
+</ul>
+
+<h4>📅 Date (<code>oihana\core\date</code>)</h4>
+<p>Date manipulation and validation:</p>
+<ul>
+    <li><code>formatDateTime()</code></li>
+    <li><code>isDate()</code>, <code>isValidTimezone()</code></li>
+</ul>
+
+<h4>➗ Maths (<code>oihana\core\maths</code>)</h4>
+<p>Smart numeric rounding helpers:</p>
+<ul>
+    <li><code>ceilValue()</code>, <code>floorValue()</code>, <code>roundValue()</code></li>
+</ul>
+
+<h4>🔢 Numbers (<code>oihana\core\numbers</code>)</h4>
+<p>Range clamping:</p>
+<ul>
+    <li><code>clip()</code></li>
+</ul>
+
+<h4>🧱 Objects (<code>oihana\core\objects</code>)</h4>
+<p>Lightweight object manipulation:</p>
+<ul>
+    <li><code>compress()</code> — remove null/empty values</li>
+    <li><code>set()</code> — deep set a value in a nested structure</li>
+</ul>
+
+<h4>🧠 Reflections (<code>oihana\core\reflections</code>)</h4>
+<p>Introspect callable/function definitions:</p>
+<ul>
+    <li><code>getFunctionInfo()</code></li>
+</ul>
+
+<h4>✍️ Strings (<code>oihana\core\strings</code>)</h4>
+<p>String formatting, case conversions, and utilities:</p>
+<ul>
+    <li><strong>Case & slug:</strong> <code>camel()</code>, <code>snake()</code>, <code>kebab()</code>, <code>hyphenate()</code>, <code>lower()</code>, <code>latinize()</code></li>
+    <li><strong>Format & identifiers:</strong> <code>fastFormat()</code>, <code>formatRequestArgs()</code>, <code>urlencode()</code>, <code>toString()</code></li>
+    <li><strong>Validation:</strong> <code>isRegexp()</code>, <code>luhn()</code></li>
+    <li><strong>Random generation:</strong> <code>randomKey()</code></li>
+</ul>
+
+<h4>⚙️ Utils</h4>
+<ul>
+    <li><code>ifNull()</code> — return a fallback if a value is null</li>
+</ul>
+
 <h3>✅ Running Unit Tests</h3>
 <p>Run all unit tests:</p>
 <pre class="language-bash prettyprint">composer run-script test</pre>
