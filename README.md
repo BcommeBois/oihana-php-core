@@ -43,7 +43,7 @@ String formatting, case conversions, and utilities:
 - Case & slug:
 - camel(), snake(), kebab(), hyphenate(), lower(), latinize()
 - Format & identifiers:
-- fastFormat(), formatRequestArgs(), urlencore(), toString()
+- fastFormat(), formatRequestArgs(), urlencode(), toString()
 - Validation:
 - isRegexp(), luhn()
 - Random generation:
