@@ -2,8 +2,59 @@
 
 ![Oihana Php Core](https://raw.githubusercontent.com/BcommeBois/oihana-php-core/main/.phpdoc/template/assets/images/oihana-php-core-logo-inline-512x160.png)
 
-A lightweight, modular core library for modern PHP development.
-Designed with clarity, extensibility, and performance in mind.
+A lightweight and modular core library for modern PHP development.
+Designed for clarity, extensibility, and performance, with a consistent, functional-style API.
+
+## ✨ Features
+
+The oihana/php-core library provides pure utility functions (no side effects), organized into logical, reusable packages:
+
+### 🔢 Arrays (oihana\core\arrays)
+
+Advanced array utilities:
+- Access and mutation:
+- get(), set(), delete(), exists()
+- Transformations:
+- flatten(), tail(), unique(), shuffle(), swap()
+- toArray(), stub()
+- Structure detection:
+- isIndexed(), hasIntKeys(), hasStringKeys()
+
+### 📅 Date (oihana\core\date)
+
+Date manipulation and validation:
+- formatDateTime()
+- isDate(), isValidTimezone()
+
+### ➗ Maths (oihana\core\maths)
+Smart numeric rounding helpers:
+- ceilValue(), floorValue(), roundValue()
+
+### 🔢 Numbers (oihana\core\numbers)
+- Range clamping: clip()
+
+### 🧱 Objects (oihana\core\objects)
+Lightweight object manipulation:
+- compress() — remove null/empty values
+- set() — deep set a value in a nested structure
+
+### 🧠 Reflections (oihana\core\reflections)
+- Introspect callable/function definitions:
+- getFunctionInfo()
+
+### ✍️ Strings (oihana\core\strings)
+String formatting, case conversions, and utilities:
+- Case & slug:
+- camel(), snake(), kebab(), hyphenate(), lower(), latinize()
+- Format & identifiers:
+- fastFormat(), formatRequestArgs(), urlencore(), toString()
+- Validation:
+- isRegexp(), luhn()
+- Random generation:
+- randomKey()
+
+⚙️ Utils
+- ifNull() — return a fallback if a value is null
 
 ## 📚 Documentation
 
@@ -19,6 +70,25 @@ Install via [Composer](https://getcomposer.org):
 
 ```bash
 composer require oihana/php-core
+```
+
+Usage example: 
+```php
+use function oihana\core\arrays\get;
+
+$array = [
+    'user' => [
+        'name' => 'Marc',
+        'address' => [
+            'city' => 'Paris',
+            'geo' => ['lat' => 48.8566, 'lng' => 2.3522],
+        ],
+    ],
+];
+
+// Retrieve nested value via dot notation:
+$city = get($array, 'user.address.city', 'Unknown');
+echo $city; // Outputs: Paris
 ```
 
 ## ✅ Running Unit Tests
