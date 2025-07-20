@@ -1,7 +1,7 @@
 # oihana-php-core
 Oihana PHP - Core library
 
-![Oihana Php Core](https://raw.githubusercontent.com/BcommeBois/oihana-php-core/main/.phpdoc/template/assets/images/oihana-php-core-logo-inline-512x160.png "Logo Title Text 1")
+![Oihana Php Core](https://raw.githubusercontent.com/BcommeBois/oihana-php-core/main/.phpdoc/template/assets/images/oihana-php-core-logo-inline-512x160.png)
 
 ## Documentation
 
