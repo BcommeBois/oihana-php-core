@@ -36,12 +36,5 @@ namespace oihana\core\strings ;
  */
 function hyphenate( ?string $source ): string
 {
-    if ( !is_string($source) || $source === '' )
-    {
-        return '';
-    }
-
-    // Insert a hyphen before each uppercase letter (except the first char), then lowercase the result
-    $hyphenated = preg_replace('/(?<!^)[A-Z]/', '-$0', $source);
-    return strtolower($hyphenated);
+    return snake( $source , '-' ) ;
 }
