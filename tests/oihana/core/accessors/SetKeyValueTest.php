@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace oihana\core\accessors;
 
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 final class SetKeyValueTest extends TestCase
 {
@@ -21,7 +22,7 @@ final class SetKeyValueTest extends TestCase
     public function testSetValueInArrayForced(): void
     {
         $doc = ['x' => 42];
-        $updated = setKeyValue($doc, 'x', 100, true);
+        $updated = setKeyValue($doc, 'x', 100, '.', true); // <- corrigé : $isArray est le 5e argument
         $this->assertSame(100, $updated['x']);
     }
 
@@ -38,7 +39,7 @@ final class SetKeyValueTest extends TestCase
     public function testSetValueInObjectForced(): void
     {
         $doc = (object)['x' => 99];
-        $updated = setKeyValue($doc, 'x', 123, false);
+        $updated = setKeyValue($doc, 'x', 123, '.', false); // <- corrigé
         $this->assertSame(123, $updated->x);
     }
 
@@ -59,7 +60,7 @@ final class SetKeyValueTest extends TestCase
         $this->expectExceptionMessage('Invalid type override');
 
         $doc = (object)['foo' => 'bar'];
-        setKeyValue($doc, 'foo', 'baz', true);
+        setKeyValue($doc, 'foo', 'baz', '.', true); // <- corrigé
     }
 
     public function testExceptionOnObjectExpectedButArrayGiven(): void
@@ -68,6 +69,56 @@ final class SetKeyValueTest extends TestCase
         $this->expectExceptionMessage('Invalid type override');
 
         $doc = ['foo' => 'bar'];
-        setKeyValue($doc, 'foo', 'baz', false);
+        setKeyValue($doc, 'foo', 'baz', '.', false); // <- corrigé
     }
+
+    public function testNestedSetInArray(): void
+    {
+        $doc = [];
+        $updated = setKeyValue($doc, 'user.profile.name', 'Alice');
+        $this->assertSame('Alice', $updated['user']['profile']['name']);
+    }
+
+    public function testNestedSetInObject(): void
+    {
+        $doc = new stdClass();
+        $updated = setKeyValue($doc, 'user.profile.name', 'Bob', '.', false);
+        $this->assertSame('Bob', $updated->user->profile->name);
+    }
+
+    public function testOverwriteIntermediateScalarInArray(): void
+    {
+        $doc = ['user' => 'not_array'];
+        $updated = setKeyValue($doc, 'user.profile.name', 'Alice');
+
+        $this->assertIsArray($updated['user']);
+        $this->assertSame('Alice', $updated['user']['profile']['name']);
+    }
+
+    public function testOverwriteIntermediateScalarInObject(): void
+    {
+        $doc = (object)['user' => 'not_object'];
+        $updated = setKeyValue($doc, 'user.profile.name', 'Bob', '.', false);
+
+        $this->assertIsObject($updated->user);
+        $this->assertSame('Bob', $updated->user->profile->name);
+    }
+
+    // public function testCopyOnWriteArray(): void
+    // {
+    //     $doc = ['a' => ['b' => 1]];
+    //     $copy = setKeyValue($doc, 'a.b', 2, '.', null, true);
+    //
+    //     $this->assertSame(1, $doc['a']['b']);
+    //     $this->assertSame(2, $copy['a']['b']);
+    // }
+    //
+    // public function testCopyOnWriteObject(): void
+    // {
+    //     $doc = (object)['a' => (object)['b' => 1]];
+    //     $copy = setKeyValue($doc, 'a.b', 2, '.', null, true);
+    //
+    //     $this->assertSame(1, $doc->a->b);
+    //     $this->assertSame(2, $copy->a->b);
+    // }
 }
