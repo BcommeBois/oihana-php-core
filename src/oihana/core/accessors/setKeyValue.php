@@ -6,8 +6,10 @@ namespace oihana\core\accessors ;
 
 use InvalidArgumentException;
 use stdClass;
-
-//  * @param bool         $copy      If true, returns a deep copy and leaves the original unmodified.
+use function oihana\core\arrays\ensureArrayPath;
+use function oihana\core\arrays\setArrayValue;
+use function oihana\core\objects\ensureObjectPath;
+use function oihana\core\objects\setObjectValue;
 
 /**
  * Sets the value associated with a given key in an array or object.
@@ -42,50 +44,36 @@ function setKeyValue
            mixed $value ,
           string $separator = '.' ,
            ?bool $isArray = null ,
-            // bool $copy = false
 )
 :array|object
 {
-    $isArray ??= is_array( $document ) ;
+    $isArray = assertDocumentKeyValid( $document , $key , $separator , $isArray ) ;
 
-    if ( $isArray && !is_array( $document ) )
+    if ( !str_contains( $key , $separator ) )
     {
-        throw new InvalidArgumentException( sprintf('Invalid type override: expected array, got %s.', get_debug_type( $document ) ) );
+        return $isArray
+            ? setArrayValue  ( $document , $key , $value )
+            : setObjectValue ( $document , $key , $value ) ;
     }
-
-    if ( !$isArray && !is_object( $document ) )
-    {
-        throw new InvalidArgumentException( sprintf('Invalid type override: expected object, got %s.', get_debug_type( $document ) ) );
-    }
-
-    // $document = $copy ? unserialize(serialize($document)) : $copy ; // Deep copy
 
     $keys    = explode( $separator , $key ) ;
     $current = &$document;
 
-    while ( count( $keys ) > 1 )
+    for ( $i = 0 ; $i < count( $keys ) - 1 ; $i++ )
     {
-        $segment = array_shift($keys);
+        $segment = $keys[ $i ] ;
 
-        if ( $isArray )
+        if (  $isArray )
         {
-            if ( !isset( $current[ $segment ] ) || !is_array( $current[ $segment ] ) )
-            {
-                $current[ $segment ] = [] ;
-            }
-            $current = &$current[ $segment ] ;
+            $current = &ensureArrayPath($current , $segment ) ;
         }
         else
         {
-            if ( !isset( $current->{ $segment } ) || !is_object( $current->{ $segment } ) )
-            {
-                $current->{ $segment } = new stdClass() ;
-            }
-            $current = &$current->{ $segment } ;
+            $current = &ensureObjectPath($current , $segment ) ;
         }
     }
 
-    $lastKey = array_shift( $keys ) ;
+    $lastKey = end( $keys ) ;
 
     if ( $isArray )
     {

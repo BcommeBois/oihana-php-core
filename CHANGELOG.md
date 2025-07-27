@@ -7,7 +7,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- Adds oihana\core\accessors\assertDocumentKeyValid
 - Adds oihana\core\accessors\getKeyValue
+- Adds oihana\core\accessors\hasKeyValue
 - Adds oihana\core\accessors\setKeyValue
 - Adds oihana\core\date\formatDateTime
 - Adds oihana\core\reflections\getFunctionInfo

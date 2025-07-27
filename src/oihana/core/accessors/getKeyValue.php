@@ -5,23 +5,27 @@ declare(strict_types=1);
 namespace oihana\core\accessors ;
 
 use InvalidArgumentException;
+use function oihana\core\arrays\setArrayValue;
+use function oihana\core\objects\setObjectValue;
 
 /**
- * Retrieves the value of a given key from an array or object.
+ * Retrieves the value associated with a given key from an array or object.
  *
- * This helper function returns the value associated with a specified key in the provided document,
- * which can be either an associative array or a standard object. If the key does not exist, it returns null.
+ * This helper function returns the value associated with the specified key/property
+ * in the provided document, which can be either an associative array or an object.
+ * Supports nested keys using a separator (default is '.').
  *
- * If the `$isArray` parameter is not provided (null), the function will automatically determine
- * whether the document is an array or an object. Otherwise, it uses the given boolean value to
- * interpret the type of document:
- * - `true`: the document is treated as an array.
- * - `false`: the document is treated as an object.
+ * The document type can be explicitly specified by `$isArray`. If null,
+ * the type is inferred automatically.
  *
- * @param array|object $document The source document, either an array or an object.
- * @param string       $key      The key or property name to retrieve.
- * @param bool|null    $isArray  (Optional) Whether the document is an array (`true`) or an object (`false`).
- *                               If `null`, the type is automatically detected.
+ * If a mismatch occurs between the forced type and the actual document type,
+ * an InvalidArgumentException is thrown.
+ *
+ * @param array|object $document  The source document (array or object).
+ * @param string       $key       The key or property name to retrieve (supports nested keys with separator).
+ * @param mixed        $default   The default value to return if the key is not found. Default is null.
+ * @param string       $separator Separator for nested keys. Default is '.'.
+ * @param bool|null    $isArray   Optional: true if document is an array, false if object, null to auto-detect.
  *
  * @return mixed The value of the key if found, or `null` if the key/property does not exist.
  *
@@ -29,29 +33,50 @@ use InvalidArgumentException;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
-function getKeyValue( array|object $document , string $key , ?bool $isArray = null ) :mixed
+function getKeyValue
+(
+    array|object $document ,
+          string $key ,
+           mixed $default   = null ,
+          string $separator = '.'  ,
+           ?bool $isArray   = null
+)
+:mixed
 {
-    $isArray ??= is_array( $document ) ;
+    $isArray = assertDocumentKeyValid( $document , $key , $separator , $isArray ) ;
 
-    if ( $isArray )
+    if ( !str_contains($key, $separator) )
     {
-        if ( !is_array( $document ) )
+        if ( $isArray )
         {
-            throw new InvalidArgumentException
-            (
-                sprintf('Invalid type override: expected array, got %s.' , get_debug_type( $document ) )
-            );
+            return $document[ $key ] ?? $default ;
         }
-        return $document[ $key ] ?? null;
+
+        return $document->{ $key } ?? $default ;
     }
 
-    if ( !is_object( $document ) )
+    $keys    = explode( $separator , $key ) ;
+    $current = &$document;
+
+    foreach ( $keys as $segment )
     {
-        throw new InvalidArgumentException
-        (
-            sprintf('Invalid type override: expected object, got %s.', get_debug_type( $document ))
-        );
+        if ( $isArray )
+        {
+            if ( !is_array( $current ) || !array_key_exists( $segment , $current ) )
+            {
+                return $default;
+            }
+            $current = $current[ $segment ] ;
+        }
+        else
+        {
+            if ( !is_object( $current ) || !property_exists( $current , $segment ) )
+            {
+                return $default;
+            }
+            $current = $current->{ $segment } ;
+        }
     }
 
-    return $document->{ $key } ?? null;
+    return $current;
 }

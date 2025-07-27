@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace oihana\core\accessors;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -56,17 +57,18 @@ final class SetKeyValueTest extends TestCase
 
     public function testExceptionOnArrayExpectedButObjectGiven(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid type override');
+        $this->expectException( InvalidArgumentException::class);
+        $this->expectExceptionMessage('Type mismatch: expected array');
 
-        $doc = (object)['foo' => 'bar'];
+        $doc = (object)['foo' => 'bar'] ;
+
         setKeyValue($doc, 'foo', 'baz', '.', true); // <- corrigé
     }
 
     public function testExceptionOnObjectExpectedButArrayGiven(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid type override');
+        $this->expectException( InvalidArgumentException::class);
+        $this->expectExceptionMessage('Type mismatch: expected object');
 
         $doc = ['foo' => 'bar'];
         setKeyValue($doc, 'foo', 'baz', '.', false); // <- corrigé
@@ -103,22 +105,4 @@ final class SetKeyValueTest extends TestCase
         $this->assertIsObject($updated->user);
         $this->assertSame('Bob', $updated->user->profile->name);
     }
-
-    // public function testCopyOnWriteArray(): void
-    // {
-    //     $doc = ['a' => ['b' => 1]];
-    //     $copy = setKeyValue($doc, 'a.b', 2, '.', null, true);
-    //
-    //     $this->assertSame(1, $doc['a']['b']);
-    //     $this->assertSame(2, $copy['a']['b']);
-    // }
-    //
-    // public function testCopyOnWriteObject(): void
-    // {
-    //     $doc = (object)['a' => (object)['b' => 1]];
-    //     $copy = setKeyValue($doc, 'a.b', 2, '.', null, true);
-    //
-    //     $this->assertSame(1, $doc->a->b);
-    //     $this->assertSame(2, $copy->a->b);
-    // }
 }
