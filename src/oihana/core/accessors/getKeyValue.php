@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace oihana\core\accessors ;
 
-use InvalidArgumentException;
-use function oihana\core\arrays\setArrayValue;
-use function oihana\core\objects\setObjectValue;
-
 /**
  * Retrieves the value associated with a given key from an array or object.
  *

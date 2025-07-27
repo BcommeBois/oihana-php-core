@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace oihana\core\accessors ;
 
-use InvalidArgumentException;
-use function oihana\core\arrays\setArrayValue;
-use function oihana\core\objects\setObjectValue;
-
 /**
  * Checks whether a key or property exists in the document (array or object), including nested paths.
  *

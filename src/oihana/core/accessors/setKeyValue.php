@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace oihana\core\accessors ;
 
 use InvalidArgumentException;
-use stdClass;
+
 use function oihana\core\arrays\ensureArrayPath;
 use function oihana\core\arrays\setArrayValue;
 use function oihana\core\objects\ensureObjectPath;
