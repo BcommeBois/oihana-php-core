@@ -30,6 +30,8 @@
         "files":
         [
             "src/oihana/core/ifNull.php",
+            "src/oihana/core/accessors/getKeyValue.php" ,
+            "src/oihana/core/accessors/setKeyValue.php" ,
             "src/oihana/core/arrays/compress.php",
             "src/oihana/core/arrays/deepMerge.php",
             "src/oihana/core/arrays/delete.php",
