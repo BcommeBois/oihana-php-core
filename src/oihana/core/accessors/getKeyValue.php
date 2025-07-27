@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\helpers ;
+namespace oihana\core\accessors ;
 
 use InvalidArgumentException;
 

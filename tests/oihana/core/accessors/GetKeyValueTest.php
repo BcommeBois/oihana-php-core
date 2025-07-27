@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace oihana\core\accessors;
 
 use PHPUnit\Framework\TestCase;
-use function oihana\core\helpers\getKeyValue;
 
 final class GetKeyValueTest extends TestCase
 {

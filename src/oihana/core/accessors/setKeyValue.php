@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\helpers ;
+namespace oihana\core\accessors ;
 
 use InvalidArgumentException;
+
+// , string $separator = '.'
+// @param string       $separator Separator for nested keys. Default is '.'.
 
 /**
  * Sets the value associated with a given key in an array or object.
@@ -18,10 +21,10 @@ use InvalidArgumentException;
  * If a mismatch occurs between the forced type and the actual document type,
  * an InvalidArgumentException is thrown.
  *
- * @param array|object $document The source document (array or object).
- * @param string       $key      The key or property name to set.
- * @param mixed        $value    The value to assign.
- * @param bool|null    $isArray  Optional: true if document is an array, false if object, null to auto-detect.
+ * @param array|object $document  The source document (array or object).
+ * @param string       $key       The key or property name to set.
+ * @param mixed        $value     The value to assign.
+ * @param bool|null    $isArray   Optional: true if document is an array, false if object, null to auto-detect.
  *
  * @return array|object The modified document with the updated key/value.
  *

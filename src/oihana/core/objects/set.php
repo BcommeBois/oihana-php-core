@@ -9,11 +9,11 @@ use stdClass;
  * Sets a value in an object using a key path.
  * Supports dot notation for nested properties. Intermediate objects are created if needed.
  *
- * @param object $object The object to modify (or copy).
+ * @param object      $object The object to modify (or copy).
  * @param string|null $key The key path to set (e.g. 'user.address.country'). If null, replaces entire object.
- * @param mixed $value The value to set.
- * @param string $separator The separator used in the key path. Default is '.'.
- * @param bool $copy If true, returns a deep copy of the object with the modification.
+ * @param mixed       $value The value to set.
+ * @param string      $separator The separator used in the key path. Default is '.'.
+ * @param bool        $copy If true, returns a deep copy of the object with the modification.
  * @param array|string|callable|null $classFactory A class name, factory callable, or array path => className to create intermediate objects (default: stdClass).
  *
  * @return object The modified (or copied and modified) object.
@@ -74,7 +74,8 @@ function set
 )
 : object
 {
-    if ( $copy ) {
+    if ( $copy )
+    {
         $object = unserialize( serialize( $object ) ) ; // deep clone
     }
 
@@ -95,9 +96,9 @@ function set
             return new stdClass() ;
         },
         is_callable ( $classFactory ) => $classFactory ,
-        is_string   ( $classFactory ) => function() use ($classFactory)
+        is_string   ( $classFactory ) => function() use ( $classFactory )
         {
-            if ( !class_exists($classFactory) )
+            if ( !class_exists( $classFactory ) )
             {
                 throw new InvalidArgumentException("Class {$classFactory} does not exist");
             }
