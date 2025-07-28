@@ -1,6 +1,36 @@
 Search.appendIndex(
     [
                 {
+            "fqsen": "\\oihana\\core\\accessors\\assertDocumentKeyValid\u0028\u0029",
+            "name": "assertDocumentKeyValid",
+            "summary": "Validates\u0020the\u0020key,\u0020separator,\u0020and\u0020type\u0020of\u0020the\u0020provided\u0020document\u0020before\u0020performing\u0020key\u002Dbased\u0020operations.",
+            "url": "namespaces/oihana-core-accessors.html#function_assertDocumentKeyValid"
+        },                {
+            "fqsen": "\\oihana\\core\\accessors\\deleteKeyValue\u0028\u0029",
+            "name": "deleteKeyValue",
+            "summary": "Deletes\u0020a\u0020value\u0020from\u0020an\u0020array\u0020or\u0020object\u0020using\u0020a\u0020dot\u002Dnotated\u0020key\u0020path.",
+            "url": "namespaces/oihana-core-accessors.html#function_deleteKeyValue"
+        },                {
+            "fqsen": "\\oihana\\core\\accessors\\getKeyValue\u0028\u0029",
+            "name": "getKeyValue",
+            "summary": "Retrieves\u0020a\u0020value\u0020from\u0020an\u0020array\u0020or\u0020object\u0020using\u0020a\u0020dot\u002Dnotated\u0020key\u0020path.",
+            "url": "namespaces/oihana-core-accessors.html#function_getKeyValue"
+        },                {
+            "fqsen": "\\oihana\\core\\accessors\\hasKeyValue\u0028\u0029",
+            "name": "hasKeyValue",
+            "summary": "Checks\u0020whether\u0020a\u0020given\u0020key\u0020or\u0020property\u0020exists\u0020in\u0020an\u0020array\u0020or\u0020object,\u0020including\u0020nested\u0020paths.",
+            "url": "namespaces/oihana-core-accessors.html#function_hasKeyValue"
+        },                {
+            "fqsen": "\\oihana\\core\\accessors\\resolveReferencePath\u0028\u0029",
+            "name": "resolveReferencePath",
+            "summary": "Navigates\u0020to\u0020the\u0020parent\u0020container\u0020of\u0020the\u0020last\u0020key\u0020segment\u0020in\u0020a\u0020nested\u0020structure.",
+            "url": "namespaces/oihana-core-accessors.html#function_resolveReferencePath"
+        },                {
+            "fqsen": "\\oihana\\core\\accessors\\setKeyValue\u0028\u0029",
+            "name": "setKeyValue",
+            "summary": "Sets\u0020a\u0020value\u0020in\u0020an\u0020array\u0020or\u0020object\u0020using\u0020a\u0020dot\u002Dnotated\u0020key\u0020path.",
+            "url": "namespaces/oihana-core-accessors.html#function_setKeyValue"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\compress\u0028\u0029",
             "name": "compress",
             "summary": "Compresses\u0020the\u0020given\u0020array\u0020by\u0020removing\u0020values\u0020that\u0020match\u0020one\u0020or\u0020more\u0020conditions.",
@@ -15,6 +45,11 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Unset\u0020a\u0020key\u0020or\u0020nested\u0020key\u0020in\u0020an\u0020array\u0020using\u0020dot\u0020notation.",
             "url": "namespaces/oihana-core-arrays.html#function_delete"
+        },                {
+            "fqsen": "\\oihana\\core\\arrays\\ensureArrayPath\u0028\u0029",
+            "name": "ensureArrayPath",
+            "summary": "Ensures\u0020that\u0020a\u0020given\u0020key\u0020in\u0020an\u0020array\u0020contains\u0020a\u0020sub\u002Darray,\u0020and\u0020returns\u0020it\u0020by\u0020reference.",
+            "url": "namespaces/oihana-core-arrays.html#function_ensureArrayPath"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\exists\u0028\u0029",
             "name": "exists",
@@ -65,6 +100,11 @@ Search.appendIndex(
             "name": "set",
             "summary": "Sets\u0020a\u0020value\u0020in\u0020an\u0020associative\u0020array\u0020using\u0020a\u0020key\u0020path.",
             "url": "namespaces/oihana-core-arrays.html#function_set"
+        },                {
+            "fqsen": "\\oihana\\core\\arrays\\setArrayValue\u0028\u0029",
+            "name": "setArrayValue",
+            "summary": "Sets\u0020a\u0020value\u0020in\u0020a\u0020flat\u0020associative\u0020array\u0020using\u0020a\u0020single\u0020key.",
+            "url": "namespaces/oihana-core-arrays.html#function_setArrayValue"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\shuffle\u0028\u0029",
             "name": "shuffle",
@@ -146,10 +186,20 @@ Search.appendIndex(
             "summary": "Compress\u0020the\u0020passed\u0020in\u0020object\u0020by\u0020removing\u0020all\u0020properties\u0020that\u0020match\u0020given\u0020conditions.",
             "url": "namespaces/oihana-core-objects.html#function_compress"
         },                {
+            "fqsen": "\\oihana\\core\\objects\\ensureObjectPath\u0028\u0029",
+            "name": "ensureObjectPath",
+            "summary": "Ensures\u0020that\u0020a\u0020given\u0020property\u0020of\u0020an\u0020object\u0020is\u0020initialized\u0020as\u0020an\u0020object.",
+            "url": "namespaces/oihana-core-objects.html#function_ensureObjectPath"
+        },                {
             "fqsen": "\\oihana\\core\\objects\\set\u0028\u0029",
             "name": "set",
             "summary": "Sets\u0020a\u0020value\u0020in\u0020an\u0020object\u0020using\u0020a\u0020key\u0020path.",
             "url": "namespaces/oihana-core-objects.html#function_set"
+        },                {
+            "fqsen": "\\oihana\\core\\objects\\setObjectValue\u0028\u0029",
+            "name": "setObjectValue",
+            "summary": "Sets\u0020a\u0020value\u0020in\u0020a\u0020flat\u0020object\u0020using\u0020a\u0020single\u0020property\u0020name.",
+            "url": "namespaces/oihana-core-objects.html#function_setObjectValue"
         },                {
             "fqsen": "\\oihana\\core\\reflections\\getFunctionInfo\u0028\u0029",
             "name": "getFunctionInfo",
@@ -270,6 +320,11 @@ Search.appendIndex(
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
+        },                {
+            "fqsen": "\\oihana\\core\\accessors",
+            "name": "accessors",
+            "summary": "",
+            "url": "namespaces/oihana-core-accessors.html"
         },                {
             "fqsen": "\\oihana\\core\\arrays",
             "name": "arrays",

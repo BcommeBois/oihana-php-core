@@ -4,30 +4,58 @@ declare(strict_types=1);
 
 namespace oihana\core\accessors ;
 
+use Exception;
+
 /**
- * Retrieves the value associated with a given key from an array or object.
+ * Retrieves a value from an array or object using a dot-notated key path.
  *
- * This helper function returns the value associated with the specified key/property
- * in the provided document, which can be either an associative array or an object.
- * Supports nested keys using a separator (default is '.').
+ * This function returns the value associated with a flat or nested key from the given
+ * array or object. It supports nested keys using a separator (default: '.').
+ * If the path does not exist or a type mismatch occurs, the `$default` value is returned.
  *
- * The document type can be explicitly specified by `$isArray`. If null,
- * the type is inferred automatically.
+ * The structure type can be explicitly specified using `$isArray`, or it will be inferred automatically.
  *
- * If a mismatch occurs between the forced type and the actual document type,
- * an InvalidArgumentException is thrown.
+ * @param array|object $document The source structure (array or object).
+ * @param string $key The key or property to retrieve, supports nesting (e.g. 'user.name').
+ * @param mixed $default The fallback value if the key does not exist. Default is `null`.
+ * @param string $separator Separator used to split nested keys. Default is '.'.
+ * @param bool|null $isArray Optional: true for array mode, false for object mode, null for auto-detection.
  *
- * @param array|object $document  The source document (array or object).
- * @param string       $key       The key or property name to retrieve (supports nested keys with separator).
- * @param mixed        $default   The default value to return if the key is not found. Default is null.
- * @param string       $separator Separator for nested keys. Default is '.'.
- * @param bool|null    $isArray   Optional: true if document is an array, false if object, null to auto-detect.
+ * @return mixed The value found, or the default if the key path is not valid or not found.
  *
- * @return mixed The value of the key if found, or `null` if the key/property does not exist.
+ * @throws InvalidArgumentException If the structure type is invalid or mismatched.
  *
  * @package oihana\core\accessors
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
+ *
+ * @example
+ * Use a basic array key expression :
+ * ```php
+ * $doc = ['name' => 'Alice', 'age' => 30];
+ * echo getKeyValue($doc, 'name'); // 'Alice'
+ * ```
+ *
+ * Use a complex array key expression :
+ * ```php
+ * $doc = ['user' => ['name' => 'Alice']];
+ * echo getKeyValue($doc, 'user.name'); // 'Alice'
+ * ```
+ *
+ * Use with an object :
+ * ```php
+ * $doc = (object)['user' => (object)['email' => 'a@b.c']];
+ * echo getKeyValue($doc, 'user.email'); // 'a@b.c'
+ * ```
+ *
+ * Use a default value if the key not exist :
+ * ```php
+ * $doc = ['meta' => ['a' => 1]];
+ * echo getKeyValue($doc, 'meta.b', 'default'); // 'default'
+ *
+ * $doc = (object)['a' => 1];
+ * echo getKeyValue($doc, 'b', 42); // 42
+ * ```
  */
 function getKeyValue
 (
@@ -41,38 +69,28 @@ function getKeyValue
 {
     $isArray = assertDocumentKeyValid( $document , $key , $separator , $isArray ) ;
 
-    if ( !str_contains($key, $separator) )
+    if ( str_contains($key, $separator) )
     {
-        if ( $isArray )
+        $keys = explode($separator, $key);
+
+        try
         {
-            return $document[ $key ] ?? $default ;
+            $parent  = &resolveReferencePath($document, $keys, $isArray);
+            $lastKey = end( $keys ) ;
+            return $isArray
+                 ? ( $parent[ $lastKey ] ?? $default )
+                 : $parent->{ $lastKey } ?? $default ;
         }
-
-        return $document->{ $key } ?? $default ;
-    }
-
-    $keys    = explode( $separator , $key ) ;
-    $current = &$document;
-
-    foreach ( $keys as $segment )
-    {
-        if ( $isArray )
+        catch ( Exception $exception )
         {
-            if ( !is_array( $current ) || !array_key_exists( $segment , $current ) )
-            {
-                return $default;
-            }
-            $current = $current[ $segment ] ;
-        }
-        else
-        {
-            if ( !is_object( $current ) || !property_exists( $current , $segment ) )
-            {
-                return $default;
-            }
-            $current = $current->{ $segment } ;
+            return $default ;
         }
     }
 
-    return $current;
+    if ( $isArray )
+    {
+        return $document[ $key ] ?? $default ;
+    }
+
+    return $document->{ $key } ?? $default ;
 }

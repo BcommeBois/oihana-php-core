@@ -98,7 +98,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">unique.php</h2>
+        <h2 class="phpdocumentor-content__title">setKeyValue.php</h2>
 
         
         
@@ -109,7 +109,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-arrays-unique.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-accessors-setkeyvalue.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -125,16 +125,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-arrays-unique.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-accessors-setkeyvalue.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-arrays.html#function_unique">unique()</a>
+    <a class="" href="namespaces/oihana-core-accessors.html#function_setKeyValue">setKeyValue()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|object    </span>
 </dt>
-<dd>Removes duplicate values from an array and reindexes it.</dd>
+<dd>Sets a value in an array or object using a dot-notated key path.</dd>
 
     </dl>
 
@@ -144,57 +144,79 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-arrays-unique.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-accessors-setkeyvalue.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_unique">
-        unique()
-        <a href="namespaces/oihana-core-arrays.html#function_unique" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_setKeyValue">
+        setKeyValue()
+        <a href="namespaces/oihana-core-accessors.html#function_setKeyValue" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/unique.php"><a href="files/src-oihana-core-arrays-unique.html"><abbr title="src/oihana/core/arrays/unique.php">unique.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/accessors/setKeyValue.php"><a href="files/src-oihana-core-accessors-setkeyvalue.html"><abbr title="src/oihana/core/accessors/setKeyValue.php">setKeyValue.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Removes duplicate values from an array and reindexes it.</p>
+        <p class="phpdocumentor-summary">Sets a value in an array or object using a dot-notated key path.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">unique</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">SORT_STRING</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">setKeyValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isArray</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span></code>
 
-        <section class="phpdocumentor-description"><p>Combines the functionality of <abbr title="\oihana\core\arrays\array_unique()">array_unique()</abbr> and <abbr title="\oihana\core\arrays\array_values()">array_values()</abbr>:
-first removes duplicates, then reindexes the array numerically starting at 0.</p>
-<p>The optional <code class="prettyprint">$flags</code> parameter modifies the comparison behavior, possible values:</p>
-<ul>
-<li>SORT_REGULAR: Compare items normally (don't change types).</li>
-<li>SORT_NUMERIC: Compare items numerically.</li>
-<li>SORT_STRING: Compare items as strings.</li>
-<li>SORT_LOCALE_STRING: Compare items as strings, based on the current locale.</li>
-</ul>
+        <section class="phpdocumentor-description"><p>This function assigns a value to a key or property in the given array or object.
+It supports nested assignment using a separator (default: '.').
+If any intermediate path segment does not exist, it is created automatically.</p>
+<p>The type of the structure can be explicitly forced with <code class="prettyprint">$isArray</code>, or inferred automatically.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$array</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                <span class="phpdocumentor-signature__argument__name">$document</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The input array.</p>
+                    <section class="phpdocumentor-description"><p>The target array or object to modify.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$flags</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">SORT_STRING</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$key</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>[optional] Comparison behavior flag. Default is SORT_STRING.</p>
+                    <section class="phpdocumentor-description"><p>The key or property name to set. Supports nesting (e.g., &quot;user.name&quot;).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The value to assign.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$separator</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Separator used to split nested keys. Default is '.'.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$isArray</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional: true for array mode, false for object mode, null to auto-detect.</p>
 </section>
 
             </dd>
@@ -203,41 +225,19 @@ first removes duplicates, then reindexes the array numerically starting at 0.</p
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-arrays.html#function_unique#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-accessors.html#function_setKeyValue#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
+                    <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\unique;
-
-$array = ['a', 'b', 'a', 'c', 'b'];
-$result = unique($array);
-print_r($result); // ['a', 'b', 'c']
-
-$numericArray = [1, 2, '1', 3];
-$resultNumeric = unique($numericArray, SORT_NUMERIC);
-print_r($resultNumeric); // [1, 2, 3]
-</code></pre>
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the provided type does not match the structure type.</p>
 </section>
 
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://www.php.net/manual/en/function.array-unique.php"> https://www.php.net/manual/en/function.array-unique.php </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://www.php.net/manual/en/function.array-values.php"> https://www.php.net/manual/en/function.array-values.php </a>
-                    
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
@@ -256,13 +256,41 @@ print_r($resultNumeric); // [1, 2, 3]
                                                                                 
                                              
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$doc = ['name' =&gt; 'Alice'];
+$doc = setKeyValue($doc, 'age', 30);
+// Result: ['name' =&gt; 'Alice', 'age' =&gt; 30]
+</code></pre>
+<pre class="prettyprint"><code class="language-php">$doc = ['user' =&gt; ['name' =&gt; 'Alice']];
+$doc = setKeyValue($doc, 'user.age', 30);
+// Result: ['user' =&gt; ['name' =&gt; 'Alice', 'age' =&gt; 30]]
+</code></pre>
+<pre class="prettyprint"><code class="language-php">$doc = (object)['user' =&gt; (object)['name' =&gt; 'Alice']];
+$doc = setKeyValue($doc, 'user.age', 30);
+// Result: (object)['user' =&gt; (object)['name' =&gt; 'Alice', 'age' =&gt; 30]]
+</code></pre>
+<pre class="prettyprint"><code class="language-php">$doc = [];
+$doc = setKeyValue($doc, 'config.debug.enabled', true);
+// Result: ['config' =&gt; ['debug' =&gt; ['enabled' =&gt; true]]]
+</code></pre>
+<pre class="prettyprint"><code class="language-php">$doc = (object)[];
+$doc = setKeyValue($doc, 'meta.version.major', 1);
+// Result: (object)['meta' =&gt; (object)['version' =&gt; (object)['major' =&gt; 1]]]
+</code></pre>
+</section>
+
+                                    </dd>
                                             </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The filtered array with unique values, reindexed from 0.</p>
+                <section class="phpdocumentor-description"><p>The updated document after the value has been set.</p>
 </section>
 
             </section>
@@ -274,7 +302,7 @@ print_r($resultNumeric); // [1, 2, 3]
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/arrays/unique.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/accessors/setKeyValue.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -375,7 +403,7 @@ print_r($resultNumeric); // [1, 2, 3]
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-arrays-unique.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-accessors-setkeyvalue.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -383,7 +411,7 @@ print_r($resultNumeric); // [1, 2, 3]
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-arrays.html#function_unique">unique()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-accessors.html#function_setKeyValue">setKeyValue()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -403,7 +431,7 @@ print_r($resultNumeric); // [1, 2, 3]
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-arrays-unique.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-accessors-setkeyvalue.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

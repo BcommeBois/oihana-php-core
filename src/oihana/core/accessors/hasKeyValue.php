@@ -4,22 +4,60 @@ declare(strict_types=1);
 
 namespace oihana\core\accessors ;
 
+use Exception;
+use InvalidArgumentException;
+
 /**
- * Checks whether a key or property exists in the document (array or object), including nested paths.
+ * Checks whether a given key or property exists in an array or object, including nested paths.
  *
- * Supports dot notation (or custom separator) for nested keys, and allows forcing the type.
- * If the path is not fully present, returns false. Objects with __isset or dynamic __get are not assumed present.
+ * This helper determines if the specified key exists in the given document (array or object).
+ * It supports nested access via a separator (default is '.') and can optionally force
+ * the document type (array or object).
  *
- * @param array|object $document  The document (array or object).
- * @param string       $key       The key or property path (e.g., 'user.name').
- * @param string       $separator Separator used for nested keys (default: '.').
- * @param bool|null    $isArray   Optional: true for array, false for object, null to auto-detect.
+ * If any part of the path does not exist, `false` is returned. This function does not rely on
+ * `__get()` or `__isset()` magic methods for objects.
  *
- * @return bool True if the path exists entirely, false otherwise.
+ * @param array|object $document The document (array or object) to inspect.
+ * @param string $key The key or property path to check. Supports nesting with separator.
+ * @param string $separator Separator used for nested paths. Default is '.'.
+ * @param bool|null $isArray Optional: true if document is an array, false if object, null to auto-detect.
+ *
+ * @return bool True if the full key path exists, false otherwise.
+ *
+ * @throws InvalidArgumentException If the document or key is invalid.
  *
  * @package oihana\core\accessors
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
+ *
+ * @example
+ * ```php
+ * $doc = ['name' => 'Alice'];
+ * hasKeyValue($doc, 'name'); // true
+ * hasKeyValue($doc, 'age');  // false
+ * ```
+ *
+ * ```php
+ * $doc = ['user' => ['name' => 'Alice']];
+ * hasKeyValue($doc, 'user.name'); // true
+ * hasKeyValue($doc, 'user.age');  // false
+ * ```
+ *
+ * ```php
+ * $doc = (object)['user' => (object)['name' => 'Alice']];
+ * hasKeyValue($doc, 'user.name'); // true
+ * hasKeyValue($doc, 'user.age');  // false
+ * ```
+ *
+ * ```php
+ * $doc = [];
+ * hasKeyValue($doc, 'config.debug.enabled'); // false
+ * ```
+ *
+ * ```php
+ * $doc = (object)[];
+ * hasKeyValue($doc, 'meta.version.major'); // false
+ * ```
  */
 function hasKeyValue
 (
@@ -42,28 +80,23 @@ function hasKeyValue
         return property_exists( $document , $key ) ;
     }
 
-    $keys    = explode( $separator , $key ) ;
-    $current = &$document;
-
-    foreach ( $keys as $segment )
+    try
     {
+        $keys    = explode( $separator , $key ) ;
+        $parent  = &resolveReferencePath($document ,  $keys , $isArray ) ;
+        $lastKey = end( $keys ) ;
+
         if ( $isArray )
         {
-            if ( !is_array( $current ) || !array_key_exists( $segment , $current ) )
-            {
-                return false;
-            }
-            $current = $current[ $segment ] ;
+            return isset( $parent[ $lastKey ] ) ;
         }
         else
         {
-            if ( !is_object( $current ) || !property_exists( $current , $segment ) )
-            {
-                return false;
-            }
-            $current = $current->{ $segment } ;
+            return isset( $parent->{ $lastKey } ) ;
         }
     }
-
-    return true ;
+    catch ( Exception $e )
+    {
+        return false;
+    }
 }

@@ -115,6 +115,7 @@
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-accessors.html"><abbr title="\oihana\core\accessors">accessors</abbr></a></dt>
             <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-arrays.html"><abbr title="\oihana\core\arrays">arrays</abbr></a></dt>
             <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-date.html"><abbr title="\oihana\core\date">date</abbr></a></dt>
             <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-helpers.html"><abbr title="\oihana\core\helpers">helpers</abbr></a></dt>
@@ -287,6 +288,8 @@ echo ifNull(0, 'default');       // Outputs: 0 (because 0 is not null)
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
                             Prism.highlightElement(code);
+                            d=document.getElementsByClassName("line-numbers");
+                            d[0].scrollTop = d[0].children[1].offsetTop;
                             return;
                         }
 
