@@ -23,7 +23,7 @@ composer require oihana/php-core
 
 The oihana/php-core library provides pure utility functions (no side effects), organized into logical, reusable packages:
 
-### 🧾 Accessors (oihana\core\accessors)
+### 🧾 [Accessors](https://github.com/BcommeBois/oihana-php-core/wiki/oihana%E2%80%90core%E2%80%90accessors) (oihana\core\accessors)
 
 Unified access for both arrays and objects:
 - Read: getKeyValue()
