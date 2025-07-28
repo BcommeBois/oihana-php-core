@@ -30,6 +30,7 @@
         "files":
         [
             "src/oihana/core/ifNull.php",
+            "src/oihana/core/isLiteral.php",
             "src/oihana/core/accessors/assertDocumentKeyValid.php" ,
             "src/oihana/core/accessors/deleteKeyValue.php" ,
             "src/oihana/core/accessors/getKeyValue.php" ,

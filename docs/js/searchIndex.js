@@ -161,6 +161,11 @@ Search.appendIndex(
             "summary": "Returns\u0020the\u0020given\u0020value\u0020if\u0020it\u0020is\u0020not\u0020null\u003B\u0020otherwise,\u0020returns\u0020the\u0020default\u0020value.",
             "url": "namespaces/oihana-core.html#function_ifNull"
         },                {
+            "fqsen": "\\oihana\\core\\isLiteral\u0028\u0029",
+            "name": "isLiteral",
+            "summary": "Checks\u0020whether\u0020a\u0020given\u0020value\u0020is\u0020a\u0020literal\u0020string\u0020representing\u0020a\u0020boolean\u0020\u0028\u0060true\u0060\u0020or\u0020\u0060false\u0060\u0029\u0020or\u0020\u0060null\u0060.",
+            "url": "namespaces/oihana-core.html#function_isLiteral"
+        },                {
             "fqsen": "\\oihana\\core\\maths\\ceilValue\u0028\u0029",
             "name": "ceilValue",
             "summary": "Rounds\u0020and\u0020returns\u0020the\u0020ceiling\u0020of\u0020the\u0020specified\u0020number\u0020or\u0020expression.",

@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- Adds oihana\core\isLiteral
 - Adds oihana\core\accessors\assertDocumentKeyValid
 - Adds oihana\core\accessors\deleteKeyValue
 - Adds oihana\core\accessors\getKeyValue
