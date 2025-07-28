@@ -23,6 +23,17 @@ composer require oihana/php-core
 
 The oihana/php-core library provides pure utility functions (no side effects), organized into logical, reusable packages:
 
+### 🧾 Accessors (oihana\core\accessors)
+
+Unified access for both arrays and objects:
+- Read: getKeyValue()
+- Write: setKeyValue()
+- Delete: deleteKeyValue() (supports wildcards: *, foo.bar.*)
+- Exists: hasKeyValue()
+- Validation and traversal: assertDocumentKeyValid(), resolveReferencePath()
+
+Designed for safely accessing and modifying deep nested structures with dot notation support and automatic path creation.
+
 ### 🔢 Arrays (oihana\core\arrays)
 
 Advanced array utilities:
