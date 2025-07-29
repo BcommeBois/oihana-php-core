@@ -161,4 +161,27 @@ class FastFormatTest extends TestCase
         $expected = "Value: object";
         $this->assertEquals($expected, fastFormat("Value: {0}", [ $obj ] ) );
     }
+
+    public function testFastFormatBasic()
+    {
+        $this->assertSame(
+            'Hello Alice, today is Monday.',
+            fastFormat('Hello {0}, today is {1}.', 'Alice', 'Monday')
+        );
+
+        $this->assertSame(
+            '1 + 2 = 3',
+            fastFormat('{0} + {1} = {2}', [1, 2, 3])
+        );
+
+        $this->assertSame(
+            '{0} and {1}',
+            fastFormat('{0} and {1}', [null]) // index 1 manquant
+        );
+
+        $this->assertSame(
+            '',
+            fastFormat(null)
+        );
+    }
 }

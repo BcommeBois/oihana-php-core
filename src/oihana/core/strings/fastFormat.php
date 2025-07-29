@@ -2,8 +2,6 @@
 
 namespace oihana\core\strings ;
 
-use oihana\enums\Char;
-
 /**
  * Quickly formats a string using indexed placeholders and arguments.
  *
@@ -57,7 +55,7 @@ function fastFormat( ?string $pattern , ...$args ) :string
         $args = $args[0];
     }
 
-    if ( empty($args) )
+    if ( empty( $args ) )
     {
         return $pattern;
     }

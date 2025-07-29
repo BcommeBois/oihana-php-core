@@ -73,6 +73,7 @@
             "src/oihana/core/objects/set.php",
             "src/oihana/core/objects/setObjectValue.php",
             "src/oihana/core/strings/fastFormat.php",
+            "src/oihana/core/strings/formatFromDocument.php" ,
             "src/oihana/core/strings/formatRequestArgs.php",
             "src/oihana/core/strings/hyphenate.php",
             "src/oihana/core/strings/kebab.php",

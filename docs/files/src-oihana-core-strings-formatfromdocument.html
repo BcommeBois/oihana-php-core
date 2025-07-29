@@ -98,7 +98,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">fastFormat.php</h2>
+        <h2 class="phpdocumentor-content__title">formatFromDocument.php</h2>
 
         
         
@@ -109,7 +109,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-strings-fastformat.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-strings-formatfromdocument.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -125,16 +125,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-strings-fastformat.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-strings-formatfromdocument.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-strings.html#function_fastFormat">fastFormat()</a>
+    <a class="" href="namespaces/oihana-core-strings.html#function_formatFromDocument">formatFromDocument()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Quickly formats a string using indexed placeholders and arguments.</dd>
+<dd>Format a template string using external values.</dd>
 
     </dl>
 
@@ -144,54 +144,93 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-strings-fastformat.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-strings-formatfromdocument.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_fastFormat">
-        fastFormat()
-        <a href="namespaces/oihana-core-strings.html#function_fastFormat" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_formatFromDocument">
+        formatFromDocument()
+        <a href="namespaces/oihana-core-strings.html#function_formatFromDocument" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/fastFormat.php"><a href="files/src-oihana-core-strings-fastformat.html"><abbr title="src/oihana/core/strings/fastFormat.php">fastFormat.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/formatFromDocument.php"><a href="files/src-oihana-core-strings-formatfromdocument.html"><abbr title="src/oihana/core/strings/formatFromDocument.php">formatFromDocument.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Quickly formats a string using indexed placeholders and arguments.</p>
+        <p class="phpdocumentor-summary">Format a template string using external values.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">fastFormat</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__variadic-operator">...</span><span class="phpdocumentor-signature__argument__name">$args</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">formatFromDocument</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$template</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prefix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;{{&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suffix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;}}&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function replaces indexed tokens like <code class="prettyprint">{0}</code>, <code class="prettyprint">{1}</code>, etc. in a pattern string
-with corresponding values from a list of arguments or an array.</p>
-<ul>
-<li>If arguments are passed as a list: <code class="prettyprint">fastFormat(&quot;{0} {1}&quot;, &quot;hello&quot;, &quot;world&quot;)</code></li>
-<li>If passed as a single array: <code class="prettyprint">fastFormat(&quot;{0} {1}&quot;, [&quot;hello&quot;, &quot;world&quot;])</code></li>
-</ul>
+        <section class="phpdocumentor-description"><p>This function replaces placeholders in a given template string
+with corresponding values from an associative array or object.
+Placeholders are defined by a prefix and suffix (by default <code class="prettyprint">{{</code> and <code class="prettyprint">}}</code>)
+surrounding a key name.</p>
+<p>The pattern used to detect placeholders can be customized by passing
+a regular expression pattern matching the full placeholder including delimiters.
+If omitted, a default pattern is constructed from prefix and suffix,
+allowing keys with letters, digits, underscore, dot, brackets, and dash.</p>
+<p>If a key is not found in the data, the placeholder is replaced with an empty string.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$pattern</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                <span class="phpdocumentor-signature__argument__name">$template</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The format string containing indexed placeholders.</p>
+                    <section class="phpdocumentor-description"><p>The string to format.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$args</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                <span class="phpdocumentor-signature__argument__name">$document</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The values to insert, either as variadic args or a single array.</p>
+                    <section class="phpdocumentor-description"><p>Key-value pairs for placeholders.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$prefix</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;{{&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Placeholder prefix (default <code class="prettyprint">{{</code>).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$suffix</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;}}&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Placeholder suffix (default <code class="prettyprint">}}</code>).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$separator</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Separator used to traverse nested keys (default <code class="prettyprint">.</code>).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pattern</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional full regex pattern to match placeholders (including delimiters).</p>
 </section>
 
             </dd>
@@ -200,39 +239,11 @@ with corresponding values from a list of arguments or an array.</p>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-strings.html#function_fastFormat#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-strings.html#function_formatFromDocument#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo fastFormat(&quot;Hello {0}&quot;, &quot;World&quot;);
-// Output: &quot;Hello World&quot;
-
-echo fastFormat(&quot;Coordinates: {0}, {1}&quot;, [45.0, -73.0]);
-// Output: &quot;Coordinates: 45, -73&quot;
-
-echo fastFormat(&quot;User {0} has {1} points&quot;, &quot;Alice&quot;, 1500);
-// Output: &quot;User Alice has 1500 points&quot;
-
-echo fastFormat(&quot;Missing: {0}, {1}&quot;, &quot;only one&quot;);
-// Output: &quot;Missing: only one, {1}&quot; (missing index stays unchanged)
-
-class Person {
-    public function __toString(): string {
-        return &quot;John Doe&quot;;
-    }
-}
-echo fastFormat(&quot;Name: {0}&quot;, new Person());
-// Output: &quot;Name: John Doe&quot;
-</code></pre>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -249,13 +260,41 @@ echo fastFormat(&quot;Name: {0}&quot;, new Person());
                                                                                 
                                              
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\formatFromDocument;
+
+echo formatFromDocument('Hello, {{name}}!', ['name' =&gt; 'Alice']);
+// Output: 'Hello, Alice!'
+
+echo formatFromDocument('Today is [[day]]', ['day' =&gt; 'Monday'], '[[', ']]');
+// Output: 'Today is Monday'
+
+echo formatFromDocument('ZIP: {{user.address.zip}}', [
+    'user' =&gt; ['address' =&gt; ['zip' =&gt; '75000']]
+]);
+// Output: 'ZIP: 75000'
+
+// Custom pattern example
+$template = 'Hello, &lt;&lt;name&gt;&gt;!';
+$doc = ['name' =&gt; 'Alice'];
+$pattern = '/&lt;&lt;(.+?)&gt;&gt;/';
+echo formatFromDocument($template, $doc, '&lt;&lt;', '&gt;&gt;', '.', $pattern);
+// Output: 'Hello, Alice!'
+</code></pre>
+</section>
+
+                                    </dd>
                                             </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The formatted string with placeholders replaced by values.</p>
+                <section class="phpdocumentor-description"><p>The formatted string.</p>
 </section>
 
             </section>
@@ -267,7 +306,7 @@ echo fastFormat(&quot;Name: {0}&quot;, new Person());
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/fastFormat.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/formatFromDocument.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -368,7 +407,7 @@ echo fastFormat(&quot;Name: {0}&quot;, new Person());
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-strings-fastformat.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-strings-formatfromdocument.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -376,7 +415,7 @@ echo fastFormat(&quot;Name: {0}&quot;, new Person());
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_fastFormat">fastFormat()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_formatFromDocument">formatFromDocument()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -396,7 +435,7 @@ echo fastFormat(&quot;Name: {0}&quot;, new Person());
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-strings-fastformat.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-strings-formatfromdocument.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
