@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace oihana\core\accessors ;
 
 use Exception;
+use InvalidArgumentException;
 
 /**
  * Retrieves a value from an array or object using a dot-notated key path.

@@ -95,21 +95,17 @@
             <div class="phpdocumentor-column -nine phpdocumentor-content">
                                 <section>
                                         <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana.html">oihana</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana-core.html">core</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">getKeyValue.php</h2>
-
-        
-        
-        
-        
-
+    <article class="phpdocumentor-element -namespace">
+        <h2 class="phpdocumentor-content__title">documents</h2>
 
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-accessors-getkeyvalue.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="namespaces/oihana-core-documents.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -125,52 +121,79 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-accessors-getkeyvalue.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="namespaces/oihana-core-documents.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-accessors.html#function_getKeyValue">getKeyValue()</a>
+    <a class="" href="namespaces/oihana-core-documents.html#function_formatDocument">formatDocument()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|object    </span>
 </dt>
-<dd>Retrieves a value from an array or object using a dot-notated key path.</dd>
+<dd>Recursively formats all string values in a document (array or object) by replacing placeholders with their values
+found in the root document.</dd>
 
     </dl>
-
 
         
 
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-accessors-getkeyvalue.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="namespaces/oihana-core-documents.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_getKeyValue">
-        getKeyValue()
-        <a href="namespaces/oihana-core-accessors.html#function_getKeyValue" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_formatDocument">
+        formatDocument()
+        <a href="namespaces/oihana-core-documents.html#function_formatDocument" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/accessors/getKeyValue.php"><a href="files/src-oihana-core-accessors-getkeyvalue.html"><abbr title="src/oihana/core/accessors/getKeyValue.php">getKeyValue.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/documents/formatDocument.php"><a href="files/src-oihana-core-documents-formatdocument.html"><abbr title="src/oihana/core/documents/formatDocument.php">formatDocument.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Retrieves a value from an array or object using a dot-notated key path.</p>
+        <p class="phpdocumentor-summary">Recursively formats all string values in a document (array or object) by replacing placeholders with their values
+found in the root document.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">getKeyValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isArray</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">formatDocument</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prefix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;{{&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suffix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;}}&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$formatter</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span></code>
 
-        <section class="phpdocumentor-description"><p>This function returns the value associated with a flat or nested key from the given
-array or object. It supports nested keys using a separator (default: '.').
-If the path does not exist or a type mismatch occurs, the <code class="prettyprint">$default</code> value is returned.</p>
-<p>The structure type can be explicitly specified using <code class="prettyprint">$isArray</code>, or it will be inferred automatically.</p>
+        <section class="phpdocumentor-description"><p>This function uses the <code class="prettyprint">format</code> function to replace placeholders in string values with the corresponding values
+from the document. It supports nested keys with a custom separator (default is '.').</p>
+<p>Placeholders are defined by a prefix and suffix (default '{{' and '}}'), e.g. &quot;{{key.subkey}}&quot;.</p>
+<p>Example:</p>
+<pre class="prettyprint"><code class="language-php">$config =
+[
+    'dir'    =&gt; '/var/www/project',
+    'htdocs' =&gt; '{{dir}}/htdocs',
+    'env'    =&gt; 'production',
+    'config' =&gt;
+     [
+        'production' =&gt; [ 'url' =&gt; 'https://example.com' ]
+     ],
+    'api' =&gt; '{{config.{{env}}.url}}/api'
+    'wordpress' =&gt; [
+        'server' =&gt; [
+            'subdomain' =&gt; 'www',
+            'domain' =&gt; 'example.com',
+            'url' =&gt; 'https://{{wordpress.server.subdomain}}.{{wordpress.server.domain}}/'
+        ]
+    ]
+];
+$formatted = formatDocument($config);
+
+echo $formatted['htdocs'] ; // outputs: /var/www/project/htdocs
+echo $formatted['wordpress']['server']['url'] ; // outputs: https://www.example.com/
+
+$formatted = formatDocument($config);
+echo $formatted['api']; // outputs: https://example.com/api
+</code></pre>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -180,25 +203,25 @@ If the path does not exist or a type mismatch occurs, the <code class="prettypri
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The source structure (array or object).</p>
+                    <section class="phpdocumentor-description"><p>The document (array or object) to recursively format.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$key</span>
+                <span class="phpdocumentor-signature__argument__name">$prefix</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;{{&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The key or property to retrieve, supports nesting (e.g. 'user.name').</p>
+                    <section class="phpdocumentor-description"><p>Placeholder prefix (default '{{').</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$default</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$suffix</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;}}&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The fallback value if the key does not exist. Default is <code class="prettyprint">null</code>.</p>
+                    <section class="phpdocumentor-description"><p>Placeholder suffix (default '}}').</p>
 </section>
 
             </dd>
@@ -207,16 +230,25 @@ If the path does not exist or a type mismatch occurs, the <code class="prettypri
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Separator used to split nested keys. Default is '.'.</p>
+                    <section class="phpdocumentor-description"><p>Separator used in nested keys (default '.').</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$isArray</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool|null</span>
+                <span class="phpdocumentor-signature__argument__name">$pattern</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional: true for array mode, false for object mode, null for auto-detection.</p>
+                    <section class="phpdocumentor-description"><p>Optional regex pattern to match placeholders.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$formatter</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional custom formatter callable.</p>
 </section>
 
             </dd>
@@ -225,21 +257,11 @@ If the path does not exist or a type mismatch occurs, the <code class="prettypri
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-accessors.html#function_getKeyValue#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-documents.html#function_formatDocument#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
-                                                            
-                                                 <section class="phpdocumentor-description"><p>If the structure type is invalid or mismatched.</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -256,40 +278,13 @@ If the path does not exist or a type mismatch occurs, the <code class="prettypri
                                                                                 
                                              
                                     </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Use a basic array key expression :</p>
-<pre class="prettyprint"><code class="language-php">$doc = ['name' =&gt; 'Alice', 'age' =&gt; 30];
-echo getKeyValue($doc, 'name'); // 'Alice'
-</code></pre>
-<p>Use a complex array key expression :</p>
-<pre class="prettyprint"><code class="language-php">$doc = ['user' =&gt; ['name' =&gt; 'Alice']];
-echo getKeyValue($doc, 'user.name'); // 'Alice'
-</code></pre>
-<p>Use with an object :</p>
-<pre class="prettyprint"><code class="language-php">$doc = (object)['user' =&gt; (object)['email' =&gt; 'a@b.c']];
-echo getKeyValue($doc, 'user.email'); // 'a@b.c'
-</code></pre>
-<p>Use a default value if the key not exist :</p>
-<pre class="prettyprint"><code class="language-php">$doc = ['meta' =&gt; ['a' =&gt; 1]];
-echo getKeyValue($doc, 'meta.b', 'default'); // 'default'
-
-$doc = (object)['a' =&gt; 1];
-echo getKeyValue($doc, 'b', 42); // 42
-</code></pre>
-</section>
-
-                                    </dd>
                                             </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">mixed</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The value found, or the default if the key path is not valid or not found.</p>
+                <section class="phpdocumentor-description"><p>A new formatted document with same structure and class.</p>
 </section>
 
             </section>
@@ -301,7 +296,7 @@ echo getKeyValue($doc, 'b', 42); // 42
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/accessors/getKeyValue.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -402,7 +397,7 @@ echo getKeyValue($doc, 'b', 42); // 42
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-accessors-getkeyvalue.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                    <li><a href="namespaces/oihana-core-documents.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -410,7 +405,7 @@ echo getKeyValue($doc, 'b', 42); // 42
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-accessors.html#function_getKeyValue">getKeyValue()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-documents.html#function_formatDocument">formatDocument()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -430,7 +425,7 @@ echo getKeyValue($doc, 'b', 42); // 42
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-accessors-getkeyvalue.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="namespaces/oihana-core-documents.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

@@ -151,6 +151,11 @@ Search.appendIndex(
             "summary": "Indicates\u0020if\u0020the\u0020passed\u002Din\u0020expression\u0020is\u0020a\u0020valid\u0020timezone.",
             "url": "namespaces/oihana-core-date.html#function_isValidTimezone"
         },                {
+            "fqsen": "\\oihana\\core\\documents\\formatDocument\u0028\u0029",
+            "name": "formatDocument",
+            "summary": "Recursively\u0020formats\u0020all\u0020string\u0020values\u0020in\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020by\u0020replacing\u0020placeholders\u0020with\u0020their\u0020values\nfound\u0020in\u0020the\u0020root\u0020document.",
+            "url": "namespaces/oihana-core-documents.html#function_formatDocument"
+        },                {
             "fqsen": "\\oihana\\core\\helpers\\conditions\u0028\u0029",
             "name": "conditions",
             "summary": "Normalizes\u0020conditions\u0020into\u0020an\u0020array\u0020of\u0020callable\u0020functions.",
@@ -370,6 +375,11 @@ Search.appendIndex(
             "name": "date",
             "summary": "",
             "url": "namespaces/oihana-core-date.html"
+        },                {
+            "fqsen": "\\oihana\\core\\documents",
+            "name": "documents",
+            "summary": "",
+            "url": "namespaces/oihana-core-documents.html"
         },                {
             "fqsen": "\\oihana\\core\\helpers",
             "name": "helpers",
