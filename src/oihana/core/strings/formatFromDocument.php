@@ -5,19 +5,12 @@ namespace oihana\core\strings ;
 use function oihana\core\accessors\getKeyValue ;
 
 /**
- * Format a template string using external values.
+ * Format a template string using key-value pairs from an array or object.
  *
- * This function replaces placeholders in a given template string
- * with corresponding values from an associative array or object.
- * Placeholders are defined by a prefix and suffix (by default `{{` and `}}`)
- * surrounding a key name.
- *
- * The pattern used to detect placeholders can be customized by passing
- * a regular expression pattern matching the full placeholder including delimiters.
- * If omitted, a default pattern is constructed from prefix and suffix,
- * allowing keys with letters, digits, underscore, dot, brackets, and dash.
- *
- * If a key is not found in the data, the placeholder is replaced with an empty string.
+ * This function replaces placeholders in the template with corresponding values
+ * found in the provided associative array or object. Placeholders are defined
+ * by a prefix and suffix (default `{{` and `}}`), and keys can be nested using
+ * the separator (default `.`).
  *
  * @param string $template The string to format.
  * @param array|object $document Key-value pairs for placeholders.
@@ -70,7 +63,7 @@ function formatFromDocument
     {
         $escapedPrefix = preg_quote( $prefix , '/' ) ;
         $escapedSuffix = preg_quote( $suffix , '/' ) ;
-        $pattern       = '/' . $escapedPrefix . '([a-zA-Z0-9_\.\-\[\]]+)' . $escapedSuffix . '/';
+        $pattern       = '/' . $escapedPrefix . '([a-zA-Z0-9_.\-\[\]]+)' . $escapedSuffix . '/';
     }
 
     return preg_replace_callback($pattern, function ($matches) use ( $document , $separator ): string

@@ -76,6 +76,7 @@
             "src/oihana/core/strings/blockSuffix.php" ,
             "src/oihana/core/strings/camel.php",
             "src/oihana/core/strings/fastFormat.php",
+            "src/oihana/core/strings/format.php" ,
             "src/oihana/core/strings/formatFromDocument.php" ,
             "src/oihana/core/strings/formatRequestArgs.php",
             "src/oihana/core/strings/hyphenate.php",

@@ -236,9 +236,14 @@ Search.appendIndex(
             "summary": "Quickly\u0020formats\u0020a\u0020string\u0020using\u0020indexed\u0020placeholders\u0020and\u0020arguments.",
             "url": "namespaces/oihana-core-strings.html#function_fastFormat"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\format\u0028\u0029",
+            "name": "format",
+            "summary": "Format\u0020a\u0020template\u0020string\u0020using\u0020an\u0020external\u0020document.",
+            "url": "namespaces/oihana-core-strings.html#function_format"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\formatFromDocument\u0028\u0029",
             "name": "formatFromDocument",
-            "summary": "Format\u0020a\u0020template\u0020string\u0020using\u0020external\u0020values.",
+            "summary": "Format\u0020a\u0020template\u0020string\u0020using\u0020key\u002Dvalue\u0020pairs\u0020from\u0020an\u0020array\u0020or\u0020object.",
             "url": "namespaces/oihana-core-strings.html#function_formatFromDocument"
         },                {
             "fqsen": "\\oihana\\core\\strings\\formatRequestArgs\u0028\u0029",
