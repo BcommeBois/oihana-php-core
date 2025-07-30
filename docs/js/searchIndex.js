@@ -211,6 +211,21 @@ Search.appendIndex(
             "summary": "Returns\u0020detailed\u0020reflection\u0020information\u0020about\u0020a\u0020given\u0020function\u0020or\u0020method.",
             "url": "namespaces/oihana-core-reflections.html#function_getFunctionInfo"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\block\u0028\u0029",
+            "name": "block",
+            "summary": "Format\u0020an\u0020indented\u0020multi\u002Dline\u0020text\u0020block.",
+            "url": "namespaces/oihana-core-strings.html#function_block"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\blockPrefix\u0028\u0029",
+            "name": "blockPrefix",
+            "summary": "Prefix\u0020and\u0020indent\u0020each\u0020line\u0020of\u0020a\u0020multi\u002Dline\u0020string\u0020or\u0020array\u0020of\u0020lines.",
+            "url": "namespaces/oihana-core-strings.html#function_blockPrefix"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\blockSuffix\u0028\u0029",
+            "name": "blockSuffix",
+            "summary": "Suffix\u0020and\u0020indent\u0020each\u0020line\u0020of\u0020a\u0020multi\u002Dline\u0020string\u0020or\u0020array\u0020of\u0020lines.",
+            "url": "namespaces/oihana-core-strings.html#function_blockSuffix"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\camel\u0028\u0029",
             "name": "camel",
             "summary": "Converts\u0020a\u0020string\u0020to\u0020camelCase\u0020format.",
@@ -325,6 +340,11 @@ Search.appendIndex(
             "name": "urlencode",
             "summary": "Encodes\u0020the\u0020specified\u0020URI\u0020according\u0020to\u0020RFC\u00203986.",
             "url": "namespaces/oihana-core-strings.html#function_urlencode"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\wrapBlock\u0028\u0029",
+            "name": "wrapBlock",
+            "summary": "Wraps\u0020a\u0020block\u0020of\u0020lines\u0020with\u0020a\u0020header\u0020and\u0020footer\u0020line.",
+            "url": "namespaces/oihana-core-strings.html#function_wrapBlock"
         },                {
             "fqsen": "\\",
             "name": "\\",

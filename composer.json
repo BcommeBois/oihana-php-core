@@ -65,13 +65,16 @@
             "src/oihana/core/maths/ceilValue.php" ,
             "src/oihana/core/maths/floorValue.php" ,
             "src/oihana/core/maths/roundValue.php" ,
-            "src/oihana/core/strings/camel.php" ,
             "src/oihana/core/numbers/clip.php",
             "src/oihana/core/reflections/getFunctionInfo.php",
             "src/oihana/core/objects/compress.php",
             "src/oihana/core/objects/ensureObjectPath.php",
             "src/oihana/core/objects/set.php",
             "src/oihana/core/objects/setObjectValue.php",
+            "src/oihana/core/strings/block.php",
+            "src/oihana/core/strings/blockPrefix.php" ,
+            "src/oihana/core/strings/blockSuffix.php" ,
+            "src/oihana/core/strings/camel.php",
             "src/oihana/core/strings/fastFormat.php",
             "src/oihana/core/strings/formatFromDocument.php" ,
             "src/oihana/core/strings/formatRequestArgs.php",
@@ -84,7 +87,8 @@
             "src/oihana/core/strings/randomKey.php",
             "src/oihana/core/strings/snake.php",
             "src/oihana/core/strings/toString.php",
-            "src/oihana/core/strings/urlencode.php"
+            "src/oihana/core/strings/urlencode.php",
+            "src/oihana/core/strings/wrapBlock.php"
         ]
     },
     "require": {
