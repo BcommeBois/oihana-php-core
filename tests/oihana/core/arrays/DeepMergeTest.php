@@ -171,4 +171,22 @@ class DeepMergeTest extends TestCase
         ];
         $this->assertEquals($expected, deepMerge($arr1, $arr2));
     }
+
+    public function testDeepMerge()
+    {
+        $a = ['user' => ['name' => 'Alice', 'roles' => ['admin']]];
+        $b = ['user' => ['roles' => ['editor'], 'active' => true]];
+        $c = ['tags' => ['php', 'dev']];
+
+        $expected = [
+            'user' => [
+                'name'   => 'Alice',
+                'roles'  => ['admin', 'editor'],
+                'active' => true,
+            ],
+            'tags' => ['php', 'dev'],
+        ];
+
+        $this->assertEquals($expected, deepMerge($a, $b, $c));
+    }
 }

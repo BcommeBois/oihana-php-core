@@ -41,13 +41,16 @@ function deepMerge( array ...$arrays ): array
     {
         foreach ( $array as $key => $value )
         {
-            if ( is_array($value) && isset($merged[$key]) && is_array($merged[$key]) )
+            if ( is_array( $value ) && isset( $merged[$key] ) && is_array( $merged[$key] ) )
             {
                 $merged[ $key ] = deepMerge( $merged[ $key ] , $value );
             }
-            elseif ( is_int($key) )
+            elseif ( is_int( $key ) )
             {
-                $merged[] = $value ;
+                if ( !in_array($value, $merged, true) )
+                {
+                    $merged[] = $value;
+                }
             }
             else
             {
