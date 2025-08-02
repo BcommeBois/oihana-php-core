@@ -13,18 +13,24 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\accessors\getKeyValue
 - Adds oihana\core\accessors\hasKeyValue
 - Adds oihana\core\accessors\setKeyValue
+ 
 - Adds oihana\core\date\formatDateTime
+- 
+- Adds oihana\core\documents\formatDocumentInPlace
 - Adds oihana\core\documents\formatDocument
+- Adds oihana\core\documents\formatDocumentWith
+
 - Adds oihana\core\reflections\getFunctionInfo
 - Adds oihana\core\strings\block
 - Adds oihana\core\strings\blockPrefix
 - Adds oihana\core\strings\blockSuffix
+- Adds oihana\core\strings\format
 - Adds oihana\core\strings\formatFromDocument
 - Adds oihana\core\strings\isRegexp
 - Adds oihana\core\strings\wrapBlock
 
 ### Removed
-- Keep only the core folder !
+- Core folder only
 
 ### Changed
 - Rename oihana\core\files\loadAndMergeArrayFromPHPFiles -> oihana\files\requireAndMergeArrays

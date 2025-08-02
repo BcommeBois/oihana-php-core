@@ -8,13 +8,15 @@ use Throwable;
 use function oihana\core\strings\format;
 
 /**
- * Recursively formats all string values in a document (array or object) by replacing placeholders with their values
- * found in the root document.
+ * Recursively formats all string values in a document (array or object) by replacing placeholders
+ * with their corresponding values found in the root document.
  *
- * This function uses the `format` function to replace placeholders in string values with the corresponding values
- * from the document. It supports nested keys with a custom separator (default is '.').
+ * This function uses the `formatFromDocument()` helper to replace placeholders in string values
+ * using values from the root document. It supports nested keys with a custom separator (default is '.').
  *
  * Placeholders are defined by a prefix and suffix (default '{{' and '}}'), e.g. "{{key.subkey}}".
+ * If a referenced key does not exist, the placeholder is replaced with an empty string by default,
+ * or preserved as-is if `preserveMissing` is set to true.
  *
  * Example:
  * ```php
@@ -27,7 +29,7 @@ use function oihana\core\strings\format;
  *      [
  *         'production' => [ 'url' => 'https://example.com' ]
  *      ],
- *     'api' => '{{config.{{env}}.url}}/api'
+ *     'api' => '{{config.{{env}}.url}}/api' ,
  *     'wordpress' => [
  *         'server' => [
  *             'subdomain' => 'www',
@@ -51,6 +53,7 @@ use function oihana\core\strings\format;
  * @param string        $separator Separator used in nested keys (default '.').
  * @param string|null   $pattern   Optional regex pattern to match placeholders.
  * @param callable|null $formatter Optional custom formatter callable.
+ * @param bool          $preserveMissing If true, unresolved placeholders will be preserved (default false).
  *
  * @return array|object A new formatted document with same structure and class.
  *
@@ -60,20 +63,23 @@ use function oihana\core\strings\format;
  */
 function formatDocument
 (
-    array|object $document ,
-    string       $prefix    = '{{' ,
-    string       $suffix    = '}}' ,
-    string       $separator = '.'  ,
-   ?string       $pattern   = null ,
-   ?callable     $formatter = null
+    array|object $document               ,
+    string       $prefix          = '{{' ,
+    string       $suffix          = '}}' ,
+    string       $separator       = '.'  ,
+   ?string       $pattern         = null ,
+   ?callable     $formatter       = null ,
+    bool         $preserveMissing = false
 )
 : array|object
 {
     $root      = $document;
     $processed = [] ;
 
-    $fn = function ( array|object $doc ) use ( &$fn , &$processed , $root , $prefix , $suffix , $separator , $pattern , $formatter ) :array|object
+    $fn = function ( array|object $doc ) use ( &$fn , &$processed , $root , $prefix , $suffix , $separator , $pattern , $preserveMissing , $formatter ) :array|object
     {
+        $id = null ;
+
         if ( is_object( $doc ) )
         {
             $id = spl_object_id( $doc ) ;
@@ -106,7 +112,7 @@ function formatDocument
                     $result = new stdClass() ;
                 }
             }
-            $processed[$id] = $result;
+            $processed[ $id ] = $result;
         }
         else
         {
@@ -114,8 +120,8 @@ function formatDocument
         }
 
         $applyFormat = fn( $val ) => $formatter !== null
-                                   ? $formatter ( $val , $root , $prefix , $suffix , $separator , $pattern )
-                                   : format     ( $val , $root , $prefix , $suffix , $separator , $pattern ) ;
+                                   ? $formatter ( $val , $root , $prefix , $suffix , $separator , $pattern , $preserveMissing )
+                                   : format     ( $val , $root , $prefix , $suffix , $separator , $pattern , $preserveMissing ) ;
 
         foreach ( $doc as $key => $value )
         {
@@ -130,7 +136,7 @@ function formatDocument
                 $formatted = $value ;
             }
 
-            if ( is_string( $formatted ) && $formatted !== '' && str_contains( $formatted , $prefix ) )
+            if ( is_string( $formatted ) && str_contains( $formatted , $prefix ) )
             {
                 $formatted = $applyFormat( $formatted ) ;
             }

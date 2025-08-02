@@ -106,4 +106,16 @@ class FormatDocumentTest extends TestCase
 
         $this->assertSame('App version: 1.0', $formatted['message']);
     }
+
+    public function testPreserveMissingPlaceholdersInFormatDocument(): void
+    {
+        $data = [
+            'name'    => 'Alice',
+            'message' => 'Hello {{name}} {{lastname}}!'
+        ];
+
+        $result = formatDocument($data, preserveMissing: true);
+
+        $this->assertSame('Hello Alice {{lastname}}!', $result['message']);
+    }
 }

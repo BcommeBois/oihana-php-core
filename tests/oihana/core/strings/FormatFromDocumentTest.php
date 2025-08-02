@@ -88,7 +88,6 @@ class FormatFromDocumentTest extends TestCase
         $this->assertSame('ZIP: 75000', $result);
     }
 
-
     public function testCustomPattern()
     {
         $template = 'Hello, <<name>>!';
@@ -96,5 +95,21 @@ class FormatFromDocumentTest extends TestCase
         $pattern = '/<<(.+?)>>/';
         $result = formatFromDocument($template, $data, '<<', '>>', '.', $pattern);
         $this->assertSame('Hello, Alice!', $result);
+    }
+
+    public function testPreserveMissingPlaceholder(): void
+    {
+        $template = 'Hello, {{name}} {{lastname}}!';
+        $data = ['name' => 'Alice'];
+        $result = formatFromDocument($template, $data, preserveMissing:  true);
+        $this->assertSame('Hello, Alice {{lastname}}!', $result, 'Missing placeholder should be preserved.');
+    }
+
+    public function testPreserveMissingWithNestedKey(): void
+    {
+        $template = 'City: {{user.address.city}}';
+        $data = ['user' => ['address' => []]];
+        $result = formatFromDocument($template, $data, '{{', '}}', '.', null, true);
+        $this->assertSame('City: {{user.address.city}}', $result, 'Missing nested placeholder should be preserved.');
     }
 }

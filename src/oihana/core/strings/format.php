@@ -54,12 +54,13 @@ namespace oihana\core\strings ;
  */
 function format
 (
-    string              $template  ,
-    array|object|string $document  ,
-    string              $prefix    = '{{' ,
-    string              $suffix    = '}}' ,
-    string              $separator = '.' ,
-   ?string              $pattern   = null
+    string              $template                ,
+    array|object|string $document                ,
+    string              $prefix    = '{{'        ,
+    string              $suffix    = '}}'        ,
+    string              $separator = '.'         ,
+   ?string              $pattern   = null        ,
+    bool                $preserveMissing = false ,
 )
 :string
 {
@@ -69,10 +70,10 @@ function format
         {
             $escapedPrefix = preg_quote( $prefix , '/' ) ;
             $escapedSuffix = preg_quote( $suffix , '/' ) ;
-            $pattern       = '/' . $escapedPrefix . '([a-zA-Z0-9_\.\-\[\]]+)' . $escapedSuffix . '/' ;
+            $pattern       = '/' . $escapedPrefix . '([a-zA-Z0-9_.\-\[\]]+)' . $escapedSuffix . '/' ;
         }
         return preg_replace( $pattern , $document , $template ) ;
     }
 
-    return formatFromDocument($template, $document, $prefix, $suffix, $separator, $pattern);
+    return formatFromDocument( $template , $document , $prefix , $suffix , $separator , $pattern , $preserveMissing );
 }

@@ -10,15 +10,17 @@ use function oihana\core\strings\format;
 /**
  * Formats a document (array or object) using placeholders resolved from another source document.
  *
- * @param array|object  $target     The target document to format.
- * @param array|object  $source     The source document used for placeholder resolution.
- * @param string        $prefix     Placeholder prefix (default '{{').
- * @param string        $suffix     Placeholder suffix (default '}}').
- * @param string        $separator  Separator used in nested keys (default '.').
- * @param string|null   $pattern    Optional regex pattern to match placeholders.
- * @param callable|null $formatter  Optional custom formatter callable.
+ * @param array|object  $target          The target document to format.
+ * @param array|object  $source          The source document used for placeholder resolution.
+ * @param string        $prefix          Placeholder prefix (default '{{').
+ * @param string        $suffix          Placeholder suffix (default '}}').
+ * @param string        $separator       Separator used in nested keys (default '.').
+ * @param string|null   $pattern         Optional regex pattern to match placeholders.
+ * @param callable|null $formatter       Optional custom formatter with signature:
+ *                                       `function(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`
+ * @param bool          $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
  *
- * @return array|object A new formatted document (same structure and class as $target).
+ * @return array|object A new document with the same structure and class as `$target`, where all string placeholders have been resolved using `$source`.
  *
  * @see formatDocument()
  *
@@ -29,9 +31,9 @@ use function oihana\core\strings\format;
  *     'base_dir' => '/var/www',
  *     'env'      => 'prod',
  *     'config'   =>
- *      [
+ *     [
  *         'prod' => [ 'url' => 'https://example.com' ]
- *      ]
+ *     ]
  * ];
  *
  * $target =
@@ -41,26 +43,26 @@ use function oihana\core\strings\format;
  * ];
  *
  * $result = formatDocumentWith($target, $source);
- *
  * echo $result['htdocs']; // /var/www/htdocs
  * echo $result['api'];    // https://example.com/api
  * ```
  */
 function formatDocumentWith
 (
-    array|object  $target ,
-    array|object  $source ,
-    string        $prefix     = '{{' ,
-    string        $suffix     = '}}' ,
-    string        $separator  = '.'  ,
-    ?string       $pattern    = null ,
-    ?callable     $formatter  = null
+    array|object  $target                  ,
+    array|object  $source                  ,
+    string        $prefix          = '{{'  ,
+    string        $suffix          = '}}'  ,
+    string        $separator       = '.'   ,
+    ?string       $pattern         = null  ,
+    ?callable     $formatter       = null  ,
+    bool          $preserveMissing = false ,
 )
 : array|object
 {
     $processed = [];
 
-    $fn = function ( array|object $doc ) use ( &$fn, &$processed, $source, $prefix, $suffix, $separator, $pattern, $formatter ): array|object
+    $fn = function ( array|object $doc ) use ( &$fn, &$processed, $source, $prefix, $suffix, $separator, $pattern, $formatter , $preserveMissing ): array|object
     {
         if ( is_object( $doc ) )
         {
@@ -103,8 +105,8 @@ function formatDocumentWith
         }
 
         $applyFormat = fn( $val ) => $formatter !== null
-            ? $formatter( $val , $source , $prefix , $suffix , $separator , $pattern )
-            : format    ( $val , $source , $prefix , $suffix , $separator , $pattern ) ;
+            ? $formatter( $val , $source , $prefix , $suffix , $separator , $pattern , $preserveMissing )
+            : format    ( $val , $source , $prefix , $suffix , $separator , $pattern , $preserveMissing ) ;
 
         foreach ( $doc as $key => $value )
         {
@@ -121,7 +123,12 @@ function formatDocumentWith
 
             if ( is_string( $formatted ) && $formatted !== '' && str_contains( $formatted , $prefix ) )
             {
-                $formatted = $applyFormat( $formatted ) ;
+                do
+                {
+                    $prev      = $formatted ;
+                    $formatted = $applyFormat( $prev ) ;
+                }
+                while ( $formatted !== $prev && str_contains( $formatted , $prefix ) );
             }
 
             if ( is_array( $result ) )

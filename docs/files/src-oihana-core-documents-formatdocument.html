@@ -134,8 +134,8 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;|object    </span>
 </dt>
-<dd>Recursively formats all string values in a document (array or object) by replacing placeholders with their values
-found in the root document.</dd>
+<dd>Recursively formats all string values in a document (array or object) by replacing placeholders
+with their corresponding values found in the root document.</dd>
 
     </dl>
 
@@ -157,21 +157,23 @@ found in the root document.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/documents/formatDocument.php"><a href="files/src-oihana-core-documents-formatdocument.html"><abbr title="src/oihana/core/documents/formatDocument.php">formatDocument.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Recursively formats all string values in a document (array or object) by replacing placeholders with their values
-found in the root document.</p>
+        <p class="phpdocumentor-summary">Recursively formats all string values in a document (array or object) by replacing placeholders
+with their corresponding values found in the root document.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">formatDocument</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prefix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;{{&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suffix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;}}&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$formatter</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span></code>
+                    <span class="phpdocumentor-signature__name">formatDocument</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prefix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;{{&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suffix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;}}&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$formatter</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$preserveMissing</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span></code>
 
-        <section class="phpdocumentor-description"><p>This function uses the <code class="prettyprint">format</code> function to replace placeholders in string values with the corresponding values
-from the document. It supports nested keys with a custom separator (default is '.').</p>
-<p>Placeholders are defined by a prefix and suffix (default '{{' and '}}'), e.g. &quot;{{key.subkey}}&quot;.</p>
+        <section class="phpdocumentor-description"><p>This function uses the <code class="prettyprint">formatFromDocument()</code> helper to replace placeholders in string values
+using values from the root document. It supports nested keys with a custom separator (default is '.').</p>
+<p>Placeholders are defined by a prefix and suffix (default '{{' and '}}'), e.g. &quot;{{key.subkey}}&quot;.
+If a referenced key does not exist, the placeholder is replaced with an empty string by default,
+or preserved as-is if <code class="prettyprint">preserveMissing</code> is set to true.</p>
 <p>Example:</p>
 <pre class="prettyprint"><code class="language-php">$config =
 [
@@ -182,7 +184,7 @@ from the document. It supports nested keys with a custom separator (default is '
      [
         'production' =&gt; [ 'url' =&gt; 'https://example.com' ]
      ],
-    'api' =&gt; '{{config.{{env}}.url}}/api'
+    'api' =&gt; '{{config.{{env}}.url}}/api' ,
     'wordpress' =&gt; [
         'server' =&gt; [
             'subdomain' =&gt; 'www',
@@ -254,6 +256,15 @@ echo $formatted['api']; // outputs: https://example.com/api
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>Optional custom formatter callable.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$preserveMissing</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>If true, unresolved placeholders will be preserved (default false).</p>
 </section>
 
             </dd>

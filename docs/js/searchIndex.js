@@ -158,7 +158,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\documents\\formatDocument\u0028\u0029",
             "name": "formatDocument",
-            "summary": "Recursively\u0020formats\u0020all\u0020string\u0020values\u0020in\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020by\u0020replacing\u0020placeholders\u0020with\u0020their\u0020values\nfound\u0020in\u0020the\u0020root\u0020document.",
+            "summary": "Recursively\u0020formats\u0020all\u0020string\u0020values\u0020in\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020by\u0020replacing\u0020placeholders\nwith\u0020their\u0020corresponding\u0020values\u0020found\u0020in\u0020the\u0020root\u0020document.",
             "url": "namespaces/oihana-core-documents.html#function_formatDocument"
         },                {
             "fqsen": "\\oihana\\core\\documents\\formatDocumentWith\u0028\u0029",

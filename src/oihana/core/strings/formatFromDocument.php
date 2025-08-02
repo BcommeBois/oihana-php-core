@@ -12,12 +12,13 @@ use function oihana\core\accessors\getKeyValue ;
  * by a prefix and suffix (default `{{` and `}}`), and keys can be nested using
  * the separator (default `.`).
  *
- * @param string $template The string to format.
- * @param array|object $document Key-value pairs for placeholders.
- * @param string $prefix Placeholder prefix (default `{{`).
- * @param string $suffix Placeholder suffix (default `}}`).
- * @param string $separator Separator used to traverse nested keys (default `.`).
- * @param string|null $pattern Optional full regex pattern to match placeholders (including delimiters).
+ * @param string       $template        The string to format.
+ * @param array|object $document        Key-value pairs for placeholders.
+ * @param string       $prefix          Placeholder prefix (default `{{`).
+ * @param string       $suffix          Placeholder suffix (default `}}`).
+ * @param string       $separator       Separator used to traverse nested keys (default `.`).
+ * @param string|null  $pattern         Optional full regex pattern to match placeholders (including delimiters).
+ * @param bool         $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
  *
  * @return string The formatted string.
  *
@@ -39,23 +40,37 @@ use function oihana\core\accessors\getKeyValue ;
  *     'user' => ['address' => ['zip' => '75000']]
  * ]);
  * // Output: 'ZIP: 75000'
+ * ```
  *
- * // Custom pattern example
+ * Custom pattern example
+ * ```
  * $template = 'Hello, <<name>>!';
  * $doc = ['name' => 'Alice'];
  * $pattern = '/<<(.+?)>>/';
  * echo formatFromDocument($template, $doc, '<<', '>>', '.', $pattern);
  * // Output: 'Hello, Alice!'
  * ```
+ *
+ * Preserve unresolved placeholder
+ * ```php
+ * echo formatFromDocument
+ * (
+ *     'Hello, {{name}}! From {{country}}.',
+ *     ['name' => 'Alice'] ,
+ *     preserveMissiong: true
+ * ) ;
+ * // Output: 'Hello, Alice! From {{country}}.'
+ * ```
  */
 function formatFromDocument
 (
-    string       $template  ,
-    array|object $document  ,
-    string       $prefix    = '{{' ,
-    string       $suffix    = '}}' ,
-    string       $separator = '.' ,
-   ?string       $pattern   = null
+    string       $template                ,
+    array|object $document                ,
+    string       $prefix          = '{{'  ,
+    string       $suffix          = '}}'  ,
+    string       $separator       = '.'   ,
+    ?string      $pattern         = null  ,
+    bool         $preserveMissing = false ,
 )
 :string
 {
@@ -66,10 +81,17 @@ function formatFromDocument
         $pattern       = '/' . $escapedPrefix . '([a-zA-Z0-9_.\-\[\]]+)' . $escapedSuffix . '/';
     }
 
-    return preg_replace_callback($pattern, function ($matches) use ( $document , $separator ): string
+    return preg_replace_callback( $pattern , function ( $matches ) use ( $document ,$preserveMissing , $prefix , $separator , $suffix ): string
     {
         $key = $matches[1];
-        return (string) getKeyValue( $document , $key , '' , $separator ) ;
+        $value = getKeyValue( $document , $key , null , $separator ) ;
+
+        if ( $value === null )
+        {
+            return $preserveMissing ? $prefix . $key . $suffix : '' ;
+        }
+
+        return (string) $value;
     }
     , $template ) ;
 }
