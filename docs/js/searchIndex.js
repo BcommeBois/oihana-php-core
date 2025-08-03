@@ -351,6 +351,11 @@ Search.appendIndex(
             "summary": "Converts\u0020a\u0020string\u0020to\u0020snake_case\u0020\u0028or\u0020a\u0020custom\u0020delimiter\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_snake"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\toPhpString\u0028\u0029",
+            "name": "toPhpString",
+            "summary": "Converts\u0020a\u0020PHP\u0020variable\u0020\u0028array,\u0020object,\u0020or\u0020scalar\u0029\u0020into\u0020a\u0020PHP\u0020code\u0020string\u0020representation.",
+            "url": "namespaces/oihana-core-strings.html#function_toPhpString"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\toString\u0028\u0029",
             "name": "toString",
             "summary": "Converts\u0020a\u0020value\u0020to\u0020a\u0020string\u0020representation.",

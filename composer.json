@@ -90,6 +90,7 @@
             "src/oihana/core/strings/luhn.php",
             "src/oihana/core/strings/randomKey.php",
             "src/oihana/core/strings/snake.php",
+            "src/oihana/core/strings/toPhpString.php",
             "src/oihana/core/strings/toString.php",
             "src/oihana/core/strings/urlencode.php",
             "src/oihana/core/strings/wrapBlock.php"

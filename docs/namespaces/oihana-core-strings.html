@@ -246,6 +246,13 @@
 <dd>Converts a string to snake_case (or a custom delimiter).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_toPhpString">toPhpString()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Converts a PHP variable (array, object, or scalar) into a PHP code string representation.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_toString">toString()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -2034,6 +2041,152 @@ SnakeCache::flush();
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_toPhpString">
+        toPhpString()
+        <a href="namespaces/oihana-core-strings.html#function_toPhpString" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/toPhpString.php"><a href="files/src-oihana-core-strings-tophpstring.html"><abbr title="src/oihana/core/strings/toPhpString.php">toPhpString.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">89</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Converts a PHP variable (array, object, or scalar) into a PHP code string representation.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">toPhpString</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>Supports nested arrays, objects, and can use either the short syntax [] or the array() syntax.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$source</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The data to convert (array, object, or scalar).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$options</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Options to control formatting:</p>
+<ul>
+<li>useBrackets (bool): Use [] or array() syntax (default: false)</li>
+<li>inline      (bool): One-line output or multi-line formatted (default: true)</li>
+<li>indent      (string): Indentation characters (default: '    ')</li>
+<li>depth       (int): Current depth (internal use only)</li>
+<li>maxDepth    (int): Maximum depth (default: 20)</li>
+</ul>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_toPhpString#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><h3>Example 1: Basic scalar values</h3>
+<pre class="prettyprint"><code class="language-php">echo toPhpString(42);                  // '42'
+echo toPhpString('hello');            // '\'hello\''
+echo toPhpString(true);               // 'true'
+echo toPhpString(null);               // 'null'
+</code></pre>
+<h3>Example 2: Flat array with short syntax</h3>
+<pre class="prettyprint"><code class="language-php">echo toPhpString(['a' =&gt; 1, 'b' =&gt; 2], ['useBrackets' =&gt; true]);
+// Output: ['a' =&gt; 1, 'b' =&gt; 2]
+</code></pre>
+<h3>Example 3: Nested object and array, inline</h3>
+<pre class="prettyprint"><code class="language-php">$data = [
+'user' =&gt; [
+'name' =&gt; 'Alice',
+'roles' =&gt; ['admin', 'editor'],
+'profile' =&gt; (object)['active' =&gt; true, 'age' =&gt; 30]
+]
+];
+echo toPhpString($data, ['useBrackets' =&gt; true]);
+// Output: ['user' =&gt; ['name' =&gt; 'Alice', 'roles' =&gt; ['admin', 'editor'], 'profile' =&gt; (object)['active' =&gt; true, 'age' =&gt; 30]]]
+</code></pre>
+<h3>Example 4: Multiline formatted with indentation</h3>
+<pre class="prettyprint"><code class="language-php">echo toPhpString($data, [
+'useBrackets' =&gt; true,
+'inline' =&gt; false,
+'indent' =&gt; '  '
+]);
+// Output:
+// [
+//   'user' =&gt; [
+//     'name' =&gt; 'Alice',
+//     'roles' =&gt; [
+//       'admin',
+//       'editor'
+//     ],
+//     'profile' =&gt; (object)[
+//       'active' =&gt; true,
+//       'age' =&gt; 30
+//     ]
+//   ]
+// ]
+</code></pre>
+<h3>Example 5: Object with closure and max depth</h3>
+<pre class="prettyprint"><code class="language-php">$obj = new stdClass();
+$obj-&gt;callback = fn() =&gt; null;
+$obj-&gt;deep = ['level1' =&gt; ['level2' =&gt; ['level3' =&gt; ['level4' =&gt; $obj]]]];
+
+echo toPhpString($obj, ['maxDepth' =&gt; 3, 'useBrackets' =&gt; true]);
+// Output includes: '&lt;max-depth-reached&gt;', '&lt;closure&gt;'
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The PHP code string representing the variable.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_toString">
         toString()
         <a href="namespaces/oihana-core-strings.html#function_toString" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2481,6 +2634,7 @@ echo urlencode(&quot;hello world!&quot;);
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_luhn">luhn()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_randomKey">randomKey()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_snake">snake()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpString">toPhpString()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toString">toString()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_urlencode">urlencode()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_wrapBlock">wrapBlock()</a></li>

@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\format
 - Adds oihana\core\strings\formatFromDocument
 - Adds oihana\core\strings\isRegexp
+- Adds oihana\core\strings\toPhpString
 - Adds oihana\core\strings\wrapBlock
 
 ### Removed
