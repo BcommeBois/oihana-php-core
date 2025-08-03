@@ -5,37 +5,42 @@ namespace oihana\core\strings ;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
+enum Suit { case Hearts; case Spades; }
 
 class ToPhpStringTest extends TestCase
 {
     public function testSimpleValues()
     {
-        $this->assertEquals('42', toPhpString(42));
-        $this->assertEquals("'hello'", toPhpString('hello'));
-        $this->assertEquals('true', toPhpString(true));
-        $this->assertEquals('null', toPhpString(null));
-        $this->assertEquals('3.14', toPhpString(3.14));
+        $this->assertEquals('42'      , toPhpString(42));
+        $this->assertEquals("'hello'" , toPhpString('hello' ) );
+        $this->assertEquals('true'    , toPhpString(true));
+        $this->assertEquals('null'    , toPhpString(null));
+        $this->assertEquals('3.14'    , toPhpString(3.14));
     }
 
     public function testArrayWithBrackets()
     {
-        $array = ['foo' => 'bar', 'baz' => 123];
-        $expected = "['foo' => 'bar', 'baz' => 123]";
-        $this->assertEquals( $expected , toPhpString ( $array,  ['useBrackets' => true ]));
+        $array    = [ 'foo' => 'bar', 'baz' => 123 ] ;
+        $expected = "['foo' => 'bar', 'baz' => 123]" ;
+        $this->assertSame( $expected, toPhpString( $array , ['useBrackets' => true , 'inline' => true ]));
     }
 
     public function testArrayWithArrayAndObject()
     {
         $data = [
             'list' => [1, 2, 3],
-            'obj' => (object)['a' => 1, 'b' => 2]
+            'obj'  => (object)['a' => 1, 'b' => 2]
         ];
 
-        $result = toPhpString( $data , ['useBrackets' => false ] );
+        $result = toPhpString($data, ['useBrackets' => false, 'inline' => true]);
+
         $this->assertStringContainsString("array(", $result);
-        $this->assertStringContainsString("(object)", $result);
-        $this->assertStringContainsString("'a' => 1", $result);
+        $this->assertStringContainsString("(object)array(", $result);
+        $this->assertStringContainsString("'obj' => (object)array(", $result);  // ← CORRECTION ICI
         $this->assertStringContainsString("'list' => array(", $result);
+
+        $this->assertStringContainsString("'a' => 1", $result);
+        $this->assertStringContainsString("'b' => 2", $result);
     }
 
     public function testNestedArray()
@@ -47,7 +52,7 @@ class ToPhpStringTest extends TestCase
         ];
 
         $expected = "array('outer' => array('inner' => array('a', 'b')))";
-        $this->assertEquals($expected, toPhpString($nested));
+        $this->assertEquals($expected, toPhpString($nested, ['inline' => true]));
     }
 
     public function testObject()
@@ -62,7 +67,7 @@ class ToPhpStringTest extends TestCase
     {
         $array = [10, 20, 30];
         $expected = '[10, 20, 30]';
-        $this->assertEquals($expected, toPhpString($array, ['useBrackets' => true]));
+        $this->assertEquals($expected, toPhpString($array, ['useBrackets' => true, 'inline' => true]));
     }
 
     public function testMultilineIndentedOutput()
@@ -142,7 +147,7 @@ class ToPhpStringTest extends TestCase
             'useBrackets' => true
         ]);
 
-        $this->assertStringContainsString("'<max-depth-reached>'", $result);
+        $this->assertStringContainsString("'<circular-ref>'", $result);
     }
 
     public function testAnonymousClass()
@@ -217,6 +222,90 @@ PHP;
         ]);
 
         $this->assertSame($expected, $result);
+    }
+
+    public function testCircularReference(): void
+    {
+        $obj = new stdClass();
+        $obj->self = $obj;
+
+        $result = toPhpString($obj, ['useBrackets' => true]);
+
+        $this->assertStringContainsString("'<circular-ref>'", $result);
+        $this->assertStringNotContainsString("'<max-depth-reached>'", $result);
+    }
+
+    public function testMaxDepthReached(): void
+    {
+        $nested = [];
+        $current = &$nested;
+
+        // Génère un tableau imbriqué à plus de 5 niveaux
+        for ($i = 0; $i < 10; $i++) {
+            $current['level' . $i] = [];
+            $current = &$current['level' . $i];
+        }
+
+        $result = toPhpString($nested, [
+            'useBrackets' => true,
+            'maxDepth'    => 5,
+        ]);
+
+        $this->assertStringContainsString("'<max-depth-reached>'", $result);
+        $this->assertStringNotContainsString("'<circular-ref>'", $result);
+    }
+
+    public function testQuoteStyleDouble()
+    {
+        $str = "line1\nline2";
+        $result = toPhpString($str, ['quote' => 'double']);
+        $this->assertSame('"line1\\nline2"', $result);
+    }
+
+    public function testHumanReadableMode()
+    {
+        $data = ['pi' => 3.14159, 'bool' => true, 'null' => null];
+        $result = toPhpString($data, ['useBrackets' => true, 'humanReadable' => true]);
+        $this->assertStringContainsString("'pi' => 3.14159", $result);
+        $this->assertStringContainsString("'bool' => true", $result);
+        $this->assertStringContainsString("'null' => null", $result);
+    }
+
+    public function testExtremeScalars()
+    {
+        $this->assertEquals('INF', toPhpString(INF));
+        $this->assertEquals('-INF', toPhpString(-INF));
+        $this->assertEquals('NAN', toPhpString(NAN)); // var_export(NAN, true) == 'NAN'
+    }
+
+    public function testDateTimeHandling()
+    {
+        $date = new \DateTime('2024-05-12 08:00:00');
+        $result = toPhpString($date);
+        $this->assertStringContainsString('DateTime', $result);
+        $this->assertStringContainsString('2024-05-12', $result);
+    }
+
+    public function testCompactStringsOption()
+    {
+        $data = ['description' => "Line 1\nLine 2"];
+        $result = toPhpString($data, [
+            'compact' => true,
+            'useBrackets'    => true,
+            'quote'          => 'double',
+        ]);
+
+        $this->assertStringContainsString('"Line 1\\nLine 2"', $result);
+        $this->assertStringNotContainsString("\nLine 2", $result);
+    }
+
+    public function testEnumHandling()
+    {
+        if (!enum_exists('Suit')) {
+            eval('enum Suit { case Hearts; case Spades; }');
+        }
+
+        $this->assertSame('oihana\\core\\strings\\Suit::Hearts', toPhpString(Suit::Hearts));
     }
 
 }

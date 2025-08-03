@@ -4,19 +4,30 @@ namespace oihana\core\strings ;
 
 use Closure;
 use stdClass;
+use DateTimeInterface;
+use UnitEnum;
+use BackedEnum;
 
 /**
- * Converts a PHP variable (array, object, or scalar) into a PHP code string representation.
+ * Converts any PHP value into a valid PHP code string representation.
  *
- * Supports nested arrays, objects, and can use either the short syntax [] or the array() syntax.
- *
- * @param mixed   $source      The data to convert (array, object, or scalar).
- * @param array $options Options to control formatting:
- * - useBrackets (bool): Use [] or array() syntax (default: false)
- * - inline      (bool): One-line output or multi-line formatted (default: true)
- * - indent      (string): Indentation characters (default: '    ')
- * - depth       (int): Current depth (internal use only)
- * - maxDepth    (int): Maximum depth (default: 20)
+ * @param mixed $value The value to convert.
+ * @param array{
+ *    compact?: bool,
+ *    humanReadable?: bool,
+ *    inline?: bool,
+ *    indent?: string|int,
+ *    maxDepth?: int,
+ *    quote?: 'single'|'double',
+ *    useBrackets?: bool
+ * } $options Formatting options:
+ * - 'compact'         => (bool) Escape control chars even in single-quote (default: false)
+ * - 'humanReadable'   => (bool) Human-friendly formatting for scalars (default: false)
+ * - 'inline'          => (bool) Single-line output (default: false)
+ * - 'indent'          => (string) Indentation string per level (default: '    ')
+ * - 'maxDepth'        => (int) Max recursion depth (default: 10)
+ * - 'quote'           => ('single'|'double') Quote style for strings (default: 'single')
+ * - 'useBrackets'     => (bool) Use brackets for arrays (default: false)
  *
  * @return string The PHP code string representing the variable.
  *
@@ -24,10 +35,10 @@ use stdClass;
  *
  * ### Example 1: Basic scalar values
  * ```php
- * echo toPhpString(42);                  // '42'
- * echo toPhpString('hello');            // '\'hello\''
- * echo toPhpString(true);               // 'true'
- * echo toPhpString(null);               // 'null'
+ * echo toPhpString(42);       // '42'
+ * echo toPhpString('hello'); // '\'hello\''
+ * echo toPhpString(true);    // 'true'
+ * echo toPhpString(null);    // 'null'
  * ```
  *
  * ### Example 2: Flat array with short syntax
@@ -38,12 +49,14 @@ use stdClass;
  *
  * ### Example 3: Nested object and array, inline
  * ```php
- * $data = [
- * 'user' => [
- * 'name' => 'Alice',
- * 'roles' => ['admin', 'editor'],
- * 'profile' => (object)['active' => true, 'age' => 30]
- * ]
+ * $data =
+ * [
+ *     'user' =>
+ *     [
+ *         'name' => 'Alice',
+ *         'roles' => ['admin', 'editor'],
+ *         'profile' => (object)['active' => true, 'age' => 30]
+ *     ]
  * ];
  * echo toPhpString($data, ['useBrackets' => true]);
  * // Output: ['user' => ['name' => 'Alice', 'roles' => ['admin', 'editor'], 'profile' => (object)['active' => true, 'age' => 30]]]
@@ -51,10 +64,11 @@ use stdClass;
  *
  * ### Example 4: Multiline formatted with indentation
  * ```php
- * echo toPhpString($data, [
- * 'useBrackets' => true,
- * 'inline' => false,
- * 'indent' => '  '
+ * echo toPhpString( $data ,
+ * [
+ *     'useBrackets' => true,
+ *     'inline' => false,
+ *     'indent' => 2
  * ]);
  * // Output:
  * // [
@@ -80,104 +94,50 @@ use stdClass;
  *
  * echo toPhpString($obj, ['maxDepth' => 3, 'useBrackets' => true]);
  * // Output includes: '<max-depth-reached>', '<closure>'
+ *
+ * ### Example 6: Use double quotes and a human readable rendering
+ * ```php
+ * $data =
+ * [
+ *    'message' => "Hello\nWorld",
+ *    'count'   => 1.0,
+ *    'active'  => true
+ * ];
+ *
+ * echo toPhpString( $data,
+ * [
+ *    'useBrackets'   => true,
+ *    'humanReadable' => true,
+ *    'quote'         => 'double'
+ * ]);
+ *
+ * // Output
+ * // [
+ * //     'message' => "Hello\nWorld",
+ * //     'count'   => 1,
+ * //     'active'  => true
+ * // ]
  * ```
  *
  * @package oihana\core\strings
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
-function toPhpString( mixed $source , array $options = [] ): string
+function toPhpString( mixed $value , array $options = [] ): string
 {
-    $options =
+    $defaults =
     [
-        'useBrackets' => false,
-        'inline'      => true ,
-        'indent'      => '    ',
-        'depth'       => 0,
-        'maxDepth'    => 20,
-        ...$options
+        'compact'        => false    ,
+        'inline'         => true     ,
+        'indent'         => '    '   ,
+        'maxDepth'       => 10       ,
+        'humanReadable'  => false    ,
+        'quote'          => 'single' ,
+        'useBrackets'    => false    ,
     ];
 
-    $useBrackets = $options[ 'useBrackets' ] ;
-    $inline      = $options[ 'inline'      ] ;
-    $indent      = $options[ 'indent'      ] ;
-    $depth       = $options[ 'depth'       ] ;
-    $maxDepth    = $options[ 'maxDepth'    ] ;
+    $options = array_merge( $defaults , $options ) ;
+    $cache   = [] ;
 
-    $processValue = function( mixed $value ) use ( &$processValue, $options ): string
-    {
-        if ( $options['depth'] >= $options['maxDepth'] )
-        {
-            return "'<max-depth-reached>'";
-        }
-
-        if ( is_resource( $value ) )
-        {
-            return "'<resource of type " . get_resource_type( $value ) . ">'";
-        }
-
-        if ($value instanceof Closure)
-        {
-            return "'<closure>'";
-        }
-
-        if ( is_array( $value ) )
-        {
-            return toPhpString( $value, [ ...$options , 'depth' => $options['depth'] + 1 ] ) ;
-        }
-
-        if ( is_object( $value ) )
-        {
-            if ( $value instanceof stdClass )
-            {
-                return '(object)' . toPhpString( (array) $value, [ ...$options , 'depth' => $options['depth'] + 1 ] ) ;
-            }
-
-            return '(object)' . toPhpString(get_object_vars($value), [ ...$options , 'depth' => $options['depth'] + 1 ] );
-        }
-
-        if ( is_null( $value ) )
-        {
-            return 'null' ;
-        }
-
-        return var_export( $value , true ) ;
-    };
-
-    if ( !is_array( $source ) )
-    {
-        return $processValue( $source ) ;
-    }
-
-    $isSequential = array_keys($source) === range(0 , count( $source ) - 1 ) ;
-    $elements     = [] ;
-
-    foreach ( $source as $key => $value )
-    {
-        $valueStr = $processValue( $value ) ;
-
-        if ( $isSequential )
-        {
-            $elements[] = $valueStr;
-        }
-        else
-        {
-            $keyStr      = is_int( $key ) ? $key : "'" . addslashes($key) . "'" ;
-            $elements[] = $keyStr . ' => ' . $valueStr ;
-        }
-    }
-
-    $open  = $useBrackets ? '[' : 'array(' ;
-    $close = $useBrackets ? ']' : ')'      ;
-
-    if ( $inline || empty( $elements ) )
-    {
-        return $open . implode(', ' , $elements ) . $close ;
-    }
-
-    $pad        = str_repeat( $indent , $depth + 1 ) ;
-    $lines      = array_map( fn( $e ) => $pad . $e, $elements ) ;
-    $closingPad = str_repeat( $indent , $depth ) ;
-
-    return $open . PHP_EOL . implode("," . PHP_EOL , $lines) . PHP_EOL . $closingPad . $close;
+    return convert( $value , $options , 0 , $cache ) ;
 }
