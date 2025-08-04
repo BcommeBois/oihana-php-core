@@ -5,8 +5,6 @@ namespace oihana\core\strings ;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
-enum Suit { case Hearts; case Spades; }
-
 class ToPhpStringTest extends TestCase
 {
     public function testSimpleValues()
@@ -27,12 +25,9 @@ class ToPhpStringTest extends TestCase
 
     public function testArrayWithArrayAndObject()
     {
-        $data = [
-            'list' => [1, 2, 3],
-            'obj'  => (object)['a' => 1, 'b' => 2]
-        ];
+        $data = [ 'list' => [1, 2, 3], 'obj'  => (object)['a' => 1 , 'b' => 2 ] ];
 
-        $result = toPhpString($data, ['useBrackets' => false, 'inline' => true]);
+        $result = toPhpString($data, ['useBrackets' => false]);
 
         $this->assertStringContainsString("array(", $result);
         $this->assertStringContainsString("(object)array(", $result);

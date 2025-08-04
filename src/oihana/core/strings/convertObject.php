@@ -5,6 +5,38 @@ namespace oihana\core\strings ;
 use Closure;
 use DateTimeInterface;
 
+/**
+ * Converts an object to a PHP string representation with customizable formatting.
+ *
+ * Supports detection of circular references to prevent infinite recursion.
+ * Handles special cases for DateTimeInterface, backed enums (PHP 8.1+), and Closures.
+ * For generic objects, converts public properties recursively with indentation and formatting options.
+ *
+ * @param object $obj     The object to convert.
+ * @param array  $options Formatting options including:
+ *                        - 'maxDepth'    (int)    Maximum recursion depth allowed.
+ *                        - 'indent'      (string) Indentation string (default 4 spaces).
+ *                        - 'inline'      (bool)   Whether to output inline (no line breaks).
+ *                        - 'useBrackets' (bool)   Use short array syntax `[]` instead of `array()`.
+ *                        - 'quote'       (string) Quote style for strings ('single' or 'double').
+ *                        - 'compact'     (bool)   Compact output for strings (no extra spaces).
+ * @param int    $level   Current recursion depth level.
+ * @param array  &$cache  Internal cache to track visited objects for circular reference detection.
+ *
+ * @return string PHP code string representing the object.
+ *
+ * @example
+ * ```php
+ * $dt = new DateTimeImmutable('2023-08-04T10:30:00+00:00');
+ * echo convertObject($dt, ['maxDepth' => 3, 'indent' => '  ', 'inline' => false, 'useBrackets' => true, 'quote' => 'single', 'compact' => false], 0, []);
+ *
+ * // Output:
+ * // new \DateTimeImmutable('2023-08-04T10:30:00+00:00')
+ * ```
+ * @package oihana\core\strings
+ * @since 1.0.0
+ * @author Marc Alcaraz
+ */
 function convertObject( object $obj, array $options, int $level, array &$cache ): string
 {
     $id = spl_object_hash( $obj ) ;
@@ -49,8 +81,8 @@ function convertObject( object $obj, array $options, int $level, array &$cache )
         $inline      = $options[ 'inline'      ] ?? false ;
         $useBrackets = $options[ 'useBrackets' ] ?? false ;
 
-        $pad = str_repeat($indent, $level + 1);
-        $endPad = str_repeat($indent, $level);
+        $pad     = str_repeat($indent, $level + 1);
+        $endPad  = str_repeat($indent, $level);
         $entries = [];
 
         foreach ( $vars as $k => $v )

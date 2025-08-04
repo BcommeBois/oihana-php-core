@@ -35,8 +35,8 @@ function formatQuotedString( string $value , string $quoteStyle = 'single' , boo
     {
         $escaped = str_replace
         (
-            [ "\n", "\r", "\t", "\v", "\e", "\f" ],
-            [ '\\n', '\\r', '\\t', '\\v', '\\e', '\\f' ],
+            [ "\n"  , "\r"  , "\t"  , "\v"  , "\e"  , "\f"  ] ,
+            [ '\\n' , '\\r' , '\\t' , '\\v' , '\\e' , '\\f' ] ,
             $escaped
         );
     }
