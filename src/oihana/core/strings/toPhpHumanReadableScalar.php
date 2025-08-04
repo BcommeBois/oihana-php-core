@@ -22,16 +22,16 @@ namespace oihana\core\strings ;
  *
  * @example
  * ```php
- * echo toHumanReadableScalar("hello");                        // 'hello'
- * echo toHumanReadableScalar("He said: \"ok\"", 'double');   // "He said: \"ok\""
- * echo toHumanReadableScalar(true);                          // true
- * echo toHumanReadableScalar(false);                         // false
- * echo toHumanReadableScalar(42.0);                          // 42
- * echo toHumanReadableScalar(3.14);                          // 3.14
- * echo toHumanReadableScalar(null);                          // null
- * echo toHumanReadableScalar("Line\nBreak", 'single');       // 'Line
+ * echo toPhpHumanReadableScalar("hello");                        // 'hello'
+ * echo toPhpHumanReadableScalar("He said: \"ok\"", 'double');   // "He said: \"ok\""
+ * echo toPhpHumanReadableScalar(true);                          // true
+ * echo toPhpHumanReadableScalar(false);                         // false
+ * echo toPhpHumanReadableScalar(42.0);                          // 42
+ * echo toPhpHumanReadableScalar(3.14);                          // 3.14
+ * echo toPhpHumanReadableScalar(null);                          // null
+ * echo toPhpHumanReadableScalar("Line\nBreak", 'single');       // 'Line
  *                                                             // Break'
- * echo toHumanReadableScalar("Line\nBreak", 'single', true); // 'Line\nBreak'
+ * echo toPhpHumanReadableScalar("Line\nBreak", 'single', true); // 'Line\nBreak'
  * ```
  *
  * @see formatQuotedString()
@@ -40,7 +40,7 @@ namespace oihana\core\strings ;
  * @since 1.0.0
  * @author Marc Alcaraz
  */
-function toHumanReadableScalar( mixed $value , string $quote = 'single' , bool $compact = false ): string
+function toPhpHumanReadableScalar( mixed $value , string $quote = 'single' , bool $compact = false ): string
 {
     return match ( gettype( $value ) )
     {

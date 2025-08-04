@@ -5,6 +5,11 @@ namespace oihana\core\strings ;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
+enum Suit {
+    case Hearts;
+    case Spades;
+}
+
 class ToPhpStringTest extends TestCase
 {
     public function testSimpleValues()
@@ -296,7 +301,8 @@ PHP;
 
     public function testEnumHandling()
     {
-        if (!enum_exists('Suit')) {
+        if (!enum_exists('Suit'))
+        {
             eval('enum Suit { case Hearts; case Spades; }');
         }
 

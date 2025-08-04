@@ -261,6 +261,11 @@ Search.appendIndex(
             "summary": "Format\u0020a\u0020template\u0020string\u0020using\u0020key\u002Dvalue\u0020pairs\u0020from\u0020an\u0020array\u0020or\u0020object.",
             "url": "namespaces/oihana-core-strings.html#function_formatFromDocument"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\formatQuotedString\u0028\u0029",
+            "name": "formatQuotedString",
+            "summary": "Formats\u0020a\u0020string\u0020value\u0020with\u0020proper\u0020escaping\u0020and\u0020wrapping\u0020using\u0020the\u0020specified\u0020quote\u0020style.",
+            "url": "namespaces/oihana-core-strings.html#function_formatQuotedString"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\formatRequestArgs\u0028\u0029",
             "name": "formatRequestArgs",
             "summary": "Builds\u0020a\u0020query\u0020string\u0020\u0028\u0060\u003Fkey\u003Dvalue\u0026...\u0060\u0029\u0020from\u0020an\u0020associative\u0020array.",
@@ -351,10 +356,30 @@ Search.appendIndex(
             "summary": "Converts\u0020a\u0020string\u0020to\u0020snake_case\u0020\u0028or\u0020a\u0020custom\u0020delimiter\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_snake"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\toPhpHumanReadableScalar\u0028\u0029",
+            "name": "toPhpHumanReadableScalar",
+            "summary": "Converts\u0020a\u0020scalar\u0020value\u0020\u0028string,\u0020boolean,\u0020float,\u0020etc.\u0029\u0020to\u0020a\u0020simplified,\u0020human\u002Dreadable\u0020PHP\u0020string\u0020representation.",
+            "url": "namespaces/oihana-core-strings.html#function_toPhpHumanReadableScalar"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\toPhpString\u0028\u0029",
             "name": "toPhpString",
-            "summary": "Converts\u0020a\u0020PHP\u0020variable\u0020\u0028array,\u0020object,\u0020or\u0020scalar\u0029\u0020into\u0020a\u0020PHP\u0020code\u0020string\u0020representation.",
+            "summary": "Converts\u0020any\u0020PHP\u0020value\u0020into\u0020a\u0020valid\u0020PHP\u0020code\u0020string\u0020representation.",
             "url": "namespaces/oihana-core-strings.html#function_toPhpString"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\convert\u0028\u0029",
+            "name": "convert",
+            "summary": "Recursively\u0020converts\u0020any\u0020PHP\u0020value\u0020into\u0020a\u0020PHP\u0020code\u0020string\u0020representation.",
+            "url": "namespaces/oihana-core-strings.html#function_convert"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\convertObject\u0028\u0029",
+            "name": "convertObject",
+            "summary": "Converts\u0020an\u0020object\u0020to\u0020a\u0020PHP\u0020string\u0020representation\u0020with\u0020customizable\u0020formatting.",
+            "url": "namespaces/oihana-core-strings.html#function_convertObject"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\convertArray\u0028\u0029",
+            "name": "convertArray",
+            "summary": "Converts\u0020an\u0020associative\u0020or\u0020sequential\u0020PHP\u0020array\u0020into\u0020a\u0020human\u002Dreadable\u0020PHP\u0020string\u0020representation.",
+            "url": "namespaces/oihana-core-strings.html#function_convertArray"
         },                {
             "fqsen": "\\oihana\\core\\strings\\toString\u0028\u0029",
             "name": "toString",

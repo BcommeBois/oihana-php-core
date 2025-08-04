@@ -134,7 +134,28 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Converts a PHP variable (array, object, or scalar) into a PHP code string representation.</dd>
+<dd>Converts any PHP value into a valid PHP code string representation.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_convert">convert()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Recursively converts any PHP value into a PHP code string representation.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_convertObject">convertObject()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Converts an object to a PHP string representation with customizable formatting.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_convertArray">convertArray()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Converts an associative or sequential PHP array into a human-readable PHP string representation.</dd>
 
     </dl>
 
@@ -156,43 +177,43 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/toPhpString.php"><a href="files/src-oihana-core-strings-tophpstring.html"><abbr title="src/oihana/core/strings/toPhpString.php">toPhpString.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">123</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Converts a PHP variable (array, object, or scalar) into a PHP code string representation.</p>
+        <p class="phpdocumentor-summary">Converts any PHP value into a valid PHP code string representation.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">toPhpString</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">toPhpString</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array{compact?: bool, humanReadable?: bool, inline?: bool, indent?: string|int, maxDepth?: int, quote?: "single"|"double", useBrackets?: bool}&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>Supports nested arrays, objects, and can use either the short syntax [] or the array() syntax.</p>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$source</span>
+                <span class="phpdocumentor-signature__argument__name">$value</span>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The data to convert (array, object, or scalar).</p>
+                    <section class="phpdocumentor-description"><p>The value to convert.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$options</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array{compact?: bool, humanReadable?: bool, inline?: bool, indent?: string|int, maxDepth?: int, quote?: "single"|"double", useBrackets?: bool}</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Options to control formatting:</p>
+                    <section class="phpdocumentor-description"><p>Formatting options:</p>
 <ul>
-<li>useBrackets (bool): Use [] or array() syntax (default: false)</li>
-<li>inline      (bool): One-line output or multi-line formatted (default: true)</li>
-<li>indent      (string): Indentation characters (default: '    ')</li>
-<li>depth       (int): Current depth (internal use only)</li>
-<li>maxDepth    (int): Maximum depth (default: 20)</li>
+<li>'compact'         =&gt; (bool) Escape control chars even in single-quote (default: false)</li>
+<li>'humanReadable'   =&gt; (bool) Human-friendly formatting for scalars (default: false)</li>
+<li>'inline'          =&gt; (bool) Single-line output (default: false)</li>
+<li>'indent'          =&gt; (string) Indentation string per level (default: '    ')</li>
+<li>'maxDepth'        =&gt; (int) Max recursion depth (default: 10)</li>
+<li>'quote'           =&gt; ('single'|'double') Quote style for strings (default: 'single')</li>
+<li>'useBrackets'     =&gt; (bool) Use brackets for arrays (default: false)</li>
 </ul>
 </section>
 
@@ -212,31 +233,34 @@
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
                                                  <section class="phpdocumentor-description"><h3>Example 1: Basic scalar values</h3>
-<pre class="prettyprint"><code class="language-php">echo toPhpString(42);                  // '42'
-echo toPhpString('hello');            // '\'hello\''
-echo toPhpString(true);               // 'true'
-echo toPhpString(null);               // 'null'
+<pre class="prettyprint"><code class="language-php">echo toPhpString(42);       // '42'
+echo toPhpString('hello'); // '\'hello\''
+echo toPhpString(true);    // 'true'
+echo toPhpString(null);    // 'null'
 </code></pre>
 <h3>Example 2: Flat array with short syntax</h3>
 <pre class="prettyprint"><code class="language-php">echo toPhpString(['a' =&gt; 1, 'b' =&gt; 2], ['useBrackets' =&gt; true]);
 // Output: ['a' =&gt; 1, 'b' =&gt; 2]
 </code></pre>
 <h3>Example 3: Nested object and array, inline</h3>
-<pre class="prettyprint"><code class="language-php">$data = [
-'user' =&gt; [
-'name' =&gt; 'Alice',
-'roles' =&gt; ['admin', 'editor'],
-'profile' =&gt; (object)['active' =&gt; true, 'age' =&gt; 30]
-]
+<pre class="prettyprint"><code class="language-php">$data =
+[
+    'user' =&gt;
+    [
+        'name' =&gt; 'Alice',
+        'roles' =&gt; ['admin', 'editor'],
+        'profile' =&gt; (object)['active' =&gt; true, 'age' =&gt; 30]
+    ]
 ];
 echo toPhpString($data, ['useBrackets' =&gt; true]);
 // Output: ['user' =&gt; ['name' =&gt; 'Alice', 'roles' =&gt; ['admin', 'editor'], 'profile' =&gt; (object)['active' =&gt; true, 'age' =&gt; 30]]]
 </code></pre>
 <h3>Example 4: Multiline formatted with indentation</h3>
-<pre class="prettyprint"><code class="language-php">echo toPhpString($data, [
-'useBrackets' =&gt; true,
-'inline' =&gt; false,
-'indent' =&gt; '  '
+<pre class="prettyprint"><code class="language-php">echo toPhpString( $data ,
+[
+    'useBrackets' =&gt; true,
+    'inline' =&gt; false,
+    'indent' =&gt; 2
 ]);
 // Output:
 // [
@@ -260,6 +284,29 @@ $obj-&gt;deep = ['level1' =&gt; ['level2' =&gt; ['level3' =&gt; ['level4' =&gt; 
 
 echo toPhpString($obj, ['maxDepth' =&gt; 3, 'useBrackets' =&gt; true]);
 // Output includes: '&lt;max-depth-reached&gt;', '&lt;closure&gt;'
+
+### Example 6: Use double quotes and a human readable rendering
+```php
+$data =
+[
+   'message' =&gt; &quot;Hello\nWorld&quot;,
+   'count'   =&gt; 1.0,
+   'active'  =&gt; true
+];
+
+echo toPhpString( $data,
+[
+   'useBrackets'   =&gt; true,
+   'humanReadable' =&gt; true,
+   'quote'         =&gt; 'double'
+]);
+
+// Output
+// [
+//     'message' =&gt; &quot;Hello\nWorld&quot;,
+//     'count'   =&gt; 1,
+//     'active'  =&gt; true
+// ]
 </code></pre>
 </section>
 
@@ -288,6 +335,400 @@ echo toPhpString($obj, ['maxDepth' =&gt; 3, 'useBrackets' =&gt; true]);
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The PHP code string representing the variable.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_convert">
+        convert()
+        <a href="namespaces/oihana-core-strings.html#function_convert" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/toPhpString.php"><a href="files/src-oihana-core-strings-tophpstring.html"><abbr title="src/oihana/core/strings/toPhpString.php">toPhpString.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">187</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Recursively converts any PHP value into a PHP code string representation.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">convert</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$level</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$cache</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>Supports scalars, arrays, objects, and resources with options for formatting,
+indentation, recursion depth control, and human-readable scalar output.
+Handles circular references to prevent infinite loops.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The value to convert (scalar, array, object, resource, etc.).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$options</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Formatting options, including:</p>
+<ul>
+<li>'maxDepth'    (int)    Maximum recursion depth allowed.</li>
+<li>'indent'      (string) Indentation string (default 4 spaces).</li>
+<li>'inline'      (bool)   Whether to output inline (no line breaks).</li>
+<li>'useBrackets' (bool)   Use short array syntax <code class="prettyprint">[]</code> instead of <code class="prettyprint">array()</code>.</li>
+<li>'quote'       (string) Quote style for strings ('single' or 'double').</li>
+<li>'compact'     (bool)   Compact output for strings (no extra spaces).</li>
+<li>'humanReadable' (bool) Whether to use simplified scalar formatting.</li>
+</ul>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$level</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Current recursion depth level (used internally).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$cache</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Internal cache to track visited objects/arrays for circular reference detection.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_convert#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$data = [
+    'name' =&gt; &quot;Oihana&quot;,
+    'count' =&gt; 42,
+    'active' =&gt; true,
+    'nested' =&gt; ['a', 'b', 'c']
+];
+
+echo convert($data, ['maxDepth' =&gt; 3, 'indent' =&gt; '  ', 'inline' =&gt; false, 'useBrackets' =&gt; true, 'quote' =&gt; 'single', 'compact' =&gt; false, 'humanReadable' =&gt; true], 0, []);
+
+// Output:
+// [
+//   'name' =&gt; 'Oihana',
+//   'count' =&gt; 42,
+//   'active' =&gt; true,
+//   'nested' =&gt; [
+//     'a',
+//     'b',
+//     'c',
+//   ],
+// ]
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>PHP code string representing the given value.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_convertObject">
+        convertObject()
+        <a href="namespaces/oihana-core-strings.html#function_convertObject" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/toPhpString.php"><a href="files/src-oihana-core-strings-tophpstring.html"><abbr title="src/oihana/core/strings/toPhpString.php">toPhpString.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">256</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Converts an object to a PHP string representation with customizable formatting.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">convertObject</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$obj</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$level</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$cache</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>Supports detection of circular references to prevent infinite recursion.
+Handles special cases for DateTimeInterface, backed enums (PHP 8.1+), and Closures.
+For generic objects, converts public properties recursively with indentation and formatting options.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$obj</span>
+                : <span class="phpdocumentor-signature__argument__return-type">object</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The object to convert.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$options</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Formatting options including:</p>
+<ul>
+<li>'maxDepth'    (int)    Maximum recursion depth allowed.</li>
+<li>'indent'      (string) Indentation string (default 4 spaces).</li>
+<li>'inline'      (bool)   Whether to output inline (no line breaks).</li>
+<li>'useBrackets' (bool)   Use short array syntax <code class="prettyprint">[]</code> instead of <code class="prettyprint">array()</code>.</li>
+<li>'quote'       (string) Quote style for strings ('single' or 'double').</li>
+<li>'compact'     (bool)   Compact output for strings (no extra spaces).</li>
+</ul>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$level</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Current recursion depth level.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$cache</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Internal cache to track visited objects for circular reference detection.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_convertObject#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$dt = new DateTimeImmutable('2023-08-04T10:30:00+00:00');
+echo convertObject($dt, ['maxDepth' =&gt; 3, 'indent' =&gt; '  ', 'inline' =&gt; false, 'useBrackets' =&gt; true, 'quote' =&gt; 'single', 'compact' =&gt; false], 0, []);
+
+// Output:
+// new \DateTimeImmutable('2023-08-04T10:30:00+00:00')
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
+</section>
+
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>PHP code string representing the object.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_convertArray">
+        convertArray()
+        <a href="namespaces/oihana-core-strings.html#function_convertArray" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/toPhpString.php"><a href="files/src-oihana-core-strings-tophpstring.html"><abbr title="src/oihana/core/strings/toPhpString.php">toPhpString.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">373</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Converts an associative or sequential PHP array into a human-readable PHP string representation.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">convertArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$level</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$cache</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>This function is typically used as part of a recursive serialization process to represent array structures
+in a PHP-style syntax. It supports pretty-printing, inline formatting, bracketed or classic <code class="prettyprint">array()</code> syntax,
+and limits recursion via the <code class="prettyprint">maxDepth</code> option.</p>
+<p>The output is intended for debugging, code generation, or inspection tools.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The array to convert.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$options</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>An associative array of formatting options:</p>
+<ul>
+<li>'indent'       (string): The indentation string (e.g., <code class="prettyprint">'    '</code>).</li>
+<li>'inline'       (bool): If true, output the array on a single line.</li>
+<li>'useBrackets'  (bool): If true, use <code class="prettyprint">[]</code> instead of <code class="prettyprint">array()</code>.</li>
+<li>'maxDepth'     (int): The maximum recursion depth.</li>
+</ul>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$level</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The current depth level in the recursion (used for indentation).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$cache</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>A reference to a cache array used for detecting circular references.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_convertArray#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$array = [
+    'name' =&gt; 'Alice',
+    'age'  =&gt; 30,
+    'tags' =&gt; ['developer', 'php'],
+];
+
+echo convertArray( $array ,
+[
+    'indent'      =&gt; '  ',
+    'inline'      =&gt; false,
+    'useBrackets' =&gt; true,
+    'maxDepth'    =&gt; 3,
+], 0, $cache = []);
+
+// Output:
+// [
+//   'name' =&gt; 'Alice',
+//   'age' =&gt; 30,
+//   'tags' =&gt; [
+//     'developer',
+//     'php'
+//   ]
+// ]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-strings.html#function_convert"><abbr title="\oihana\core\strings\convert()">convert()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>For the recursive value conversion used within this function.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The PHP-like string representation of the array.</p>
 </section>
 
             </section>
@@ -408,6 +849,9 @@ echo toPhpString($obj, ['maxDepth' =&gt; 3, 'useBrackets' =&gt; true]);
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_convert">convert()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_convertArray">convertArray()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_convertObject">convertObject()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpString">toPhpString()</a></li>
                                             </ul>
                 </li>
