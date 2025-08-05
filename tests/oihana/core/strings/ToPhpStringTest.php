@@ -309,4 +309,10 @@ PHP;
         $this->assertSame('oihana\\core\\strings\\Suit::Hearts', toPhpString(Suit::Hearts));
     }
 
+    public function testArrayWithUseBrackets()
+    {
+        $test = [1, 2 , 'hello'] ;
+        $this->assertSame( '[1, 2, \'hello\']' , toPhpString($test, [ 'useBrackets' => true ]));
+    }
+
 }
