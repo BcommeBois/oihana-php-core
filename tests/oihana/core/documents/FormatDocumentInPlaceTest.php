@@ -87,7 +87,8 @@ class FormatDocumentInPlaceTest extends TestCase
             'msg'     => 'v[[version]]'
         ];
 
-        $formatter = function ($val, $src, $prefix, $suffix) {
+        $formatter = function ( $val , $src , $prefix, $suffix)
+        {
             return str_replace('[[version]]', $src['version'], $val);
         };
 
@@ -123,5 +124,45 @@ class FormatDocumentInPlaceTest extends TestCase
 
         $this->assertSame('No placeholder here', $doc['raw']);
         $this->assertSame('{{unknown}}', $doc['input']);
+    }
+
+
+    public function testFormatDocumentInPlaceWithBooleanFalse(): void
+    {
+        $target = [
+            'simpleString' => 'Hello World',
+            'patternString' => '{{flag}}',
+            'mixedString' => 'Value is {{flag}}',
+            'boolTrue' => true,
+            'boolFalse' => false,
+            'nested' => (object)[
+                'innerPattern' => '{{flag}}',
+                'innerBool' => false,
+            ],
+        ];
+
+        $source = [
+            'flag' => false,
+        ];
+
+        // Appelle ta fonction (assure-toi qu'elle est chargée/autoloadée)
+        formatDocumentInPlace($target, $source);
+
+        // Valeur non string reste inchangée
+        $this->assertTrue($target['boolTrue'] === true);
+        $this->assertTrue($target['boolFalse'] === false);
+
+        // String sans pattern ne change pas
+        $this->assertSame('Hello World', $target['simpleString']);
+
+        // String avec pattern EXACT égale à la clé, doit être remplacée par bool false (pas string '')
+        $this->assertSame(false, $target['patternString']);
+        //
+        // // String avec pattern + autre texte, doit devenir une string où false devient ''
+        $this->assertSame('Value is ', $target['mixedString']);
+        //
+        // // Objet imbriqué, même logique
+        $this->assertSame(false, $target['nested']->innerPattern);
+        $this->assertSame(false, $target['nested']->innerBool);
     }
 }

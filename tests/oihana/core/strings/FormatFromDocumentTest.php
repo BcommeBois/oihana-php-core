@@ -112,4 +112,5 @@ class FormatFromDocumentTest extends TestCase
         $result = formatFromDocument($template, $data, '{{', '}}', '.', null, true);
         $this->assertSame('City: {{user.address.city}}', $result, 'Missing nested placeholder should be preserved.');
     }
+
 }

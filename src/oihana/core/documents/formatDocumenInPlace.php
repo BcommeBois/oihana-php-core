@@ -3,6 +3,7 @@
 namespace oihana\core\documents ;
 
 use SplObjectStorage;
+use function oihana\core\accessors\getKeyValue;
 use function oihana\core\strings\format;
 
 /**
@@ -14,10 +15,41 @@ use function oihana\core\strings\format;
  * @param string        $suffix          Placeholder suffix (default '}}').
  * @param string        $separator       Separator used in nested keys (default '.').
  * @param string|null   $pattern         Optional regex pattern to match placeholders.
- * @param callable|null $formatter       Optional custom formatter callable.
+ * @param callable|null $formatter       Optional custom formatter callable with signature
+ *                                        `fn(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`
  * @param bool          $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
  *
  * @return void
+ *
+ * @example
+ * ```php
+ * $target =
+ * [
+ *     'host'        => '{{server.name}}',
+ *     'port'        => '{{server.port}}',
+ *     'enabled'     => '{{feature.enabled}}',
+ *     'description' => 'Connect to {{server.name}} on port {{server.port}}',
+ * ];
+ *
+ * $source =
+ * [
+ *     'server' => [
+ *         'name' => 'localhost',
+ *         'port' => 8080,
+ *     ],
+ *     'feature' =>
+ *     [
+ *         'enabled' => false,
+ *     ],
+ * ];
+ *
+ * formatDocumentInPlace($target, $source);
+ *
+ * // Result:
+ * // $target['host']    === 'localhost' (string)
+ * // $target['port']    === 8080 (int)
+ * // $target['enabled'] === false (bool)
+ * // $
  */
 function formatDocumentInPlace
 (
@@ -38,7 +70,7 @@ function formatDocumentInPlace
 
     $visited = new SplObjectStorage();
 
-    $recurse = function ( &$doc ) use ( &$recurse, $applyFormat, $prefix , &$visited )
+    $recurse = function ( &$doc ) use (&$recurse, $applyFormat, $prefix, $preserveMissing , $suffix, $separator, $source, &$visited)
     {
         if ( is_object( $doc ) )
         {
@@ -57,7 +89,27 @@ function formatDocumentInPlace
             }
             else if ( is_string( $value ) && str_contains( $value , $prefix ) )
             {
-                $value = $applyFormat( $value );
+                $exactPatternRegex = '/^' . preg_quote($prefix, '/') . '([a-zA-Z0-9_.\-\[\]]+)' . preg_quote($suffix, '/') . '$/' ;
+
+                if ( preg_match( $exactPatternRegex, $value, $matches ) )
+                {
+                    $keyName = $matches[1];
+
+                    $replacement = getKeyValue( $source , $keyName , null , $separator ) ;
+
+                    if ( $replacement === null )
+                    {
+                        $value = $preserveMissing ? $value : '' ;
+                    }
+                    else
+                    {
+                        $value = $replacement ;
+                    }
+                }
+                else
+                {
+                    $value = $applyFormat( $value ) ;
+                }
             }
         }
     };

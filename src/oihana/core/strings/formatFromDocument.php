@@ -81,6 +81,28 @@ function formatFromDocument
         $pattern       = '/' . $escapedPrefix . '([a-zA-Z0-9_.\-\[\]]+)' . $escapedSuffix . '/';
     }
 
+    $isExactSinglePattern = preg_match
+    (
+        pattern  : '/^' .
+                   preg_quote($prefix, '/') .
+                   '([a-zA-Z0-9_.\-\[\]]+)' .
+                   preg_quote($suffix, '/') .
+                   '$/',
+        subject  : $template,
+       matches :  $matches
+    );
+
+    if ( $isExactSinglePattern )
+    {
+        $key   = $matches[1] ;
+        $value = getKeyValue( $document , $key , null , $separator ) ;
+        if ( $value === null )
+        {
+            return $preserveMissing ? $prefix . $key . $suffix : '' ;
+        }
+        return $value ;
+    }
+
     return preg_replace_callback( $pattern , function ( $matches ) use ( $document ,$preserveMissing , $prefix , $separator , $suffix ): string
     {
         $key = $matches[1];
