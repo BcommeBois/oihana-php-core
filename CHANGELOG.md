@@ -21,12 +21,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\documents\formatDocumentWith
 
 - Adds oihana\core\reflections\getFunctionInfo
+- 
+- Adds oihana\core\strings\append
 - Adds oihana\core\strings\block
 - Adds oihana\core\strings\blockPrefix
 - Adds oihana\core\strings\blockSuffix
 - Adds oihana\core\strings\format
 - Adds oihana\core\strings\formatFromDocument
 - Adds oihana\core\strings\isRegexp
+- Adds oihana\core\strings\pad
+- Adds oihana\core\strings\padBoth
+- Adds oihana\core\strings\padEnd
+- Adds oihana\core\strings\padStart
+- Adds oihana\core\strings\prepend
+- Adds oihana\core\strings\slice
 - Adds oihana\core\strings\toPhpString
 - Adds oihana\core\strings\wrapBlock
 

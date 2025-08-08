@@ -74,6 +74,7 @@
             "src/oihana/core/objects/ensureObjectPath.php",
             "src/oihana/core/objects/set.php",
             "src/oihana/core/objects/setObjectValue.php",
+            "src/oihana/core/strings/append.php",
             "src/oihana/core/strings/block.php",
             "src/oihana/core/strings/blockPrefix.php" ,
             "src/oihana/core/strings/blockSuffix.php" ,
@@ -89,7 +90,13 @@
             "src/oihana/core/strings/latinize.php",
             "src/oihana/core/strings/lower.php" ,
             "src/oihana/core/strings/luhn.php",
+            "src/oihana/core/strings/pad.php",
+            "src/oihana/core/strings/padBoth.php",
+            "src/oihana/core/strings/padEnd.php",
+            "src/oihana/core/strings/padStart.php",
+            "src/oihana/core/strings/prepend.php",
             "src/oihana/core/strings/randomKey.php",
+            "src/oihana/core/strings/slice.php",
             "src/oihana/core/strings/snake.php",
             "src/oihana/core/strings/toPhpHumanReadableScalar.php" ,
             "src/oihana/core/strings/toPhpString.php",
@@ -99,7 +106,8 @@
         ]
     },
     "require": {
-        "php": ">=8.4"
+        "php": ">=8.4",
+        "ext-intl": "*"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit" ,

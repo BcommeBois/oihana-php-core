@@ -134,6 +134,13 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_append">append()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Append one or more suffix strings to the given source string, then normalize the result.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_block">block()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -239,11 +246,54 @@
 <dd>Validates whether a given string is a valid Luhn code (mod 10 checksum).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_pad">pad()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Pads a UTF-8 string to a certain length using a specified padding string and type.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_padBoth">padBoth()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Pads a UTF-8 string on both sides (left and right) to a certain length using a specified padding string.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_padEnd">padEnd()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Pads a UTF-8 string on the right (end) to a certain length using a specified padding string.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_padStart">padStart()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Pads a UTF-8 string on the left (start) to a certain length using a specified padding string.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_prepend">prepend()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Prepend one or more prefix strings to the given source string, then normalize the result.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_randomKey">randomKey()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
 <dd>Generates a random key string, optionally prefixed with a given string and separated by a custom separator.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_slice">slice()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Extracts a substring from a UTF-8 encoded string using grapheme clusters,
+which ensures multi-byte characters (like emojis, accented letters) are not broken.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_snake">snake()</a>
@@ -318,6 +368,112 @@
             <a href="namespaces/oihana-core-strings.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_append">
+        append()
+        <a href="namespaces/oihana-core-strings.html#function_append" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/append.php"><a href="files/src-oihana-core-strings-append.html"><abbr title="src/oihana/core/strings/append.php">append.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Append one or more suffix strings to the given source string, then normalize the result.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">append</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__variadic-operator">...</span><span class="phpdocumentor-signature__argument__name">$suffix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>If the source string is null, returns an empty string.
+If multiple suffixes are provided, they are concatenated before appending.
+The resulting string is normalized using Unicode Normalization Form C (NFC).</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$source</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The original string or null.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$suffix</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>One or more suffix strings to append.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_append#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the resulting string is invalid UTF-8 or cannot be normalized.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\append;
+
+echo append( 'hello', ' ', 'world'); // Outputs: &quot;hello world&quot;
+echo append( null, 'foo');           // Outputs: &quot;foo&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The normalized concatenation of source and suffix(es).</p>
+</section>
+
+            </section>
+
+</article>
                     <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_block">
         block()
@@ -1984,6 +2140,581 @@ echo luhn(&quot;1234&quot;);                  // Outputs: false (invalid Luhn)
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_pad">
+        pad()
+        <a href="namespaces/oihana-core-strings.html#function_pad" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/pad.php"><a href="files/src-oihana-core-strings-pad.html"><abbr title="src/oihana/core/strings/pad.php">pad.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">35</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Pads a UTF-8 string to a certain length using a specified padding string and type.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">pad</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pad</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>If the source string is null, it is treated as an empty string.
+The padding uses grapheme clusters to correctly handle multibyte characters.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$source</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The input string or null.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$size</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Desired length after padding (in grapheme clusters).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pad</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The string to use for padding (cannot be empty).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$type</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>One of STR_PAD_LEFT, STR_PAD_RIGHT, STR_PAD_BOTH.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_pad#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the padding type is invalid or $pad is empty.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\pad;
+
+echo pad('hello', 10, ' ', STR_PAD_RIGHT); // Outputs: &quot;hello     &quot;
+echo pad('hello', 10, '☺', STR_PAD_LEFT);  // Outputs: &quot;☺☺☺☺☺hello&quot;
+echo pad('hello', 10, 'ab', STR_PAD_BOTH); // Outputs: &quot;ababahelloaba&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The padded string.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_padBoth">
+        padBoth()
+        <a href="namespaces/oihana-core-strings.html#function_padBoth" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/padBoth.php"><a href="files/src-oihana-core-strings-padboth.html"><abbr title="src/oihana/core/strings/padBoth.php">padBoth.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">36</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Pads a UTF-8 string on both sides (left and right) to a certain length using a specified padding string.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">padBoth</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pad</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>If the source string is null, it is treated as an empty string.
+The padding uses grapheme clusters to correctly handle multibyte characters.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$source</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The input string or null.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$size</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Desired length after padding (in grapheme clusters).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pad</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The string to use for padding (cannot be empty).</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_padBoth#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the padding string is empty or invalid UTF-8.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\padBoth;
+
+echo padBoth('hello', 11, 'ab');    // Outputs: &quot;abhelloabab&quot;
+echo padBoth(null, 6, '*');         // Outputs: &quot;******&quot;
+echo padBoth('test', 10, '☺');      // Outputs: &quot;☺☺☺test☺☺☺&quot;
+echo padBoth('emoji', 9, '🚀');     // Outputs: &quot;🚀🚀emoji🚀&quot;
+echo padBoth('pad', 3, '-');        // Outputs: &quot;pad&quot; (size &lt;= string length, no padding)
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The string padded on both sides.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_padEnd">
+        padEnd()
+        <a href="namespaces/oihana-core-strings.html#function_padEnd" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/padEnd.php"><a href="files/src-oihana-core-strings-padend.html"><abbr title="src/oihana/core/strings/padEnd.php">padEnd.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Pads a UTF-8 string on the right (end) to a certain length using a specified padding string.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">padEnd</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pad</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>If the source string is null, it is treated as an empty string.
+The padding uses grapheme clusters to correctly handle multibyte characters.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$source</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The input string or null.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$size</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Desired length after padding (in grapheme clusters).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pad</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The string to use for padding (cannot be empty).</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_padEnd#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the padding string is empty or invalid UTF-8.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\padEnd;
+
+echo padEnd('hello', 10, '☺');  // Outputs: &quot;hello☺☺☺☺☺&quot;
+echo padEnd(null, 5, '*');      // Outputs: &quot;*****&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The right-padded string.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_padStart">
+        padStart()
+        <a href="namespaces/oihana-core-strings.html#function_padStart" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/padStart.php"><a href="files/src-oihana-core-strings-padstart.html"><abbr title="src/oihana/core/strings/padStart.php">padStart.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Pads a UTF-8 string on the left (start) to a certain length using a specified padding string.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">padStart</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pad</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>If the source string is null, it is treated as an empty string.
+The padding uses grapheme clusters to correctly handle multibyte characters.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$source</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The input string or null.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$size</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Desired length after padding (in grapheme clusters).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pad</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The string to use for padding (cannot be empty).</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_padStart#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the padding string is empty or invalid UTF-8.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\padStart;
+
+echo padStart('hello', 10, '☺');  // Outputs: &quot;☺☺☺☺☺hello&quot;
+echo padStart(null, 5, '*');      // Outputs: &quot;*****&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The left-padded string.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_prepend">
+        prepend()
+        <a href="namespaces/oihana-core-strings.html#function_prepend" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/prepend.php"><a href="files/src-oihana-core-strings-prepend.html"><abbr title="src/oihana/core/strings/prepend.php">prepend.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Prepend one or more prefix strings to the given source string, then normalize the result.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">prepend</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__variadic-operator">...</span><span class="phpdocumentor-signature__argument__name">$prefix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>If the source string is null, returns an empty string.
+If multiple prefixes are provided, they are concatenated before prepending.
+The resulting string is normalized using Unicode Normalization Form C (NFC).</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$source</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The original string or null.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$prefix</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>One or more prefix strings to prepend.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_prepend#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the resulting string is invalid UTF-8 or cannot be normalized.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\prepend;
+
+echo prepend( 'world', 'hello', ' ' ); // Outputs: &quot;hello world&quot;
+echo prepend( null, 'foo');             // Outputs: &quot;foo&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The normalized concatenation of prefix(es) and source.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_randomKey">
         randomKey()
         <a href="namespaces/oihana-core-strings.html#function_randomKey" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2071,6 +2802,115 @@ echo randomKey(&quot;order&quot;, &quot;-&quot;); // Possible output: &quot;orde
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The generated random key.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_slice">
+        slice()
+        <a href="namespaces/oihana-core-strings.html#function_slice" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/slice.php"><a href="files/src-oihana-core-strings-slice.html"><abbr title="src/oihana/core/strings/slice.php">slice.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Extracts a substring from a UTF-8 encoded string using grapheme clusters,
+which ensures multi-byte characters (like emojis, accented letters) are not broken.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">slice</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$start</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$length</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>If the source is null, it returns an empty string.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$source</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The input string or null.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$start</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">0</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The start position (0-based). Negative values count from the end.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$length</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The length of the substring. Defaults to max int (whole string from $start).</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_slice#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\slice;
+
+echo slice ( &quot;Hello World&quot;, 6 ) ; // Outputs: &quot;World&quot;
+
+echo slice ( &quot;👩‍👩‍👧‍👧 family&quot;, 0, 5 ) ; // Outputs: &quot;👩‍👩‍👧‍👧&quot;
+
+echo slice ( null ) ; // Outputs: &quot;&quot;
+
+echo slice ( &quot;Hello&quot; , -3 , 2 ) ; // Outputs: &quot;ll&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The extracted substring or empty string if $source is null.</p>
 </section>
 
             </section>
@@ -3300,6 +4140,7 @@ echo urlencode(&quot;hello world!&quot;);
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_append">append()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_block">block()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_blockPrefix">blockPrefix()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_blockSuffix">blockSuffix()</a></li>
@@ -3318,7 +4159,13 @@ echo urlencode(&quot;hello world!&quot;);
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_latinize">latinize()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_lower">lower()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_luhn">luhn()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_pad">pad()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_padBoth">padBoth()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_padEnd">padEnd()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_padStart">padStart()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_prepend">prepend()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_randomKey">randomKey()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_slice">slice()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_snake">snake()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpHumanReadableScalar">toPhpHumanReadableScalar()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpString">toPhpString()</a></li>

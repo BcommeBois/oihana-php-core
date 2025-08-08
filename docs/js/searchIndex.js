@@ -226,6 +226,11 @@ Search.appendIndex(
             "summary": "Returns\u0020detailed\u0020reflection\u0020information\u0020about\u0020a\u0020given\u0020function\u0020or\u0020method.",
             "url": "namespaces/oihana-core-reflections.html#function_getFunctionInfo"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\append\u0028\u0029",
+            "name": "append",
+            "summary": "Append\u0020one\u0020or\u0020more\u0020suffix\u0020strings\u0020to\u0020the\u0020given\u0020source\u0020string,\u0020then\u0020normalize\u0020the\u0020result.",
+            "url": "namespaces/oihana-core-strings.html#function_append"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\block\u0028\u0029",
             "name": "block",
             "summary": "Format\u0020an\u0020indented\u0020multi\u002Dline\u0020text\u0020block.",
@@ -346,10 +351,40 @@ Search.appendIndex(
             "summary": "Validates\u0020whether\u0020a\u0020given\u0020string\u0020is\u0020a\u0020valid\u0020Luhn\u0020code\u0020\u0028mod\u002010\u0020checksum\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_luhn"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\pad\u0028\u0029",
+            "name": "pad",
+            "summary": "Pads\u0020a\u0020UTF\u002D8\u0020string\u0020to\u0020a\u0020certain\u0020length\u0020using\u0020a\u0020specified\u0020padding\u0020string\u0020and\u0020type.",
+            "url": "namespaces/oihana-core-strings.html#function_pad"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\padBoth\u0028\u0029",
+            "name": "padBoth",
+            "summary": "Pads\u0020a\u0020UTF\u002D8\u0020string\u0020on\u0020both\u0020sides\u0020\u0028left\u0020and\u0020right\u0029\u0020to\u0020a\u0020certain\u0020length\u0020using\u0020a\u0020specified\u0020padding\u0020string.",
+            "url": "namespaces/oihana-core-strings.html#function_padBoth"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\padEnd\u0028\u0029",
+            "name": "padEnd",
+            "summary": "Pads\u0020a\u0020UTF\u002D8\u0020string\u0020on\u0020the\u0020right\u0020\u0028end\u0029\u0020to\u0020a\u0020certain\u0020length\u0020using\u0020a\u0020specified\u0020padding\u0020string.",
+            "url": "namespaces/oihana-core-strings.html#function_padEnd"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\padStart\u0028\u0029",
+            "name": "padStart",
+            "summary": "Pads\u0020a\u0020UTF\u002D8\u0020string\u0020on\u0020the\u0020left\u0020\u0028start\u0029\u0020to\u0020a\u0020certain\u0020length\u0020using\u0020a\u0020specified\u0020padding\u0020string.",
+            "url": "namespaces/oihana-core-strings.html#function_padStart"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\prepend\u0028\u0029",
+            "name": "prepend",
+            "summary": "Prepend\u0020one\u0020or\u0020more\u0020prefix\u0020strings\u0020to\u0020the\u0020given\u0020source\u0020string,\u0020then\u0020normalize\u0020the\u0020result.",
+            "url": "namespaces/oihana-core-strings.html#function_prepend"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\randomKey\u0028\u0029",
             "name": "randomKey",
             "summary": "Generates\u0020a\u0020random\u0020key\u0020string,\u0020optionally\u0020prefixed\u0020with\u0020a\u0020given\u0020string\u0020and\u0020separated\u0020by\u0020a\u0020custom\u0020separator.",
             "url": "namespaces/oihana-core-strings.html#function_randomKey"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\slice\u0028\u0029",
+            "name": "slice",
+            "summary": "Extracts\u0020a\u0020substring\u0020from\u0020a\u0020UTF\u002D8\u0020encoded\u0020string\u0020using\u0020grapheme\u0020clusters,\nwhich\u0020ensures\u0020multi\u002Dbyte\u0020characters\u0020\u0028like\u0020emojis,\u0020accented\u0020letters\u0029\u0020are\u0020not\u0020broken.",
+            "url": "namespaces/oihana-core-strings.html#function_slice"
         },                {
             "fqsen": "\\oihana\\core\\strings\\snake\u0028\u0029",
             "name": "snake",
