@@ -16,9 +16,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  
 - Adds oihana\core\date\formatDateTime
 - 
-- Adds oihana\core\documents\formatDocumentInPlace
 - Adds oihana\core\documents\formatDocument
 - Adds oihana\core\documents\formatDocumentWith
+- Adds oihana\core\documents\resolvePlaceholders
 
 - Adds oihana\core\reflections\getFunctionInfo
 - 

@@ -151,11 +151,6 @@ Search.appendIndex(
             "summary": "Indicates\u0020if\u0020the\u0020passed\u002Din\u0020expression\u0020is\u0020a\u0020valid\u0020timezone.",
             "url": "namespaces/oihana-core-date.html#function_isValidTimezone"
         },                {
-            "fqsen": "\\oihana\\core\\documents\\formatDocumentInPlace\u0028\u0029",
-            "name": "formatDocumentInPlace",
-            "summary": "Mutates\u0020the\u0020given\u0020target\u0020document\u0020by\u0020formatting\u0020its\u0020string\u0020values\u0020in\u002Dplace\u0020using\u0020values\u0020from\u0020a\u0020source\u0020document.",
-            "url": "namespaces/oihana-core-documents.html#function_formatDocumentInPlace"
-        },                {
             "fqsen": "\\oihana\\core\\documents\\formatDocument\u0028\u0029",
             "name": "formatDocument",
             "summary": "Recursively\u0020formats\u0020all\u0020string\u0020values\u0020in\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020by\u0020replacing\u0020placeholders\nwith\u0020their\u0020corresponding\u0020values\u0020found\u0020in\u0020the\u0020root\u0020document.",
@@ -165,6 +160,11 @@ Search.appendIndex(
             "name": "formatDocumentWith",
             "summary": "Formats\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020using\u0020placeholders\u0020resolved\u0020from\u0020another\u0020source\u0020document.",
             "url": "namespaces/oihana-core-documents.html#function_formatDocumentWith"
+        },                {
+            "fqsen": "\\oihana\\core\\documents\\resolvePlaceholders\u0028\u0029",
+            "name": "resolvePlaceholders",
+            "summary": "Hydrates\u0020or\u0020formats\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020in\u0020place\u0020by\u0020replacing\u0020placeholders\nwith\u0020corresponding\u0020values\u0020from\u0020a\u0020source\u0020document.",
+            "url": "namespaces/oihana-core-documents.html#function_resolvePlaceholders"
         },                {
             "fqsen": "\\oihana\\core\\helpers\\conditions\u0028\u0029",
             "name": "conditions",

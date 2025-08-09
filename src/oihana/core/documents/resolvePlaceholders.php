@@ -7,7 +7,8 @@ use function oihana\core\accessors\getKeyValue;
 use function oihana\core\strings\format;
 
 /**
- * Mutates the given target document by formatting its string values in-place using values from a source document.
+ * Hydrates or formats a document (array or object) in place by replacing placeholders
+ * with corresponding values from a source document.
  *
  * @param array|object  &$target         The target document to format.
  * @param array|object  $source          The source document used for placeholder resolution.
@@ -43,7 +44,7 @@ use function oihana\core\strings\format;
  *     ],
  * ];
  *
- * formatDocumentInPlace($target, $source);
+ * resolvePlaceholders($target, $source);
  *
  * // Result:
  * // $target['host']    === 'localhost' (string)
@@ -51,7 +52,7 @@ use function oihana\core\strings\format;
  * // $target['enabled'] === false (bool)
  * // $
  */
-function formatDocumentInPlace
+function resolvePlaceholders
 (
     array|object &$target                  ,
     array|object  $source                  ,
@@ -114,5 +115,5 @@ function formatDocumentInPlace
         }
     };
 
-    $recurse( $target );
+    $recurse( $target ) ;
 }
