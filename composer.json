@@ -18,14 +18,23 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "oihana\\core\\" : "tests/oihana/core"
+            "oihana\\core\\" : "tests/oihana/core",
+            "oihana\\enums\\" : "tests/oihana/enums",
+            "oihana\\options\\" : "tests/oihana/options",
+            "oihana\\reflections\\" : "tests/oihana/reflections"
         }
     },
     "autoload" :
     {
         "psr-4" :
         {
-            "oihana\\core\\": "src/oihana/core"
+            "oihana\\core\\": "src/oihana/core",
+            "oihana\\enums\\": "src/oihana/enums",
+            "oihana\\exceptions\\": "src/oihana/exceptions",
+            "oihana\\interfaces\\": "src/oihana/interfaces",
+            "oihana\\options\\": "src/oihana/options",
+            "oihana\\reflections\\": "src/oihana/reflections"
+            
         },
         "files":
         [
