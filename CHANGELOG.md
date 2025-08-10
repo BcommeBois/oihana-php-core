@@ -43,6 +43,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\enums\Boolean
 - Adds oihana\enums\Char
 - Adds oihana\enums\CharacterSet
+- Adds oihana\enums\IniOptions
 - Adds oihana\enums\JsonParam
 - Adds oihana\enums\Method
 - Adds oihana\enums\Order
