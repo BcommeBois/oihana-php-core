@@ -65,11 +65,15 @@ class ConstantsTraitTest extends TestCase
         // To simulate, we'll temporarily mock getAll to return a custom constant:
         $reflection = new \ReflectionClass(ConstantsTraitTestClass::class);
         $property = $reflection->getProperty('ALL');
-        $property->setValue(null, [
-            'FOO' => 'foo',
-            'MULTI' => 'one|two,three',
-            'BAZ' => ['baz1', 'baz2', 'baz3']
-        ]);
+        $property->setValue
+        (
+            null,
+            [
+                'FOO' => 'foo',
+                'MULTI' => 'one|two,three',
+                'BAZ' => ['baz1', 'baz2', 'baz3']
+            ]
+        );
         ConstantsTraitTestClass::resetCaches(); // reset cache again after hack
 
         // Now test with multiple separators: first split by '|' then by ','

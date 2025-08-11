@@ -64,7 +64,7 @@ trait ConstantsTrait
     {
         if( is_null( static::$ALL ) )
         {
-            static::$ALL = new ReflectionClass(__CLASS__ )->getConstants() ;
+            static::$ALL = new ReflectionClass( static::class )->getConstants() ;
         }
         return static::$ALL ;
     }
