@@ -2,12 +2,12 @@
 
 ![Oihana Php Core](https://raw.githubusercontent.com/BcommeBois/oihana-php-core/main/.phpdoc/template/assets/images/oihana-php-core-logo-inline-512x160.png)
 
+A lightweight and modular core library for modern PHP development.
+Designed for clarity, extensibility, and performance, with a consistent, functional-style API.
+
 [![Latest Version](https://img.shields.io/packagist/v/oihana/php-core.svg?style=flat-square)](https://packagist.org/packages/oihana/php-core)  
 [![Total Downloads](https://img.shields.io/packagist/dt/oihana/php-core.svg?style=flat-square)](https://packagist.org/packages/oihana/php-core)  
 [![License](https://img.shields.io/packagist/l/oihana/php-core.svg?style=flat-square)](LICENSE)
-
-A lightweight and modular core library for modern PHP development.
-Designed for clarity, extensibility, and performance, with a consistent, functional-style API.
 
 ## 📚 Documentation
 
