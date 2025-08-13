@@ -471,16 +471,6 @@ Search.appendIndex(
             "summary": "Creates\u0020a\u0020new\u0020Error500\u0020instance.",
             "url": "classes/oihana-exceptions-http-Error500.html#method___construct"
         },                {
-            "fqsen": "\\oihana\\exceptions\\MissingPassphraseException",
-            "name": "MissingPassphraseException",
-            "summary": "The\u0020missing\u0020passphrase\u0020exception.",
-            "url": "classes/oihana-exceptions-MissingPassphraseException.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\MissingPassphraseException\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Creates\u0020a\u0020new\u0020MissingPassphraseException\u0020instance.",
-            "url": "classes/oihana-exceptions-MissingPassphraseException.html#method___construct"
-        },                {
             "fqsen": "\\oihana\\exceptions\\ResponseException",
             "name": "ResponseException",
             "summary": "An\u0020exception\u0020thrown\u0020when\u0020a\u0020http\u0020response\u0020failed.",
