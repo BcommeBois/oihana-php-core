@@ -441,11 +441,6 @@ Search.appendIndex(
             "summary": "The\u0020exception\u0020trait\u0020helper.",
             "url": "classes/oihana-exceptions-ExceptionTrait.html"
         },                {
-            "fqsen": "\\oihana\\exceptions\\ExceptionTrait\u003A\u003A__toString\u0028\u0029",
-            "name": "__toString",
-            "summary": "Returns\u0020a\u0020string\u0020representation\u0020of\u0020the\u0020exception",
-            "url": "classes/oihana-exceptions-ExceptionTrait.html#method___toString"
-        },                {
             "fqsen": "\\oihana\\exceptions\\http\\Error403",
             "name": "Error403",
             "summary": "Throw\u0020an\u0020\u0027Forbidden\u0020error\u0027\u0020\u0028403\u0029.",
@@ -500,11 +495,6 @@ Search.appendIndex(
             "name": "ValidationException",
             "summary": "An\u0020exception\u0020thrown\u0020when\u0020a\u0020validation\u0020failed.",
             "url": "classes/oihana-exceptions-ValidationException.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\ValidationException\u003A\u003A__toString\u0028\u0029",
-            "name": "__toString",
-            "summary": "Returns\u0020a\u0020string\u0020representation\u0020of\u0020the\u0020exception",
-            "url": "classes/oihana-exceptions-ValidationException.html#method___toString"
         },                {
             "fqsen": "\\oihana\\interfaces\\Arrayable",
             "name": "Arrayable",
