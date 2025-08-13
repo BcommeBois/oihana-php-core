@@ -24,6 +24,4 @@ class MissingPassphraseException extends Exception
     {
         parent::__construct( $message , $code , $previous ) ;
     }
-
-    use ExceptionTrait;
 }

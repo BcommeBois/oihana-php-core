@@ -13,5 +13,4 @@ use Exception;
  */
 class BindException extends Exception
 {
-    use ExceptionTrait ;
 }

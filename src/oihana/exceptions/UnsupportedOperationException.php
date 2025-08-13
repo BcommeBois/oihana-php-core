@@ -13,5 +13,4 @@ use Exception;
  */
 class UnsupportedOperationException extends Exception
 {
-    use ExceptionTrait ;
 }
