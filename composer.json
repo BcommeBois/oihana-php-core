@@ -26,7 +26,6 @@
         "psr-4" :
         {
             "oihana\\core\\": "src/oihana/core",
-            "oihana\\exceptions\\": "src/oihana/exceptions",
             "oihana\\interfaces\\": "src/oihana/interfaces"
         },
         "files":
