@@ -431,56 +431,6 @@ Search.appendIndex(
             "summary": "Wraps\u0020a\u0020block\u0020of\u0020lines\u0020with\u0020a\u0020header\u0020and\u0020footer\u0020line.",
             "url": "namespaces/oihana-core-strings.html#function_wrapBlock"
         },                {
-            "fqsen": "\\oihana\\exceptions\\BindException",
-            "name": "BindException",
-            "summary": "Occurs\u0020when\u0020a\u0020bind\u0020variable\u0020is\u0020not\u0020valid\u0020or\u0020failed.",
-            "url": "classes/oihana-exceptions-BindException.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\http\\Error403",
-            "name": "Error403",
-            "summary": "Throw\u0020an\u0020\u0027Forbidden\u0020error\u0027\u0020\u0028403\u0029.",
-            "url": "classes/oihana-exceptions-http-Error403.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\http\\Error403\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Creates\u0020a\u0020new\u0020Error403\u0020instance.",
-            "url": "classes/oihana-exceptions-http-Error403.html#method___construct"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\http\\Error404",
-            "name": "Error404",
-            "summary": "Throw\u0020an\u0020\u0027not\u0020found\u0020error\u0027\u0020\u0028404\u0029.",
-            "url": "classes/oihana-exceptions-http-Error404.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\http\\Error404\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Creates\u0020a\u0020new\u0020Error404\u0020instance.",
-            "url": "classes/oihana-exceptions-http-Error404.html#method___construct"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\http\\Error500",
-            "name": "Error500",
-            "summary": "Throw\u0020an\u0020\u0027internal\u0020server\u0020error\u0027\u0020\u0028500\u0029.",
-            "url": "classes/oihana-exceptions-http-Error500.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\http\\Error500\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Creates\u0020a\u0020new\u0020Error500\u0020instance.",
-            "url": "classes/oihana-exceptions-http-Error500.html#method___construct"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\ResponseException",
-            "name": "ResponseException",
-            "summary": "An\u0020exception\u0020thrown\u0020when\u0020a\u0020http\u0020response\u0020failed.",
-            "url": "classes/oihana-exceptions-ResponseException.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\UnsupportedOperationException",
-            "name": "UnsupportedOperationException",
-            "summary": "An\u0020exception\u0020thrown\u0020when\u0020an\u0020operation\u0020is\u0020unsupported.",
-            "url": "classes/oihana-exceptions-UnsupportedOperationException.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\ValidationException",
-            "name": "ValidationException",
-            "summary": "An\u0020exception\u0020thrown\u0020when\u0020a\u0020validation\u0020failed.",
-            "url": "classes/oihana-exceptions-ValidationException.html"
-        },                {
             "fqsen": "\\oihana\\interfaces\\Arrayable",
             "name": "Arrayable",
             "summary": "Interface\u0020for\u0020objects\u0020that\u0020can\u0020be\u0020converted\u0020to\u0020arrays.",
@@ -590,16 +540,6 @@ Search.appendIndex(
             "name": "helpers",
             "summary": "",
             "url": "namespaces/oihana-core-strings-helpers.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions",
-            "name": "exceptions",
-            "summary": "",
-            "url": "namespaces/oihana-exceptions.html"
-        },                {
-            "fqsen": "\\oihana\\exceptions\\http",
-            "name": "http",
-            "summary": "",
-            "url": "namespaces/oihana-exceptions-http.html"
         },                {
             "fqsen": "\\oihana\\interfaces",
             "name": "interfaces",

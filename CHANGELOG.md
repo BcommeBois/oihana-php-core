@@ -36,30 +36,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\slice
 - Adds oihana\core\strings\toPhpString
 - Adds oihana\core\strings\wrapBlock
-
-- Adds oihana\exceptions\BindException
-- Adds oihana\exceptions\ExceptionTrait
-- Adds oihana\exceptions\MissingPassphraseException
-- Adds oihana\exceptions\ResponseException
-- Adds oihana\exceptions\UnsupportedOperationException
-- Adds oihana\exceptions\ValidationException
 - 
-- Adds oihana\exceptions\http\Error403
-- Adds oihana\exceptions\http\Error404
-- Adds oihana\exceptions\http\Error500
-
 - Adds oihana\interfaces\Arrayable
 - Adds oihana\interfaces\ClearableArrayable
 - Adds oihana\interfaces\Cloneable
 - Adds oihana\interfaces\Equatable
-
-- Adds oihana\reflections\attributes\HydrateAs
-- Adds oihana\reflections\attributes\HydrateKey
-- Adds oihana\reflections\attributes\HydrateWith
-- Adds oihana\reflections\exceptions\ConstantException
-- Adds oihana\reflections\traits\ConstantsTrait
-- Adds oihana\reflections\Reflection
-- Adds oihana\reflections\Version
 
 ### Removed
 

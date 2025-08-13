@@ -43,7 +43,7 @@
                 <ignore-tag>implements</ignore-tag>
             </ignore-tags>
 
-            <default-package-name>Oihana Php Files</default-package-name>
+            <default-package-name>Oihana Php Core</default-package-name>
 
         </api>
 
