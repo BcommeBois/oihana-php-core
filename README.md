@@ -17,7 +17,8 @@ Full project documentation is available at:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - License: [MPL-2.0](./LICENSE)
 
-## Installation
+## 📦️ Installation
+
 > **Requires [PHP 8.4+](https://php.net/releases/)**
 
 Install via [Composer](https://getcomposer.org):
@@ -65,10 +66,6 @@ Smart numeric rounding helpers:
 Lightweight object manipulation:
 - compress() — remove null/empty values
 - set() — deep set a value in a nested structure
-
-### 🧠 Reflections (oihana\core\reflections)
-Introspect callable/function definitions:
-- getFunctionInfo()
 
 ### ✍️ Strings (oihana\core\strings)
 String formatting, case conversions, and utilities:
@@ -144,61 +141,6 @@ use function oihana\core\strings\fastFormat;
 echo camel('foo-bar_baz');                        // fooBarBaz
 echo fastFormat('User {0} has {1} points', 'Alice', 1500);
 // User Alice has 1500 points
-```
-
-### Enums and constants helpers
-Arithmetic operators as constants:
-```php
-use oihana\enums\ArithmeticOperator;
-
-$expr  = '3 ' . ArithmeticOperator::ADDITION . ' 4'; // "3 + 4"
-$power = '2 ' . ArithmeticOperator::EXPONENT . ' 8'; // "2 ** 8"
-```
-
-JSON parameters with defaults and validation:
-```php
-use oihana\enums\JsonParam;
-
-$options = [
-    JsonParam::ASSOCIATIVE => true,
-    JsonParam::DEPTH       => 512,
-    JsonParam::FLAGS       => JSON_PRETTY_PRINT,
-];
-
-$defaults = JsonParam::getDefaultValues();  // ['associative' => false, 'depth' => 512, 'flags' => 0]
-JsonParam::isValidFlags(JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR); // true
-```
-
-php.ini option names with reflection helpers (from ConstantsTrait):
-```php
-use oihana\enums\IniOptions;
-
-$all     = IniOptions::enums();                // sorted list of all option names
-$exists  = IniOptions::includes('display_errors'); // true
-$name    = IniOptions::getConstant('memory_limit'); // 'MEMORY_LIMIT'
-IniOptions::validate('upload_max_filesize');   // throws if invalid
-```
-
-### Using ConstantsTrait directly in your own enum-like classes
-```php
-namespace App;
-
-use oihana\reflections\traits\ConstantsTrait;
-
-class Status
-{
-    use ConstantsTrait;
-
-    public const string DRAFT     = 'draft';
-    public const string PUBLISHED = 'published';
-    public const string ARCHIVED  = 'archived';
-}
-
-// Usage
-Status::enums();                 // ['archived','draft','published'] (sorted)
-Status::includes('draft');       // true
-Status::getConstant('published'); // 'PUBLISHED'
-Status::validate('invalid');     // throws ConstantException
 ```
 
 ## ✅ Running Unit Tests

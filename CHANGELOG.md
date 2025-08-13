@@ -1,4 +1,4 @@
-# Oihana PHP core OpenSource library - Change Log
+# Oihana PHP Core library - Change Log
 
 All notable changes to this project will be documented in this file.
 
@@ -20,8 +20,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\documents\formatDocumentWith
 - Adds oihana\core\documents\resolvePlaceholders
 
-- Adds oihana\core\reflections\getFunctionInfo
-
 - Adds oihana\core\strings\append
 - Adds oihana\core\strings\block
 - Adds oihana\core\strings\blockPrefix
@@ -37,17 +35,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\slice
 - Adds oihana\core\strings\toPhpString
 - Adds oihana\core\strings\wrapBlock
-
-- Adds oihana\enums\Alter
-- Adds oihana\enums\ArithmeticOperator
-- Adds oihana\enums\Boolean
-- Adds oihana\enums\Char
-- Adds oihana\enums\CharacterSet
-- Adds oihana\enums\IniOptions
-- Adds oihana\enums\JsonParam
-- Adds oihana\enums\Method
-- Adds oihana\enums\Order
-- Adds oihana\enums\Param
 
 - Adds oihana\exceptions\BindException
 - Adds oihana\exceptions\ExceptionTrait
@@ -65,9 +52,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\interfaces\Cloneable
 - Adds oihana\interfaces\Equatable
 - Adds oihana\interfaces\Optionable
-
-- Adds oihana\options\Option
-- Adds oihana\options\Options
 
 - Adds oihana\reflections\attributes\HydrateAs
 - Adds oihana\reflections\attributes\HydrateKey
