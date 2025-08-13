@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+
 - Adds oihana\core\isLiteral
 - Adds oihana\core\accessors\assertDocumentKeyValid
 - Adds oihana\core\accessors\deleteKeyValue
@@ -51,7 +52,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\interfaces\ClearableArrayable
 - Adds oihana\interfaces\Cloneable
 - Adds oihana\interfaces\Equatable
-- Adds oihana\interfaces\Optionable
 
 - Adds oihana\reflections\attributes\HydrateAs
 - Adds oihana\reflections\attributes\HydrateKey
@@ -62,7 +62,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\reflections\Version
 
 ### Removed
+
 - Core folder only and keep : enums, exceptions, interfaces, reflections 
+- Remove oihana\exceptions\ExceptionTrait
 
 ### Changed
 - Rename oihana\core\files\loadAndMergeArrayFromPHPFiles -> oihana\files\requireAndMergeArrays

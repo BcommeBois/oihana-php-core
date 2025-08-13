@@ -436,11 +436,6 @@ Search.appendIndex(
             "summary": "Occurs\u0020when\u0020a\u0020bind\u0020variable\u0020is\u0020not\u0020valid\u0020or\u0020failed.",
             "url": "classes/oihana-exceptions-BindException.html"
         },                {
-            "fqsen": "\\oihana\\exceptions\\ExceptionTrait",
-            "name": "ExceptionTrait",
-            "summary": "The\u0020exception\u0020trait\u0020helper.",
-            "url": "classes/oihana-exceptions-ExceptionTrait.html"
-        },                {
             "fqsen": "\\oihana\\exceptions\\http\\Error403",
             "name": "Error403",
             "summary": "Throw\u0020an\u0020\u0027Forbidden\u0020error\u0027\u0020\u0028403\u0029.",
@@ -525,16 +520,6 @@ Search.appendIndex(
             "name": "equals",
             "summary": "Compares\u0020the\u0020specified\u0020values\u0020for\u0020equality.",
             "url": "classes/oihana-interfaces-Equatable.html#method_equals"
-        },                {
-            "fqsen": "\\oihana\\interfaces\\Optionable",
-            "name": "Optionable",
-            "summary": "This\u0020interface\u0020is\u0020implemented\u0020by\u0020the\u0020optionable\u0020enumerations.",
-            "url": "classes/oihana-interfaces-Optionable.html"
-        },                {
-            "fqsen": "\\oihana\\interfaces\\Optionable\u003A\u003AgetOption\u0028\u0029",
-            "name": "getOption",
-            "summary": "Returns\u0020the\u0020option\u0020value\u0020with\u0020the\u0020specific\u0020option\u0020property\u0020name.",
-            "url": "classes/oihana-interfaces-Optionable.html#method_getOption"
         },                {
             "fqsen": "\\",
             "name": "\\",
