@@ -108,8 +108,7 @@
     },
     "require": {
         "php": ">=8.4",
-        "ext-intl": "*",
-        "oihana/php-exceptions": "dev-main"
+        "ext-intl": "*"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit" ,
