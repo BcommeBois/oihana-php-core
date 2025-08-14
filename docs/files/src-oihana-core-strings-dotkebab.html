@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">snake.php</h2>
+        <h2 class="phpdocumentor-content__title">dotKebab.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-strings-snake.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-strings-dotkebab.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,16 +129,17 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-strings-snake.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-strings-dotkebab.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-strings.html#function_snake">snake()</a>
+    <a class="" href="namespaces/oihana-core-strings.html#function_dotKebab">dotKebab()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Converts a string to snake_case (or a custom delimiter).</dd>
+<dd>Converts a camelCase or PascalCase string into a format where the first word
+is separated by a dot (.) from the rest, which are joined using kebab-case (-).</dd>
 
     </dl>
 
@@ -148,33 +149,42 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-strings-snake.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-strings-dotkebab.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_snake">
-        snake()
-        <a href="namespaces/oihana-core-strings.html#function_snake" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_dotKebab">
+        dotKebab()
+        <a href="namespaces/oihana-core-strings.html#function_dotKebab" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/snake.php"><a href="files/src-oihana-core-strings-snake.html"><abbr title="src/oihana/core/strings/snake.php">snake.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/dotKebab.php"><a href="files/src-oihana-core-strings-dotkebab.html"><abbr title="src/oihana/core/strings/dotKebab.php">dotKebab.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Converts a string to snake_case (or a custom delimiter).</p>
+        <p class="phpdocumentor-summary">Converts a camelCase or PascalCase string into a format where the first word
+is separated by a dot (.) from the rest, which are joined using kebab-case (-).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">snake</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$delimiter</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;_&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$encoding</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;UTF-8&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">dotKebab</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function transforms camelCase, PascalCase, and space-separated words
-into snake case or any delimiter specified.</p>
-<p>It uses an internal cache (via <code class="prettyprint">SnakeCache</code>) to optimize repeated calls with the same input.
-The cache can be flushed by calling <code class="prettyprint">SnakeCache::flush()</code>.</p>
+        <section class="phpdocumentor-description"><p>This is useful for creating structured identifiers or keys that use a
+namespace-like prefix separated by a dot, followed by a kebab-case suffix.</p>
+<p>Internally, this function uses <a href="namespaces/oihana-core-strings.html#function_snake"><abbr title="\oihana\core\strings\snake()">snake()</abbr></a> to normalize the input string
+into lowercase segments separated by a custom delimiter.</p>
+<p>Examples:</p>
+<ul>
+<li>&quot;serverAskJwtSecret&quot; → &quot;server.ask-jwt-secret&quot;</li>
+<li>&quot;UserProfilePage&quot;    → &quot;user.profile-page&quot;</li>
+<li>&quot;APIKeyManager&quot;      → &quot;api.key-manager&quot;</li>
+<li>&quot;foo&quot;                → &quot;foo&quot;</li>
+<li>null                 → &quot;&quot;</li>
+</ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -184,25 +194,7 @@ The cache can be flushed by calling <code class="prettyprint">SnakeCache::flush(
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The input string to convert.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$delimiter</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;_&#039;</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The delimiter to use (default is underscore '_').</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$encoding</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;UTF-8&#039;</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The encoding parameter is the character encoding. If it is omitted or null, the internal character encoding value will be used.</p>
+                    <section class="phpdocumentor-description"><p>The camelCase or PascalCase string to convert.</p>
 </section>
 
             </dd>
@@ -211,7 +203,7 @@ The cache can be flushed by calling <code class="prettyprint">SnakeCache::flush(
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-strings.html#function_snake#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-strings.html#function_dotKebab#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -220,39 +212,20 @@ The cache can be flushed by calling <code class="prettyprint">SnakeCache::flush(
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Basic usage</p>
-<pre class="prettyprint"><code class="language-php">echo snake(&quot;helloWorld&quot;);  // Outputs: &quot;hello_world&quot;
-echo snake(&quot;HelloWorld&quot;);  // Outputs: &quot;hello_world&quot;
-echo snake(&quot;Hello World&quot;); // Outputs: &quot;hello_world&quot;
-echo snake(&quot;helloworld&quot;);  // Outputs: &quot;helloworld&quot;
-</code></pre>
-<p>With numbers</p>
-<pre class="prettyprint"><code class="language-php">echo snake(&quot;helloWorld123&quot;); // Outputs: &quot;hello_world123&quot;
-echo snake(&quot;UserID42&quot;);      // Outputs: &quot;user_id_42&quot;
-</code></pre>
-<p>Unicode support</p>
-<pre class="prettyprint"><code class="language-php">echo snake(&quot;helloWorldCafé&quot;); // Outputs: &quot;hello_world_café&quot;
-echo snake(&quot;CaféAuLait&quot;);     // Outputs: &quot;café_au_lait&quot;
-echo snake(&quot;NaïveBayesian&quot;);  // Outputs: &quot;naïve_bayesian&quot;
-echo snake(&quot;Emoji😊Test&quot;);    // Outputs: &quot;emoji_😊_test&quot;
-</code></pre>
-<p>Complex cases</p>
-<pre class="prettyprint"><code class="language-php">echo snake(&quot;MyXMLParser&quot;);  // Outputs: &quot;my_xml_parser&quot;
-echo snake(&quot;JSONToArray&quot;);  // Outputs: &quot;json_to_array&quot;
-echo snake(&quot;hello world how are you&quot;); // Outputs: &quot;hello_world_how_are_you&quot;
-</code></pre>
-<p>Custom delimiters</p>
-<pre class="prettyprint"><code class="language-php">echo snake(&quot;helloWorld&quot;, &quot;-&quot;); // Outputs: &quot;hello-world&quot;
-echo snake(&quot;helloWorld&quot;, &quot;|&quot;); // Outputs: &quot;hello|world&quot;
-echo snake(&quot;helloWorld&quot;, &quot; &quot;); // Outputs: &quot;hello world&quot;
-</code></pre>
-<p>Edge cases</p>
-<pre class="prettyprint"><code class="language-php">echo snake(&quot;&quot;);   // Outputs: &quot;&quot;
-echo snake(null); // Outputs: &quot;&quot;
-</code></pre>
-<p>Clear the internal cache if needed</p>
-<pre class="prettyprint"><code class="language-php">use oihana\core\strings\helpers\SnakeCache;
-SnakeCache::flush();
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo dotKebab(&quot;serverAskJwtSecret&quot;);
+// Output: &quot;server.ask-jwt-secret&quot;
+
+echo dotKebab(&quot;UserProfilePage&quot;);
+// Output: &quot;user.profile-page&quot;
+
+echo dotKebab(&quot;APIKeyManager&quot;);
+// Output: &quot;api.key-manager&quot;
+
+echo dotKebab(&quot;foo&quot;);
+// Output: &quot;foo&quot;
+
+echo dotKebab(null);
+// Output: &quot;&quot;
 </code></pre>
 </section>
 
@@ -280,7 +253,7 @@ SnakeCache::flush();
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The converted snake_case (or custom delimiter) string.</p>
+                <section class="phpdocumentor-description"><p>The converted string in dot + kebab-case format.</p>
 </section>
 
             </section>
@@ -292,7 +265,7 @@ SnakeCache::flush();
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/snake.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/dotKebab.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -393,7 +366,7 @@ SnakeCache::flush();
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-strings-snake.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-strings-dotkebab.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -401,7 +374,7 @@ SnakeCache::flush();
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_snake">snake()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_dotKebab">dotKebab()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -421,7 +394,7 @@ SnakeCache::flush();
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-strings-snake.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-strings-dotkebab.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

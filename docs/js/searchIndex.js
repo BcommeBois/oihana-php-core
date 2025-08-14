@@ -251,6 +251,11 @@ Search.appendIndex(
             "summary": "Converts\u0020a\u0020string\u0020to\u0020camelCase\u0020format.",
             "url": "namespaces/oihana-core-strings.html#function_camel"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\dotKebab\u0028\u0029",
+            "name": "dotKebab",
+            "summary": "Converts\u0020a\u0020camelCase\u0020or\u0020PascalCase\u0020string\u0020into\u0020a\u0020format\u0020where\u0020the\u0020first\u0020word\nis\u0020separated\u0020by\u0020a\u0020dot\u0020\u0028.\u0029\u0020from\u0020the\u0020rest,\u0020which\u0020are\u0020joined\u0020using\u0020kebab\u002Dcase\u0020\u0028\u002D\u0029.",
+            "url": "namespaces/oihana-core-strings.html#function_dotKebab"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\fastFormat\u0028\u0029",
             "name": "fastFormat",
             "summary": "Quickly\u0020formats\u0020a\u0020string\u0020using\u0020indexed\u0020placeholders\u0020and\u0020arguments.",

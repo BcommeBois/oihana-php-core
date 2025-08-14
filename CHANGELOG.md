@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\block
 - Adds oihana\core\strings\blockPrefix
 - Adds oihana\core\strings\blockSuffix
+- Adds oihana\core\strings\dotKebab
 - Adds oihana\core\strings\format
 - Adds oihana\core\strings\formatFromDocument
 - Adds oihana\core\strings\isRegexp

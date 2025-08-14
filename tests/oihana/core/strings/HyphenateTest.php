@@ -13,7 +13,7 @@ class HyphenateTest extends TestCase
     {
         $this->assertSame('hello-world'        , hyphenate('helloWorld' ) ) ;
         $this->assertSame('foo-bar-baz'        , hyphenate('fooBarBaz' ) ) ;
-        $this->assertSame('x-m-l-http-request' , hyphenate('XMLHttpRequest' ) ) ;
+        $this->assertSame('xml-http-request' , hyphenate('XMLHttpRequest' ) ) ;
     }
 
 

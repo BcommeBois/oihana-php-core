@@ -8,20 +8,25 @@ class SnakeTest extends TestCase
 {
     public function testSnakeWithValidStrings()
     {
-        $this->assertEquals('hello_world' , snake('hello_world' ));
-        $this->assertEquals('hello_world' , snake('helloWorld'  ));
-        $this->assertEquals('hello_world' , snake('HelloWorld'  ));
-        $this->assertEquals('hello_world' , snake('hello world' ));
-        $this->assertEquals('hello_world' , snake('helloWorld'  ));
-        $this->assertEquals('hello_world' , snake('HelloWorld'  ));
-        $this->assertEquals('helloworld'  , snake('helloworld'  ));
+        $this->assertEquals('hello_world' , snake('hello_world'));
+        $this->assertEquals('hello_world' , snake('helloWorld'));
+        $this->assertEquals('hello_world' , snake('HelloWorld'));
+        $this->assertEquals('hello_world' , snake('hello world'));
+        $this->assertEquals('helloworld'  , snake('helloworld'));
 
-        $this->assertEquals('hello_world_café', snake('helloWorldCafé'));
+        $this->assertEquals('hello_world_café', snake('helloWorldCafé' ));
+        $this->assertEquals('café_au_lait'    , snake('CaféAuLait'     ));
+        $this->assertEquals('naïve_bayesian'  , snake('NaïveBayesian'  ));
+        $this->assertEquals('emoji_😊_test'   , snake('Emoji😊Test'   ));
 
         $this->assertEquals('hello_world123', snake('helloWorld123'));
+        $this->assertEquals('user_id_42', snake('UserID42'));
 
         $this->assertEquals('hello_world_how_are_you', snake('hello world how are you'));
+        $this->assertEquals('my_xml_parser', snake('MyXMLParser'));
+        $this->assertEquals('json_to_array', snake('JSONToArray'));
 
+        // Custom delimiters
         $this->assertEquals('hello-world', snake('helloWorld', '-'));
         $this->assertEquals('hello|world', snake('helloWorld', '|'));
         $this->assertEquals('hello world', snake('helloWorld', ' '));

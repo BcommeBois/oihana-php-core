@@ -79,6 +79,7 @@
             "src/oihana/core/strings/blockPrefix.php" ,
             "src/oihana/core/strings/blockSuffix.php" ,
             "src/oihana/core/strings/camel.php",
+            "src/oihana/core/strings/dotKebab.php",
             "src/oihana/core/strings/fastFormat.php",
             "src/oihana/core/strings/format.php" ,
             "src/oihana/core/strings/formatFromDocument.php" ,
