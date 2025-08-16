@@ -144,6 +144,14 @@
 <dd>Rounds and returns a number by a count of floating points, using floor.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-maths.html#function_gcd">gcd()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Calculate the Greatest Common Divisor (GCD) of two integers using
+the Euclidean algorithm.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-maths.html#function_roundValue">roundValue()</a>
     <span>
                                 &nbsp;: int|float    </span>
@@ -341,6 +349,95 @@ echo floorValue(4.1234, 3);    // Outputs: 4.123
         <span class="phpdocumentor-signature__response_type">int|float</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The rounded number.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_gcd">
+        gcd()
+        <a href="namespaces/oihana-core-maths.html#function_gcd" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/maths/gcd.php"><a href="files/src-oihana-core-maths-gcd.html"><abbr title="src/oihana/core/maths/gcd.php">gcd.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">29</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Calculate the Greatest Common Divisor (GCD) of two integers using
+the Euclidean algorithm.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">gcd</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$a</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$b</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$throwable</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+        <section class="phpdocumentor-description"><p>This function returns the absolute value of the GCD. If both numbers
+are zero, it either returns 0 or throws an exception depending on
+the <code class="prettyprint">$throwable</code> parameter.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$a</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The first integer.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$b</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The second integer.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$throwable</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>If true, throws an exception when both numbers are zero.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-maths.html#function_gcd#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo gcd(48, 18); // Outputs: 6
+echo gcd(-48, 18); // Outputs: 6
+echo gcd(0, 5);    // Outputs: 5
+echo gcd(0, 0);    // Outputs: 0
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The greatest common divisor of $a and $b.</p>
 </section>
 
             </section>
@@ -554,6 +651,7 @@ echo roundValue(4.1234, 3);    // Outputs: 4.123
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="namespaces/oihana-core-maths.html#function_ceilValue">ceilValue()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-maths.html#function_floorValue">floorValue()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-maths.html#function_gcd">gcd()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-maths.html#function_roundValue">roundValue()</a></li>
                                             </ul>
                 </li>

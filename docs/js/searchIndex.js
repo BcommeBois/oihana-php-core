@@ -181,6 +181,16 @@ Search.appendIndex(
             "summary": "Checks\u0020whether\u0020a\u0020given\u0020value\u0020is\u0020a\u0020literal\u0020string\u0020representing\u0020a\u0020boolean\u0020\u0028\u0060true\u0060\u0020or\u0020\u0060false\u0060\u0029\u0020or\u0020\u0060null\u0060.",
             "url": "namespaces/oihana-core.html#function_isLiteral"
         },                {
+            "fqsen": "\\oihana\\core\\json\\isValidJsonDecodeFlags\u0028\u0029",
+            "name": "isValidJsonDecodeFlags",
+            "summary": "Checks\u0020whether\u0020a\u0020given\u0020integer\u0020value\u0020is\u0020a\u0020valid\u0020combination\u0020of\u0020\u0060json_decode\u0028\u0029\u0060\u0020option\u0020flags.",
+            "url": "namespaces/oihana-core-json.html#function_isValidJsonDecodeFlags"
+        },                {
+            "fqsen": "\\oihana\\core\\json\\isValidJsonEncodeFlags\u0028\u0029",
+            "name": "isValidJsonEncodeFlags",
+            "summary": "Checks\u0020whether\u0020a\u0020given\u0020integer\u0020value\u0020is\u0020a\u0020valid\u0020combination\u0020of\u0020\u0060json_encode\u0028\u0029\u0060\u0020option\u0020flags.",
+            "url": "namespaces/oihana-core-json.html#function_isValidJsonEncodeFlags"
+        },                {
             "fqsen": "\\oihana\\core\\maths\\ceilValue\u0028\u0029",
             "name": "ceilValue",
             "summary": "Rounds\u0020and\u0020returns\u0020the\u0020ceiling\u0020of\u0020the\u0020specified\u0020number\u0020or\u0020expression.",
@@ -190,6 +200,11 @@ Search.appendIndex(
             "name": "floorValue",
             "summary": "Rounds\u0020and\u0020returns\u0020a\u0020number\u0020by\u0020a\u0020count\u0020of\u0020floating\u0020points,\u0020using\u0020floor.",
             "url": "namespaces/oihana-core-maths.html#function_floorValue"
+        },                {
+            "fqsen": "\\oihana\\core\\maths\\gcd\u0028\u0029",
+            "name": "gcd",
+            "summary": "Calculate\u0020the\u0020Greatest\u0020Common\u0020Divisor\u0020\u0028GCD\u0029\u0020of\u0020two\u0020integers\u0020using\nthe\u0020Euclidean\u0020algorithm.",
+            "url": "namespaces/oihana-core-maths.html#function_gcd"
         },                {
             "fqsen": "\\oihana\\core\\maths\\roundValue\u0028\u0029",
             "name": "roundValue",
@@ -515,6 +530,11 @@ Search.appendIndex(
             "name": "oihana",
             "summary": "",
             "url": "namespaces/oihana.html"
+        },                {
+            "fqsen": "\\oihana\\core\\json",
+            "name": "json",
+            "summary": "",
+            "url": "namespaces/oihana-core-json.html"
         },                {
             "fqsen": "\\oihana\\core\\maths",
             "name": "maths",

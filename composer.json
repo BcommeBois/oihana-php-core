@@ -70,6 +70,7 @@
             "src/oihana/core/json/isValidJsonEncodeFlags.php",
             "src/oihana/core/maths/ceilValue.php" ,
             "src/oihana/core/maths/floorValue.php" ,
+            "src/oihana/core/maths/gcd.php" ,
             "src/oihana/core/maths/roundValue.php" ,
             "src/oihana/core/numbers/clip.php",
             "src/oihana/core/objects/compress.php",
