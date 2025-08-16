@@ -24,7 +24,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\json\isValidJsonDecodeFlags
 - Adds oihana\core\json\isValidJsonEncodeFlags
 
+- Adds oihana\core\maths\bearing
+- Adds oihana\core\maths\fixAngle
 - Adds oihana\core\maths\gcd
+- Adds oihana\core\maths\haversine
 
 - Adds oihana\core\strings\append
 - Adds oihana\core\strings\block

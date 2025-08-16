@@ -191,10 +191,25 @@ Search.appendIndex(
             "summary": "Checks\u0020whether\u0020a\u0020given\u0020integer\u0020value\u0020is\u0020a\u0020valid\u0020combination\u0020of\u0020\u0060json_encode\u0028\u0029\u0060\u0020option\u0020flags.",
             "url": "namespaces/oihana-core-json.html#function_isValidJsonEncodeFlags"
         },                {
+            "fqsen": "\\oihana\\core\\maths\\bearing\u0028\u0029",
+            "name": "bearing",
+            "summary": "Calculates\u0020the\u0020initial\u0020bearing\u0020\u0028sometimes\u0020referred\u0020to\u0020as\u0020forward\u0020azimuth\u0029\nwhich\u0020if\u0020followed\u0020in\u0020a\u0020straight\u0020line\u0020along\u0020a\u0020great\u002Dcircle\u0020arc\u0020will\u0020take\nyou\u0020from\u0020the\u0020start\u0020point\u0020to\u0020the\u0020end\u0020point\u0020\u0028in\u0020degrees\u0029.",
+            "url": "namespaces/oihana-core-maths.html#function_bearing"
+        },                {
+            "fqsen": "\\oihana\\core\\maths\\cartesianToPolar\u0028\u0029",
+            "name": "cartesianToPolar",
+            "summary": "Converts\u0020a\u0020cartesian\u0020vector\u0020to\u0020polar\u0020coordinates.",
+            "url": "namespaces/oihana-core-maths.html#function_cartesianToPolar"
+        },                {
             "fqsen": "\\oihana\\core\\maths\\ceilValue\u0028\u0029",
             "name": "ceilValue",
             "summary": "Rounds\u0020and\u0020returns\u0020the\u0020ceiling\u0020of\u0020the\u0020specified\u0020number\u0020or\u0020expression.",
             "url": "namespaces/oihana-core-maths.html#function_ceilValue"
+        },                {
+            "fqsen": "\\oihana\\core\\maths\\fixAngle\u0028\u0029",
+            "name": "fixAngle",
+            "summary": "Normalize\u0020an\u0020angle\u0020in\u0020degrees\u0020to\u0020the\u0020range\u0020\u005B0,\u0020360\u0029.",
+            "url": "namespaces/oihana-core-maths.html#function_fixAngle"
         },                {
             "fqsen": "\\oihana\\core\\maths\\floorValue\u0028\u0029",
             "name": "floorValue",
@@ -205,6 +220,16 @@ Search.appendIndex(
             "name": "gcd",
             "summary": "Calculate\u0020the\u0020Greatest\u0020Common\u0020Divisor\u0020\u0028GCD\u0029\u0020of\u0020two\u0020integers\u0020using\nthe\u0020Euclidean\u0020algorithm.",
             "url": "namespaces/oihana-core-maths.html#function_gcd"
+        },                {
+            "fqsen": "\\oihana\\core\\maths\\haversine\u0028\u0029",
+            "name": "haversine",
+            "summary": "Calculate\u0020the\u0020great\u002Dcircle\u0020distance\u0020between\u0020two\u0020points\u0020on\u0020a\u0020sphere\u0020using\u0020the\u0020Haversine\u0020formula.",
+            "url": "namespaces/oihana-core-maths.html#function_haversine"
+        },                {
+            "fqsen": "\\oihana\\core\\maths\\polarToCartesian\u0028\u0029",
+            "name": "polarToCartesian",
+            "summary": "Converts\u0020a\u0020polar\u0020coordinate\u0020to\u0020a\u0020cartesian\u0020vector.",
+            "url": "namespaces/oihana-core-maths.html#function_polarToCartesian"
         },                {
             "fqsen": "\\oihana\\core\\maths\\roundValue\u0028\u0029",
             "name": "roundValue",

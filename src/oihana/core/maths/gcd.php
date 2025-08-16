@@ -25,6 +25,10 @@ use InvalidArgumentException;
  * echo gcd(0, 5);    // Outputs: 5
  * echo gcd(0, 0);    // Outputs: 0
  * ```
+ *
+ * @package oihana\core\maths
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.0
  */
 function gcd( int $a, int $b , bool $throwable = false ) :int
 {

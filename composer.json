@@ -38,6 +38,7 @@
             "src/oihana/core/accessors/hasKeyValue.php" ,
             "src/oihana/core/accessors/resolveReferencePath.php" ,
             "src/oihana/core/accessors/setKeyValue.php" ,
+            
             "src/oihana/core/arrays/compress.php",
             "src/oihana/core/arrays/deepMerge.php",
             "src/oihana/core/arrays/delete.php",
@@ -59,25 +60,38 @@
             "src/oihana/core/arrays/tail.php",
             "src/oihana/core/arrays/toArray.php",
             "src/oihana/core/arrays/unique.php",
+            
             "src/oihana/core/date/formatDateTime.php",
             "src/oihana/core/date/isDate.php",
             "src/oihana/core/date/isValidTimezone.php",
+            
             "src/oihana/core/documents/formatDocument.php",
             "src/oihana/core/documents/formatDocumentWith.php",
             "src/oihana/core/documents/resolvePlaceholders.php" ,
+            
             "src/oihana/core/helpers/conditions.php",
+            
             "src/oihana/core/json/isValidJsonDecodeFlags.php",
             "src/oihana/core/json/isValidJsonEncodeFlags.php",
+            
+            "src/oihana/core/maths/bearing.php" ,
+            "src/oihana/core/maths/cartesianToPolar.php" ,
             "src/oihana/core/maths/ceilValue.php" ,
+            "src/oihana/core/maths/fixAngle.php" ,
             "src/oihana/core/maths/floorValue.php" ,
             "src/oihana/core/maths/gcd.php" ,
+            "src/oihana/core/maths/haversine.php" ,
+            "src/oihana/core/maths/polarToCartesian.php" ,
             "src/oihana/core/maths/roundValue.php" ,
+            
             "src/oihana/core/numbers/clip.php",
+            
             "src/oihana/core/objects/compress.php",
             "src/oihana/core/objects/ensureObjectPath.php",
             "src/oihana/core/objects/set.php",
             "src/oihana/core/objects/setObjectValue.php",
             "src/oihana/core/strings/append.php",
+            
             "src/oihana/core/strings/block.php",
             "src/oihana/core/strings/blockPrefix.php" ,
             "src/oihana/core/strings/blockSuffix.php" ,

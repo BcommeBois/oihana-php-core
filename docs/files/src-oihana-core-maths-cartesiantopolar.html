@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">gcd.php</h2>
+        <h2 class="phpdocumentor-content__title">cartesianToPolar.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-maths-gcd.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-maths-cartesiantopolar.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,17 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-maths-gcd.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-maths-cartesiantopolar.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-maths.html#function_gcd">gcd()</a>
+    <a class="" href="namespaces/oihana-core-maths.html#function_cartesianToPolar">cartesianToPolar()</a>
     <span>
-                                &nbsp;: int    </span>
+                                &nbsp;: array{angle: float, radius: float}    </span>
 </dt>
-<dd>Calculate the Greatest Common Divisor (GCD) of two integers using
-the Euclidean algorithm.</dd>
+<dd>Converts a cartesian vector to polar coordinates.</dd>
 
     </dl>
 
@@ -149,52 +148,47 @@ the Euclidean algorithm.</dd>
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-maths-gcd.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-maths-cartesiantopolar.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_gcd">
-        gcd()
-        <a href="namespaces/oihana-core-maths.html#function_gcd" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_cartesianToPolar">
+        cartesianToPolar()
+        <a href="namespaces/oihana-core-maths.html#function_cartesianToPolar" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/maths/gcd.php"><a href="files/src-oihana-core-maths-gcd.html"><abbr title="src/oihana/core/maths/gcd.php">gcd.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/maths/cartesianToPolar.php"><a href="files/src-oihana-core-maths-cartesiantopolar.html"><abbr title="src/oihana/core/maths/cartesianToPolar.php">cartesianToPolar.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Calculate the Greatest Common Divisor (GCD) of two integers using
-the Euclidean algorithm.</p>
+        <p class="phpdocumentor-summary">Converts a cartesian vector to polar coordinates.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">gcd</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$a</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$b</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$throwable</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">cartesianToPolar</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array{x?: float|int, y?: float|int}&nbsp;</span><span class="phpdocumentor-signature__argument__name">$vector</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$degrees</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$throwable</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array{angle: float, radius: float}</span></code>
 
-        <section class="phpdocumentor-description"><p>This function returns the absolute value of the GCD. If both numbers
-are zero, it either returns 0 or throws an exception depending on
-the <code class="prettyprint">$throwable</code> parameter.</p>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$a</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$vector</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array{x?: float|int, y?: float|int}</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The first integer.</p>
+                    <section class="phpdocumentor-description"><p>Cartesian coordinates with keys 'x' and 'y'.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$b</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
+                <span class="phpdocumentor-signature__argument__name">$degrees</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The second integer.</p>
+                    <section class="phpdocumentor-description"><p>Whether the returned angle should be in degrees (default: true).</p>
 </section>
 
             </dd>
@@ -203,7 +197,7 @@ the <code class="prettyprint">$throwable</code> parameter.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>If true, throws an exception when both numbers are zero.</p>
+                    <section class="phpdocumentor-description"><p>Whether to throw an exception if keys are missing (default: false).</p>
 </section>
 
             </dd>
@@ -212,19 +206,30 @@ the <code class="prettyprint">$throwable</code> parameter.</p>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-maths.html#function_gcd#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-maths.html#function_cartesianToPolar#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>if $throwable is true and required keys are missing.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">example</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo gcd(48, 18); // Outputs: 6
-echo gcd(-48, 18); // Outputs: 6
-echo gcd(0, 5);    // Outputs: 5
-echo gcd(0, 0);    // Outputs: 0
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$polar = cartesianToPolar(['x' =&gt; 0, 'y' =&gt; 5]);
+// Returns: ['angle' =&gt; 90, 'radius' =&gt; 5]
+
+$polar = cartesianToPolar(['x' =&gt; 1, 'y' =&gt; 1], false);
+// Returns angle in radians
 </code></pre>
 </section>
 
@@ -250,9 +255,9 @@ echo gcd(0, 0);    // Outputs: 0
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
+        <span class="phpdocumentor-signature__response_type">array{angle: float, radius: float}</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The greatest common divisor of $a and $b.</p>
+                <section class="phpdocumentor-description"><p>Polar coordinates with keys 'angle' and 'radius'.</p>
 </section>
 
             </section>
@@ -264,7 +269,7 @@ echo gcd(0, 0);    // Outputs: 0
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/maths/gcd.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/maths/cartesianToPolar.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -365,7 +370,7 @@ echo gcd(0, 0);    // Outputs: 0
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-maths-gcd.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-maths-cartesiantopolar.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -373,7 +378,7 @@ echo gcd(0, 0);    // Outputs: 0
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-maths.html#function_gcd">gcd()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-maths.html#function_cartesianToPolar">cartesianToPolar()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -393,7 +398,7 @@ echo gcd(0, 0);    // Outputs: 0
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-maths-gcd.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-maths-cartesiantopolar.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

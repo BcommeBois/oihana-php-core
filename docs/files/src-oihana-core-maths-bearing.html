@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">gcd.php</h2>
+        <h2 class="phpdocumentor-content__title">bearing.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-maths-gcd.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-maths-bearing.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,17 +129,18 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-maths-gcd.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-maths-bearing.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-maths.html#function_gcd">gcd()</a>
+    <a class="" href="namespaces/oihana-core-maths.html#function_bearing">bearing()</a>
     <span>
-                                &nbsp;: int    </span>
+                                &nbsp;: float    </span>
 </dt>
-<dd>Calculate the Greatest Common Divisor (GCD) of two integers using
-the Euclidean algorithm.</dd>
+<dd>Calculates the initial bearing (sometimes referred to as forward azimuth)
+which if followed in a straight line along a great-circle arc will take
+you from the start point to the end point (in degrees).</dd>
 
     </dl>
 
@@ -149,61 +150,67 @@ the Euclidean algorithm.</dd>
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-maths-gcd.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-maths-bearing.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_gcd">
-        gcd()
-        <a href="namespaces/oihana-core-maths.html#function_gcd" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_bearing">
+        bearing()
+        <a href="namespaces/oihana-core-maths.html#function_bearing" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/maths/gcd.php"><a href="files/src-oihana-core-maths-gcd.html"><abbr title="src/oihana/core/maths/gcd.php">gcd.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/maths/bearing.php"><a href="files/src-oihana-core-maths-bearing.html"><abbr title="src/oihana/core/maths/bearing.php">bearing.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Calculate the Greatest Common Divisor (GCD) of two integers using
-the Euclidean algorithm.</p>
+        <p class="phpdocumentor-summary">Calculates the initial bearing (sometimes referred to as forward azimuth)
+which if followed in a straight line along a great-circle arc will take
+you from the start point to the end point (in degrees).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">gcd</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$a</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$b</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$throwable</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">bearing</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$latitude1</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$longitude1</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$latitude2</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$longitude2</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
 
-        <section class="phpdocumentor-description"><p>This function returns the absolute value of the GCD. If both numbers
-are zero, it either returns 0 or throws an exception depending on
-the <code class="prettyprint">$throwable</code> parameter.</p>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$a</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$latitude1</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The first integer.</p>
+                    <section class="phpdocumentor-description"><p>The first latitude coordinate in degrees.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$b</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$longitude1</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The second integer.</p>
+                    <section class="phpdocumentor-description"><p>The first longitude coordinate in degrees.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$throwable</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$latitude2</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>If true, throws an exception when both numbers are zero.</p>
+                    <section class="phpdocumentor-description"><p>The second latitude coordinate in degrees.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$longitude2</span>
+                : <span class="phpdocumentor-signature__argument__return-type">float</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The second longitude coordinate in degrees.</p>
 </section>
 
             </dd>
@@ -212,7 +219,7 @@ the <code class="prettyprint">$throwable</code> parameter.</p>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-maths.html#function_gcd#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-maths.html#function_bearing#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -221,10 +228,11 @@ the <code class="prettyprint">$throwable</code> parameter.</p>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo gcd(48, 18); // Outputs: 6
-echo gcd(-48, 18); // Outputs: 6
-echo gcd(0, 5);    // Outputs: 5
-echo gcd(0, 0);    // Outputs: 0
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$position1 = [ 'x' =&gt; 37.422045 , 'y' =&gt; -122.084347 ]; // Google HQ
+$position2 = [ 'x' =&gt; 37.77493  , 'y' =&gt; -122.419416 ]; // San Francisco, CA
+
+echo bearing($position1['x'], $position1['y'], $position2['x'], $position2['y']);
+// 323.1477743368166
 </code></pre>
 </section>
 
@@ -250,9 +258,9 @@ echo gcd(0, 0);    // Outputs: 0
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
+        <span class="phpdocumentor-signature__response_type">float</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The greatest common divisor of $a and $b.</p>
+                <section class="phpdocumentor-description"><p>The bearing in degrees from North.</p>
 </section>
 
             </section>
@@ -264,7 +272,7 @@ echo gcd(0, 0);    // Outputs: 0
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/maths/gcd.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/maths/bearing.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -365,7 +373,7 @@ echo gcd(0, 0);    // Outputs: 0
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-maths-gcd.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-maths-bearing.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -373,7 +381,7 @@ echo gcd(0, 0);    // Outputs: 0
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-maths.html#function_gcd">gcd()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-maths.html#function_bearing">bearing()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -393,7 +401,7 @@ echo gcd(0, 0);    // Outputs: 0
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-maths-gcd.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-maths-bearing.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
