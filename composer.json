@@ -66,6 +66,7 @@
             "src/oihana/core/documents/formatDocumentWith.php",
             "src/oihana/core/documents/resolvePlaceholders.php" ,
             "src/oihana/core/helpers/conditions.php",
+            "src/oihana/core/json/isValidJsonEncodeFlags.php",
             "src/oihana/core/maths/ceilValue.php" ,
             "src/oihana/core/maths/floorValue.php" ,
             "src/oihana/core/maths/roundValue.php" ,

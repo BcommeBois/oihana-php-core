@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\documents\formatDocumentWith
 - Adds oihana\core\documents\resolvePlaceholders
 
+- Adds oihana\core\json\isValidJsonEncodeFlags
+
 - Adds oihana\core\strings\append
 - Adds oihana\core\strings\block
 - Adds oihana\core\strings\blockPrefix
