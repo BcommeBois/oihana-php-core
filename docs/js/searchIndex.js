@@ -171,11 +171,6 @@ Search.appendIndex(
             "summary": "Hydrates\u0020or\u0020formats\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020in\u0020place\u0020by\u0020replacing\u0020placeholders\nwith\u0020corresponding\u0020values\u0020from\u0020a\u0020source\u0020document.",
             "url": "namespaces/oihana-core-documents.html#function_resolvePlaceholders"
         },                {
-            "fqsen": "\\oihana\\core\\expressions\\compile\u0028\u0029",
-            "name": "compile",
-            "summary": "Compiles\u0020a\u0020string\u0020or\u0020an\u0020array\u0020of\u0020expressions\u0020into\u0020a\u0020single\u0020string.",
-            "url": "namespaces/oihana-core-expressions.html#function_compile"
-        },                {
             "fqsen": "\\oihana\\core\\helpers\\conditions\u0028\u0029",
             "name": "conditions",
             "summary": "Normalizes\u0020conditions\u0020into\u0020an\u0020array\u0020of\u0020callable\u0020functions.",
@@ -286,6 +281,31 @@ Search.appendIndex(
             "summary": "Encapsulates\u0020an\u0020expression\u0020between\u0020specific\u0020characters.",
             "url": "namespaces/oihana-core-strings.html#function_between"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\betweenBraces\u0028\u0029",
+            "name": "betweenBraces",
+            "summary": "Encapsulates\u0020an\u0020expression\u0020between\u0020braces\u0020\u0027\u007B..\u007D\u0027",
+            "url": "namespaces/oihana-core-strings.html#function_betweenBraces"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\betweenBrackets\u0028\u0029",
+            "name": "betweenBrackets",
+            "summary": "Encapsulates\u0020an\u0020expression\u0020between\u0020brackets\u0020\u0027\u005B..\u005D\u0027",
+            "url": "namespaces/oihana-core-strings.html#function_betweenBrackets"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\betweenDoubleQuotes\u0028\u0029",
+            "name": "betweenDoubleQuotes",
+            "summary": "Wraps\u0020an\u0020expression\u0020in\u0020double\u0020quotes\u0020or\u0020a\u0020custom\u0020character.",
+            "url": "namespaces/oihana-core-strings.html#function_betweenDoubleQuotes"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\betweenParentheses\u0028\u0029",
+            "name": "betweenParentheses",
+            "summary": "Encapsulates\u0020an\u0020expression\u0020between\u0020parentheses\u0020\u0028\u0060\u0028\u0029\u0060\u0029.",
+            "url": "namespaces/oihana-core-strings.html#function_betweenParentheses"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\betweenQuotes\u0028\u0029",
+            "name": "betweenQuotes",
+            "summary": "Wraps\u0020an\u0020expression\u0020in\u0020quotes\u0020or\u0020a\u0020custom\u0020character.",
+            "url": "namespaces/oihana-core-strings.html#function_betweenQuotes"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\block\u0028\u0029",
             "name": "block",
             "summary": "Format\u0020an\u0020indented\u0020multi\u002Dline\u0020text\u0020block.",
@@ -305,6 +325,11 @@ Search.appendIndex(
             "name": "camel",
             "summary": "Converts\u0020a\u0020string\u0020to\u0020camelCase\u0020format.",
             "url": "namespaces/oihana-core-strings.html#function_camel"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\compile\u0028\u0029",
+            "name": "compile",
+            "summary": "Compiles\u0020a\u0020string\u0020or\u0020an\u0020array\u0020of\u0020expressions\u0020into\u0020a\u0020single\u0020string.",
+            "url": "namespaces/oihana-core-strings.html#function_compile"
         },                {
             "fqsen": "\\oihana\\core\\strings\\dotKebab\u0028\u0029",
             "name": "dotKebab",
@@ -335,6 +360,11 @@ Search.appendIndex(
             "name": "formatRequestArgs",
             "summary": "Builds\u0020a\u0020query\u0020string\u0020\u0028\u0060\u003Fkey\u003Dvalue\u0026...\u0060\u0029\u0020from\u0020an\u0020associative\u0020array.",
             "url": "namespaces/oihana-core-strings.html#function_formatRequestArgs"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\func\u0028\u0029",
+            "name": "func",
+            "summary": "Generates\u0020a\u0020function\u0020expression\u0020like\u0020\u0060NAME\u0028arg1,arg2\u0029\u0060.",
+            "url": "namespaces/oihana-core-strings.html#function_func"
         },                {
             "fqsen": "\\oihana\\core\\strings\\helpers\\LatinConverter",
             "name": "LatinConverter",
@@ -386,6 +416,11 @@ Search.appendIndex(
             "summary": "Converts\u0020a\u0020camelCase\u0020or\u0020PascalCase\u0020string\u0020to\u0020a\u0020hyphenated\u0020\u0028kebab\u002Dcase\u0029\u0020string.",
             "url": "namespaces/oihana-core-strings.html#function_hyphenate"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\isQuote\u0028\u0029",
+            "name": "isQuote",
+            "summary": "Checks\u0020if\u0020a\u0020character\u0020is\u0020a\u0020known\u0020quote\u0020character.",
+            "url": "namespaces/oihana-core-strings.html#function_isQuote"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\isRegexp\u0028\u0029",
             "name": "isRegexp",
             "summary": "Determines\u0020whether\u0020a\u0020given\u0020string\u0020is\u0020a\u0020valid\u0020regular\u0020expression\u0020pattern.",
@@ -395,6 +430,11 @@ Search.appendIndex(
             "name": "kebab",
             "summary": "Converts\u0020a\u0020camelCase\u0020or\u0020PascalCase\u0020string\u0020into\u0020kebab\u002Dcase\u0020\u0028lowercase\u0020with\u0020hyphens\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_kebab"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\key\u0028\u0029",
+            "name": "key",
+            "summary": "Returns\u0020a\u0020transformed\u0020key\u0020by\u0020optionally\u0020prepending\u0020a\u0020prefix.",
+            "url": "namespaces/oihana-core-strings.html#function_key"
         },                {
             "fqsen": "\\oihana\\core\\strings\\latinize\u0028\u0029",
             "name": "latinize",
@@ -560,11 +600,6 @@ Search.appendIndex(
             "name": "documents",
             "summary": "",
             "url": "namespaces/oihana-core-documents.html"
-        },                {
-            "fqsen": "\\oihana\\core\\expressions",
-            "name": "expressions",
-            "summary": "",
-            "url": "namespaces/oihana-core-expressions.html"
         },                {
             "fqsen": "\\oihana\\core\\helpers",
             "name": "helpers",

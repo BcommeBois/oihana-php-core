@@ -33,18 +33,38 @@ use function oihana\core\arrays\clean;
  * echo compile( null )                          . PHP_EOL; // ''
  * ```
  */
-function compile( string|Stringable|array|null $expressions , string $separator = ' ' ) :string
+function compile( mixed $expressions , string $separator = ' ' ) :string
 {
-    if( is_array( $expressions ) && count( $expressions ) > 0 )
+    if( is_array( $expressions ) )
     {
         $expressions = clean( $expressions ) ;
-        return empty( $expressions ) ? '' : implode( $separator , $expressions ) ;
+        if ( count($expressions) === 0 )
+        {
+            return '' ;
+        }
+        $expressions = array_map(fn( $item ) => compile( $item , $separator ) , $expressions ) ;
+        return implode( $separator , $expressions ) ;
     }
 
-    if ( is_string( $expressions ) || $expressions instanceof Stringable )
+    if ( $expressions instanceof Stringable )
     {
         return (string) $expressions ;
     }
 
-    return '' ;
+    if ( is_object( $expressions ) )
+    {
+        return json_encode( $expressions ) ;
+    }
+
+    if ( is_bool( $expressions ) )
+    {
+        return $expressions ? 'true' : 'false';
+    }
+
+    if ( is_null( $expressions ) )
+    {
+        return '' ;
+    }
+
+    return (string) $expressions ;
 }

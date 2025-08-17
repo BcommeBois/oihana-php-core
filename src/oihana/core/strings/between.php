@@ -33,14 +33,18 @@ function between( mixed $expression = null, string $left = '', ?string $right = 
         $right = $left ;
     }
 
-    if ( is_array( $expression ) )
-    {
-        $expression = compile( $expression , $separator ) ;
-    }
-
     if ( is_null( $expression ) )
     {
         $expression = '' ;
+    }
+
+    if ( is_array( $expression ) )
+    {
+        if( empty( $expression ) )
+        {
+            $expression = '' ;
+        }
+        $expression = compile( $expression , $separator ) ;
     }
 
     return $flag ? ( $left . $expression . $right ) : $expression ;
