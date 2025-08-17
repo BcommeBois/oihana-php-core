@@ -120,6 +120,7 @@
             "src/oihana/core/strings/latinize.php",
             "src/oihana/core/strings/lower.php" ,
             "src/oihana/core/strings/luhn.php",
+            "src/oihana/core/strings/object.php",
             "src/oihana/core/strings/pad.php",
             "src/oihana/core/strings/padBoth.php",
             "src/oihana/core/strings/padEnd.php",

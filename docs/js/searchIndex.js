@@ -456,6 +456,11 @@ Search.appendIndex(
             "summary": "Validates\u0020whether\u0020a\u0020given\u0020string\u0020is\u0020a\u0020valid\u0020Luhn\u0020code\u0020\u0028mod\u002010\u0020checksum\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_luhn"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\object\u0028\u0029",
+            "name": "object",
+            "summary": "Generate\u0020a\u0020JavaScript\u002Dlike\u0020object\u0020string,\u0020e.g.,\u0020\u0060\u007Bname\u003A\u0027Eka\u0027,age\u003A48\u007D\u0060.",
+            "url": "namespaces/oihana-core-strings.html#function_object"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\pad\u0028\u0029",
             "name": "pad",
             "summary": "Pads\u0020a\u0020UTF\u002D8\u0020string\u0020to\u0020a\u0020certain\u0020length\u0020using\u0020a\u0020specified\u0020padding\u0020string\u0020and\u0020type.",
