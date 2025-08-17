@@ -39,6 +39,7 @@
             "src/oihana/core/accessors/resolveReferencePath.php" ,
             "src/oihana/core/accessors/setKeyValue.php" ,
             
+            "src/oihana/core/arrays/clean.php",
             "src/oihana/core/arrays/compress.php",
             "src/oihana/core/arrays/deepMerge.php",
             "src/oihana/core/arrays/delete.php",

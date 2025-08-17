@@ -31,6 +31,11 @@ Search.appendIndex(
             "summary": "Sets\u0020a\u0020value\u0020in\u0020an\u0020array\u0020or\u0020object\u0020using\u0020a\u0020dot\u002Dnotated\u0020key\u0020path.",
             "url": "namespaces/oihana-core-accessors.html#function_setKeyValue"
         },                {
+            "fqsen": "\\oihana\\core\\arrays\\clean\u0028\u0029",
+            "name": "clean",
+            "summary": "Cleans\u0020an\u0020array\u0020by\u0020removing\u0020unwanted\u0020values\u0020such\u0020as\u0020\u0060null\u0060\u0020and\u0020empty\u0020strings.",
+            "url": "namespaces/oihana-core-arrays.html#function_clean"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\compress\u0028\u0029",
             "name": "compress",
             "summary": "Compresses\u0020the\u0020given\u0020array\u0020by\u0020removing\u0020values\u0020that\u0020match\u0020one\u0020or\u0020more\u0020conditions.",

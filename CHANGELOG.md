@@ -9,11 +9,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 
 - Adds oihana\core\isLiteral
+
 - Adds oihana\core\accessors\assertDocumentKeyValid
 - Adds oihana\core\accessors\deleteKeyValue
 - Adds oihana\core\accessors\getKeyValue
 - Adds oihana\core\accessors\hasKeyValue
 - Adds oihana\core\accessors\setKeyValue
+
+- Adds oihana\core\arrays\clean
  
 - Adds oihana\core\date\formatDateTime
 
