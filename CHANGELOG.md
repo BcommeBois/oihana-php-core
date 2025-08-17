@@ -51,6 +51,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\isRegexp
 - Adds oihana\core\strings\isQuote
 - Adds oihana\core\strings\key
+- Adds oihana\core\strings\keyValue
 - Adds oihana\core\strings\pad
 - Adds oihana\core\strings\padBoth
 - Adds oihana\core\strings\padEnd

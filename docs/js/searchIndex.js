@@ -436,6 +436,11 @@ Search.appendIndex(
             "summary": "Returns\u0020a\u0020transformed\u0020key\u0020by\u0020optionally\u0020prepending\u0020a\u0020prefix.",
             "url": "namespaces/oihana-core-strings.html#function_key"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\keyValue\u0028\u0029",
+            "name": "keyValue",
+            "summary": "Build\u0020a\u0020key\u002Dvalue\u0020expression\u0020like\u0020\u0060key\u003A\u0020value\u0060.",
+            "url": "namespaces/oihana-core-strings.html#function_keyValue"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\latinize\u0028\u0029",
             "name": "latinize",
             "summary": "Converts\u0020a\u0020string\u0020by\u0020replacing\u0020accented\u0020Latin\u0020characters\u0020with\u0020their\u0020ASCII\u0020equivalents.",
