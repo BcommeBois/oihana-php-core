@@ -481,6 +481,16 @@ Search.appendIndex(
             "summary": "Pads\u0020a\u0020UTF\u002D8\u0020string\u0020on\u0020the\u0020left\u0020\u0028start\u0029\u0020to\u0020a\u0020certain\u0020length\u0020using\u0020a\u0020specified\u0020padding\u0020string.",
             "url": "namespaces/oihana-core-strings.html#function_padStart"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\predicate\u0028\u0029",
+            "name": "predicate",
+            "summary": "Generate\u0020a\u0020predicate\u0020expression\u0020as\u0020a\u0020string.",
+            "url": "namespaces/oihana-core-strings.html#function_predicate"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\predicates\u0028\u0029",
+            "name": "predicates",
+            "summary": "Generate\u0020a\u0020complex\u0020logical\u0020expression\u0020with\u0020multiple\u0020predicates.",
+            "url": "namespaces/oihana-core-strings.html#function_predicates"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\prepend\u0028\u0029",
             "name": "prepend",
             "summary": "Prepend\u0020one\u0020or\u0020more\u0020prefix\u0020strings\u0020to\u0020the\u0020given\u0020source\u0020string,\u0020then\u0020normalize\u0020the\u0020result.",

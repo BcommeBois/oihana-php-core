@@ -41,7 +41,7 @@ namespace oihana\core\arrays ;
  */
 function clean( array $array = [] ):array
 {
-    $indexed  = isIndexed( $array ) ;
+    $indexed = isIndexed( $array ) ;
 
     $filtered = array_filter
     (

@@ -57,6 +57,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\padBoth
 - Adds oihana\core\strings\padEnd
 - Adds oihana\core\strings\padStart
+- Adds oihana\core\strings\predicate
+- Adds oihana\core\strings\predicates
 - Adds oihana\core\strings\prepend
 - Adds oihana\core\strings\slice
 - Adds oihana\core\strings\toPhpString
