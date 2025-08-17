@@ -91,8 +91,15 @@
             "src/oihana/core/objects/ensureObjectPath.php",
             "src/oihana/core/objects/set.php",
             "src/oihana/core/objects/setObjectValue.php",
-            "src/oihana/core/strings/append.php",
             
+            "src/oihana/core/strings/append.php",
+            "src/oihana/core/strings/between.php",
+            "src/oihana/core/strings/betweenBraces.php",
+            "src/oihana/core/strings/betweenBrackets.php",
+            "src/oihana/core/strings/betweenDoubleQuotes.php",
+            "src/oihana/core/strings/betweenParentheses.php",
+            "src/oihana/core/strings/betweenQuotes.php",
+            "src/oihana/core/strings/compile.php" ,
             "src/oihana/core/strings/block.php",
             "src/oihana/core/strings/blockPrefix.php" ,
             "src/oihana/core/strings/blockSuffix.php" ,
@@ -106,6 +113,7 @@
             "src/oihana/core/strings/hyphenate.php",
             "src/oihana/core/strings/kebab.php",
             "src/oihana/core/strings/isRegexp.php",
+            "src/oihana/core/strings/isQuote.php",
             "src/oihana/core/strings/latinize.php",
             "src/oihana/core/strings/lower.php" ,
             "src/oihana/core/strings/luhn.php",
@@ -121,6 +129,7 @@
             "src/oihana/core/strings/toPhpString.php",
             "src/oihana/core/strings/toString.php",
             "src/oihana/core/strings/urlencode.php",
+            "src/oihana/core/strings/wrap.php" ,
             "src/oihana/core/strings/wrapBlock.php"
         ]
     },

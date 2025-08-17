@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Cleans an array by removing unwanted values such as `null` and empty strings.</dd>
+<dd>Cleans an array by removing unwanted values such as `null` and empty strings and arrays.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_compress">compress()</a>
@@ -306,7 +306,7 @@
 
     </aside>
 
-        <p class="phpdocumentor-summary">Cleans an array by removing unwanted values such as `null` and empty strings.</p>
+        <p class="phpdocumentor-summary">Cleans an array by removing unwanted values such as `null` and empty strings and arrays.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -317,7 +317,7 @@
 <ul>
 <li>If an element is an array, it will also be cleaned of empty values.</li>
 <li>Associative array keys are preserved.</li>
-<li>Numeric arrays are automatically reindexed after filtering.</li>
+<li>Numeric arrays are automatically reindex after filtering.</li>
 </ul>
 <p>This is useful for:</p>
 <ul>
@@ -400,7 +400,7 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
                 <section class="phpdocumentor-description"><p>The filtered array:</p>
 <ul>
 <li>Keys are preserved for associative arrays.</li>
-<li>Numeric arrays are reindexed to remove gaps caused by removed values.</li>
+<li>Numeric arrays are reindex to remove gaps caused by removed values.</li>
 </ul>
 </section>
 

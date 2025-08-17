@@ -33,7 +33,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\arrays\\clean\u0028\u0029",
             "name": "clean",
-            "summary": "Cleans\u0020an\u0020array\u0020by\u0020removing\u0020unwanted\u0020values\u0020such\u0020as\u0020\u0060null\u0060\u0020and\u0020empty\u0020strings.",
+            "summary": "Cleans\u0020an\u0020array\u0020by\u0020removing\u0020unwanted\u0020values\u0020such\u0020as\u0020\u0060null\u0060\u0020and\u0020empty\u0020strings\u0020and\u0020arrays.",
             "url": "namespaces/oihana-core-arrays.html#function_clean"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\compress\u0028\u0029",
@@ -171,6 +171,11 @@ Search.appendIndex(
             "summary": "Hydrates\u0020or\u0020formats\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020in\u0020place\u0020by\u0020replacing\u0020placeholders\nwith\u0020corresponding\u0020values\u0020from\u0020a\u0020source\u0020document.",
             "url": "namespaces/oihana-core-documents.html#function_resolvePlaceholders"
         },                {
+            "fqsen": "\\oihana\\core\\expressions\\compile\u0028\u0029",
+            "name": "compile",
+            "summary": "Compiles\u0020a\u0020string\u0020or\u0020an\u0020array\u0020of\u0020expressions\u0020into\u0020a\u0020single\u0020string.",
+            "url": "namespaces/oihana-core-expressions.html#function_compile"
+        },                {
             "fqsen": "\\oihana\\core\\helpers\\conditions\u0028\u0029",
             "name": "conditions",
             "summary": "Normalizes\u0020conditions\u0020into\u0020an\u0020array\u0020of\u0020callable\u0020functions.",
@@ -275,6 +280,11 @@ Search.appendIndex(
             "name": "append",
             "summary": "Append\u0020one\u0020or\u0020more\u0020suffix\u0020strings\u0020to\u0020the\u0020given\u0020source\u0020string,\u0020then\u0020normalize\u0020the\u0020result.",
             "url": "namespaces/oihana-core-strings.html#function_append"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\between\u0028\u0029",
+            "name": "between",
+            "summary": "Encapsulates\u0020an\u0020expression\u0020between\u0020specific\u0020characters.",
+            "url": "namespaces/oihana-core-strings.html#function_between"
         },                {
             "fqsen": "\\oihana\\core\\strings\\block\u0028\u0029",
             "name": "block",
@@ -476,6 +486,11 @@ Search.appendIndex(
             "summary": "Encodes\u0020the\u0020specified\u0020URI\u0020according\u0020to\u0020RFC\u00203986.",
             "url": "namespaces/oihana-core-strings.html#function_urlencode"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\wrap\u0028\u0029",
+            "name": "wrap",
+            "summary": "Wrap\u0020a\u0020string\u0020with\u0020a\u0020given\u0020character.",
+            "url": "namespaces/oihana-core-strings.html#function_wrap"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\wrapBlock\u0028\u0029",
             "name": "wrapBlock",
             "summary": "Wraps\u0020a\u0020block\u0020of\u0020lines\u0020with\u0020a\u0020header\u0020and\u0020footer\u0020line.",
@@ -545,6 +560,11 @@ Search.appendIndex(
             "name": "documents",
             "summary": "",
             "url": "namespaces/oihana-core-documents.html"
+        },                {
+            "fqsen": "\\oihana\\core\\expressions",
+            "name": "expressions",
+            "summary": "",
+            "url": "namespaces/oihana-core-expressions.html"
         },                {
             "fqsen": "\\oihana\\core\\helpers",
             "name": "helpers",

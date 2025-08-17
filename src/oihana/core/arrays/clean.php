@@ -3,12 +3,12 @@
 namespace oihana\core\arrays ;
 
 /**
- * Cleans an array by removing unwanted values such as `null` and empty strings.
+ * Cleans an array by removing unwanted values such as `null` and empty strings and arrays.
  *
  * This function works recursively:
  * - If an element is an array, it will also be cleaned of empty values.
  * - Associative array keys are preserved.
- * - Numeric arrays are automatically reindexed after filtering.
+ * - Numeric arrays are automatically reindex after filtering.
  *
  * This is useful for:
  * - Filtering user input or form submissions.
@@ -19,7 +19,7 @@ namespace oihana\core\arrays ;
  *
  * @return array The filtered array:
  *   - Keys are preserved for associative arrays.
- *   - Numeric arrays are reindexed to remove gaps caused by removed values.
+ *   - Numeric arrays are reindex to remove gaps caused by removed values.
  *
  * @example
  * ```php

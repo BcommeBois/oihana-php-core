@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">clean.php</h2>
+        <h2 class="phpdocumentor-content__title">wrap.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-arrays-clean.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-strings-wrap.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,16 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-arrays-clean.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-strings-wrap.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-arrays.html#function_clean">clean()</a>
+    <a class="" href="namespaces/oihana-core-strings.html#function_wrap">wrap()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd>Cleans an array by removing unwanted values such as `null` and empty strings and arrays.</dd>
+<dd>Wrap a string with a given character.</dd>
 
     </dl>
 
@@ -148,51 +148,47 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-arrays-clean.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-strings-wrap.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_clean">
-        clean()
-        <a href="namespaces/oihana-core-arrays.html#function_clean" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_wrap">
+        wrap()
+        <a href="namespaces/oihana-core-strings.html#function_wrap" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/clean.php"><a href="files/src-oihana-core-arrays-clean.html"><abbr title="src/oihana/core/arrays/clean.php">clean.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/wrap.php"><a href="files/src-oihana-core-strings-wrap.html"><abbr title="src/oihana/core/strings/wrap.php">wrap.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Cleans an array by removing unwanted values such as `null` and empty strings and arrays.</p>
+        <p class="phpdocumentor-summary">Wrap a string with a given character.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">clean</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">wrap</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$char</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;`&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function works recursively:</p>
-<ul>
-<li>If an element is an array, it will also be cleaned of empty values.</li>
-<li>Associative array keys are preserved.</li>
-<li>Numeric arrays are automatically reindex after filtering.</li>
-</ul>
-<p>This is useful for:</p>
-<ul>
-<li>Filtering user input or form submissions.</li>
-<li>Removing empty entries from nested arrays.</li>
-<li>Sanitizing data before processing or storage.</li>
-</ul>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$array</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The input array to clean. Defaults to an empty array.</p>
+                    <section class="phpdocumentor-description"><p>The value to wrap.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$char</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;`&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The character to wrap with.</p>
 </section>
 
             </dd>
@@ -201,7 +197,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-arrays.html#function_clean#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-strings.html#function_wrap#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -210,25 +206,10 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">clean(['foo', '', null, 'bar']);
-// Returns: ['foo', 'bar']
-
-clean(['id' =&gt; 1, 'name' =&gt; '', 'email' =&gt; null ]);
-// Returns: ['id' =&gt; 1]
-
-clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; '', 'email' =&gt; 'bob@example.com']]]);
-// Returns: ['users' =&gt; [['name' =&gt; 'Alice'], ['email' =&gt; 'bob@example.com']]]
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo wrap('column'); // `column`
+echo wrap('`column`'); // `\`column\``
+echo wrap('column', '&quot;'); // &quot;column&quot;
 </code></pre>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-arrays.html#function_isIndexed"><abbr title="\oihana\core\arrays\isIndexed()">isIndexed()</abbr></a></span>
-                                        
-                                                 <section class="phpdocumentor-description"><p>For determining if an array is numerically indexed.</p>
 </section>
 
                                     </dd>
@@ -253,13 +234,9 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The filtered array:</p>
-<ul>
-<li>Keys are preserved for associative arrays.</li>
-<li>Numeric arrays are reindex to remove gaps caused by removed values.</li>
-</ul>
+                <section class="phpdocumentor-description"><p>The wrapped value.</p>
 </section>
 
             </section>
@@ -271,7 +248,7 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/arrays/clean.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/wrap.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -372,7 +349,7 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-arrays-clean.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-strings-wrap.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -380,7 +357,7 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-arrays.html#function_clean">clean()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_wrap">wrap()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -400,7 +377,7 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-arrays-clean.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-strings-wrap.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

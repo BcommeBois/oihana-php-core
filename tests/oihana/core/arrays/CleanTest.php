@@ -14,7 +14,7 @@ class CleanTest extends TestCase
         $this->assertSame($expected, clean($input));
     }
 
-    public function testCleanReindexesNumericArray(): void
+    public function testCleanReindexNumericArray(): void
     {
         $input    = [0 => 'a', 1 => '', 2 => null, 3 => 'b'];
         $expected = ['a', 'b'];
@@ -35,7 +35,7 @@ class CleanTest extends TestCase
         $input    = ['foo', [], 'bar', ['nested' => []], ['a' => 1]];
         $expected = ['foo', 'bar', ['a' => 1]];
 
-        $this->assertSame($expected, clean($input));
+        $this->assertSame( $expected , clean($input ) );
     }
 
     public function testCleanEmptyArrayReturnsEmptyArray(): void
@@ -45,7 +45,7 @@ class CleanTest extends TestCase
 
     public function testCleanArrayWithoutNullOrEmptyValuesRemainsUnchanged(): void
     {
-        $input    = ['x' => 1, 'y' => 'hello', 'z' => [1, 2]];
+        $input    = ['x' => 1, 'y' => 'hello', 'z' => [1, 2] ];
         $expected = $input;
 
         $this->assertSame($expected, clean($input));

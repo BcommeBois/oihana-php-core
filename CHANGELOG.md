@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\documents\formatDocumentWith
 - Adds oihana\core\documents\resolvePlaceholders
 
+
 - Adds oihana\core\json\isValidJsonDecodeFlags
 - Adds oihana\core\json\isValidJsonEncodeFlags
 
@@ -33,6 +34,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\maths\haversine
 
 - Adds oihana\core\strings\append
+- Adds oihana\core\strings\between
+- Adds oihana\core\strings\betweenBraces
+- Adds oihana\core\strings\betweenBrackets
+- Adds oihana\core\strings\betweenDoubleQuotes
+- Adds oihana\core\strings\betweenParentheses
+- Adds oihana\core\strings\betweenQuotes
+- Adds oihana\core\strings\compile
 - Adds oihana\core\strings\block
 - Adds oihana\core\strings\blockPrefix
 - Adds oihana\core\strings\blockSuffix
@@ -40,6 +48,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\format
 - Adds oihana\core\strings\formatFromDocument
 - Adds oihana\core\strings\isRegexp
+- Adds oihana\core\strings\isQuote
 - Adds oihana\core\strings\pad
 - Adds oihana\core\strings\padBoth
 - Adds oihana\core\strings\padEnd
