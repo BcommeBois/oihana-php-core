@@ -30,6 +30,14 @@ class CleanTest extends TestCase
         $this->assertSame($expected, clean($input));
     }
 
+    public function testCleanRemovesEmptyArrays(): void
+    {
+        $input    = ['foo', [], 'bar', ['nested' => []], ['a' => 1]];
+        $expected = ['foo', 'bar', ['a' => 1]];
+
+        $this->assertSame($expected, clean($input));
+    }
+
     public function testCleanEmptyArrayReturnsEmptyArray(): void
     {
         $this->assertSame([], clean([]));

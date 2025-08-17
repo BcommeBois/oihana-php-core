@@ -302,7 +302,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/clean.php"><a href="files/src-oihana-core-arrays-clean.html"><abbr title="src/oihana/core/arrays/clean.php">clean.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
@@ -313,9 +313,18 @@
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">clean</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>This function preserves the array's original keys for associative arrays,
-and reindex numeric arrays automatically. Useful for filtering user input,
-form submissions, or any array that may contain empty or null values.</p>
+        <section class="phpdocumentor-description"><p>This function works recursively:</p>
+<ul>
+<li>If an element is an array, it will also be cleaned of empty values.</li>
+<li>Associative array keys are preserved.</li>
+<li>Numeric arrays are automatically reindexed after filtering.</li>
+</ul>
+<p>This is useful for:</p>
+<ul>
+<li>Filtering user input or form submissions.</li>
+<li>Removing empty entries from nested arrays.</li>
+<li>Sanitizing data before processing or storage.</li>
+</ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -346,9 +355,22 @@ form submissions, or any array that may contain empty or null values.</p>
                                                  <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">clean(['foo', '', null, 'bar']);
 // Returns: ['foo', 'bar']
 
-clean(['id' =&gt; 1, 'name' =&gt; '', 'email' =&gt; null]);
+clean(['id' =&gt; 1, 'name' =&gt; '', 'email' =&gt; null ]);
 // Returns: ['id' =&gt; 1]
+
+clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; '', 'email' =&gt; 'bob@example.com']]]);
+// Returns: ['users' =&gt; [['name' =&gt; 'Alice'], ['email' =&gt; 'bob@example.com']]]
 </code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-arrays.html#function_isIndexed"><abbr title="\oihana\core\arrays\isIndexed()">isIndexed()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>For determining if an array is numerically indexed.</p>
 </section>
 
                                     </dd>
@@ -378,7 +400,7 @@ clean(['id' =&gt; 1, 'name' =&gt; '', 'email' =&gt; null]);
                 <section class="phpdocumentor-description"><p>The filtered array:</p>
 <ul>
 <li>Keys are preserved for associative arrays.</li>
-<li>Numeric arrays are reindex to remove gaps caused by removed values.</li>
+<li>Numeric arrays are reindexed to remove gaps caused by removed values.</li>
 </ul>
 </section>
 
