@@ -21,14 +21,15 @@ final class PredicatesTest extends TestCase
 
     public function testMultipleConditions()
     {
-        $conditions = [
-            predicate('age', '>=', 18),
-            predicate('status', '=', 'active')
+        $conditions =
+        [
+            predicate('age'    , '>=' , 18       ) ,
+            predicate('status' , '='  , 'active' )
         ];
 
-        $this->assertSame('age >= 18ANDstatus = active', predicates($conditions, 'AND', false, false));
-        $this->assertSame('age >= 18 AND status = active', predicates($conditions, 'AND', false, true));
-        $this->assertSame('(age >= 18 AND status = active)', predicates($conditions, 'AND', true, true));
+        $this->assertSame('age >= 18 AND status = active', predicates($conditions, 'AND'));
+        $this->assertSame('age >= 18ANDstatus = active', predicates($conditions, 'AND', spacify : false ));
+        $this->assertSame('(age >= 18 AND status = active)', predicates($conditions, 'AND', true));
     }
 
     public function testConditionsWithEmptyValues()

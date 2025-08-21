@@ -26,7 +26,7 @@ use function oihana\core\arrays\clean;
  * @since 1.0.0
  * @author Marc Alcaraz
  */
-function predicates( ?array $conditions , string $logicalOperator , bool $useParentheses = false , bool $spacify = false ) :?string
+function predicates( ?array $conditions , string $logicalOperator , bool $useParentheses = false , bool $spacify = true ) :?string
 {
     $conditions = clean( $conditions ?? [] ) ;
 
