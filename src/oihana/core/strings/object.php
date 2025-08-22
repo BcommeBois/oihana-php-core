@@ -3,6 +3,7 @@
 namespace oihana\core\strings ;
 
 use InvalidArgumentException;
+use oihana\enums\Char;
 
 /**
  * Generate a JavaScript-like object string, e.g., `{name:'Eka',age:48}`.
@@ -16,7 +17,7 @@ use InvalidArgumentException;
  * around braces and after commas via the `$spacify` parameter.
  *
  * @param string|array|null $keyValues Array of key-value pairs, string, or null.
- * @param bool $spacify Whether to add spaces around braces and after commas.
+ * @param bool $useSpace Whether to add spaces around braces and after commas.
  *
  * @return string JavaScript-like object expression.
  *
@@ -34,27 +35,25 @@ use InvalidArgumentException;
  * // Outputs: "{foo:'bar'}"
  *
  * echo object(null, true);
- * // Outputs: "{ }"
+ * // Outputs: "{}"
  * ```
  *
  * @package oihana\core\strings
  * @since 1.0.0
  * @author Marc Alcaraz
  */
-function object( null|string|array $keyValues = [] , bool $spacify = false ):string
+function object( null|string|array $keyValues = [] , bool $useSpace = false ):string
 {
-    $space = $spacify ? ' ' : '' ;
+    $space = $useSpace ? ' ' : '' ;
 
     if( is_array( $keyValues ) )
     {
-        $properties = array_map( function ( $item )
+        $properties = array_map( function ( $item ) use ( $space )
         {
-            if ( !is_array( $item ) || count($item) !== 2 )
-            {
-                throw new InvalidArgumentException('Each element must be a [key, value] pair.') ;
+            if (!is_array($item) || count($item) !== 2) {
+                throw new InvalidArgumentException('Each array item must be a [key, value] pair');
             }
-            [ $key , $value ] = $item ;
-            return keyValue( $key , $value ) ;
+            return $item[0] . ':' . $item[1] ;
         }
         , $keyValues ) ;
 

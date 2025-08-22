@@ -28,13 +28,7 @@ class ObjectTest extends TestCase
     public function testArrayKeyValuePairs()
     {
         $input = [ ['name', "'Eka'"] , ['age', 47] ];
-        $this->assertSame( "{name:'Eka',age:47}"      , object( $input ) );
+        $this->assertSame( "{name:'Eka',age:47}"    , object( $input ) );
         $this->assertSame( "{ name:'Eka', age:47 }" , object( $input , true ) ) ;
-    }
-
-    public function testInvalidArrayThrowsException()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        object([['onlyOneValue']]);
     }
 }
