@@ -53,7 +53,7 @@ function object( null|string|array $keyValues = [] , bool $useSpace = false ):st
             if (!is_array($item) || count($item) !== 2) {
                 throw new InvalidArgumentException('Each array item must be a [key, value] pair');
             }
-            return $item[0] . ':' . $item[1] ;
+            return keyValue( $item[0]  , $item[1] ) ;
         }
         , $keyValues ) ;
 
