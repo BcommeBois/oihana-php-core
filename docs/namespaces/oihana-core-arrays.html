@@ -116,6 +116,13 @@
 
 
 
+    <h4 id="toc-classes">
+        Classes
+        <a href="namespaces/oihana-core-arrays.html#toc-classes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/oihana-core-arrays-CleanFlag.html"><abbr title="\oihana\core\arrays\CleanFlag">CleanFlag</abbr></a></dt><dd>Enumeration representing cleaning modes as bit flags.</dd>    </dl>
 
 
 
@@ -134,7 +141,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Cleans an array by removing unwanted values such as `null` and empty strings and arrays.</dd>
+<dd>Cleans an array by removing unwanted values based on bitwise flags from the `CleanFlag` enum.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_compress">compress()</a>
@@ -302,28 +309,40 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/clean.php"><a href="files/src-oihana-core-arrays-clean.html"><abbr title="src/oihana/core/arrays/clean.php">clean.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">113</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Cleans an array by removing unwanted values such as `null` and empty strings and arrays.</p>
+        <p class="phpdocumentor-summary">Cleans an array by removing unwanted values based on bitwise flags from the `CleanFlag` enum.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">clean</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">clean</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">CleanFlag::DEFAULT</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>This function works recursively:</p>
+        <section class="phpdocumentor-description"><p>This function allows flexible and recursive filtering of arrays.
+Cleaning behavior is fully customizable via bitwise flags.</p>
+<h3>Supported flags from <code class="prettyprint">CleanFlag</code>:</h3>
 <ul>
-<li>If an element is an array, it will also be cleaned of empty values.</li>
-<li>Associative array keys are preserved.</li>
-<li>Numeric arrays are automatically reindex after filtering.</li>
+<li><code class="prettyprint">CleanFlag::NULLS</code>     : Removes <code class="prettyprint">null</code> values.</li>
+<li><code class="prettyprint">CleanFlag::EMPTY</code>     : Removes empty strings (<code class="prettyprint">''</code>).</li>
+<li><code class="prettyprint">CleanFlag::TRIM</code>      : Trims strings and treats whitespace-only strings as empty.</li>
+<li><code class="prettyprint">CleanFlag::EMPTY_ARR</code> : Removes empty arrays (after recursive cleaning).</li>
+<li><code class="prettyprint">CleanFlag::RECURSIVE</code> : Cleans nested arrays recursively.</li>
+<li><code class="prettyprint">CleanFlag::FALSY</code>     : Removes all PHP falsy values (<code class="prettyprint">null</code>, <code class="prettyprint">''</code>, <code class="prettyprint">0</code>, <code class="prettyprint">0.0</code>, <code class="prettyprint">'0'</code>, <code class="prettyprint">false</code>, <code class="prettyprint">[]</code>).</li>
+<li><code class="prettyprint">CleanFlag::MAIN</code>      : Shortcut for enabling all the main flags: <code class="prettyprint">NULLS | EMPTY | EMPTY_ARR | TRIM</code>.</li>
 </ul>
-<p>This is useful for:</p>
+<h3>Default behavior</h3>
+<p>Using <code class="prettyprint">CleanFlag::DEFAULT</code> is equivalent to enabling:</p>
+<pre class="prettyprint"><code class="prettyprint">CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM | CleanFlag::EMPTY_ARR | CleanFlag::RECURSIVE
+</code></pre>
+<p>That means by default, <code class="prettyprint">clean()</code> removes:</p>
 <ul>
-<li>Filtering user input or form submissions.</li>
-<li>Removing empty entries from nested arrays.</li>
-<li>Sanitizing data before processing or storage.</li>
+<li><code class="prettyprint">null</code></li>
+<li>empty strings</li>
+<li>strings containing only spaces/tabs/newlines</li>
+<li>empty arrays</li>
+<li>and also cleans nested arrays recursively.</li>
 </ul>
 </section>
 
@@ -334,7 +353,16 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The input array to clean. Defaults to an empty array.</p>
+                    <section class="phpdocumentor-description"><p>The input array to clean. Nested arrays are processed only if <code class="prettyprint">CleanFlag::RECURSIVE</code> is set.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$flags</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">CleanFlag::DEFAULT</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>A bitmask of <code class="prettyprint">CleanFlag</code> values. Defaults to <code class="prettyprint">CleanFlag::DEFAULT</code>.</p>
 </section>
 
             </dd>
@@ -352,14 +380,53 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">clean(['foo', '', null, 'bar']);
-// Returns: ['foo', 'bar']
+                                                 <section class="phpdocumentor-description"><p><strong>1. Basic cleaning: remove nulls and empty strings</strong></p>
+<pre class="prettyprint"><code class="language-php">use oihana\core\arrays\{clean, CleanFlag};
 
-clean(['id' =&gt; 1, 'name' =&gt; '', 'email' =&gt; null ]);
-// Returns: ['id' =&gt; 1]
+$data   = ['foo', '', null, 'bar'];
+$result = clean($data, CleanFlag::NULLS | CleanFlag::EMPTY);
+// ['foo', 'bar']
+</code></pre>
+<p><strong>2. Remove whitespace-only strings as well</strong></p>
+<pre class="prettyprint"><code class="language-php">$data   = ['foo', '   ', '', null, 'bar'];
+$result = clean($data, CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM);
+// ['foo', 'bar']
+</code></pre>
+<p><strong>3. Recursive cleaning of nested arrays</strong></p>
+<pre class="prettyprint"><code class="language-php">$data = [
+    'users' =&gt; [
+        ['name' =&gt; '', 'email' =&gt; 'bob@example.com'],
+        ['name' =&gt; 'Alice', 'email' =&gt; '']
+    ]
+];
 
-clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; '', 'email' =&gt; 'bob@example.com']]]);
-// Returns: ['users' =&gt; [['name' =&gt; 'Alice'], ['email' =&gt; 'bob@example.com']]]
+$result = clean($data, CleanFlag::RECURSIVE | CleanFlag::EMPTY);
+// [
+//     'users' =&gt; [
+//         ['email' =&gt; 'bob@example.com'],
+//         ['name' =&gt; 'Alice']
+//     ]
+// ]
+</code></pre>
+<p><strong>4. Remove empty arrays after recursive cleaning</strong></p>
+<pre class="prettyprint"><code class="language-php">$data = [
+    'group1' =&gt; [],
+    'group2' =&gt; [['name' =&gt; 'Alice'], []]
+];
+
+$result = clean($data, CleanFlag::RECURSIVE | CleanFlag::EMPTY_ARR);
+// [
+//     'group2' =&gt; [['name' =&gt; 'Alice']]
+// ]
+</code></pre>
+<p><strong>5. Remove all falsy values at once</strong></p>
+<pre class="prettyprint"><code class="language-php">$data   = [0, '', null, false, 'ok', [], '0'];
+$result = clean($data, CleanFlag::FALSY);
+// ['ok']
+</code></pre>
+<p><strong>6. Full cleaning using default flags</strong></p>
+<pre class="prettyprint"><code class="language-php">$result = clean($data);
+// Equivalent to CleanFlag::DEFAULT
 </code></pre>
 </section>
 
@@ -368,9 +435,19 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/oihana-core-arrays-CleanFlag.html"><abbr title="\oihana\core\arrays\CleanFlag">CleanFlag</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>For available cleaning flags and default behavior.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-arrays.html#function_isIndexed"><abbr title="\oihana\core\arrays\isIndexed()">isIndexed()</abbr></a></span>
                                         
-                                                 <section class="phpdocumentor-description"><p>For determining if an array is numerically indexed.</p>
+                                                 <section class="phpdocumentor-description"><p>To determine if an array is numerically indexed.</p>
 </section>
 
                                     </dd>
@@ -379,7 +456,7 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
 </section>
 
                                     </dd>
@@ -387,7 +464,7 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
                                                                                 
                                              
                                     </dd>
@@ -399,8 +476,8 @@ clean(['users' =&gt; [['name' =&gt; 'Alice', 'email' =&gt; ''], ['name' =&gt; ''
                     &mdash;
                 <section class="phpdocumentor-description"><p>The filtered array:</p>
 <ul>
-<li>Keys are preserved for associative arrays.</li>
-<li>Numeric arrays are reindex to remove gaps caused by removed values.</li>
+<li><strong>Associative arrays:</strong> keys are preserved.</li>
+<li><strong>Indexed arrays:</strong> automatically reindexed to remove numeric gaps.</li>
 </ul>
 </section>
 
@@ -2721,7 +2798,8 @@ print_r($resultNumeric); // [1, 2, 3]
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                    <li><a href="namespaces/oihana-core-arrays.html#toc-functions">Functions</a></li>
+                                                                                                    <li><a href="namespaces/oihana-core-arrays.html#toc-classes">Classes</a></li>
+                                                                                                                        <li><a href="namespaces/oihana-core-arrays.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 

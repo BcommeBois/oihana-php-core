@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\accessors\hasKeyValue
 - Adds oihana\core\accessors\setKeyValue
 
+- Adds oihana\core\arrays\CleanFlag
 - Adds oihana\core\arrays\clean
  
 - Adds oihana\core\date\formatDateTime
