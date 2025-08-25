@@ -147,7 +147,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_between">between()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string    </span>
 </dt>
 <dd>Encapsulates an expression between specific characters.</dd>
 
@@ -607,7 +607,7 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/between.php"><a href="files/src-oihana-core-strings-between.html"><abbr title="src/oihana/core/strings/between.php">between.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
@@ -616,9 +616,18 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">between</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expression</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$left</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$right</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flag</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">between</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expression</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$left</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$right</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flag</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>Wraps the expression with <code class="prettyprint">$left</code> and <code class="prettyprint">$right</code>.</p>
+<p>Handles arrays by joining their values with <code class="prettyprint">$separator</code>.
+Leading/trailing <code class="prettyprint">$left</code> or <code class="prettyprint">$right</code> characters are trimmed to avoid duplication.</p>
+<ul>
+<li>If <code class="prettyprint">$expression</code> is an array, its values are concatenated with <code class="prettyprint">$separator</code>.</li>
+<li>If <code class="prettyprint">$right</code> is null, it defaults to the value of <code class="prettyprint">$left</code>.</li>
+<li>If <code class="prettyprint">$flag</code> is false, no wrapping is applied.</li>
+</ul>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -626,7 +635,7 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The expression to encapsulate between two characters.</p>
+                    <section class="phpdocumentor-description"><p>The expression to encapsulate (string, array, or any type convertible to string).</p>
 </section>
 
             </dd>
@@ -635,7 +644,7 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The left character.</p>
+                    <section class="phpdocumentor-description"><p>The left string to prepend.</p>
 </section>
 
             </dd>
@@ -644,7 +653,7 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The right character. If null, uses the left character.</p>
+                    <section class="phpdocumentor-description"><p>The right string to append. Defaults to <code class="prettyprint">$left</code> if null.</p>
 </section>
 
             </dd>
@@ -653,7 +662,7 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Indicates whether to apply the wrapping.</p>
+                    <section class="phpdocumentor-description"><p>Whether to apply the wrapping (default: true).</p>
 </section>
 
             </dd>
@@ -662,7 +671,7 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The separator used to join arrays.</p>
+                    <section class="phpdocumentor-description"><p>Separator used when joining array values (default: space).</p>
 </section>
 
             </dd>
@@ -697,9 +706,10 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo between( 'x' , '&lt;' , '&gt;' ) ; // '&lt;x&gt;'
-echo between( [ 'a' , 'b' ], '[' , ']' ) ; // '[a b]'
-echo between( 'y' , '&quot;' , null , false ) ; // 'y'
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo between('x', '&lt;', '&gt;');               // '&lt;x&gt;'
+echo between(['a', 'b'], '[', ']');       // '[a b]'
+echo between('y', '&quot;', null, false);      // 'y'
+echo between('[test]', '[', ']');         // '[test]' (trims duplicate brackets)
 </code></pre>
 </section>
 
@@ -708,9 +718,9 @@ echo between( 'y' , '&quot;' , null , false ) ; // 'y'
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">mixed</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The wrapped string or original expression.</p>
+                <section class="phpdocumentor-description"><p>The wrapped expression if <code class="prettyprint">$flag</code> is true; otherwise the original expression as string.</p>
 </section>
 
             </section>
@@ -1274,7 +1284,7 @@ betweenQuotes(['a','b'], '&quot;', true, ','); // returns '&quot;a,b&quot;'
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/betweenSpaces.php"><a href="files/src-oihana-core-strings-betweenspaces.html"><abbr title="src/oihana/core/strings/betweenSpaces.php">betweenSpaces.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -1285,15 +1295,13 @@ betweenQuotes(['a','b'], '&quot;', true, ','); // returns '&quot;a,b&quot;'
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">betweenSpaces</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expression</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useSpaces</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function provides a convenient way to ensure an expression is
-surrounded by spaces. The behavior depends on the type of <code class="prettyprint">$expression</code>:</p>
+        <section class="phpdocumentor-description"><p>Calls <code class="prettyprint">between()</code> with space characters as <code class="prettyprint">$left</code> and <code class="prettyprint">$right</code>. Handles strings, arrays, and optional suppression of spaces.</p>
 <ul>
 <li><strong>String</strong>: Simply prepends and appends a space.</li>
 <li><strong>Array</strong>: Concatenates array values using the specified <code class="prettyprint">$separator</code>,
 then wraps the resulting string in spaces.</li>
 <li><strong>Other types</strong>: Converted to string before wrapping.</li>
-<li><strong>If <code class="prettyprint">$useSpaces</code> is <code class="prettyprint">false</code></strong>, the expression is returned as-is
-without any surrounding spaces.</li>
+<li><strong>If <code class="prettyprint">$useSpaces</code> is <code class="prettyprint">false</code></strong>, the expression is returned as-is without any surrounding spaces.</li>
 </ul>
 </section>
 
@@ -1340,11 +1348,11 @@ without any surrounding spaces.</li>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">betweenSpaces('hello');                 // returns ' hello '
-betweenSpaces('hello', false);          // returns 'hello'
-betweenSpaces(['a', 'b', 'c']);        // returns ' a b c '
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">betweenSpaces('hello');                    // returns ' hello '
+betweenSpaces('hello', false);             // returns 'hello'
+betweenSpaces(['a', 'b', 'c']);            // returns ' a b c '
 betweenSpaces(['a', 'b', 'c'], true, ','); // returns ' a,b,c '
-betweenSpaces(123);                     // returns ' 123 '
+betweenSpaces(123);                        // returns ' 123 '
 </code></pre>
 </section>
 
@@ -1372,7 +1380,7 @@ betweenSpaces(123);                     // returns ' 123 '
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The expression wrapped with spaces if <code class="prettyprint">$useSpaces</code> is <code class="prettyprint">true</code>; otherwise the original expression as string.</p>
+                <section class="phpdocumentor-description"><p>The wrapped expression with spaces if <code class="prettyprint">$useSpaces</code> is true; otherwise the original expression as string.</p>
 </section>
 
             </section>

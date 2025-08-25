@@ -7,13 +7,22 @@ namespace oihana\core\strings;
 /**
  * Encapsulates an expression between specific characters.
  *
- * @param mixed       $expression The expression to encapsulate between two characters.
- * @param string      $left       The left character.
- * @param string|null $right      The right character. If null, uses the left character.
- * @param bool        $flag       Indicates whether to apply the wrapping.
- * @param string      $separator  The separator used to join arrays.
+ * Wraps the expression with `$left` and `$right`.
  *
- * @return mixed The wrapped string or original expression.
+ * Handles arrays by joining their values with `$separator`.
+ * Leading/trailing `$left` or `$right` characters are trimmed to avoid duplication.
+ *
+ * - If `$expression` is an array, its values are concatenated with `$separator`.
+ * - If `$right` is null, it defaults to the value of `$left`.
+ * - If `$flag` is false, no wrapping is applied.
+ *
+ * @param mixed       $expression The expression to encapsulate (string, array, or any type convertible to string).
+ * @param string      $left       The left string to prepend.
+ * @param string|null $right      The right string to append. Defaults to `$left` if null.
+ * @param bool        $flag       Whether to apply the wrapping (default: true).
+ * @param string      $separator  Separator used when joining array values (default: space).
+ *
+ * @return string The wrapped expression if `$flag` is true; otherwise the original expression as string.
  *
  * @package oihana\core\strings
  * @author  Marc Alcaraz
@@ -21,12 +30,13 @@ namespace oihana\core\strings;
  *
  * @example
  * ```php
- * echo between( 'x' , '<' , '>' ) ; // '<x>'
- * echo between( [ 'a' , 'b' ], '[' , ']' ) ; // '[a b]'
- * echo between( 'y' , '"' , null , false ) ; // 'y'
+ * echo between('x', '<', '>');               // '<x>'
+ * echo between(['a', 'b'], '[', ']');       // '[a b]'
+ * echo between('y', '"', null, false);      // 'y'
+ * echo between('[test]', '[', ']');         // '[test]' (trims duplicate brackets)
  * ```
  */
-function between( mixed $expression = null, string $left = '', ?string $right = null, bool $flag = true , string $separator = ' ' ): mixed
+function between( mixed $expression = null, string $left = '', ?string $right = null, bool $flag = true , string $separator = ' ' ): string
 {
     if ( is_null( $right ) )
     {
@@ -40,12 +50,20 @@ function between( mixed $expression = null, string $left = '', ?string $right = 
 
     if ( is_array( $expression ) )
     {
-        if( empty( $expression ) )
-        {
-            $expression = '' ;
-        }
-        $expression = compile( $expression , $separator ) ;
+        $expression = empty( $expression ) ? '' : compile( $expression , $separator ) ;
+    }
+    else
+    {
+        $expression = (string) $expression ;
     }
 
-    return $flag ? ( $left . $expression . $right ) : $expression ;
+    if ( !$flag )
+    {
+        return $expression;
+    }
+
+    $expression = ltrim( $expression , $left  ) ;
+    $expression = rtrim( $expression , $right ) ;
+
+    return $left . $expression . $right ;
 }

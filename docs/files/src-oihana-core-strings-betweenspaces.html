@@ -160,7 +160,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/betweenSpaces.php"><a href="files/src-oihana-core-strings-betweenspaces.html"><abbr title="src/oihana/core/strings/betweenSpaces.php">betweenSpaces.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -171,15 +171,13 @@
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">betweenSpaces</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expression</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useSpaces</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function provides a convenient way to ensure an expression is
-surrounded by spaces. The behavior depends on the type of <code class="prettyprint">$expression</code>:</p>
+        <section class="phpdocumentor-description"><p>Calls <code class="prettyprint">between()</code> with space characters as <code class="prettyprint">$left</code> and <code class="prettyprint">$right</code>. Handles strings, arrays, and optional suppression of spaces.</p>
 <ul>
 <li><strong>String</strong>: Simply prepends and appends a space.</li>
 <li><strong>Array</strong>: Concatenates array values using the specified <code class="prettyprint">$separator</code>,
 then wraps the resulting string in spaces.</li>
 <li><strong>Other types</strong>: Converted to string before wrapping.</li>
-<li><strong>If <code class="prettyprint">$useSpaces</code> is <code class="prettyprint">false</code></strong>, the expression is returned as-is
-without any surrounding spaces.</li>
+<li><strong>If <code class="prettyprint">$useSpaces</code> is <code class="prettyprint">false</code></strong>, the expression is returned as-is without any surrounding spaces.</li>
 </ul>
 </section>
 
@@ -226,11 +224,11 @@ without any surrounding spaces.</li>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">betweenSpaces('hello');                 // returns ' hello '
-betweenSpaces('hello', false);          // returns 'hello'
-betweenSpaces(['a', 'b', 'c']);        // returns ' a b c '
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">betweenSpaces('hello');                    // returns ' hello '
+betweenSpaces('hello', false);             // returns 'hello'
+betweenSpaces(['a', 'b', 'c']);            // returns ' a b c '
 betweenSpaces(['a', 'b', 'c'], true, ','); // returns ' a,b,c '
-betweenSpaces(123);                     // returns ' 123 '
+betweenSpaces(123);                        // returns ' 123 '
 </code></pre>
 </section>
 
@@ -258,7 +256,7 @@ betweenSpaces(123);                     // returns ' 123 '
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The expression wrapped with spaces if <code class="prettyprint">$useSpaces</code> is <code class="prettyprint">true</code>; otherwise the original expression as string.</p>
+                <section class="phpdocumentor-description"><p>The wrapped expression with spaces if <code class="prettyprint">$useSpaces</code> is true; otherwise the original expression as string.</p>
 </section>
 
             </section>
