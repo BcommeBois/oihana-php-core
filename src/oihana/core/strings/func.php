@@ -21,5 +21,5 @@ namespace oihana\core\strings ;
  */
 function func( string $name , mixed $arguments = null , string $separator = ',' ) :string
 {
-    return $name . betweenParentheses( $arguments , true , $separator ) ;
+    return $name . betweenParentheses( expression: $arguments , separator: $separator , trim: false ) ;
 }

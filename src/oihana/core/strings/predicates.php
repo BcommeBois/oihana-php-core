@@ -37,5 +37,11 @@ function predicates( ?array $conditions , string $logicalOperator , bool $usePar
 
     $operator = $spacify ? " $logicalOperator " : $logicalOperator;
 
-    return betweenParentheses( $conditions , $useParentheses , $operator ) ;
+    return betweenParentheses
+    (
+        expression     : $conditions ,
+        useParentheses : $useParentheses ,
+        separator      : $operator ,
+        trim           : false
+    );
 }
