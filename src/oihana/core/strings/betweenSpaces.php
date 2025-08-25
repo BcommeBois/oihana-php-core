@@ -18,6 +18,7 @@ namespace oihana\core\strings;
  * @param mixed  $expression  The value to wrap. Can be string, array, or any type convertible to string.
  * @param bool   $useSpaces   Whether to apply the surrounding spaces (default: `true`).
  * @param string $separator   Separator to use when `$expression` is an array (default: `' '`).
+ * @param bool   $trim        Whether to trim existing `$left`/`$right` characters (default: true).
  *
  * @return string The wrapped expression with spaces if `$useSpaces` is true; otherwise the original expression as string.
  *
@@ -34,7 +35,14 @@ namespace oihana\core\strings;
  * @author  Marc Alcaraz
  * @since   1.0.6
  */
-function betweenSpaces( mixed $expression = '' , bool $useSpaces = true , string $separator = ' ' ): string
+function betweenSpaces
+(
+    mixed  $expression = '' ,
+    bool   $useSpaces  = true ,
+    string $separator  = ' ' ,
+    bool   $trim       = true
+)
+:string
 {
-    return between( $expression , left: ' ' , right: ' ' , flag: $useSpaces , separator: $separator ) ;
+    return between( $expression , left: ' ' , right: ' ' , flag: $useSpaces , separator: $separator , trim: $trim ) ;
 }

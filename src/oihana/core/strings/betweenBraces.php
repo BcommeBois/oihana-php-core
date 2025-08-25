@@ -12,8 +12,9 @@ namespace oihana\core\strings;
  * - If `$useParentheses` is false, the expression is returned without wrapping.
  *
  * @param mixed   $expression  The expression to wrap.
- * @param bool    $useBraces Whether to apply the braces.
+ * @param bool    $useBraces   Whether to apply the braces.
  * @param string  $separator   Separator for arrays.
+ * @param bool   $trim         Whether to trim existing `$left`/`$right` characters (default: true).
  *
  * @return string The wrapped expression.
  *
@@ -28,7 +29,14 @@ namespace oihana\core\strings;
  * @author  Marc Alcaraz
  * @since   1.0.6
  */
-function betweenBraces(  mixed $expression = '' , bool $useBraces = true , string $separator = ' ' ): string
+function betweenBraces
+(
+    mixed  $expression = '' ,
+    bool   $useBraces  = true ,
+    string $separator  = ' ' ,
+    bool   $trim       = true
+)
+: string
 {
-    return between( $expression , left: '{' , right: '}' , flag: $useBraces , separator: $separator ) ;
+    return between( $expression , left: '{' , right: '}' , flag: $useBraces , separator: $separator , trim: $trim ) ;
 }

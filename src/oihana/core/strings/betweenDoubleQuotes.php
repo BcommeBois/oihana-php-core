@@ -15,6 +15,7 @@ namespace oihana\core\strings;
  * @param string  $char        The quote or character to wrap around the expression (default: single quote `'`).
  * @param bool    $useQuotes   Whether to wrap the expression (default: true).
  * @param string  $separator   Separator used to join array elements (default: `' '`).
+ * @param bool   $trim         Whether to trim existing `$left`/`$right` characters (default: true).
  *
  * @return string The resulting wrapped expression.
  *
@@ -28,7 +29,15 @@ namespace oihana\core\strings;
  * @since   1.0.6
  * @author  Marc Alcaraz
  */
-function betweenDoubleQuotes(  mixed $expression = '' , string $char = '"' , bool $useQuotes = true , string $separator = ' ' ): string
+function betweenDoubleQuotes
+(
+    mixed  $expression = '' ,
+    string $char       = '"' ,
+    bool   $useQuotes  = true ,
+    string $separator  = ' ' ,
+    bool   $trim       = true
+)
+:string
 {
-    return between( $expression , $char , $char , $useQuotes , $separator ) ;
+    return between( $expression , $char , $char , $useQuotes , $separator , $trim ) ;
 }

@@ -21,6 +21,7 @@ namespace oihana\core\strings;
  * @param string|null $right      The right string to append. Defaults to `$left` if null.
  * @param bool        $flag       Whether to apply the wrapping (default: true).
  * @param string      $separator  Separator used when joining array values (default: space).
+ * @param bool        $trim       Whether to trim existing `$left`/`$right` characters (default: true).
  *
  * @return string The wrapped expression if `$flag` is true; otherwise the original expression as string.
  *
@@ -30,13 +31,22 @@ namespace oihana\core\strings;
  *
  * @example
  * ```php
- * echo between('x', '<', '>');               // '<x>'
- * echo between(['a', 'b'], '[', ']');       // '[a b]'
- * echo between('y', '"', null, false);      // 'y'
- * echo between('[test]', '[', ']');         // '[test]' (trims duplicate brackets)
+ * echo between('x', '<', '>');          // '<x>'
+ * echo between(['a', 'b'], '[', ']');  // '[a b]'
+ * echo between('y', '"', null, false); // 'y'
+ * echo between('[test]', '[', ']');    // '[test]' (trims duplicate brackets)
  * ```
  */
-function between( mixed $expression = null, string $left = '', ?string $right = null, bool $flag = true , string $separator = ' ' ): string
+function between
+(
+    mixed  $expression = null ,
+    string $left       = ''   ,
+   ?string $right      = null ,
+    bool   $flag       = true ,
+    string $separator  = ' '  ,
+    bool   $trim       = true
+)
+:string
 {
     if ( is_null( $right ) )
     {
@@ -62,8 +72,11 @@ function between( mixed $expression = null, string $left = '', ?string $right = 
         return $expression;
     }
 
-    $expression = ltrim( $expression , $left  ) ;
-    $expression = rtrim( $expression , $right ) ;
+    if ( $trim )
+    {
+        $expression = ltrim( $expression , $left  ) ;
+        $expression = rtrim( $expression , $right ) ;
+    }
 
     return $left . $expression . $right ;
 }
