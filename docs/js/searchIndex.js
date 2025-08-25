@@ -391,6 +391,11 @@ Search.appendIndex(
             "summary": "Wraps\u0020an\u0020expression\u0020in\u0020quotes\u0020or\u0020a\u0020custom\u0020character.",
             "url": "namespaces/oihana-core-strings.html#function_betweenQuotes"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\betweenSpaces\u0028\u0029",
+            "name": "betweenSpaces",
+            "summary": "Wraps\u0020an\u0020expression\u0020with\u0020spaces\u0020on\u0020both\u0020sides.",
+            "url": "namespaces/oihana-core-strings.html#function_betweenSpaces"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\block\u0028\u0029",
             "name": "block",
             "summary": "Format\u0020an\u0020indented\u0020multi\u002Dline\u0020text\u0020block.",
@@ -543,7 +548,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\strings\\object\u0028\u0029",
             "name": "object",
-            "summary": "Generate\u0020a\u0020JavaScript\u002Dlike\u0020object\u0020string,\u0020e.g.,\u0020\u0060\u007Bname\u003A\u0027Eka\u0027,age\u003A48\u007D\u0060.",
+            "summary": "Generate\u0020a\u0020JavaScript\u002Dlike\u0020object\u0020string.",
             "url": "namespaces/oihana-core-strings.html#function_object"
         },                {
             "fqsen": "\\oihana\\core\\strings\\pad\u0028\u0029",

@@ -28,7 +28,7 @@ namespace oihana\core\strings;
  * ```
  *
  * @package oihana\core\strings
- * @since   1.0.0
+ * @since   1.0.6
  * @author  Marc Alcaraz
  */
 function betweenQuotes(  mixed $expression = '' , string $char = "'" , bool $useQuotes = true , string $separator = ' ' ): string

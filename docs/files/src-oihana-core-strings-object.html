@@ -138,7 +138,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Generate a JavaScript-like object string, e.g., `{name:&#039;Eka&#039;,age:48}`.</dd>
+<dd>Generate a JavaScript-like object string.</dd>
 
     </dl>
 
@@ -160,35 +160,42 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/object.php"><a href="files/src-oihana-core-strings-object.html"><abbr title="src/oihana/core/strings/object.php">object.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Generate a JavaScript-like object string, e.g., `{name:&#039;Eka&#039;,age:48}`.</p>
+        <p class="phpdocumentor-summary">Generate a JavaScript-like object string.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">object</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keyValues</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useSpace</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">object</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keyValues</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useSpace</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function accepts:</p>
+        <section class="phpdocumentor-description"><p>This function converts input into a string representing a JavaScript object,
+e.g., <code class="prettyprint">{name:'Eka',age:48}</code>. Supported input types:</p>
+<ol>
+<li><strong>Array of key-value pairs</strong>: <code class="prettyprint">[ ['key1','value1'], ['key2','value2'] ]</code></li>
+<li><strong>Associative array</strong>: <code class="prettyprint">[ 'key1' =&gt; 'value1', 'key2' =&gt; 'value2' ]</code></li>
+<li><strong>Preformatted string</strong>: <code class="prettyprint">&quot;key1:'value1',key2:'value2'&quot;</code></li>
+<li><strong>Null</strong> → returns empty braces <code class="prettyprint">}</code>.</li>
+</ol>
+<p>Each array element can be:</p>
 <ul>
-<li>an array of key-value pairs <code class="prettyprint">[ ['key1','value1'], ['key2','value2'] ]</code>,</li>
-<li>a preformatted string <code class="prettyprint">&quot;key1:'value1',key2:'value2'&quot;</code>,</li>
-<li>or null (returns empty braces).</li>
+<li>a sub-array with exactly two elements <code class="prettyprint">[key, value]</code>,</li>
+<li>an associative key-value pair,</li>
+<li>or a string already formatted as <code class="prettyprint">key:value</code>.</li>
 </ul>
-<p>It wraps the content in braces <code class="prettyprint">}</code>. Optionally, spaces can be added
-around braces and after commas via the <code class="prettyprint">$spacify</code> parameter.</p>
+<p>Optionally, spaces can be added around braces and after commas with <code class="prettyprint">$useSpace</code>.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$keyValues</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;|null</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Array of key-value pairs, string, or null.</p>
+                    <section class="phpdocumentor-description"><p>$keyValues Array of pairs, associative array, string, or null</p>
 </section>
 
             </dd>
@@ -197,7 +204,7 @@ around braces and after commas via the <code class="prettyprint">$spacify</code>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Whether to add spaces around braces and after commas.</p>
+                    <section class="phpdocumentor-description"><p>Add spaces around braces and after commas</p>
 </section>
 
             </dd>
@@ -216,7 +223,7 @@ around braces and after commas via the <code class="prettyprint">$spacify</code>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>If the array structure is invalid.</p>
+                                                 <section class="phpdocumentor-description"><p>If an array element is invalid or the type is unsupported</p>
 </section>
 
                                     </dd>
@@ -231,8 +238,11 @@ around braces and after commas via the <code class="prettyprint">$spacify</code>
 echo object([['name', &quot;'Eka'&quot;], ['age', 47]], true);
 // Outputs: &quot;{ name:'Eka', age:47 }&quot;
 
-echo object(&quot;foo:'bar'&quot;);
-// Outputs: &quot;{foo:'bar'}&quot;
+echo object(['name' =&gt; &quot;'Eka'&quot;, 'age' =&gt; 47]);
+// Outputs: &quot;{name:'Eka',age:47}&quot;
+
+echo object(&quot;foo:'bar',baz:42&quot;);
+// Outputs: &quot;{foo:'bar',baz:42}&quot;
 
 echo object(null, true);
 // Outputs: &quot;}&quot;
@@ -263,7 +273,7 @@ echo object(null, true);
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>JavaScript-like object expression.</p>
+                <section class="phpdocumentor-description"><p>JavaScript-like object string</p>
 </section>
 
             </section>

@@ -40,6 +40,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\strings\betweenBrackets
 - Adds oihana\core\strings\betweenDoubleQuotes
 - Adds oihana\core\strings\betweenParentheses
+- Adds oihana\core\strings\betweenSpaces
 - Adds oihana\core\strings\betweenQuotes
 - Adds oihana\core\strings\compile
 - Adds oihana\core\strings\block

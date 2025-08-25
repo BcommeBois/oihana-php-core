@@ -26,7 +26,7 @@ namespace oihana\core\strings;
  *
  * @package oihana\core\strings
  * @author  Marc Alcaraz
- * @since   1.0.0
+ * @since   1.0.6
  */
 function betweenBraces(  mixed $expression = '' , bool $useBraces = true , string $separator = ' ' ): string
 {

@@ -187,6 +187,13 @@
 <dd>Wraps an expression in quotes or a custom character.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_betweenSpaces">betweenSpaces()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Wraps an expression with spaces on both sides.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_block">block()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -339,7 +346,7 @@ is separated by a dot (.) from the rest, which are joined using kebab-case (-).<
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Generate a JavaScript-like object string, e.g., `{name:&#039;Eka&#039;,age:48}`.</dd>
+<dd>Generate a JavaScript-like object string.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_pad">pad()</a>
@@ -681,7 +688,7 @@ echo append( null, 'foo');           // Outputs: &quot;foo&quot;
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
                                                                                 
                                              
                                     </dd>
@@ -799,7 +806,7 @@ betweenBraces(['x', 'y'], false); // 'x y'
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
                                                                                 
                                              
                                     </dd>
@@ -905,7 +912,7 @@ betweenBrackets( 'value' , false ) ;  // 'value'
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
                                                                                 
                                              
                                     </dd>
@@ -1010,7 +1017,7 @@ betweenQuotes(['foo', 'bar']); // returns &quot;foo bar&quot;
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
                                                                                 
                                              
                                     </dd>
@@ -1125,7 +1132,7 @@ betweenParentheses( 'val', false ) ;   // 'val'
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
                                                                                 
                                              
                                     </dd>
@@ -1233,7 +1240,7 @@ betweenQuotes(['a','b'], '&quot;', true, ','); // returns '&quot;a,b&quot;'
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
                                                                                 
                                              
                                     </dd>
@@ -1253,6 +1260,119 @@ betweenQuotes(['a','b'], '&quot;', true, ','); // returns '&quot;a,b&quot;'
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The resulting wrapped expression.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_betweenSpaces">
+        betweenSpaces()
+        <a href="namespaces/oihana-core-strings.html#function_betweenSpaces" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/betweenSpaces.php"><a href="files/src-oihana-core-strings-betweenspaces.html"><abbr title="src/oihana/core/strings/betweenSpaces.php">betweenSpaces.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">39</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Wraps an expression with spaces on both sides.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">betweenSpaces</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expression</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useSpaces</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>This function provides a convenient way to ensure an expression is
+surrounded by spaces. The behavior depends on the type of <code class="prettyprint">$expression</code>:</p>
+<ul>
+<li><strong>String</strong>: Simply prepends and appends a space.</li>
+<li><strong>Array</strong>: Concatenates array values using the specified <code class="prettyprint">$separator</code>,
+then wraps the resulting string in spaces.</li>
+<li><strong>Other types</strong>: Converted to string before wrapping.</li>
+<li><strong>If <code class="prettyprint">$useSpaces</code> is <code class="prettyprint">false</code></strong>, the expression is returned as-is
+without any surrounding spaces.</li>
+</ul>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$expression</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The value to wrap. Can be string, array, or any type convertible to string.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$useSpaces</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether to apply the surrounding spaces (default: <code class="prettyprint">true</code>).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$separator</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Separator to use when <code class="prettyprint">$expression</code> is an array (default: <code class="prettyprint">' '</code>).</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_betweenSpaces#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">betweenSpaces('hello');                 // returns ' hello '
+betweenSpaces('hello', false);          // returns 'hello'
+betweenSpaces(['a', 'b', 'c']);        // returns ' a b c '
+betweenSpaces(['a', 'b', 'c'], true, ','); // returns ' a,b,c '
+betweenSpaces(123);                     // returns ' 123 '
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The expression wrapped with spaces if <code class="prettyprint">$useSpaces</code> is <code class="prettyprint">true</code>; otherwise the original expression as string.</p>
 </section>
 
             </section>
@@ -3533,35 +3653,42 @@ echo luhn(&quot;1234&quot;);                  // Outputs: false (invalid Luhn)
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/object.php"><a href="files/src-oihana-core-strings-object.html"><abbr title="src/oihana/core/strings/object.php">object.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Generate a JavaScript-like object string, e.g., `{name:&#039;Eka&#039;,age:48}`.</p>
+        <p class="phpdocumentor-summary">Generate a JavaScript-like object string.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">object</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keyValues</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useSpace</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">object</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keyValues</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useSpace</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function accepts:</p>
+        <section class="phpdocumentor-description"><p>This function converts input into a string representing a JavaScript object,
+e.g., <code class="prettyprint">{name:'Eka',age:48}</code>. Supported input types:</p>
+<ol>
+<li><strong>Array of key-value pairs</strong>: <code class="prettyprint">[ ['key1','value1'], ['key2','value2'] ]</code></li>
+<li><strong>Associative array</strong>: <code class="prettyprint">[ 'key1' =&gt; 'value1', 'key2' =&gt; 'value2' ]</code></li>
+<li><strong>Preformatted string</strong>: <code class="prettyprint">&quot;key1:'value1',key2:'value2'&quot;</code></li>
+<li><strong>Null</strong> → returns empty braces <code class="prettyprint">}</code>.</li>
+</ol>
+<p>Each array element can be:</p>
 <ul>
-<li>an array of key-value pairs <code class="prettyprint">[ ['key1','value1'], ['key2','value2'] ]</code>,</li>
-<li>a preformatted string <code class="prettyprint">&quot;key1:'value1',key2:'value2'&quot;</code>,</li>
-<li>or null (returns empty braces).</li>
+<li>a sub-array with exactly two elements <code class="prettyprint">[key, value]</code>,</li>
+<li>an associative key-value pair,</li>
+<li>or a string already formatted as <code class="prettyprint">key:value</code>.</li>
 </ul>
-<p>It wraps the content in braces <code class="prettyprint">}</code>. Optionally, spaces can be added
-around braces and after commas via the <code class="prettyprint">$spacify</code> parameter.</p>
+<p>Optionally, spaces can be added around braces and after commas with <code class="prettyprint">$useSpace</code>.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$keyValues</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;|null</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Array of key-value pairs, string, or null.</p>
+                    <section class="phpdocumentor-description"><p>$keyValues Array of pairs, associative array, string, or null</p>
 </section>
 
             </dd>
@@ -3570,7 +3697,7 @@ around braces and after commas via the <code class="prettyprint">$spacify</code>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Whether to add spaces around braces and after commas.</p>
+                    <section class="phpdocumentor-description"><p>Add spaces around braces and after commas</p>
 </section>
 
             </dd>
@@ -3589,7 +3716,7 @@ around braces and after commas via the <code class="prettyprint">$spacify</code>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>If the array structure is invalid.</p>
+                                                 <section class="phpdocumentor-description"><p>If an array element is invalid or the type is unsupported</p>
 </section>
 
                                     </dd>
@@ -3604,8 +3731,11 @@ around braces and after commas via the <code class="prettyprint">$spacify</code>
 echo object([['name', &quot;'Eka'&quot;], ['age', 47]], true);
 // Outputs: &quot;{ name:'Eka', age:47 }&quot;
 
-echo object(&quot;foo:'bar'&quot;);
-// Outputs: &quot;{foo:'bar'}&quot;
+echo object(['name' =&gt; &quot;'Eka'&quot;, 'age' =&gt; 47]);
+// Outputs: &quot;{name:'Eka',age:47}&quot;
+
+echo object(&quot;foo:'bar',baz:42&quot;);
+// Outputs: &quot;{foo:'bar',baz:42}&quot;
 
 echo object(null, true);
 // Outputs: &quot;}&quot;
@@ -3636,7 +3766,7 @@ echo object(null, true);
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>JavaScript-like object expression.</p>
+                <section class="phpdocumentor-description"><p>JavaScript-like object string</p>
 </section>
 
             </section>
@@ -5981,6 +6111,7 @@ echo wrap('column', '&quot;'); // &quot;column&quot;
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_betweenDoubleQuotes">betweenDoubleQuotes()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_betweenParentheses">betweenParentheses()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_betweenQuotes">betweenQuotes()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_betweenSpaces">betweenSpaces()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_block">block()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_blockPrefix">blockPrefix()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_blockSuffix">blockSuffix()</a></li>

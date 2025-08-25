@@ -98,6 +98,7 @@
             "src/oihana/core/strings/betweenBrackets.php",
             "src/oihana/core/strings/betweenDoubleQuotes.php",
             "src/oihana/core/strings/betweenParentheses.php",
+            "src/oihana/core/strings/betweenSpaces.php",
             "src/oihana/core/strings/betweenQuotes.php",
             "src/oihana/core/strings/compile.php" ,
             "src/oihana/core/strings/block.php",
