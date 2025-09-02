@@ -25,6 +25,6 @@ namespace oihana\core\strings;
  */
 function wrap( string $value, string $char = '`' ): string
 {
-    return $char . addcslashes($value, $char) . $char;
+    return $char . addcslashes( $value , $char ) . $char;
 }
 
