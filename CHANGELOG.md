@@ -20,11 +20,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\arrays\clean
  
 - Adds oihana\core\date\formatDateTime
+- Adds oihana\core\date\now
 
 - Adds oihana\core\documents\formatDocument
 - Adds oihana\core\documents\formatDocumentWith
 - Adds oihana\core\documents\resolvePlaceholders
-
 
 - Adds oihana\core\json\isValidJsonDecodeFlags
 - Adds oihana\core\json\isValidJsonEncodeFlags

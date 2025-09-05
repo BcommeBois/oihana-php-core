@@ -65,6 +65,7 @@
             "src/oihana/core/date/formatDateTime.php",
             "src/oihana/core/date/isDate.php",
             "src/oihana/core/date/isValidTimezone.php",
+            "src/oihana/core/date/now.php",
             
             "src/oihana/core/documents/formatDocument.php",
             "src/oihana/core/documents/formatDocumentWith.php",
