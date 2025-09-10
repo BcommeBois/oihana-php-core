@@ -226,7 +226,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Compiles a string or an array of expressions into a single string.</dd>
+<dd>Compiles a string, object, boolean, or an array of expressions into a single string.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_dotKebab">dotKebab()</a>
@@ -1930,22 +1930,27 @@ echo camel(null);                 // Outputs: (empty string)
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/compile.php"><a href="files/src-oihana-core-strings-compile.html"><abbr title="src/oihana/core/strings/compile.php">compile.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Compiles a string or an array of expressions into a single string.</p>
+        <p class="phpdocumentor-summary">Compiles a string, object, boolean, or an array of expressions into a single string.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">compile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|<abbr title="\Stringable">Stringable</abbr>|array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expressions</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">compile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|<abbr title="\Stringable">Stringable</abbr>|array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expressions</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callback</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><ul>
-<li>If the input is an array, the values are cleaned with <a href="namespaces/oihana-core-arrays.html#function_clean"><abbr title="\oihana\core\arrays\clean()">clean()</abbr></a>
-(removing empty or null entries) and then concatenated with the given separator.</li>
+        <section class="phpdocumentor-description"><p>Behavior:</p>
+<ul>
+<li>If the input is an array, the values are cleaned with <abbr title="\oihana\core\strings\clean()">clean()</abbr>
+(removing empty or null entries), optionally transformed with a callback,
+then recursively compiled and concatenated using the specified separator.</li>
 <li>If the input is a string, it is returned as is.</li>
-<li>If the input is null or any other type, an empty string is returned.</li>
+<li>If the input is an object implementing <abbr title="\Stringable">Stringable</abbr>, it is cast to string.</li>
+<li>If the input is any other object, it is converted to JSON using <abbr title="\oihana\core\strings\json_encode">json_encode</abbr>.</li>
+<li>Booleans are converted to <code class="prettyprint">'true'</code> or <code class="prettyprint">'false'</code>.</li>
+<li>Null or unsupported types are converted to an empty string.</li>
 </ul>
 </section>
 
@@ -1966,6 +1971,15 @@ echo camel(null);                 // Outputs: (empty string)
                  = <span class="phpdocumentor-signature__argument__default-value">&#039; &#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>The separator used when joining array values (default is a single space).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callback</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>An optional callback applied to each array element before compiling. Signature: <code class="prettyprint">function(mixed $item): mixed</code>.</p>
 </section>
 
             </dd>
@@ -2006,6 +2020,7 @@ echo compile( [ 'foo' , '' , 'bar' ] )        . PHP_EOL; // 'foo bar'
 echo compile( [ 'a'   , null , 'c' ] , ', ' ) . PHP_EOL; // 'a, c'
 echo compile( 'baz' )                         . PHP_EOL; // 'baz'
 echo compile( null )                          . PHP_EOL; // ''
+echo compile([1, 2, 3], '-', fn($v) =&gt; $v*2)  . PHP_EOL; // '2-4-6'
 </code></pre>
 </section>
 
@@ -2016,7 +2031,7 @@ echo compile( null )                          . PHP_EOL; // ''
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The compiled expression.</p>
+                <section class="phpdocumentor-description"><p>The compiled string expression.</p>
 </section>
 
             </section>

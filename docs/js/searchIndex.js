@@ -423,7 +423,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\strings\\compile\u0028\u0029",
             "name": "compile",
-            "summary": "Compiles\u0020a\u0020string\u0020or\u0020an\u0020array\u0020of\u0020expressions\u0020into\u0020a\u0020single\u0020string.",
+            "summary": "Compiles\u0020a\u0020string,\u0020object,\u0020boolean,\u0020or\u0020an\u0020array\u0020of\u0020expressions\u0020into\u0020a\u0020single\u0020string.",
             "url": "namespaces/oihana-core-strings.html#function_compile"
         },                {
             "fqsen": "\\oihana\\core\\strings\\dotKebab\u0028\u0029",
