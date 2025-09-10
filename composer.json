@@ -47,6 +47,8 @@
             "src/oihana/core/arrays/exists.php",
             "src/oihana/core/arrays/flatten.php",
             "src/oihana/core/arrays/get.php",
+            "src/oihana/core/arrays/getFirstKey.php",
+            "src/oihana/core/arrays/getFirstValue.php",
             "src/oihana/core/arrays/hasIntKeys.php",
             "src/oihana/core/arrays/hasStringKeys.php",
             "src/oihana/core/arrays/inBetween.php",

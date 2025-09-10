@@ -156,6 +156,16 @@ Search.appendIndex(
             "summary": "Retrieves\u0020a\u0020value\u0020from\u0020an\u0020associative\u0020array\u0020using\u0020a\u0020key\u0020path.",
             "url": "namespaces/oihana-core-arrays.html#function_get"
         },                {
+            "fqsen": "\\oihana\\core\\arrays\\getFirstKey\u0028\u0029",
+            "name": "getFirstKey",
+            "summary": "Returns\u0020the\u0020first\u0020key\u0020from\u0020the\u0020provided\u0020list\u0020of\u0020keys\u0020that\u0020exists\u0020in\u0020the\u0020given\u0020array.",
+            "url": "namespaces/oihana-core-arrays.html#function_getFirstKey"
+        },                {
+            "fqsen": "\\oihana\\core\\arrays\\getFirstValue\u0028\u0029",
+            "name": "getFirstValue",
+            "summary": "Returns\u0020the\u0020value\u0020of\u0020the\u0020first\u0020key\u0020from\u0020the\u0020provided\u0020list\u0020of\u0020keys\u0020that\u0020exists\u0020in\u0020the\u0020given\u0020array.",
+            "url": "namespaces/oihana-core-arrays.html#function_getFirstValue"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\hasIntKeys\u0028\u0029",
             "name": "hasIntKeys",
             "summary": "Indicates\u0020if\u0020all\u0020the\u0020keys\u0020in\u0020an\u0020array\u0020are\u0020integers.",

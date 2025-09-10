@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - Adds oihana\core\arrays\CleanFlag
 - Adds oihana\core\arrays\clean
+- Adds oihana\core\arrays\getFirstKey
+- Adds oihana\core\arrays\getFirstValue
  
 - Adds oihana\core\date\formatDateTime
 - Adds oihana\core\date\now
