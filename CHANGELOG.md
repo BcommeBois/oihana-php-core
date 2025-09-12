@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\documents\formatDocumentWith
 - Adds oihana\core\documents\resolvePlaceholders
 
+- Adds oihana\core\json\deepJsonSerialize
 - Adds oihana\core\json\isValidJsonDecodeFlags
 - Adds oihana\core\json\isValidJsonEncodeFlags
 

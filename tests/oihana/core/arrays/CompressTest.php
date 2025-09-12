@@ -235,7 +235,8 @@ class CompressTest extends TestCase
 
     public function testCompressionWithRemoveKeys()
     {
-        $array = [
+        $array =
+        [
             'id'          => 1,
             'created'     => null,
             'name'        => 'hello world',
@@ -263,7 +264,8 @@ class CompressTest extends TestCase
             'nested' => [
                 'id'    => 2,
                 'debug' => 'remove me too',
-                'deep'  => [
+                'deep'  =>
+                [
                     'id'    => 3,
                     'debug' => 'remove me three'
                 ]
@@ -293,22 +295,31 @@ class CompressTest extends TestCase
             'id'     => 1,
             'debug'  => 'should be removed',
             'temp'   => 'to remove',
-            'nested' => [
+            'nested' =>
+            [
+                '@type' => 'Alert' ,
                 'debug' => 'nested debug',
-                'keep'  => 'nested keep'
+                'keep'  => 'nested keep' ,
+                'message' => (object) [
+                    '@type' => 'Message' ,
+                    'label' => 'text'
+                ]
             ]
         ];
 
-        $options = [
-            'removeKeys' => ['debug', 'temp'],
+        $options =
+        [
+            'removeKeys' => ['debug', 'temp' , '@type'],
             'excludes'   => ['debug'], // n’a aucun effet car removeKeys est prioritaire
             'recursive'  => true
         ];
 
         $expected = [
             'id'     => 1,
-            'nested' => [
-                'keep' => 'nested keep'
+            'nested' =>
+            [
+                'keep' => 'nested keep' ,
+                'message' => (object) [ 'label' => 'text' ] ,
             ]
         ];
 
@@ -319,7 +330,8 @@ class CompressTest extends TestCase
 
     public function testCompressionWithRemoveKeysOnIndexedArray()
     {
-        $array = [
+        $array =
+        [
             'keep',
             'removeThis',
             'removeThat',
