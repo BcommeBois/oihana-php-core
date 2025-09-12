@@ -3,59 +3,124 @@
 namespace oihana\core\objects ;
 
 use InvalidArgumentException;
+use oihana\core\options\CompressOption;
 use function oihana\core\helpers\conditions;
 use function oihana\core\arrays\compress as compressArray ;
 
 /**
- * Compress the passed in object by removing all properties that match given conditions.
+ * Compress the given object by removing properties that match certain conditions.
+ *
+ * This function traverses the object and removes properties according to the provided
+ * options. It can operate recursively on nested objects and arrays.
  *
  * @param object $object The object to compress.
- * @param array{ conditions:callable|callable[] , depth:null|int , excludes:string[] , recursive:bool , throwable:bool } $options Optional configuration:
- * - 'conditions' (callable|array<callable>) : One or more functions used to determine whether a value should be removed.
- * - 'depth'   (array<string>) : List of property names to exclude from filtering.
- * - 'excludes'   (array<string>) : List of property names to exclude from filtering.
- * - 'recursive'  (bool) : If true (default), recursively compress nested objects.
- * - 'throwable'  (bool) : If true (default), throws InvalidArgumentException for invalid callbacks.
- * @param int $currentDepth Used internally to track recursion depth.
+ * @param array{
+ *     conditions?: callable|callable[] ,   // One or more callbacks to decide if a value should be removed.
+ *     depth?: null|int ,                   // Maximum recursion depth (null = unlimited).
+ *     excludes?: string[] ,                // Property names to exclude from filtering.
+ *     recursive?: bool ,                   // Whether to recursively compress nested objects/arrays.
+ *     removeKeys?: string[] ,              // List of keys/properties to always remove.
+ *     throwable?: bool                     // If true, throws InvalidArgumentException on invalid callbacks.
+ * } $options Optional configuration.
+ * @param int $currentDepth Internal counter used to track recursion depth.
  *
- * @return object The compressed object, with properties removed according to the provided conditions.
+ * @return object The compressed object, with properties removed according to the rules.
  *
- * @throws InvalidArgumentException If invalid condition callbacks are provided and 'throwable' is true.
+ * @throws InvalidArgumentException If invalid callbacks are provided and 'throwable' is true.
  *
- * @example
+ * @example Basic removal of null values
  * ```php
  * use function oihana\core\objects\compress;
  *
- * $obj = new stdClass();
- * $obj->id = 1;
- * $obj->created = null;
- * $obj->name = "hello world";
- * $obj->description = null;
+ * $obj = (object)[
+ *     'id'          => 1,
+ *     'name'        => 'hello',
+ *     'description' => null,
+ * ];
  *
- * $compressed = compress($obj, [
- *     'conditions' => [fn($v) => $v === null],
- *     'excludes' => ['id'],
- *     'recursive' => true,
+ * $result = compress($obj, [
+ *     'conditions' => fn($v) => $v === null,
  * ]);
- * echo json_encode($compressed);
+ *
+ * // Result: { "id":1, "name":"hello" }
+ * echo json_encode($result);
+ * ```
+ *
+ * @example Excluding certain properties
+ * ```php
+ * $obj = (object)[
+ *     'id'    => 1,
+ *     'debug' => 'keep me',
+ *     'temp'  => null,
+ * ];
+ *
+ * $result = compress($obj, [
+ *     'conditions' => fn($v) => $v === null,
+ *     'excludes'   => ['debug'],
+ * ]);
+ *
+ * // Result: { "id":1, "debug":"keep me" }
+ * echo json_encode($result);
+ * ```
+ *
+ * @example Removing properties by name
+ * ```php
+ * $obj = (object)[
+ *     'id'    => 1,
+ *     'token' => 'secret',
+ *     'name'  => 'test',
+ * ];
+ *
+ * $result = compress($obj, [
+ *     'removeKeys' => ['token'],
+ * ]);
+ *
+ * // Result: { "id":1, "name":"test" }
+ * echo json_encode($result);
+ * ```
+ *
+ * @example Recursive compression
+ * ```php
+ * $obj = (object)[
+ *     'id'    => 1,
+ *     'child' => (object)[
+ *         'value' => null,
+ *         'label' => 'ok',
+ *     ],
+ * ];
+ *
+ * $result = compress($obj, [
+ *     'conditions' => fn($v) => $v === null,
+ *     'recursive'  => true,
+ * ]);
+ *
+ * // Result: { "id":1, "child":{ "label":"ok" } }
+ * echo json_encode($result);
  * ```
  *
  * @package oihana\core\objects
- * @author  Marc Alcaraz (ekameleon)
+ * @author  Marc Alcaraz
  * @since   1.0.0
  */
 function compress( object $object , array $options = [] , int $currentDepth = 0 ): object
 {
-    $excludes   = $options[ 'excludes'   ] ?? null  ;
-    $maxDepth   = $options[ 'depth'      ] ?? null  ;
-    $recursive  = $options[ 'recursive'  ] ?? false ;
-    $throwable  = $options[ 'throwable'  ] ?? true  ;
+    $options = CompressOption::normalize($options);
 
-    $conditions = conditions( $options[ 'conditions' ] ?? null , $throwable ) ;
+    $conditions = $options[ CompressOption::CONDITIONS  ] ;
+    $excludes   = $options[ CompressOption::EXCLUDES    ] ;
+    $maxDepth   = $options[ CompressOption::DEPTH       ] ;
+    $recursive  = $options[ CompressOption::RECURSIVE   ] ;
+    $removeKeys = $options[ CompressOption::REMOVE_KEYS ] ;
 
     $properties = get_object_vars( $object );
     foreach( $properties as $key => $value )
     {
+        if (is_array($removeKeys) && in_array($key, $removeKeys, true))
+        {
+            unset($object->{$key});
+            continue;
+        }
+
         if( is_array( $excludes ) && in_array( $key , $excludes , true ) )
         {
             continue ;

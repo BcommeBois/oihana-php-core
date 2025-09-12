@@ -36,6 +36,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\maths\gcd
 - Adds oihana\core\maths\haversine
 
+- Adds oihana\core\options\CompressOption
+
 - Adds oihana\core\strings\append
 - Adds oihana\core\strings\between
 - Adds oihana\core\strings\betweenBraces
@@ -79,7 +81,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Remove oihana\exceptions\ExceptionTrait
 
 ### Changed
-- Rename oihana\core\files\loadAndMergeArrayFromPHPFiles -> oihana\files\requireAndMergeArrays
+- oihana\core\arrays\compress : add the removeKeys option.
+- oihana\core\objects\compress : add the removeKeys option.
 
 ## [1.0.5] - 2025-07-10
 

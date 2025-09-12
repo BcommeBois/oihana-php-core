@@ -232,4 +232,109 @@ class CompressTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    public function testCompressionWithRemoveKeys()
+    {
+        $array = [
+            'id'          => 1,
+            'created'     => null,
+            'name'        => 'hello world',
+            'description' => 'to remove',
+            'debug'       => 'to remove'
+        ];
+
+        $options = [ 'removeKeys' => ['description', 'debug'] ];
+
+        $expected = [
+            'id'   => 1,
+            'name' => 'hello world'
+        ];
+
+        $result = compress($array, $options);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testCompressionWithRemoveKeysAndRecursive()
+    {
+        $array = [
+            'id'    => 1,
+            'debug' => 'remove me',
+            'nested' => [
+                'id'    => 2,
+                'debug' => 'remove me too',
+                'deep'  => [
+                    'id'    => 3,
+                    'debug' => 'remove me three'
+                ]
+            ]
+        ];
+
+        $options = [ 'removeKeys' => ['debug'], 'recursive' => true ];
+
+        $expected = [
+            'id'    => 1,
+            'nested' => [
+                'id'   => 2,
+                'deep' => [
+                    'id' => 3
+                ]
+            ]
+        ];
+
+        $result = compress($array, $options);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testCompressionWithRemoveKeysAndExcludes()
+    {
+        $array = [
+            'id'     => 1,
+            'debug'  => 'should be removed',
+            'temp'   => 'to remove',
+            'nested' => [
+                'debug' => 'nested debug',
+                'keep'  => 'nested keep'
+            ]
+        ];
+
+        $options = [
+            'removeKeys' => ['debug', 'temp'],
+            'excludes'   => ['debug'], // n’a aucun effet car removeKeys est prioritaire
+            'recursive'  => true
+        ];
+
+        $expected = [
+            'id'     => 1,
+            'nested' => [
+                'keep' => 'nested keep'
+            ]
+        ];
+
+        $result = compress($array, $options);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testCompressionWithRemoveKeysOnIndexedArray()
+    {
+        $array = [
+            'keep',
+            'removeThis',
+            'removeThat',
+            'stay'
+        ];
+
+        $options = [ 'removeKeys' => [1, 2] ];
+
+        $expected = [
+            0 => 'keep',
+            1 => 'stay'
+        ];
+
+        $result = compress($array, $options);
+
+        $this->assertEquals($expected, $result);
+    }
 }

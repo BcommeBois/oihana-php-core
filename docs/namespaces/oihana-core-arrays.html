@@ -148,7 +148,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Compresses the given array by removing values that match one or more conditions.</dd>
+<dd>Compress the given array by removing entries that match specified conditions.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_deepMerge">deepMerge()</a>
@@ -507,19 +507,22 @@ $result = clean($data, CleanFlag::FALSY);
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/compress.php"><a href="files/src-oihana-core-arrays-compress.html"><abbr title="src/oihana/core/arrays/compress.php">compress.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Compresses the given array by removing values that match one or more conditions.</p>
+        <p class="phpdocumentor-summary">Compress the given array by removing entries that match specified conditions.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">compress</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$currentDepth</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">compress</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array{clone?: bool, conditions?: callable|callable[], excludes?: string[], recursive?: bool, depth?: int|null, removeKeys?: string[], throwable?: bool}|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$currentDepth</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>Useful for cleaning up associative arrays (e.g., from form submissions or object exports)
-by removing nulls, empty strings, or other unwanted values. Supports recursion into nested arrays or objects.</p>
+        <section class="phpdocumentor-description"><p>This function traverses an array and removes elements according to the provided
+configuration. It can work recursively on nested arrays and objects, with optional
+depth limitation and key-based exclusions.</p>
+<p>Useful for cleaning associative arrays (e.g., form data, object exports) by removing
+nulls, empty strings, or other unwanted values.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -535,21 +538,10 @@ by removing nulls, empty strings, or other unwanted values. Supports recursion i
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$options</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|null</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array{clone?: bool, conditions?: callable|callable[], excludes?: string[], recursive?: bool, depth?: int|null, removeKeys?: string[], throwable?: bool}|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional configuration:</p>
-<ul>
-<li><strong>clone</strong> (bool)         If <code class="prettyprint">true</code>, works on a cloned copy of the array. Original remains unchanged. <em>(default: false)</em></li>
-<li><strong>conditions</strong> (callable|array<callable>)
-One or more callbacks: <code class="prettyprint">(mixed $value): bool</code>.
-If any condition returns <code class="prettyprint">true</code>, the value is removed.
-( default: <code class="prettyprint">fn($v) =&gt; is_null($v)</code> )*</li>
-<li><strong>excludes</strong> (string[])  List of keys to exclude from filtering, even if matched by a condition.</li>
-<li><strong>recursive</strong> (bool)     Whether to recursively compress nested arrays or objects. <em>(default: true)</em></li>
-<li><strong>depth</strong> (int|null)     Maximum depth for recursion. <code class="prettyprint">null</code> means no limit.</li>
-<li><strong>throwable</strong> (bool)     If <code class="prettyprint">true</code>, throws <code class="prettyprint">InvalidArgumentException</code> for invalid conditions. <em>(default: true)</em></li>
-</ul>
+                    <section class="phpdocumentor-description"><p>Optional configuration.</p>
 </section>
 
             </dd>
@@ -558,7 +550,7 @@ If any condition returns <code class="prettyprint">true</code>, the value is rem
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">0</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>(Internal) Tracks current recursion depth. You usually don’t need to set this.</p>
+                    <section class="phpdocumentor-description"><p>Internal counter used to track recursion depth.</p>
 </section>
 
             </dd>
@@ -572,49 +564,121 @@ If any condition returns <code class="prettyprint">true</code>, the value is rem
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If invalid callbacks are provided and 'throwable' is true.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">example</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
                                                  <section class="phpdocumentor-description"><p>Basic cleanup of null values</p>
 <pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\compress;
-$data = ['id' =&gt; 1, 'name' =&gt; 'hello', 'description' =&gt; null];
+
+$data = [ 'id' =&gt; 1 , 'name' =&gt; 'hello' , 'desc' =&gt; null ];
 $clean = compress($data);
-// Result: ['id' =&gt; 1, 'name' =&gt; 'hello']
+
+// Result: [ 'id' =&gt; 1 , 'name' =&gt; 'hello' ]
 </code></pre>
-<p>Exclude a specific key from filtering</p>
-<pre class="prettyprint"><code class="language-php">$data = ['id' =&gt; 1, 'name' =&gt; null];
-$clean = compress($data, ['excludes' =&gt; ['name']]);
-// Result: ['id' =&gt; 1, 'name' =&gt; null]  // &quot;name&quot; is preserved
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Excluding a key from filtering</p>
+<pre class="prettyprint"><code class="language-php">$data = [ 'id' =&gt; 1 , 'name' =&gt; null ];
+$clean = compress($data, [ 'excludes' =&gt; ['name'] ]);
+
+// Result: [ 'id' =&gt; 1 , 'name' =&gt; null ]
 </code></pre>
-<p>Remove null or empty strings</p>
-<pre class="prettyprint"><code class="language-php">$conditions =
-[
-    fn($v) =&gt; is_null($v),
-    fn($v) =&gt; is_string($v) &amp;&amp; $v === ''
-];
-$data  = ['a' =&gt; '', 'b' =&gt; 0, 'c' =&gt; null];
-$clean = compress($data, ['conditions' =&gt; $conditions]);
-// Result: ['b' =&gt; 0]
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Removing null or empty strings</p>
+<pre class="prettyprint"><code class="language-php">$data = [ 'a' =&gt; '' , 'b' =&gt; 0 , 'c' =&gt; null ];
+
+$clean = compress($data, [
+    'conditions' =&gt; [
+        fn($v) =&gt; $v === null,
+        fn($v) =&gt; is_string($v) &amp;&amp; $v === ''
+    ]
+]);
+
+// Result: [ 'b' =&gt; 0 ]
 </code></pre>
-<p>Recursive compression with depth limit</p>
-<pre class="prettyprint"><code class="language-php">$nested =
-[
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Recursive compression with depth limit</p>
+<pre class="prettyprint"><code class="language-php">$nested = [
     'id'   =&gt; 2,
-    'meta' =&gt; ['created' =&gt; null, 'tags' =&gt; []],
+    'meta' =&gt; [ 'created' =&gt; null, 'tags' =&gt; [] ],
 ];
 
-$clean = compress($nested,
-[
+$clean = compress($nested, [
     'conditions' =&gt; fn($v) =&gt; $v === [] || $v === null,
+    'recursive'  =&gt; true,
     'depth'      =&gt; 1
 ]);
-// Result: ['id' =&gt; 2]
+
+// Result: [ 'id' =&gt; 2 ]
 </code></pre>
-<p>Clone input before compressing</p>
-<pre class="prettyprint"><code class="language-php">$original = ['x' =&gt; null, 'y' =&gt; 5];
-$copy     = compress($original, ['clone' =&gt; true]);
-// $original remains unchanged; $copy == ['y' =&gt; 5]
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Mixing arrays and objects</p>
+<pre class="prettyprint"><code class="language-php">use function oihana\core\objects\compress as compressObject;
+
+$data = [
+    'user' =&gt; (object)[ 'id' =&gt; 1 , 'tmp' =&gt; null ],
+    'tags' =&gt; [ 'a' =&gt; null , 'b' =&gt; 'keep' ],
+];
+
+$clean = compress($data, [
+    'conditions' =&gt; fn($v) =&gt; $v === null,
+    'recursive'  =&gt; true,
+]);
+
+// Result: [ 'user' =&gt; { &quot;id&quot;:1 }, 'tags' =&gt; [ 'b' =&gt; 'keep' ] ]
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Cloning input before compression</p>
+<pre class="prettyprint"><code class="language-php">$original = [ 'x' =&gt; null , 'y' =&gt; 5 ];
+$copy     = compress($original, [ 'clone' =&gt; true ]);
+
+// $original remains unchanged
+// $copy == [ 'y' =&gt; 5 ]
 </code></pre>
 </section>
 
@@ -624,7 +688,7 @@ $copy     = compress($original, ['clone' =&gt; true]);
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
 </section>
 
                                     </dd>

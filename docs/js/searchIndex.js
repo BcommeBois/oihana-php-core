@@ -123,7 +123,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\arrays\\compress\u0028\u0029",
             "name": "compress",
-            "summary": "Compresses\u0020the\u0020given\u0020array\u0020by\u0020removing\u0020values\u0020that\u0020match\u0020one\u0020or\u0020more\u0020conditions.",
+            "summary": "Compress\u0020the\u0020given\u0020array\u0020by\u0020removing\u0020entries\u0020that\u0020match\u0020specified\u0020conditions.",
             "url": "namespaces/oihana-core-arrays.html#function_compress"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\deepMerge\u0028\u0029",
@@ -273,7 +273,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\helpers\\conditions\u0028\u0029",
             "name": "conditions",
-            "summary": "Normalizes\u0020conditions\u0020into\u0020an\u0020array\u0020of\u0020callable\u0020functions.",
+            "summary": "Normalize\u0020a\u0020set\u0020of\u0020conditions\u0020into\u0020an\u0020array\u0020of\u0020callable\u0020functions.",
             "url": "namespaces/oihana-core-helpers.html#function_conditions"
         },                {
             "fqsen": "\\oihana\\core\\ifNull\u0028\u0029",
@@ -348,7 +348,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\objects\\compress\u0028\u0029",
             "name": "compress",
-            "summary": "Compress\u0020the\u0020passed\u0020in\u0020object\u0020by\u0020removing\u0020all\u0020properties\u0020that\u0020match\u0020given\u0020conditions.",
+            "summary": "Compress\u0020the\u0020given\u0020object\u0020by\u0020removing\u0020properties\u0020that\u0020match\u0020certain\u0020conditions.",
             "url": "namespaces/oihana-core-objects.html#function_compress"
         },                {
             "fqsen": "\\oihana\\core\\objects\\ensureObjectPath\u0028\u0029",
@@ -365,6 +365,51 @@ Search.appendIndex(
             "name": "setObjectValue",
             "summary": "Sets\u0020a\u0020value\u0020in\u0020a\u0020flat\u0020object\u0020using\u0020a\u0020single\u0020property\u0020name.",
             "url": "namespaces/oihana-core-objects.html#function_setObjectValue"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption",
+            "name": "CompressOption",
+            "summary": "Defines\u0020constants\u0020for\u0020the\u0020options\u0020used\u0020by\u0020the\u0020\u0060compress\u0060\u0020functions\nfor\u0020arrays\u0020and\u0020objects.",
+            "url": "classes/oihana-core-options-CompressOption.html"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption\u003A\u003Anormalize\u0028\u0029",
+            "name": "normalize",
+            "summary": "Normalize\u0020an\u0020options\u0020array\u0020for\u0020compress\u0020functions.",
+            "url": "classes/oihana-core-options-CompressOption.html#method_normalize"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption\u003A\u003ACLONE",
+            "name": "CLONE",
+            "summary": "Option\u0020key\u0020to\u0020clone\u0020the\u0020array\/object\u0020before\u0020compressing.",
+            "url": "classes/oihana-core-options-CompressOption.html#constant_CLONE"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption\u003A\u003ACONDITIONS",
+            "name": "CONDITIONS",
+            "summary": "One\u0020or\u0020more\u0020callbacks\u003A\u0020fn\u0028mixed\u0020\u0024value\u0029\u003A\u0020bool.",
+            "url": "classes/oihana-core-options-CompressOption.html#constant_CONDITIONS"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption\u003A\u003AEXCLUDES",
+            "name": "EXCLUDES",
+            "summary": "Option\u0020key\u0020for\u0020property\/array\u0020keys\u0020to\u0020exclude\u0020from\u0020compression.",
+            "url": "classes/oihana-core-options-CompressOption.html#constant_EXCLUDES"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption\u003A\u003ADEPTH",
+            "name": "DEPTH",
+            "summary": "Option\u0020key\u0020to\u0020limit\u0020recursion\u0020depth\u0020when\u0020compressing\u0020nested\u0020arrays\/objects.",
+            "url": "classes/oihana-core-options-CompressOption.html#constant_DEPTH"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption\u003A\u003ARECURSIVE",
+            "name": "RECURSIVE",
+            "summary": "Option\u0020key\u0020to\u0020enable\u0020recursive\u0020compression\u0020of\u0020nested\u0020arrays\/objects.",
+            "url": "classes/oihana-core-options-CompressOption.html#constant_RECURSIVE"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption\u003A\u003AREMOVE_KEYS",
+            "name": "REMOVE_KEYS",
+            "summary": "Option\u0020key\u0020for\u0020property\/array\u0020keys\u0020to\u0020forcibly\u0020remove.",
+            "url": "classes/oihana-core-options-CompressOption.html#constant_REMOVE_KEYS"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\CompressOption\u003A\u003ATHROWABLE",
+            "name": "THROWABLE",
+            "summary": "Option\u0020key\u0020to\u0020control\u0020whether\u0020invalid\u0020conditions\u0020throw\u0020exceptions.",
+            "url": "classes/oihana-core-options-CompressOption.html#constant_THROWABLE"
         },                {
             "fqsen": "\\oihana\\core\\reflections\\getFunctionInfo\u0028\u0029",
             "name": "getFunctionInfo",
@@ -760,6 +805,11 @@ Search.appendIndex(
             "name": "objects",
             "summary": "",
             "url": "namespaces/oihana-core-objects.html"
+        },                {
+            "fqsen": "\\oihana\\core\\options",
+            "name": "options",
+            "summary": "",
+            "url": "namespaces/oihana-core-options.html"
         },                {
             "fqsen": "\\oihana\\core\\reflections",
             "name": "reflections",

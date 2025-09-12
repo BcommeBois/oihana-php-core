@@ -132,9 +132,9 @@
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-helpers.html#function_conditions">conditions()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, callable&gt;    </span>
 </dt>
-<dd>Normalizes conditions into an array of callable functions.</dd>
+<dd>Normalize a set of conditions into an array of callable functions.</dd>
 
     </dl>
 
@@ -155,20 +155,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/helpers/conditions.php"><a href="files/src-oihana-core-helpers-conditions.html"><abbr title="src/oihana/core/helpers/conditions.php">conditions.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Normalizes conditions into an array of callable functions.</p>
+        <p class="phpdocumentor-summary">Normalize a set of conditions into an array of callable functions.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">conditions</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|callable|string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$conditions</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$throwable</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">conditions</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|callable|string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$conditions</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$throwable</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, callable&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>This function takes a variety of input types (null, callable, or array of callables)
-and returns a normalized array of callable conditions. It is useful for validating
-or filtering data based on multiple conditions.</p>
+        <section class="phpdocumentor-description"><p>This helper accepts multiple forms of input (null, single callable, array of callables)
+and returns a consistent array of callable conditions. It is useful when you want
+to filter, validate, or compress data using multiple dynamic rules.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -180,9 +180,10 @@ or filtering data based on multiple conditions.</p>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>The conditions to normalize. Can be:</p>
 <ul>
-<li>null: defaults to a condition that checks for null values.</li>
+<li>null: defaults to a single condition that checks for null values.</li>
 <li>callable: a single condition function.</li>
-<li>array: an array of condition functions.</li>
+<li>array: an array of callable functions.</li>
+<li>string: (optional) a single callable function name or expression.</li>
 </ul>
 </section>
 
@@ -192,7 +193,8 @@ or filtering data based on multiple conditions.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>If true, throws exceptions for invalid conditions. If false, silently filters out invalid conditions.</p>
+                    <section class="phpdocumentor-description"><p>If true, invalid conditions will throw an InvalidArgumentException.
+If false, invalid conditions are silently ignored.</p>
 </section>
 
             </dd>
@@ -206,29 +208,86 @@ or filtering data based on multiple conditions.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If $throwable=true and any provided condition is invalid.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">example</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Basic usage with default condition</p>
+                                                 <section class="phpdocumentor-description"><p>Default condition (null)</p>
 <pre class="prettyprint"><code class="language-php">$conditions = conditions();
 // Returns: [fn($value) =&gt; is_null($value)]
 </code></pre>
-<p>Usage with a single callable condition</p>
-<pre class="prettyprint"><code class="language-php">$conditions = conditions(fn($value) =&gt; $value === '');
-// Returns: [fn($value) =&gt; $value === '']
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Single callable condition</p>
+<pre class="prettyprint"><code class="language-php">$conditions = conditions(fn($v) =&gt; $v === '');
+// Returns: [fn($v) =&gt; $v === '']
 </code></pre>
-<p>Usage with an array of conditions</p>
-<pre class="prettyprint"><code class="language-php">$conditions = conditions
-([
-   fn($value) =&gt; $value === null,
-   fn($value) =&gt; $value === false
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Array of conditions</p>
+<pre class="prettyprint"><code class="language-php">$conditions = conditions([
+    fn($v) =&gt; $v === null,
+    fn($v) =&gt; $v === false
 ]);
-// Returns: [fn($value) =&gt; $value === null, fn($value) =&gt; $value === false]
+// Returns: [fn($v) =&gt; $v === null, fn($v) =&gt; $v === false]
 </code></pre>
-<p>Usage with non-callable in array and throwable=false</p>
-<pre class="prettyprint"><code class="language-php">$conditions = conditions([fn($value) =&gt; true, 'not_callable'], false);
-// Returns: [fn($value) =&gt; true]
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Non-callable in array with throwable=false</p>
+<pre class="prettyprint"><code class="language-php">$conditions = conditions([fn($v) =&gt; true, 'not_callable'], false);
+// Returns: [fn($v) =&gt; true], 'not_callable' is ignored
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Invalid condition with throwable=true</p>
+<pre class="prettyprint"><code class="language-php">// Throws InvalidArgumentException
+$conditions = conditions('not_a_callable', true);
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Mixing callables and null</p>
+<pre class="prettyprint"><code class="language-php">$conditions = conditions([null, fn($v) =&gt; is_numeric($v)], false);
+// Returns: [fn($v) =&gt; is_numeric($v)]
 </code></pre>
 </section>
 
@@ -238,7 +297,7 @@ or filtering data based on multiple conditions.</p>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
 </section>
 
                                     </dd>
@@ -254,9 +313,9 @@ or filtering data based on multiple conditions.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, callable&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>An array of callable conditions.</p>
+                <section class="phpdocumentor-description"><p>Array of callable conditions.</p>
 </section>
 
             </section>

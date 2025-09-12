@@ -202,4 +202,63 @@ class CompressTest extends TestCase
         $result = get_object_vars( $obj->items[1] ) ;
         $this->assertArrayNotHasKey('remove', $result );
     }
+
+    public function testCompressWithRemoveKeys(): void
+    {
+        $obj = new stdClass();
+        $obj->id = 1;
+        $obj->debug = 'to be removed';
+        $obj->keep = 'value';
+
+        $options = ['removeKeys' => ['debug']];
+        $result = compress($obj, $options);
+        $result = get_object_vars($result);
+
+        $this->assertArrayHasKey('id', $result);
+        $this->assertArrayHasKey('keep', $result);
+        $this->assertArrayNotHasKey('debug', $result);
+    }
+
+    public function testCompressWithRemoveKeysRecursively(): void
+    {
+        $child = new stdClass();
+        $child->debug = 'remove me';
+        $child->keep = 'ok';
+
+        $parent = new stdClass();
+        $parent->child = $child;
+
+        $options = [
+            'removeKeys' => ['debug'],
+            'recursive'  => true
+        ];
+
+        $result = compress($parent, $options);
+
+        $this->assertTrue(property_exists($result, 'child'));
+
+        $childResult = get_object_vars($result->child);
+        $this->assertArrayHasKey('keep', $childResult);
+        $this->assertArrayNotHasKey('debug', $childResult);
+    }
+
+    public function testCompressWithRemoveKeysAndExcludes(): void
+    {
+        $obj = new stdClass();
+        $obj->id = 1;
+        $obj->debug = 'should be removed';
+        $obj->temp = 'remove me too';
+
+        $options = [
+            'removeKeys' => ['debug', 'temp'],
+            'excludes'   => ['debug'], // mais removeKeys est prioritaire
+        ];
+
+        $result = compress($obj, $options);
+        $result = get_object_vars($result);
+
+        $this->assertArrayHasKey('id', $result);
+        $this->assertArrayNotHasKey('debug', $result);
+        $this->assertArrayNotHasKey('temp', $result);
+    }
 }
