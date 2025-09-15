@@ -171,6 +171,13 @@
 </dt>
 <dd>Sets a value in a flat object using a single property name.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-objects.html#function_toAssociativeArray">toAssociativeArray()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Recursively converts an object into an associative array.</dd>
+
     </dl>
 
         
@@ -964,6 +971,127 @@ $updated = setObjectValue($obj, 'age', 30);
             </section>
 
 </article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_toAssociativeArray">
+        toAssociativeArray()
+        <a href="namespaces/oihana-core-objects.html#function_toAssociativeArray" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/objects/toAssociativeArray.php"><a href="files/src-oihana-core-objects-toassociativearray.html"><abbr title="src/oihana/core/objects/toAssociativeArray.php">toAssociativeArray.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">62</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Recursively converts an object into an associative array.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">toAssociativeArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"><p>This function handles nested objects, ensuring the entire object tree is converted.
+It achieves this by first encoding the object to a JSON string and then decoding it
+back into an associative array. Note that only public properties of the object
+will be included in the resulting array.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$document</span>
+                : <span class="phpdocumentor-signature__argument__return-type">object</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The object to convert.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-objects.html#function_toAssociativeArray#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">// Define some classes for the example.
+class Address
+{
+    public string $street = '123 PHP Avenue';
+    public string $city = 'Codeville';
+}
+
+class User
+{
+    public int $id = 42;
+    public string $name = 'John Doe';
+    public Address $address;
+    private string $sessionToken = 'a-very-secret-token'; // This will be ignored.
+
+    public function __construct()
+    {
+        $this-&gt;address = new Address();
+    }
+}
+
+$userObject = new User();
+
+$userArray = toAssociativeArray($userObject);
+
+print_r($userArray);
+// Output:
+// Array
+// (
+//     [id] =&gt; 42
+//     [name] =&gt; John Doe
+//     [address] =&gt; Array
+//         (
+//             [street] =&gt; 123 PHP Avenue
+//             [city] =&gt; Codeville
+//         )
+// )
+// Note that the private property 'sessionToken' is not present.
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The resulting associative array.</p>
+</section>
+
+            </section>
+
+</article>
             </section>
 
         <div class="phpdocumentor-modal" id="source-view">
@@ -1085,6 +1213,7 @@ $updated = setObjectValue($obj, 'age', 30);
                                                     <li class=""><a href="namespaces/oihana-core-objects.html#function_hasAnyProperty">hasAnyProperty()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-objects.html#function_set">set()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-objects.html#function_setObjectValue">setObjectValue()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-objects.html#function_toAssociativeArray">toAssociativeArray()</a></li>
                                             </ul>
                 </li>
                     </ul>

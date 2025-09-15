@@ -176,7 +176,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/date/formatDateTime.php"><a href="files/src-oihana-core-date-formatdatetime.html"><abbr title="src/oihana/core/date/formatDateTime.php">formatDateTime.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">45</span>
 
     </aside>
 
@@ -190,6 +190,9 @@
         <section class="phpdocumentor-description"><p>This function attempts to validate and parse the input date string. If the input
 date is not valid according to the provided format, it defaults to the current date/time (&quot;now&quot;).
 It then applies the specified timezone and returns the formatted date string.</p>
+<p>The <code class="prettyprint">$timezone</code> parameter is used only to interpret the input date string.
+Regardless of the input timezone, the resulting string is always converted to UTC
+and formatted with a trailing &quot;Z&quot;.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -479,7 +482,7 @@ var_dum(isValidTimezone(null)); // false
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/date/now.php"><a href="files/src-oihana-core-date-now.html"><abbr title="src/oihana/core/date/now.php">now.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
@@ -490,7 +493,10 @@ var_dum(isValidTimezone(null)); // false
     <span class="phpdocumentor-signature__visibility"></span>
                     <span class="phpdocumentor-signature__name">now</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$timezone</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;UTC&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$format</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;Y-m-dTH:i:s.vZ&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>The <code class="prettyprint">$timezone</code> parameter is used only to interpret the &quot;now&quot; value.
+Regardless of the input timezone, the resulting string is always converted to UTC and formatted with a trailing &quot;Z&quot;.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -547,6 +553,9 @@ var_dum(isValidTimezone(null)); // false
                                                                                 
                                                  <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo now() ;
 // Output: '2025-07-20T15:30.676Z'
+
+echo now('Europe/Paris');
+// Output: '2025-07-20T13:30:20.676Z' (always UTC)
 </code></pre>
 </section>
 

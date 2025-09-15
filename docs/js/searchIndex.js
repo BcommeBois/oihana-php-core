@@ -381,6 +381,11 @@ Search.appendIndex(
             "summary": "Sets\u0020a\u0020value\u0020in\u0020a\u0020flat\u0020object\u0020using\u0020a\u0020single\u0020property\u0020name.",
             "url": "namespaces/oihana-core-objects.html#function_setObjectValue"
         },                {
+            "fqsen": "\\oihana\\core\\objects\\toAssociativeArray\u0028\u0029",
+            "name": "toAssociativeArray",
+            "summary": "Recursively\u0020converts\u0020an\u0020object\u0020into\u0020an\u0020associative\u0020array.",
+            "url": "namespaces/oihana-core-objects.html#function_toAssociativeArray"
+        },                {
             "fqsen": "\\oihana\\core\\options\\CompressOption",
             "name": "CompressOption",
             "summary": "Defines\u0020constants\u0020for\u0020the\u0020options\u0020used\u0020by\u0020the\u0020\u0060compress\u0060\u0020functions\nfor\u0020arrays\u0020and\u0020objects.",

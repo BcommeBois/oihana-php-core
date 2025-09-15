@@ -8,8 +8,11 @@ use DateInvalidTimeZoneException;
 /**
  * Returns the current date/time as a formatted string.
  *
- * @param string $timezone The timezone identifier (e.g., 'Europe/Paris'). Defaults to 'UTC'.
- * @param string|null $format  The date format string compatible with DateTime::format(). Defaults to 'Y-m-d\TH:i:s.v\Z' (ISO 8601 UTC with milliseconds).
+ * The `$timezone` parameter is used only to interpret the "now" value.
+ * Regardless of the input timezone, the resulting string is always converted to UTC and formatted with a trailing "Z".
+ *
+ * @param string      $timezone The timezone identifier (e.g., 'Europe/Paris'). Defaults to 'UTC'.
+ * @param string|null $format   The date format string compatible with DateTime::format(). Defaults to 'Y-m-d\TH:i:s.v\Z' (ISO 8601 UTC with milliseconds).
  *
  * @return string The formatted current date/time string.
  *
@@ -20,6 +23,9 @@ use DateInvalidTimeZoneException;
  * ```php
  * echo now() ;
  * // Output: '2025-07-20T15:30.676Z'
+ *
+ * echo now('Europe/Paris');
+ * // Output: '2025-07-20T13:30:20.676Z' (always UTC)
  * ```
  *
  * @package oihana\core\date

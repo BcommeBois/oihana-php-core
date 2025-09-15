@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">now.php</h2>
+        <h2 class="phpdocumentor-content__title">toAssociativeArray.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-date-now.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-objects-toassociativearray.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,16 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-date-now.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-objects-toassociativearray.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-date.html#function_now">now()</a>
+    <a class="" href="namespaces/oihana-core-objects.html#function_toAssociativeArray">toAssociativeArray()</a>
     <span>
-                                &nbsp;: string    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Returns the current date/time as a formatted string.</dd>
+<dd>Recursively converts an object into an associative array.</dd>
 
     </dl>
 
@@ -148,50 +148,43 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-date-now.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-objects-toassociativearray.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_now">
-        now()
-        <a href="namespaces/oihana-core-date.html#function_now" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_toAssociativeArray">
+        toAssociativeArray()
+        <a href="namespaces/oihana-core-objects.html#function_toAssociativeArray" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/date/now.php"><a href="files/src-oihana-core-date-now.html"><abbr title="src/oihana/core/date/now.php">now.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/objects/toAssociativeArray.php"><a href="files/src-oihana-core-objects-toassociativearray.html"><abbr title="src/oihana/core/objects/toAssociativeArray.php">toAssociativeArray.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">62</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns the current date/time as a formatted string.</p>
+        <p class="phpdocumentor-summary">Recursively converts an object into an associative array.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">now</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$timezone</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;UTC&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$format</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;Y-m-dTH:i:s.vZ&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">toAssociativeArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>The <code class="prettyprint">$timezone</code> parameter is used only to interpret the &quot;now&quot; value.
-Regardless of the input timezone, the resulting string is always converted to UTC and formatted with a trailing &quot;Z&quot;.</p>
+        <section class="phpdocumentor-description"><p>This function handles nested objects, ensuring the entire object tree is converted.
+It achieves this by first encoding the object to a JSON string and then decoding it
+back into an associative array. Note that only public properties of the object
+will be included in the resulting array.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$timezone</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;UTC&#039;</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$document</span>
+                : <span class="phpdocumentor-signature__argument__return-type">object</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The timezone identifier (e.g., 'Europe/Paris'). Defaults to 'UTC'.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$format</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;Y-m-dTH:i:s.vZ&#039;</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The date format string compatible with DateTime::format(). Defaults to 'Y-m-d\TH:i:s.v\Z' (ISO 8601 UTC with milliseconds).</p>
+                    <section class="phpdocumentor-description"><p>The object to convert.</p>
 </section>
 
             </dd>
@@ -200,40 +193,52 @@ Regardless of the input timezone, the resulting string is always converted to UT
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-date.html#function_now#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-objects.html#function_toAssociativeArray#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\DateInvalidTimeZoneException">DateInvalidTimeZoneException</abbr></span>
-                                                            
-                                                 <section class="phpdocumentor-description"><p>If the provided timezone string is invalid.</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\DateMalformedStringException">DateMalformedStringException</abbr></span>
-                                                            
-                                                 <section class="phpdocumentor-description"><p>If the date creation fails (should not occur with 'now').</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">example</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo now() ;
-// Output: '2025-07-20T15:30.676Z'
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">// Define some classes for the example.
+class Address
+{
+    public string $street = '123 PHP Avenue';
+    public string $city = 'Codeville';
+}
 
-echo now('Europe/Paris');
-// Output: '2025-07-20T13:30:20.676Z' (always UTC)
+class User
+{
+    public int $id = 42;
+    public string $name = 'John Doe';
+    public Address $address;
+    private string $sessionToken = 'a-very-secret-token'; // This will be ignored.
+
+    public function __construct()
+    {
+        $this-&gt;address = new Address();
+    }
+}
+
+$userObject = new User();
+
+$userArray = toAssociativeArray($userObject);
+
+print_r($userArray);
+// Output:
+// Array
+// (
+//     [id] =&gt; 42
+//     [name] =&gt; John Doe
+//     [address] =&gt; Array
+//         (
+//             [street] =&gt; 123 PHP Avenue
+//             [city] =&gt; Codeville
+//         )
+// )
+// Note that the private property 'sessionToken' is not present.
 </code></pre>
 </section>
 
@@ -259,9 +264,9 @@ echo now('Europe/Paris');
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The formatted current date/time string.</p>
+                <section class="phpdocumentor-description"><p>The resulting associative array.</p>
 </section>
 
             </section>
@@ -273,7 +278,7 @@ echo now('Europe/Paris');
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/date/now.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/objects/toAssociativeArray.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -374,7 +379,7 @@ echo now('Europe/Paris');
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-date-now.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-objects-toassociativearray.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -382,7 +387,7 @@ echo now('Europe/Paris');
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-date.html#function_now">now()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-objects.html#function_toAssociativeArray">toAssociativeArray()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -402,7 +407,7 @@ echo now('Europe/Paris');
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-date-now.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-objects-toassociativearray.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

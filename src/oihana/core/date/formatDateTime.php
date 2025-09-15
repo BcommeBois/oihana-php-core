@@ -15,6 +15,10 @@ use DateTimeZone;
  * date is not valid according to the provided format, it defaults to the current date/time ("now").
  * It then applies the specified timezone and returns the formatted date string.
  *
+ * The `$timezone` parameter is used only to interpret the input date string.
+ * Regardless of the input timezone, the resulting string is always converted to UTC
+ * and formatted with a trailing "Z".
+ *
  * @param string|null $date     The input date/time string to format. If null or invalid, "now" is used.
  * @param string      $timezone The timezone identifier (e.g., 'Europe/Paris'). Defaults to 'UTC'.
  * @param string|null $format   The date format string compatible with DateTime::format().

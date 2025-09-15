@@ -39,6 +39,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - Adds oihana\core\objects\hasAnyProperty
 - Adds oihana\core\objects\hasAllProperties
+- Adds oihana\core\objects\toAssociativeArray
 - 
 - Adds oihana\core\options\CompressOption
 
