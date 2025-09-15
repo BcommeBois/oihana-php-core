@@ -361,6 +361,16 @@ Search.appendIndex(
             "summary": "Ensures\u0020that\u0020a\u0020given\u0020property\u0020of\u0020an\u0020object\u0020is\u0020initialized\u0020as\u0020an\u0020object.",
             "url": "namespaces/oihana-core-objects.html#function_ensureObjectPath"
         },                {
+            "fqsen": "\\oihana\\core\\objects\\hasAllProperties\u0028\u0029",
+            "name": "hasAllProperties",
+            "summary": "Check\u0020if\u0020all\u0020of\u0020the\u0020given\u0020properties\u0020exist\u0020in\u0020the\u0020object.",
+            "url": "namespaces/oihana-core-objects.html#function_hasAllProperties"
+        },                {
+            "fqsen": "\\oihana\\core\\objects\\hasAnyProperty\u0028\u0029",
+            "name": "hasAnyProperty",
+            "summary": "Check\u0020if\u0020at\u0020least\u0020one\u0020of\u0020the\u0020given\u0020properties\u0020exists\u0020in\u0020the\u0020object.",
+            "url": "namespaces/oihana-core-objects.html#function_hasAnyProperty"
+        },                {
             "fqsen": "\\oihana\\core\\objects\\set\u0028\u0029",
             "name": "set",
             "summary": "Sets\u0020a\u0020value\u0020in\u0020an\u0020object\u0020using\u0020a\u0020key\u0020path.",

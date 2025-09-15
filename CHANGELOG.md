@@ -37,6 +37,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\maths\gcd
 - Adds oihana\core\maths\haversine
 
+- Adds oihana\core\objects\hasAnyProperty
+- Adds oihana\core\objects\hasAllProperties
+- 
 - Adds oihana\core\options\CompressOption
 
 - Adds oihana\core\strings\append
