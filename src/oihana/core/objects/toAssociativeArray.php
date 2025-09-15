@@ -3,18 +3,18 @@
 namespace oihana\core\objects ;
 
 /**
- * Recursively converts an object into an associative array.
+ * Recursively converts an object (or array) into a full associative array.
  *
- * This function handles nested objects, ensuring the entire object tree is converted.
- * It achieves this by first encoding the object to a JSON string and then decoding it
- * back into an associative array. Note that only public properties of the object
- * will be included in the resulting array.
+ * This function handles nested objects, ensuring the entire array or object tree is converted.
  *
- * @param object $document The object to convert.
+ * Note that only public properties of the object will be included in the resulting array.
+ *
+ * @param array|object $document An array or object to convert to a deep associative array .
  *
  * @return array The resulting associative array.
  *
  * @example
+ * Convert an object :
  * ```php
  * // Define some classes for the example.
  * class Address
@@ -54,12 +54,34 @@ namespace oihana\core\objects ;
  * // )
  * // Note that the private property 'sessionToken' is not present.
  * ```
+ * Convert an array with sub-objects:
+ * ```php
+ * $data = (object)
+ * [
+ *     'id' => 123,
+ *     'name' => 'Project Alpha',
+ *     'provider' => (object)
+ *     [
+ *        'name' => 'Alice',
+ *        'role' => 'Chef de projet'
+ *     ],
+ *     'team' =>
+ *      [
+ *         (object) ['name' => 'Bob'     ] ,
+ *         (object) ['name' => 'Charlie' ]
+ *      ]
+ * ];
+ *
+ * $arrayAssoc = toAssociativeArray($data);
+ *
+ * print_r($arrayAssoc);
+ * ```
  *
  * @package oihana\core\objects
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
-function toAssociativeArray( object $document ) :array
+function toAssociativeArray( array|object $document ) :array
 {
     return json_decode( json_encode( $document ) , true ) ;
 }

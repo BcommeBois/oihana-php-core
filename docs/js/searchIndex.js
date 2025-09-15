@@ -383,7 +383,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\objects\\toAssociativeArray\u0028\u0029",
             "name": "toAssociativeArray",
-            "summary": "Recursively\u0020converts\u0020an\u0020object\u0020into\u0020an\u0020associative\u0020array.",
+            "summary": "Recursively\u0020converts\u0020an\u0020object\u0020\u0028or\u0020array\u0029\u0020into\u0020a\u0020full\u0020associative\u0020array.",
             "url": "namespaces/oihana-core-objects.html#function_toAssociativeArray"
         },                {
             "fqsen": "\\oihana\\core\\options\\CompressOption",

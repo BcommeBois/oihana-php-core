@@ -138,7 +138,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Recursively converts an object into an associative array.</dd>
+<dd>Recursively converts an object (or array) into a full associative array.</dd>
 
     </dl>
 
@@ -160,31 +160,29 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/objects/toAssociativeArray.php"><a href="files/src-oihana-core-objects-toassociativearray.html"><abbr title="src/oihana/core/objects/toAssociativeArray.php">toAssociativeArray.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">84</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Recursively converts an object into an associative array.</p>
+        <p class="phpdocumentor-summary">Recursively converts an object (or array) into a full associative array.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">toAssociativeArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">toAssociativeArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"><p>This function handles nested objects, ensuring the entire object tree is converted.
-It achieves this by first encoding the object to a JSON string and then decoding it
-back into an associative array. Note that only public properties of the object
-will be included in the resulting array.</p>
+        <section class="phpdocumentor-description"><p>This function handles nested objects, ensuring the entire array or object tree is converted.</p>
+<p>Note that only public properties of the object will be included in the resulting array.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$document</span>
-                : <span class="phpdocumentor-signature__argument__return-type">object</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The object to convert.</p>
+                    <section class="phpdocumentor-description"><p>An array or object to convert to a deep associative array .</p>
 </section>
 
             </dd>
@@ -202,7 +200,8 @@ will be included in the resulting array.</p>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">// Define some classes for the example.
+                                                 <section class="phpdocumentor-description"><p>Convert an object :</p>
+<pre class="prettyprint"><code class="language-php">// Define some classes for the example.
 class Address
 {
     public string $street = '123 PHP Avenue';
@@ -239,6 +238,27 @@ print_r($userArray);
 //         )
 // )
 // Note that the private property 'sessionToken' is not present.
+</code></pre>
+<p>Convert an array with sub-objects:</p>
+<pre class="prettyprint"><code class="language-php">$data = (object)
+[
+    'id' =&gt; 123,
+    'name' =&gt; 'Project Alpha',
+    'provider' =&gt; (object)
+    [
+       'name' =&gt; 'Alice',
+       'role' =&gt; 'Chef de projet'
+    ],
+    'team' =&gt;
+     [
+        (object) ['name' =&gt; 'Bob'     ] ,
+        (object) ['name' =&gt; 'Charlie' ]
+     ]
+];
+
+$arrayAssoc = toAssociativeArray($data);
+
+print_r($arrayAssoc);
 </code></pre>
 </section>
 
