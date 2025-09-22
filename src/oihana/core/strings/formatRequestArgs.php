@@ -40,11 +40,11 @@ function formatRequestArgs( array $params , bool $useNow = false ): string
 {
     if ( empty( $params ) )
     {
-        return '';
+        return '' ;
     }
 
-    $str = '';
-    $first = true;
+    $str   = '' ;
+    $first = true ;
 
     foreach ( $params as $key => $value )
     {
@@ -60,5 +60,5 @@ function formatRequestArgs( array $params , bool $useNow = false ): string
         $first = false ;
     }
 
-    return $str;
+    return $str ;
 }
