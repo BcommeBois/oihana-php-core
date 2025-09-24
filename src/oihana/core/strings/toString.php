@@ -47,9 +47,14 @@ function toString( mixed $value): string
         return '' ;
     }
 
-    if ( is_string( $value ) || $value instanceof Stringable )
+    if ( is_string($value) )
     {
         return $value ;
+    }
+
+    if ( $value instanceof Stringable )
+    {
+        return (string) $value ;
     }
 
     if ( is_array( $value ) )
