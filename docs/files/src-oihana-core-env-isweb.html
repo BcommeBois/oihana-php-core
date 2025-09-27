@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">formatRequestArgs.php</h2>
+        <h2 class="phpdocumentor-content__title">isWeb.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-strings-formatrequestargs.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-env-isweb.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,17 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-strings-formatrequestargs.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-env-isweb.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-strings.html#function_formatRequestArgs">formatRequestArgs()</a>
+    <a class="" href="namespaces/oihana-core-env.html#function_isWeb">isWeb()</a>
     <span>
-                                &nbsp;: string    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd>Builds a query string (`?key=value&amp;...`) from an associative array,
-properly URL-encoding both keys and values.</dd>
+<dd>Checks if the PHP script is running in a Web server context (not CLI).</dd>
 
     </dl>
 
@@ -149,60 +148,37 @@ properly URL-encoding both keys and values.</dd>
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-strings-formatrequestargs.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-env-isweb.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_formatRequestArgs">
-        formatRequestArgs()
-        <a href="namespaces/oihana-core-strings.html#function_formatRequestArgs" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_isWeb">
+        isWeb()
+        <a href="namespaces/oihana-core-env.html#function_isWeb" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/formatRequestArgs.php"><a href="files/src-oihana-core-strings-formatrequestargs.html"><abbr title="src/oihana/core/strings/formatRequestArgs.php">formatRequestArgs.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/env/isWeb.php"><a href="files/src-oihana-core-env-isweb.html"><abbr title="src/oihana/core/env/isWeb.php">isWeb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Builds a query string (`?key=value&amp;...`) from an associative array,
-properly URL-encoding both keys and values.</p>
+        <p class="phpdocumentor-summary">Checks if the PHP script is running in a Web server context (not CLI).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">formatRequestArgs</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useNow</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">isWeb</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"><p>Optionally replaces the value of the <code class="prettyprint">from</code> key with <code class="prettyprint">&quot;now&quot;</code> if <code class="prettyprint">$useNow</code> is set to <code class="prettyprint">true</code>.
-This is useful for formatting request parameters in URLs or APIs.</p>
+        <section class="phpdocumentor-description"><p>Returns <code class="prettyprint">true</code> if PHP is executed via HTTP (e.g., Slim, Symfony HTTP, WordPress).</p>
 </section>
 
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The associative array of parameters (e.g., <code class="prettyprint">['from' =&gt; 'yesterday', 'limit' =&gt; 10]</code>).</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$useNow</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Whether to override the <code class="prettyprint">'from'</code> key with <code class="prettyprint">'now'</code> if it exists.</p>
-</section>
-
-            </dd>
-            </dl>
-
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-strings.html#function_formatRequestArgs#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-env.html#function_isWeb#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -211,20 +187,12 @@ This is useful for formatting request parameters in URLs or APIs.</p>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo formatRequestArgs(['from' =&gt; '2023-01-01', 'limit' =&gt; 10]);
-// Output: &quot;?from=2023-01-01&amp;limit=10&quot;
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\env\isWeb;
 
-echo formatRequestArgs(['from' =&gt; 'yesterday', 'limit' =&gt; 5], true);
-// Output: &quot;?from=now&amp;limit=5&quot;
-
-echo formatRequestArgs([]);
-// Output: &quot;&quot;
-
-echo formatRequestArgs(['search' =&gt; 'php functions', 'page' =&gt; 2]);
-// Output: &quot;?search=php%20functions&amp;page=2&quot;
-
-echo formatRequestArgs(['filter' =&gt; '{&quot;key&quot;:&quot;category&quot;,&quot;op&quot;:&quot;eq&quot;,&quot;val&quot;:&quot;5&quot;}']);
-// Output: &quot;?filter=%7B%22key%22%3A%22category%22%2C%22op%22%3A%22eq%22%2C%22val%22%3A%225%22%7D&quot;
+if (isWeb())
+{
+   echo &quot;Web mode\n&quot;;
+}
 </code></pre>
 </section>
 
@@ -234,7 +202,7 @@ echo formatRequestArgs(['filter' =&gt; '{&quot;key&quot;:&quot;category&quot;,&q
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
 </section>
 
                                     </dd>
@@ -250,9 +218,9 @@ echo formatRequestArgs(['filter' =&gt; '{&quot;key&quot;:&quot;category&quot;,&q
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
+        <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>A URL-compatible query string, starting with <code class="prettyprint">?</code>, or an empty string if <code class="prettyprint">$params</code> is empty.</p>
+                <section class="phpdocumentor-description"><p><code class="prettyprint">true</code> if the script is running in a web context, <code class="prettyprint">false</code> otherwise</p>
 </section>
 
             </section>
@@ -264,7 +232,7 @@ echo formatRequestArgs(['filter' =&gt; '{&quot;key&quot;:&quot;category&quot;,&q
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/formatRequestArgs.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/env/isWeb.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -365,7 +333,7 @@ echo formatRequestArgs(['filter' =&gt; '{&quot;key&quot;:&quot;category&quot;,&q
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-strings-formatrequestargs.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-env-isweb.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -373,7 +341,7 @@ echo formatRequestArgs(['filter' =&gt; '{&quot;key&quot;:&quot;category&quot;,&q
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_formatRequestArgs">formatRequestArgs()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-env.html#function_isWeb">isWeb()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -393,7 +361,7 @@ echo formatRequestArgs(['filter' =&gt; '{&quot;key&quot;:&quot;category&quot;,&q
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-strings-formatrequestargs.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-env-isweb.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

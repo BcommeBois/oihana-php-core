@@ -271,6 +271,81 @@ Search.appendIndex(
             "summary": "Hydrates\u0020or\u0020formats\u0020a\u0020document\u0020\u0028array\u0020or\u0020object\u0029\u0020in\u0020place\u0020by\u0020replacing\u0020placeholders\nwith\u0020corresponding\u0020values\u0020from\u0020a\u0020source\u0020document.",
             "url": "namespaces/oihana-core-documents.html#function_resolvePlaceholders"
         },                {
+            "fqsen": "\\oihana\\core\\env\\cpuCount\u0028\u0029",
+            "name": "cpuCount",
+            "summary": "Returns\u0020the\u0020number\u0020of\u0020CPUs\u0020available\u0020\u0028if\u0020detectable\u0029.",
+            "url": "namespaces/oihana-core-env.html#function_cpuCount"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isCli\u0028\u0029",
+            "name": "isCli",
+            "summary": "Checks\u0020if\u0020the\u0020PHP\u0020script\u0020is\u0020running\u0020in\u0020CLI\u0020mode\u0020\u0028terminal,\u0020cron,\u0020Symfony\u0020Console\u2026\u0029.",
+            "url": "namespaces/oihana-core-env.html#function_isCli"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isCliWithFile\u0028\u0029",
+            "name": "isCliWithFile",
+            "summary": "Checks\u0020if\u0020the\u0020PHP\u0020script\u0020is\u0020running\u0020in\u0020CLI\u0020mode\u0020\u002A\u002Aand\u002A\u002A\u0020was\u0020launched\u0020with\u0020an\u0020actual\u0020file.",
+            "url": "namespaces/oihana-core-env.html#function_isCliWithFile"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isColorTerminal\u0028\u0029",
+            "name": "isColorTerminal",
+            "summary": "Checks\u0020if\u0020the\u0020CLI\u0020supports\u0020colors.",
+            "url": "namespaces/oihana-core-env.html#function_isColorTerminal"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isCron\u0028\u0029",
+            "name": "isCron",
+            "summary": "Checks\u0020if\u0020the\u0020script\u0020is\u0020likely\u0020running\u0020from\u0020a\u0020cron\u0020job.",
+            "url": "namespaces/oihana-core-env.html#function_isCron"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isDebug\u0028\u0029",
+            "name": "isDebug",
+            "summary": "Checks\u0020if\u0020PHP\u0020is\u0020running\u0020in\u0020debug\u0020mode.",
+            "url": "namespaces/oihana-core-env.html#function_isDebug"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isDocker\u0028\u0029",
+            "name": "isDocker",
+            "summary": "Checks\u0020if\u0020PHP\u0020is\u0020running\u0020inside\u0020a\u0020Docker\u0020container.",
+            "url": "namespaces/oihana-core-env.html#function_isDocker"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isExtensionLoaded\u0028\u0029",
+            "name": "isExtensionLoaded",
+            "summary": "Checks\u0020if\u0020a\u0020PHP\u0020extension\u0020is\u0020loaded.",
+            "url": "namespaces/oihana-core-env.html#function_isExtensionLoaded"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isInteractive\u0028\u0029",
+            "name": "isInteractive",
+            "summary": "Checks\u0020if\u0020the\u0020script\u0020is\u0020running\u0020in\u0020an\u0020interactive\u0020CLI\u0020\u0028php\u0020\u002Da\u0020or\u0020terminal\u0020input\u0029.",
+            "url": "namespaces/oihana-core-env.html#function_isInteractive"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isLinux\u0028\u0029",
+            "name": "isLinux",
+            "summary": "Indicates\u0020if\u0020the\u0020OS\u0020system\u0020is\u0020Linux.",
+            "url": "namespaces/oihana-core-env.html#function_isLinux"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isMac\u0028\u0029",
+            "name": "isMac",
+            "summary": "Indicates\u0020if\u0020the\u0020OS\u0020system\u0020is\u0020Mac.",
+            "url": "namespaces/oihana-core-env.html#function_isMac"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isOtherOS\u0028\u0029",
+            "name": "isOtherOS",
+            "summary": "Checks\u0020if\u0020the\u0020operating\u0020system\u0020is\u0020\u002A\u002Anot\u0020Windows,\u0020Mac,\u0020or\u0020Linux\u002A\u002A.",
+            "url": "namespaces/oihana-core-env.html#function_isOtherOS"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isWeb\u0028\u0029",
+            "name": "isWeb",
+            "summary": "Checks\u0020if\u0020the\u0020PHP\u0020script\u0020is\u0020running\u0020in\u0020a\u0020Web\u0020server\u0020context\u0020\u0028not\u0020CLI\u0029.",
+            "url": "namespaces/oihana-core-env.html#function_isWeb"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\isWindows\u0028\u0029",
+            "name": "isWindows",
+            "summary": "Indicates\u0020if\u0020the\u0020OS\u0020system\u0020is\u0020Windows.",
+            "url": "namespaces/oihana-core-env.html#function_isWindows"
+        },                {
+            "fqsen": "\\oihana\\core\\env\\phpVersion\u0028\u0029",
+            "name": "phpVersion",
+            "summary": "Returns\u0020the\u0020current\u0020PHP\u0020version.",
+            "url": "namespaces/oihana-core-env.html#function_phpVersion"
+        },                {
             "fqsen": "\\oihana\\core\\helpers\\conditions\u0028\u0029",
             "name": "conditions",
             "summary": "Normalize\u0020a\u0020set\u0020of\u0020conditions\u0020into\u0020an\u0020array\u0020of\u0020callable\u0020functions.",
@@ -528,7 +603,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\strings\\formatRequestArgs\u0028\u0029",
             "name": "formatRequestArgs",
-            "summary": "Builds\u0020a\u0020query\u0020string\u0020\u0028\u0060\u003Fkey\u003Dvalue\u0026...\u0060\u0029\u0020from\u0020an\u0020associative\u0020array.",
+            "summary": "Builds\u0020a\u0020query\u0020string\u0020\u0028\u0060\u003Fkey\u003Dvalue\u0026...\u0060\u0029\u0020from\u0020an\u0020associative\u0020array,\nproperly\u0020URL\u002Dencoding\u0020both\u0020keys\u0020and\u0020values.",
             "url": "namespaces/oihana-core-strings.html#function_formatRequestArgs"
         },                {
             "fqsen": "\\oihana\\core\\strings\\func\u0028\u0029",
@@ -790,6 +865,11 @@ Search.appendIndex(
             "name": "documents",
             "summary": "",
             "url": "namespaces/oihana-core-documents.html"
+        },                {
+            "fqsen": "\\oihana\\core\\env",
+            "name": "env",
+            "summary": "",
+            "url": "namespaces/oihana-core-env.html"
         },                {
             "fqsen": "\\oihana\\core\\helpers",
             "name": "helpers",

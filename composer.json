@@ -74,6 +74,22 @@
             "src/oihana/core/documents/formatDocumentWith.php",
             "src/oihana/core/documents/resolvePlaceholders.php" ,
             
+            "src/oihana/core/env/cpuCount.php",
+            "src/oihana/core/env/isCli.php",
+            "src/oihana/core/env/isCliWithFile.php",
+            "src/oihana/core/env/isColorTerminal.php",
+            "src/oihana/core/env/isCron.php",
+            "src/oihana/core/env/isDebug.php",
+            "src/oihana/core/env/isDocker.php",
+            "src/oihana/core/env/isExtensionLoaded.php",
+            "src/oihana/core/env/isInteractive.php",
+            "src/oihana/core/env/isLinux.php",
+            "src/oihana/core/env/isMac.php",
+            "src/oihana/core/env/isOtherOS.php",
+            "src/oihana/core/env/isWeb.php",
+            "src/oihana/core/env/isWindows.php",
+            "src/oihana/core/env/phpVersion.php",
+            
             "src/oihana/core/helpers/conditions.php",
             
             "src/oihana/core/json/deepJsonSerialize.php",
@@ -150,7 +166,8 @@
     },
     "require": {
         "php": ">=8.4",
-        "ext-intl": "*"
+        "ext-intl": "*" ,
+        "ext-posix" : "*"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit" ,

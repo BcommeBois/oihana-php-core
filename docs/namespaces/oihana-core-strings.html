@@ -269,7 +269,8 @@ is separated by a dot (.) from the rest, which are joined using kebab-case (-).<
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Builds a query string (`?key=value&amp;...`) from an associative array.</dd>
+<dd>Builds a query string (`?key=value&amp;...`) from an associative array,
+properly URL-encoding both keys and values.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_func">func()</a>
@@ -2699,11 +2700,12 @@ echo formatQuotedString(&quot;Use \\ backslash&quot;, 'double');    // &quot;Use
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/formatRequestArgs.php"><a href="files/src-oihana-core-strings-formatrequestargs.html"><abbr title="src/oihana/core/strings/formatRequestArgs.php">formatRequestArgs.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Builds a query string (`?key=value&amp;...`) from an associative array.</p>
+        <p class="phpdocumentor-summary">Builds a query string (`?key=value&amp;...`) from an associative array,
+properly URL-encoding both keys and values.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -2758,7 +2760,10 @@ echo formatRequestArgs([]);
 // Output: &quot;&quot;
 
 echo formatRequestArgs(['search' =&gt; 'php functions', 'page' =&gt; 2]);
-// Output: &quot;?search=php functions&amp;page=2&quot;
+// Output: &quot;?search=php%20functions&amp;page=2&quot;
+
+echo formatRequestArgs(['filter' =&gt; '{&quot;key&quot;:&quot;category&quot;,&quot;op&quot;:&quot;eq&quot;,&quot;val&quot;:&quot;5&quot;}']);
+// Output: &quot;?filter=%7B%22key%22%3A%22category%22%2C%22op%22%3A%22eq%22%2C%22val%22%3A%225%22%7D&quot;
 </code></pre>
 </section>
 

@@ -14,10 +14,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\accessors\deleteKeyValue
 - Adds oihana\core\accessors\getKeyValue
 - Adds oihana\core\accessors\hasKeyValue
+- Adds oihana\core\accessors\resolveReferencePath
 - Adds oihana\core\accessors\setKeyValue
 
 - Adds oihana\core\arrays\CleanFlag
 - Adds oihana\core\arrays\clean
+- Adds oihana\core\arrays\ensureArrayPath
 - Adds oihana\core\arrays\getFirstKey
 - Adds oihana\core\arrays\getFirstValue
  
@@ -28,6 +30,24 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\documents\formatDocumentWith
 - Adds oihana\core\documents\resolvePlaceholders
 
+- Adds oihana\core\env\cpuCount
+- Adds oihana\core\env\isCli
+- Adds oihana\core\env\isCliWithFile
+- Adds oihana\core\env\isColorTerminal
+- Adds oihana\core\env\isCron
+- Adds oihana\core\env\isDebug
+- Adds oihana\core\env\isDocker
+- Adds oihana\core\env\isExtensionLoaded
+- Adds oihana\core\env\isInteractive
+- Adds oihana\core\env\isLinux
+- Adds oihana\core\env\isMac
+- Adds oihana\core\env\isOtherOS
+- Adds oihana\core\env\isWeb
+- Adds oihana\core\env\isWindows
+- Adds oihana\core\env\phpVersion
+
+- Adds oihana\core\helpers\conditions
+
 - Adds oihana\core\json\deepJsonSerialize
 - Adds oihana\core\json\isValidJsonDecodeFlags
 - Adds oihana\core\json\isValidJsonEncodeFlags
@@ -37,8 +57,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Adds oihana\core\maths\gcd
 - Adds oihana\core\maths\haversine
 
-- Adds oihana\core\objects\hasAnyProperty
+- Adds oihana\core\arrays\ensureObjectPath
 - Adds oihana\core\objects\hasAllProperties
+- Adds oihana\core\objects\hasAnyProperty
+- Adds oihana\core\objects\setObjectValue
 - Adds oihana\core\objects\toAssociativeArray
 - 
 - Adds oihana\core\options\CompressOption
