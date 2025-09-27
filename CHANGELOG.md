@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.6] - 2025-09-27
+
 ### Added
 - **Core:**
   - Add `isLiteral()` function.
