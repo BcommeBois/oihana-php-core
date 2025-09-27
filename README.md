@@ -22,7 +22,7 @@ Designed for clarity, extensibility, and performance, with a consistent, functio
 - [🧾 License](#license)
 - [👤 About the author](#about-the-author)
 
-## ✨ Core Packages
+## Core Packages
 
 The library provides a suite of pure, side-effect-free utility functions organized into logical namespaces. Here’s a summary of what each package offers:
 
@@ -42,7 +42,7 @@ The library provides a suite of pure, side-effect-free utility functions organiz
 | `oihana\core\strings` | A comprehensive set of tools for string formatting, case conversion, validation, and generation. |
 | `oihana\core` (Utils) | General-purpose utilities, such as `ifNull()` and `isLiteral()`. |
 
-## 📚 Documentation
+## Documentation
 
 Full project documentation is available at:
 👉 https://bcommebois.github.io/oihana-php-core
@@ -50,7 +50,7 @@ Full project documentation is available at:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - License: [MPL-2.0](./LICENSE)
 
-## 📦️ Installation
+## Installation
 
 > **Requires [PHP 8.4+](https://php.net/releases/)**
 
@@ -60,7 +60,7 @@ Install via [Composer](https://getcomposer.org):
 composer require oihana/php-core
 ```
 
-## 💡 Features
+## Features
 
 The oihana/php-core library provides pure utility functions (no side effects), organized into logical, reusable packages:
 
@@ -141,7 +141,7 @@ General-purpose helpers:
 - `ifNull()` — return a fallback if a value is null
 - `isLiteral()` — check if a value is a literal
 
-## 🚀 Quick Start
+## Quick Start
 
 Most helpers are loaded via Composer autoload. You can import functions directly using `use function` and call them.
 
@@ -169,7 +169,7 @@ echo getKeyValue($doc, 'user.email');      // a@b.c
 $doc = setKeyValue($doc, 'user.age', 30);  // adds nested property safely
 ```
 
-## 🧪 Examples
+## Examples
 
 ### Accessors: work with arrays and objects
 ```php
@@ -245,7 +245,7 @@ echo clip(-5, 0, 10); // 0
 echo clip(5, 0, 10);  // 5
 ```
 
-## ✅ Running Unit Tests
+## Running Unit Tests
 
 To run all tests:
 ```shell
@@ -257,7 +257,7 @@ To run a specific test file:
 $ composer test tests/oihana/core/arrays/FlattenTest.php
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Whether you're fixing a bug, improving an existing feature, or proposing a new one, your help is appreciated.
 
@@ -268,10 +268,10 @@ Please feel free to:
 
 You can find the issues page here: [https://github.com/BcommeBois/oihana-php-core/issues](https://github.com/BcommeBois/oihana-php-core/issues)
 
-## 🧾 License
+## License
 This project is licensed under the [Mozilla Public License 2.0 (MPL-2.0)](https://www.mozilla.org/en-US/MPL/2.0/).
 
-## 👤 About the author
+## About the author
 - Author : Marc ALCARAZ (aka eKameleon)
 - Mail : [marc@ooop.fr](mailto:marc@ooop.fr)
 - Website : http://www.ooop.fr
