@@ -786,6 +786,11 @@ Search.appendIndex(
             "summary": "Converts\u0020a\u0020value\u0020to\u0020a\u0020string\u0020representation.",
             "url": "namespaces/oihana-core-strings.html#function_toString"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\uniqueKey\u0028\u0029",
+            "name": "uniqueKey",
+            "summary": "Generates\u0020a\u0020unique,\u0020deterministic\u0020key\u0020from\u0020context\u0020and\u0020parameters.",
+            "url": "namespaces/oihana-core-strings.html#function_uniqueKey"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\urlencode\u0028\u0029",
             "name": "urlencode",
             "summary": "Encodes\u0020the\u0020specified\u0020URI\u0020according\u0020to\u0020RFC\u00203986.",

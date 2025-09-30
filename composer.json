@@ -160,6 +160,7 @@
             "src/oihana/core/strings/toPhpString.php",
             "src/oihana/core/strings/toString.php",
             "src/oihana/core/strings/urlencode.php",
+            "src/oihana/core/strings/uniqueKey.php",
             "src/oihana/core/strings/wrap.php" ,
             "src/oihana/core/strings/wrapBlock.php"
         ]

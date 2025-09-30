@@ -463,6 +463,13 @@ which ensures multi-byte characters (like emojis, accented letters) are not brok
 <dd>Converts a value to a string representation.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_uniqueKey">uniqueKey()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Generates a unique, deterministic key from context and parameters.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_urlencode">urlencode()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -5772,6 +5779,171 @@ echo toString(new Foo()); // Outputs: &quot;foo&quot;
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_uniqueKey">
+        uniqueKey()
+        <a href="namespaces/oihana-core-strings.html#function_uniqueKey" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/uniqueKey.php"><a href="files/src-oihana-core-strings-uniquekey.html"><abbr title="src/oihana/core/strings/uniqueKey.php">uniqueKey.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">74</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Generates a unique, deterministic key from context and parameters.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">uniqueKey</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$context</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$binds</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prefix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;:&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$hash</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>This function produces a stable key suitable for caching or indexing.
+The key is guaranteed to be identical for the same input values regardless of
+parameter order. Values are serialized consistently, and the final key is
+optionally hashed using SHA-256 to produce a fixed-length string.</p>
+<p>Key generation process:</p>
+<ol>
+<li>Start with the prefix (e.g., cache namespace)</li>
+<li>Add the context identifier if provided</li>
+<li>Sort bind parameters alphabetically by key</li>
+<li>Serialize each bind value according to its type:</li>
+</ol>
+<ul>
+<li>null      → 'null'</li>
+<li>boolean   → 'true' or 'false'</li>
+<li>array     → JSON encoded</li>
+<li>object    → serialized, unless a Closure → 'closure'</li>
+<li>other     → cast to string</li>
+</ul>
+<ol start="5">
+<li>Join all parts with the separator</li>
+<li>Normalize the resulting string using Normalizer::FORM_C</li>
+<li>Optionally hash the string with SHA-256</li>
+</ol>
+<p>Type handling for bind values:</p>
+<ul>
+<li>null     → 'null'</li>
+<li>boolean  → 'true' or 'false'</li>
+<li>array    → JSON encoded</li>
+<li>object   → JSON encoded</li>
+<li>other    → string cast</li>
+</ul>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$context</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Context identifier (e.g., operation or query name)
+used to differentiate cache entries.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$binds</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Associative array of parameters to include in the key.
+Keys are sorted alphabetically to ensure consistency.
+Values can be scalars, arrays, objects, or closures.
+Example: ['provider' =&gt; 'P123', 'date' =&gt; '2025-01-15']</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$prefix</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional prefix or namespace for the key (default: '').</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$separator</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;:&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Character used to join key parts (default: ':').</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$hash</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether to hash the final key using SHA-256 (default: true).
+If false, returns the normalized, joined string.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_uniqueKey#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>1 - Basic usage</p>
+<pre class="prettyprint"><code class="language-php">$key = uniqueKey
+(
+    context : 'product_price',
+    binds   : ['product_id' =&gt; 123, 'warehouse' =&gt; 'W01'],
+    prefix  : 'prices'
+);
+// Returns: &quot;a1b2c3d4...&quot; (SHA-256 hash)
+</code></pre>
+<p>2 - Same parameters in different order produce identical keys</p>
+<pre class="prettyprint"><code class="language-php">$key1 = uniqueKey(context: 'test', binds: ['a' =&gt; 1, 'b' =&gt; 2]);
+$key2 = uniqueKey(context: 'test', binds: ['b' =&gt; 2, 'a' =&gt; 1]);
+// $key1 === $key2 (true)
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>SHA-256 hash (64 hexadecimal characters) or normalized key string if $hash is false.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_urlencode">
         urlencode()
         <a href="namespaces/oihana-core-strings.html#function_urlencode" class="headerlink"><i class="fas fa-link"></i></a>
@@ -6241,6 +6413,7 @@ echo wrap('column', '&quot;'); // &quot;column&quot;
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpHumanReadableScalar">toPhpHumanReadableScalar()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpString">toPhpString()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toString">toString()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_uniqueKey">uniqueKey()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_urlencode">urlencode()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_wrap">wrap()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_wrapBlock">wrapBlock()</a></li>
