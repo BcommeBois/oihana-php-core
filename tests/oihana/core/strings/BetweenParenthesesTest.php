@@ -17,6 +17,10 @@ class BetweenParenthesesTest extends TestCase
         // Test with an array
         $this->assertEquals('(a b c)', betweenParentheses(['a', 'b', 'c']));
 
+        // Test with an array and double quotes
+        $this->assertEquals('(a b "c")', betweenParentheses(['a', 'b', '"c"']));
+        $this->assertEquals('(a,b,"c")', betweenParentheses(['a', 'b', '"c"'], separator: ',', trim: false));
+
         // Test with an array and custom separator
         $this->assertEquals('(a-b-c)', betweenParentheses(['a', 'b', 'c'], true, '-'));
 

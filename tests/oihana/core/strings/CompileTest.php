@@ -30,6 +30,8 @@ final class CompileTest extends TestCase
     public function testCompileWithArrayContainingEmptyValues(): void
     {
         $this->assertSame('foo bar', compile(['foo', '', null, 'bar']));
+
+        $this->assertSame('foo "bar"', compile(['foo', '', null, '"bar"']));
     }
 
     public function testCompileWithNestedArray(): void
