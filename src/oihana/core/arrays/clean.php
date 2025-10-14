@@ -12,13 +12,14 @@ use InvalidArgumentException;
  *
  * ### Supported flags from `CleanFlag`:
  *
- * - `CleanFlag::NULLS`     : Removes `null` values.
- * - `CleanFlag::EMPTY`     : Removes empty strings (`''`).
- * - `CleanFlag::TRIM`      : Trims strings and treats whitespace-only strings as empty.
- * - `CleanFlag::EMPTY_ARR` : Removes empty arrays (after recursive cleaning).
- * - `CleanFlag::RECURSIVE` : Cleans nested arrays recursively.
- * - `CleanFlag::FALSY`     : Removes all PHP falsy values (`null`, `''`, `0`, `0.0`, `'0'`, `false`, `[]`).
- * - `CleanFlag::MAIN`      : Shortcut for enabling all the main flags: `NULLS | EMPTY | EMPTY_ARR | TRIM`.
+ * - `CleanFlag::NULLS`       : Removes `null` values.
+ * - `CleanFlag::EMPTY`       : Removes empty strings (`''`).
+ * - `CleanFlag::TRIM`        : Trims strings and treats whitespace-only strings as empty.
+ * - `CleanFlag::EMPTY_ARR`   : Removes empty arrays (after recursive cleaning).
+ * - `CleanFlag::RECURSIVE`   : Cleans nested arrays recursively.
+ * - `CleanFlag::FALSY`       : Removes all PHP falsy values (`null`, `''`, `0`, `0.0`, `'0'`, `false`, `[]`).
+ * - `CleanFlag::MAIN`        : Shortcut for enabling all the main flags: `NULLS | EMPTY | EMPTY_ARR | TRIM`.
+ * - `CleanFlag::RETURN_NULL` : Returns null if the final array is empty.
  *
  * ### Default behavior
  *
@@ -38,9 +39,10 @@ use InvalidArgumentException;
  * @param array $array The input array to clean. Nested arrays are processed only if `CleanFlag::RECURSIVE` is set.
  * @param int   $flags A bitmask of `CleanFlag` values. Defaults to `CleanFlag::DEFAULT`.
  *
- * @return array The filtered array:
+ * @return ?array The filtered array:
  *   - **Associative arrays:** keys are preserved.
- *   - **Indexed arrays:** automatically reindexed to remove numeric gaps.
+ *   - **Indexed arrays:** automatically reindex to remove numeric gaps.
+ *   - null if the final array is empty and the CleanFlag::RETURN_NULL option is used.
  *
  * @example
  * **1. Basic cleaning: remove nulls and empty strings**
@@ -103,6 +105,19 @@ use InvalidArgumentException;
  * // Equivalent to CleanFlag::DEFAULT
  * ```
  *
+ **7. Return null if the cleaned array is empty**
+ * ```php
+ * $data = ['', null, '   '];
+ * $result = clean($data, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL);
+ * // null (instead of [])
+ *
+ * // Useful for validation
+ * $cleaned = clean($userInput, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL);
+ * if ($cleaned === null) {
+ *     throw new Exception('No valid data provided');
+ * }
+ * ```
+ *
  * @see CleanFlag For available cleaning flags and default behavior.
  * @see isIndexed() To determine if an array is numerically indexed.
  *
@@ -110,7 +125,7 @@ use InvalidArgumentException;
  * @author  Marc Alcaraz
  * @since   1.0.6
  */
-function clean( array $array = [], int $flags = CleanFlag::DEFAULT ): array
+function clean( array $array = [], int $flags = CleanFlag::DEFAULT ): ?array
 {
     if ( ! CleanFlag::isValid( $flags ) )
     {
@@ -193,6 +208,11 @@ function clean( array $array = [], int $flags = CleanFlag::DEFAULT ): array
                 $result[ $key ] = $value ;
             }
         }
+    }
+
+    if ( empty( $result ) && ( $flags & CleanFlag::RETURN_NULL ) !== 0 )
+    {
+        return null;
     }
 
     return $result;

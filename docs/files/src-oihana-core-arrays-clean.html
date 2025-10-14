@@ -136,7 +136,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_clean">clean()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|null    </span>
 </dt>
 <dd>Cleans an array by removing unwanted values based on bitwise flags from the `CleanFlag` enum.</dd>
 
@@ -160,7 +160,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/clean.php"><a href="files/src-oihana-core-arrays-clean.html"><abbr title="src/oihana/core/arrays/clean.php">clean.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">113</span>
+    <span class="phpdocumentor-element-found-in__line">128</span>
 
     </aside>
 
@@ -169,19 +169,20 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">clean</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">CleanFlag::DEFAULT</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">clean</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">CleanFlag::DEFAULT</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span></code>
 
         <section class="phpdocumentor-description"><p>This function allows flexible and recursive filtering of arrays.
 Cleaning behavior is fully customizable via bitwise flags.</p>
 <h3>Supported flags from <code class="prettyprint">CleanFlag</code>:</h3>
 <ul>
-<li><code class="prettyprint">CleanFlag::NULLS</code>     : Removes <code class="prettyprint">null</code> values.</li>
-<li><code class="prettyprint">CleanFlag::EMPTY</code>     : Removes empty strings (<code class="prettyprint">''</code>).</li>
-<li><code class="prettyprint">CleanFlag::TRIM</code>      : Trims strings and treats whitespace-only strings as empty.</li>
-<li><code class="prettyprint">CleanFlag::EMPTY_ARR</code> : Removes empty arrays (after recursive cleaning).</li>
-<li><code class="prettyprint">CleanFlag::RECURSIVE</code> : Cleans nested arrays recursively.</li>
-<li><code class="prettyprint">CleanFlag::FALSY</code>     : Removes all PHP falsy values (<code class="prettyprint">null</code>, <code class="prettyprint">''</code>, <code class="prettyprint">0</code>, <code class="prettyprint">0.0</code>, <code class="prettyprint">'0'</code>, <code class="prettyprint">false</code>, <code class="prettyprint">[]</code>).</li>
-<li><code class="prettyprint">CleanFlag::MAIN</code>      : Shortcut for enabling all the main flags: <code class="prettyprint">NULLS | EMPTY | EMPTY_ARR | TRIM</code>.</li>
+<li><code class="prettyprint">CleanFlag::NULLS</code>       : Removes <code class="prettyprint">null</code> values.</li>
+<li><code class="prettyprint">CleanFlag::EMPTY</code>       : Removes empty strings (<code class="prettyprint">''</code>).</li>
+<li><code class="prettyprint">CleanFlag::TRIM</code>        : Trims strings and treats whitespace-only strings as empty.</li>
+<li><code class="prettyprint">CleanFlag::EMPTY_ARR</code>   : Removes empty arrays (after recursive cleaning).</li>
+<li><code class="prettyprint">CleanFlag::RECURSIVE</code>   : Cleans nested arrays recursively.</li>
+<li><code class="prettyprint">CleanFlag::FALSY</code>       : Removes all PHP falsy values (<code class="prettyprint">null</code>, <code class="prettyprint">''</code>, <code class="prettyprint">0</code>, <code class="prettyprint">0.0</code>, <code class="prettyprint">'0'</code>, <code class="prettyprint">false</code>, <code class="prettyprint">[]</code>).</li>
+<li><code class="prettyprint">CleanFlag::MAIN</code>        : Shortcut for enabling all the main flags: <code class="prettyprint">NULLS | EMPTY | EMPTY_ARR | TRIM</code>.</li>
+<li><code class="prettyprint">CleanFlag::RETURN_NULL</code> : Returns null if the final array is empty.</li>
 </ul>
 <h3>Default behavior</h3>
 <p>Using <code class="prettyprint">CleanFlag::DEFAULT</code> is equivalent to enabling:</p>
@@ -279,6 +280,17 @@ $result = clean($data, CleanFlag::FALSY);
 <pre class="prettyprint"><code class="language-php">$result = clean($data);
 // Equivalent to CleanFlag::DEFAULT
 </code></pre>
+<p><em>7. Return null if the cleaned array is empty</em>*</p>
+<pre class="prettyprint"><code class="language-php">$data = ['', null, '   '];
+$result = clean($data, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL);
+// null (instead of [])
+
+// Useful for validation
+$cleaned = clean($userInput, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL);
+if ($cleaned === null) {
+    throw new Exception('No valid data provided');
+}
+</code></pre>
 </section>
 
                                     </dd>
@@ -323,12 +335,13 @@ $result = clean($data, CleanFlag::FALSY);
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The filtered array:</p>
 <ul>
 <li><strong>Associative arrays:</strong> keys are preserved.</li>
-<li><strong>Indexed arrays:</strong> automatically reindexed to remove numeric gaps.</li>
+<li><strong>Indexed arrays:</strong> automatically reindex to remove numeric gaps.</li>
+<li>null if the final array is empty and the CleanFlag::RETURN_NULL option is used.</li>
 </ul>
 </section>
 

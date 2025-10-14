@@ -67,6 +67,12 @@ class CleanFlag
     public const int FALSY = 1 << 5;
 
     /**
+     * Return null instead of empty array when result is empty
+     * @var int
+     */
+    public const int RETURN_NULL = 1 << 6 ;
+
+    /**
      * All valid flags combined (used for validation)
      */
     public const int ALL = self::NULLS
@@ -75,6 +81,7 @@ class CleanFlag
                          | self::RECURSIVE
                          | self::EMPTY_ARR
                          | self::FALSY
+                         | self::RETURN_NULL
                          ;
 
     /**
@@ -106,7 +113,8 @@ class CleanFlag
         self::TRIM ,
         self::RECURSIVE ,
         self::EMPTY_ARR ,
-        self::FALSY
+        self::FALSY ,
+        self::RETURN_NULL ,
     ];
 
     /**
@@ -114,12 +122,13 @@ class CleanFlag
      */
     public const array FLAGS_NAME =
     [
-        self::NULLS     => 'NULLS',
-        self::EMPTY     => 'EMPTY',
-        self::TRIM      => 'TRIM',
-        self::RECURSIVE => 'RECURSIVE',
-        self::EMPTY_ARR => 'EMPTY_ARR',
-        self::FALSY     => 'FALSY'
+        self::NULLS       => 'NULLS',
+        self::EMPTY       => 'EMPTY',
+        self::TRIM        => 'TRIM',
+        self::RECURSIVE   => 'RECURSIVE',
+        self::EMPTY_ARR   => 'EMPTY_ARR',
+        self::FALSY       => 'FALSY',
+        self::RETURN_NULL => 'RETURN_NULL'
     ];
 
     /**

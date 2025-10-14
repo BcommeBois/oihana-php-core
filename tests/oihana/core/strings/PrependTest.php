@@ -30,7 +30,6 @@ class PrependTest extends TestCase
     public function testPrependNormalized()
     {
         $str = "e\u{301}"; // e + combining acute accent
-        $normalized = "\u{e9}"; // é as single composed character
 
         $result = prepend($str, 'a');
         $this->assertTrue(normalizer_is_normalized($result));

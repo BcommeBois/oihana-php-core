@@ -15,6 +15,7 @@ class CleanFlagTest extends TestCase
         $this->assertSame(8, CleanFlag::RECURSIVE);  // 1 << 3
         $this->assertSame(16, CleanFlag::EMPTY_ARR); // 1 << 4
         $this->assertSame(32, CleanFlag::FALSY);     // 1 << 5
+        $this->assertSame(64, CleanFlag::RETURN_NULL);     // 1 << 6
     }
 
     public function testCompositeConstants(): void
@@ -25,7 +26,7 @@ class CleanFlagTest extends TestCase
         $expectedMain = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::EMPTY_ARR | CleanFlag::TRIM;
         $this->assertSame( CleanFlag::MAIN , $expectedMain );
 
-        $expectedAll = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM | CleanFlag::RECURSIVE | CleanFlag::EMPTY_ARR | CleanFlag::FALSY;
+        $expectedAll = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM | CleanFlag::RECURSIVE | CleanFlag::EMPTY_ARR | CleanFlag::FALSY | CleanFlag::RETURN_NULL;
         $this->assertSame( CleanFlag::ALL , $expectedAll );
     }
 
@@ -37,26 +38,28 @@ class CleanFlagTest extends TestCase
             CleanFlag::TRIM,
             CleanFlag::RECURSIVE,
             CleanFlag::EMPTY_ARR,
-            CleanFlag::FALSY
+            CleanFlag::FALSY ,
+            CleanFlag::RETURN_NULL,
         ];
 
         $this->assertSame( CleanFlag::FLAGS , $expectedFlags );
-        $this->assertCount(6, CleanFlag::FLAGS);
+        $this->assertCount(7, CleanFlag::FLAGS);
     }
 
     public function testFlagsNameArray(): void
     {
         $expectedFlagsName = [
-            CleanFlag::NULLS     => 'NULLS',
-            CleanFlag::EMPTY     => 'EMPTY',
-            CleanFlag::TRIM      => 'TRIM',
-            CleanFlag::RECURSIVE => 'RECURSIVE',
-            CleanFlag::EMPTY_ARR => 'EMPTY_ARR',
-            CleanFlag::FALSY     => 'FALSY'
+            CleanFlag::NULLS       => 'NULLS',
+            CleanFlag::EMPTY       => 'EMPTY',
+            CleanFlag::TRIM        => 'TRIM',
+            CleanFlag::RECURSIVE   => 'RECURSIVE',
+            CleanFlag::EMPTY_ARR   => 'EMPTY_ARR',
+            CleanFlag::FALSY       => 'FALSY' ,
+            CleanFlag::RETURN_NULL => 'RETURN_NULL'
         ];
 
         $this->assertSame( CleanFlag::FLAGS_NAME , $expectedFlagsName );
-        $this->assertCount(6, CleanFlag::FLAGS_NAME);
+        $this->assertCount(7, CleanFlag::FLAGS_NAME);
     }
 
     // Tests pour la méthode has()
@@ -110,10 +113,9 @@ class CleanFlagTest extends TestCase
 
     public function testIsValidReturnsFalseForInvalidFlags(): void
     {
-        $this->assertFalse(CleanFlag::isValid(64));    // 1 << 6 (non existant)
         $this->assertFalse(CleanFlag::isValid(128));   // 1 << 7 (non existant)
         $this->assertFalse(CleanFlag::isValid(1024));  // Totalement invalide
-        $this->assertFalse(CleanFlag::isValid(CleanFlag::NULLS | 64)); // Mélange valide + invalide
+        $this->assertFalse(CleanFlag::isValid(CleanFlag::NULLS | 128)); // Mélange valide + invalide
     }
 
     // Tests pour la méthode getFlags()
@@ -145,7 +147,8 @@ class CleanFlagTest extends TestCase
             CleanFlag::TRIM,
             CleanFlag::RECURSIVE,
             CleanFlag::EMPTY_ARR,
-            CleanFlag::FALSY
+            CleanFlag::FALSY,
+            CleanFlag::RETURN_NULL
         ];
 
         $this->assertSame($expected, CleanFlag::getFlags(CleanFlag::ALL));
@@ -212,7 +215,7 @@ class CleanFlagTest extends TestCase
 
     public function testDescribeReturnsAllFlags(): void
     {
-        $expected = 'NULLS, EMPTY, TRIM, RECURSIVE, EMPTY_ARR, FALSY';
+        $expected = 'NULLS, EMPTY, TRIM, RECURSIVE, EMPTY_ARR, FALSY, RETURN_NULL';
         $this->assertSame($expected, CleanFlag::describe(CleanFlag::ALL));
     }
 

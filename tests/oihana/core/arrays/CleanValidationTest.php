@@ -28,7 +28,7 @@ class CleanValidationTest extends TestCase
         $this->expectException( InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid flags provided');
 
-        clean($input, 64); // Flag invalide (1 << 6)
+        clean($input, 128); // Flag invalide (1 << 6)
     }
 
     public function testCleanThrowsExceptionForInvalidFlagsCombination(): void

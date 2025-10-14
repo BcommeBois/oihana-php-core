@@ -96,6 +96,11 @@ Search.appendIndex(
             "summary": "Remove\u0020the\u0020falsy\u0020values\u0020\u003A\u0020\u00270\u0027,\u0020false,\u0020.",
             "url": "classes/oihana-core-arrays-CleanFlag.html#constant_FALSY"
         },                {
+            "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003ARETURN_NULL",
+            "name": "RETURN_NULL",
+            "summary": "Return\u0020null\u0020instead\u0020of\u0020empty\u0020array\u0020when\u0020result\u0020is\u0020empty",
+            "url": "classes/oihana-core-arrays-CleanFlag.html#constant_RETURN_NULL"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003AALL",
             "name": "ALL",
             "summary": "All\u0020valid\u0020flags\u0020combined\u0020\u0028used\u0020for\u0020validation\u0029",
