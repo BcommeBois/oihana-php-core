@@ -371,6 +371,11 @@ Search.appendIndex(
             "summary": "Recursively\u0020serialize\u0020all\u0020JsonSerializable\u0020values\u0020within\u0020an\u0020array\u0020or\u0020object.",
             "url": "namespaces/oihana-core-json.html#function_deepJsonSerialize"
         },                {
+            "fqsen": "\\oihana\\core\\json\\getJsonType\u0028\u0029",
+            "name": "getJsonType",
+            "summary": "Get\u0020JSON\u0020type\u0020of\u0020a\u0020PHP\u0020value.",
+            "url": "namespaces/oihana-core-json.html#function_getJsonType"
+        },                {
             "fqsen": "\\oihana\\core\\json\\isValidJsonDecodeFlags\u0028\u0029",
             "name": "isValidJsonDecodeFlags",
             "summary": "Checks\u0020whether\u0020a\u0020given\u0020integer\u0020value\u0020is\u0020a\u0020valid\u0020combination\u0020of\u0020\u0060json_decode\u0028\u0029\u0060\u0020option\u0020flags.",

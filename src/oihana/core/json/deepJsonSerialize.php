@@ -16,6 +16,7 @@ use JsonSerializable;
  * @return mixed The value with all JsonSerializable elements serialized.
  *
  * @example
+ * ```php
  * $data =
  * [
  *     'user' => new User(),       // implements JsonSerializable
@@ -24,6 +25,11 @@ use JsonSerializable;
  *
  * $result = deepJsonSerialize($data);
  * // All JsonSerializable objects will be converted to arrays/values recursively
+ * ```
+ *
+ * @package oihana\core\json
+ * @author  Marc Alcaraz (ekameleon)
+ * @since   1.0.6
  */
 function deepJsonSerialize( mixed $value , int $currentDepth = 0 ) :mixed
 {

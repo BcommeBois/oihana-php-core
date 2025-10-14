@@ -137,6 +137,13 @@
 <dd>Recursively serialize all JsonSerializable values within an array or object.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-json.html#function_getJsonType">getJsonType()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Get JSON type of a PHP value.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-json.html#function_isValidJsonDecodeFlags">isValidJsonDecodeFlags()</a>
     <span>
                                 &nbsp;: bool    </span>
@@ -169,7 +176,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/json/deepJsonSerialize.php"><a href="files/src-oihana-core-json-deepjsonserialize.html"><abbr title="src/oihana/core/json/deepJsonSerialize.php">deepJsonSerialize.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
@@ -218,15 +225,34 @@ a value that implements JsonSerializable, it calls jsonSerialize() on it.</p>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>$data =
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$data =
 [
-'user' =&gt; new User(),       // implements JsonSerializable
-'tags' =&gt; ['a', 'b'],
-];</p>
-<p>$result = deepJsonSerialize($data);
-// All JsonSerializable objects will be converted to arrays/values recursively</p>
+    'user' =&gt; new User(),       // implements JsonSerializable
+    'tags' =&gt; ['a', 'b'],
+];
+
+$result = deepJsonSerialize($data);
+// All JsonSerializable objects will be converted to arrays/values recursively
+</code></pre>
 </section>
 
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.6</span>
+                                                                                
+                                             
                                     </dd>
                                             </dl>
 
@@ -237,6 +263,81 @@ a value that implements JsonSerializable, it calls jsonSerialize() on it.</p>
                 <section class="phpdocumentor-description"><p>The value with all JsonSerializable elements serialized.</p>
 </section>
 
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_getJsonType">
+        getJsonType()
+        <a href="namespaces/oihana-core-json.html#function_getJsonType" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/json/getJsonType.php"><a href="files/src-oihana-core-json-getjsontype.html"><abbr title="src/oihana/core/json/getJsonType.php">getJsonType.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">17</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Get JSON type of a PHP value.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">getJsonType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;unknown&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The value to evaluates.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$default</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;unknown&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The default return value if the type is not a valid JSON type.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-json.html#function_getJsonType#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
             </section>
 
 </article>
@@ -543,6 +644,7 @@ var_dump( isValidJsonEncodeFlags( JSON_PRETTY_PRINT | 123456 ) );             //
                 <li>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="namespaces/oihana-core-json.html#function_deepJsonSerialize">deepJsonSerialize()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-json.html#function_getJsonType">getJsonType()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-json.html#function_isValidJsonDecodeFlags">isValidJsonDecodeFlags()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-json.html#function_isValidJsonEncodeFlags">isValidJsonEncodeFlags()</a></li>
                                             </ul>

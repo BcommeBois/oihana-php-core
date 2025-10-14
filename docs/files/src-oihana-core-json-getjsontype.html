@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">deepJsonSerialize.php</h2>
+        <h2 class="phpdocumentor-content__title">getJsonType.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-json-deepjsonserialize.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-json-getjsontype.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,16 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-json-deepjsonserialize.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-json-getjsontype.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-json.html#function_deepJsonSerialize">deepJsonSerialize()</a>
+    <a class="" href="namespaces/oihana-core-json.html#function_getJsonType">getJsonType()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd>Recursively serialize all JsonSerializable values within an array or object.</dd>
+<dd>Get JSON type of a PHP value.</dd>
 
     </dl>
 
@@ -148,33 +148,30 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-json-deepjsonserialize.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-json-getjsontype.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_deepJsonSerialize">
-        deepJsonSerialize()
-        <a href="namespaces/oihana-core-json.html#function_deepJsonSerialize" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_getJsonType">
+        getJsonType()
+        <a href="namespaces/oihana-core-json.html#function_getJsonType" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/json/deepJsonSerialize.php"><a href="files/src-oihana-core-json-deepjsonserialize.html"><abbr title="src/oihana/core/json/deepJsonSerialize.php">deepJsonSerialize.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/json/getJsonType.php"><a href="files/src-oihana-core-json-getjsontype.html"><abbr title="src/oihana/core/json/getJsonType.php">getJsonType.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Recursively serialize all JsonSerializable values within an array or object.</p>
+        <p class="phpdocumentor-summary">Get JSON type of a PHP value.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">deepJsonSerialize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$currentDepth</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">getJsonType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;unknown&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function traverses arrays and objects at any depth, and whenever it finds
-a value that implements JsonSerializable, it calls jsonSerialize() on it.</p>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -182,16 +179,16 @@ a value that implements JsonSerializable, it calls jsonSerialize() on it.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to serialize.</p>
+                    <section class="phpdocumentor-description"><p>The value to evaluates.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$currentDepth</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">0</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$default</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;unknown&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Internal recursion counter (default 0).</p>
+                    <section class="phpdocumentor-description"><p>The default return value if the type is not a valid JSON type.</p>
 </section>
 
             </dd>
@@ -200,28 +197,11 @@ a value that implements JsonSerializable, it calls jsonSerialize() on it.</p>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-json.html#function_deepJsonSerialize#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-json.html#function_getJsonType#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$data =
-[
-    'user' =&gt; new User(),       // implements JsonSerializable
-    'tags' =&gt; ['a', 'b'],
-];
-
-$result = deepJsonSerialize($data);
-// All JsonSerializable objects will be converted to arrays/values recursively
-</code></pre>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -234,7 +214,7 @@ $result = deepJsonSerialize($data);
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.6</span>
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
                                                                                 
                                              
                                     </dd>
@@ -242,11 +222,7 @@ $result = deepJsonSerialize($data);
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">mixed</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>The value with all JsonSerializable elements serialized.</p>
-</section>
-
+        <span class="phpdocumentor-signature__response_type">string</span>
             </section>
 
 </article>
@@ -256,7 +232,7 @@ $result = deepJsonSerialize($data);
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/json/deepJsonSerialize.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/json/getJsonType.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -357,7 +333,7 @@ $result = deepJsonSerialize($data);
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-json-deepjsonserialize.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-json-getjsontype.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -365,7 +341,7 @@ $result = deepJsonSerialize($data);
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-json.html#function_deepJsonSerialize">deepJsonSerialize()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-json.html#function_getJsonType">getJsonType()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -385,7 +361,7 @@ $result = deepJsonSerialize($data);
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-json-deepjsonserialize.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-json-getjsontype.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

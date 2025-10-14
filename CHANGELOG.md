@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+ - **JSON:**
+   - Add the getJsonType function 
  - **Strings:**
    - Add the uniqueKey function
 

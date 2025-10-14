@@ -92,6 +92,7 @@
             
             "src/oihana/core/helpers/conditions.php",
             
+            "src/oihana/core/json/getJsonType.php",
             "src/oihana/core/json/deepJsonSerialize.php",
             "src/oihana/core/json/isValidJsonDecodeFlags.php",
             "src/oihana/core/json/isValidJsonEncodeFlags.php",
