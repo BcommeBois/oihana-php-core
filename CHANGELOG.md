@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  - **Strings:**
    - Add the uniqueKey function
 
+### Changed
+- **Arrays:** In `clean()`, add the `CleanFlag::RETURN_NULL` option.
+
 ## [1.0.6] - 2025-09-27
 
 ### Added
