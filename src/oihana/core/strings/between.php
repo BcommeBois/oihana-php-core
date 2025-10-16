@@ -67,15 +67,12 @@ function between
         $expression = (string) $expression ;
     }
 
-    if ( !$flag )
+    if (
+        !$flag ||
+        ( $trim && str_starts_with( $expression , $left ) && str_ends_with( $expression , $right ) )
+    )
     {
         return $expression;
-    }
-
-    if ( $trim )
-    {
-        $expression = ltrim( $expression , $left  ) ;
-        $expression = rtrim( $expression , $right ) ;
     }
 
     return $left . $expression . $right ;
