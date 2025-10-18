@@ -32,6 +32,7 @@
         [
             "src/oihana/core/ifNull.php",
             "src/oihana/core/isLiteral.php",
+            "src/oihana/core/normalize.php",
             
             "src/oihana/core/accessors/assertDocumentKeyValid.php" ,
             "src/oihana/core/accessors/deleteKeyValue.php" ,

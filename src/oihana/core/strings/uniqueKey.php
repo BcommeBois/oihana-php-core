@@ -62,8 +62,8 @@ use Normalizer;
  *
  * 2 - Same parameters in different order produce identical keys
  * ```php
- * $key1 = uniqueKey(context: 'test', binds: ['a' => 1, 'b' => 2]);
- * $key2 = uniqueKey(context: 'test', binds: ['b' => 2, 'a' => 1]);
+ * $key1 = uniqueKey( context: 'test' , binds: ['a' => 1, 'b' => 2] ) ;
+ * $key2 = uniqueKey( context: 'test' , binds: ['b' => 2, 'a' => 1] ) ;
  * // $key1 === $key2 (true)
  * ```
  *
@@ -109,7 +109,7 @@ function uniqueKey
 
     $fullKey = implode( $separator , $keyParts ) ;
 
-    $fullKey = Normalizer::normalize($fullKey, Normalizer::FORM_C) ?: $fullKey;
+    $fullKey = Normalizer::normalize( $fullKey , Normalizer::FORM_C ) ?: $fullKey;
 
     return $hash ? hash('sha256' , $fullKey ) : $fullKey ;
 }

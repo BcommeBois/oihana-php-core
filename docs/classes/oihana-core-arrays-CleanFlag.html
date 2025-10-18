@@ -147,11 +147,11 @@ The <code class="prettyprint">has()</code> helper can be used to check if a part
                                                  <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use oihana\core\arrays\CleanFlag;
 
 // Combine multiple flags
-$mask = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM;
+$mask = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM ;
 
 // Check flags
-CleanFlag::has($mask, CleanFlag::NULLS); // true
-CleanFlag::has($mask, CleanFlag::RECURSIVE); // false
+CleanFlag::has($mask, CleanFlag::NULLS) ; // true
+CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
 </code></pre>
 </section>
 

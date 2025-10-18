@@ -3,8 +3,9 @@
 namespace oihana\core\objects ;
 
 use InvalidArgumentException;
+
 use oihana\core\options\CompressOption;
-use function oihana\core\helpers\conditions;
+
 use function oihana\core\arrays\compress as compressArray ;
 
 /**
@@ -112,10 +113,11 @@ function compress( object $object , array $options = [] , int $currentDepth = 0 
     $recursive  = $options[ CompressOption::RECURSIVE   ] ;
     $removeKeys = $options[ CompressOption::REMOVE_KEYS ] ;
 
-    $properties = get_object_vars( $object );
+    $properties = get_object_vars( $object ) ;
+
     foreach( $properties as $key => $value )
     {
-        if (is_array($removeKeys) && in_array($key, $removeKeys, true))
+        if (is_array($removeKeys) && in_array( $key , $removeKeys , true ) )
         {
             unset($object->{$key});
             continue;

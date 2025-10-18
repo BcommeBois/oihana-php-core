@@ -5907,8 +5907,8 @@ If false, returns the normalized, joined string.</p>
 // Returns: &quot;a1b2c3d4...&quot; (SHA-256 hash)
 </code></pre>
 <p>2 - Same parameters in different order produce identical keys</p>
-<pre class="prettyprint"><code class="language-php">$key1 = uniqueKey(context: 'test', binds: ['a' =&gt; 1, 'b' =&gt; 2]);
-$key2 = uniqueKey(context: 'test', binds: ['b' =&gt; 2, 'a' =&gt; 1]);
+<pre class="prettyprint"><code class="language-php">$key1 = uniqueKey( context: 'test' , binds: ['a' =&gt; 1, 'b' =&gt; 2] ) ;
+$key2 = uniqueKey( context: 'test' , binds: ['b' =&gt; 2, 'a' =&gt; 1] ) ;
 // $key1 === $key2 (true)
 </code></pre>
 </section>

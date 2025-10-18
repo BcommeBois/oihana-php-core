@@ -431,6 +431,11 @@ Search.appendIndex(
             "summary": "Rounds\u0020and\u0020returns\u0020the\u0020rounded\u0020value\u0020of\u0020the\u0020specified\u0020number\u0020or\u0020expression.",
             "url": "namespaces/oihana-core-maths.html#function_roundValue"
         },                {
+            "fqsen": "\\oihana\\core\\normalize\u0028\u0029",
+            "name": "normalize",
+            "summary": "Normalizes\u0020a\u0020value\u0020according\u0020to\u0020the\u0020given\u0020cleaning\u0020flags.",
+            "url": "namespaces/oihana-core.html#function_normalize"
+        },                {
             "fqsen": "\\oihana\\core\\numbers\\clip\u0028\u0029",
             "name": "clip",
             "summary": "Bounds\u0020a\u0020number\u0020value\u0020between\u0020two\u0020numbers.",

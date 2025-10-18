@@ -125,7 +125,7 @@ use InvalidArgumentException;
  * @author  Marc Alcaraz
  * @since   1.0.6
  */
-function clean( array $array = [], int $flags = CleanFlag::DEFAULT ): ?array
+function clean( array $array = [] , int $flags = CleanFlag::DEFAULT ): ?array
 {
     if ( ! CleanFlag::isValid( $flags ) )
     {
@@ -152,7 +152,7 @@ function clean( array $array = [], int $flags = CleanFlag::DEFAULT ): ?array
     $checkRecursive = ( $flags & CleanFlag::RECURSIVE ) !== 0 ;
     $checkFalsy     = ( $flags & CleanFlag::FALSY     ) !== 0 ;
 
-    $isIndexed      = array_is_list( $array ) ;
+    $isIndexed = array_is_list( $array ) ;
 
     $result = [];
 
@@ -164,7 +164,7 @@ function clean( array $array = [], int $flags = CleanFlag::DEFAULT ): ?array
         {
             if ( $checkRecursive )
             {
-                $value = clean($value, $flags);
+                $value = clean( $value , $flags ) ;
             }
             if ( $checkEmptyArr && empty( $value ) )
             {
@@ -179,15 +179,15 @@ function clean( array $array = [], int $flags = CleanFlag::DEFAULT ): ?array
             }
             else
             {
-                if ( $checkNulls && is_null($value) )
+                if ( $checkNulls && is_null( $value ) )
                 {
-                    $keep = false;
+                    $keep = false ;
                 }
                 else if ( is_string( $value ) && $checkEmpty )
                 {
-                    if ($checkTrim)
+                    if ( $checkTrim )
                     {
-                        $keep = trim($value) !== '' ;
+                        $keep = trim( $value ) !== '' ;
                     }
                     else
                     {
@@ -212,8 +212,8 @@ function clean( array $array = [], int $flags = CleanFlag::DEFAULT ): ?array
 
     if ( empty( $result ) && ( $flags & CleanFlag::RETURN_NULL ) !== 0 )
     {
-        return null;
+        return null ;
     }
 
-    return $result;
+    return $result ;
 }

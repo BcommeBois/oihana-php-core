@@ -15,11 +15,11 @@ namespace oihana\core\arrays ;
  * use oihana\core\arrays\CleanFlag;
  *
  * // Combine multiple flags
- * $mask = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM;
+ * $mask = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM ;
  *
  * // Check flags
- * CleanFlag::has($mask, CleanFlag::NULLS); // true
- * CleanFlag::has($mask, CleanFlag::RECURSIVE); // false
+ * CleanFlag::has($mask, CleanFlag::NULLS) ; // true
+ * CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
  * ```
  */
 class CleanFlag
@@ -64,7 +64,7 @@ class CleanFlag
      * Remove the falsy values : '0', false, ...
      * @var int
      */
-    public const int FALSY = 1 << 5;
+    public const int FALSY = 1 << 5 ;
 
     /**
      * Return null instead of empty array when result is empty
@@ -253,7 +253,7 @@ class CleanFlag
      * CleanFlag::isValid(CleanFlag::NULLS | 999);              // Returns false (contains invalid bits)
      * ```
      */
-    public static function isValid( int $mask ): bool
+    public static function isValid( int $mask ) :bool
     {
         return ( $mask & ~self::ALL ) === 0 ;
     }
