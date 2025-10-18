@@ -72,7 +72,7 @@ function chainCallables( array $callables = [] ) : ?callable
 
     // Resolve all callables upfront to fail fast
     $resolved = [] ;
-    foreach ($callables as $callable)
+    foreach ( $callables as $callable )
     {
         $resolved[] = resolveCallable( $callable ) ;
         if ( $resolved[ count( $resolved ) - 1 ] === null )
