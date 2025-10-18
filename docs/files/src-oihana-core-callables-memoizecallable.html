@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">clip.php</h2>
+        <h2 class="phpdocumentor-content__title">memoizeCallable.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-numbers-clip.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-callables-memoizecallable.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,16 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-numbers-clip.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-callables-memoizecallable.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-numbers.html#function_clip">clip()</a>
+    <a class="" href="namespaces/oihana-core-callables.html#function_memoizeCallable">memoizeCallable()</a>
     <span>
-                                &nbsp;: int|float    </span>
+                                &nbsp;: callable    </span>
 </dt>
-<dd>Bounds a number value between two numbers.</dd>
+<dd>Memoizes a callable&#039;s result (caches based on arguments).</dd>
 
     </dl>
 
@@ -148,56 +148,47 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-numbers-clip.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-callables-memoizecallable.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_clip">
-        clip()
-        <a href="namespaces/oihana-core-numbers.html#function_clip" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_memoizeCallable">
+        memoizeCallable()
+        <a href="namespaces/oihana-core-callables.html#function_memoizeCallable" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/numbers/clip.php"><a href="files/src-oihana-core-numbers-clip.html"><abbr title="src/oihana/core/numbers/clip.php">clip.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/memoizeCallable.php"><a href="files/src-oihana-core-callables-memoizecallable.html"><abbr title="src/oihana/core/callables/memoizeCallable.php">memoizeCallable.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Bounds a number value between two numbers.</p>
+        <p class="phpdocumentor-summary">Memoizes a callable&#039;s result (caches based on arguments).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">clip</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$min</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$max</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int|float</span></code>
+                    <span class="phpdocumentor-signature__name">memoizeCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>Returns a new callable that caches results based on the arguments passed.
+Subsequent calls with the same arguments return the cached result instead of
+re-executing the original callable. This improves performance for expensive
+computations with repeated identical arguments.</p>
+<p>Cache keys are generated by serializing arguments using <code class="prettyprint">serialize()</code>.
+Works with scalar values, arrays, and objects that support serialization.</p>
+<p>WARNING: The cache grows indefinitely. For long-running processes with many
+unique argument combinations, consider clearing the cache or using a size limit.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
+                <span class="phpdocumentor-signature__argument__name">$callable</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to clamp.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$min</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The minimum value of the range.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$max</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The maximum value of the range.</p>
+                    <section class="phpdocumentor-description"><p>The original callable to memoize</p>
 </section>
 
             </dd>
@@ -206,7 +197,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-numbers.html#function_clip#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-callables.html#function_memoizeCallable#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -215,10 +206,53 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">clip( 4  , 5 , 10 ) ;  // Returns 5
-clip( 12 , 5 , 10 ) ; // Returns 10
-clip( 6  , 5 , 10 ) ;  // Returns 6
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\callables\memoizeCallable;
+
+// Example 1: Expensive computation
+$expensive = function($n) {
+    echo &quot;Computing...&quot;;
+    return $n * $n;
+};
+
+$memoized = memoizeCallable($expensive);
+echo $memoized(5); // &quot;Computing...&quot; outputs 25
+echo $memoized(5); // outputs 25 (cached, no &quot;Computing...&quot;)
+echo $memoized(6); // &quot;Computing...&quot; outputs 36 (different arg)
+
+// Example 2: API call memoization
+$fetchUser = memoizeCallable( function( $userId )
+{
+    return file_get_contents(&quot;https://api.example.com/users/{$userId}&quot;);
+} ) ;
+
+$user1 = $fetchUser(123); // Makes actual API call
+$user2 = $fetchUser(123); // Returns cached result
+
+// Example 3: Fibonacci with memoization
+$fib = null;
+$fib = memoizeCallable( function($n) use (&amp;$fib)
+{
+    if ($n &lt;= 1) return $n;
+    return $fib($n - 1) + $fib($n - 2);
+});
+echo $fib(30); // Very fast due to memoization
+
+// Example 4: With multiple arguments
+$add = memoizeCallable(fn($a, $b) =&gt; $a + $b);
+echo $add( 2 , 3 ) ; // 5
+echo $add( 2 , 3 ) ; // 5 (cached)
+echo $add( 3 , 2 ) ; // 5 (different cache key since args differ)
 </code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-callables.html#function_wrapCallable"><abbr title="\oihana\core\callables\wrapCallable()">wrapCallable()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>To apply custom decorators instead</p>
 </section>
 
                                     </dd>
@@ -235,7 +269,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
                                                                                 
                                              
                                     </dd>
@@ -243,9 +277,9 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int|float</span>
+        <span class="phpdocumentor-signature__response_type">callable</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>A value bounded between $min and $max.</p>
+                <section class="phpdocumentor-description"><p>A new callable with memoization enabled</p>
 </section>
 
             </section>
@@ -257,7 +291,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/numbers/clip.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/callables/memoizeCallable.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -358,7 +392,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-numbers-clip.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-callables-memoizecallable.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -366,7 +400,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-numbers.html#function_clip">clip()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_memoizeCallable">memoizeCallable()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -386,7 +420,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-numbers-clip.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-callables-memoizecallable.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

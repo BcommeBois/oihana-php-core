@@ -1,10 +1,11 @@
 <?php
 
-namespace oihana\core\callables;
+namespace tests\oihana\core\callables;
 
 use PHPUnit\Framework\TestCase;
+use function oihana\core\callables\resolveCallable;
 
-final class ResolveCallableTests extends TestCase
+final class ResolveCallableTest extends TestCase
 {
     /**
      * Test resolving a built-in function

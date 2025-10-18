@@ -130,6 +130,13 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-callables.html#function_chainCallables">chainCallables()</a>
+    <span>
+                                &nbsp;: callable|null    </span>
+</dt>
+<dd>Chains multiple callables to be executed in sequence.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-callables.html#function_isCallable">isCallable()</a>
     <span>
                                 &nbsp;: bool    </span>
@@ -137,11 +144,25 @@
 <dd>Checks whether a string can be resolved into a valid callable.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-callables.html#function_memoizeCallable">memoizeCallable()</a>
+    <span>
+                                &nbsp;: callable    </span>
+</dt>
+<dd>Memoizes a callable&#039;s result (caches based on arguments).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-callables.html#function_resolveCallable">resolveCallable()</a>
     <span>
                                 &nbsp;: callable|null    </span>
 </dt>
 <dd>Resolves a string callable into an actual callable.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-callables.html#function_wrapCallable">wrapCallable()</a>
+    <span>
+                                &nbsp;: callable    </span>
+</dt>
+<dd>Wraps a callable to apply middleware/decorators before/after execution.</dd>
 
     </dl>
 
@@ -153,6 +174,138 @@
             <a href="namespaces/oihana-core-callables.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_chainCallables">
+        chainCallables()
+        <a href="namespaces/oihana-core-callables.html#function_chainCallables" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/chainCallables.php"><a href="files/src-oihana-core-callables-chaincallables.html"><abbr title="src/oihana/core/callables/chainCallables.php">chainCallables.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">66</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Chains multiple callables to be executed in sequence.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">chainCallables</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callables</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable|null</span></code>
+
+        <section class="phpdocumentor-description"><p>Creates a pipeline where each callable's output becomes the next callable's input.
+The first callable receives the arguments passed to the chain; subsequent callables
+receive only the result from the previous callable.</p>
+<p>Returns null if the array is empty or if any callable cannot be resolved.
+Execution stops at the first unresolvable callable in the chain.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callables</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>An array of callables to execute in sequence.
+Each can be a string, array, object, or Closure.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-callables.html#function_chainCallables#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\callables\chainCallables;
+
+// Example 1: Data transformation pipeline
+$pipe = chainCallables([
+    'trim',
+    'strtoupper',
+    fn($str) =&gt; str_repeat($str, 2)
+]);
+echo $pipe('  hello  '); // &quot;HELLOHELLO&quot;
+
+// Example 2: Mathematical operations
+$calculate = chainCallables([
+    fn($x) =&gt; $x * 2,
+    fn($x) =&gt; $x + 10,
+    fn($x) =&gt; sqrt($x)
+]);
+echo $calculate(5); // sqrt((5*2)+10) = sqrt(20) ≈ 4.47
+
+// Example 3: With static methods
+$pipe = chainCallables
+([
+    'MyClass::parse',
+    'MyClass::validate',
+    'MyClass::transform'
+]);
+$result = $pipe($input);
+
+// Example 4: With object methods
+$handler = new Handler();
+$pipe = chainCallables
+([
+    [ $handler , 'preprocess'  ] ,
+    [ $handler , 'process'     ] ,
+    [ $handler , 'postprocess' ]
+]);
+$result = $pipe($data);
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-callables.html#function_wrapCallable"><abbr title="\oihana\core\callables\wrapCallable()">wrapCallable()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>To add decorators around a callable</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">callable|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>A new callable that executes the chain, or null if invalid</p>
+</section>
+
+            </section>
+
+</article>
                     <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_isCallable">
         isCallable()
@@ -262,6 +415,140 @@ if (!isCallable('nonexistent\function')) {
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_memoizeCallable">
+        memoizeCallable()
+        <a href="namespaces/oihana-core-callables.html#function_memoizeCallable" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/memoizeCallable.php"><a href="files/src-oihana-core-callables-memoizecallable.html"><abbr title="src/oihana/core/callables/memoizeCallable.php">memoizeCallable.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">69</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Memoizes a callable&#039;s result (caches based on arguments).</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">memoizeCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable</span></code>
+
+        <section class="phpdocumentor-description"><p>Returns a new callable that caches results based on the arguments passed.
+Subsequent calls with the same arguments return the cached result instead of
+re-executing the original callable. This improves performance for expensive
+computations with repeated identical arguments.</p>
+<p>Cache keys are generated by serializing arguments using <code class="prettyprint">serialize()</code>.
+Works with scalar values, arrays, and objects that support serialization.</p>
+<p>WARNING: The cache grows indefinitely. For long-running processes with many
+unique argument combinations, consider clearing the cache or using a size limit.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callable</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The original callable to memoize</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-callables.html#function_memoizeCallable#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\callables\memoizeCallable;
+
+// Example 1: Expensive computation
+$expensive = function($n) {
+    echo &quot;Computing...&quot;;
+    return $n * $n;
+};
+
+$memoized = memoizeCallable($expensive);
+echo $memoized(5); // &quot;Computing...&quot; outputs 25
+echo $memoized(5); // outputs 25 (cached, no &quot;Computing...&quot;)
+echo $memoized(6); // &quot;Computing...&quot; outputs 36 (different arg)
+
+// Example 2: API call memoization
+$fetchUser = memoizeCallable( function( $userId )
+{
+    return file_get_contents(&quot;https://api.example.com/users/{$userId}&quot;);
+} ) ;
+
+$user1 = $fetchUser(123); // Makes actual API call
+$user2 = $fetchUser(123); // Returns cached result
+
+// Example 3: Fibonacci with memoization
+$fib = null;
+$fib = memoizeCallable( function($n) use (&amp;$fib)
+{
+    if ($n &lt;= 1) return $n;
+    return $fib($n - 1) + $fib($n - 2);
+});
+echo $fib(30); // Very fast due to memoization
+
+// Example 4: With multiple arguments
+$add = memoizeCallable(fn($a, $b) =&gt; $a + $b);
+echo $add( 2 , 3 ) ; // 5
+echo $add( 2 , 3 ) ; // 5 (cached)
+echo $add( 3 , 2 ) ; // 5 (different cache key since args differ)
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-callables.html#function_wrapCallable"><abbr title="\oihana\core\callables\wrapCallable()">wrapCallable()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>To apply custom decorators instead</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">callable</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>A new callable with memoization enabled</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_resolveCallable">
         resolveCallable()
         <a href="namespaces/oihana-core-callables.html#function_resolveCallable" class="headerlink"><i class="fas fa-link"></i></a>
@@ -270,7 +557,7 @@ if (!isCallable('nonexistent\function')) {
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/resolveCallable.php"><a href="files/src-oihana-core-callables-resolvecallable.html"><abbr title="src/oihana/core/callables/resolveCallable.php">resolveCallable.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 
     </aside>
 
@@ -279,24 +566,37 @@ if (!isCallable('nonexistent\function')) {
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">resolveCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable|null</span></code>
+                    <span class="phpdocumentor-signature__name">resolveCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;|object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable|null</span></code>
 
-        <section class="phpdocumentor-description"><p>Supports multiple callable formats:</p>
+        <section class="phpdocumentor-description"><p>This function attempts to convert various callable representations into actual PHP callables
+that can be invoked directly. It validates the existence of functions and methods before
+returning them, ensuring the returned callable is executable.</p>
+<p>Supports multiple callable formats:</p>
 <ul>
 <li>Fully qualified function names: <code class="prettyprint">'oihana\core\normalize'</code></li>
 <li>Static method notation: <code class="prettyprint">'MyClass::method'</code> or <code class="prettyprint">'MyNamespace\MyClass::method'</code></li>
+<li>Array callables: <code class="prettyprint">[$object, 'method']</code> or <code class="prettyprint">['ClassName', 'method']</code></li>
+<li>Invokable objects: Objects implementing <code class="prettyprint">__invoke</code> method</li>
+<li>Closure instances and callable objects</li>
 </ul>
-<p>Returns null if the callable cannot be resolved (function/method does not exist).</p>
+<p>Returns null if the callable cannot be resolved (function/method does not exist or format is invalid).</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$callable</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;|object|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The callable as a string</p>
+                    <section class="phpdocumentor-description"><p>The callable candidate to resolve. Can be:</p>
+<ul>
+<li>A string containing a function or method name</li>
+<li>An array with object/class and method name</li>
+<li>An object instance with __invoke method</li>
+<li>A Closure instance</li>
+<li>null</li>
+</ul>
 </section>
 
             </dd>
@@ -320,15 +620,37 @@ if (!isCallable('nonexistent\function')) {
 $fn = resolveCallable('oihana\core\normalize');
 if ($fn !== null)
 {
-   $result = $fn($value);
+    $result = $fn($value);
 }
 
 // Static method
 $fn = resolveCallable('MyNamespace\MyClass::transform');
+if ($fn !== null)
+{
+    $result = $fn($data);
+}
+
+// Array callable with object instance
+$handler = new MyHandler();
+$fn = resolveCallable([$handler, 'handle']);
+
+// Invokable object
+$fn = resolveCallable(new MyCallable());
 
 // Non-existent function returns null
 $fn = resolveCallable('nonexistent\function'); // null
+$fn = resolveCallable('NonExistentClass::method'); // null
 </code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\oihana\core\callables\is_callable()">is_callable()</abbr></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>For direct callable validation without resolution</p>
 </section>
 
                                     </dd>
@@ -355,7 +677,153 @@ $fn = resolveCallable('nonexistent\function'); // null
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">callable|null</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The resolved callable, or null if invalid or does not exist</p>
+                <section class="phpdocumentor-description"><p>The resolved callable that can be executed, or null if the callable
+cannot be resolved or does not exist in the current runtime.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_wrapCallable">
+        wrapCallable()
+        <a href="namespaces/oihana-core-callables.html#function_wrapCallable" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/wrapCallable.php"><a href="files/src-oihana-core-callables-wrapcallable.html"><abbr title="src/oihana/core/callables/wrapCallable.php">wrapCallable.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">70</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Wraps a callable to apply middleware/decorators before/after execution.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">wrapCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$wrapper</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable</span></code>
+
+        <section class="phpdocumentor-description"><p>This function allows you to decorate a callable with custom logic that executes
+before and/or after the original callable is invoked. The wrapper receives the
+original callable and its arguments, giving complete control over execution flow.</p>
+<p>The wrapper callable receives:</p>
+<ul>
+<li>First argument: The original callable to invoke</li>
+<li>Remaining arguments: The arguments passed to the wrapped callable</li>
+</ul>
+<p>The wrapper is responsible for calling the original callable and returning its result.
+This enables use cases like logging, timing, error handling, caching, etc.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callable</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The original callable to wrap</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$wrapper</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>A callable that receives the original callable and args.
+Signature: <code class="prettyprint">function($original, ...$args)</code></p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-callables.html#function_wrapCallable#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\callables\wrapCallable;
+
+// Example 1: Logging wrapper
+$fn = fn($x) =&gt; $x * 2;
+$logged = wrapCallable($fn, function($original, ...$args)
+{
+    echo &quot;Calling with: &quot; . json_encode($args);
+    $result = $original(...$args);
+    echo &quot;Result: $result&quot;;
+    return $result;
+});
+$logged(5); // Logs: Calling with: [5], Result: 10
+
+// Example 2: Error handling wrapper
+$wrapped = wrapCallable('json_decode', function( $original , ...$args )
+{
+    try
+    {
+        return $original(...$args) ;
+    }
+    catch (Throwable $e)
+    {
+        return null ;
+    }
+});
+
+// Example 3: Timing wrapper
+$timed = wrapCallable( $expensiveFn , function( $original , ...$args )
+{
+    $start    = microtime(true);
+    $result   = $original(...$args);
+    $duration = microtime(true) - $start;
+    error_log( &quot;Execution took {$duration}s&quot; ) ;
+    return $result;
+});
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-callables.html#function_chainCallables"><abbr title="\oihana\core\callables\chainCallables()">chainCallables()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>To combine multiple callables in sequence</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">callable</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>A new wrapped callable that applies the wrapper logic</p>
 </section>
 
             </section>
@@ -476,8 +944,11 @@ $fn = resolveCallable('nonexistent\function'); // null
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_chainCallables">chainCallables()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_isCallable">isCallable()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_memoizeCallable">memoizeCallable()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_resolveCallable">resolveCallable()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_wrapCallable">wrapCallable()</a></li>
                                             </ul>
                 </li>
                     </ul>

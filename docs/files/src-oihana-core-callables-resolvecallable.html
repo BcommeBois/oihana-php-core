@@ -160,7 +160,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/resolveCallable.php"><a href="files/src-oihana-core-callables-resolvecallable.html"><abbr title="src/oihana/core/callables/resolveCallable.php">resolveCallable.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 
     </aside>
 
@@ -169,24 +169,37 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">resolveCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable|null</span></code>
+                    <span class="phpdocumentor-signature__name">resolveCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;|object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable|null</span></code>
 
-        <section class="phpdocumentor-description"><p>Supports multiple callable formats:</p>
+        <section class="phpdocumentor-description"><p>This function attempts to convert various callable representations into actual PHP callables
+that can be invoked directly. It validates the existence of functions and methods before
+returning them, ensuring the returned callable is executable.</p>
+<p>Supports multiple callable formats:</p>
 <ul>
 <li>Fully qualified function names: <code class="prettyprint">'oihana\core\normalize'</code></li>
 <li>Static method notation: <code class="prettyprint">'MyClass::method'</code> or <code class="prettyprint">'MyNamespace\MyClass::method'</code></li>
+<li>Array callables: <code class="prettyprint">[$object, 'method']</code> or <code class="prettyprint">['ClassName', 'method']</code></li>
+<li>Invokable objects: Objects implementing <code class="prettyprint">__invoke</code> method</li>
+<li>Closure instances and callable objects</li>
 </ul>
-<p>Returns null if the callable cannot be resolved (function/method does not exist).</p>
+<p>Returns null if the callable cannot be resolved (function/method does not exist or format is invalid).</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$callable</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;|object|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The callable as a string</p>
+                    <section class="phpdocumentor-description"><p>The callable candidate to resolve. Can be:</p>
+<ul>
+<li>A string containing a function or method name</li>
+<li>An array with object/class and method name</li>
+<li>An object instance with __invoke method</li>
+<li>A Closure instance</li>
+<li>null</li>
+</ul>
 </section>
 
             </dd>
@@ -210,15 +223,37 @@
 $fn = resolveCallable('oihana\core\normalize');
 if ($fn !== null)
 {
-   $result = $fn($value);
+    $result = $fn($value);
 }
 
 // Static method
 $fn = resolveCallable('MyNamespace\MyClass::transform');
+if ($fn !== null)
+{
+    $result = $fn($data);
+}
+
+// Array callable with object instance
+$handler = new MyHandler();
+$fn = resolveCallable([$handler, 'handle']);
+
+// Invokable object
+$fn = resolveCallable(new MyCallable());
 
 // Non-existent function returns null
 $fn = resolveCallable('nonexistent\function'); // null
+$fn = resolveCallable('NonExistentClass::method'); // null
 </code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\oihana\core\callables\is_callable()">is_callable()</abbr></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>For direct callable validation without resolution</p>
 </section>
 
                                     </dd>
@@ -245,7 +280,8 @@ $fn = resolveCallable('nonexistent\function'); // null
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">callable|null</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The resolved callable, or null if invalid or does not exist</p>
+                <section class="phpdocumentor-description"><p>The resolved callable that can be executed, or null if the callable
+cannot be resolved or does not exist in the current runtime.</p>
 </section>
 
             </section>

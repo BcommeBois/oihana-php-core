@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">clip.php</h2>
+        <h2 class="phpdocumentor-content__title">chainCallables.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-numbers-clip.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-callables-chaincallables.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,16 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-numbers-clip.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-callables-chaincallables.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-numbers.html#function_clip">clip()</a>
+    <a class="" href="namespaces/oihana-core-callables.html#function_chainCallables">chainCallables()</a>
     <span>
-                                &nbsp;: int|float    </span>
+                                &nbsp;: callable|null    </span>
 </dt>
-<dd>Bounds a number value between two numbers.</dd>
+<dd>Chains multiple callables to be executed in sequence.</dd>
 
     </dl>
 
@@ -148,56 +148,45 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-numbers-clip.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-callables-chaincallables.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_clip">
-        clip()
-        <a href="namespaces/oihana-core-numbers.html#function_clip" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_chainCallables">
+        chainCallables()
+        <a href="namespaces/oihana-core-callables.html#function_chainCallables" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/numbers/clip.php"><a href="files/src-oihana-core-numbers-clip.html"><abbr title="src/oihana/core/numbers/clip.php">clip.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/chainCallables.php"><a href="files/src-oihana-core-callables-chaincallables.html"><abbr title="src/oihana/core/callables/chainCallables.php">chainCallables.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Bounds a number value between two numbers.</p>
+        <p class="phpdocumentor-summary">Chains multiple callables to be executed in sequence.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">clip</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$min</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$max</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int|float</span></code>
+                    <span class="phpdocumentor-signature__name">chainCallables</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callables</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable|null</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>Creates a pipeline where each callable's output becomes the next callable's input.
+The first callable receives the arguments passed to the chain; subsequent callables
+receive only the result from the previous callable.</p>
+<p>Returns null if the array is empty or if any callable cannot be resolved.
+Execution stops at the first unresolvable callable in the chain.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
-                            </dt>
+                <span class="phpdocumentor-signature__argument__name">$callables</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to clamp.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$min</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The minimum value of the range.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$max</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The maximum value of the range.</p>
+                    <section class="phpdocumentor-description"><p>An array of callables to execute in sequence.
+Each can be a string, array, object, or Closure.</p>
 </section>
 
             </dd>
@@ -206,7 +195,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-numbers.html#function_clip#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-callables.html#function_chainCallables#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -215,10 +204,53 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">clip( 4  , 5 , 10 ) ;  // Returns 5
-clip( 12 , 5 , 10 ) ; // Returns 10
-clip( 6  , 5 , 10 ) ;  // Returns 6
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\callables\chainCallables;
+
+// Example 1: Data transformation pipeline
+$pipe = chainCallables([
+    'trim',
+    'strtoupper',
+    fn($str) =&gt; str_repeat($str, 2)
+]);
+echo $pipe('  hello  '); // &quot;HELLOHELLO&quot;
+
+// Example 2: Mathematical operations
+$calculate = chainCallables([
+    fn($x) =&gt; $x * 2,
+    fn($x) =&gt; $x + 10,
+    fn($x) =&gt; sqrt($x)
+]);
+echo $calculate(5); // sqrt((5*2)+10) = sqrt(20) ≈ 4.47
+
+// Example 3: With static methods
+$pipe = chainCallables
+([
+    'MyClass::parse',
+    'MyClass::validate',
+    'MyClass::transform'
+]);
+$result = $pipe($input);
+
+// Example 4: With object methods
+$handler = new Handler();
+$pipe = chainCallables
+([
+    [ $handler , 'preprocess'  ] ,
+    [ $handler , 'process'     ] ,
+    [ $handler , 'postprocess' ]
+]);
+$result = $pipe($data);
 </code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-callables.html#function_wrapCallable"><abbr title="\oihana\core\callables\wrapCallable()">wrapCallable()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>To add decorators around a callable</p>
 </section>
 
                                     </dd>
@@ -235,7 +267,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
                                                                                 
                                              
                                     </dd>
@@ -243,9 +275,9 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int|float</span>
+        <span class="phpdocumentor-signature__response_type">callable|null</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>A value bounded between $min and $max.</p>
+                <section class="phpdocumentor-description"><p>A new callable that executes the chain, or null if invalid</p>
 </section>
 
             </section>
@@ -257,7 +289,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/numbers/clip.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/callables/chainCallables.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -358,7 +390,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-numbers-clip.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-callables-chaincallables.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -366,7 +398,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-numbers.html#function_clip">clip()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_chainCallables">chainCallables()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -386,7 +418,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-numbers-clip.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-callables-chaincallables.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

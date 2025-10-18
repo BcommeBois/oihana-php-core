@@ -1,21 +1,23 @@
 <?php
 
-namespace oihana\core\callables;
+namespace tests\oihana\core\callables;
 
 use PHPUnit\Framework\TestCase;
+use function oihana\core\callables\isCallable;
+use function oihana\core\callables\resolveCallable;
 
-final class IsCallableTests extends TestCase
+final class IsCallableTest extends TestCase
 {
     /**
      * Test isCallable with built-in functions
      */
     public function testIsCallableBuiltinFunctions()
     {
-        $this->assertTrue(isCallable('strlen'));
-        $this->assertTrue(isCallable('array_map'));
-        $this->assertTrue(isCallable('implode'));
-        $this->assertTrue(isCallable('count'));
-        $this->assertTrue(isCallable('json_encode'));
+        $this->assertTrue( isCallable('strlen'));
+        $this->assertTrue( isCallable('array_map'));
+        $this->assertTrue( isCallable('implode'));
+        $this->assertTrue( isCallable('count'));
+        $this->assertTrue( isCallable('json_encode'));
     }
 
     /**
@@ -23,9 +25,9 @@ final class IsCallableTests extends TestCase
      */
     public function testIsCallableNonExistentFunctions()
     {
-        $this->assertFalse(isCallable('nonexistent_function'));
-        $this->assertFalse(isCallable('fake_function_xyz'));
-        $this->assertFalse(isCallable('does_not_exist'));
+        $this->assertFalse( isCallable('nonexistent_function'));
+        $this->assertFalse( isCallable('fake_function_xyz'));
+        $this->assertFalse( isCallable('does_not_exist'));
     }
 
     /**
@@ -33,7 +35,7 @@ final class IsCallableTests extends TestCase
      */
     public function testIsCallableValidStaticMethods()
     {
-        $this->assertTrue(isCallable(self::class . '::staticHelper'));
+        $this->assertTrue( isCallable(self::class . '::staticHelper'));
     }
 
     /**
@@ -41,9 +43,9 @@ final class IsCallableTests extends TestCase
      */
     public function testIsCallableInvalidStaticMethods()
     {
-        $this->assertFalse(isCallable('NonExistentClass::method'));
-        $this->assertFalse(isCallable(self::class . '::nonExistentMethod'));
-        $this->assertFalse(isCallable('DateTime::fakeMethod'));
+        $this->assertFalse( isCallable('NonExistentClass::method'));
+        $this->assertFalse( isCallable(self::class . '::nonExistentMethod'));
+        $this->assertFalse( isCallable('DateTime::fakeMethod'));
     }
 
     /**
@@ -51,9 +53,9 @@ final class IsCallableTests extends TestCase
      */
     public function testIsCallableNamespacedFunctions()
     {
-        $this->assertTrue(isCallable('oihana\core\callables\resolveCallable'));
-        $this->assertTrue(isCallable('oihana\core\callables\isCallable'));
-        $this->assertFalse(isCallable('oihana\core\callables\nonexistent'));
+        $this->assertTrue  ( isCallable('oihana\core\callables\resolveCallable'));
+        $this->assertTrue  ( isCallable('oihana\core\callables\isCallable'));
+        $this->assertFalse ( isCallable('oihana\core\callables\nonexistent'));
     }
 
     /**
@@ -61,7 +63,7 @@ final class IsCallableTests extends TestCase
      */
     public function testIsCallableEmptyString()
     {
-        $this->assertFalse(isCallable(''));
+        $this->assertFalse( isCallable(''));
     }
 
     /**
@@ -103,12 +105,14 @@ final class IsCallableTests extends TestCase
             'oihana\core\callables\resolveCallable',
         ];
 
-        foreach ($testCases as $callable) {
-            $isCallableResult = isCallable($callable);
-            $resolveCallableResult = resolveCallable($callable);
+        foreach ($testCases as $callable)
+        {
+            $isCallableResult      = isCallable($callable) ;
+            $resolveCallableResult = resolveCallable($callable) ;
 
             // isCallable should be true iff resolveCallable returns non-null
-            $this->assertSame(
+            $this->assertSame
+            (
                 $isCallableResult,
                 $resolveCallableResult !== null,
                 "Mismatch for callable: $callable"

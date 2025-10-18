@@ -241,15 +241,30 @@ Search.appendIndex(
             "summary": "Removes\u0020duplicate\u0020values\u0020from\u0020an\u0020array\u0020and\u0020reindexes\u0020it.",
             "url": "namespaces/oihana-core-arrays.html#function_unique"
         },                {
+            "fqsen": "\\oihana\\core\\callables\\chainCallables\u0028\u0029",
+            "name": "chainCallables",
+            "summary": "Chains\u0020multiple\u0020callables\u0020to\u0020be\u0020executed\u0020in\u0020sequence.",
+            "url": "namespaces/oihana-core-callables.html#function_chainCallables"
+        },                {
             "fqsen": "\\oihana\\core\\callables\\isCallable\u0028\u0029",
             "name": "isCallable",
             "summary": "Checks\u0020whether\u0020a\u0020string\u0020can\u0020be\u0020resolved\u0020into\u0020a\u0020valid\u0020callable.",
             "url": "namespaces/oihana-core-callables.html#function_isCallable"
         },                {
+            "fqsen": "\\oihana\\core\\callables\\memoizeCallable\u0028\u0029",
+            "name": "memoizeCallable",
+            "summary": "Memoizes\u0020a\u0020callable\u0027s\u0020result\u0020\u0028caches\u0020based\u0020on\u0020arguments\u0029.",
+            "url": "namespaces/oihana-core-callables.html#function_memoizeCallable"
+        },                {
             "fqsen": "\\oihana\\core\\callables\\resolveCallable\u0028\u0029",
             "name": "resolveCallable",
             "summary": "Resolves\u0020a\u0020string\u0020callable\u0020into\u0020an\u0020actual\u0020callable.",
             "url": "namespaces/oihana-core-callables.html#function_resolveCallable"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\wrapCallable\u0028\u0029",
+            "name": "wrapCallable",
+            "summary": "Wraps\u0020a\u0020callable\u0020to\u0020apply\u0020middleware\/decorators\u0020before\/after\u0020execution.",
+            "url": "namespaces/oihana-core-callables.html#function_wrapCallable"
         },                {
             "fqsen": "\\oihana\\core\\date\\formatDateTime\u0028\u0029",
             "name": "formatDateTime",

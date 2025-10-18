@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">clip.php</h2>
+        <h2 class="phpdocumentor-content__title">wrapCallable.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-numbers-clip.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-callables-wrapcallable.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,16 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-numbers-clip.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-callables-wrapcallable.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-numbers.html#function_clip">clip()</a>
+    <a class="" href="namespaces/oihana-core-callables.html#function_wrapCallable">wrapCallable()</a>
     <span>
-                                &nbsp;: int|float    </span>
+                                &nbsp;: callable    </span>
 </dt>
-<dd>Bounds a number value between two numbers.</dd>
+<dd>Wraps a callable to apply middleware/decorators before/after execution.</dd>
 
     </dl>
 
@@ -148,56 +148,59 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-numbers-clip.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-callables-wrapcallable.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_clip">
-        clip()
-        <a href="namespaces/oihana-core-numbers.html#function_clip" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_wrapCallable">
+        wrapCallable()
+        <a href="namespaces/oihana-core-callables.html#function_wrapCallable" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/numbers/clip.php"><a href="files/src-oihana-core-numbers-clip.html"><abbr title="src/oihana/core/numbers/clip.php">clip.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/wrapCallable.php"><a href="files/src-oihana-core-callables-wrapcallable.html"><abbr title="src/oihana/core/callables/wrapCallable.php">wrapCallable.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Bounds a number value between two numbers.</p>
+        <p class="phpdocumentor-summary">Wraps a callable to apply middleware/decorators before/after execution.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">clip</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$min</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$max</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int|float</span></code>
+                    <span class="phpdocumentor-signature__name">wrapCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$wrapper</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function allows you to decorate a callable with custom logic that executes
+before and/or after the original callable is invoked. The wrapper receives the
+original callable and its arguments, giving complete control over execution flow.</p>
+<p>The wrapper callable receives:</p>
+<ul>
+<li>First argument: The original callable to invoke</li>
+<li>Remaining arguments: The arguments passed to the wrapped callable</li>
+</ul>
+<p>The wrapper is responsible for calling the original callable and returning its result.
+This enables use cases like logging, timing, error handling, caching, etc.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
+                <span class="phpdocumentor-signature__argument__name">$callable</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to clamp.</p>
+                    <section class="phpdocumentor-description"><p>The original callable to wrap</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$min</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
+                <span class="phpdocumentor-signature__argument__name">$wrapper</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The minimum value of the range.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$max</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int|float</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The maximum value of the range.</p>
+                    <section class="phpdocumentor-description"><p>A callable that receives the original callable and args.
+Signature: <code class="prettyprint">function($original, ...$args)</code></p>
 </section>
 
             </dd>
@@ -206,7 +209,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core-numbers.html#function_clip#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-callables.html#function_wrapCallable#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -215,10 +218,52 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">clip( 4  , 5 , 10 ) ;  // Returns 5
-clip( 12 , 5 , 10 ) ; // Returns 10
-clip( 6  , 5 , 10 ) ;  // Returns 6
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\callables\wrapCallable;
+
+// Example 1: Logging wrapper
+$fn = fn($x) =&gt; $x * 2;
+$logged = wrapCallable($fn, function($original, ...$args)
+{
+    echo &quot;Calling with: &quot; . json_encode($args);
+    $result = $original(...$args);
+    echo &quot;Result: $result&quot;;
+    return $result;
+});
+$logged(5); // Logs: Calling with: [5], Result: 10
+
+// Example 2: Error handling wrapper
+$wrapped = wrapCallable('json_decode', function( $original , ...$args )
+{
+    try
+    {
+        return $original(...$args) ;
+    }
+    catch (Throwable $e)
+    {
+        return null ;
+    }
+});
+
+// Example 3: Timing wrapper
+$timed = wrapCallable( $expensiveFn , function( $original , ...$args )
+{
+    $start    = microtime(true);
+    $result   = $original(...$args);
+    $duration = microtime(true) - $start;
+    error_log( &quot;Execution took {$duration}s&quot; ) ;
+    return $result;
+});
 </code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="namespaces/oihana-core-callables.html#function_chainCallables"><abbr title="\oihana\core\callables\chainCallables()">chainCallables()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>To combine multiple callables in sequence</p>
 </section>
 
                                     </dd>
@@ -235,7 +280,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
                                                                                 
                                              
                                     </dd>
@@ -243,9 +288,9 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int|float</span>
+        <span class="phpdocumentor-signature__response_type">callable</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>A value bounded between $min and $max.</p>
+                <section class="phpdocumentor-description"><p>A new wrapped callable that applies the wrapper logic</p>
 </section>
 
             </section>
@@ -257,7 +302,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/numbers/clip.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/callables/wrapCallable.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -358,7 +403,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-numbers-clip.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-callables-wrapcallable.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -366,7 +411,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core-numbers.html#function_clip">clip()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_wrapCallable">wrapCallable()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -386,7 +431,7 @@ clip( 6  , 5 , 10 ) ;  // Returns 6
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-numbers-clip.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-callables-wrapcallable.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
