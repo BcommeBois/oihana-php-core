@@ -36,7 +36,8 @@ namespace oihana\core\callables;
  * echo $wrapped(5); // Before 5, After 10, 10
  *
  * // Multiple before/after callables
- * $wrapped2 = middlewareCallable(
+ * $wrapped2 = middlewareCallable
+ * (
  *     $fn,
  *     before: [
  *         fn(int $x) => print("B1-$x\n"),
