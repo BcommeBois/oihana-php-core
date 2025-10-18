@@ -151,6 +151,13 @@
 <dd>Memoizes a callable&#039;s result (caches based on arguments).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-callables.html#function_middlewareCallable">middlewareCallable()</a>
+    <span>
+                                &nbsp;: callable    </span>
+</dt>
+<dd>Wrap a callable with before/after middleware.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-callables.html#function_resolveCallable">resolveCallable()</a>
     <span>
                                 &nbsp;: callable|null    </span>
@@ -543,6 +550,139 @@ echo $add( 3 , 2 ) ; // 5 (different cache key since args differ)
         <span class="phpdocumentor-signature__response_type">callable</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>A new callable with memoization enabled</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_middlewareCallable">
+        middlewareCallable()
+        <a href="namespaces/oihana-core-callables.html#function_middlewareCallable" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/middlewareCallable.php"><a href="files/src-oihana-core-callables-middlewarecallable.html"><abbr title="src/oihana/core/callables/middlewareCallable.php">middlewareCallable.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">58</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Wrap a callable with before/after middleware.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">middlewareCallable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable|array&lt;string|int, callable&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$before</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable|array&lt;string|int, callable&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$after</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">callable</span></code>
+
+        <section class="phpdocumentor-description"><p>This function allows decorating a callable with logic that runs
+before and/or after the original callable. Supports a single callable
+or an array of callables for both <code class="prettyprint">before</code> and <code class="prettyprint">after</code>.</p>
+<ul>
+<li><code class="prettyprint">before</code> callables receive the original arguments.</li>
+<li><code class="prettyprint">after</code> callables receive the original arguments + the result.
+If an after callback returns a non-null value, it overrides the result.</li>
+</ul>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callable</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The main callable to wrap</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$before</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable|array&lt;string|int, callable&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Callable or array of callables to run before</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$after</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable|array&lt;string|int, callable&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Callable or array of callables to run after</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-callables.html#function_middlewareCallable#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\callables\middlewareCallable;
+
+$fn = fn(int $x): int =&gt; $x * 2;
+
+// Single before and after callables
+$wrapped = middlewareCallable(
+    $fn,
+    before: fn(int $x) =&gt; print(&quot;Before $x\n&quot;),
+    after:  fn(int $x, int $result) =&gt; print(&quot;After $result\n&quot;)
+);
+
+echo $wrapped(5); // Before 5, After 10, 10
+
+// Multiple before/after callables
+$wrapped2 = middlewareCallable(
+    $fn,
+    before: [
+        fn(int $x) =&gt; print(&quot;B1-$x\n&quot;),
+        fn(int $x) =&gt; print(&quot;B2-$x\n&quot;)
+    ],
+    after: [
+        fn(int $x, int $r) =&gt; print(&quot;A1-$r\n&quot;),
+        fn(int $x, int $r) =&gt; print(&quot;A2-$r\n&quot;)
+    ]
+);
+
+echo $wrapped2(3); // B1-3, B2-3, A1-6, A2-6, 6
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">callable</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Wrapped callable with middleware applied</p>
 </section>
 
             </section>
@@ -947,6 +1087,7 @@ $timed = wrapCallable( $expensiveFn , function( $original , ...$args )
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_chainCallables">chainCallables()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_isCallable">isCallable()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_memoizeCallable">memoizeCallable()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_middlewareCallable">middlewareCallable()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_resolveCallable">resolveCallable()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_wrapCallable">wrapCallable()</a></li>
                                             </ul>

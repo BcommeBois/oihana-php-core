@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  - Add the oihana/core/normalize function : Normalizes a value according to the given cleaning flags.
  - **Callables:**
    - Add the isCallable and resolveCallable functions
-   - Add the chainCallables, memoizeCallable and wrapCallable functions
+   - Add the chainCallables, memoizeCallable, middlewareCallable and wrapCallable functions
  - **JSON:**
    - Add the getJsonType function 
  - **Strings:**

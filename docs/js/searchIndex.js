@@ -256,6 +256,11 @@ Search.appendIndex(
             "summary": "Memoizes\u0020a\u0020callable\u0027s\u0020result\u0020\u0028caches\u0020based\u0020on\u0020arguments\u0029.",
             "url": "namespaces/oihana-core-callables.html#function_memoizeCallable"
         },                {
+            "fqsen": "\\oihana\\core\\callables\\middlewareCallable\u0028\u0029",
+            "name": "middlewareCallable",
+            "summary": "Wrap\u0020a\u0020callable\u0020with\u0020before\/after\u0020middleware.",
+            "url": "namespaces/oihana-core-callables.html#function_middlewareCallable"
+        },                {
             "fqsen": "\\oihana\\core\\callables\\resolveCallable\u0028\u0029",
             "name": "resolveCallable",
             "summary": "Resolves\u0020a\u0020string\u0020callable\u0020into\u0020an\u0020actual\u0020callable.",

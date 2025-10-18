@@ -65,9 +65,11 @@
             "src/oihana/core/arrays/tail.php",
             "src/oihana/core/arrays/toArray.php",
             "src/oihana/core/arrays/unique.php",
+            
             "src/oihana/core/callables/chainCallables.php" ,
             "src/oihana/core/callables/isCallable.php",
             "src/oihana/core/callables/memoizeCallable.php",
+            "src/oihana/core/callables/middlewareCallable.php",
             "src/oihana/core/callables/resolveCallable.php",
             "src/oihana/core/callables/wrapCallable.php",
             
