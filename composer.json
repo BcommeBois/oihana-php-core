@@ -18,7 +18,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "oihana\\core\\" : "tests/oihana/core"
+            "tests\\" : "tests"
         }
     },
     "autoload" :
@@ -65,6 +65,9 @@
             "src/oihana/core/arrays/tail.php",
             "src/oihana/core/arrays/toArray.php",
             "src/oihana/core/arrays/unique.php",
+            
+            "src/oihana/core/callables/isCallable.php",
+            "src/oihana/core/callables/resolveCallable.php",
             
             "src/oihana/core/date/formatDateTime.php",
             "src/oihana/core/date/isDate.php",

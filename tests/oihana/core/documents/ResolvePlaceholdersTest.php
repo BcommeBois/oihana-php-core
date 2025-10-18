@@ -2,9 +2,9 @@
 
 namespace oihana\core\documents ;
 
-use oihana\core\documents\mocks\MockFormatDocument;
 use PHPUnit\Framework\TestCase;
 use stdClass;
+use tests\oihana\core\documents\mocks\MockFormatDocument;
 
 class ResolvePlaceholdersTest extends TestCase
 {

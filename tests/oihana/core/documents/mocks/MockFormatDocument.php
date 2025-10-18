@@ -1,6 +1,6 @@
 <?php
 
-namespace oihana\core\documents\mocks;
+namespace tests\oihana\core\documents\mocks;
 
 class MockFormatDocument
 {

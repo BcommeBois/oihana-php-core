@@ -2,13 +2,13 @@
 
 namespace oihana\core\objects ;
 
-use oihana\core\mocks\GeoCoordinates;
 use stdClass;
 
 use PHPUnit\Framework\TestCase;
 
-use oihana\core\mocks\Address;
-use oihana\core\mocks\User;
+use tests\oihana\core\mocks\Address;
+use tests\oihana\core\mocks\GeoCoordinates;
+use tests\oihana\core\mocks\User;
 
 class SetTest extends TestCase
 {

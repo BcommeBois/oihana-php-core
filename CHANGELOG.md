@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
  - Add the oihana/core/normalize function : Normalizes a value according to the given cleaning flags.
+ - **Callables:**
+   - Add the isCallable and resolveCallable functions
  - **JSON:**
    - Add the getJsonType function 
  - **Strings:**

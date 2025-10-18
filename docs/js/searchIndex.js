@@ -241,6 +241,16 @@ Search.appendIndex(
             "summary": "Removes\u0020duplicate\u0020values\u0020from\u0020an\u0020array\u0020and\u0020reindexes\u0020it.",
             "url": "namespaces/oihana-core-arrays.html#function_unique"
         },                {
+            "fqsen": "\\oihana\\core\\callables\\isCallable\u0028\u0029",
+            "name": "isCallable",
+            "summary": "Checks\u0020whether\u0020a\u0020string\u0020can\u0020be\u0020resolved\u0020into\u0020a\u0020valid\u0020callable.",
+            "url": "namespaces/oihana-core-callables.html#function_isCallable"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\resolveCallable\u0028\u0029",
+            "name": "resolveCallable",
+            "summary": "Resolves\u0020a\u0020string\u0020callable\u0020into\u0020an\u0020actual\u0020callable.",
+            "url": "namespaces/oihana-core-callables.html#function_resolveCallable"
+        },                {
             "fqsen": "\\oihana\\core\\date\\formatDateTime\u0028\u0029",
             "name": "formatDateTime",
             "summary": "Formats\u0020a\u0020given\u0020date\/time\u0020string\u0020into\u0020a\u0020specified\u0020format\u0020and\u0020timezone.",
@@ -875,6 +885,11 @@ Search.appendIndex(
             "name": "arrays",
             "summary": "",
             "url": "namespaces/oihana-core-arrays.html"
+        },                {
+            "fqsen": "\\oihana\\core\\callables",
+            "name": "callables",
+            "summary": "",
+            "url": "namespaces/oihana-core-callables.html"
         },                {
             "fqsen": "\\oihana\\core\\date",
             "name": "date",

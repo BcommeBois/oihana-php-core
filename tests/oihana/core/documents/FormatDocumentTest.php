@@ -2,7 +2,7 @@
 
 namespace oihana\core\documents ;
 
-use oihana\core\documents\mocks\MockFormatDocument;
+use tests\oihana\core\documents\mocks\MockFormatDocument;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -71,7 +71,7 @@ class FormatDocumentTest extends TestCase
         $result = formatDocument($obj);
 
         $this->assertSame('Hello, World!', $result->greeting );
-        $this->assertEquals( 'oihana\core\documents\mocks\MockFormatDocument' , get_class($result), 'MockFormatDocument class should be preserved');
+        $this->assertEquals( 'tests\oihana\core\documents\mocks\MockFormatDocument' , get_class($result), 'MockFormatDocument class should be preserved');
     }
 
     public function testFormatDocumentHandlesCircularReferences(): void

@@ -1,6 +1,6 @@
 <?php
 
-namespace oihana\core\mocks;
+namespace tests\oihana\core\mocks;
 
 class User
 {

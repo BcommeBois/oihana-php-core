@@ -1,6 +1,6 @@
 <?php
 
-namespace oihana\core\arrays\mocks;
+namespace tests\oihana\core\arrays\mocks;
 
 use ArrayAccess;
 

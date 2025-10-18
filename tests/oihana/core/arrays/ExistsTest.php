@@ -3,7 +3,7 @@
 namespace oihana\core\arrays ;
 
 use ArrayObject;
-use oihana\core\arrays\mocks\MockArrayAccess;
+use tests\oihana\core\arrays\mocks\MockArrayAccess;
 use PHPUnit\Framework\TestCase;
 
 class ExistsTest extends TestCase
