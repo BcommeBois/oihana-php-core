@@ -160,7 +160,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/middlewareCallable.php"><a href="files/src-oihana-core-callables-middlewarecallable.html"><abbr title="src/oihana/core/callables/middlewareCallable.php">middlewareCallable.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">58</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -238,7 +238,8 @@ $wrapped = middlewareCallable(
 echo $wrapped(5); // Before 5, After 10, 10
 
 // Multiple before/after callables
-$wrapped2 = middlewareCallable(
+$wrapped2 = middlewareCallable
+(
     $fn,
     before: [
         fn(int $x) =&gt; print(&quot;B1-$x\n&quot;),

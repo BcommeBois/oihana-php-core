@@ -87,4 +87,10 @@ final class NormalizeTest extends TestCase
         $data = ['', [], null];
         $this->assertSame([], normalize($data, CleanFlag::DEFAULT));
     }
+
+    public function testArrayEmpty(): void
+    {
+        $data = [];
+        $this->assertNull(normalize($data, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL));
+    }
 }

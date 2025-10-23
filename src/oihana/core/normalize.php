@@ -22,7 +22,7 @@ use function oihana\core\arrays\clean;
  * ```php
  * normalize(['', ' foo ', null]);
  * // ['foo']
- *
+ **
  * normalize
  * ([
  *     'name'  => 'Alice',
@@ -30,6 +30,9 @@ use function oihana\core\arrays\clean;
  *     'age'   => null
  * ]);
  * // ['name' => 'Alice']
+ *
+ * normalize([]);
+ * // null
  *
  * normalize(['', null, '   ']);
  * // null
@@ -74,9 +77,21 @@ use function oihana\core\arrays\clean;
  */
 function normalize( mixed $value, int $flags = CleanFlag::DEFAULT | CleanFlag::RETURN_NULL ): mixed
 {
+    if ( is_null( $value ) )
+    {
+        return null ;
+    }
+
     if ( is_array( $value ) )
     {
-        return clean( $value , $flags ) ;
+        $cleaned = clean( $value , $flags ) ;
+
+        if ( empty( $cleaned ) && CleanFlag::has( $flags , CleanFlag::RETURN_NULL ) )
+        {
+            return null ;
+        }
+
+        return $cleaned ;
     }
 
     if ( is_string( $value ) )

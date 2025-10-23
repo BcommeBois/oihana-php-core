@@ -370,7 +370,7 @@ isLiteral(null);     // false
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/normalize.php"><a href="files/src-oihana-core-normalize.html"><abbr title="src/oihana/core/normalize.php">normalize.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 
     </aside>
 
@@ -424,7 +424,7 @@ isLiteral(null);     // false
                                                                                 
                                                  <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">normalize(['', ' foo ', null]);
 // ['foo']
-
+*
 normalize
 ([
     'name'  =&gt; 'Alice',
@@ -432,6 +432,9 @@ normalize
     'age'   =&gt; null
 ]);
 // ['name' =&gt; 'Alice']
+
+normalize([]);
+// null
 
 normalize(['', null, '   ']);
 // null
