@@ -4,6 +4,7 @@ namespace oihana\core ;
 
 use oihana\core\arrays\CleanFlag ;
 
+use stdClass;
 use function oihana\core\arrays\clean;
 
 /**
@@ -33,6 +34,9 @@ use function oihana\core\arrays\clean;
  *
  * normalize([]);
  * // null
+ *
+ *  normalize(new stdClass()); // empty object
+ *  // null
  *
  * normalize(['', null, '   ']);
  * // null
@@ -105,6 +109,19 @@ function normalize( mixed $value, int $flags = CleanFlag::DEFAULT | CleanFlag::R
         {
             return null ;
         }
+    }
+
+    if ( is_object( $value ) )
+    {
+        if ( CleanFlag::has( $flags , CleanFlag::RETURN_NULL ) )
+        {
+            if ( $value instanceof stdClass && empty( (array) $value ) )
+            {
+                return null ;
+            }
+        }
+
+        return $value ;
     }
 
     if ( CleanFlag::has( $flags, CleanFlag::FALSY ) && ! $value )

@@ -4,6 +4,7 @@ namespace oihana\core ;
 
 use oihana\core\arrays\CleanFlag;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 final class NormalizeTest extends TestCase
 {
@@ -88,9 +89,18 @@ final class NormalizeTest extends TestCase
         $this->assertSame([], normalize($data, CleanFlag::DEFAULT));
     }
 
-    public function testArrayEmpty(): void
+    public function testEmptyArray(): void
     {
         $data = [];
         $this->assertNull(normalize($data, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL));
+    }
+
+    public function testEmptyObject(): void
+    {
+        $data = new stdClass() ;
+        $this->assertNull(normalize($data, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL));
+
+        $data->prop = 'value'; ;
+        $this->assertNotNull(normalize($data, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL));
     }
 }

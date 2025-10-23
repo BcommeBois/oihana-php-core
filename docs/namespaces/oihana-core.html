@@ -370,7 +370,7 @@ isLiteral(null);     // false
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/normalize.php"><a href="files/src-oihana-core-normalize.html"><abbr title="src/oihana/core/normalize.php">normalize.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">82</span>
 
     </aside>
 
@@ -435,6 +435,9 @@ normalize
 
 normalize([]);
 // null
+
+ normalize(new stdClass()); // empty object
+ // null
 
 normalize(['', null, '   ']);
 // null
