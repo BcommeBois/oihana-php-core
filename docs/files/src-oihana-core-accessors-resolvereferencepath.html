@@ -160,7 +160,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/accessors/resolveReferencePath.php"><a href="files/src-oihana-core-accessors-resolvereferencepath.html"><abbr title="src/oihana/core/accessors/resolveReferencePath.php">resolveReferencePath.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">76</span>
 
     </aside>
 
@@ -231,17 +231,49 @@ $ref = &amp;resolveReferencePath($doc, $keys, true);
 $ref['name'] = 'John';
 // $doc is now: ['user' =&gt; ['name' =&gt; 'John']]
 </code></pre>
-<pre class="prettyprint"><code class="language-php">$doc = new stdClass();
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$doc = new stdClass();
 $keys = ['config', 'theme'];
 $ref = &amp;resolveReferencePath($doc, $keys, false);
 $ref-&gt;theme = 'dark';
 // $doc is now: (object)['config' =&gt; (object)['theme' =&gt; 'dark']]
 </code></pre>
-<pre class="prettyprint"><code class="language-php">$doc = ['settings' =&gt; ['ui' =&gt; []]];
-$keys = ['settings', 'ui', 'color'];
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Mixed structure support:</p>
+<pre class="prettyprint"><code class="language-php">$doc = ['data' =&gt; (object)['name' =&gt; 'Alice']];
+$keys = ['data', 'age'];
 $ref = &amp;resolveReferencePath($doc, $keys, true);
-$ref['color'] = 'blue';
-// $doc is now: ['settings' =&gt; ['ui' =&gt; ['color' =&gt; 'blue']]]
+$ref-&gt;age = 30;
+// $doc is now: ['data' =&gt; (object)['name' =&gt; 'Alice', 'age' =&gt; 30]]
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Overwriting scalars:</p>
+<pre class="prettyprint"><code class="language-php">$doc = ['user' =&gt; 'not_an_array'];
+$keys = ['user', 'profile', 'name'];
+$ref = &amp;resolveReferencePath($doc, $keys, true);
+$ref['name'] = 'Alice';
+// $doc is now: ['user' =&gt; ['profile' =&gt; ['name' =&gt; 'Alice']]]
 </code></pre>
 </section>
 

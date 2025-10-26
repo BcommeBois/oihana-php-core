@@ -160,7 +160,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/accessors/deleteKeyValue.php"><a href="files/src-oihana-core-accessors-deletekeyvalue.html"><abbr title="src/oihana/core/accessors/deleteKeyValue.php">deleteKeyValue.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">111</span>
 
     </aside>
 
@@ -169,10 +169,12 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">deleteKeyValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isArray</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span></code>
+                    <span class="phpdocumentor-signature__name">deleteKeyValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;.&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isArray</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$strict</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span></code>
 
         <section class="phpdocumentor-description"><p>This utility supports:</p>
 <ul>
+<li>Single key deletion (string)</li>
+<li>Multiple key deletion (array of strings)</li>
 <li>Flat keys (e.g., &quot;name&quot;)</li>
 <li>Nested keys (e.g., &quot;user.profile.name&quot;)</li>
 <li>Wildcard deletion for sub-containers (e.g., &quot;user.*&quot;)</li>
@@ -195,10 +197,10 @@ Intermediate paths are ensured to exist before deletion.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$key</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The key path to delete (e.g. &quot;foo.bar&quot; or &quot;foo.<em>&quot; or &quot;</em>&quot;).</p>
+                    <section class="phpdocumentor-description"><p>The key path(s) to delete (e.g. &quot;foo.bar&quot; or [&quot;foo.bar&quot;, &quot;baz.*&quot;]).</p>
 </section>
 
             </dd>
@@ -220,6 +222,15 @@ Intermediate paths are ensured to exist before deletion.</p>
 </section>
 
             </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$strict</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>If true, throws exception when key doesn't exist. Default: false.</p>
+</section>
+
+            </dd>
             </dl>
 
     
@@ -236,7 +247,120 @@ Intermediate paths are ensured to exist before deletion.</p>
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
                                                             
                                                  <section class="phpdocumentor-description"><p>If input is not array/object, if key is invalid,
-or if path traversal encounters a type mismatch.</p>
+or if path traversal encounters a type mismatch.
+In strict mode, also throws if key doesn't exist.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Delete an single array key :</p>
+<pre class="prettyprint"><code class="language-php">$doc = ['name' =&gt; 'Alice', 'age' =&gt; 30];
+$doc = deleteKeyValue( $doc , 'age' ) ;
+// Result: ['name' =&gt; 'Alice']
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Delete multiple keys at once:</p>
+<pre class="prettyprint"><code class="language-php">$doc = ['name' =&gt; 'Alice', 'age' =&gt; 30, 'email' =&gt; 'a@b.c'];
+$doc = deleteKeyValue($doc, ['age', 'email']);
+// Result: ['name' =&gt; 'Alice']
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Delete multiple nested keys:</p>
+<pre class="prettyprint"><code class="language-php">$doc = ['user' =&gt; ['name' =&gt; 'Alice', 'email' =&gt; 'a@b.c', 'age' =&gt; 30]];
+$doc = deleteKeyValue($doc, ['user.name', 'user.age']);
+// Result: ['user' =&gt; ['email' =&gt; 'a@b.c']]
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Mix of simple and wildcard deletions:</p>
+<pre class="prettyprint"><code class="language-php">$doc =
+[
+    'name' =&gt; 'Alice',
+    'meta' =&gt; ['a' =&gt; 1, 'b' =&gt; 2],
+    'config' =&gt; ['x' =&gt; 10, 'y' =&gt; 20]
+];
+$doc = deleteKeyValue($doc, ['name', 'meta.*']);
+// Result: ['meta' =&gt; [], 'config' =&gt; ['x' =&gt; 10, 'y' =&gt; 20]]
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Delete all properties with a wildcard key expression.</p>
+<pre class="prettyprint"><code class="language-php">$doc = ['meta' =&gt; ['a' =&gt; 1, 'b' =&gt; 2]];
+$doc = deleteKeyValue($doc, 'meta.*');
+// Result: ['meta' =&gt; []]
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Delete all object properties:</p>
+<pre class="prettyprint"><code class="language-php">$doc = (object)['user' =&gt; (object)['name' =&gt; 'Alice', 'email' =&gt; 'a@b.c']];
+$doc = deleteKeyValue($doc, 'user.*');
+// Result: (object)['user' =&gt; (object)[]]
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Non-strict mode (default) - ignore missing keys:</p>
+<pre class="prettyprint"><code class="language-php">$doc = ['name' =&gt; 'Alice', 'age' =&gt; 30];
+$doc = deleteKeyValue($doc, ['age', 'email', 'phone']); // no error
+// Result: ['name' =&gt; 'Alice']
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Strict mode - throws exception for missing keys:</p>
+<pre class="prettyprint"><code class="language-php">$doc = ['name' =&gt; 'Alice', 'age' =&gt; 30];
+try {
+$doc = deleteKeyValue($doc, ['age', 'email'], strict: true);
+} catch (InvalidArgumentException $e) {
+echo $e-&gt;getMessage(); // &quot;Key 'email' does not exist.&quot;
+}
+</code></pre>
 </section>
 
                                     </dd>
@@ -256,46 +380,6 @@ or if path traversal encounters a type mismatch.</p>
                                             <span class="phpdocumentor-tag-link">1.0.0</span>
                                                                                 
                                              
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Delete an array key :</p>
-<pre class="prettyprint"><code class="language-php">$doc = ['name' =&gt; 'Alice', 'age' =&gt; 30];
-$doc = deleteKeyValue( $doc , 'age' ) ;
-// Result: ['name' =&gt; 'Alice']
-</code></pre>
-<p>Delete an array complex key expression 'user.name&quot; :</p>
-<pre class="prettyprint"><code class="language-php">$doc = ['user' =&gt; ['name' =&gt; 'Alice', 'email' =&gt; 'a@b.c']];
-$doc = deleteKeyValue($doc, 'user.name');
-// Result: ['user' =&gt; ['email' =&gt; 'a@b.c']]
-</code></pre>
-<p>Deletes all object properties :</p>
-<pre class="prettyprint"><code class="language-php">$doc = (object)['x' =&gt; 1, 'y' =&gt; 2];
-$doc = deleteKeyValue($doc, '*');
-// Result: (object)[]
-</code></pre>
-<p>Delete all properties with a wildcard key expression.</p>
-<pre class="prettyprint"><code class="language-php">$doc = ['meta' =&gt; ['a' =&gt; 1, 'b' =&gt; 2]];
-$doc = deleteKeyValue($doc, 'meta.*');
-// Result: ['meta' =&gt; []]
-</code></pre>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$doc = (object)['user' =&gt; (object)['name' =&gt; 'Alice', 'email' =&gt; 'a@b.c']];
-$doc = deleteKeyValue($doc, 'user.*');
-// Result: (object)['user' =&gt; (object)[]]
-</code></pre>
-</section>
-
                                     </dd>
                                             </dl>
 

@@ -4,7 +4,6 @@ namespace oihana\core\arrays ;
 
 use InvalidArgumentException;
 use oihana\core\options\CompressOption;
-use function oihana\core\helpers\conditions;
 use function oihana\core\objects\compress as compressObject ;
 
 /**

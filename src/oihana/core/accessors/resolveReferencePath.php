@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace oihana\core\accessors;
 
+use stdClass;
+
 use function oihana\core\arrays\ensureArrayPath;
 use function oihana\core\objects\ensureObjectPath;
 
@@ -35,6 +37,7 @@ use function oihana\core\objects\ensureObjectPath;
  * // $doc is now: ['user' => ['name' => 'John']]
  * ```
  *
+ * @example
  * ```php
  * $doc = new stdClass();
  * $keys = ['config', 'theme'];
@@ -43,12 +46,24 @@ use function oihana\core\objects\ensureObjectPath;
  * // $doc is now: (object)['config' => (object)['theme' => 'dark']]
  * ```
  *
+ * @example
+ * Mixed structure support:
  * ```php
- * $doc = ['settings' => ['ui' => []]];
- * $keys = ['settings', 'ui', 'color'];
+ * $doc = ['data' => (object)['name' => 'Alice']];
+ * $keys = ['data', 'age'];
  * $ref = &resolveReferencePath($doc, $keys, true);
- * $ref['color'] = 'blue';
- * // $doc is now: ['settings' => ['ui' => ['color' => 'blue']]]
+ * $ref->age = 30;
+ * // $doc is now: ['data' => (object)['name' => 'Alice', 'age' => 30]]
+ * ```
+ *
+ * @example
+ * Overwriting scalars:
+ * ```php
+ * $doc = ['user' => 'not_an_array'];
+ * $keys = ['user', 'profile', 'name'];
+ * $ref = &resolveReferencePath($doc, $keys, true);
+ * $ref['name'] = 'Alice';
+ * // $doc is now: ['user' => ['profile' => ['name' => 'Alice']]]
  * ```
  *
  * @see ensureArrayPath()
@@ -58,22 +73,36 @@ use function oihana\core\objects\ensureObjectPath;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
-function &resolveReferencePath( array|object &$document, array $keys , bool $isArray ): mixed
+function &resolveReferencePath
+(
+    array|object &$document,
+    array        $keys ,
+    bool         $isArray
+)
+: mixed
 {
-    $current = &$document ;
-    $length  = count( $keys ) - 1 ; // Navigate to parent of last key
+    $current = &$document;
+    $length  = count( $keys ) - 1; // Navigate to parent of last key
 
     for ( $i = 0 ; $i < $length ; $i++ )
     {
         $segment = $keys[ $i ] ;
-
-        if ( $isArray )
+        if ( is_array( $current ) )
         {
-            $current = &ensureArrayPath($current, $segment);
+            if (!isset( $current[$segment] ) || ( !is_array($current[$segment]) && !is_object( $current[$segment] ) ) )
+            {
+                $current[$segment] = $isArray ? [] : new stdClass() ;
+            }
+            $current = &$current[ $segment ] ;
         }
-        else
+        elseif ( is_object( $current ) )
         {
-            $current = &ensureObjectPath($current, $segment);
+            // Ensure property exists and is a container (array or object)
+            if (!isset($current->{$segment}) || (!is_array($current->{$segment}) && !is_object($current->{$segment})))
+            {
+                $current->{$segment} = $isArray ? [] : new stdClass() ;
+            }
+            $current = &$current->{$segment};
         }
     }
 
