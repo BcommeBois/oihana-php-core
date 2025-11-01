@@ -163,6 +163,7 @@
             "src/oihana/core/strings/predicates.php",
             "src/oihana/core/strings/prepend.php",
             "src/oihana/core/strings/randomKey.php",
+            "src/oihana/core/strings/replacePathPlaceholders.php",
             "src/oihana/core/strings/slice.php",
             "src/oihana/core/strings/snake.php",
             "src/oihana/core/strings/toPhpHumanReadableScalar.php" ,

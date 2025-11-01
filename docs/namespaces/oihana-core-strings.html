@@ -406,6 +406,13 @@ properly URL-encoding both keys and values.</dd>
 <dd>Generates a random key string, optionally prefixed with a given string and separated by a custom separator.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_replacePathPlaceholders">replacePathPlaceholders()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Replaces placeholders in a path string with values from an associative array.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_slice">slice()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -4745,6 +4752,132 @@ echo randomKey(&quot;order&quot;, &quot;-&quot;); // Possible output: &quot;orde
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_replacePathPlaceholders">
+        replacePathPlaceholders()
+        <a href="namespaces/oihana-core-strings.html#function_replacePathPlaceholders" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/replacePathPlaceholders.php"><a href="files/src-oihana-core-strings-replacepathplaceholders.html"><abbr title="src/oihana/core/strings/replacePathPlaceholders.php">replacePathPlaceholders.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">66</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Replaces placeholders in a path string with values from an associative array.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">replacePathPlaceholders</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$args</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;/{([a-zA-Z0-9_]+)(:[^}]+)?}/&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>Placeholders in the path are expected in one of the following forms:</p>
+<ul>
+<li><code class="prettyprint">{name}</code> : simple placeholder.</li>
+<li><code class="prettyprint">{name:regex}</code> : placeholder with an optional regex pattern.</li>
+</ul>
+<p>If a value for a placeholder is not provided in <code class="prettyprint">$args</code>, the placeholder
+remains unchanged in the output.</p>
+<h3>Examples</h3>
+<p>Simple replacement:</p>
+<pre class="prettyprint"><code class="language-php">$path = '/observation/{observation}/workspace/{workspace}/places';
+$args = ['observation' =&gt; '15454', 'workspace' =&gt; '787878'];
+echo replacePathPlaceholders($path, $args);
+// Output: '/observation/15454/workspace/787878/places'
+</code></pre>
+<p>Undefined placeholder fallback:</p>
+<pre class="prettyprint"><code class="language-php">$path = '/foo/{missing}/bar';
+$args = ['other' =&gt; 'value'];
+echo replacePathPlaceholders($path, $args);
+// Output: '/foo/{missing}/bar'  (placeholder stays unchanged)
+</code></pre>
+<p>Placeholder with regex:</p>
+<pre class="prettyprint"><code class="language-php">$path = '/product/{product:[A-Za-z0-9_]+}/warehouse/{warehouse:[0-9]+}';
+$args = ['product' =&gt; 'ABC123', 'warehouse' =&gt; '42'];
+echo replacePathPlaceholders($path, $args);
+// Output: '/product/ABC123/warehouse/42'
+</code></pre>
+<p>Custom regex pattern:</p>
+<pre class="prettyprint"><code class="language-php">$path = '/foo/:bar/baz';
+$args = ['bar' =&gt; '123'];
+$pattern = '/:([a-zA-Z0-9_]+)/';
+echo replacePathPlaceholders($path, $args, $pattern);
+// Output: '/foo/123/baz'
+</code></pre>
+<p>Empty path or null:</p>
+<pre class="prettyprint"><code class="language-php">echo replacePathPlaceholders(null); // Output: ''
+echo replacePathPlaceholders('');   // Output: ''
+</code></pre>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$path</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The path containing placeholders, e.g., '/users/{id}'.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$args</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Associative array of placeholder values (key = placeholder name).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pattern</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;/{([a-zA-Z0-9_]+)(:[^}]+)?}/&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Regex pattern to detect placeholders (default: '/{([a-zA-Z0-9_]+)(:[^}]+)?}/').</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_replacePathPlaceholders#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The path with placeholders replaced by their corresponding values.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_slice">
         slice()
         <a href="namespaces/oihana-core-strings.html#function_slice" class="headerlink"><i class="fas fa-link"></i></a>
@@ -6408,6 +6541,7 @@ echo wrap('column', '&quot;'); // &quot;column&quot;
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_predicates">predicates()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_prepend">prepend()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_randomKey">randomKey()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_replacePathPlaceholders">replacePathPlaceholders()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_slice">slice()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_snake">snake()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpHumanReadableScalar">toPhpHumanReadableScalar()</a></li>

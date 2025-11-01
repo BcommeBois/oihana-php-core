@@ -9,14 +9,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
  - Add the oihana/core/normalize function : Normalizes a value according to the given cleaning flags.
  - **Accessors:**
-   - Add the deleteKeyValues function + add in the deleteKeyValue function the array|string $key parameter (multiple keys deletion)
+   - Add the `deleteKeyValues()` function + add in the `deleteKeyValue()` function the array|string $key parameter (multiple keys deletion)
  - **Callables:**
-   - Add the isCallable and resolveCallable functions
-   - Add the chainCallables, memoizeCallable, middlewareCallable and wrapCallable functions
+   - Add the `isCallable()` and `resolveCallable()` functions
+   - Add the `chainCallables()`, `memoizeCallable()`, `middlewareCallable()` and `wrapCallable()` functions
  - **JSON:**
-   - Add the getJsonType function 
+   - Add the `getJsonType()` function 
  - **Strings:**
-   - Add the uniqueKey function
+   - Add the `uniqueKey()` function
+   - Add the `replacePathPlaceholders()` function 
 
 ### Changed
 - **Arrays:** In `clean()`, add the `CleanFlag::RETURN_NULL` option.
