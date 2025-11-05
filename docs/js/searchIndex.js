@@ -856,6 +856,11 @@ Search.appendIndex(
             "summary": "Wraps\u0020a\u0020block\u0020of\u0020lines\u0020with\u0020a\u0020header\u0020and\u0020footer\u0020line.",
             "url": "namespaces/oihana-core-strings.html#function_wrapBlock"
         },                {
+            "fqsen": "\\oihana\\core\\toNumber\u0028\u0029",
+            "name": "toNumber",
+            "summary": "Converts\u0020a\u0020value\u0020to\u0020a\u0020numeric\u0020type\u0020\u0028int\u0020or\u0020float\u0029\u0020if\u0020possible.",
+            "url": "namespaces/oihana-core.html#function_toNumber"
+        },                {
             "fqsen": "\\oihana\\interfaces\\Arrayable",
             "name": "Arrayable",
             "summary": "Interface\u0020for\u0020objects\u0020that\u0020can\u0020be\u0020converted\u0020to\u0020arrays.",
