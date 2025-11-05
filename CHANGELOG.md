@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
  - Add the oihana/core/normalize function : Normalizes a value according to the given cleaning flags.
+ - Add the oihana/core/toNumber function : Converts a value to a numeric type (int or float) if possible.
  - **Accessors:**
    - Add the `deleteKeyValues()` function + add in the `deleteKeyValue()` function the array|string $key parameter (multiple keys deletion)
  - **Callables:**
