@@ -79,7 +79,7 @@ use function oihana\core\arrays\clean;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.7
  */
-function normalize( mixed $value, int $flags = CleanFlag::DEFAULT | CleanFlag::RETURN_NULL ): mixed
+function normalize( mixed $value, int $flags = CleanFlag::NORMALIZE ): mixed
 {
     if ( is_null( $value ) )
     {

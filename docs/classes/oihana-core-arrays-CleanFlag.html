@@ -244,6 +244,13 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
 <dd>No cleaning (edge case, returns original array)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE">NORMALIZE</a>
+    <span>
+        &nbsp;= self::DEFAULT | \oihana\core\arrays\CleanFlag::RETURN_NULL                            </span>
+</dt>
+<dd>Default cleaning: remove nulls, empty/trim strings, empty arrays recursively and return null if empty.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_NULLS">NULLS</a>
     <span>
         &nbsp;= 1 &lt;&lt; 0                            </span>
@@ -492,7 +499,7 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">109</span>
+    <span class="phpdocumentor-element-found-in__line">114</span>
 
     </aside>
 
@@ -524,7 +531,7 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">123</span>
+    <span class="phpdocumentor-element-found-in__line">128</span>
 
     </aside>
 
@@ -600,6 +607,38 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">NONE</span>
     = <span class="phpdocumentor-signature__default-value">0</span>
+</code>
+
+
+    
+    
+    
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_NORMALIZE">
+        NORMALIZE
+        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">109</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Default cleaning: remove nulls, empty/trim strings, empty arrays recursively and return null if empty.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">NORMALIZE</span>
+    = <span class="phpdocumentor-signature__default-value">self::DEFAULT | \oihana\core\arrays\CleanFlag::RETURN_NULL</span>
 </code>
 
 
@@ -762,7 +801,7 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">155</span>
+    <span class="phpdocumentor-element-found-in__line">160</span>
 
     </aside>
 
@@ -851,7 +890,7 @@ echo CleanFlag::describe(CleanFlag::DEFAULT); // Outputs: &quot;NULLS, EMPTY, TR
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">194</span>
+    <span class="phpdocumentor-element-found-in__line">199</span>
 
     </aside>
 
@@ -930,7 +969,7 @@ $flags = CleanFlag::getFlags($mask);
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">231</span>
+    <span class="phpdocumentor-element-found-in__line">236</span>
 
     </aside>
 
@@ -1020,7 +1059,7 @@ CleanFlag::has($mask, CleanFlag::TRIM);  // Returns false
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">256</span>
+    <span class="phpdocumentor-element-found-in__line">261</span>
 
     </aside>
 
@@ -1209,6 +1248,7 @@ CleanFlag::isValid(CleanFlag::NULLS | 999);              // Returns false (conta
                                                     <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_FLAGS_NAME">FLAGS_NAME</a></li>
                                                     <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_MAIN">MAIN</a></li>
                                                     <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_NONE">NONE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE">NORMALIZE</a></li>
                                                     <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_NULLS">NULLS</a></li>
                                                     <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_RECURSIVE">RECURSIVE</a></li>
                                                     <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_RETURN_NULL">RETURN_NULL</a></li>

@@ -116,6 +116,11 @@ Search.appendIndex(
             "summary": "All\u0020the\u0020main\u0020flags.",
             "url": "classes/oihana-core-arrays-CleanFlag.html#constant_MAIN"
         },                {
+            "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003ANORMALIZE",
+            "name": "NORMALIZE",
+            "summary": "Default\u0020cleaning\u003A\u0020remove\u0020nulls,\u0020empty\/trim\u0020strings,\u0020empty\u0020arrays\u0020recursively\u0020and\u0020return\u0020null\u0020if\u0020empty.",
+            "url": "classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003AFLAGS",
             "name": "FLAGS",
             "summary": "The\u0020default\u0020list\u0020of\u0020flags.",

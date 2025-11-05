@@ -386,7 +386,7 @@ isLiteral(null);     // false
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">normalize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">CleanFlag::DEFAULT | CleanFlag::RETURN_NULL</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed|null</span></code>
+                    <span class="phpdocumentor-signature__name">normalize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">CleanFlag::NORMALIZE</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed|null</span></code>
 
         <section class="phpdocumentor-description"><ul>
 <li>Arrays are cleaned recursively using the provided flags.</li>
@@ -409,7 +409,7 @@ isLiteral(null);     // false
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$flags</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">CleanFlag::DEFAULT | CleanFlag::RETURN_NULL</span>            </dt>
+                 = <span class="phpdocumentor-signature__argument__default-value">CleanFlag::NORMALIZE</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>A bitmask of CleanFlag values. Defaults to <code class="prettyprint">CleanFlag::DEFAULT | CleanFlag::RETURN_NULL</code>.</p>
 </section>

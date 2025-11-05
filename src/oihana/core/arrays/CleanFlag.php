@@ -104,6 +104,11 @@ class CleanFlag
                           ;
 
     /**
+     * Default cleaning: remove nulls, empty/trim strings, empty arrays recursively and return null if empty.
+     */
+    public const int NORMALIZE = self::DEFAULT | CleanFlag::RETURN_NULL ;
+
+    /**
      * The default list of flags.
      */
     public const array FLAGS =
