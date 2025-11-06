@@ -26,21 +26,23 @@ Designed for clarity, extensibility, and performance, with a consistent, functio
 
 The library provides a suite of pure, side-effect-free utility functions organized into logical namespaces. Here’s a summary of what each package offers:
 
-| Namespace | Description |
-| :--- | :--- |
-| `oihana\core\accessors` | Provides unified functions (`get`, `set`, `has`, `delete`) to safely access and manipulate nested data in both arrays and objects using dot notation. |
-| `oihana\core\arrays` | A rich suite of utilities for array manipulation, including transformations, access, and structural analysis. |
-| `oihana\core\date` | Helpers for date formatting and validation. |
-| `oihana\core\documents` | Utilities for placeholder resolution and document formatting. |
-| `oihana\core\env` | Functions to detect the current environment (CLI, Docker, OS) and PHP settings. |
-| `oihana\core\json` | Helpers for advanced JSON serialization and flag validation. |
-| `oihana\core\maths` | Functions for smart numeric rounding operations (ceil, floor, round). |
-| `oihana\core\numbers` | Utilities for handling numbers, such as clamping a value within a specific range. |
-| `oihana\core\objects` | Lightweight helpers for object manipulation, like compressing and deep-setting values. |
-| `oihana\core\options` | Provides Enums for configuring function behaviors (e.g., `CompressOption`). |
-| `oihana\core\reflections`| Provides reflection utilities to inspect functions and their properties. |
-| `oihana\core\strings` | A comprehensive set of tools for string formatting, case conversion, validation, and generation. |
-| `oihana\core` (Utils) | General-purpose utilities, such as `ifNull()` and `isLiteral()`. |
+| Namespace                 | Description                                                                                                                                           |
+|:--------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `oihana\core\accessors`   | Provides unified functions (`get`, `set`, `has`, `delete`) to safely access and manipulate nested data in both arrays and objects using dot notation. |
+| `oihana\core\arrays`      | A rich suite of utilities for array manipulation, including transformations, access, and structural analysis.                                         |
+| `oihana\core\bits`        | A set of utilities for bit masks manipulation.                                                                                                        |
+| `oihana\core\callables`   | A set of utilities for functions and callable definitions.                                                                                            |
+| `oihana\core\date`        | Helpers for date formatting and validation.                                                                                                           |
+| `oihana\core\documents`   | Utilities for placeholder resolution and document formatting.                                                                                         |
+| `oihana\core\env`         | Functions to detect the current environment (CLI, Docker, OS) and PHP settings.                                                                       |
+| `oihana\core\json`        | Helpers for advanced JSON serialization and flag validation.                                                                                          |
+| `oihana\core\maths`       | Functions for smart numeric rounding operations (ceil, floor, round).                                                                                 |
+| `oihana\core\numbers`     | Utilities for handling numbers, such as clamping a value within a specific range.                                                                     |
+| `oihana\core\objects`     | Lightweight helpers for object manipulation, like compressing and deep-setting values.                                                                |
+| `oihana\core\options`     | Provides Enums for configuring function behaviors (e.g., `CompressOption`).                                                                           |
+| `oihana\core\reflections` | Provides reflection utilities to inspect functions and their properties.                                                                              |
+| `oihana\core\strings`     | A comprehensive set of tools for string formatting, case conversion, validation, and generation.                                                      |
+| `oihana\core` (Utils)     | General-purpose utilities, such as `normalize()`, `ifNull()`,  `isLiteral()` and `toNumber()`.                                                         |
 
 ## Documentation
 

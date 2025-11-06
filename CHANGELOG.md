@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  - Add the oihana/core/toNumber function : Converts a value to a numeric type (int or float) if possible.
  - **Accessors:**
    - Add the `deleteKeyValues()` function + add in the `deleteKeyValue()` function the array|string $key parameter (multiple keys deletion)
+ - **Bits:**
+   - `countFlags()`, `hasAllFlags()`, `hasFlag()`, `isValidMask()`, `setFlag()`, `toggleFlag()` and `unsetFlag()`
  - **Callables:**
    - Add the `isCallable()` and `resolveCallable()` functions
    - Add the `chainCallables()`, `memoizeCallable()`, `middlewareCallable()` and `wrapCallable()` functions

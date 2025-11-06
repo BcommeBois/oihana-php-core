@@ -67,6 +67,14 @@
             "src/oihana/core/arrays/toArray.php",
             "src/oihana/core/arrays/unique.php",
             
+            "src/oihana/core/bits/countFlags.php",
+            "src/oihana/core/bits/hasAllFlags.php",
+            "src/oihana/core/bits/hasFlag.php",
+            "src/oihana/core/bits/isValidMask.php" ,
+            "src/oihana/core/bits/setFlag.php",
+            "src/oihana/core/bits/toggleFlag.php",
+            "src/oihana/core/bits/unsetFlag.php",
+            
             "src/oihana/core/callables/chainCallables.php" ,
             "src/oihana/core/callables/isCallable.php",
             "src/oihana/core/callables/memoizeCallable.php",

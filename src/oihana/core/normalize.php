@@ -6,6 +6,7 @@ use oihana\core\arrays\CleanFlag ;
 
 use stdClass;
 use function oihana\core\arrays\clean;
+use function oihana\core\bits\hasFlag;
 
 /**
  * Normalizes a value according to the given cleaning flags.
@@ -90,7 +91,7 @@ function normalize( mixed $value, int $flags = CleanFlag::NORMALIZE ): mixed
     {
         $cleaned = clean( $value , $flags ) ;
 
-        if ( empty( $cleaned ) && CleanFlag::has( $flags , CleanFlag::RETURN_NULL ) )
+        if ( empty( $cleaned ) && hasFlag( $flags , CleanFlag::RETURN_NULL ) )
         {
             return null ;
         }
@@ -100,12 +101,12 @@ function normalize( mixed $value, int $flags = CleanFlag::NORMALIZE ): mixed
 
     if ( is_string( $value ) )
     {
-        if ( CleanFlag::has( $flags , CleanFlag::TRIM ) )
+        if ( hasFlag( $flags , CleanFlag::TRIM ) )
         {
             $value = trim( $value ) ;
         }
 
-        if ( CleanFlag::has( $flags , CleanFlag::EMPTY ) && $value === '' )
+        if ( hasFlag( $flags , CleanFlag::EMPTY ) && $value === '' )
         {
             return null ;
         }
@@ -113,7 +114,7 @@ function normalize( mixed $value, int $flags = CleanFlag::NORMALIZE ): mixed
 
     if ( is_object( $value ) )
     {
-        if ( CleanFlag::has( $flags , CleanFlag::RETURN_NULL ) )
+        if ( hasFlag( $flags , CleanFlag::RETURN_NULL ) )
         {
             if ( $value instanceof stdClass && empty( (array) $value ) )
             {
@@ -124,7 +125,7 @@ function normalize( mixed $value, int $flags = CleanFlag::NORMALIZE ): mixed
         return $value ;
     }
 
-    if ( CleanFlag::has( $flags, CleanFlag::FALSY ) && ! $value )
+    if ( hasFlag( $flags, CleanFlag::FALSY ) && ! $value )
     {
         return null ;
     }

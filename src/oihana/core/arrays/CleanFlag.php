@@ -2,6 +2,8 @@
 
 namespace oihana\core\arrays ;
 
+use function oihana\core\bits\hasFlag;
+
 /**
  * Enumeration representing cleaning modes as bit flags.
  *
@@ -168,7 +170,7 @@ class CleanFlag
 
         foreach ( self::FLAGS_NAME as $flag => $name )
         {
-            if ( self::has( $mask , $flag ) )
+            if ( hasFlag( $mask , $flag ) )
             {
                 $descriptions[] = $name;
             }
@@ -200,15 +202,15 @@ class CleanFlag
     {
         $flags = [] ;
 
-        foreach ( self::FLAGS as $flag)
+        foreach ( self::FLAGS as $flag )
         {
-            if ( self::has( $mask , $flag ) )
+            if ( hasFlag( $mask , $flag ) )
             {
                 $flags[] = $flag;
             }
         }
 
-        return $flags;
+        return $flags ;
     }
 
     /**

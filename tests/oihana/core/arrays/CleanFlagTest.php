@@ -3,6 +3,7 @@
 namespace oihana\core\arrays ;
 
 use PHPUnit\Framework\TestCase;
+use function oihana\core\bits\hasFlag;
 
 class CleanFlagTest extends TestCase
 {
@@ -67,36 +68,36 @@ class CleanFlagTest extends TestCase
     {
         $mask = CleanFlag::NULLS | CleanFlag::EMPTY;
 
-        $this->assertTrue(CleanFlag::has($mask, CleanFlag::NULLS));
-        $this->assertTrue(CleanFlag::has($mask, CleanFlag::EMPTY));
+        $this->assertTrue(hasFlag($mask, CleanFlag::NULLS));
+        $this->assertTrue(hasFlag($mask, CleanFlag::EMPTY));
     }
 
     public function testHasReturnsFalseWhenFlagIsNotPresent(): void
     {
         $mask = CleanFlag::NULLS | CleanFlag::EMPTY;
 
-        $this->assertFalse(CleanFlag::has($mask, CleanFlag::TRIM));
-        $this->assertFalse(CleanFlag::has($mask, CleanFlag::RECURSIVE));
-        $this->assertFalse(CleanFlag::has($mask, CleanFlag::EMPTY_ARR));
-        $this->assertFalse(CleanFlag::has($mask, CleanFlag::FALSY));
+        $this->assertFalse(hasFlag($mask, CleanFlag::TRIM));
+        $this->assertFalse(hasFlag($mask, CleanFlag::RECURSIVE));
+        $this->assertFalse(hasFlag($mask, CleanFlag::EMPTY_ARR));
+        $this->assertFalse(hasFlag($mask, CleanFlag::FALSY));
     }
 
     public function testHasWithNoneFlag(): void
     {
-        $this->assertFalse(CleanFlag::has(CleanFlag::NONE, CleanFlag::NULLS));
-        $this->assertFalse(CleanFlag::has(CleanFlag::NULLS, CleanFlag::NONE));
+        $this->assertFalse(hasFlag(CleanFlag::NONE, CleanFlag::NULLS));
+        $this->assertFalse(hasFlag(CleanFlag::NULLS, CleanFlag::NONE));
     }
 
     public function testHasWithAllFlags(): void
     {
         $mask = CleanFlag::ALL;
 
-        $this->assertTrue(CleanFlag::has($mask, CleanFlag::NULLS));
-        $this->assertTrue(CleanFlag::has($mask, CleanFlag::EMPTY));
-        $this->assertTrue(CleanFlag::has($mask, CleanFlag::TRIM));
-        $this->assertTrue(CleanFlag::has($mask, CleanFlag::RECURSIVE));
-        $this->assertTrue(CleanFlag::has($mask, CleanFlag::EMPTY_ARR));
-        $this->assertTrue(CleanFlag::has($mask, CleanFlag::FALSY));
+        $this->assertTrue(hasFlag($mask, CleanFlag::NULLS));
+        $this->assertTrue(hasFlag($mask, CleanFlag::EMPTY));
+        $this->assertTrue(hasFlag($mask, CleanFlag::TRIM));
+        $this->assertTrue(hasFlag($mask, CleanFlag::RECURSIVE));
+        $this->assertTrue(hasFlag($mask, CleanFlag::EMPTY_ARR));
+        $this->assertTrue(hasFlag($mask, CleanFlag::FALSY));
     }
 
     // Tests pour la méthode isValid()
@@ -242,7 +243,7 @@ class CleanFlagTest extends TestCase
     public function testAllFlagsConstantIncludesAllIndividualFlags(): void
     {
         foreach (CleanFlag::FLAGS as $flag) {
-            $this->assertTrue(CleanFlag::has(CleanFlag::ALL, $flag),
+            $this->assertTrue(hasFlag(CleanFlag::ALL, $flag),
                 "Flag $flag should be included in CleanFlag::ALL");
         }
     }

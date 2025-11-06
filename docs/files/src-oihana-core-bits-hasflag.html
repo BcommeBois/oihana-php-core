@@ -102,7 +102,7 @@
     </ul>
 
     <article class="phpdocumentor-element -file">
-        <h2 class="phpdocumentor-content__title">normalize.php</h2>
+        <h2 class="phpdocumentor-content__title">hasFlag.php</h2>
 
         
         
@@ -113,7 +113,7 @@
         
 <h3 id="toc">
     Table of Contents
-    <a href="files/src-oihana-core-normalize.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-bits-hasflag.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -129,16 +129,16 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="files/src-oihana-core-normalize.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-bits-hasflag.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core.html#function_normalize">normalize()</a>
+    <a class="" href="namespaces/oihana-core-bits.html#function_hasFlag">hasFlag()</a>
     <span>
-                                &nbsp;: mixed|null    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd>Normalizes a value according to the given cleaning flags.</dd>
+<dd>Checks whether a specific flag is set in a bitmask.</dd>
 
     </dl>
 
@@ -148,53 +148,51 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="files/src-oihana-core-normalize.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="files/src-oihana-core-bits-hasflag.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_normalize">
-        normalize()
-        <a href="namespaces/oihana-core.html#function_normalize" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_hasFlag">
+        hasFlag()
+        <a href="namespaces/oihana-core-bits.html#function_hasFlag" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/normalize.php"><a href="files/src-oihana-core-normalize.html"><abbr title="src/oihana/core/normalize.php">normalize.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/bits/hasFlag.php"><a href="files/src-oihana-core-bits-hasflag.html"><abbr title="src/oihana/core/bits/hasFlag.php">hasFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">83</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Normalizes a value according to the given cleaning flags.</p>
+        <p class="phpdocumentor-summary">Checks whether a specific flag is set in a bitmask.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">normalize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">CleanFlag::NORMALIZE</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed|null</span></code>
+                    <span class="phpdocumentor-signature__name">hasFlag</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mask</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flag</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"><ul>
-<li>Arrays are cleaned recursively using the provided flags.</li>
-<li>Strings are trimmed if <code class="prettyprint">CleanFlag::TRIM</code> is set, and empty strings become null if <code class="prettyprint">CleanFlag::EMPTY</code> is set.</li>
-<li>Other scalar values are returned as-is, unless <code class="prettyprint">CleanFlag::FALSY</code> is used.</li>
-</ul>
+        <section class="phpdocumentor-description"><p>This function is useful when working with bitwise flags.
+You can combine multiple flags using the bitwise OR operator (<code class="prettyprint">|</code>)
+and then check if a particular flag is present in the combined mask.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                <span class="phpdocumentor-signature__argument__name">$mask</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to normalize (array or scalar).</p>
+                    <section class="phpdocumentor-description"><p>The bitmask value, potentially containing multiple flags combined with <code class="prettyprint">|</code>.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$flags</span>
+                <span class="phpdocumentor-signature__argument__name">$flag</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">CleanFlag::NORMALIZE</span>            </dt>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>A bitmask of CleanFlag values. Defaults to <code class="prettyprint">CleanFlag::DEFAULT | CleanFlag::RETURN_NULL</code>.</p>
+                    <section class="phpdocumentor-description"><p>The specific flag to check for in the mask.</p>
 </section>
 
             </dd>
@@ -203,7 +201,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core.html#function_normalize#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-bits.html#function_hasFlag#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -212,76 +210,17 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">normalize(['', ' foo ', null]);
-// ['foo']
-*
-normalize
-([
-    'name'  =&gt; 'Alice',
-    'email' =&gt; '  ',
-    'age'   =&gt; null
-]);
-// ['name' =&gt; 'Alice']
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\bits\hasFlag;
 
-normalize([]);
-// null
+const FLAG_A = 1 &lt;&lt; 0;
+const FLAG_B = 1 &lt;&lt; 1;
 
- normalize(new stdClass()); // empty object
- // null
+$mask = FLAG_A | FLAG_B;
 
-normalize(['', null, '   ']);
-// null
-
-normalize('   ');
-// null
-
-normalize('bar');
-// 'bar'
-
-normalize
-([
-    'zero'    =&gt; 0,
-    'empty'   =&gt; '',
-    'nullVal' =&gt; null,
-    'ok'      =&gt; 'valid'
-] , CleanFlag::FALSY | CleanFlag::RECURSIVE ) ;
-// ['ok' =&gt; 'valid']
-
-normalize
-([
-    'users' =&gt;
-    [
-        ['name' =&gt; '', 'email' =&gt; 'bob@example.com'],
-        ['name' =&gt; 'Alice', 'email' =&gt; '']
-    ]
-] , CleanFlag::RECURSIVE | CleanFlag::EMPTY ) ;
-// [
-//     'users' =&gt; [
-//         ['email' =&gt; 'bob@example.com'],
-//         ['name' =&gt; 'Alice']
-//     ]
-// ]
+hasFlag($mask, FLAG_A); // true
+hasFlag($mask, FLAG_B); // true
+hasFlag($mask, 1 &lt;&lt; 2); // false
 </code></pre>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\oihana\core\clean()">clean()</abbr></span>
-                                        
-                                                 <section class="phpdocumentor-description"><p>For array cleaning behavior.</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/oihana-core-arrays-CleanFlag.html"><abbr title="\oihana\core\arrays\CleanFlag">CleanFlag</abbr></a></span>
-                                        
-                                                 <section class="phpdocumentor-description"><p>Enumeration representing cleaning modes as bit flags.</p>
 </section>
 
                                     </dd>
@@ -306,9 +245,9 @@ normalize
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">mixed|null</span>
+        <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The normalized value, cleaned array, or null if the result is empty and RETURN_NULL is set.</p>
+                <section class="phpdocumentor-description"><p>Returns <code class="prettyprint">true</code> if the given flag is present in the mask, <code class="prettyprint">false</code> otherwise.</p>
 </section>
 
             </section>
@@ -320,7 +259,7 @@ normalize
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/normalize.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/bits/hasFlag.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -421,7 +360,7 @@ normalize
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                        <li><a href="files/src-oihana-core-normalize.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-bits-hasflag.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -429,7 +368,7 @@ normalize
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core.html#function_normalize">normalize()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-bits.html#function_hasFlag">hasFlag()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -449,7 +388,7 @@ normalize
     </section>
 </section>
         </div>
-        <a href="files/src-oihana-core-normalize.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-bits-hasflag.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
