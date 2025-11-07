@@ -70,17 +70,15 @@ function getKeyValue
 {
     $isArray = assertDocumentKeyValid( $document , $key , $separator , $isArray ) ;
 
-    if ( str_contains($key, $separator) )
+    if ( str_contains( $key , $separator ) )
     {
-        $keys = explode($separator, $key);
+        $keys = explode( $separator , $key );
 
         try
         {
             $parent  = &resolveReferencePath($document, $keys, $isArray);
             $lastKey = end( $keys ) ;
-            return $isArray
-                 ? ( $parent[ $lastKey ] ?? $default )
-                 : $parent->{ $lastKey } ?? $default ;
+            return $isArray ? ( $parent[ $lastKey ] ?? $default ) : $parent->{ $lastKey } ?? $default ;
         }
         catch ( Exception $exception )
         {

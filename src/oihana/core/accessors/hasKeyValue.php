@@ -10,17 +10,21 @@ use InvalidArgumentException;
 /**
  * Checks whether a given key or property exists in an array or object, including nested paths.
  *
- * This helper determines if the specified key exists in the given document (array or object).
- * It supports nested access via a separator (default is '.') and can optionally force
- * the document type (array or object).
+ * This helper determines if the specified key exists in the given document (array or object),
+ * supporting **nested keys** using a separator (default is '.').
+ *
+ * Unlike `isset()`, this function considers keys with `null` values as existing.
+ * That means a key exists if it is present in the array/object, even if its value is `null`.
+ *
+ * It can optionally force the document type (array or object) via the `$isArray` parameter.
  *
  * If any part of the path does not exist, `false` is returned. This function does not rely on
  * `__get()` or `__isset()` magic methods for objects.
  *
- * @param array|object $document The document (array or object) to inspect.
- * @param string $key The key or property path to check. Supports nesting with separator.
- * @param string $separator Separator used for nested paths. Default is '.'.
- * @param bool|null $isArray Optional: true if document is an array, false if object, null to auto-detect.
+ * @param array|object $document   The document (array or object) to inspect.
+ * @param string       $key        The key or property path to check. Supports nesting with separator.
+ * @param string       $separator  Separator used for nested paths. Default is '.'.
+ * @param bool|null    $isArray    Optional: true if document is an array, false if object, null to auto-detect.
  *
  * @return bool True if the full key path exists, false otherwise.
  *
@@ -32,8 +36,9 @@ use InvalidArgumentException;
  *
  * @example
  * ```php
- * $doc = ['name' => 'Alice'];
+ * $doc = ['name' => 'Alice' , 'empty' => null ];
  * hasKeyValue($doc, 'name'); // true
+ * hasKeyValue($doc, 'empty'); // true
  * hasKeyValue($doc, 'age');  // false
  * ```
  *
@@ -88,11 +93,11 @@ function hasKeyValue
 
         if ( $isArray )
         {
-            return isset( $parent[ $lastKey ] ) ;
+            return array_key_exists( $lastKey , $parent ) ;
         }
         else
         {
-            return isset( $parent->{ $lastKey } ) ;
+            return property_exists( $parent , $lastKey ) ;
         }
     }
     catch ( Exception $e )

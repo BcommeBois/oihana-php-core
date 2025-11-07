@@ -11,16 +11,18 @@ final class HasKeyValueTest extends TestCase
 {
     public function testHasKeyInFlatArray(): void
     {
-        $doc = ['name' => 'Alice', 'age' => 30];
+        $doc = ['name' => 'Alice', 'age' => 30 , 'empty' => null ];
         $this->assertTrue(hasKeyValue($doc, 'name'));
+        $this->assertTrue(hasKeyValue($doc, 'empty'));
         $this->assertFalse(hasKeyValue($doc, 'email'));
     }
 
     public function testHasKeyInFlatObject(): void
     {
-        $doc = (object)['title' => 'Book', 'pages' => 100];
+        $doc = (object)['title' => 'Book', 'pages' => 100 , 'empty' => null ];
         $this->assertTrue(hasKeyValue($doc, 'title'));
         $this->assertFalse(hasKeyValue($doc, 'author'));
+        $this->assertTrue(hasKeyValue($doc, 'empty'));
     }
 
     public function testHasNestedKeyArray(): void
@@ -35,11 +37,13 @@ final class HasKeyValueTest extends TestCase
         $doc = (object)[
             'user' => (object)[
                 'profile' => (object)[
-                    'name' => 'Alice'
+                    'name'  => 'Alice' ,
+                    'empty' => null ,
                 ]
             ]
         ];
         $this->assertTrue(hasKeyValue($doc, 'user.profile.name'));
+        $this->assertTrue(hasKeyValue($doc, 'user.profile.empty'));
         $this->assertFalse(hasKeyValue($doc, 'user.profile.email'));
     }
 
