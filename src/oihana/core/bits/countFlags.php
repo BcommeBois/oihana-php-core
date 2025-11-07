@@ -15,18 +15,18 @@ namespace oihana\core\bits;
  * ```php
  * use function oihana\core\bits\countFlags;
  *
- * const FLAG_A = 1 << 0; // 1
- * const FLAG_B = 1 << 1; // 2
- * const FLAG_C = 1 << 2; // 4
+ * const FLAG_A = 1 << 0 ; // 1
+ * const FLAG_B = 1 << 1 ; // 2
+ * const FLAG_C = 1 << 2 ; // 4
  *
  * $mask = FLAG_A | FLAG_B;  // 3
  * echo countFlags($mask);   // Outputs: 2
  *
- * $mask = FLAG_A | FLAG_B | FLAG_C; // 7
- * echo countFlags($mask);           // Outputs: 3
+ * $mask = FLAG_A | FLAG_B | FLAG_C ; // 7
+ * echo countFlags( $mask ) ; // Outputs: 3
  *
- * $mask = 0;                        // no flags
- * echo countFlags($mask);           // Outputs: 0
+ * $mask = 0; // no flags
+ * echo countFlags($mask); // Outputs: 0
  * ```
  *
  * @package oihana\core\bits

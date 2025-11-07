@@ -215,11 +215,11 @@ const FLAG_A = 1 &lt;&lt; 0; // 1
 const FLAG_B = 1 &lt;&lt; 1; // 2
 const FLAG_C = 1 &lt;&lt; 2; // 4
 
-$mask = FLAG_A | FLAG_B;  // 3
+$mask = FLAG_A | FLAG_B ; // 3
 
-hasAllFlags($mask, FLAG_A);           // true
-hasAllFlags($mask, FLAG_A | FLAG_B); // true
-hasAllFlags($mask, FLAG_A | FLAG_C); // false
+hasAllFlags( $mask , FLAG_A ) ;          // true
+hasAllFlags( $mask , FLAG_A | FLAG_B ) ; // true
+hasAllFlags( $mask , FLAG_A | FLAG_C ) ; // false
 </code></pre>
 </section>
 

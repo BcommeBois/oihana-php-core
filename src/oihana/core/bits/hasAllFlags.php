@@ -21,18 +21,18 @@ namespace oihana\core\bits;
  * const FLAG_B = 1 << 1; // 2
  * const FLAG_C = 1 << 2; // 4
  *
- * $mask = FLAG_A | FLAG_B;  // 3
+ * $mask = FLAG_A | FLAG_B ; // 3
  *
- * hasAllFlags($mask, FLAG_A);           // true
- * hasAllFlags($mask, FLAG_A | FLAG_B); // true
- * hasAllFlags($mask, FLAG_A | FLAG_C); // false
+ * hasAllFlags( $mask , FLAG_A ) ;          // true
+ * hasAllFlags( $mask , FLAG_A | FLAG_B ) ; // true
+ * hasAllFlags( $mask , FLAG_A | FLAG_C ) ; // false
  * ```
  *
  * @package oihana\core\bits
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.7
  */
-function hasAllFlags( int $mask, int $flags ) :bool
+function hasAllFlags( int $mask , int $flags ) :bool
 {
     return ( $mask & $flags ) === $flags ;
 }

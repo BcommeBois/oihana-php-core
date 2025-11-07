@@ -281,10 +281,50 @@ Search.appendIndex(
             "summary": "Unsets\u0020\u0028removes\u0029\u0020a\u0020specific\u0020flag\u0020from\u0020a\u0020bitmask.",
             "url": "namespaces/oihana-core-bits.html#function_unsetFlag"
         },                {
+            "fqsen": "\\oihana\\core\\callables\\CallableType",
+            "name": "CallableType",
+            "summary": "Defines\u0020the\u0020possible\u0020types\u0020of\u0020a\u0020callable\u0020reference.",
+            "url": "classes/oihana-core-callables-CallableType.html"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\CallableType\u003A\u003ACLOSURE",
+            "name": "CLOSURE",
+            "summary": "A\u0020Closure\u0020\u0028anonymous\u0020function\u0020or\u0020arrow\u0020function\u0029.",
+            "url": "classes/oihana-core-callables-CallableType.html#constant_CLOSURE"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\CallableType\u003A\u003AFUNCTION",
+            "name": "FUNCTION",
+            "summary": "A\u0020plain\u0020named\u0020function.",
+            "url": "classes/oihana-core-callables-CallableType.html#constant_FUNCTION"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\CallableType\u003A\u003AINVOCABLE",
+            "name": "INVOCABLE",
+            "summary": "An\u0020object\u0020implementing\u0020__invoke\u0028\u0029.",
+            "url": "classes/oihana-core-callables-CallableType.html#constant_INVOCABLE"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\CallableType\u003A\u003ASTATIC",
+            "name": "STATIC",
+            "summary": "A\u0020static\u0020class\u0020method\u0020\u0028\u005B\u0022ClassName\u0022,\u0020\u0022method\u0022\u005D\u0020or\u0020\u0022ClassName\u003A\u003Amethod\u0022\u0029.",
+            "url": "classes/oihana-core-callables-CallableType.html#constant_STATIC"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\CallableType\u003A\u003AOBJECT",
+            "name": "OBJECT",
+            "summary": "An\u0020object\u0020method\u0020\u0028\u005B\u0024object,\u0020\u0022method\u0022\u005D\u0029.",
+            "url": "classes/oihana-core-callables-CallableType.html#constant_OBJECT"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\CallableType\u003A\u003AUNKNOWN",
+            "name": "UNKNOWN",
+            "summary": "Any\u0020other\u0020callable\u0020type\u0020not\u0020recognized\u0020or\u0020normalized.",
+            "url": "classes/oihana-core-callables-CallableType.html#constant_UNKNOWN"
+        },                {
             "fqsen": "\\oihana\\core\\callables\\chainCallables\u0028\u0029",
             "name": "chainCallables",
             "summary": "Chains\u0020multiple\u0020callables\u0020to\u0020be\u0020executed\u0020in\u0020sequence.",
             "url": "namespaces/oihana-core-callables.html#function_chainCallables"
+        },                {
+            "fqsen": "\\oihana\\core\\callables\\getCallableType\u0028\u0029",
+            "name": "getCallableType",
+            "summary": "Determines\u0020the\u0020type\u0020of\u0020a\u0020callable\u0020reference\u0020and\u0020optionally\u0020normalizes\u0020it.",
+            "url": "namespaces/oihana-core-callables.html#function_getCallableType"
         },                {
             "fqsen": "\\oihana\\core\\callables\\isCallable\u0028\u0029",
             "name": "isCallable",

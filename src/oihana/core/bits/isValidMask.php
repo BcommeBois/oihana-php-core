@@ -20,17 +20,17 @@ namespace oihana\core\bits;
  * const ALL_FLAGS = FLAG_A | FLAG_B | FLAG_C; // 7
  *
  * $mask = FLAG_A | FLAG_B;
- * isValidMask($mask, ALL_FLAGS); // true
+ * isValidMask( $mask , ALL_FLAGS ) ; // true
  *
  * $mask = FLAG_A | FLAG_B | (1 << 5);
- * isValidMask($mask, ALL_FLAGS); // false, bit 5 is invalid
+ * isValidMask( $mask , ALL_FLAGS ) ; // false, bit 5 is invalid
  * ```
  *
  * @package oihana\core\bits
  * @author Marc Alcaraz (ekameleon)
  * @since 1.0.7
  */
-function isValidMask(int $mask, int $allowed): bool
+function isValidMask( int $mask , int $allowed ) :bool
 {
-    return ($mask & ~$allowed) === 0;
+    return ( $mask & ~$allowed ) === 0;
 }

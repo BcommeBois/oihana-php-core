@@ -116,6 +116,13 @@
 
 
 
+    <h4 id="toc-classes">
+        Classes
+        <a href="namespaces/oihana-core-callables.html#toc-classes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/oihana-core-callables-CallableType.html"><abbr title="\oihana\core\callables\CallableType">CallableType</abbr></a></dt><dd>Defines the possible types of a callable reference.</dd>    </dl>
 
 
 
@@ -135,6 +142,13 @@
                                 &nbsp;: callable|null    </span>
 </dt>
 <dd>Chains multiple callables to be executed in sequence.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-callables.html#function_getCallableType">getCallableType()</a>
+    <span>
+                                &nbsp;: string|false    </span>
+</dt>
+<dd>Determines the type of a callable reference and optionally normalizes it.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-callables.html#function_isCallable">isCallable()</a>
@@ -308,6 +322,249 @@ $result = $pipe($data);
         <span class="phpdocumentor-signature__response_type">callable|null</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>A new callable that executes the chain, or null if invalid</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_getCallableType">
+        getCallableType()
+        <a href="namespaces/oihana-core-callables.html#function_getCallableType" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/getCallableType.php"><a href="files/src-oihana-core-callables-getcallabletype.html"><abbr title="src/oihana/core/callables/getCallableType.php">getCallableType.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">100</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Determines the type of a callable reference and optionally normalizes it.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">getCallableType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$strict</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$norm</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
+
+        <section class="phpdocumentor-description"><p>This function analyzes a PHP callable and returns its standardized type according
+to the constants defined in <a href="classes/oihana-core-callables-CallableType.html"><abbr title="\oihana\core\callables\CallableType">CallableType</abbr></a>. It can also normalize the callable
+form for consistent usage throughout your application.</p>
+<h2>Callable Types and Normalization</h2>
+<table>
+<thead>
+<tr>
+<th>Callable</th>
+<th>Normalization</th>
+<th>Returned Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="prettyprint">function (...) {...}</code></td>
+<td><code class="prettyprint">function (...) {...}</code></td>
+<td><code class="prettyprint">'closure'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">$object</code> (with __invoke)</td>
+<td><code class="prettyprint">$object</code></td>
+<td><code class="prettyprint">'invocable'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">&quot;function&quot;</code></td>
+<td><code class="prettyprint">&quot;function&quot;</code></td>
+<td><code class="prettyprint">'function'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">&quot;Class::method&quot;</code></td>
+<td><code class="prettyprint">[&quot;Class&quot;, &quot;method&quot;]</code></td>
+<td><code class="prettyprint">'static'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">[&quot;Class&quot;, &quot;parent::method&quot;]</code></td>
+<td><code class="prettyprint">[&quot;ParentClass&quot;, &quot;method&quot;]</code></td>
+<td><code class="prettyprint">'static'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">[&quot;Class&quot;, &quot;self::method&quot;]</code></td>
+<td><code class="prettyprint">[&quot;Class&quot;, &quot;method&quot;]</code></td>
+<td><code class="prettyprint">'static'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">[&quot;Class&quot;, &quot;method&quot;]</code></td>
+<td><code class="prettyprint">[&quot;Class&quot;, &quot;method&quot;]</code></td>
+<td><code class="prettyprint">'static'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">[$object, &quot;parent::method&quot;]</code></td>
+<td><code class="prettyprint">[$object, &quot;parent::method&quot;]</code></td>
+<td><code class="prettyprint">'object'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">[$object, &quot;self::method&quot;]</code></td>
+<td><code class="prettyprint">[$object, &quot;method&quot;]</code></td>
+<td><code class="prettyprint">'object'</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">[$object, &quot;method&quot;]</code></td>
+<td><code class="prettyprint">[$object, &quot;method&quot;]</code></td>
+<td><code class="prettyprint">'object'</code></td>
+</tr>
+<tr>
+<td>Other recognized callable</td>
+<td>Same as input</td>
+<td><code class="prettyprint">'unknown'</code></td>
+</tr>
+<tr>
+<td>Non-callable</td>
+<td>Same as input</td>
+<td><code class="prettyprint">false</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Strict Mode</h2>
+<p>When the <code class="prettyprint">$strict</code> parameter is set to <code class="prettyprint">true</code>, additional checks are performed
+using the Reflection API:</p>
+<ul>
+<li>For callable strings like <code class="prettyprint">&quot;Class::method&quot;</code> or arrays like <code class="prettyprint">[&quot;Class&quot;, &quot;method&quot;]</code>,
+the method <strong>must</strong> be declared as static.</li>
+<li>For callable arrays like <code class="prettyprint">[$object, &quot;method&quot;]</code>, the method <strong>must</strong> be an
+instance method (non-static).</li>
+</ul>
+<p>In non-strict mode (<code class="prettyprint">$strict = false</code>), these checks are skipped and the type
+is determined solely by the callable's structure.</p>
+<h2>Usage Examples</h2>
+<pre class="prettyprint"><code class="language-php">// Closure
+$type = getCallableType(fn() =&gt; 42, false, $norm);
+// Returns: 'closure', $norm = the closure itself
+
+// Named function
+$type = getCallableType('strlen', false, $norm);
+// Returns: 'function', $norm = 'strlen'
+
+// Static method (string form)
+$type = getCallableType('MyClass::myMethod', false, $norm);
+// Returns: 'static', $norm = ['MyClass', 'myMethod']
+
+// Static method (array form)
+$type = getCallableType(['MyClass', 'myMethod'], false, $norm);
+// Returns: 'static', $norm = ['MyClass', 'myMethod']
+
+// Instance method
+$obj = new MyClass();
+$type = getCallableType([$obj, 'myMethod'], false, $norm);
+// Returns: 'object', $norm = [$obj, 'myMethod']
+
+// Invocable object
+$invocable = new class {
+    public function __invoke() { return 'hello'; }
+};
+$type = getCallableType($invocable, false, $norm);
+// Returns: 'invocable', $norm = $invocable
+
+// Non-callable
+$type = getCallableType(123, false, $norm);
+// Returns: false, $norm = 123
+</code></pre>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callable</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The callable reference to analyze.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$strict</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>When <code class="prettyprint">true</code>, uses Reflection to verify that static/instance
+methods are used correctly. Defaults to <code class="prettyprint">true</code>.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$norm</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Receives the normalized form of the callable (passed by reference).
+If the callable is invalid, contains the original value.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-callables.html#function_getCallableType#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/oihana-core-callables-CallableType.html"><abbr title="\oihana\core\callables\CallableType">CallableType</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>For the list of type constants returned by this function</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\oihana\core\callables\is_callable()">is_callable()</abbr></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>For PHP's native callable verification function</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\ReflectionMethod">ReflectionMethod</abbr></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>For the Reflection API used in strict mode</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.7</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|false</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>One of <a href="classes/oihana-core-callables-CallableType.html#constant_CLOSURE"><abbr title="\oihana\core\callables\CallableType::CLOSURE">CallableType::CLOSURE</abbr></a>, <a href="classes/oihana-core-callables-CallableType.html#constant_INVOCABLE"><abbr title="\oihana\core\callables\CallableType::INVOCABLE">CallableType::INVOCABLE</abbr></a>,
+<a href="classes/oihana-core-callables-CallableType.html#constant_FUNCTION"><abbr title="\oihana\core\callables\CallableType::FUNCTION">CallableType::FUNCTION</abbr></a>, <a href="classes/oihana-core-callables-CallableType.html#constant_STATIC"><abbr title="\oihana\core\callables\CallableType::STATIC">CallableType::STATIC</abbr></a>,
+<a href="classes/oihana-core-callables-CallableType.html#constant_OBJECT"><abbr title="\oihana\core\callables\CallableType::OBJECT">CallableType::OBJECT</abbr></a>, <a href="classes/oihana-core-callables-CallableType.html#constant_UNKNOWN"><abbr title="\oihana\core\callables\CallableType::UNKNOWN">CallableType::UNKNOWN</abbr></a>,
+or <code class="prettyprint">false</code> if not a callable.</p>
 </section>
 
             </section>
@@ -1077,7 +1334,8 @@ $timed = wrapCallable( $expensiveFn , function( $original , ...$args )
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                    <li><a href="namespaces/oihana-core-callables.html#toc-functions">Functions</a></li>
+                                                                                                    <li><a href="namespaces/oihana-core-callables.html#toc-classes">Classes</a></li>
+                                                                                                                        <li><a href="namespaces/oihana-core-callables.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -1086,6 +1344,7 @@ $timed = wrapCallable( $expensiveFn , function( $original , ...$args )
                 <li>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_chainCallables">chainCallables()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_getCallableType">getCallableType()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_isCallable">isCallable()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_memoizeCallable">memoizeCallable()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_middlewareCallable">middlewareCallable()</a></li>

@@ -69,7 +69,7 @@ use Closure;
 function resolveCallable( string|array|object|null $callable ) :?callable
 {
     // Handle null and Closure instances immediately
-    if ($callable === null || $callable instanceof Closure)
+    if ( $callable === null || $callable instanceof Closure )
     {
         return $callable ;
     }

@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  - **Callables:**
    - Add the `isCallable()` and `resolveCallable()` functions
    - Add the `chainCallables()`, `memoizeCallable()`, `middlewareCallable()` and `wrapCallable()` functions
+   - Add the `getCallableType()` function and the `CallableType` constant enumeration.
  - **JSON:**
    - Add the `getJsonType()` function 
  - **Strings:**
