@@ -18,7 +18,7 @@ namespace oihana\core\bits;
  * const FLAG_B = 1 << 1; // 2
  *
  * $mask = FLAG_A;          // 1
- * $mask = setFlag($mask, FLAG_B);
+ * $mask = setFlag( $mask  , FLAG_B ) ;
  * // $mask is now 3 (FLAG_A | FLAG_B)
  * ```
  *
