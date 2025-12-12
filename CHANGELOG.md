@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  - **Strings:**
    - Add the `uniqueKey()` function
    - Add the `replacePathPlaceholders()` function 
+   - Add the `resolveList()` function 
 
 ### Changed
 - **Arrays:** In `clean()`, add the `CleanFlag::RETURN_NULL` option.

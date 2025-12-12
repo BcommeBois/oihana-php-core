@@ -24,10 +24,10 @@ function isQuote( string $char ) :bool
     // List of characters considered as quotes
     static $quotes =
     [
-        "'", '"', '`',      // single, double, backtick
-        '«', '»',           // French quotes
-        '“', '”',           // English quotes
-        '‘', '’',           // English single quotes / typographic apostrophe
+        "'" , '"' , '`' ,  // single, double, backtick
+        '«' , '»' ,        // French quotes
+        '“' , '”' ,        // English quotes
+        '‘' , '’' ,        // English single quotes / typographic apostrophe
     ];
 
     return in_array( $char , $quotes , true ) ;

@@ -876,6 +876,11 @@ Search.appendIndex(
             "summary": "Replaces\u0020placeholders\u0020in\u0020a\u0020path\u0020string\u0020with\u0020values\u0020from\u0020an\u0020associative\u0020array.",
             "url": "namespaces/oihana-core-strings.html#function_replacePathPlaceholders"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\resolveList\u0028\u0029",
+            "name": "resolveList",
+            "summary": "Resolves\u0020a\u0020list\u0020from\u0020a\u0020string\u0020or\u0020an\u0020array\u003A\n\u002D\u0020splits\u0020the\u0020string\u0020by\u0020the\u0020given\u0020separator\n\u002D\u0020trims\u0020each\u0020element\n\u002D\u0020removes\u0020empty\u0020elements\n\u002D\u0020joins\u0020the\u0020list\u0020using\u0020the\u0020specified\u0020replacement\n\u002D\u0020returns\u0020\u0024default\u0020if\u0020the\u0020resulting\u0020list\u0020is\u0020empty",
+            "url": "namespaces/oihana-core-strings.html#function_resolveList"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\slice\u0028\u0029",
             "name": "slice",
             "summary": "Extracts\u0020a\u0020substring\u0020from\u0020a\u0020UTF\u002D8\u0020encoded\u0020string\u0020using\u0020grapheme\u0020clusters,\nwhich\u0020ensures\u0020multi\u002Dbyte\u0020characters\u0020\u0028like\u0020emojis,\u0020accented\u0020letters\u0029\u0020are\u0020not\u0020broken.",
