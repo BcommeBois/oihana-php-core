@@ -242,6 +242,13 @@
 <dd>Determines if an array is indexed (i.e., has sequential integer keys starting at 0).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-arrays.html#function_merge">merge()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Merges two arrays using MergeOption normalized settings.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_removeKeys">removeKeys()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
@@ -2046,6 +2053,155 @@ echo json_encode( isIndexed( $array ) ) ;
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_merge">
+        merge()
+        <a href="namespaces/oihana-core-arrays.html#function_merge" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/merge.php"><a href="files/src-oihana-core-arrays-merge.html"><abbr title="src/oihana/core/arrays/merge.php">merge.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">75</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Merges two arrays using MergeOption normalized settings.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">merge</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$original</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$external</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"><p>This function provides a flexible way to merge arrays, supporting:</p>
+<ul>
+<li>Deep recursive merging of nested arrays.</li>
+<li>Indexed sub-array storage for multiple values.</li>
+<li>Unique value enforcement in lists.</li>
+<li>Configurable handling of null values ('skip', 'keep', 'overwrite').</li>
+<li>Optional cleaning of the result using CleanFlag constants.</li>
+</ul>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$original</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The original array to merge into.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$external</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The array whose values will be merged into the original.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$options</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional MergeOption array to control merge behavior.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-arrays.html#function_merge#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use oihana\core\arrays\merge;
+use oihana\core\options\MergeOption;
+use oihana\core\arrays\CleanFlag;
+
+$a =
+[
+   'users' =&gt;
+    [
+        ['name' =&gt; 'Alice'],
+        ['name' =&gt; 'Bob']
+    ],
+    'count' =&gt; 2,
+];
+
+$b =
+[
+    'users' =&gt;
+    [
+        ['name' =&gt; 'Charlie'],
+        ['name' =&gt; 'Alice'],
+   ],
+   'count' =&gt; null,
+   'extra' =&gt; null,
+];
+
+// Deep merge, skip nulls, keep unique users, clean result
+$result = merge( $a , $b ,
+[
+    MergeOption::DEEP   =&gt; true ,
+    MergeOption::UNIQUE =&gt; true ,
+    MergeOption::NULLS  =&gt; 'skip' ,
+    MergeOption::CLEAN  =&gt; CleanFlag::DEFAULT
+]);
+
+// Result:
+// [
+//     'users' =&gt; [
+//         ['name' =&gt; 'Alice'],
+//         ['name' =&gt; 'Bob'],
+//         ['name' =&gt; 'Charlie']
+//     ],
+//     'count' =&gt; 2
+// ]
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The merged array, optionally cleaned according to CleanFlag.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_removeKeys">
         removeKeys()
         <a href="namespaces/oihana-core-arrays.html#function_removeKeys" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3130,6 +3286,7 @@ print_r($resultNumeric); // [1, 2, 3]
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_inBetween">inBetween()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_isAssociative">isAssociative()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_isIndexed">isIndexed()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-arrays.html#function_merge">merge()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_removeKeys">removeKeys()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_set">set()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_setArrayValue">setArrayValue()</a></li>

@@ -201,6 +201,11 @@ Search.appendIndex(
             "summary": "Determines\u0020if\u0020an\u0020array\u0020is\u0020indexed\u0020\u0028i.e.,\u0020has\u0020sequential\u0020integer\u0020keys\u0020starting\u0020at\u00200\u0029.",
             "url": "namespaces/oihana-core-arrays.html#function_isIndexed"
         },                {
+            "fqsen": "\\oihana\\core\\arrays\\merge\u0028\u0029",
+            "name": "merge",
+            "summary": "Merges\u0020two\u0020arrays\u0020using\u0020MergeOption\u0020normalized\u0020settings.",
+            "url": "namespaces/oihana-core-arrays.html#function_merge"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\removeKeys\u0028\u0029",
             "name": "removeKeys",
             "summary": "Removes\u0020a\u0020set\u0020of\u0020keys\u0020from\u0020an\u0020array.",
@@ -631,6 +636,76 @@ Search.appendIndex(
             "summary": "Option\u0020key\u0020to\u0020control\u0020whether\u0020invalid\u0020conditions\u0020throw\u0020exceptions.",
             "url": "classes/oihana-core-options-CompressOption.html#constant_THROWABLE"
         },                {
+            "fqsen": "\\oihana\\core\\options\\MergeOption",
+            "name": "MergeOption",
+            "summary": "Defines\u0020constants\u0020for\u0020the\u0020options\u0020used\u0020by\u0020the\u0020\u0060merge\u0060\u0020function.",
+            "url": "classes/oihana-core-options-MergeOption.html"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\MergeOption\u003A\u003Anormalize\u0028\u0029",
+            "name": "normalize",
+            "summary": "Normalize\u0020an\u0020options\u0020array\u0020for\u0020merge\u0020function.",
+            "url": "classes/oihana-core-options-MergeOption.html#method_normalize"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\MergeOption\u003A\u003ACLEAN",
+            "name": "CLEAN",
+            "summary": "Option\u0020key\u0020to\u0020defines\u0020the\u0020Bitmask\u0020of\u0020CleanFlag\u0020constants\u0020for\u0020optional\u0020cleaning.",
+            "url": "classes/oihana-core-options-MergeOption.html#constant_CLEAN"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\MergeOption\u003A\u003ADEEP",
+            "name": "DEEP",
+            "summary": "Option\u0020key\u0020to\u0020recursive\u0020merge.",
+            "url": "classes/oihana-core-options-MergeOption.html#constant_DEEP"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\MergeOption\u003A\u003AINDEXED",
+            "name": "INDEXED",
+            "summary": "Option\u0020key\u0020to\u0020store\u0020values\u0020in\u0020sub\u002Darray",
+            "url": "classes/oihana-core-options-MergeOption.html#constant_INDEXED"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\MergeOption\u003A\u003ANULLS",
+            "name": "NULLS",
+            "summary": "Option\u0020key\u0020to\u0020defines\u0020the\u0020\u0022null\u0022\u0020behaviors\u0020\u0028\u0027skip\u0027\u007C\u0027keep\u0027\u007C\u0027overwrite\u0027\u0029",
+            "url": "classes/oihana-core-options-MergeOption.html#constant_NULLS"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\MergeOption\u003A\u003APRESERVE_KEYS",
+            "name": "PRESERVE_KEYS",
+            "summary": "Option\u0020key\u0020to\u0020preserve\u0020numeric\u0020keys.",
+            "url": "classes/oihana-core-options-MergeOption.html#constant_PRESERVE_KEYS"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\MergeOption\u003A\u003AUNIQUE",
+            "name": "UNIQUE",
+            "summary": "Option\u0020key\u0020to\u0020avoid\u0020duplicates\u0020in\u0020lists.",
+            "url": "classes/oihana-core-options-MergeOption.html#constant_UNIQUE"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\NullsOption",
+            "name": "NullsOption",
+            "summary": "Defines\u0020constants\u0020for\u0020the\u0020handling\u0020of\u0020null\u0020values\u0020in\u0020merge\u0020operations.",
+            "url": "classes/oihana-core-options-NullsOption.html"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\NullsOption\u003A\u003Aall\u0028\u0029",
+            "name": "all",
+            "summary": "Returns\u0020the\u0020list\u0020of\u0020valid\u0020options.",
+            "url": "classes/oihana-core-options-NullsOption.html#method_all"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\NullsOption\u003A\u003AisValid\u0028\u0029",
+            "name": "isValid",
+            "summary": "Checks\u0020if\u0020a\u0020given\u0020value\u0020is\u0020a\u0020valid\u0020null\u0020behavior\u0020option.",
+            "url": "classes/oihana-core-options-NullsOption.html#method_isValid"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\NullsOption\u003A\u003ASKIP",
+            "name": "SKIP",
+            "summary": "Skip\u0020null\u0020values\u0020when\u0020merging\u0020\u0028default\u0020behavior\u0029.",
+            "url": "classes/oihana-core-options-NullsOption.html#constant_SKIP"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\NullsOption\u003A\u003AKEEP",
+            "name": "KEEP",
+            "summary": "Keep\u0020null\u0020values\u0020only\u0020if\u0020the\u0020key\u0020does\u0020not\u0020exist.",
+            "url": "classes/oihana-core-options-NullsOption.html#constant_KEEP"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\NullsOption\u003A\u003AOVERWRITE",
+            "name": "OVERWRITE",
+            "summary": "Overwrite\u0020existing\u0020values\u0020with\u0020null.",
+            "url": "classes/oihana-core-options-NullsOption.html#constant_OVERWRITE"
+        },                {
             "fqsen": "\\oihana\\core\\reflections\\getFunctionInfo\u0028\u0029",
             "name": "getFunctionInfo",
             "summary": "Returns\u0020detailed\u0020reflection\u0020information\u0020about\u0020a\u0020given\u0020function\u0020or\u0020method.",
@@ -878,7 +953,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\oihana\\core\\strings\\resolveList\u0028\u0029",
             "name": "resolveList",
-            "summary": "Resolves\u0020a\u0020list\u0020from\u0020a\u0020string\u0020or\u0020an\u0020array\u003A\n\u002D\u0020splits\u0020the\u0020string\u0020by\u0020the\u0020given\u0020separator\n\u002D\u0020trims\u0020each\u0020element\n\u002D\u0020removes\u0020empty\u0020elements\n\u002D\u0020joins\u0020the\u0020list\u0020using\u0020the\u0020specified\u0020replacement\n\u002D\u0020returns\u0020\u0024default\u0020if\u0020the\u0020resulting\u0020list\u0020is\u0020empty",
+            "summary": "Resolves\u0020a\u0020list\u0020from\u0020a\u0020string\u0020or\u0020an\u0020array\u0020\u003A\n\u002D\u0020splits\u0020the\u0020string\u0020by\u0020the\u0020given\u0020separator\n\u002D\u0020trims\u0020each\u0020element\n\u002D\u0020removes\u0020empty\u0020elements\n\u002D\u0020joins\u0020the\u0020list\u0020using\u0020the\u0020specified\u0020replacement\n\u002D\u0020returns\u0020\u0024default\u0020if\u0020the\u0020resulting\u0020list\u0020is\u0020empty",
             "url": "namespaces/oihana-core-strings.html#function_resolveList"
         },                {
             "fqsen": "\\oihana\\core\\strings\\slice\u0028\u0029",

@@ -57,6 +57,7 @@
             "src/oihana/core/arrays/inBetween.php",
             "src/oihana/core/arrays/isAssociative.php",
             "src/oihana/core/arrays/isIndexed.php",
+            "src/oihana/core/arrays/merge.php",
             "src/oihana/core/arrays/removeKeys.php",
             "src/oihana/core/arrays/set.php",
             "src/oihana/core/arrays/setArrayValue.php",
