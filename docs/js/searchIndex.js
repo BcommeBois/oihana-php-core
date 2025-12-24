@@ -771,6 +771,11 @@ Search.appendIndex(
             "summary": "Converts\u0020a\u0020string\u0020to\u0020camelCase\u0020format.",
             "url": "namespaces/oihana-core-strings.html#function_camel"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\chunk\u0028\u0029",
+            "name": "chunk",
+            "summary": "Splits\u0020a\u0020string\u0020into\u0020groups\u0020of\u0020length\u0020\u0060\u0024size\u0060,\u0020separated\u0020by\u0020\u0060\u0024separator\u0060.",
+            "url": "namespaces/oihana-core-strings.html#function_chunk"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\compile\u0028\u0029",
             "name": "compile",
             "summary": "Compiles\u0020a\u0020string,\u0020object,\u0020boolean,\u0020or\u0020an\u0020array\u0020of\u0020expressions\u0020into\u0020a\u0020single\u0020string.",

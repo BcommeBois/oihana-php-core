@@ -92,7 +92,7 @@ function replace
 
     if ( $source === '' )
     {
-        return $source;
+        return $source ;
     }
 
     if ( !$utf8 )

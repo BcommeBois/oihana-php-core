@@ -144,6 +144,7 @@
             "src/oihana/core/strings/betweenParentheses.php",
             "src/oihana/core/strings/betweenSpaces.php",
             "src/oihana/core/strings/betweenQuotes.php",
+            "src/oihana/core/strings/chunk.php" ,
             "src/oihana/core/strings/compile.php" ,
             "src/oihana/core/strings/block.php",
             "src/oihana/core/strings/blockPrefix.php" ,

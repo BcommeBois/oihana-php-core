@@ -222,6 +222,13 @@
 <dd>Converts a string to camelCase format.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_chunk">chunk()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Splits a string into groups of length `$size`, separated by `$separator`.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_compile">compile()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -1951,6 +1958,135 @@ echo camel(null);                 // Outputs: (empty string)
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The camelCase representation of the input string.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_chunk">
+        chunk()
+        <a href="namespaces/oihana-core-strings.html#function_chunk" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/chunk.php"><a href="files/src-oihana-core-strings-chunk.html"><abbr title="src/oihana/core/strings/chunk.php">chunk.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">65</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Splits a string into groups of length `$size`, separated by `$separator`.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">chunk</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">' '</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$utf8</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>This function supports both simple ASCII strings and full Unicode strings.</p>
+<p>When <code class="prettyprint">$utf8</code> is <code class="prettyprint">true</code>, the function uses <strong>grapheme-safe operations</strong> (<code class="prettyprint">grapheme_strlen</code> / <code class="prettyprint">grapheme_substr</code>)
+to correctly handle composed characters, accented letters, surrogate pairs, and emojis.</p>
+<p>When <code class="prettyprint">$utf8</code> is <code class="prettyprint">false</code>, a faster byte-based method is used (<code class="prettyprint">strlen</code> / <code class="prettyprint">substr</code>), which works well for ASCII.</p>
+<h3>Examples</h3>
+<p>ASCII examples:</p>
+<pre class="prettyprint"><code class="language-php">chunk('565448', 2);          // &quot;56 54 48&quot;
+chunk('1525', 2, '-');       // &quot;15-25&quot;
+chunk('25', 2);              // &quot;25&quot;
+chunk('123456789', 3, ':');  // &quot;123:456:789&quot;
+</code></pre>
+<p>Unicode / accents:</p>
+<pre class="prettyprint"><code class="language-php">chunk('éàüö', 2, ' ', true); // &quot;éà üö&quot;
+</code></pre>
+<p>Emoji:</p>
+<pre class="prettyprint"><code class="language-php">chunk('💛❤️💛', 2, ' ', true); // &quot;💛 ❤️ 💛&quot;
+</code></pre>
+<p>Null or empty source:</p>
+<pre class="prettyprint"><code class="language-php">chunk(null, 2); // &quot;&quot;
+chunk('', 3);   // &quot;&quot;
+</code></pre>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$source</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The source string to split. If <code class="prettyprint">null</code>, it is treated as an empty string.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$size</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The length of each group. Must be greater than 0.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$separator</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">' '</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The separator string to insert between groups. Default is a single space.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$utf8</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether to use Unicode-aware grapheme-safe splitting. Default is <code class="prettyprint">false</code>.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_chunk#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Thrown if <code class="prettyprint">$size</code> is less than or equal to 0.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The resulting string after grouping.</p>
 </section>
 
             </section>
@@ -6787,6 +6923,7 @@ echo wrap('column', '&quot;'); // &quot;column&quot;
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_blockPrefix">blockPrefix()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_blockSuffix">blockSuffix()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_camel">camel()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_chunk">chunk()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_compile">compile()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_convert">convert()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_convertArray">convertArray()</a></li>
