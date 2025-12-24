@@ -406,6 +406,14 @@ properly URL-encoding both keys and values.</dd>
 <dd>Generates a random key string, optionally prefixed with a given string and separated by a custom separator.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_replace">replace()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Replaces all occurrences of a substring within a string, with optional
+Unicode (grapheme-safe) and normalization support.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_replacePathPlaceholders">replacePathPlaceholders()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -4764,6 +4772,156 @@ echo randomKey(&quot;order&quot;, &quot;-&quot;); // Possible output: &quot;orde
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_replace">
+        replace()
+        <a href="namespaces/oihana-core-strings.html#function_replace" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/replace.php"><a href="files/src-oihana-core-strings-replace.html"><abbr title="src/oihana/core/strings/replace.php">replace.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">81</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Replaces all occurrences of a substring within a string, with optional
+Unicode (grapheme-safe) and normalization support.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">replace</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$to</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ignoreCase</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$utf8</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"><p>This function handles both simple ASCII strings and full Unicode strings.
+When <code class="prettyprint">$utf8</code> is enabled, the function:</p>
+<ul>
+<li>Normalizes the source string and the search string using Unicode
+Normalization Form C (NFC),</li>
+<li>Uses grapheme-aware functions (<code class="prettyprint">grapheme_strpos</code> / <code class="prettyprint">grapheme_stripos</code>,
+<code class="prettyprint">grapheme_substr</code>) to correctly handle composed characters and
+surrogate pairs.</li>
+</ul>
+<p>When <code class="prettyprint">$utf8</code> is disabled, a faster <code class="prettyprint">str_replace</code> or <code class="prettyprint">str_ireplace</code> is used.</p>
+<p>If <code class="prettyprint">$ignoreCase</code> is true, the search is performed in a
+case-insensitive, Unicode-aware manner (when <code class="prettyprint">$utf8</code> is true) or ASCII case-insensitive otherwise.</p>
+<h3>Examples</h3>
+<p>Simple replacement:</p>
+<pre class="prettyprint"><code class="language-php">replace('Hello World', 'World', 'Marc');
+// &quot;Hello Marc&quot;
+</code></pre>
+<p>Unicode-safe replacement:</p>
+<pre class="prettyprint"><code class="language-php">replace('école', 'é', 'E' , utf8:true );
+// &quot;Ecole&quot;
+</code></pre>
+<p>Emoji replacement (surrogate pairs):</p>
+<pre class="prettyprint"><code class="language-php">replace('I ❤️ PHP', '❤️', '💛', false, true);
+// Returns &quot;I 💛 PHP&quot;
+</code></pre>
+<p>Case-insensitive replacement:</p>
+<pre class="prettyprint"><code class="language-php">replace('Straße', 'STRASSE', 'Street', ignoreCase: true , utf8: true );
+</code></pre>
+<p>Null source:</p>
+<pre class="prettyprint"><code class="language-php">replace(null, 'foo', 'bar');
+// Returns &quot;&quot;
+</code></pre>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$source</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The source string to process. If <code class="prettyprint">null</code>, an empty string is assumed.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$from</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The substring to search for. Must be a valid UTF-8 string.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$to</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The replacement string.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$ignoreCase</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether the search should be performed in a case-insensitive way.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$utf8</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether to enable Unicode-aware, normalization-safe replacement.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_replace#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Thrown if <code class="prettyprint">$from</code> or the resulting string is not valid UTF-8 and cannot be normalized when <code class="prettyprint">$utf8</code> is true.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The resulting string after replacement.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_replacePathPlaceholders">
         replacePathPlaceholders()
         <a href="namespaces/oihana-core-strings.html#function_replacePathPlaceholders" class="headerlink"><i class="fas fa-link"></i></a>
@@ -6658,6 +6816,7 @@ echo wrap('column', '&quot;'); // &quot;column&quot;
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_predicates">predicates()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_prepend">prepend()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_randomKey">randomKey()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_replace">replace()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_replacePathPlaceholders">replacePathPlaceholders()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_resolveList">resolveList()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_slice">slice()</a></li>

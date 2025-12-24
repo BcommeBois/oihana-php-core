@@ -946,6 +946,11 @@ Search.appendIndex(
             "summary": "Generates\u0020a\u0020random\u0020key\u0020string,\u0020optionally\u0020prefixed\u0020with\u0020a\u0020given\u0020string\u0020and\u0020separated\u0020by\u0020a\u0020custom\u0020separator.",
             "url": "namespaces/oihana-core-strings.html#function_randomKey"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\replace\u0028\u0029",
+            "name": "replace",
+            "summary": "Replaces\u0020all\u0020occurrences\u0020of\u0020a\u0020substring\u0020within\u0020a\u0020string,\u0020with\u0020optional\nUnicode\u0020\u0028grapheme\u002Dsafe\u0029\u0020and\u0020normalization\u0020support.",
+            "url": "namespaces/oihana-core-strings.html#function_replace"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\replacePathPlaceholders\u0028\u0029",
             "name": "replacePathPlaceholders",
             "summary": "Replaces\u0020placeholders\u0020in\u0020a\u0020path\u0020string\u0020with\u0020values\u0020from\u0020an\u0020associative\u0020array.",

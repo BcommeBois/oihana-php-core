@@ -9,7 +9,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - **Arrays**
   - Add the `merge()` function with the `MergeOption` and `NullsOption` helpers.
-
+- **Strings**
+  - Add the `replace()` function : Replaces all occurrences of a substring within a string, with optional Unicode (grapheme-safe) and normalization support.
+  
 ## [1.0.7] - 2025-12-12
 
 ### Added
