@@ -53,5 +53,5 @@ function deepJsonSerialize( mixed $value , int $currentDepth = 0 ) :mixed
         }
     }
 
-    return $value;
+    return $value ;
 }

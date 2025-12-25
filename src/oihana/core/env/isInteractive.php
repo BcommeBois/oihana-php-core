@@ -21,7 +21,7 @@ namespace oihana\core\env ;
  * @author  Marc Alcaraz
  * @since   1.0.0
  */
-function isInteractive(): bool
+function isInteractive() :bool
 {
     static $interactive = null ;
     if ( $interactive === null )

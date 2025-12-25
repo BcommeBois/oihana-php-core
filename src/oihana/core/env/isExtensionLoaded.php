@@ -11,7 +11,7 @@ namespace oihana\core\env ;
  * @author  Marc Alcaraz
  * @since   1.0.0
  */
-function isExtensionLoaded(string $ext): bool
+function isExtensionLoaded( string $ext ) :bool
 {
     return extension_loaded( $ext ) ;
 }

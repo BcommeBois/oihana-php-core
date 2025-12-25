@@ -26,7 +26,7 @@ function isLinux(): bool
     static $isLinux = null;
     if ( $isLinux === null )
     {
-        $isLinux = strncasecmp(PHP_OS, 'LINUX', 5) === 0 ;
+        $isLinux = strncasecmp(PHP_OS , 'LINUX' , 5 ) === 0 ;
     }
     return $isLinux;
 }

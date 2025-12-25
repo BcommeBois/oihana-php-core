@@ -18,7 +18,7 @@ namespace oihana\core\env ;
  * @author  Marc Alcaraz
  * @since   1.0.0
  */
-function phpVersion(): string
+function phpVersion() :string
 {
     static $version = null ;
     if ( $version === null )
