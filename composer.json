@@ -180,6 +180,7 @@
             "src/oihana/core/strings/resolveList.php",
             "src/oihana/core/strings/slice.php",
             "src/oihana/core/strings/snake.php",
+            "src/oihana/core/strings/split.php",
             "src/oihana/core/strings/toPhpHumanReadableScalar.php" ,
             "src/oihana/core/strings/toPhpString.php",
             "src/oihana/core/strings/toString.php",

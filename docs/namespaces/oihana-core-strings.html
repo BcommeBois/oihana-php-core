@@ -455,6 +455,13 @@ which ensures multi-byte characters (like emojis, accented letters) are not brok
 <dd>Converts a string to snake_case (or a custom delimiter).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_split">split()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Splits a string into an array using a regular expression separator.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_toPhpHumanReadableScalar">toPhpHumanReadableScalar()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -5533,6 +5540,157 @@ SnakeCache::flush();
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_split">
+        split()
+        <a href="namespaces/oihana-core-strings.html#function_split" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/split.php"><a href="files/src-oihana-core-strings-split.html"><abbr title="src/oihana/core/strings/split.php">split.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">77</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Splits a string into an array using a regular expression separator.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">split</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$limit</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ignoreCase</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$utf8</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"><p>This function is a wrapper around <abbr title="\oihana\core\strings\preg_split()">preg_split()</abbr> with a simpler,
+more expressive API and optional UTF-8 support.</p>
+<p>When <code class="prettyprint">$utf8</code> is enabled, the separator is evaluated using the <code class="prettyprint">/u</code> modifier,
+allowing correct handling of multibyte characters.</p>
+<p>By default, the separator is treated as a <strong>literal string</strong>.
+If you want to use a raw regular expression, pass it already delimited.</p>
+<h3>Examples</h3>
+<p>Basic usage:</p>
+<pre class="prettyprint"><code class="language-php">split('foo,bar,baz', ',');      // ['foo', 'bar', 'baz']
+split('a|b|c', '|');            // ['a', 'b', 'c']
+split('one two  three', '\s+'); // ['one', 'two', 'three']
+</code></pre>
+<p>With limit:</p>
+<pre class="prettyprint"><code class="language-php">split('a,b,c,d', ',', 2); // ['a', 'b,c,d']
+</code></pre>
+<p>Ignore case:</p>
+<pre class="prettyprint"><code class="language-php">split('Foo|BAR|baz', 'bar', null, true); // ['Foo|', '|baz']
+</code></pre>
+<p>UTF-8:</p>
+<pre class="prettyprint"><code class="language-php">split('éà üö', '\s+', null, false, null, true); // ['éà', 'üö']
+</code></pre>
+<p>Null or empty source:</p>
+<pre class="prettyprint"><code class="language-php">split(null, ','); // []
+split('', ',');   // []
+</code></pre>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$source</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The source string to split. If <code class="prettyprint">null</code>, it is treated as an empty string.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$separator</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The separator pattern or literal string.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$limit</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>If specified, limits the number of returned elements.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$ignoreCase</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether the separator matching should be case-insensitive.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$flags</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional <code class="prettyprint">PREG_SPLIT_*</code> flags.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$utf8</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether to enable UTF-8 (<code class="prettyprint">/u</code>) mode.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_split#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the separator is empty.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>An array of split segments.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_toPhpHumanReadableScalar">
         toPhpHumanReadableScalar()
         <a href="namespaces/oihana-core-strings.html#function_toPhpHumanReadableScalar" class="headerlink"><i class="fas fa-link"></i></a>
@@ -6958,6 +7116,7 @@ echo wrap('column', '&quot;'); // &quot;column&quot;
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_resolveList">resolveList()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_slice">slice()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_snake">snake()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_split">split()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpHumanReadableScalar">toPhpHumanReadableScalar()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toPhpString">toPhpString()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_toString">toString()</a></li>

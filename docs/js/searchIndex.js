@@ -976,6 +976,11 @@ Search.appendIndex(
             "summary": "Converts\u0020a\u0020string\u0020to\u0020snake_case\u0020\u0028or\u0020a\u0020custom\u0020delimiter\u0029.",
             "url": "namespaces/oihana-core-strings.html#function_snake"
         },                {
+            "fqsen": "\\oihana\\core\\strings\\split\u0028\u0029",
+            "name": "split",
+            "summary": "Splits\u0020a\u0020string\u0020into\u0020an\u0020array\u0020using\u0020a\u0020regular\u0020expression\u0020separator.",
+            "url": "namespaces/oihana-core-strings.html#function_split"
+        },                {
             "fqsen": "\\oihana\\core\\strings\\toPhpHumanReadableScalar\u0028\u0029",
             "name": "toPhpHumanReadableScalar",
             "summary": "Converts\u0020a\u0020scalar\u0020value\u0020\u0028string,\u0020boolean,\u0020float,\u0020etc.\u0029\u0020to\u0020a\u0020simplified,\u0020human\u002Dreadable\u0020PHP\u0020string\u0020representation.",
