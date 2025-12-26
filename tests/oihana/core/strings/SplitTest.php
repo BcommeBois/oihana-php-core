@@ -10,6 +10,7 @@ final class SplitTest extends TestCase
     public function testBasicSplit()
     {
         $this->assertSame(['a','b','c'], split('a,b,c', ',', null));
+        $this->assertSame(["105465","105468"], split("105465,105468", ',', null));
     }
 
     public function testLimit()

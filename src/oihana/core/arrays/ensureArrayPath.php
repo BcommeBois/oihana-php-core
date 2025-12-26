@@ -16,7 +16,7 @@ namespace oihana\core\arrays ;
  * @example
  * ```php
  * $data = [];
- * $sub =& ensureArrayPath($data, 'user');
+ * $sub =& ensureArrayPath( $data , 'user' ) ;
  * $sub['name'] = 'Alice';
  * // $data now becomes: ['user' => ['name' => 'Alice']]
  * ```
