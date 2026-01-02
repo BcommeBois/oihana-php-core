@@ -82,7 +82,7 @@ function resolveCallable( string|array|object|null $callable ) :?callable
     }
 
     // Handle array callables [$object, 'method'] or ['Class', 'method']
-    if (is_array( $callable ) )
+    if ( is_array( $callable ) )
     {
         return is_callable($callable) ? $callable : null;
     }
