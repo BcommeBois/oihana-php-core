@@ -1025,7 +1025,7 @@ This is useful for building nested structures dynamically using references.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
                                                  <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$data = [];
-$sub =&amp; ensureArrayPath($data, 'user');
+$sub =&amp; ensureArrayPath( $data , 'user' ) ;
 $sub['name'] = 'Alice';
 // $data now becomes: ['user' =&gt; ['name' =&gt; 'Alice']]
 </code></pre>

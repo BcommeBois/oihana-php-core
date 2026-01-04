@@ -3434,7 +3434,7 @@ echo kebab(null);              // Outputs: &quot;&quot;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/key.php"><a href="files/src-oihana-core-strings-key.html"><abbr title="src/oihana/core/strings/key.php">key.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">45</span>
 
     </aside>
 
@@ -3443,7 +3443,7 @@ echo kebab(null);              // Outputs: &quot;&quot;
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">key</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prefix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">''</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">'.'</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">key</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">null|string|array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prefix</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">''</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">'.'</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"><p>This function allows you to prefix a key string with another string,
 separated by a custom separator. If the prefix is empty or null,
@@ -3454,10 +3454,15 @@ the original key is returned unchanged.</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$key</span>
-                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                : <span class="phpdocumentor-argument-list__argument__type">null|string|array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The key to transform.</p>
+                    <section class="phpdocumentor-description"><p>The key to transform :</p>
+<ul>
+<li><code class="prettyprint">null</code> returns an empty string</li>
+<li><code class="prettyprint">string</code> is used directly</li>
+<li><code class="prettyprint">array</code> is joined using the <code class="prettyprint">$separator</code></li>
+</ul>
 </section>
 
             </dd>
@@ -3466,7 +3471,8 @@ the original key is returned unchanged.</p>
                 : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
                  = <span class="phpdocumentor-argument-list__argument__default-value">''</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional prefix to prepend. Default is an empty string.</p>
+                    <section class="phpdocumentor-description"><p>Optional prefix to prepend. Default is an empty string.
+If <code class="prettyprint">null</code> or empty, the prefix is ignored.</p>
 </section>
 
             </dd>
@@ -3475,7 +3481,7 @@ the original key is returned unchanged.</p>
                 : <span class="phpdocumentor-argument-list__argument__type">string</span>
                  = <span class="phpdocumentor-argument-list__argument__default-value">'.'</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The separator to use between the prefix and key. Default is '.'.</p>
+                    <section class="phpdocumentor-description"><p>The separator used both to join array keys and to separate the prefix from the key.</p>
 </section>
 
             </dd>
@@ -3495,12 +3501,15 @@ the original key is returned unchanged.</p>
                                                                                 
                                                  <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\strings\key;
 
-key('name');                  // Returns 'name'
-key('name', 'doc');           // Returns 'doc.name'
-key('name', 'doc', '::');     // Returns 'doc::name'
-key('name', 'doc', '-&gt;');     // Returns 'doc-&gt;name'
-key('name', '');              // Returns 'name'
-key('name', null);            // Returns 'name'
+key('name');                  // 'name'
+key('name', 'doc');           // 'doc.name'
+key('name', 'doc', '::');     // 'doc::name'
+key('name', 'doc', '-&gt;');     // 'doc-&gt;name'
+key('name', '');              // 'name'
+key('name', null);            // 'name'
+
+key(['a', 'b'], 'doc');       // 'doc.a.b'
+key(['a', 'b'], 'doc', '::'); // 'doc::a::b'
 </code></pre>
 </section>
 
@@ -3528,8 +3537,10 @@ key('name', null);            // Returns 'name'
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The transformed key. If prefix is provided, returns &quot;prefix{separator}key&quot;,
-otherwise returns the original key.</p>
+                <section class="phpdocumentor-description"><p>The transformed key.
+Returns an empty string if <code class="prettyprint">$key</code> is <code class="prettyprint">null</code>.
+Returns <code class="prettyprint">&quot;{$prefix}{$separator}{$key}&quot;</code> when a prefix is provided,
+otherwise returns the normalized key.</p>
 </section>
 
             </section>

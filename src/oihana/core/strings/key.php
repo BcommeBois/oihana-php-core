@@ -9,34 +9,60 @@ namespace oihana\core\strings ;
  * separated by a custom separator. If the prefix is empty or null,
  * the original key is returned unchanged.
  *
- * @param string      $key       The key to transform.
- * @param string|null $prefix    Optional prefix to prepend. Default is an empty string.
- * @param string      $separator The separator to use between the prefix and key. Default is '.'.
+ * @param null|string|array $key The key to transform :
+ *                               - `null` returns an empty string
+ *                               - `string` is used directly
+ *                               - `array` is joined using the `$separator`
+ * @param string|null $prefix Optional prefix to prepend. Default is an empty string.
+ *                            If `null` or empty, the prefix is ignored.
  *
- * @return string The transformed key. If prefix is provided, returns "prefix{separator}key",
- *                otherwise returns the original key.
+ * @param string $separator The separator used both to join array keys and to separate the prefix from the key.
+ *
+ * @return string The transformed key.
+ *          Returns an empty string if `$key` is `null`.
+ *          Returns `"{$prefix}{$separator}{$key}"` when a prefix is provided,
+ *          otherwise returns the normalized key.
  *
  * @example
  * ```php
  * use function oihana\core\strings\key;
  *
- * key('name');                  // Returns 'name'
- * key('name', 'doc');           // Returns 'doc.name'
- * key('name', 'doc', '::');     // Returns 'doc::name'
- * key('name', 'doc', '->');     // Returns 'doc->name'
- * key('name', '');              // Returns 'name'
- * key('name', null);            // Returns 'name'
+ * key('name');                  // 'name'
+ * key('name', 'doc');           // 'doc.name'
+ * key('name', 'doc', '::');     // 'doc::name'
+ * key('name', 'doc', '->');     // 'doc->name'
+ * key('name', '');              // 'name'
+ * key('name', null);            // 'name'
+ *
+ * key(['a', 'b'], 'doc');       // 'doc.a.b'
+ * key(['a', 'b'], 'doc', '::'); // 'doc::a::b'
  * ```
  *
  * @package oihana\core\strings
  * @author  Marc Alcaraz
  * @since   1.0.0
  */
-function key( string $key , ?string $prefix = '' , string $separator = '.' ) :string
+function key( null|string|array $key , ?string $prefix = '' , string $separator = '.' ) :string
 {
+    if ( $key === null )
+    {
+        return '' ;
+    }
+
+    if ( is_array( $key ) )
+    {
+        $key = implode( $separator , $key ) ;
+    }
+
+    if ( $key === '' )
+    {
+        return ''  ;
+    }
+
     if( $prefix === null )
     {
         $prefix = '' ;
     }
-    return $prefix ? $prefix . $separator . $key : $key;
+
+    return $prefix ? $prefix . $separator . $key : $key ;
 }

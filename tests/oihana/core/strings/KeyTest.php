@@ -36,4 +36,51 @@ final class KeyTest extends TestCase
     {
         $this->assertSame('prefix.with.dots.name', key('name', 'prefix.with.dots'));
     }
+
+    public function testKeyWithNullKeyReturnsEmptyString(): void
+    {
+        $this->assertSame('', key(null));
+    }
+
+    public function testKeyWithArrayKeyIsImplodedWithDefaultSeparator(): void
+    {
+        $this->assertSame(
+            'user.profile.email',
+            key(['user', 'profile', 'email'])
+        );
+    }
+
+    public function testKeyWithArrayKeyAndCustomSeparator(): void
+    {
+        $this->assertSame(
+            'user::profile::email',
+            key(['user', 'profile', 'email'], null, '::')
+        );
+    }
+
+    public function testKeyWithArrayKeyAndPrefix(): void
+    {
+        $this->assertSame(
+            'doc.user.profile',
+            key(['user', 'profile'], 'doc')
+        );
+    }
+
+    public function testKeyWithArrayKeyAndPrefixAndCustomSeparator(): void
+    {
+        $this->assertSame(
+            'doc->user->profile',
+            key(['user', 'profile'], 'doc', '->')
+        );
+    }
+
+    public function testKeyWithEmptyArrayReturnsEmptyString(): void
+    {
+        $this->assertSame('', key([]));
+    }
+
+    public function testKeyWithEmptyArrayAndPrefixReturnsEmptyString(): void
+    {
+        $this->assertSame('', key([], 'doc'));
+    }
 }
