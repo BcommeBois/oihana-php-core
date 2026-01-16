@@ -41,26 +41,6 @@ Search.appendIndex(
             "summary": "Enumeration\u0020representing\u0020cleaning\u0020modes\u0020as\u0020bit\u0020flags.",
             "url": "classes/oihana-core-arrays-CleanFlag.html"
         },                {
-            "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003Adescribe\u0028\u0029",
-            "name": "describe",
-            "summary": "Gets\u0020a\u0020human\u002Dreadable\u0020description\u0020of\u0020the\u0020flags\u0020in\u0020a\u0020bitmask.",
-            "url": "classes/oihana-core-arrays-CleanFlag.html#method_describe"
-        },                {
-            "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003AgetFlags\u0028\u0029",
-            "name": "getFlags",
-            "summary": "Gets\u0020a\u0020list\u0020of\u0020all\u0020individual\u0020flags\u0020present\u0020in\u0020a\u0020bitmask.",
-            "url": "classes/oihana-core-arrays-CleanFlag.html#method_getFlags"
-        },                {
-            "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003Ahas\u0028\u0029",
-            "name": "has",
-            "summary": "Checks\u0020whether\u0020a\u0020specific\u0020flag\u0020is\u0020set\u0020in\u0020a\u0020bitmask.",
-            "url": "classes/oihana-core-arrays-CleanFlag.html#method_has"
-        },                {
-            "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003AisValid\u0028\u0029",
-            "name": "isValid",
-            "summary": "Validates\u0020that\u0020a\u0020bitmask\u0020contains\u0020only\u0020valid\u0020CleanFlag\u0020values.",
-            "url": "classes/oihana-core-arrays-CleanFlag.html#method_isValid"
-        },                {
             "fqsen": "\\oihana\\core\\arrays\\CleanFlag\u003A\u003ANONE",
             "name": "NONE",
             "summary": "No\u0020cleaning\u0020\u0028edge\u0020case,\u0020returns\u0020original\u0020array\u0029",
@@ -250,6 +230,31 @@ Search.appendIndex(
             "name": "unique",
             "summary": "Removes\u0020duplicate\u0020values\u0020from\u0020an\u0020array\u0020and\u0020reindexes\u0020it.",
             "url": "namespaces/oihana-core-arrays.html#function_unique"
+        },                {
+            "fqsen": "\\oihana\\core\\bits\\BitFlagTrait",
+            "name": "BitFlagTrait",
+            "summary": "Trait\u0020providing\u0020common\u0020methods\u0020for\u0020bitmask\u0020flag\u0020enumerations.",
+            "url": "classes/oihana-core-bits-BitFlagTrait.html"
+        },                {
+            "fqsen": "\\oihana\\core\\bits\\BitFlagTrait\u003A\u003Ahas\u0028\u0029",
+            "name": "has",
+            "summary": "Checks\u0020whether\u0020a\u0020specific\u0020flag\u0020is\u0020set\u0020in\u0020a\u0020bitmask.",
+            "url": "classes/oihana-core-bits-BitFlagTrait.html#method_has"
+        },                {
+            "fqsen": "\\oihana\\core\\bits\\BitFlagTrait\u003A\u003AisValid\u0028\u0029",
+            "name": "isValid",
+            "summary": "Validates\u0020that\u0020a\u0020bitmask\u0020contains\u0020only\u0020valid\u0020flags.",
+            "url": "classes/oihana-core-bits-BitFlagTrait.html#method_isValid"
+        },                {
+            "fqsen": "\\oihana\\core\\bits\\BitFlagTrait\u003A\u003AgetFlags\u0028\u0029",
+            "name": "getFlags",
+            "summary": "Gets\u0020a\u0020list\u0020of\u0020all\u0020individual\u0020flags\u0020present\u0020in\u0020a\u0020bitmask.",
+            "url": "classes/oihana-core-bits-BitFlagTrait.html#method_getFlags"
+        },                {
+            "fqsen": "\\oihana\\core\\bits\\BitFlagTrait\u003A\u003Adescribe\u0028\u0029",
+            "name": "describe",
+            "summary": "Gets\u0020a\u0020human\u002Dreadable\u0020description\u0020of\u0020the\u0020flags\u0020in\u0020a\u0020bitmask.",
+            "url": "classes/oihana-core-bits-BitFlagTrait.html#method_describe"
         },                {
             "fqsen": "\\oihana\\core\\bits\\countFlags\u0028\u0029",
             "name": "countFlags",
@@ -965,6 +970,106 @@ Search.appendIndex(
             "name": "resolveList",
             "summary": "Resolves\u0020a\u0020list\u0020from\u0020a\u0020string\u0020or\u0020an\u0020array\u0020\u003A\n\u002D\u0020splits\u0020the\u0020string\u0020by\u0020the\u0020given\u0020separator\n\u002D\u0020trims\u0020each\u0020element\n\u002D\u0020removes\u0020empty\u0020elements\n\u002D\u0020joins\u0020the\u0020list\u0020using\u0020the\u0020specified\u0020replacement\n\u002D\u0020returns\u0020\u0024default\u0020if\u0020the\u0020resulting\u0020list\u0020is\u0020empty",
             "url": "namespaces/oihana-core-strings.html#function_resolveList"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\sanitize\u0028\u0029",
+            "name": "sanitize",
+            "summary": "Sanitize\u0020a\u0020string\u0020based\u0020on\u0020configurable\u0020flags.",
+            "url": "namespaces/oihana-core-strings.html#function_sanitize"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag",
+            "name": "SanitizeFlag",
+            "summary": "Enumeration\u0020representing\u0020string\u0020sanitization\u0020modes\u0020as\u0020bit\u0020flags.",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ANONE",
+            "name": "NONE",
+            "summary": "Do\u0020nothing.",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_NONE"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ATRIM",
+            "name": "TRIM",
+            "summary": "Trim\u0020spaces,\u0020tabs,\u0020and\u0020line\u0020breaks\u0020at\u0020the\u0020start\u0020and\u0020end",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_TRIM"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ANULLIFY",
+            "name": "NULLIFY",
+            "summary": "Convert\u0020empty\u0020string\u0020to\u0020null",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_NULLIFY"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ANORMALIZE_LINE_BREAKS",
+            "name": "NORMALIZE_LINE_BREAKS",
+            "summary": "Normalize\u0020line\u0020breaks\u0020\u0028\\r\\n,\u0020\\r\u0020\u2192\u0020\\n\u0029",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE_LINE_BREAKS"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003AREMOVE_EXTRA_LINE_BREAKS",
+            "name": "REMOVE_EXTRA_LINE_BREAKS",
+            "summary": "Collapse\u0020multiple\u0020consecutive\u0020line\u0020breaks\u0020into\u0020one.",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_EXTRA_LINE_BREAKS"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003AREMOVE_INVISIBLE",
+            "name": "REMOVE_INVISIBLE",
+            "summary": "Remove\u0020invisible\u0020Unicode\u0020characters\u0020\u0028zero\u002Dwidth,\u0020non\u002Dbreaking,\u0020etc.\u0029",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_INVISIBLE"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ACOLLAPSE_SPACES",
+            "name": "COLLAPSE_SPACES",
+            "summary": "Collapse\u0020multiple\u0020spaces\u0020into\u0020one",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_COLLAPSE_SPACES"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ASTRIP_TAGS",
+            "name": "STRIP_TAGS",
+            "summary": "Remove\u0020HTML\/PHP\u0020tags",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_STRIP_TAGS"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ADECODE_ENTITIES",
+            "name": "DECODE_ENTITIES",
+            "summary": "Decode\u0020HTML\u0020entities\u0020to\u0020their\u0020corresponding\u0020characters.",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_DECODE_ENTITIES"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003AREMOVE_CONTROL_CHARS",
+            "name": "REMOVE_CONTROL_CHARS",
+            "summary": "Remove\u0020all\u0020non\u002Dprintable\u0020ASCII\u0020characters\u0020\u00280x00\u002D0x1F,\u00200x7F\u0029.",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_CONTROL_CHARS"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ANORMALIZE_UNICODE",
+            "name": "NORMALIZE_UNICODE",
+            "summary": "Normalize\u0020Unicode\u0020characters\u0020\u0028NFD,\u0020NFC,\u0020NFKD,\u0020NFKC\u0029.",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE_UNICODE"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003AALL",
+            "name": "ALL",
+            "summary": "All\u0020flags\u0020combined.",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_ALL"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ADEFAULT",
+            "name": "DEFAULT",
+            "summary": "Default\u0020flags",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_DEFAULT"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ANORMALIZE",
+            "name": "NORMALIZE",
+            "summary": "Normalize\u0020flags\u0020\u0028for\u0020consistent\u0020text\u0020processing\u0029",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ACLEAN_HTML",
+            "name": "CLEAN_HTML",
+            "summary": "Clean\u0020HTML\u0020flags\u0020\u0028for\u0020user\u002Dsubmitted\u0020HTML\u0020content\u0029",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_CLEAN_HTML"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003ASTRICT",
+            "name": "STRICT",
+            "summary": "Strict\u0020flags\u0020\u0028aggressive\u0020cleaning\u0029",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_STRICT"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003AFLAGS",
+            "name": "FLAGS",
+            "summary": "List\u0020of\u0020all\u0020flags",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_FLAGS"
+        },                {
+            "fqsen": "\\oihana\\core\\strings\\SanitizeFlag\u003A\u003AFLAGS_NAME",
+            "name": "FLAGS_NAME",
+            "summary": "Names\u0020of\u0020flags",
+            "url": "classes/oihana-core-strings-SanitizeFlag.html#constant_FLAGS_NAME"
         },                {
             "fqsen": "\\oihana\\core\\strings\\slice\u0028\u0029",
             "name": "slice",

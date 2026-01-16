@@ -178,6 +178,7 @@
             "src/oihana/core/strings/replace.php",
             "src/oihana/core/strings/replacePathPlaceholders.php",
             "src/oihana/core/strings/resolveList.php",
+            "src/oihana/core/strings/sanitize.php",
             "src/oihana/core/strings/slice.php",
             "src/oihana/core/strings/snake.php",
             "src/oihana/core/strings/split.php",

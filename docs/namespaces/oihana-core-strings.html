@@ -124,6 +124,13 @@
     </dl>
 
 
+    <h4 id="toc-classes">
+        Classes
+        <a href="namespaces/oihana-core-strings.html#toc-classes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/oihana-core-strings-SanitizeFlag.html"><abbr title="\oihana\core\strings\SanitizeFlag">SanitizeFlag</abbr></a></dt><dd>Enumeration representing string sanitization modes as bit flags.</dd>    </dl>
 
 
 
@@ -438,6 +445,13 @@ Unicode (grapheme-safe) and normalization support.</dd>
 - removes empty elements
 - joins the list using the specified replacement
 - returns $default if the resulting list is empty</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-strings.html#function_sanitize">sanitize()</a>
+    <span>
+                                &nbsp;: string|null    </span>
+</dt>
+<dd>Sanitize a string based on configurable flags.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-strings.html#function_slice">slice()</a>
@@ -5307,6 +5321,168 @@ echo resolveList([&quot;foo&quot;, &quot;  bar  &quot;, &quot;&quot;, &quot;baz&
 
 </article>
                     <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_sanitize">
+        sanitize()
+        <a href="namespaces/oihana-core-strings.html#function_sanitize" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/sanitize.php"><a href="files/src-oihana-core-strings-sanitize.html"><abbr title="src/oihana/core/strings/sanitize.php">sanitize.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">79</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sanitize a string based on configurable flags.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">sanitize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value"><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_DEFAULT"><abbr title="\oihana\core\strings\SanitizeFlag::DEFAULT">SanitizeFlag::DEFAULT</abbr></a></span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+
+        <section class="phpdocumentor-description"><p>This function acts as a comprehensive filter chain for string data. It can perform
+operations ranging from simple trimming to complex HTML stripping, Unicode normalization,
+and invisible character removal.</p>
+<h3>Available flags (SanitizeFlag)</h3>
+<p><strong>Cleaning &amp; Security:</strong></p>
+<ul>
+<li><code class="prettyprint">SanitizeFlag::STRIP_TAGS</code>           : Remove HTML/PHP tags (and content of &lt;script>/&lt;style>).</li>
+<li><code class="prettyprint">SanitizeFlag::DECODE_ENTITIES</code>      : Decode HTML entities (e.g., <code class="prettyprint">&amp;amp;</code> -&gt; <code class="prettyprint">&amp;</code>).</li>
+<li><code class="prettyprint">SanitizeFlag::REMOVE_CONTROL_CHARS</code> : Remove non-printable ASCII characters (0-31, 127) except line breaks/tabs.</li>
+<li><code class="prettyprint">SanitizeFlag::REMOVE_INVISIBLE</code>     : Remove invisible Unicode characters (zero-width, BOM, etc.) and normalize non-breaking spaces.
+<strong>Formatting &amp; Normalization:</strong></li>
+<li><code class="prettyprint">SanitizeFlag::NORMALIZE_UNICODE</code>    : Normalize string to Unicode Normalization Form C (NFC) by default.</li>
+<li><code class="prettyprint">SanitizeFlag::NORMALIZE_LINE_BREAKS</code>: Convert Windows (<code class="prettyprint">\r\n</code>) and Mac (<code class="prettyprint">\r</code>) line endings to Unix (<code class="prettyprint">\n</code>).</li>
+<li><code class="prettyprint">SanitizeFlag::REMOVE_EXTRA_LINE_BREAKS</code>: Collapse multiple consecutive line breaks into a single one.</li>
+<li><code class="prettyprint">SanitizeFlag::COLLAPSE_SPACES</code>      : Collapse multiple consecutive horizontal spaces into a single space.</li>
+<li><code class="prettyprint">SanitizeFlag::TRIM</code>                 : Remove whitespace from the start and end of the string.
+<strong>Output Control:</strong></li>
+<li><code class="prettyprint">SanitizeFlag::NULLIFY</code>              : Return <code class="prettyprint">null</code> if the resulting string is empty.</li>
+</ul>
+<h3>Processing order</h3>
+<p>Operations are applied in this specific order to ensure data integrity:</p>
+<ol>
+<li><strong>DECODE_ENTITIES</strong>: Decode HTML entities first (to expose hidden tags or chars).</li>
+<li><strong>STRIP_TAGS</strong>: Remove scripts/styles content, then strip tags.</li>
+<li><strong>REMOVE_CONTROL_CHARS</strong>: Clean basic ASCII control noise.</li>
+<li><strong>REMOVE_INVISIBLE</strong>: aggressive cleaning of Unicode invisible chars.</li>
+<li><strong>NORMALIZE_UNICODE</strong>: Standardize Unicode composition.</li>
+<li><strong>NORMALIZE_LINE_BREAKS</strong>: Standardize line endings to <code class="prettyprint">\n</code>.</li>
+<li><strong>REMOVE_EXTRA_LINE_BREAKS</strong>: Collapse vertical spacing.</li>
+<li><strong>COLLAPSE_SPACES</strong>: Collapse horizontal spacing.</li>
+<li><strong>TRIM</strong>: Clean edges.</li>
+<li><strong>NULLIFY</strong>: Final check for emptiness.</li>
+</ol>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$source</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The string to sanitize. Can be null.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$flags</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value"><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_DEFAULT"><abbr title="\oihana\core\strings\SanitizeFlag::DEFAULT">SanitizeFlag::DEFAULT</abbr></a></span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>A bitmask of SanitizeFlag constants. Defaults to <code class="prettyprint">SanitizeFlag::DEFAULT</code>.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$options</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional parameters for specific flags:</p>
+<ul>
+<li><code class="prettyprint">allowed_tags</code> (string|string[]): Used with <code class="prettyprint">STRIP_TAGS</code>. allowable tags (e.g. '<p><a>').</li>
+<li><code class="prettyprint">unicode_form</code> (int): Used with <code class="prettyprint">NORMALIZE_UNICODE</code>. Defaults to <code class="prettyprint">Normalizer::NFC</code>.</li>
+</ul>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-strings.html#function_sanitize#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the flags parameter contains invalid flag values.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use oihana\core\strings\{sanitize, SanitizeFlag};
+
+// 1. Basic usage (TRIM | REMOVE_INVISIBLE by default)
+sanitize(&quot;  Hello\u{200B}World  &quot;); // &quot;HelloWorld&quot;
+
+// 2. HTML Cleaning
+$html = &quot;&lt;script&gt;alert('xss')&lt;/script&gt;&lt;p&gt;Hello &amp;amp; &lt;b&gt;World&lt;/b&gt;&lt;/p&gt;&quot;;
+$flags = SanitizeFlag::STRIP_TAGS | SanitizeFlag::DECODE_ENTITIES | SanitizeFlag::TRIM;
+sanitize($html, $flags); // &quot;Hello &amp; World&quot;
+
+// 3. Keeping specific tags
+sanitize($html, $flags, ['allowed_tags' =&gt; '&lt;b&gt;']); // &quot;Hello &amp; &lt;b&gt;World&lt;/b&gt;&quot;
+
+// 4. Text Formatting
+$text = &quot;Line 1  \t  Content\n\n\nLine 2&quot;;
+$flags = SanitizeFlag::COLLAPSE_SPACES | SanitizeFlag::REMOVE_EXTRA_LINE_BREAKS | SanitizeFlag::TRIM;
+sanitize($text, $flags); // &quot;Line 1 Content\nLine 2&quot;
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The sanitized string, or <code class="prettyprint">null</code> if <code class="prettyprint">NULLIFY</code> is enabled and the result is empty.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_slice">
         slice()
         <a href="namespaces/oihana-core-strings.html#function_slice" class="headerlink"><i class="fas fa-link"></i></a>
@@ -7072,7 +7248,8 @@ echo wrap('column', '&quot;'); // &quot;column&quot;
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                    <li><a href="namespaces/oihana-core-strings.html#toc-functions">Functions</a></li>
+                                                                                                    <li><a href="namespaces/oihana-core-strings.html#toc-classes">Classes</a></li>
+                                                                                                                        <li><a href="namespaces/oihana-core-strings.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -7125,6 +7302,7 @@ echo wrap('column', '&quot;'); // &quot;column&quot;
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_replace">replace()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_replacePathPlaceholders">replacePathPlaceholders()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_resolveList">resolveList()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-strings.html#function_sanitize">sanitize()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_slice">slice()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_snake">snake()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-strings.html#function_split">split()</a></li>

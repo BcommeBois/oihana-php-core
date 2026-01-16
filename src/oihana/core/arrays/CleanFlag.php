@@ -2,15 +2,13 @@
 
 namespace oihana\core\arrays ;
 
-use function oihana\core\bits\hasFlag;
+use oihana\core\bits\BitFlagTrait;
 
 /**
  * Enumeration representing cleaning modes as bit flags.
  *
  * Each flag can be combined using the bitwise OR operator (`|`) to form a mask.
  * The `has()` helper can be used to check if a particular flag is present in a mask.
- *
- * @package oihana\core\arrays
  *
  * @example
  * ```php
@@ -26,6 +24,8 @@ use function oihana\core\bits\hasFlag;
  */
 class CleanFlag
 {
+    use BitFlagTrait ;
+
     /**
      * No cleaning (edge case, returns original array)
      * @var int
@@ -137,131 +137,4 @@ class CleanFlag
         self::FALSY       => 'FALSY',
         self::RETURN_NULL => 'RETURN_NULL'
     ];
-
-    /**
-     * Gets a human-readable description of the flags in a bitmask.
-     *
-     * This method provides a string representation of which flags are active,
-     * useful for debugging, logging, or user interfaces.
-     *
-     * @param int $mask The bitmask value to describe.
-     * @param string $separator The separator between the flag descriptions.
-     *
-     * @return string A comma-separated (by default) string of flag names.
-     *
-     * @example
-     * ```php
-     * use oihana\core\arrays\CleanFlag;
-     *
-     * $mask = CleanFlag::NULLS | CleanFlag::EMPTY;
-     * echo CleanFlag::describe($mask); // Outputs: "NULLS, EMPTY"
-     *
-     * echo CleanFlag::describe(CleanFlag::DEFAULT); // Outputs: "NULLS, EMPTY, TRIM, RECURSIVE, EMPTY_ARR"
-     * ```
-     */
-    public static function describe( int $mask , string $separator = ', '): string
-    {
-        if ( $mask === self::NONE )
-        {
-            return 'NONE' ;
-        }
-
-        $descriptions = [] ;
-
-        foreach ( self::FLAGS_NAME as $flag => $name )
-        {
-            if ( hasFlag( $mask , $flag ) )
-            {
-                $descriptions[] = $name;
-            }
-        }
-
-        return implode( $separator , $descriptions );
-    }
-
-    /**
-     * Gets a list of all individual flags present in a bitmask.
-     *
-     * This method decomposes a bitmask into its individual flag components,
-     * useful for debugging or logging which flags are active.
-     *
-     * @param int $mask The bitmask value to decompose.
-     *
-     * @return array<int> An array of individual flag values present in the mask.
-     *
-     * @example
-     * ```php
-     * use oihana\core\arrays\CleanFlag;
-     *
-     * $mask = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM;
-     * $flags = CleanFlag::getFlags($mask);
-     * // Returns [1, 2, 4] (the individual flag values)
-     * ```
-     */
-    public static function getFlags( int $mask ): array
-    {
-        $flags = [] ;
-
-        foreach ( self::FLAGS as $flag )
-        {
-            if ( hasFlag( $mask , $flag ) )
-            {
-                $flags[] = $flag;
-            }
-        }
-
-        return $flags ;
-    }
-
-    /**
-     * Checks whether a specific flag is set in a bitmask.
-     *
-     * This method is useful when using the CleanFlag enum as a set of bit flags.
-     * You can combine multiple flags using the bitwise OR operator (`|`) and then
-     * check if a particular flag is present in the combined mask.
-     *
-     * @param int $mask The bitmask value, potentially containing multiple flags combined with `|`.
-     * @param int $flag The specific flag to check for in the mask.
-     *
-     * @return bool Returns `true` if the given flag is present in the mask, `false` otherwise.
-     *
-     * @example
-     * ```php
-     * use oihana\core\arrays\CleanFlag;
-     *
-     * $mask = CleanFlag::NULLS | CleanFlag::EMPTY;
-     *
-     * CleanFlag::has($mask, CleanFlag::NULLS); // Returns true
-     * CleanFlag::has($mask, CleanFlag::TRIM);  // Returns false
-     * ```
-     */
-    public static function has( int $mask , int $flag ) :bool
-    {
-        return ( $mask & $flag ) !== 0 ;
-    }
-
-    /**
-     * Validates that a bitmask contains only valid CleanFlag values.
-     *
-     * This method checks if the provided mask consists only of recognized flags.
-     * Any bits set outside of the valid flag range will cause validation to fail.
-     *
-     * @param int $mask The bitmask value to validate.
-     *
-     * @return bool Returns `true` if the mask contains only valid flags, `false` otherwise.
-     *
-     * @example
-     * ```php
-     * use oihana\core\arrays\CleanFlag;
-     *
-     * CleanFlag::isValid(CleanFlag::NULLS | CleanFlag::EMPTY); // Returns true
-     * CleanFlag::isValid(CleanFlag::DEFAULT);                  // Returns true
-     * CleanFlag::isValid(1024);                                // Returns false (invalid flag)
-     * CleanFlag::isValid(CleanFlag::NULLS | 999);              // Returns false (contains invalid bits)
-     * ```
-     */
-    public static function isValid( int $mask ) :bool
-    {
-        return ( $mask & ~self::ALL ) === 0 ;
-    }
 }

@@ -101,12 +101,12 @@
                                         <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana.html">oihana</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana-core.html">core</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana-core-arrays.html">arrays</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana-core-strings.html">strings</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    CleanFlag
+    SanitizeFlag
 
     
     
@@ -122,13 +122,13 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Enumeration representing cleaning modes as bit flags.</p>
+            <p class="phpdocumentor-summary">Enumeration representing string sanitization modes as bit flags.</p>
 
 
     <section class="phpdocumentor-description"><p>Each flag can be combined using the bitwise OR operator (<code class="prettyprint">|</code>) to form a mask.
@@ -138,7 +138,7 @@ The <code class="prettyprint">has()</code> helper can be used to check if a part
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/oihana-core-arrays-CleanFlag.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -147,17 +147,30 @@ The <code class="prettyprint">has()</code> helper can be used to check if a part
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use oihana\core\arrays\CleanFlag;
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use oihana\core\strings\SanitizeFlag;
 
-// Combine multiple flags
-$mask = CleanFlag::NULLS | CleanFlag::EMPTY | CleanFlag::TRIM ;
-
-// Check flags
-CleanFlag::has($mask, CleanFlag::NULLS) ; // true
-CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
+$mask = SanitizeFlag::TRIM | SanitizeFlag::NULLIFY;
+SanitizeFlag::has($mask, SanitizeFlag::TRIM); // true
 </code></pre>
 </section>
 
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
                                     </dd>
                                             </dl>
 
@@ -165,7 +178,7 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
     
 <h3 id="toc">
     Table of Contents
-    <a href="classes/oihana-core-arrays-CleanFlag.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/oihana-core-strings-SanitizeFlag.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -177,107 +190,135 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
 
 <h4 id="toc-constants">
     Constants
-    <a href="classes/oihana-core-arrays-CleanFlag.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/oihana-core-strings-SanitizeFlag.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_ALL">ALL</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_ALL">ALL</a>
     <span>
-        &nbsp;= self::NULLS | self::EMPTY | self::TRIM | self::RECURSIVE | self::EMPTY_ARR | self::FALSY | self::RETURN_NULL                            </span>
+        &nbsp;= self::TRIM | self::NULLIFY | self::NORMALIZE_LINE_BREAKS | self::REMOVE_EXTRA_LINE_BREAKS | self::REMOVE_INVISIBLE | self::COLLAPSE_SPACES | self::STRIP_TAGS | self::DECODE_ENTITIES | self::REMOVE_CONTROL_CHARS | self::NORMALIZE_UNICODE                            </span>
 </dt>
-<dd>All valid flags combined (used for validation)</dd>
+<dd>All flags combined.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_DEFAULT">DEFAULT</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_CLEAN_HTML">CLEAN_HTML</a>
     <span>
-        &nbsp;= self::NULLS | self::EMPTY | self::TRIM | self::RECURSIVE | self::EMPTY_ARR                            </span>
+        &nbsp;= self::TRIM | self::STRIP_TAGS | self::DECODE_ENTITIES | self::COLLAPSE_SPACES                            </span>
 </dt>
-<dd>Default cleaning: remove nulls, empty/trim strings, empty arrays recursively</dd>
+<dd>Clean HTML flags (for user-submitted HTML content)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_EMPTY">EMPTY</a>
-    <span>
-        &nbsp;= 1 &lt;&lt; 1                            </span>
-</dt>
-<dd>Remove empty strings &#039;&#039;</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_EMPTY_ARR">EMPTY_ARR</a>
-    <span>
-        &nbsp;= 1 &lt;&lt; 4                            </span>
-</dt>
-<dd>Remove empty arrays (after recursive cleaning)</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_FALSY">FALSY</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_COLLAPSE_SPACES">COLLAPSE_SPACES</a>
     <span>
         &nbsp;= 1 &lt;&lt; 5                            </span>
 </dt>
-<dd>Remove the falsy values : &#039;0&#039;, false, .</dd>
+<dd>Collapse multiple spaces into one</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_FLAGS">FLAGS</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_DECODE_ENTITIES">DECODE_ENTITIES</a>
     <span>
-        &nbsp;= [self::NULLS, self::EMPTY, self::TRIM, self::RECURSIVE, self::EMPTY_ARR, self::FALSY, self::RETURN_NULL]                            </span>
+        &nbsp;= 1 &lt;&lt; 7                            </span>
 </dt>
-<dd>The default list of flags.</dd>
+<dd>Decode HTML entities to their corresponding characters.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_FLAGS_NAME">FLAGS_NAME</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_DEFAULT">DEFAULT</a>
     <span>
-        &nbsp;= [self::NULLS =&gt; &#039;NULLS&#039;, self::EMPTY =&gt; &#039;EMPTY&#039;, self::TRIM =&gt; &#039;TRIM&#039;, self::RECURSIVE =&gt; &#039;RECURSIVE&#039;, self::EMPTY_ARR =&gt; &#039;EMPTY_ARR&#039;, self::FALSY =&gt; &#039;FALSY&#039;, self::RETURN_NULL =&gt; &#039;RETURN_NULL&#039;]                            </span>
+        &nbsp;= self::TRIM | self::REMOVE_INVISIBLE                            </span>
 </dt>
-<dd>The list of flag&#039;s name.</dd>
+<dd>Default flags</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_MAIN">MAIN</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_FLAGS">FLAGS</a>
     <span>
-        &nbsp;= self::NULLS | self::EMPTY | self::EMPTY_ARR | self::TRIM                            </span>
+        &nbsp;= [self::TRIM, self::NULLIFY, self::NORMALIZE_LINE_BREAKS, self::REMOVE_EXTRA_LINE_BREAKS, self::REMOVE_INVISIBLE, self::COLLAPSE_SPACES, self::STRIP_TAGS, self::DECODE_ENTITIES, self::REMOVE_CONTROL_CHARS, self::NORMALIZE_UNICODE]                            </span>
 </dt>
-<dd>All the main flags.</dd>
+<dd>List of all flags</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_NONE">NONE</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_FLAGS_NAME">FLAGS_NAME</a>
+    <span>
+        &nbsp;= [self::TRIM =&gt; &#039;TRIM&#039;, self::NULLIFY =&gt; &#039;NULLIFY&#039;, self::NORMALIZE_LINE_BREAKS =&gt; &#039;NORMALIZE_LINE_BREAKS&#039;, self::REMOVE_EXTRA_LINE_BREAKS =&gt; &#039;REMOVE_EXTRA_LINE_BREAKS&#039;, self::REMOVE_INVISIBLE =&gt; &#039;REMOVE_INVISIBLE&#039;, self::COLLAPSE_SPACES =&gt; &#039;COLLAPSE_SPACES&#039;, self::STRIP_TAGS =&gt; &#039;STRIP_TAGS&#039;, self::DECODE_ENTITIES =&gt; &#039;DECODE_ENTITIES&#039;, self::REMOVE_CONTROL_CHARS =&gt; &#039;REMOVE_CONTROL_CHARS&#039;, self::NORMALIZE_UNICODE =&gt; &#039;NORMALIZE_UNICODE&#039;]                            </span>
+</dt>
+<dd>Names of flags</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_NONE">NONE</a>
     <span>
         &nbsp;= 0                            </span>
 </dt>
-<dd>No cleaning (edge case, returns original array)</dd>
+<dd>Do nothing.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE">NORMALIZE</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE">NORMALIZE</a>
     <span>
-        &nbsp;= self::DEFAULT | \oihana\core\arrays\CleanFlag::RETURN_NULL                            </span>
+        &nbsp;= self::TRIM | self::REMOVE_INVISIBLE | self::NORMALIZE_LINE_BREAKS | self::NORMALIZE_UNICODE                            </span>
 </dt>
-<dd>Default cleaning: remove nulls, empty/trim strings, empty arrays recursively and return null if empty.</dd>
+<dd>Normalize flags (for consistent text processing)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_NULLS">NULLS</a>
-    <span>
-        &nbsp;= 1 &lt;&lt; 0                            </span>
-</dt>
-<dd>Remove null values</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_RECURSIVE">RECURSIVE</a>
-    <span>
-        &nbsp;= 1 &lt;&lt; 3                            </span>
-</dt>
-<dd>Clean nested arrays recursively</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_RETURN_NULL">RETURN_NULL</a>
-    <span>
-        &nbsp;= 1 &lt;&lt; 6                            </span>
-</dt>
-<dd>Return null instead of empty array when result is empty</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a class="" href="classes/oihana-core-arrays-CleanFlag.html#constant_TRIM">TRIM</a>
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE_LINE_BREAKS">NORMALIZE_LINE_BREAKS</a>
     <span>
         &nbsp;= 1 &lt;&lt; 2                            </span>
 </dt>
-<dd>Treat whitespace-only strings as empty (implies CLEAN_EMPTY)</dd>
+<dd>Normalize line breaks (\r\n, \r → \n)</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE_UNICODE">NORMALIZE_UNICODE</a>
+    <span>
+        &nbsp;= 1 &lt;&lt; 9                            </span>
+</dt>
+<dd>Normalize Unicode characters (NFD, NFC, NFKD, NFKC).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_NULLIFY">NULLIFY</a>
+    <span>
+        &nbsp;= 1 &lt;&lt; 1                            </span>
+</dt>
+<dd>Convert empty string to null</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_CONTROL_CHARS">REMOVE_CONTROL_CHARS</a>
+    <span>
+        &nbsp;= 1 &lt;&lt; 8                            </span>
+</dt>
+<dd>Remove all non-printable ASCII characters (0x00-0x1F, 0x7F).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_EXTRA_LINE_BREAKS">REMOVE_EXTRA_LINE_BREAKS</a>
+    <span>
+        &nbsp;= 1 &lt;&lt; 3                            </span>
+</dt>
+<dd>Collapse multiple consecutive line breaks into one.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_INVISIBLE">REMOVE_INVISIBLE</a>
+    <span>
+        &nbsp;= 1 &lt;&lt; 4                            </span>
+</dt>
+<dd>Remove invisible Unicode characters (zero-width, non-breaking, etc.)</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_STRICT">STRICT</a>
+    <span>
+        &nbsp;= self::TRIM | self::NULLIFY | self::REMOVE_INVISIBLE | self::REMOVE_CONTROL_CHARS | self::NORMALIZE_LINE_BREAKS | self::REMOVE_EXTRA_LINE_BREAKS | self::COLLAPSE_SPACES                            </span>
+</dt>
+<dd>Strict flags (aggressive cleaning)</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_STRIP_TAGS">STRIP_TAGS</a>
+    <span>
+        &nbsp;= 1 &lt;&lt; 6                            </span>
+</dt>
+<dd>Remove HTML/PHP tags</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-strings-SanitizeFlag.html#constant_TRIM">TRIM</a>
+    <span>
+        &nbsp;= 1 &lt;&lt; 0                            </span>
+</dt>
+<dd>Trim spaces, tabs, and line breaks at the start and end</dd>
 
     </dl>
 
@@ -285,7 +326,7 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/oihana-core-arrays-CleanFlag.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/oihana-core-strings-SanitizeFlag.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
@@ -325,31 +366,31 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
     <section class="phpdocumentor-constants">
         <h3 class="phpdocumentor-elements__header" id="constants">
             Constants
-            <a href="classes/oihana-core-arrays-CleanFlag.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/oihana-core-strings-SanitizeFlag.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_ALL">
         ALL
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_ALL" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_ALL" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">80</span>
+    <span class="phpdocumentor-element-found-in__line">91</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">All valid flags combined (used for validation)</p>
+        <p class="phpdocumentor-summary">All flags combined.</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">ALL</span>
-    = <span class="phpdocumentor-signature__default-value">self::NULLS | self::EMPTY | self::TRIM | self::RECURSIVE | self::EMPTY_ARR | self::FALSY | self::RETURN_NULL</span>
+    = <span class="phpdocumentor-signature__default-value">self::TRIM | self::NULLIFY | self::NORMALIZE_LINE_BREAKS | self::REMOVE_EXTRA_LINE_BREAKS | self::REMOVE_INVISIBLE | self::COLLAPSE_SPACES | self::STRIP_TAGS | self::DECODE_ENTITIES | self::REMOVE_CONTROL_CHARS | self::NORMALIZE_UNICODE</span>
 </code>
 
 
@@ -360,27 +401,27 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
         
     </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DEFAULT">
-        DEFAULT
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_DEFAULT" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_CLEAN_HTML">
+        CLEAN_HTML
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_CLEAN_HTML" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">92</span>
+    <span class="phpdocumentor-element-found-in__line">118</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Default cleaning: remove nulls, empty/trim strings, empty arrays recursively</p>
+        <p class="phpdocumentor-summary">Clean HTML flags (for user-submitted HTML content)</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">DEFAULT</span>
-    = <span class="phpdocumentor-signature__default-value">self::NULLS | self::EMPTY | self::TRIM | self::RECURSIVE | self::EMPTY_ARR</span>
+    <span class="phpdocumentor-signature__name">CLEAN_HTML</span>
+    = <span class="phpdocumentor-signature__default-value">self::TRIM | self::STRIP_TAGS | self::DECODE_ENTITIES | self::COLLAPSE_SPACES</span>
 </code>
 
 
@@ -391,58 +432,27 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
         
     </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_EMPTY">
-        EMPTY
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_EMPTY" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_COLLAPSE_SPACES">
+        COLLAPSE_SPACES
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_COLLAPSE_SPACES" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">45</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Remove empty strings &#039;&#039;</p>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">EMPTY</span>
-    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 1</span>
-</code>
-
-
-    
-    
-    
-
-        
-    </article>
-                    <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_EMPTY_ARR">
-        EMPTY_ARR
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_EMPTY_ARR" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">63</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Remove empty arrays (after recursive cleaning)</p>
+        <p class="phpdocumentor-summary">Collapse multiple spaces into one</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">EMPTY_ARR</span>
-    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 4</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">COLLAPSE_SPACES</span>
+    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 5</span>
 </code>
 
 
@@ -453,31 +463,31 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
         
     </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_FALSY">
-        FALSY
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_FALSY" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_DECODE_ENTITIES">
+        DECODE_ENTITIES
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_DECODE_ENTITIES" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">69</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Remove the falsy values : &#039;0&#039;, false, .</p>
+        <p class="phpdocumentor-summary">Decode HTML entities to their corresponding characters.</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">FALSY</span>
-    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 5</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DECODE_ENTITIES</span>
+    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 7</span>
 </code>
 
 
-        <section class="phpdocumentor-description"><p>..</p>
+        <section class="phpdocumentor-description"><p>Example: &amp; → &amp;, &lt; → &lt;, &quot; → &quot;</p>
 </section>
 
     
@@ -486,27 +496,58 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
         
     </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_FLAGS">
-        FLAGS
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_FLAGS" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_DEFAULT">
+        DEFAULT
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_DEFAULT" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">116</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">The default list of flags.</p>
+        <p class="phpdocumentor-summary">Default flags</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DEFAULT</span>
+    = <span class="phpdocumentor-signature__default-value">self::TRIM | self::REMOVE_INVISIBLE</span>
+</code>
+
+
+    
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_FLAGS">
+        FLAGS
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_FLAGS" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">137</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">List of all flags</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">FLAGS</span>
-    = <span class="phpdocumentor-signature__default-value">[self::NULLS, self::EMPTY, self::TRIM, self::RECURSIVE, self::EMPTY_ARR, self::FALSY, self::RETURN_NULL]</span>
+    = <span class="phpdocumentor-signature__default-value">[self::TRIM, self::NULLIFY, self::NORMALIZE_LINE_BREAKS, self::REMOVE_EXTRA_LINE_BREAKS, self::REMOVE_INVISIBLE, self::COLLAPSE_SPACES, self::STRIP_TAGS, self::DECODE_ENTITIES, self::REMOVE_CONTROL_CHARS, self::NORMALIZE_UNICODE]</span>
 </code>
 
 
@@ -519,56 +560,25 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_FLAGS_NAME">
         FLAGS_NAME
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_FLAGS_NAME" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_FLAGS_NAME" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">130</span>
+    <span class="phpdocumentor-element-found-in__line">154</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">The list of flag&#039;s name.</p>
+        <p class="phpdocumentor-summary">Names of flags</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">FLAGS_NAME</span>
-    = <span class="phpdocumentor-signature__default-value">[self::NULLS =&gt; &#039;NULLS&#039;, self::EMPTY =&gt; &#039;EMPTY&#039;, self::TRIM =&gt; &#039;TRIM&#039;, self::RECURSIVE =&gt; &#039;RECURSIVE&#039;, self::EMPTY_ARR =&gt; &#039;EMPTY_ARR&#039;, self::FALSY =&gt; &#039;FALSY&#039;, self::RETURN_NULL =&gt; &#039;RETURN_NULL&#039;]</span>
-</code>
-
-
-    
-    
-    
-
-        
-    </article>
-                    <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_MAIN">
-        MAIN
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_MAIN" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">102</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">All the main flags.</p>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">MAIN</span>
-    = <span class="phpdocumentor-signature__default-value">self::NULLS | self::EMPTY | self::EMPTY_ARR | self::TRIM</span>
+    = <span class="phpdocumentor-signature__default-value">[self::TRIM =&gt; &#039;TRIM&#039;, self::NULLIFY =&gt; &#039;NULLIFY&#039;, self::NORMALIZE_LINE_BREAKS =&gt; &#039;NORMALIZE_LINE_BREAKS&#039;, self::REMOVE_EXTRA_LINE_BREAKS =&gt; &#039;REMOVE_EXTRA_LINE_BREAKS&#039;, self::REMOVE_INVISIBLE =&gt; &#039;REMOVE_INVISIBLE&#039;, self::COLLAPSE_SPACES =&gt; &#039;COLLAPSE_SPACES&#039;, self::STRIP_TAGS =&gt; &#039;STRIP_TAGS&#039;, self::DECODE_ENTITIES =&gt; &#039;DECODE_ENTITIES&#039;, self::REMOVE_CONTROL_CHARS =&gt; &#039;REMOVE_CONTROL_CHARS&#039;, self::NORMALIZE_UNICODE =&gt; &#039;NORMALIZE_UNICODE&#039;]</span>
 </code>
 
 
@@ -581,18 +591,18 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_NONE">
         NONE
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_NONE" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NONE" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">No cleaning (edge case, returns original array)</p>
+        <p class="phpdocumentor-summary">Do nothing.</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -612,25 +622,25 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_NORMALIZE">
         NORMALIZE
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">111</span>
+    <span class="phpdocumentor-element-found-in__line">110</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Default cleaning: remove nulls, empty/trim strings, empty arrays recursively and return null if empty.</p>
+        <p class="phpdocumentor-summary">Normalize flags (for consistent text processing)</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">NORMALIZE</span>
-    = <span class="phpdocumentor-signature__default-value">self::DEFAULT | \oihana\core\arrays\CleanFlag::RETURN_NULL</span>
+    = <span class="phpdocumentor-signature__default-value">self::TRIM | self::REMOVE_INVISIBLE | self::NORMALIZE_LINE_BREAKS | self::NORMALIZE_UNICODE</span>
 </code>
 
 
@@ -641,27 +651,27 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
         
     </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_NULLS">
-        NULLS
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_NULLS" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_NORMALIZE_LINE_BREAKS">
+        NORMALIZE_LINE_BREAKS
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE_LINE_BREAKS" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Remove null values</p>
+        <p class="phpdocumentor-summary">Normalize line breaks (\r\n, \r → \n)</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">NULLS</span>
-    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 0</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">NORMALIZE_LINE_BREAKS</span>
+    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 2</span>
 </code>
 
 
@@ -672,26 +682,123 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
         
     </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_RECURSIVE">
-        RECURSIVE
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_RECURSIVE" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_NORMALIZE_UNICODE">
+        NORMALIZE_UNICODE
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE_UNICODE" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Clean nested arrays recursively</p>
+        <p class="phpdocumentor-summary">Normalize Unicode characters (NFD, NFC, NFKD, NFKC).</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">RECURSIVE</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">NORMALIZE_UNICODE</span>
+    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 9</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Uses 'NFC' normalization by default (canonical decomposition + composition).</p>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_NULLIFY">
+        NULLIFY
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NULLIFY" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Convert empty string to null</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">NULLIFY</span>
+    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 1</span>
+</code>
+
+
+    
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_REMOVE_CONTROL_CHARS">
+        REMOVE_CONTROL_CHARS
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_CONTROL_CHARS" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">80</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Remove all non-printable ASCII characters (0x00-0x1F, 0x7F).</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">REMOVE_CONTROL_CHARS</span>
+    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 8</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Less aggressive than REMOVE_INVISIBLE, keeps Unicode characters.</p>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_REMOVE_EXTRA_LINE_BREAKS">
+        REMOVE_EXTRA_LINE_BREAKS
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_EXTRA_LINE_BREAKS" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">53</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Collapse multiple consecutive line breaks into one.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">REMOVE_EXTRA_LINE_BREAKS</span>
     = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 3</span>
 </code>
 
@@ -703,26 +810,88 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
         
     </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_RETURN_NULL">
-        RETURN_NULL
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_RETURN_NULL" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_REMOVE_INVISIBLE">
+        REMOVE_INVISIBLE
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_INVISIBLE" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Return null instead of empty array when result is empty</p>
+        <p class="phpdocumentor-summary">Remove invisible Unicode characters (zero-width, non-breaking, etc.)</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">RETURN_NULL</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">REMOVE_INVISIBLE</span>
+    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 4</span>
+</code>
+
+
+    
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_STRICT">
+        STRICT
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_STRICT" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">126</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Strict flags (aggressive cleaning)</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">STRICT</span>
+    = <span class="phpdocumentor-signature__default-value">self::TRIM | self::NULLIFY | self::REMOVE_INVISIBLE | self::REMOVE_CONTROL_CHARS | self::NORMALIZE_LINE_BREAKS | self::REMOVE_EXTRA_LINE_BREAKS | self::COLLAPSE_SPACES</span>
+</code>
+
+
+    
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_STRIP_TAGS">
+        STRIP_TAGS
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_STRIP_TAGS" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">68</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Remove HTML/PHP tags</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">STRIP_TAGS</span>
     = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 6</span>
 </code>
 
@@ -736,25 +905,25 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_TRIM">
         TRIM
-        <a href="classes/oihana-core-arrays-CleanFlag.html#constant_TRIM" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#constant_TRIM" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/CleanFlag.php"><a href="files/src-oihana-core-arrays-cleanflag.html"><abbr title="src/oihana/core/arrays/CleanFlag.php">CleanFlag.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/strings/SanitizeFlag.php"><a href="files/src-oihana-core-strings-sanitizeflag.html"><abbr title="src/oihana/core/strings/SanitizeFlag.php">SanitizeFlag.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Treat whitespace-only strings as empty (implies CLEAN_EMPTY)</p>
+        <p class="phpdocumentor-summary">Trim spaces, tabs, and line breaks at the start and end</p>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">TRIM</span>
-    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 2</span>
+    = <span class="phpdocumentor-signature__default-value">1 &lt;&lt; 0</span>
 </code>
 
 
@@ -771,7 +940,7 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/oihana-core-arrays-CleanFlag.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/oihana-core-strings-SanitizeFlag.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -990,7 +1159,7 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/arrays/CleanFlag.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/strings/SanitizeFlag.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -1091,27 +1260,31 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                        <li><a href="classes/oihana-core-arrays-CleanFlag.html#toc-constants">Constants</a></li>
-                                                                                <li><a href="classes/oihana-core-arrays-CleanFlag.html#toc-methods">Methods</a></li>
+                                        <li><a href="classes/oihana-core-strings-SanitizeFlag.html#toc-constants">Constants</a></li>
+                                                                                <li><a href="classes/oihana-core-strings-SanitizeFlag.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
                             <li class="phpdocumentor-on-this-page-section__title">Constants</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_ALL">ALL</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_DEFAULT">DEFAULT</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_EMPTY">EMPTY</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_EMPTY_ARR">EMPTY_ARR</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_FALSY">FALSY</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_FLAGS">FLAGS</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_FLAGS_NAME">FLAGS_NAME</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_MAIN">MAIN</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_NONE">NONE</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE">NORMALIZE</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_NULLS">NULLS</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_RECURSIVE">RECURSIVE</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_RETURN_NULL">RETURN_NULL</a></li>
-                                                    <li class=""><a href="classes/oihana-core-arrays-CleanFlag.html#constant_TRIM">TRIM</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_ALL">ALL</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_CLEAN_HTML">CLEAN_HTML</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_COLLAPSE_SPACES">COLLAPSE_SPACES</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_DECODE_ENTITIES">DECODE_ENTITIES</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_DEFAULT">DEFAULT</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_FLAGS">FLAGS</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_FLAGS_NAME">FLAGS_NAME</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NONE">NONE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE">NORMALIZE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE_LINE_BREAKS">NORMALIZE_LINE_BREAKS</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NORMALIZE_UNICODE">NORMALIZE_UNICODE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_NULLIFY">NULLIFY</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_CONTROL_CHARS">REMOVE_CONTROL_CHARS</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_EXTRA_LINE_BREAKS">REMOVE_EXTRA_LINE_BREAKS</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_REMOVE_INVISIBLE">REMOVE_INVISIBLE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_STRICT">STRICT</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_STRIP_TAGS">STRIP_TAGS</a></li>
+                                                    <li class=""><a href="classes/oihana-core-strings-SanitizeFlag.html#constant_TRIM">TRIM</a></li>
                                             </ul>
                 </li>
             
@@ -1142,7 +1315,7 @@ CleanFlag::has($mask, CleanFlag::RECURSIVE) ; // false
     </section>
 </section>
         </div>
-        <a href="classes/oihana-core-arrays-CleanFlag.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/oihana-core-strings-SanitizeFlag.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
