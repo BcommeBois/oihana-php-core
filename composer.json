@@ -37,6 +37,7 @@
             
             "src/oihana/core/accessors/assertDocumentKeyValid.php" ,
             "src/oihana/core/accessors/deleteKeyValue.php" ,
+            "src/oihana/core/accessors/ensureKeyValue.php" ,
             "src/oihana/core/accessors/getKeyValue.php" ,
             "src/oihana/core/accessors/hasKeyValue.php" ,
             "src/oihana/core/accessors/resolveReferencePath.php" ,

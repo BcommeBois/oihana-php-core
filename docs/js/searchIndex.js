@@ -11,6 +11,11 @@ Search.appendIndex(
             "summary": "Deletes\u0020a\u0020value\u0020from\u0020an\u0020array\u0020or\u0020object\u0020using\u0020a\u0020dot\u002Dnotated\u0020key\u0020path.",
             "url": "namespaces/oihana-core-accessors.html#function_deleteKeyValue"
         },                {
+            "fqsen": "\\oihana\\core\\accessors\\ensureKeyValue\u0028\u0029",
+            "name": "ensureKeyValue",
+            "summary": "Ensures\u0020that\u0020one\u0020or\u0020more\u0020keys\u0020or\u0020properties\u0020exist\u0020in\u0020an\u0020array\u0020or\u0020object.",
+            "url": "namespaces/oihana-core-accessors.html#function_ensureKeyValue"
+        },                {
             "fqsen": "\\oihana\\core\\accessors\\getKeyValue\u0028\u0029",
             "name": "getKeyValue",
             "summary": "Retrieves\u0020a\u0020value\u0020from\u0020an\u0020array\u0020or\u0020object\u0020using\u0020a\u0020dot\u002Dnotated\u0020key\u0020path.",

@@ -75,7 +75,7 @@ function hasKeyValue
 {
     $isArray = assertDocumentKeyValid( $document , $key , $separator , $isArray ) ;
 
-    if ( !str_contains($key, $separator) )
+    if ( !str_contains( $key , $separator ) )
     {
         if ( $isArray )
         {

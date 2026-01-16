@@ -144,6 +144,13 @@
 <dd>Deletes a value from an array or object using a dot-notated key path.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-accessors.html#function_ensureKeyValue">ensureKeyValue()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|object    </span>
+</dt>
+<dd>Ensures that one or more keys or properties exist in an array or object.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-accessors.html#function_getKeyValue">getKeyValue()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -570,6 +577,182 @@ echo $e-&gt;getMessage(); // &quot;Key 'email' does not exist.&quot;
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The updated document after deletion.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_ensureKeyValue">
+        ensureKeyValue()
+        <a href="namespaces/oihana-core-accessors.html#function_ensureKeyValue" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/accessors/ensureKeyValue.php"><a href="files/src-oihana-core-accessors-ensurekeyvalue.html"><abbr title="src/oihana/core/accessors/ensureKeyValue.php">ensureKeyValue.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">82</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ensures that one or more keys or properties exist in an array or object.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">ensureKeyValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keys</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$separator</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">'.'</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isArray</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$enforce</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span></code>
+
+        <section class="phpdocumentor-description"><p>Missing keys are created and initialized. Defaults can be defined globally or per key.
+Nested keys are supported using a separator (default: '.'). Intermediate path segments
+are created automatically if missing.</p>
+<p>Features:</p>
+<ul>
+<li><strong>Specific Defaults:</strong> Pass an associative array to <code class="prettyprint">$keys</code> to set different defaults per key.</li>
+<li><strong>Lazy Loading:</strong> Pass a <code class="prettyprint">Closure</code> as a default value to calculate it only if needed.</li>
+<li><strong>Typed Properties:</strong> With <code class="prettyprint">$enforce = true</code>, strictly checks initialized state of typed properties.</li>
+</ul>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$document</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;|object</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The target document (array or object).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$keys</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>A single key, a list of keys <code class="prettyprint">['a', 'b']</code>, or an associative map <code class="prettyprint">['key' =&gt; 'default']</code>.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$default</span>
+                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Global default value (or Closure) for keys without a specific default. Default is <code class="prettyprint">null</code>.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$separator</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">'.'</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Separator used to split nested keys. Default is '.'.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$isArray</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional: true for array mode, false for object mode, null to auto-detect.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$enforce</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Force initialization of non-initialized typed properties. Default: false.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-accessors.html#function_ensureKeyValue#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the document or key definition is invalid.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Ensure simple keys with a global default :</p>
+<pre class="prettyprint"><code class="language-php">$doc = [];
+$doc = ensureKeyValue($doc, ['name', 'age'], null);
+// Result: ['name' =&gt; null, 'age' =&gt; null]
+</code></pre>
+<p>Ensure keys with specific default values :</p>
+<pre class="prettyprint"><code class="language-php">$doc = [];
+$doc = ensureKeyValue($doc, [
+'role' =&gt; 'guest',   // Specific default
+'active'             // Uses global default (true)
+], true);
+// Result: ['role' =&gt; 'guest', 'active' =&gt; true]
+</code></pre>
+<p>Use a Closure for lazy evaluation (heavy calculation) :</p>
+<pre class="prettyprint"><code class="language-php">$doc = [];
+$doc = ensureKeyValue($doc, 'created_at', fn() =&gt; new DateTimeImmutable());
+// Result: ['created_at' =&gt; object(DateTimeImmutable)]
+</code></pre>
+<p>Enforce initialization of typed properties (PHP 7.4+) :</p>
+<pre class="prettyprint"><code class="language-php">class User { public string $name; } // Uninitialized
+$doc = new User();
+
+// Without enforce: Property exists, so it's skipped (remains uninitialized).
+// With enforce: Detects uninitialized state and sets default.
+$doc = ensureKeyValue($doc, 'name', 'Anonymous', '.', null, true);
+
+// Result: User object with $name = 'Anonymous'
+</code></pre>
+<p>Use with named arguments (PHP 8+) to skip optional parameters:</p>
+<pre class="prettyprint"><code class="language-php">$doc = new User();
+// We skip separator and isArray to target 'enforce' directly
+ensureKeyValue($doc, 'name', default: 'John', enforce: true);
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|object</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The updated document with ensured keys.</p>
 </section>
 
             </section>
@@ -1303,6 +1486,7 @@ $doc = setKeyValue($doc, 'meta.version.major', 1);
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="namespaces/oihana-core-accessors.html#function_assertDocumentKeyValid">assertDocumentKeyValid()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-accessors.html#function_deleteKeyValue">deleteKeyValue()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-accessors.html#function_ensureKeyValue">ensureKeyValue()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-accessors.html#function_getKeyValue">getKeyValue()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-accessors.html#function_hasKeyValue">hasKeyValue()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-accessors.html#function_resolveReferencePath">resolveReferencePath()</a></li>

@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- **Accessors**
+  - Add the `ensureKeyValue` function : Ensures that one or more keys or properties exist in an array or object.
 - **Arrays**
   - Add the `merge()` function with the `MergeOption` and `NullsOption` helpers.
 - **Strings**
