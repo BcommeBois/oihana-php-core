@@ -29,13 +29,5 @@ namespace oihana\core\arrays ;
  */
 function isIndexed( array $array ): bool
 {
-    if (empty( $array ) )
-    {
-        return true; // by default an empty array is indexed
-    }
-
-    $keys = array_keys($array);
-
-    // Compare keys with a sequential range from 0 to count-1
-    return $keys === range(0, count($array) - 1);
+    return array_is_list( $array ) ;
 }
