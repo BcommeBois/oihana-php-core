@@ -135,7 +135,7 @@ class PrepareOption
      */
     public static function normalize( ?array $options = [] ) :array
     {
-        $options = $options ?? [];
+        $options = $options ?? [] ;
         return
         [
             self::AFTER      => $options[ self::AFTER      ] ?? []    ,
@@ -143,9 +143,9 @@ class PrepareOption
             self::DEFAULTS   => $options[ self::DEFAULTS   ] ?? []    ,
             self::EXCLUDE    => $options[ self::EXCLUDE    ] ?? null  ,
             self::FIRST_KEYS => $options[ self::FIRST_KEYS ] ?? []    ,
+            self::INCLUDE    => $options[ self::INCLUDE    ] ?? []    ,
             self::SORT       => $options[ self::SORT       ] ?? true  ,
             self::REDUCE     => $options[ self::REDUCE     ] ?? false ,
-            self::INCLUDE    => $options[ self::INCLUDE    ] ?? null  ,
-        ];
+        ] ;
     }
 }
