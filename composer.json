@@ -64,6 +64,7 @@
             "src/oihana/core/arrays/pick.php",
             "src/oihana/core/arrays/prepend.php",
             "src/oihana/core/arrays/reduce.php",
+            "src/oihana/core/arrays/reorder.php",
             "src/oihana/core/arrays/removeKeys.php",
             "src/oihana/core/arrays/set.php",
             "src/oihana/core/arrays/setArrayValue.php",
