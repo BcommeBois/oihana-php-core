@@ -35,7 +35,7 @@ final class ReduceTest extends TestCase
     public function testReduceWithCallable()
     {
         $data = ['name' => 'Alice', 'age' => 0, 'city' => 'Paris'];
-        $callable = fn($v, $k) => is_string($v) && $v !== '';
+        $callable = fn($k, $v) => is_string($v) && $v !== '';
 
         $result = reduce($data, $callable);
 

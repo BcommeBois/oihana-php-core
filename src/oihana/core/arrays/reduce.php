@@ -64,7 +64,7 @@ function reduce( array $array , bool|array|callable $reduce = true ): array
     {
         $reduce === true     => compress( $array ) ,
         is_array( $reduce )  => compress( $array , $reduce ) ,
-        is_callable($reduce) => array_filter($array, fn($v, $k) => $reduce($v, $k), ARRAY_FILTER_USE_BOTH),
+        is_callable($reduce) => array_filter( $array , fn( $v , $k ) => $reduce( $k , $v ) , ARRAY_FILTER_USE_BOTH),
         default              => $array
     };
 }
