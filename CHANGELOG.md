@@ -10,13 +10,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - **Accessors**
   - Add the `ensureKeyValue` function : Ensures that one or more keys or properties exist in an array or object.
 - **Arrays**
+  - Add the `append()` and `prepend()` functions 
+  - Add the `omit()` and `pick()` functions
+  - Add the `reduce()` function : Reduces an array by removing values based on conditions or using compress/clean.
+  - Add the `reorder()` function : Reorders an associative array by placing specified keys first, optionally sorting the rest.
   - Add the `merge()` function with the `MergeOption` and `NullsOption` helpers.
 - **Strings**
   - Add the `chunk()` function : Splits a string into groups of length, separated by a separator.
   - Add the `replace()` function : Replaces all occurrences of a substring within a string, with optional Unicode (grapheme-safe) and normalization support.
   - Add the `sanitize()` function : Sanitize a string based on configurable flags.
   - Add the `split()` function : Splits a string into an array using a regular expression separator.
-  
+
+### Changed
+- **Arrays**
+  - Fix the removeKeys function to clone by default the passed-in array definition.
+
 ## [1.0.7] - 2025-12-12
 
 ### Added

@@ -43,6 +43,7 @@
             "src/oihana/core/accessors/resolveReferencePath.php" ,
             "src/oihana/core/accessors/setKeyValue.php" ,
             
+            "src/oihana/core/arrays/append.php",
             "src/oihana/core/arrays/clean.php",
             "src/oihana/core/arrays/compress.php",
             "src/oihana/core/arrays/deepMerge.php",
@@ -59,6 +60,10 @@
             "src/oihana/core/arrays/isAssociative.php",
             "src/oihana/core/arrays/isIndexed.php",
             "src/oihana/core/arrays/merge.php",
+            "src/oihana/core/arrays/omit.php",
+            "src/oihana/core/arrays/pick.php",
+            "src/oihana/core/arrays/prepend.php",
+            "src/oihana/core/arrays/reduce.php",
             "src/oihana/core/arrays/removeKeys.php",
             "src/oihana/core/arrays/set.php",
             "src/oihana/core/arrays/setArrayValue.php",

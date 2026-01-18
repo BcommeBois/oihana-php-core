@@ -54,14 +54,14 @@ class RemoveKeysTest extends TestCase
         $array = ['a' => 1, 'b' => 2];
         $result = removeKeys($array, ['a'], false);
 
-        $this->assertSame(['b' => 2], $result);
-        // $array remains unchanged outside function since PHP passes by value
-        $this->assertSame(['a' => 1, 'b' => 2], $array);
+        $this->assertSame(['b'=>2], $array);
+        $this->assertSame(['b'=>2], $result);
     }
 
     public function testRemoveKeysOnEmptyArray()
     {
-        $result = removeKeys([], ['a', 'b']);
+        $array = [];
+        $result = removeKeys($array , ['a', 'b']);
 
         $this->assertSame([], $result);
     }

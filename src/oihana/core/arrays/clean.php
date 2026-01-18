@@ -127,7 +127,7 @@ use InvalidArgumentException;
  */
 function clean( array $array = [] , int $flags = CleanFlag::DEFAULT ): ?array
 {
-    if ( ! CleanFlag::isValid( $flags ) )
+    if ( !CleanFlag::isValid( $flags ) )
     {
         throw new InvalidArgumentException
         (

@@ -48,18 +48,28 @@ namespace oihana\core\arrays ;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
-function removeKeys( array $array , array $keys = [] , bool $clone = false ): array
+function removeKeys
+(
+    array &$array ,
+    array $keys   = [] ,
+    bool  $clone  = true
+)
+:array
 {
-    $ar = $clone ? [ ...$array ] : $array ;
-    if( !empty( $ar ) )
+    $ar = $clone ? [ ...$array ] : $array;
+
+    foreach ( $keys as $key )
     {
-        foreach( $keys as $key )
+        if (array_key_exists( $key , $ar ) )
         {
-            if( array_key_exists( $key , $ar ) )
-            {
-                unset( $ar[ $key ] );
-            }
+            unset( $ar[ $key ] ) ;
         }
     }
-    return $ar  ;
+
+    if ( !$clone )
+    {
+        $array = $ar;
+    }
+
+    return $ar ;
 }
