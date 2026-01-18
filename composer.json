@@ -62,6 +62,7 @@
             "src/oihana/core/arrays/merge.php",
             "src/oihana/core/arrays/omit.php",
             "src/oihana/core/arrays/pick.php",
+            "src/oihana/core/arrays/prepare.php",
             "src/oihana/core/arrays/prepend.php",
             "src/oihana/core/arrays/reduce.php",
             "src/oihana/core/arrays/reorder.php",

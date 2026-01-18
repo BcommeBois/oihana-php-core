@@ -23,5 +23,5 @@ namespace oihana\core\arrays ;
  */
 function append( array $array , array $after ) :array
 {
-    return $array + $after;
+    return $array + $after ;
 }

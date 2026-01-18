@@ -23,5 +23,5 @@ namespace oihana\core\arrays ;
  */
 function prepend( array $array , array $before ) :array
 {
-    return $before + $array;
+    return $before + $array ;
 }
