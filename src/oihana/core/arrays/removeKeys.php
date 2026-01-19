@@ -60,7 +60,7 @@ function removeKeys
 
     foreach ( $keys as $key )
     {
-        if (array_key_exists( $key , $ar ) )
+        if ( array_key_exists( $key , $ar ) )
         {
             unset( $ar[ $key ] ) ;
         }

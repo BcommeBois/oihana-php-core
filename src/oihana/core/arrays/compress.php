@@ -114,7 +114,7 @@ use function oihana\core\objects\compress as compressObject ;
  */
 function compress( array $array , ?array $options = [], int $currentDepth = 0 ): array
 {
-    $options = CompressOption::normalize($options);
+    $options = CompressOption::normalize( $options ) ;
 
     $clone      = $options[ CompressOption::CLONE       ] ;
     $conditions = $options[ CompressOption::CONDITIONS  ] ;
