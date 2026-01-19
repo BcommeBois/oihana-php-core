@@ -3,7 +3,7 @@
 namespace oihana\core\options;
 
 /**
- * Defines constants and normalization for array preparation options.
+ * Defines constants and normalization constants for array options.
  *
  * These options are typically used in functions like {@see prepare()}
  * to standardize array transformations before serialization or output.
@@ -22,7 +22,7 @@ namespace oihana\core\options;
  * @author  Marc Alcaraz
  * @since   1.0.8
  */
-class PrepareOption
+class ArrayOption
 {
     /**
      * Keys/values to append **after** serialized properties.
@@ -51,13 +51,13 @@ class PrepareOption
      * Example:
      * ```php
      * $options = [
-     *     JsonSerializeOption::DEFAULTS => [
+     *     PrepareOptions::DEFAULTS => [
      *         'stock' => 0,
      *         'desc'  => 'No description'
      *     ]
      * ];
      *
-     * $data = $helper->jsonSerializeFromPublicProperties(Product::class, $options);
+     * $data = $helper->toArray( $options ) ;
      * // 'stock' and 'desc' will get default values if they are null or missing
      * ```
      */
@@ -105,20 +105,20 @@ class PrepareOption
     public const string SORT = 'sort' ;
 
     /**
-     * Normalize the options for the reflection jsonSerializeOptions functions.
+     * Normalize the options.
      *
      * Fills in defaults for missing keys and ensures consistent option names.
      *
      * @param array|null $options User-provided options
      *
-     * @return array Normalized options with default values
+     * @return array The options with default values.
      *
      * @example
      * ```php
-     * $opts = PrepareOption::normalize
+     * $opts = ArrayOption::normalize
      * ([
-     *      PrepareOption::BEFORE => [ '_type' => 'Thing' ],
-     *      PrepareOption::REDUCE => true
+     *      ArrayOption::BEFORE => [ '_type' => 'Thing' ],
+     *      ArrayOption::REDUCE => true
      * ]);
      *
      * // Result:

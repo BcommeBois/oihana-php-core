@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+            <title>Oihana Php Core</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
+                <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
+        <script src="js/search.js"></script>
+        <script defer src="js/searchIndex.js"></script>
+    </head>
+<body id="top">
+    <header class="phpdocumentor-header phpdocumentor-section">
+    <h1 class="phpdocumentor-title">
+    <a href="" class="phpdocumentor-title__link">
+        <img src="assets/images/oihana-php-core-logo-inline-512x160.png" alt="Oihana PHP" style="width: 128px; height: 40px;"/>
+    </a>
+</h1>    <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
+    <label class="phpdocumentor-header__menu-icon" for="menu-button">
+        <i class="fas fa-bars"></i>
+    </label>
+    <section data-search-form class="phpdocumentor-search">
+    <label>
+        <span class="visually-hidden">Search for</span>
+        <svg class="phpdocumentor-search__icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <line x1="12.4892" y1="12.2727" x2="19.1559" y2="18.9393" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+    </label>
+</section>
+
+    <nav class="phpdocumentor-topnav">
+    <ul class="phpdocumentor-topnav__menu">
+                        <li class="phpdocumentor-topnav__menu-item -social">
+                <a href="https://github.com/BcommeBois/oihana-php-files">
+                    <span>
+                                                                        <i class="fab fa-github"></i>
+                                                
+                    </span>
+                </a>
+            </li>
+                </ul>
+</nav>
+</header>
+
+    <main class="phpdocumentor">
+        <div class="phpdocumentor-section">
+            <input class="phpdocumentor-sidebar__menu-button" type="checkbox" id="sidebar-button" name="sidebar-button" />
+<label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
+    Menu
+</label>
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
+            <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/oihana.html" class="">oihana</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/oihana-core.html" class="">core</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/oihana-interfaces.html" class="">interfaces</a>
+                
+            </li>
+            </ul>
+
+                        </section>
+            
+    <section class="phpdocumentor-sidebar__category -reports">
+        <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
+                <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
+    </section>
+
+    <section class="phpdocumentor-sidebar__category -indices">
+        <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
+    </section>
+</aside>
+
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana.html">oihana</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana-core.html">core</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana-core-options.html">options</a></li>
+    </ul>
+
+    <article class="phpdocumentor-element -class">
+        <h2 class="phpdocumentor-content__title">
+    ArrayOption
+
+    
+    
+    
+    </h2>
+
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
+        <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">25</span>
+
+    </aside>
+
+            <p class="phpdocumentor-summary">Defines constants and normalization constants for array options.</p>
+
+
+    <section class="phpdocumentor-description"><p>These options are typically used in functions like <abbr title="\oihana\core\options\prepare()">prepare()</abbr>
+to standardize array transformations before serialization or output.</p>
+<p>Available options:</p>
+<ul>
+<li>BEFORE      : Associative array of key/value pairs to inject <strong>before</strong> serialized properties.</li>
+<li>AFTER       : Associative array of key/value pairs to append <strong>after</strong> serialized properties.</li>
+<li>DEFAULTS    : Default values for missing or null properties.</li>
+<li>INCLUDE     : Whitelist of property names to include.</li>
+<li>EXCLUDE     : Blacklist of property names to exclude.</li>
+<li>FIRST_KEYS  : Keys that must appear first in the output array (before sorting).</li>
+<li>SORT        : Whether to sort remaining keys alphabetically (default: true).</li>
+<li>REDUCE      : Controls value reduction using <code class="prettyprint">compress()</code> semantics (false/true/array).</li>
+</ul>
+</section>
+
+
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/oihana-core-options-ArrayOption.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+    
+    
+<h3 id="toc">
+    Table of Contents
+    <a href="classes/oihana-core-options-ArrayOption.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h3>
+
+
+
+
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/oihana-core-options-ArrayOption.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#constant_AFTER">AFTER</a>
+    <span>
+        &nbsp;= &#039;after&#039;                            </span>
+</dt>
+<dd>Keys/values to append **after** serialized properties.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#constant_BEFORE">BEFORE</a>
+    <span>
+        &nbsp;= &#039;before&#039;                            </span>
+</dt>
+<dd>Keys/values to inject **before** serialized properties.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#constant_DEFAULTS">DEFAULTS</a>
+    <span>
+        &nbsp;= &#039;defaults&#039;                            </span>
+</dt>
+<dd>Default values to apply for keys that are missing or null in the serialized output.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#constant_EXCLUDE">EXCLUDE</a>
+    <span>
+        &nbsp;= &#039;exclude&#039;                            </span>
+</dt>
+<dd>Blacklist of property names to exclude from serialization.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#constant_FIRST_KEYS">FIRST_KEYS</a>
+    <span>
+        &nbsp;= &#039;firstKeys&#039;                            </span>
+</dt>
+<dd>List of keys that must appear first in the resulting JSON object,
+in the given order, before alphabetical sorting is applied.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#constant_INCLUDE">INCLUDE</a>
+    <span>
+        &nbsp;= &#039;include&#039;                            </span>
+</dt>
+<dd>Whitelist of property names to include in serialization.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#constant_REDUCE">REDUCE</a>
+    <span>
+        &nbsp;= &#039;reduce&#039;                            </span>
+</dt>
+<dd>Controls value reduction using `compress()` semantics.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#constant_SORT">SORT</a>
+    <span>
+        &nbsp;= &#039;sort&#039;                            </span>
+</dt>
+<dd>Whether remaining keys should be sorted alphabetically (ksort).</dd>
+
+    </dl>
+
+
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/oihana-core-options-ArrayOption.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/oihana-core-options-ArrayOption.html#method_normalize">normalize()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Normalize the options.</dd>
+
+    </dl>
+
+
+
+        
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/oihana-core-options-ArrayOption.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_AFTER">
+        AFTER
+        <a href="classes/oihana-core-options-ArrayOption.html#constant_AFTER" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Keys/values to append **after** serialized properties.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">AFTER</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;after&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Typically used for metadata that should appear at the end of JSON output.</p>
+<p>Type: array&lt;string,mixed&gt;</p>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_BEFORE">
+        BEFORE
+        <a href="classes/oihana-core-options-ArrayOption.html#constant_BEFORE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">40</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Keys/values to inject **before** serialized properties.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">BEFORE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;before&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Typically used for metadatas.
+Type: array&lt;string,mixed&gt;</p>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DEFAULTS">
+        DEFAULTS
+        <a href="classes/oihana-core-options-ArrayOption.html#constant_DEFAULTS" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Default values to apply for keys that are missing or null in the serialized output.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">DEFAULTS</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;defaults&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Type: array&lt;string,mixed&gt;</p>
+<p>Usage:</p>
+<ul>
+<li>Each key represents a property name.</li>
+<li>If the property is missing or its value is <code class="prettyprint">null</code>, the corresponding default value will be used.</li>
+</ul>
+<p>Example:</p>
+<pre class="prettyprint"><code class="language-php">$options = [
+    PrepareOptions::DEFAULTS =&gt; [
+        'stock' =&gt; 0,
+        'desc'  =&gt; 'No description'
+    ]
+];
+
+$data = $helper-&gt;toArray( $options ) ;
+// 'stock' and 'desc' will get default values if they are null or missing
+</code></pre>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_EXCLUDE">
+        EXCLUDE
+        <a href="classes/oihana-core-options-ArrayOption.html#constant_EXCLUDE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">71</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Blacklist of property names to exclude from serialization.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">EXCLUDE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;exclude&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Type: string[]|null</p>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_FIRST_KEYS">
+        FIRST_KEYS
+        <a href="classes/oihana-core-options-ArrayOption.html#constant_FIRST_KEYS" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">79</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">List of keys that must appear first in the resulting JSON object,
+in the given order, before alphabetical sorting is applied.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">FIRST_KEYS</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;firstKeys&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Type: string[]</p>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_INCLUDE">
+        INCLUDE
+        <a href="classes/oihana-core-options-ArrayOption.html#constant_INCLUDE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">87</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Whitelist of property names to include in serialization.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">INCLUDE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;include&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>If set, only these properties are serialized.</p>
+<p>Type: string[]|null</p>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_REDUCE">
+        REDUCE
+        <a href="classes/oihana-core-options-ArrayOption.html#constant_REDUCE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">98</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Controls value reduction using `compress()` semantics.</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">REDUCE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;reduce&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Can be:</p>
+<ul>
+<li>false : no reduction (default)</li>
+<li>true  : use reduction</li>
+<li>array : options forwarded reduce with the <abbr title="\oihana\core\options\compress()">compress()</abbr> function.</li>
+</ul>
+<p>Type: bool|array</p>
+</section>
+
+    
+    
+
+        
+    </article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_SORT">
+        SORT
+        <a href="classes/oihana-core-options-ArrayOption.html#constant_SORT" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">105</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Whether remaining keys should be sorted alphabetically (ksort).</p>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">SORT</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;sort&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"><p>Type: bool</p>
+</section>
+
+    
+    
+
+        
+    </article>
+            </section>
+
+        
+
+            <section class="phpdocumentor-methods">
+        <h3 class="phpdocumentor-elements__header" id="methods">
+            Methods
+            <a href="classes/oihana-core-options-ArrayOption.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_normalize">
+        normalize()
+        <a href="classes/oihana-core-options-ArrayOption.html#method_normalize" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/options/ArrayOption.php"><a href="files/src-oihana-core-options-arrayoption.html"><abbr title="src/oihana/core/options/ArrayOption.php">ArrayOption.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">136</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Normalize the options.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">normalize</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Fills in defaults for missing keys and ensures consistent option names.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$options</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>User-provided options</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/oihana-core-options-ArrayOption.html#method_normalize#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">$opts = ArrayOption::normalize
+([
+     ArrayOption::BEFORE =&gt; [ '_type' =&gt; 'Thing' ],
+     ArrayOption::REDUCE =&gt; true
+]);
+
+// Result:
+// [
+//   'after'     =&gt; [],
+//   'before'    =&gt; ['_type' =&gt; 'Thing'],
+//   'exclude'   =&gt; null,
+//   'firstKeys' =&gt; [],
+//   'sort'      =&gt; true,
+//   'reduce'    =&gt; true,
+//   'include'   =&gt; null
+// ]
+</code></pre>
+</section>
+
+                                    </dd>
+                                            </dl>
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The options with default values.</p>
+</section>
+
+            </section>
+
+</article>
+            </section>
+
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/options/ArrayOption.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
+
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('GET', src, true);
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+                            Prism.highlightElement(code);
+                            d=document.getElementsByClassName("line-numbers");
+                            d[0].scrollTop = d[0].children[1].offsetTop;
+                            return;
+                        }
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
+                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
+                    }
+                    modal.classList.add("phpdocumentor-modal__open");
+
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
+
+    </article>
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                        <li><a href="classes/oihana-core-options-ArrayOption.html#toc-constants">Constants</a></li>
+                                                                                <li><a href="classes/oihana-core-options-ArrayOption.html#toc-methods">Methods</a></li>
+                                    </ul>
+            </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li class=""><a href="classes/oihana-core-options-ArrayOption.html#constant_AFTER">AFTER</a></li>
+                                                    <li class=""><a href="classes/oihana-core-options-ArrayOption.html#constant_BEFORE">BEFORE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-options-ArrayOption.html#constant_DEFAULTS">DEFAULTS</a></li>
+                                                    <li class=""><a href="classes/oihana-core-options-ArrayOption.html#constant_EXCLUDE">EXCLUDE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-options-ArrayOption.html#constant_FIRST_KEYS">FIRST_KEYS</a></li>
+                                                    <li class=""><a href="classes/oihana-core-options-ArrayOption.html#constant_INCLUDE">INCLUDE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-options-ArrayOption.html#constant_REDUCE">REDUCE</a></li>
+                                                    <li class=""><a href="classes/oihana-core-options-ArrayOption.html#constant_SORT">SORT</a></li>
+                                            </ul>
+                </li>
+            
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li class=""><a href="classes/oihana-core-options-ArrayOption.html#method_normalize">normalize()</a></li>
+                                    </ul>
+            </li>
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+    <section class="phpdocumentor-search-results__dialog">
+        <header class="phpdocumentor-search-results__header">
+            <h2 class="phpdocumentor-search-results__title">Search results</h2>
+            <button class="phpdocumentor-search-results__close"><i class="fas fa-times"></i></button>
+        </header>
+        <section class="phpdocumentor-search-results__body">
+            <ul class="phpdocumentor-search-results__entries"></ul>
+        </section>
+    </section>
+</section>
+        </div>
+        <a href="classes/oihana-core-options-ArrayOption.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+
+    </main>
+
+    <script>
+        cssVars({});
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+</body>
+</html>

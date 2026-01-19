@@ -2,7 +2,7 @@
 
 namespace oihana\core\arrays ;
 
-use oihana\core\options\PrepareOption;
+use oihana\core\options\ArrayOption;
 use PHPUnit\Framework\TestCase;
 
 final class PrepareTest extends TestCase
@@ -20,7 +20,7 @@ final class PrepareTest extends TestCase
 
         $output = prepare( $input ,
         [
-            PrepareOption::REDUCE => true
+            ArrayOption::REDUCE => true
         ]);
 
         $this->assertSame($expected, $output);
@@ -33,7 +33,7 @@ final class PrepareTest extends TestCase
 
         $output = prepare( $input ,
         [
-            PrepareOption::REDUCE => fn($k, $v) => $v !== 2
+            ArrayOption::REDUCE => fn( $k, $v) => $v !== 2
         ]);
 
         $this->assertSame($expected, $output);
@@ -46,8 +46,8 @@ final class PrepareTest extends TestCase
 
         $output = prepare( $input ,
         [
-            PrepareOption::BEFORE => ['meta' => 0],
-            PrepareOption::SORT   => false ,
+            ArrayOption::BEFORE => ['meta' => 0],
+            ArrayOption::SORT   => false ,
         ]);
 
         $this->assertSame($expected, $output);
@@ -60,7 +60,7 @@ final class PrepareTest extends TestCase
 
         $output = prepare( $input ,
         [
-            PrepareOption::AFTER => ['meta' => 0]
+            ArrayOption::AFTER => ['meta' => 0]
         ]);
 
         $this->assertSame($expected, $output);
@@ -73,7 +73,7 @@ final class PrepareTest extends TestCase
 
         $output = prepare( $input ,
         [
-            PrepareOption::FIRST_KEYS => ['c']
+            ArrayOption::FIRST_KEYS => ['c']
         ]);
 
         $this->assertSame($expected, $output);
@@ -86,7 +86,7 @@ final class PrepareTest extends TestCase
 
         $output = prepare( $input ,
         [
-            PrepareOption::SORT => true
+            ArrayOption::SORT => true
         ]);
 
         $this->assertSame($expected, $output);
@@ -99,11 +99,11 @@ final class PrepareTest extends TestCase
 
         $output = prepare( $input,
         [
-            PrepareOption::REDUCE      => true,
-            PrepareOption::BEFORE      => ['meta' => 0],
-            PrepareOption::AFTER       => ['footer' => 'end'],
-            PrepareOption::FIRST_KEYS  => ['meta'],
-            PrepareOption::SORT        => true,
+            ArrayOption::REDUCE      => true,
+            ArrayOption::BEFORE      => ['meta' => 0],
+            ArrayOption::AFTER       => ['footer' => 'end'],
+            ArrayOption::FIRST_KEYS  => ['meta'],
+            ArrayOption::SORT        => true,
         ]);
 
         $this->assertSame($expected, $output);

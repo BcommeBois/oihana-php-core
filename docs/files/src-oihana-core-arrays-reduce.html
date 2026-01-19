@@ -76,7 +76,7 @@
                 
             </li>
                     <li>
-                <a href="namespaces/oihana-interfaces.html" class="-active">interfaces</a>
+                <a href="namespaces/oihana-interfaces.html" class="">interfaces</a>
                 
             </li>
             </ul>
@@ -99,46 +99,216 @@
             <div class="phpdocumentor-column -nine phpdocumentor-content">
                                 <section>
                                         <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana.html">oihana</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -namespace">
-        <h2 class="phpdocumentor-content__title">interfaces</h2>
+    <article class="phpdocumentor-element -file">
+        <h2 class="phpdocumentor-content__title">reduce.php</h2>
+
+        
+        
+        
+        
+
 
         
 <h3 id="toc">
     Table of Contents
-    <a href="namespaces/oihana-interfaces.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/src-oihana-core-arrays-reduce.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
 
 
-    <h4 id="toc-interfaces">
-        Interfaces
-        <a href="namespaces/oihana-interfaces.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
+
+
+
+
+
+
+
+
+<h4 id="toc-functions">
+    Functions
+    <a href="files/src-oihana-core-arrays-reduce.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-arrays.html#function_reduce">reduce()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Reduces an array by removing values based on conditions or using compress/clean.</dd>
+
+    </dl>
+
+
+        
+
+            <section class="phpdocumentor-functions">
+        <h3 class="phpdocumentor-elements__header" id="functions">
+            Functions
+            <a href="files/src-oihana-core-arrays-reduce.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_reduce">
+        reduce()
+        <a href="namespaces/oihana-core-arrays.html#function_reduce" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
-    <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/oihana-interfaces-Arrayable.html"><abbr title="\oihana\interfaces\Arrayable">Arrayable</abbr></a></dt><dd>Interface for objects that can be converted to arrays.</dd>            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/oihana-interfaces-ClearableArrayable.html"><abbr title="\oihana\interfaces\ClearableArrayable">ClearableArrayable</abbr></a></dt><dd>Interface for objects that can be converted to an array,
-with an option to remove empty or null values.</dd>            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/oihana-interfaces-Cloneable.html"><abbr title="\oihana\interfaces\Cloneable">Cloneable</abbr></a></dt><dd>This interface is implemented by all cloneable objects.</dd>            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/oihana-interfaces-Equatable.html"><abbr title="\oihana\interfaces\Equatable">Equatable</abbr></a></dt><dd>This interface is implemented by all equatable objects.</dd>            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/oihana-interfaces-ToAssociativeArray.html"><abbr title="\oihana\interfaces\ToAssociativeArray">ToAssociativeArray</abbr></a></dt><dd>Interface for objects that can be converted to associative arrays.</dd>    </dl>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/reduce.php"><a href="files/src-oihana-core-arrays-reduce.html"><abbr title="src/oihana/core/arrays/reduce.php">reduce.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
+    </aside>
 
+        <p class="phpdocumentor-summary">Reduces an array by removing values based on conditions or using compress/clean.</p>
 
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">reduce</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool|array&lt;string|int, mixed&gt;|callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$reduce</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
+        <section class="phpdocumentor-description"><p>This function provides a unified interface for array reduction with three modes:</p>
+<ul>
+<li><code class="prettyprint">true</code>: Remove null values using compress()</li>
+<li><code class="prettyprint">array</code>: Forward options to compress()</li>
+<li><code class="prettyprint">callable</code>: Custom filter function</li>
+</ul>
+</section>
 
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$array</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The input array.</p>
+</section>
 
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$reduce</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool|array&lt;string|int, mixed&gt;|callable</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Reduction mode:</p>
+<ul>
+<li><code class="prettyprint">true</code>: compress with default options</li>
+<li><code class="prettyprint">array</code>: compress with custom options</li>
+<li><code class="prettyprint">callable</code>: fn($value, $key): bool</li>
+</ul>
+</section>
 
+            </dd>
+            </dl>
 
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-arrays.html#function_reduce#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
-        
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Remove nulls (default compress)</p>
+<pre class="prettyprint"><code class="language-php">$data = ['a' =&gt; 1, 'b' =&gt; null, 'c' =&gt; 2];
+$result = reduce($data, true);
+// ['a' =&gt; 1, 'c' =&gt; 2]
+</code></pre>
+</section>
 
-        
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Custom compress options</p>
+<pre class="prettyprint"><code class="language-php">use oihana\core\options\CompressOption;
+
+$data = ['a' =&gt; '', 'b' =&gt; null, 'c' =&gt; 'ok'];
+$result = reduce( $data ,
+[
+    CompressOption::CONDITIONS =&gt;
+    [
+        fn($v) =&gt; $v === null,
+        fn($v) =&gt; $v === ''
+    ]
+]);
+// ['c' =&gt; 'ok']
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Custom callable</p>
+<pre class="prettyprint"><code class="language-php">$data = ['name' =&gt; 'Alice', 'age' =&gt; 0, 'city' =&gt; 'Paris'];
+$result = reduce($data, fn($v, $k) =&gt; is_string($v) &amp;&amp; $v !== '');
+// ['name' =&gt; 'Alice', 'city' =&gt; 'Paris']
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Empty array</p>
+<pre class="prettyprint"><code class="language-php">$result = reduce([], true);
+// []
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The reduced array.</p>
+</section>
+
+            </section>
+
+</article>
+            </section>
+
         <div class="phpdocumentor-modal" id="source-view">
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/oihana/core/arrays/reduce.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -239,11 +409,17 @@ with an option to remove empty or null values.</dd>            <dt class="phpdoc
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                <li><a href="namespaces/oihana-interfaces.html#toc-interfaces">Interfaces</a></li>
-                                                                                                                                        </ul>
+                                                                                                                                                                                        <li><a href="files/src-oihana-core-arrays-reduce.html#toc-functions">Functions</a></li>
+                                    </ul>
             </li>
 
             
+                            <li class="phpdocumentor-on-this-page-section__title">Functions</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li class=""><a href="namespaces/oihana-core-arrays.html#function_reduce">reduce()</a></li>
+                                            </ul>
+                </li>
                     </ul>
     </section>
 
@@ -261,7 +437,7 @@ with an option to remove empty or null values.</dd>            <dt class="phpdoc
     </section>
 </section>
         </div>
-        <a href="namespaces/oihana-interfaces.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-oihana-core-arrays-reduce.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

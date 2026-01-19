@@ -36,6 +36,11 @@ Search.appendIndex(
             "summary": "Sets\u0020a\u0020value\u0020in\u0020an\u0020array\u0020or\u0020object\u0020using\u0020a\u0020dot\u002Dnotated\u0020key\u0020path.",
             "url": "namespaces/oihana-core-accessors.html#function_setKeyValue"
         },                {
+            "fqsen": "\\oihana\\core\\arrays\\append\u0028\u0029",
+            "name": "append",
+            "summary": "Appends\u0020keys\/values\u0020to\u0020the\u0020end\u0020of\u0020an\u0020array.",
+            "url": "namespaces/oihana-core-arrays.html#function_append"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\clean\u0028\u0029",
             "name": "clean",
             "summary": "Cleans\u0020an\u0020array\u0020by\u0020removing\u0020unwanted\u0020values\u0020based\u0020on\u0020bitwise\u0020flags\u0020from\u0020the\u0020\u0060CleanFlag\u0060\u0020enum.",
@@ -191,10 +196,40 @@ Search.appendIndex(
             "summary": "Merges\u0020two\u0020arrays\u0020using\u0020MergeOption\u0020normalized\u0020settings.",
             "url": "namespaces/oihana-core-arrays.html#function_merge"
         },                {
+            "fqsen": "\\oihana\\core\\arrays\\omit\u0028\u0029",
+            "name": "omit",
+            "summary": "Omits\u0020a\u0020set\u0020of\u0020keys\u0020from\u0020an\u0020array.",
+            "url": "namespaces/oihana-core-arrays.html#function_omit"
+        },                {
+            "fqsen": "\\oihana\\core\\arrays\\pick\u0028\u0029",
+            "name": "pick",
+            "summary": "Keeps\u0020only\u0020the\u0020specified\u0020keys\u0020from\u0020an\u0020array\u0020\u0028inverse\u0020of\u0020removeKeys\u0029.",
+            "url": "namespaces/oihana-core-arrays.html#function_pick"
+        },                {
+            "fqsen": "\\oihana\\core\\arrays\\prepare\u0028\u0029",
+            "name": "prepare",
+            "summary": "Prepares\u0020an\u0020array\u0020according\u0020to\u0020the\u0020given\u0020options\u003A\n\u002D\u0020REDUCE\u0020\u0020\u0020\u003A\u0020filter\/compress\u0020values\n\u002D\u0020BEFORE\u0020\u0020\u0020\u003A\u0020prepend\u0020keys\n\u002D\u0020AFTER\u0020\u0020\u0020\u0020\u003A\u0020append\u0020keys\n\u002D\u0020FIRST_KEYS\u0020\u002B\u0020SORT\u0020\u003A\u0020reorder\u0020keys",
+            "url": "namespaces/oihana-core-arrays.html#function_prepare"
+        },                {
+            "fqsen": "\\oihana\\core\\arrays\\prepend\u0028\u0029",
+            "name": "prepend",
+            "summary": "Prepends\u0020keys\/values\u0020to\u0020the\u0020beginning\u0020of\u0020an\u0020array.",
+            "url": "namespaces/oihana-core-arrays.html#function_prepend"
+        },                {
+            "fqsen": "\\oihana\\core\\arrays\\reduce\u0028\u0029",
+            "name": "reduce",
+            "summary": "Reduces\u0020an\u0020array\u0020by\u0020removing\u0020values\u0020based\u0020on\u0020conditions\u0020or\u0020using\u0020compress\/clean.",
+            "url": "namespaces/oihana-core-arrays.html#function_reduce"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\removeKeys\u0028\u0029",
             "name": "removeKeys",
             "summary": "Removes\u0020a\u0020set\u0020of\u0020keys\u0020from\u0020an\u0020array.",
             "url": "namespaces/oihana-core-arrays.html#function_removeKeys"
+        },                {
+            "fqsen": "\\oihana\\core\\arrays\\reorder\u0028\u0029",
+            "name": "reorder",
+            "summary": "Reorders\u0020an\u0020associative\u0020array\u0020by\u0020placing\u0020specified\u0020keys\u0020first,\u0020optionally\u0020sorting\u0020the\u0020rest.",
+            "url": "namespaces/oihana-core-arrays.html#function_reorder"
         },                {
             "fqsen": "\\oihana\\core\\arrays\\set\u0028\u0029",
             "name": "set",
@@ -600,6 +635,56 @@ Search.appendIndex(
             "name": "toAssociativeArray",
             "summary": "Recursively\u0020converts\u0020an\u0020object\u0020\u0028or\u0020array\u0029\u0020into\u0020a\u0020full\u0020associative\u0020array.",
             "url": "namespaces/oihana-core-objects.html#function_toAssociativeArray"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption",
+            "name": "ArrayOption",
+            "summary": "Defines\u0020constants\u0020and\u0020normalization\u0020constants\u0020for\u0020array\u0020options.",
+            "url": "classes/oihana-core-options-ArrayOption.html"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003Anormalize\u0028\u0029",
+            "name": "normalize",
+            "summary": "Normalize\u0020the\u0020options.",
+            "url": "classes/oihana-core-options-ArrayOption.html#method_normalize"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003AAFTER",
+            "name": "AFTER",
+            "summary": "Keys\/values\u0020to\u0020append\u0020\u002A\u002Aafter\u002A\u002A\u0020serialized\u0020properties.",
+            "url": "classes/oihana-core-options-ArrayOption.html#constant_AFTER"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003ABEFORE",
+            "name": "BEFORE",
+            "summary": "Keys\/values\u0020to\u0020inject\u0020\u002A\u002Abefore\u002A\u002A\u0020serialized\u0020properties.",
+            "url": "classes/oihana-core-options-ArrayOption.html#constant_BEFORE"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003ADEFAULTS",
+            "name": "DEFAULTS",
+            "summary": "Default\u0020values\u0020to\u0020apply\u0020for\u0020keys\u0020that\u0020are\u0020missing\u0020or\u0020null\u0020in\u0020the\u0020serialized\u0020output.",
+            "url": "classes/oihana-core-options-ArrayOption.html#constant_DEFAULTS"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003AEXCLUDE",
+            "name": "EXCLUDE",
+            "summary": "Blacklist\u0020of\u0020property\u0020names\u0020to\u0020exclude\u0020from\u0020serialization.",
+            "url": "classes/oihana-core-options-ArrayOption.html#constant_EXCLUDE"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003AFIRST_KEYS",
+            "name": "FIRST_KEYS",
+            "summary": "List\u0020of\u0020keys\u0020that\u0020must\u0020appear\u0020first\u0020in\u0020the\u0020resulting\u0020JSON\u0020object,\nin\u0020the\u0020given\u0020order,\u0020before\u0020alphabetical\u0020sorting\u0020is\u0020applied.",
+            "url": "classes/oihana-core-options-ArrayOption.html#constant_FIRST_KEYS"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003AINCLUDE",
+            "name": "INCLUDE",
+            "summary": "Whitelist\u0020of\u0020property\u0020names\u0020to\u0020include\u0020in\u0020serialization.",
+            "url": "classes/oihana-core-options-ArrayOption.html#constant_INCLUDE"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003AREDUCE",
+            "name": "REDUCE",
+            "summary": "Controls\u0020value\u0020reduction\u0020using\u0020\u0060compress\u0028\u0029\u0060\u0020semantics.",
+            "url": "classes/oihana-core-options-ArrayOption.html#constant_REDUCE"
+        },                {
+            "fqsen": "\\oihana\\core\\options\\ArrayOption\u003A\u003ASORT",
+            "name": "SORT",
+            "summary": "Whether\u0020remaining\u0020keys\u0020should\u0020be\u0020sorted\u0020alphabetically\u0020\u0028ksort\u0029.",
+            "url": "classes/oihana-core-options-ArrayOption.html#constant_SORT"
         },                {
             "fqsen": "\\oihana\\core\\options\\CompressOption",
             "name": "CompressOption",
@@ -1185,6 +1270,16 @@ Search.appendIndex(
             "name": "equals",
             "summary": "Compares\u0020the\u0020specified\u0020values\u0020for\u0020equality.",
             "url": "classes/oihana-interfaces-Equatable.html#method_equals"
+        },                {
+            "fqsen": "\\oihana\\interfaces\\ToAssociativeArray",
+            "name": "ToAssociativeArray",
+            "summary": "Interface\u0020for\u0020objects\u0020that\u0020can\u0020be\u0020converted\u0020to\u0020associative\u0020arrays.",
+            "url": "classes/oihana-interfaces-ToAssociativeArray.html"
+        },                {
+            "fqsen": "\\oihana\\interfaces\\ToAssociativeArray\u003A\u003AtoArray\u0028\u0029",
+            "name": "toArray",
+            "summary": "Generates\u0020an\u0020associative\u0020array\u0020from\u0020the\u0020public\u0020properties\u0020of\u0020a\u0020given\u0020class\u0020or\u0020object.",
+            "url": "classes/oihana-interfaces-ToAssociativeArray.html#method_toArray"
         },                {
             "fqsen": "\\",
             "name": "\\",

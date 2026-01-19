@@ -2,7 +2,7 @@
 
 namespace oihana\core\arrays ;
 
-use oihana\core\options\PrepareOption;
+use oihana\core\options\ArrayOption;
 
 /**
  * Prepares an array according to the given options:
@@ -27,34 +27,34 @@ use oihana\core\options\PrepareOption;
  */
 function prepare( array $array , array $options = [] ) :array
 {
-    $options = PrepareOption::normalize( $options ) ;
+    $options = ArrayOption::normalize( $options ) ;
 
     // Step 1: REDUCE
-    if ( !empty( $options[ PrepareOption::REDUCE ] ) )
+    if ( !empty( $options[ ArrayOption::REDUCE ] ) )
     {
-        $array = reduce( $array , $options[ PrepareOption::REDUCE ] ) ;
+        $array = reduce( $array , $options[ ArrayOption::REDUCE ] ) ;
     }
 
     // Step 2: BEFORE
-    if ( !empty( $options[ PrepareOption::BEFORE ] ) )
+    if ( !empty( $options[ ArrayOption::BEFORE ] ) )
     {
-        $array = prepend( $array , $options[ PrepareOption::BEFORE ] ) ;
+        $array = prepend( $array , $options[ ArrayOption::BEFORE ] ) ;
     }
 
     // Step 3: AFTER
-    if ( !empty( $options[ PrepareOption::AFTER ] ) )
+    if ( !empty( $options[ ArrayOption::AFTER ] ) )
     {
-        $array = append( $array , $options[ PrepareOption::AFTER ] ) ;
+        $array = append( $array , $options[ ArrayOption::AFTER ] ) ;
     }
 
     // Step 4: FIRST_KEYS + SORT
-    if ( !empty( $options[ PrepareOption::FIRST_KEYS ] ) || !empty( $options[ PrepareOption::SORT ] ) )
+    if ( !empty( $options[ ArrayOption::FIRST_KEYS ] ) || !empty( $options[ ArrayOption::SORT ] ) )
     {
         $array = reorder
         (
             $array ,
-            $options[ PrepareOption::FIRST_KEYS ] ?? [],
-            $options[ PrepareOption::SORT ] ?? true
+            $options[ ArrayOption::FIRST_KEYS ] ?? [],
+            $options[ ArrayOption::SORT ] ?? true
         );
     }
 
