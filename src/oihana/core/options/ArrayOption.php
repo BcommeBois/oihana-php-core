@@ -50,8 +50,10 @@ class ArrayOption
      *
      * Example:
      * ```php
-     * $options = [
-     *     PrepareOptions::DEFAULTS => [
+     * $options =
+     * [
+     *     ArrayOption::DEFAULTS =>
+     *     [
      *         'stock' => 0,
      *         'desc'  => 'No description'
      *     ]
