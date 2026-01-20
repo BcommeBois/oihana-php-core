@@ -371,6 +371,11 @@ Search.appendIndex(
             "summary": "Chains\u0020multiple\u0020callables\u0020to\u0020be\u0020executed\u0020in\u0020sequence.",
             "url": "namespaces/oihana-core-callables.html#function_chainCallables"
         },                {
+            "fqsen": "\\oihana\\core\\callables\\countCallableParam\u0028\u0029",
+            "name": "countCallableParam",
+            "summary": "Returns\u0020the\u0020number\u0020of\u0020parameters\u0020of\u0020a\u0020given\u0020callable.",
+            "url": "namespaces/oihana-core-callables.html#function_countCallableParam"
+        },                {
             "fqsen": "\\oihana\\core\\callables\\getCallableType\u0028\u0029",
             "name": "getCallableType",
             "summary": "Determines\u0020the\u0020type\u0020of\u0020a\u0020callable\u0020reference\u0020and\u0020optionally\u0020normalizes\u0020it.",

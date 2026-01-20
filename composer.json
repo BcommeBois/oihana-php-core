@@ -85,6 +85,7 @@
             "src/oihana/core/bits/unsetFlag.php",
             
             "src/oihana/core/callables/chainCallables.php" ,
+            "src/oihana/core/callables/countCallableParam.php" ,
             "src/oihana/core/callables/getCallableType.php",
             "src/oihana/core/callables/isCallable.php",
             "src/oihana/core/callables/memoizeCallable.php",

@@ -144,6 +144,13 @@
 <dd>Chains multiple callables to be executed in sequence.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-callables.html#function_countCallableParam">countCallableParam()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Returns the number of parameters of a given callable.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-callables.html#function_getCallableType">getCallableType()</a>
     <span>
                                 &nbsp;: string|false    </span>
@@ -322,6 +329,172 @@ $result = $pipe($data);
         <span class="phpdocumentor-signature__response_type">callable|null</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>A new callable that executes the chain, or null if invalid</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_countCallableParam">
+        countCallableParam()
+        <a href="namespaces/oihana-core-callables.html#function_countCallableParam" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/callables/countCallableParam.php"><a href="files/src-oihana-core-callables-countcallableparam.html"><abbr title="src/oihana/core/callables/countCallableParam.php">countCallableParam.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns the number of parameters of a given callable.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">countCallableParam</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">callable|string|array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callable</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$useCache</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+        <section class="phpdocumentor-description"><p>This function accepts any PHP callable (Closure, invokable object, array [object/class, method],
+string function name, or static method string) and returns the number of parameters it declares.</p>
+<p>Optionally, a cache can be used to avoid repeated reflection lookups for the same callable,
+which is useful when the callable is repeatedly inspected (e.g., in loops or recursive functions).</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$callable</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable|string|array&lt;string|int, mixed&gt;|object</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The callable to inspect.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$useCache</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether to cache the computed parameter count. Default true.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-callables.html#function_countCallableParam#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the callable cannot be resolved or is unsupported.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\ReflectionException">ReflectionException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the callable cannot be reflected (rare).</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Basic usage with a named function</p>
+<pre class="prettyprint"><code class="language-php">function testFunction($a, $b, $c) }
+echo countCallableParam('testFunction'); // 3
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>With a Closure</p>
+<pre class="prettyprint"><code class="language-php">$fn = function($x, $y) };
+echo countCallableParam($fn); // 2
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>With an invokable object</p>
+<pre class="prettyprint"><code class="language-php">class MyCallable { public function __invoke($a, $b, $c, $d) } }
+$obj = new MyCallable();
+echo countCallableParam($obj); // 4
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>With a static method</p>
+<pre class="prettyprint"><code class="language-php">class MyClass { public static function myMethod($x, $y) } }
+echo countCallableParam('MyClass::myMethod'); // 2
+</code></pre>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>With an object method</p>
+<pre class="prettyprint"><code class="language-php">class MyClass { public function myMethod($x, $y, $z) } }
+$obj = new MyClass();
+echo countCallableParam([$obj, 'myMethod']); // 3
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The number of parameters declared by the callable.</p>
 </section>
 
             </section>
@@ -1344,6 +1517,7 @@ $timed = wrapCallable( $expensiveFn , function( $original , ...$args )
                 <li>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_chainCallables">chainCallables()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-callables.html#function_countCallableParam">countCallableParam()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_getCallableType">getCallableType()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_isCallable">isCallable()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-callables.html#function_memoizeCallable">memoizeCallable()</a></li>
