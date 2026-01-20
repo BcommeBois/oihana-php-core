@@ -3,7 +3,11 @@
 namespace oihana\core\arrays ;
 
 use InvalidArgumentException;
+use ReflectionException;
+
 use oihana\core\options\CompressOption;
+
+use function oihana\core\callables\countCallableParam;
 use function oihana\core\objects\compress as compressObject ;
 
 /**
@@ -92,7 +96,7 @@ use function oihana\core\objects\compress as compressObject ;
  * ];
  *
  * $clean = compress($data, [
- *     'conditions' => fn($v) => $v === null,
+ *     'conditions' => fn($v , $k) => $v === null,
  *     'recursive'  => true,
  * ]);
  *
@@ -150,12 +154,24 @@ function compress( array $array , ?array $options = [], int $currentDepth = 0 ):
             continue;
         }
 
-        foreach ( $conditions as $condition )
+        if ( !empty( $conditions ) && is_iterable( $conditions ) )
         {
-            if ( $condition( $value ) )
+            foreach ( $conditions as $condition )
             {
-                unset( $array[ $key ] ) ;
-                break ;
+                try
+                {
+                    $paramCount = countCallableParam( $condition ) ;
+                    $valid      = $paramCount === 2 ? $condition( $value , $key ) : $condition( $value ) ;
+                    if ( $valid )
+                    {
+                        unset( $array[ $key ] ) ;
+                        break;
+                    }
+                }
+                catch ( InvalidArgumentException | ReflectionException )
+                {
+                    continue ;
+                }
             }
         }
     }

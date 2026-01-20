@@ -29,8 +29,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 - **Arrays**
   - Fix the removeKeys function to clone by default the passed-in array definition.
+  - The `compress()` function accept the conditions with callable function with one or two arguments : `fn( $v , $k )` or `fn( $v )`.
 - **Objects**
-  - Adds the optional 'encoder' parameter in the toAssociativeArray function.
+  - Adds the optional 'encoder' argument in the `toAssociativeArray( array|object $data , string|array|object|null $encoder = null )` function.
+  - The `compress()` function accept the conditions with callable function with one or two arguments : `fn( $v , $k )` or `fn( $v )`.
   
 ## [1.0.7] - 2025-12-12
 

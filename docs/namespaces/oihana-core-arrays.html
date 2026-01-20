@@ -671,7 +671,7 @@ if ($cleaned === null) {
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/compress.php"><a href="files/src-oihana-core-arrays-compress.html"><abbr title="src/oihana/core/arrays/compress.php">compress.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">119</span>
 
     </aside>
 
@@ -823,7 +823,7 @@ $data = [
 ];
 
 $clean = compress($data, [
-    'conditions' =&gt; fn($v) =&gt; $v === null,
+    'conditions' =&gt; fn($v , $k) =&gt; $v === null,
     'recursive'  =&gt; true,
 ]);
 

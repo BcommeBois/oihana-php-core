@@ -72,46 +72,6 @@ class CompressTest extends TestCase
         $this->assertArrayNotHasKey('d', $result);
     }
 
-    public function testCompressWithCustomConditions():void
-    {
-        $obj = new stdClass();
-        $obj->a = null;
-        $obj->b = '';
-        $obj->c = 'keep';
-
-        $options =
-        [
-            'conditions' =>
-            [
-                fn($v) => is_null($v),
-                fn($v) => $v === ''
-            ]
-        ];
-
-        $result = compress($obj, $options);
-        $result = get_object_vars($result);
-
-        $this->assertArrayNotHasKey('a', $result);
-        $this->assertArrayNotHasKey('b', $result);
-        $this->assertArrayHasKey('c', $result);
-    }
-
-    public function testCompressIgnoresInvalidConditionSilently():void
-    {
-        $obj = new stdClass();
-        $obj->x = null;
-
-        $options = [
-            'conditions' => ['not_callable'], // string is not callable
-            'throwable' => false
-        ];
-
-        // Devrait seulement retirer les nulls par défaut
-        $result = compress($obj, $options);
-        $result = get_object_vars($result) ;
-
-        $this->assertArrayHasKey('x', $result);
-    }
 
     public function testCompressRecursively()
     {
@@ -260,5 +220,65 @@ class CompressTest extends TestCase
         $this->assertArrayHasKey('id', $result);
         $this->assertArrayNotHasKey('debug', $result);
         $this->assertArrayNotHasKey('temp', $result);
+    }
+
+    public function testCompressWithCustomConditions():void
+    {
+        $obj = new stdClass();
+        $obj->a = null;
+        $obj->b = '';
+        $obj->c = 'keep';
+
+        $options =
+        [
+            'conditions' =>
+            [
+                fn($v) => is_null($v),
+                fn($v) => $v === ''
+            ]
+        ];
+
+        $result = compress($obj, $options);
+        $result = get_object_vars($result);
+
+        $this->assertArrayNotHasKey('a', $result);
+        $this->assertArrayNotHasKey('b', $result);
+        $this->assertArrayHasKey('c', $result);
+    }
+
+    public function testCompressWithValueKeyCondition():void
+    {
+        $obj = new stdClass();
+        $obj->a = null;
+        $obj->b = 1;
+
+        $options = [
+            'conditions' => [
+                fn($v, $k) => $k === 'b' && $v === 1
+            ]
+        ];
+
+        $result = compress($obj, $options);
+        $result = get_object_vars($result);
+
+        $this->assertArrayHasKey('a', $result);
+        $this->assertArrayNotHasKey('b', $result);
+    }
+
+    public function testCompressIgnoresInvalidConditionSilently():void
+    {
+        $obj = new stdClass();
+        $obj->x = null;
+
+        $options = [
+            'conditions' => ['not_callable'], // string is not callable
+            'throwable' => false
+        ];
+
+        // Devrait seulement retirer les nulls par défaut
+        $result = compress($obj, $options);
+        $result = get_object_vars($result) ;
+
+        $this->assertArrayHasKey('x', $result);
     }
 }

@@ -6,7 +6,11 @@ use InvalidArgumentException;
 
 use oihana\core\options\CompressOption;
 
+use ReflectionException;
 use function oihana\core\arrays\compress as compressArray ;
+use function oihana\core\callables\countCallableParam;
+use function oihana\core\callables\isCallable;
+use function oihana\core\callables\resolveCallable;
 
 /**
  * Compress the given object by removing properties that match certain conditions.
@@ -117,7 +121,7 @@ function compress( object $object , array $options = [] , int $currentDepth = 0 
 
     foreach( $properties as $key => $value )
     {
-        if (is_array($removeKeys) && in_array( $key , $removeKeys , true ) )
+        if (is_array( $removeKeys ) && in_array( $key , $removeKeys , true ) )
         {
             unset($object->{$key});
             continue;
@@ -139,14 +143,26 @@ function compress( object $object , array $options = [] , int $currentDepth = 0 
             continue;
         }
 
-        foreach ( $conditions as $condition )
+        if ( !empty( $conditions ) && is_iterable( $conditions ) )
         {
-            if ( $condition( $value ) )
+            foreach ( $conditions as $condition )
             {
-                unset( $object->{ $key } ) ;
-                break ;
+                try
+                {
+                    $paramCount = countCallableParam( $condition ) ;
+                    $valid      = $paramCount === 2 ? $condition( $value , $key ) : $condition( $value ) ;
+                    if ( $valid )
+                    {
+                        unset( $object->{ $key } );
+                        break;
+                    }
+                }
+                catch ( InvalidArgumentException | ReflectionException )
+                {
+                    continue ;
+                }
             }
         }
     }
-    return $object;
+    return $object ;
 }

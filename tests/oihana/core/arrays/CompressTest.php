@@ -1,12 +1,13 @@
 <?php
 
-namespace oihana\core\arrays ;
+namespace tests\oihana\core\arrays ;
 
 use stdClass;
 
 use InvalidArgumentException;
 
 use PHPUnit\Framework\TestCase;
+use function oihana\core\arrays\compress;
 
 class CompressTest extends TestCase
 {
@@ -86,6 +87,25 @@ class CompressTest extends TestCase
 
         $result = compress($array, $options);
         $this->assertEquals($expected, $result);
+    }
+
+    public function testCompressWithValueKeyCondition():void
+    {
+        $array =
+        [
+            'a' => null ,
+            'b' => 1
+        ];
+
+        $options = [
+            'conditions' => [
+                fn($v, $k) => $k === 'b' && $v === 1
+            ]
+        ];
+
+        $result = compress($array, $options);
+
+        $this->assertEquals(['a' => null ], $result);
     }
 
     public function testRecursiveCompression()
