@@ -980,7 +980,7 @@ $updated = setObjectValue($obj, 'age', 30);
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/objects/toAssociativeArray.php"><a href="files/src-oihana-core-objects-toassociativearray.html"><abbr title="src/oihana/core/objects/toAssociativeArray.php">toAssociativeArray.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">142</span>
 
     </aside>
 
@@ -989,7 +989,7 @@ $updated = setObjectValue($obj, 'age', 30);
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">toAssociativeArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">toAssociativeArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;|object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$document</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;|object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$encoder</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
         <section class="phpdocumentor-description"><p>This function handles nested objects, ensuring the entire array or object tree is converted.</p>
 <p>Note that only public properties of the object will be included in the resulting array.</p>
@@ -1003,6 +1003,25 @@ $updated = setObjectValue($obj, 'age', 30);
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>An array or object to convert to a deep associative array .</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$encoder</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;|object|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional JSON encoder reference.
+This value is resolved into a callable using <abbr title="\oihana\core\objects\resolveCallable()">resolveCallable()</abbr>.
+Supported forms:</p>
+<ul>
+<li>Closure or invokable object</li>
+<li>Callable array: [$object, 'method'] or ['Class', 'method']</li>
+<li>Named function: 'my_json_encoder'</li>
+<li>Static method string: 'MyClass::encode'</li>
+<li>null to use native json_encode()</li>
+</ul>
+<p>The resolved callable must have the signature: <code class="prettyprint">function(mixed $data): string</code></p>
 </section>
 
             </dd>
@@ -1052,10 +1071,10 @@ print_r($userArray);
 //     [id] =&gt; 42
 //     [name] =&gt; John Doe
 //     [address] =&gt; Array
-//         (
-//             [street] =&gt; 123 PHP Avenue
-//             [city] =&gt; Codeville
-//         )
+//      (
+//          [street] =&gt; 123 PHP Avenue
+//          [city] =&gt; Codeville
+//      )
 // )
 // Note that the private property 'sessionToken' is not present.
 </code></pre>
@@ -1079,6 +1098,45 @@ print_r($userArray);
 $arrayAssoc = toAssociativeArray($data);
 
 print_r($arrayAssoc);
+</code></pre>
+<p>Convert using a custom JSON encoder (Closure):</p>
+<pre class="prettyprint"><code class="language-php">$encoder = function (mixed $data): string
+{
+    // Example: pretty-print JSON and remove null values
+    return json_encode($data, JSON_PRETTY_PRINT);
+};
+
+$result = toAssociativeArray($userObject, $encoder);
+
+print_r($result);
+</code></pre>
+<p>Convert using a static serializer method:</p>
+<pre class="prettyprint"><code class="language-php">use oihana\reflect\utils\JsonSerializer;
+use oihana\core\options\ArrayOption;
+
+$result = toAssociativeArray
+(
+$userObject,
+   fn(mixed $data): string =&gt;
+       JsonSerializer::encode( $data , jsonFlags: 0 , options: [ArrayOption::REDUCE =&gt; true] )
+);
+
+print_r($result);
+</code></pre>
+<p>Convert using a named function or static method string:</p>
+<pre class="prettyprint"><code class="language-php">// Using a named function
+function my_json_encoder(mixed $data): string
+{
+    return json_encode($data, JSON_UNESCAPED_SLASHES);
+}
+
+$result1 = toAssociativeArray($userObject, 'my_json_encoder');
+
+// Using a static method string
+$result2 = toAssociativeArray($userObject, 'MyJsonHelper::encode');
+
+print_r($result1);
+print_r($result2);
 </code></pre>
 </section>
 

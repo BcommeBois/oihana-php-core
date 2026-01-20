@@ -27,7 +27,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 - **Arrays**
   - Fix the removeKeys function to clone by default the passed-in array definition.
-
+- **Objects**
+  - Adds the optional 'encoder' parameter in the toAssociativeArray function.
+  
 ## [1.0.7] - 2025-12-12
 
 ### Added
