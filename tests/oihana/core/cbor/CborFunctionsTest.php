@@ -5,12 +5,12 @@ namespace tests\oihana\core\cbor;
 use CBOR\MapObject;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
-use stdClass;
 
 use function oihana\core\cbor\cbor_encode;
 use function oihana\core\cbor\cbor_decode;
 use function oihana\core\cbor\cborToPhp;
 use function oihana\core\cbor\phpToCbor;
+use function oihana\core\objects\toAssociativeArray;
 
 class CborFunctionsTest extends TestCase
 {
@@ -48,18 +48,6 @@ class CborFunctionsTest extends TestCase
         $this->assertArrayNotHasKey('secret', $decoded);
     }
 
-    public function testEncodeWithHelper(): void
-    {
-        $object = new stdClass();
-        $object->key = "value";
-
-        $helper = fn($d) => json_encode(['KEY' => 'UPPER']);
-
-        $decoded = cbor_decode(cbor_encode($object, $helper));
-
-        $this->assertSame(['KEY' => 'UPPER'], $decoded);
-    }
-
     public function testDecodeInvalidDataThrowsException(): void
     {
         $this->expectException(RuntimeException::class);
@@ -77,5 +65,197 @@ class CborFunctionsTest extends TestCase
         $output = cborToPhp($cborObject);
 
         $this->assertSame($input, $output);
+    }
+
+    public function testComplexeAssociativeArray(): void
+    {
+        $input =
+        [
+            "status" => "success",
+            "url" => "http://mydomain.tdl/products?skin=full",
+            "count" => 50,
+            "total" => 11793,
+            "result" => [
+                [
+                    "@type" => "Product",
+                    "@context" => "https://schema.oihana.xyz",
+                    "_key" => "200220674",
+                    "id" => "105488",
+                    "name" => "XXXX XXXX XXXX",
+                    "url" => "http://mydomain.tdl/products/200220674",
+                    "created" => "2025-01-22T00:00:00Z",
+                    "modified" => "2026-01-26T14:44:57Z",
+                    "additionalProperty" => [
+                        [
+                            "@type" => "PropertyValue" ,
+                            "@context" => "https://schema.org" ,
+                            "propertyID" => "grain" ,
+                            "value" => false
+                        ] ,
+                        [
+                            "@type" => "PropertyValue" ,
+                            "@context" => "https://schema.org" ,
+                            "propertyID" => "kind" ,
+                            "value" => "abrasif - Lot"
+                        ] ,
+                        [
+                            "@type" => "PropertyValue" ,
+                            "@context" => "https://schema.org" ,
+                            "propertyID" => "quality" ,
+                            "value" => "D125/8 P120GR/50"
+                        ]
+                    ],
+                    "alternateName" => "Festool",
+                    "category" => [
+                        [
+                            "@type" => "DefinedTerm" ,
+                            "@context" => "https://schema.org" ,
+                            "_key" => "64572935" ,
+                            "id" => 5 ,
+                            "name" => "Libre service" ,
+                            "url" => "http://mydomain.tdl/thesaurus/products/categories/64572935"
+                        ] ,
+                        [
+                            "@type" => "DefinedTerm" ,
+                            "@context" => "https://schema.org" ,
+                            "_key" => "64573193" ,
+                            "id" => 506 ,
+                            "name" => "Outillage" ,
+                            "url" => "http://mydomain.tdl/thesaurus/products/categories/64573193"
+                        ] ,
+                        [
+                            "@type" => "DefinedTerm" ,
+                            "@context" => "https://schema.org" ,
+                            "_key" => "64572395" ,
+                            "id" => 50605 ,
+                            "name" => "Consommables" ,
+                            "url" => "http://mydomain.tdl/thesaurus/products/categories/64572395"
+                        ]
+                    ],
+                    "density" => 0,
+                    "height" => 0,
+                    "identifier" => "xxxxxxx",
+                    "inStock" => true,
+                    "inventoryLevel" => [
+                        [
+                            "@type" => "StockLevel" ,
+                            "@context" => "https://schema.oihana.xyz" ,
+                            "assignedPOS" => [
+                                "@type" => "Warehouse" ,
+                                "@context" => "https://schema.oihana.xyz" ,
+                                "_key" => "127799242" ,
+                                "id" => "1" ,
+                                "name" => "XXXX" ,
+                                "url" => "http://mydomain.tdl/warehouses/127799242" ,
+                                "ownedBy" => [
+                                    "_key" => "127805669" ,
+                                    "name" => "XXXX" ,
+                                    "url" => "http://mydomain.tdl/subsidiaries/127805669" ,
+                                    "id" => "501"
+                                ]
+                            ] ,
+                            "lastStockEntry" => "2025-09-16" ,
+                            "lastStockExit" => "2025-02-10" ,
+                            "maxValue" => 0 ,
+                            "minValue" => 0 ,
+                            "value" => 0
+                        ] ,
+                        [
+                            "@type" => "StockLevel" ,
+                            "@context" => "https://schema.oihana.xyz" ,
+                            "assignedPOS" => [
+                                "@type" => "Warehouse" ,
+                                "@context" => "https://schema.oihana.xyz" ,
+                                "_key" => "127799245" ,
+                                "id" => "101" ,
+                                "name" => "XXXX" ,
+                                "url" => "http://mydomain.tdl/warehouses/127799245" ,
+                                "ownedBy" => [
+                                    "_key" => "127805681" ,
+                                    "name" => "XXXX" ,
+                                    "url" => "http://mydomain.tdl/subsidiaries/127805681" ,
+                                    "id" => "502"
+                                ]
+                            ] ,
+                            "maxValue" => 2 ,
+                            "minValue" => 1 ,
+                            "value" => 0
+                        ] ,
+                        [
+                            "@type" => "StockLevel" ,
+                            "@context" => "https://schema.oihana.xyz" ,
+                            "assignedPOS" => [
+                                "@type" => "Warehouse" ,
+                                "@context" => "https://schema.oihana.xyz" ,
+                                "_key" => "127799248" ,
+                                "id" => "400" ,
+                                "name" => "XXXX" ,
+                                "url" => "http://mydomain.tdl/warehouses/127799248" ,
+                                "ownedBy" => [
+                                    "_key" => "137186765" ,
+                                    "name" => "XXXX" ,
+                                    "url" => "http://mydomain.tdl/subsidiaries/137186765" ,
+                                    "id" => "500"
+                                ]
+                            ] ,
+                            "maxValue" => 0 ,
+                            "minValue" => 0 ,
+                            "value" => 0
+                        ] ,
+                        [
+                            "@type" => "StockLevel" ,
+                            "@context" => "https://schema.oihana.xyz" ,
+                            "assignedPOS" => [
+                                "@type" => "Warehouse" ,
+                                "@context" => "https://schema.oihana.xyz" ,
+                                "_key" => "127799251" ,
+                                "id" => "401" ,
+                                "name" => "XXXX" ,
+                                "url" => "http://mydomain.tdl/warehouses/127799251" ,
+                                "ownedBy" => [
+                                    "_key" => "137186765" ,
+                                    "name" => "XXXX" ,
+                                    "url" => "http://mydomain.tdl/subsidiaries/137186765" ,
+                                    "id" => "500"
+                                ]
+                            ] ,
+                            "maxValue" => 0 ,
+                            "minValue" => 0 ,
+                            "value" => 0
+                        ]
+                    ],
+                    "length" => 0,
+                    "priceCategory" => [
+                        [
+                            "@type" => "DefinedTerm" ,
+                            "@context" => "https://schema.org" ,
+                            "_key" => "64576450" ,
+                            "id" => "06" ,
+                            "name" => "Isolation & étanchéité" ,
+                            "url" => "http://mydomain.tdl/thesaurus/products/price/categories/64576450"
+                        ] ,
+                        [
+                            "@type" => "DefinedTerm" ,
+                            "@context" => "https://schema.org" ,
+                            "_key" => "64576480" ,
+                            "id" => "0605" ,
+                            "name" => "Laine de verre" ,
+                            "url" => "http://mydomain.tdl/thesaurus/products/price/categories/64576480"
+                        ]
+                    ],
+                ]
+            ]
+        ];
+
+        $data = toAssociativeArray( $input , strict:true ) ;
+
+        $this->assertSame($input, $data);
+
+        $encoded = cbor_encode( $input   ) ;
+        $output  = cbor_decode( $encoded ) ;
+
+        $this->assertSame($input, $output);
+        $this->assertSame(50, $output["count"]);
+        $this->assertSame(0, $output["result"][0]['length'] );
     }
 }

@@ -2,6 +2,7 @@
 
 namespace oihana\core\objects ;
 
+use JsonSerializable;
 use function oihana\core\callables\resolveCallable;
 
 /**
@@ -23,6 +24,8 @@ use function oihana\core\callables\resolveCallable;
  * - null to use native json_encode()
  *
  * The resolved callable must have the signature: `function(mixed $data): string`
+ *
+ * @param bool $strict If strict, not use json_encode but a standard loop.
  *
  * @return array The resulting associative array.
  *
@@ -142,10 +145,27 @@ use function oihana\core\callables\resolveCallable;
 function toAssociativeArray
 (
     array|object             $document ,
-    string|array|object|null $encoder  = null
+    string|array|object|null $encoder  = null  ,
+    bool                     $strict   = false ,
 )
 :array
 {
+    if( $strict )
+    {
+        if ( is_object( $document ) )
+        {
+            $document = $document instanceof JsonSerializable
+                      ? $document->jsonSerialize()
+                      :  get_object_vars( $document ) ;
+        }
+
+        return array_map( function ( $value ) use ( $strict ) {
+            return is_array( $value ) || is_object( $value )
+                ? toAssociativeArray( $value , strict : $strict )
+                : $value;
+        } , $document );
+    }
+
     $encoder = resolveCallable( $encoder ) ;
 
     $json = $encoder !== null ? $encoder( $document ) : json_encode( $document ) ;
