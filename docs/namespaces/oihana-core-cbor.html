@@ -72,7 +72,7 @@
 </h4>
     <ul class="phpdocumentor-list">
                     <li>
-                <a href="namespaces/oihana-core.html" class="-active">core</a>
+                <a href="namespaces/oihana-core.html" class="">core</a>
                 
             </li>
                     <li>
@@ -100,42 +100,20 @@
                                 <section>
                                         <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana.html">oihana</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/oihana-core.html">core</a></li>
     </ul>
 
     <article class="phpdocumentor-element -namespace">
-        <h2 class="phpdocumentor-content__title">core</h2>
+        <h2 class="phpdocumentor-content__title">cbor</h2>
 
         
 <h3 id="toc">
     Table of Contents
-    <a href="namespaces/oihana-core.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="namespaces/oihana-core-cbor.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
 
-<h4 id="namespaces">
-    Namespaces
-    <a href="namespaces/oihana-core.html#namespaces" class="headerlink"><i class="fas fa-link"></i></a>
-
-</h4>
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-accessors.html"><abbr title="\oihana\core\accessors">accessors</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-arrays.html"><abbr title="\oihana\core\arrays">arrays</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-bits.html"><abbr title="\oihana\core\bits">bits</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-callables.html"><abbr title="\oihana\core\callables">callables</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-cbor.html"><abbr title="\oihana\core\cbor">cbor</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-date.html"><abbr title="\oihana\core\date">date</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-documents.html"><abbr title="\oihana\core\documents">documents</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-env.html"><abbr title="\oihana\core\env">env</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-helpers.html"><abbr title="\oihana\core\helpers">helpers</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-json.html"><abbr title="\oihana\core\json">json</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-maths.html"><abbr title="\oihana\core\maths">maths</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-numbers.html"><abbr title="\oihana\core\numbers">numbers</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-objects.html"><abbr title="\oihana\core\objects">objects</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-options.html"><abbr title="\oihana\core\options">options</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-reflections.html"><abbr title="\oihana\core\reflections">reflections</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/oihana-core-strings.html"><abbr title="\oihana\core\strings">strings</abbr></a></dt>
-    </dl>
 
 
 
@@ -147,37 +125,37 @@
 
 <h4 id="toc-functions">
     Functions
-    <a href="namespaces/oihana-core.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="namespaces/oihana-core-cbor.html#toc-functions" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core.html#function_ifNull">ifNull()</a>
+    <a class="" href="namespaces/oihana-core-cbor.html#function_cbor_decode">cbor_decode()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Returns the given value if it is not null; otherwise, returns the default value.</dd>
+<dd>Decodes a CBOR binary string into a PHP normalized structure (array or scalar).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core.html#function_isLiteral">isLiteral()</a>
+    <a class="" href="namespaces/oihana-core-cbor.html#function_cbor_encode">cbor_encode()</a>
     <span>
-                                &nbsp;: bool    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd>Checks whether a given value is a literal string representing a boolean (`true` or `false`) or `null`.</dd>
+<dd>Encodes any data into a CBOR binary string.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core.html#function_normalize">normalize()</a>
+    <a class="" href="namespaces/oihana-core-cbor.html#function_cborToPhp">cborToPhp()</a>
     <span>
-                                &nbsp;: mixed|null    </span>
+                                &nbsp;: mixed    </span>
 </dt>
-<dd>Normalizes a value according to the given cleaning flags.</dd>
+<dd>Converts a CBORObject into a native PHP type with strict type fidelity.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core.html#function_toNumber">toNumber()</a>
+    <a class="" href="namespaces/oihana-core-cbor.html#function_phpToCbor">phpToCbor()</a>
     <span>
-                                &nbsp;: float|int|false    </span>
+                                &nbsp;: <abbr title="\CBOR\CBORObject">CBORObject</abbr>    </span>
 </dt>
-<dd>Converts a value to a numeric type (int or float) if possible.</dd>
+<dd>Converts any PHP data into a CBORObject instance.</dd>
 
     </dl>
 
@@ -186,49 +164,38 @@
             <section class="phpdocumentor-functions">
         <h3 class="phpdocumentor-elements__header" id="functions">
             Functions
-            <a href="namespaces/oihana-core.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="namespaces/oihana-core-cbor.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_ifNull">
-        ifNull()
-        <a href="namespaces/oihana-core.html#function_ifNull" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_cbor_decode">
+        cbor_decode()
+        <a href="namespaces/oihana-core-cbor.html#function_cbor_decode" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/ifNull.php"><a href="files/src-oihana-core-ifnull.html"><abbr title="src/oihana/core/ifNull.php">ifNull.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/cbor_decode.php"><a href="files/src-oihana-core-cbor-cbor-decode.html"><abbr title="src/oihana/core/cbor/cbor_decode.php">cbor_decode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns the given value if it is not null; otherwise, returns the default value.</p>
+        <p class="phpdocumentor-summary">Decodes a CBOR binary string into a PHP normalized structure (array or scalar).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">ifNull</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">cbor_decode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"><p>This function is useful to provide a fallback value when a variable might be null.</p>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$value</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                <span class="phpdocumentor-argument-list__argument__name">$data</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to evaluate.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$default</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
-                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The default value to return if $value is null. Defaults to null.</p>
+                    <section class="phpdocumentor-description"><p>The binary CBOR data.</p>
 </section>
 
             </dd>
@@ -237,19 +204,17 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core.html#function_ifNull#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-cbor.html#function_cbor_decode#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
+                    <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">echo ifNull(null, 'default');   // Outputs: default
-echo ifNull('hello', 'default'); // Outputs: hello
-echo ifNull(0, 'default');       // Outputs: 0 (because 0 is not null)
-</code></pre>
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\RuntimeException">RuntimeException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If decoding fails.</p>
 </section>
 
                                     </dd>
@@ -266,7 +231,7 @@ echo ifNull(0, 'default');       // Outputs: 0 (because 0 is not null)
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
                                                                                 
                                              
                                     </dd>
@@ -276,44 +241,63 @@ echo ifNull(0, 'default');       // Outputs: 0 (because 0 is not null)
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">mixed</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Returns $value if it is not null; otherwise returns $default.</p>
+                <section class="phpdocumentor-description"><p>The decoded PHP data (array, int, string, etc.).</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_isLiteral">
-        isLiteral()
-        <a href="namespaces/oihana-core.html#function_isLiteral" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_cbor_encode">
+        cbor_encode()
+        <a href="namespaces/oihana-core-cbor.html#function_cbor_encode" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/isLiteral.php"><a href="files/src-oihana-core-isliteral.html"><abbr title="src/oihana/core/isLiteral.php">isLiteral.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/cbor_encode.php"><a href="files/src-oihana-core-cbor-cbor-encode.html"><abbr title="src/oihana/core/cbor/cbor_encode.php">cbor_encode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Checks whether a given value is a literal string representing a boolean (`true` or `false`) or `null`.</p>
+        <p class="phpdocumentor-summary">Encodes any data into a CBOR binary string.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">isLiteral</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">cbor_encode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;|object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$helper</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>This function returns <code class="prettyprint">true</code> only if the value is a string and equals (case-insensitive)
-to one of the three literal values: &quot;true&quot;, &quot;false&quot;, or &quot;null&quot;.</p>
+        <section class="phpdocumentor-description"><p>Automatically converts objects and arrays to pure associative arrays
+using toAssociativeArray() before encoding, ensuring complex objects
+are serialized correctly.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$value</span>
+                <span class="phpdocumentor-argument-list__argument__name">$data</span>
                 : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to test.</p>
+                    <section class="phpdocumentor-description"><p>The data to encode (scalar, array, or object).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$helper</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;|object|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional internal encoder helper.
+This value is resolved into a callable using <abbr title="\oihana\core\cbor\resolveCallable()">resolveCallable()</abbr>.
+Supported forms:</p>
+<ul>
+<li>Closure or invokable object</li>
+<li>Callable array: [$object, 'method'] or ['Class', 'method']</li>
+<li>Named function: 'my_json_encoder'</li>
+<li>Static method string: 'MyClass::encode'</li>
+<li>null to use native json_encode()</li>
+</ul>
 </section>
 
             </dd>
@@ -322,22 +306,17 @@ to one of the three literal values: &quot;true&quot;, &quot;false&quot;, or &quo
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core.html#function_isLiteral#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-cbor.html#function_cbor_encode#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
+                    <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">isLiteral('true');   // true
-isLiteral('False');  // true
-isLiteral('null');   // true
-isLiteral('yes');    // false
-isLiteral(true);     // false
-isLiteral(null);     // false
-</code></pre>
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\oihana\core\cbor\toAssociativeArray()">toAssociativeArray()</abbr></span>
+                                        
+                                                 <section class="phpdocumentor-description"><p>for details.</p>
 </section>
 
                                     </dd>
@@ -354,7 +333,7 @@ isLiteral(null);     // false
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
                                                                                 
                                              
                                     </dd>
@@ -362,58 +341,53 @@ isLiteral(null);     // false
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>Returns true if the value is a string and matches &quot;true&quot;, &quot;false&quot;, or &quot;null&quot; (case-insensitive).</p>
+                <section class="phpdocumentor-description"><p>The binary CBOR string.</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_normalize">
-        normalize()
-        <a href="namespaces/oihana-core.html#function_normalize" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_cborToPhp">
+        cborToPhp()
+        <a href="namespaces/oihana-core-cbor.html#function_cborToPhp" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/normalize.php"><a href="files/src-oihana-core-normalize.html"><abbr title="src/oihana/core/normalize.php">normalize.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/cborToPhp.php"><a href="files/src-oihana-core-cbor-cbortophp.html"><abbr title="src/oihana/core/cbor/cborToPhp.php">cborToPhp.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">83</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Normalizes a value according to the given cleaning flags.</p>
+        <p class="phpdocumentor-summary">Converts a CBORObject into a native PHP type with strict type fidelity.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">normalize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flags</span><span> = </span><span class="phpdocumentor-signature__argument__default-value"><a href="classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE"><abbr title="\oihana\core\arrays\CleanFlag::NORMALIZE">CleanFlag::NORMALIZE</abbr></a></span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed|null</span></code>
+                    <span class="phpdocumentor-signature__name">cborToPhp</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><abbr title="\CBOR\CBORObject">CBORObject</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$object</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"><ul>
-<li>Arrays are cleaned recursively using the provided flags.</li>
-<li>Strings are trimmed if <code class="prettyprint">CleanFlag::TRIM</code> is set, and empty strings become null if <code class="prettyprint">CleanFlag::EMPTY</code> is set.</li>
-<li>Other scalar values are returned as-is, unless <code class="prettyprint">CleanFlag::FALSY</code> is used.</li>
+        <section class="phpdocumentor-description"><p>This function recursively traverses CBOR Maps and Lists to produce a normalized PHP structure.
+It specifically addresses type coercion issues to maintain data integrity:</p>
+<ul>
+<li><strong>String Fidelity:</strong> CBOR Text Strings (e.g., &quot;123&quot;) are strictly returned as PHP strings,
+never cast to integers.</li>
+<li><strong>Integer Safety:</strong> CBOR Integers are returned as PHP integers. If an integer exceeds
+the system's limits (PHP_INT_MAX), it is preserved as a numeric string to prevent precision loss.</li>
+<li><strong>Floats:</strong> CBOR Float objects are explicitly cast to PHP floats.</li>
 </ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$value</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                <span class="phpdocumentor-argument-list__argument__name">$object</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\CBOR\CBORObject">CBORObject</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to normalize (array or scalar).</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$flags</span>
-                : <span class="phpdocumentor-argument-list__argument__type">int</span>
-                 = <span class="phpdocumentor-argument-list__argument__default-value"><a href="classes/oihana-core-arrays-CleanFlag.html#constant_NORMALIZE"><abbr title="\oihana\core\arrays\CleanFlag::NORMALIZE">CleanFlag::NORMALIZE</abbr></a></span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>A bitmask of CleanFlag values. Defaults to <code class="prettyprint">CleanFlag::DEFAULT | CleanFlag::RETURN_NULL</code>.</p>
+                    <section class="phpdocumentor-description"><p>The raw CBOR object to convert.</p>
 </section>
 
             </dd>
@@ -422,89 +396,11 @@ isLiteral(null);     // false
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core.html#function_normalize#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-cbor.html#function_cborToPhp#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">normalize(['', ' foo ', null]);
-// ['foo']
-*
-normalize
-([
-    'name'  =&gt; 'Alice',
-    'email' =&gt; '  ',
-    'age'   =&gt; null
-]);
-// ['name' =&gt; 'Alice']
-
-normalize([]);
-// null
-
- normalize(new stdClass()); // empty object
- // null
-
-normalize(['', null, '   ']);
-// null
-
-normalize('   ');
-// null
-
-normalize('bar');
-// 'bar'
-
-normalize
-([
-    'zero'    =&gt; 0,
-    'empty'   =&gt; '',
-    'nullVal' =&gt; null,
-    'ok'      =&gt; 'valid'
-] , CleanFlag::FALSY | CleanFlag::RECURSIVE ) ;
-// ['ok' =&gt; 'valid']
-
-normalize
-([
-    'users' =&gt;
-    [
-        ['name' =&gt; '', 'email' =&gt; 'bob@example.com'],
-        ['name' =&gt; 'Alice', 'email' =&gt; '']
-    ]
-] , CleanFlag::RECURSIVE | CleanFlag::EMPTY ) ;
-// [
-//     'users' =&gt; [
-//         ['email' =&gt; 'bob@example.com'],
-//         ['name' =&gt; 'Alice']
-//     ]
-// ]
-</code></pre>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\oihana\core\clean()">clean()</abbr></span>
-                                        
-                                                 <section class="phpdocumentor-description"><p>For array cleaning behavior.</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/oihana-core-arrays-CleanFlag.html"><abbr title="\oihana\core\arrays\CleanFlag">CleanFlag</abbr></a></span>
-                                        
-                                                 <section class="phpdocumentor-description"><p>Enumeration representing cleaning modes as bit flags.</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -517,7 +413,7 @@ normalize
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.7</span>
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
                                                                                 
                                              
                                     </dd>
@@ -525,55 +421,64 @@ normalize
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">mixed|null</span>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The normalized value, cleaned array, or null if the result is empty and RETURN_NULL is set.</p>
+                <section class="phpdocumentor-description"><p>The corresponding PHP native value (array, string, int, float, bool, or null).</p>
 </section>
 
             </section>
 
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_toNumber">
-        toNumber()
-        <a href="namespaces/oihana-core.html#function_toNumber" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_phpToCbor">
+        phpToCbor()
+        <a href="namespaces/oihana-core-cbor.html#function_phpToCbor" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/toNumber.php"><a href="files/src-oihana-core-tonumber.html"><abbr title="src/oihana/core/toNumber.php">toNumber.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/phpToCbor.php"><a href="files/src-oihana-core-cbor-phptocbor.html"><abbr title="src/oihana/core/cbor/phpToCbor.php">phpToCbor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Converts a value to a numeric type (int or float) if possible.</p>
+        <p class="phpdocumentor-summary">Converts any PHP data into a CBORObject instance.</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">toNumber</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int|float|false&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float|int|false</span></code>
+                    <span class="phpdocumentor-signature__name">phpToCbor</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;|object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$helper</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\CBOR\CBORObject">CBORObject</abbr></span></code>
 
-        <section class="phpdocumentor-description"><p>Returns <code class="prettyprint">false</code> if the value cannot be interpreted as a number.</p>
-<p>This is useful to safely normalize user input or data that might contain numeric strings.</p>
+        <section class="phpdocumentor-description"><p>This function maps native PHP types to their corresponding CBOR Object representations:</p>
+<ul>
+<li>Arrays (associative) -&gt; MapObject</li>
+<li>Arrays (indexed)     -&gt; ListObject</li>
+<li>Integers             -&gt; UnsignedIntegerObject or NegativeIntegerObject</li>
+<li>Floats               -&gt; DoublePrecisionFloatObject</li>
+<li>Strings              -&gt; TextStringObject</li>
+<li>Booleans             -&gt; TrueObject or FalseObject</li>
+<li>Null                 -&gt; NullObject</li>
+</ul>
+<p>Objects are automatically converted to associative arrays using toAssociativeArray().</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$value</span>
+                <span class="phpdocumentor-argument-list__argument__name">$data</span>
                 : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The value to convert.</p>
+                    <section class="phpdocumentor-description"><p>The PHP data to convert.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$default</span>
-                : <span class="phpdocumentor-argument-list__argument__type">int|float|false</span>
-                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+                <span class="phpdocumentor-argument-list__argument__name">$helper</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;|object|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The default value if the value is not a numeric value.</p>
+                    <section class="phpdocumentor-description"><p>Optional internal encoder helper used by toAssociativeArray.</p>
 </section>
 
             </dd>
@@ -582,24 +487,17 @@ normalize
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="namespaces/oihana-core.html#function_toNumber#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/oihana-core-cbor.html#function_phpToCbor#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">example</span>
+                    <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\toNumber;
-
-echo toNumber('42');           // 42
-echo toNumber('3.14');         // 3.14
-echo toNumber('-0.5e2');       // -50.0
-echo toNumber('foo');          // false
-echo toNumber('foo', 0);       // 0
-echo toNumber(null, -1);       // -1
-</code></pre>
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If the data type is not supported.</p>
 </section>
 
                                     </dd>
@@ -616,7 +514,7 @@ echo toNumber(null, -1);       // -1
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.7</span>
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
                                                                                 
                                              
                                     </dd>
@@ -624,7 +522,11 @@ echo toNumber(null, -1);       // -1
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">float|int|false</span>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\CBOR\CBORObject">CBORObject</abbr></span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The constructed CBOR object tree.</p>
+</section>
+
             </section>
 
 </article>
@@ -735,7 +637,7 @@ echo toNumber(null, -1);       // -1
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                                                                                                    <li><a href="namespaces/oihana-core.html#toc-functions">Functions</a></li>
+                                                                                                                                                                                    <li><a href="namespaces/oihana-core-cbor.html#toc-functions">Functions</a></li>
                                     </ul>
             </li>
 
@@ -743,10 +645,10 @@ echo toNumber(null, -1);       // -1
                             <li class="phpdocumentor-on-this-page-section__title">Functions</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="namespaces/oihana-core.html#function_ifNull">ifNull()</a></li>
-                                                    <li class=""><a href="namespaces/oihana-core.html#function_isLiteral">isLiteral()</a></li>
-                                                    <li class=""><a href="namespaces/oihana-core.html#function_normalize">normalize()</a></li>
-                                                    <li class=""><a href="namespaces/oihana-core.html#function_toNumber">toNumber()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-cbor.html#function_cbor_decode">cbor_decode()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-cbor.html#function_cbor_encode">cbor_encode()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-cbor.html#function_cborToPhp">cborToPhp()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-cbor.html#function_phpToCbor">phpToCbor()</a></li>
                                             </ul>
                 </li>
                     </ul>
@@ -766,7 +668,7 @@ echo toNumber(null, -1);       // -1
     </section>
 </section>
         </div>
-        <a href="namespaces/oihana-core.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="namespaces/oihana-core-cbor.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

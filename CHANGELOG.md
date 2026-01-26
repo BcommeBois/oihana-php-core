@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - **Callables**
   - Add the `countCallableParam` function : Returns the number of parameters of a given callable.
 - **CBOR**
-  - Add the `cbor_encode()`, `cbor_decode()` and `cborToPhp()` functions
+  - Add the `cbor_encode()`, `cbor_decode()`, `cborToPhp()` and `phpToCbor()` functions
 - **Strings**
   - Add the `chunk()` function : Splits a string into groups of length, separated by a separator.
   - Add the `replace()` function : Replaces all occurrences of a substring within a string, with optional Unicode (grapheme-safe) and normalization support.

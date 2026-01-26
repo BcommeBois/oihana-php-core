@@ -2,12 +2,15 @@
 
 namespace tests\oihana\core\cbor;
 
+use CBOR\MapObject;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use stdClass;
 
 use function oihana\core\cbor\cbor_encode;
 use function oihana\core\cbor\cbor_decode;
+use function oihana\core\cbor\cborToPhp;
+use function oihana\core\cbor\phpToCbor;
 
 class CborFunctionsTest extends TestCase
 {
@@ -61,5 +64,18 @@ class CborFunctionsTest extends TestCase
     {
         $this->expectException(RuntimeException::class);
         cbor_decode(chr(0x18));
+    }
+
+    public function testPhpToCbor(): void
+    {
+        $input = ['id' => 123, 'name' => 'Test'];
+
+        $cborObject = phpToCbor($input);
+
+        $this->assertInstanceOf( MapObject::class, $cborObject);
+
+        $output = cborToPhp($cborObject);
+
+        $this->assertSame($input, $output);
     }
 }

@@ -29,7 +29,7 @@ function cbor_decode( mixed $data ) :mixed
 
         if( $cborDecoder === null )
         {
-            $cborDecoder = new Decoder();
+            $cborDecoder = new Decoder() ;
         }
 
         $object = $cborDecoder->decode( StringStream::create( $data ) ) ;

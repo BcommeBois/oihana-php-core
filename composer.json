@@ -96,6 +96,7 @@
             "src/oihana/core/cbor/cbor_decode.php",
             "src/oihana/core/cbor/cbor_encode.php",
             "src/oihana/core/cbor/cborToPhp.php",
+            "src/oihana/core/cbor/phpToCbor.php",
             
             "src/oihana/core/date/formatDateTime.php",
             "src/oihana/core/date/isDate.php",

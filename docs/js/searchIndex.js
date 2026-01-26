@@ -406,6 +406,26 @@ Search.appendIndex(
             "summary": "Wraps\u0020a\u0020callable\u0020to\u0020apply\u0020middleware\/decorators\u0020before\/after\u0020execution.",
             "url": "namespaces/oihana-core-callables.html#function_wrapCallable"
         },                {
+            "fqsen": "\\oihana\\core\\cbor\\cbor_decode\u0028\u0029",
+            "name": "cbor_decode",
+            "summary": "Decodes\u0020a\u0020CBOR\u0020binary\u0020string\u0020into\u0020a\u0020PHP\u0020normalized\u0020structure\u0020\u0028array\u0020or\u0020scalar\u0029.",
+            "url": "namespaces/oihana-core-cbor.html#function_cbor_decode"
+        },                {
+            "fqsen": "\\oihana\\core\\cbor\\cbor_encode\u0028\u0029",
+            "name": "cbor_encode",
+            "summary": "Encodes\u0020any\u0020data\u0020into\u0020a\u0020CBOR\u0020binary\u0020string.",
+            "url": "namespaces/oihana-core-cbor.html#function_cbor_encode"
+        },                {
+            "fqsen": "\\oihana\\core\\cbor\\cborToPhp\u0028\u0029",
+            "name": "cborToPhp",
+            "summary": "Converts\u0020a\u0020CBORObject\u0020into\u0020a\u0020native\u0020PHP\u0020type\u0020with\u0020strict\u0020type\u0020fidelity.",
+            "url": "namespaces/oihana-core-cbor.html#function_cborToPhp"
+        },                {
+            "fqsen": "\\oihana\\core\\cbor\\phpToCbor\u0028\u0029",
+            "name": "phpToCbor",
+            "summary": "Converts\u0020any\u0020PHP\u0020data\u0020into\u0020a\u0020CBORObject\u0020instance.",
+            "url": "namespaces/oihana-core-cbor.html#function_phpToCbor"
+        },                {
             "fqsen": "\\oihana\\core\\date\\formatDateTime\u0028\u0029",
             "name": "formatDateTime",
             "summary": "Formats\u0020a\u0020given\u0020date\/time\u0020string\u0020into\u0020a\u0020specified\u0020format\u0020and\u0020timezone.",
@@ -1310,6 +1330,11 @@ Search.appendIndex(
             "name": "callables",
             "summary": "",
             "url": "namespaces/oihana-core-callables.html"
+        },                {
+            "fqsen": "\\oihana\\core\\cbor",
+            "name": "cbor",
+            "summary": "",
+            "url": "namespaces/oihana-core-cbor.html"
         },                {
             "fqsen": "\\oihana\\core\\date",
             "name": "date",

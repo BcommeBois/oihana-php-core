@@ -86,5 +86,5 @@ function cborToPhp( CBORObject $object ): mixed
         }
     }
 
-    return $value;
+    return $value ;
 }
