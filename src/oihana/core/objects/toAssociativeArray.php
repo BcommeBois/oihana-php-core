@@ -148,7 +148,7 @@ function toAssociativeArray
 {
     $encoder = resolveCallable( $encoder ) ;
 
-    $json = $encoder !== null ? $encoder($document) : json_encode( $document ) ;
+    $json = $encoder !== null ? $encoder( $document ) : json_encode( $document ) ;
 
     return json_decode( $json , true ) ;
 }

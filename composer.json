@@ -93,6 +93,10 @@
             "src/oihana/core/callables/resolveCallable.php",
             "src/oihana/core/callables/wrapCallable.php",
             
+            "src/oihana/core/cbor/cbor_decode.php",
+            "src/oihana/core/cbor/cbor_encode.php",
+            "src/oihana/core/cbor/cborToPhp.php",
+            
             "src/oihana/core/date/formatDateTime.php",
             "src/oihana/core/date/isDate.php",
             "src/oihana/core/date/isValidTimezone.php",
@@ -203,7 +207,8 @@
     "require": {
         "php": ">=8.4",
         "ext-intl": "*" ,
-        "ext-posix" : "*"
+        "ext-posix" : "*",
+        "spomky-labs/cbor-php": "^3.2"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit" ,
