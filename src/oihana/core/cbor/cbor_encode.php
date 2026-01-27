@@ -34,14 +34,14 @@ function cbor_encode
         $data = toAssociativeArray( $data , strict:true ) ;
     }
 
-    // static $cborEncoder = null;
-    //
-    // if ( $cborEncoder === null )
-    // {
-    //     $cborEncoder = new Encoder() ;
-    // }
-    //
-    // return $cborEncoder->encode( $data ) ;
+    static $cborEncoder = null;
 
-    return CborEncoder::encode( $data ) ;
+    if ( $cborEncoder === null )
+    {
+        $cborEncoder = new Encoder() ;
+    }
+
+    return $cborEncoder->encode( $data ) ;
+
+    // return CborEncoder::encode( $data ) ;
 }
