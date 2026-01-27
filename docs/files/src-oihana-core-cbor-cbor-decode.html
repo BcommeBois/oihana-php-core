@@ -138,7 +138,7 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Decodes a CBOR binary string into a PHP normalized structure (array or scalar).</dd>
+<dd>Decodes a CBOR binary string into a PHP normalized structure (array, scalar, etc.).</dd>
 
     </dl>
 
@@ -160,18 +160,25 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/cbor_decode.php"><a href="files/src-oihana-core-cbor-cbor-decode.html"><abbr title="src/oihana/core/cbor/cbor_decode.php">cbor_decode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Decodes a CBOR binary string into a PHP normalized structure (array or scalar).</p>
+        <p class="phpdocumentor-summary">Decodes a CBOR binary string into a PHP normalized structure (array, scalar, etc.).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">cbor_decode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">cbor_decode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><abbr title="\Closure">Closure</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$replacer</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function will attempt to decode CBOR data. If decoding fails due to invalid
+CBOR content, a <code class="prettyprint">RuntimeException</code> will be thrown with an HTTP-style code:</p>
+<ul>
+<li><code class="prettyprint">422</code> (Unprocessable Entity) if the CBOR data is invalid or malformed</li>
+<li><code class="prettyprint">500</code> (Internal Server Error) for unexpected failures</li>
+</ul>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -179,7 +186,16 @@
                 : <span class="phpdocumentor-argument-list__argument__type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The binary CBOR data.</p>
+                    <section class="phpdocumentor-description"><p>The binary CBOR data</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$replacer</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\Closure">Closure</abbr>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional callback applied to each decoded value: fn($key, $value)</p>
 </section>
 
             </dd>
@@ -198,7 +214,30 @@
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\RuntimeException">RuntimeException</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>If decoding fails.</p>
+                                                 <section class="phpdocumentor-description"><p>On CBOR decoding failure</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\cbor\cbor_decode;
+
+$cbor = &quot;\xA2\x64name\x65Alice\x63age\x18\x1E&quot;;
+// CBOR encoded map: ['name'=&gt;'Alice','age'=&gt;30]
+
+try
+{
+    $decoded = cbor_decode($cbor);
+    print_r($decoded);
+}
+catch (RuntimeException $e)
+{
+    echo &quot;Decoding failed (code {$e-&gt;getCode()}): &quot; . $e-&gt;getMessage();
+}
+</code></pre>
 </section>
 
                                     </dd>
@@ -225,7 +264,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">mixed</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The decoded PHP data (array, int, string, etc.).</p>
+                <section class="phpdocumentor-description"><p>The decoded PHP data (array, int, string, etc.)</p>
 </section>
 
             </section>

@@ -160,7 +160,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/cbor_encode.php"><a href="files/src-oihana-core-cbor-cbor-encode.html"><abbr title="src/oihana/core/cbor/cbor_encode.php">cbor_encode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -169,11 +169,16 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">cbor_encode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;|object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$helper</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">cbor_encode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><abbr title="\Closure">Closure</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$replacer</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>Automatically converts objects and arrays to pure associative arrays
-using toAssociativeArray() before encoding, ensuring complex objects
-are serialized correctly.</p>
+        <section class="phpdocumentor-description"><p>Automatically converts objects and arrays to pure associative arrays.</p>
+<p>This function will attempt to convert objects/arrays into associative arrays
+before encoding. If encoding fails due to invalid data, a <code class="prettyprint">RuntimeException</code>
+will be thrown with an appropriate HTTP-style code:</p>
+<ul>
+<li><code class="prettyprint">422</code> (Unprocessable Entity) if the data cannot be encoded (client-side issue)</li>
+<li><code class="prettyprint">500</code> (Internal Server Error) for unexpected failures (server-side issue)</li>
+</ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -188,20 +193,11 @@ are serialized correctly.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$helper</span>
-                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;|object|null</span>
+                <span class="phpdocumentor-argument-list__argument__name">$replacer</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\Closure">Closure</abbr>|null</span>
                  = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional internal encoder helper.
-This value is resolved into a callable using <abbr title="\oihana\core\cbor\resolveCallable()">resolveCallable()</abbr>.
-Supported forms:</p>
-<ul>
-<li>Closure or invokable object</li>
-<li>Callable array: [$object, 'method'] or ['Class', 'method']</li>
-<li>Named function: 'my_json_encoder'</li>
-<li>Static method string: 'MyClass::encode'</li>
-<li>null to use native json_encode()</li>
-</ul>
+                    <section class="phpdocumentor-description"><p>Optional callback applied to each encoded value: fn($key, $value)</p>
 </section>
 
             </dd>
@@ -215,6 +211,43 @@ Supported forms:</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\cbor\cbor_encode;
+
+$data =
+[
+    'name' =&gt; 'Alice',
+    'age'  =&gt; 30,
+    'tags' =&gt; ['developer', 'php']
+];
+
+try
+{
+    $cbor = cbor_encode($data);
+    echo &quot;CBOR encoded data length: &quot; . strlen($cbor);
+}
+catch (RuntimeException $e)
+{
+    echo &quot;Encoding failed (code {$e-&gt;getCode()}): &quot; . $e-&gt;getMessage();
+}
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\RuntimeException">RuntimeException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>On CBOR encoding failure.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">

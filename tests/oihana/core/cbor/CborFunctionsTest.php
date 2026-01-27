@@ -2,16 +2,12 @@
 
 namespace tests\oihana\core\cbor;
 
-use Beau\CborPHP\CborDecoder;
-use CBOR\MapObject;
 use JsonSerializable;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 use function oihana\core\cbor\cbor_encode;
 use function oihana\core\cbor\cbor_decode;
-use function oihana\core\cbor\cborToPhp;
-use function oihana\core\cbor\phpToCbor;
 use function oihana\core\objects\toAssociativeArray;
 
 class CborFunctionsTest extends TestCase
@@ -59,20 +55,7 @@ class CborFunctionsTest extends TestCase
     public function testDecodeInvalidDataThrowsException(): void
     {
         $this->expectException(RuntimeException::class);
-        cbor_decode(chr(0x18));
-    }
-
-    public function testPhpToCbor(): void
-    {
-        $input = ['id' => 123, 'name' => 'Test'];
-
-        $cborObject = phpToCbor($input);
-
-        $this->assertInstanceOf( MapObject::class, $cborObject);
-
-        $output = cborToPhp($cborObject);
-
-        $this->assertSame($input, $output);
+        cbor_decode("\xFF"); // "break" code en CBOR invalide
     }
 
     public function testComplexeAssociativeArray(): void

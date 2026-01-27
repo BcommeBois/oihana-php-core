@@ -134,7 +134,7 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Decodes a CBOR binary string into a PHP normalized structure (array or scalar).</dd>
+<dd>Decodes a CBOR binary string into a PHP normalized structure (array, scalar, etc.).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-cbor.html#function_cbor_encode">cbor_encode()</a>
@@ -142,20 +142,6 @@
                                 &nbsp;: string    </span>
 </dt>
 <dd>Encodes any data into a CBOR binary string.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-cbor.html#function_cborToPhp">cborToPhp()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Converts a CBORObject into a native PHP type with strict type fidelity.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a class="" href="namespaces/oihana-core-cbor.html#function_phpToCbor">phpToCbor()</a>
-    <span>
-                                &nbsp;: <abbr title="\CBOR\CBORObject">CBORObject</abbr>    </span>
-</dt>
-<dd>Converts any PHP data into a CBORObject instance.</dd>
 
     </dl>
 
@@ -176,18 +162,25 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/cbor_decode.php"><a href="files/src-oihana-core-cbor-cbor-decode.html"><abbr title="src/oihana/core/cbor/cbor_decode.php">cbor_decode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Decodes a CBOR binary string into a PHP normalized structure (array or scalar).</p>
+        <p class="phpdocumentor-summary">Decodes a CBOR binary string into a PHP normalized structure (array, scalar, etc.).</p>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">cbor_decode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">cbor_decode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><abbr title="\Closure">Closure</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$replacer</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This function will attempt to decode CBOR data. If decoding fails due to invalid
+CBOR content, a <code class="prettyprint">RuntimeException</code> will be thrown with an HTTP-style code:</p>
+<ul>
+<li><code class="prettyprint">422</code> (Unprocessable Entity) if the CBOR data is invalid or malformed</li>
+<li><code class="prettyprint">500</code> (Internal Server Error) for unexpected failures</li>
+</ul>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -195,7 +188,16 @@
                 : <span class="phpdocumentor-argument-list__argument__type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The binary CBOR data.</p>
+                    <section class="phpdocumentor-description"><p>The binary CBOR data</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$replacer</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\Closure">Closure</abbr>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional callback applied to each decoded value: fn($key, $value)</p>
 </section>
 
             </dd>
@@ -214,7 +216,30 @@
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\RuntimeException">RuntimeException</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>If decoding fails.</p>
+                                                 <section class="phpdocumentor-description"><p>On CBOR decoding failure</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\cbor\cbor_decode;
+
+$cbor = &quot;\xA2\x64name\x65Alice\x63age\x18\x1E&quot;;
+// CBOR encoded map: ['name'=&gt;'Alice','age'=&gt;30]
+
+try
+{
+    $decoded = cbor_decode($cbor);
+    print_r($decoded);
+}
+catch (RuntimeException $e)
+{
+    echo &quot;Decoding failed (code {$e-&gt;getCode()}): &quot; . $e-&gt;getMessage();
+}
+</code></pre>
 </section>
 
                                     </dd>
@@ -241,7 +266,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">mixed</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The decoded PHP data (array, int, string, etc.).</p>
+                <section class="phpdocumentor-description"><p>The decoded PHP data (array, int, string, etc.)</p>
 </section>
 
             </section>
@@ -256,7 +281,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/cbor_encode.php"><a href="files/src-oihana-core-cbor-cbor-encode.html"><abbr title="src/oihana/core/cbor/cbor_encode.php">cbor_encode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -265,11 +290,16 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">cbor_encode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;|object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$helper</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">cbor_encode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><abbr title="\Closure">Closure</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$replacer</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>Automatically converts objects and arrays to pure associative arrays
-using toAssociativeArray() before encoding, ensuring complex objects
-are serialized correctly.</p>
+        <section class="phpdocumentor-description"><p>Automatically converts objects and arrays to pure associative arrays.</p>
+<p>This function will attempt to convert objects/arrays into associative arrays
+before encoding. If encoding fails due to invalid data, a <code class="prettyprint">RuntimeException</code>
+will be thrown with an appropriate HTTP-style code:</p>
+<ul>
+<li><code class="prettyprint">422</code> (Unprocessable Entity) if the data cannot be encoded (client-side issue)</li>
+<li><code class="prettyprint">500</code> (Internal Server Error) for unexpected failures (server-side issue)</li>
+</ul>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -284,20 +314,11 @@ are serialized correctly.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$helper</span>
-                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;|object|null</span>
+                <span class="phpdocumentor-argument-list__argument__name">$replacer</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\Closure">Closure</abbr>|null</span>
                  = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional internal encoder helper.
-This value is resolved into a callable using <abbr title="\oihana\core\cbor\resolveCallable()">resolveCallable()</abbr>.
-Supported forms:</p>
-<ul>
-<li>Closure or invokable object</li>
-<li>Callable array: [$object, 'method'] or ['Class', 'method']</li>
-<li>Named function: 'my_json_encoder'</li>
-<li>Static method string: 'MyClass::encode'</li>
-<li>null to use native json_encode()</li>
-</ul>
+                    <section class="phpdocumentor-description"><p>Optional callback applied to each encoded value: fn($key, $value)</p>
 </section>
 
             </dd>
@@ -311,6 +332,43 @@ Supported forms:</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\cbor\cbor_encode;
+
+$data =
+[
+    'name' =&gt; 'Alice',
+    'age'  =&gt; 30,
+    'tags' =&gt; ['developer', 'php']
+];
+
+try
+{
+    $cbor = cbor_encode($data);
+    echo &quot;CBOR encoded data length: &quot; . strlen($cbor);
+}
+catch (RuntimeException $e)
+{
+    echo &quot;Encoding failed (code {$e-&gt;getCode()}): &quot; . $e-&gt;getMessage();
+}
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\RuntimeException">RuntimeException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>On CBOR encoding failure.</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -344,187 +402,6 @@ Supported forms:</p>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The binary CBOR string.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_cborToPhp">
-        cborToPhp()
-        <a href="namespaces/oihana-core-cbor.html#function_cborToPhp" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/cborToPhp.php"><a href="files/src-oihana-core-cbor-cbortophp.html"><abbr title="src/oihana/core/cbor/cborToPhp.php">cborToPhp.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">34</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Converts a CBORObject into a native PHP type with strict type fidelity.</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">cborToPhp</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><abbr title="\CBOR\CBORObject">CBORObject</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$object</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-        <section class="phpdocumentor-description"><p>This function recursively traverses CBOR Maps and Lists to produce a normalized PHP structure.
-It specifically addresses type coercion issues to maintain data integrity:</p>
-<ul>
-<li><strong>String Fidelity:</strong> CBOR Text Strings (e.g., &quot;123&quot;) are strictly returned as PHP strings,
-never cast to integers.</li>
-<li><strong>Integer Safety:</strong> CBOR Integers are returned as PHP integers. If an integer exceeds
-the system's limits (PHP_INT_MAX), it is preserved as a numeric string to prevent precision loss.</li>
-<li><strong>Floats:</strong> CBOR Float objects are explicitly cast to PHP floats.</li>
-</ul>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$object</span>
-                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\CBOR\CBORObject">CBORObject</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The raw CBOR object to convert.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="namespaces/oihana-core-cbor.html#function_cborToPhp#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.8</span>
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">mixed</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>The corresponding PHP native value (array, string, int, float, bool, or null).</p>
-</section>
-
-            </section>
-
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_phpToCbor">
-        phpToCbor()
-        <a href="namespaces/oihana-core-cbor.html#function_phpToCbor" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/cbor/phpToCbor.php"><a href="files/src-oihana-core-cbor-phptocbor.html"><abbr title="src/oihana/core/cbor/phpToCbor.php">phpToCbor.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">46</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Converts any PHP data into a CBORObject instance.</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">phpToCbor</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;|object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$helper</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\CBOR\CBORObject">CBORObject</abbr></span></code>
-
-        <section class="phpdocumentor-description"><p>This function maps native PHP types to their corresponding CBOR Object representations:</p>
-<ul>
-<li>Arrays (associative) -&gt; MapObject</li>
-<li>Arrays (indexed)     -&gt; ListObject</li>
-<li>Integers             -&gt; UnsignedIntegerObject or NegativeIntegerObject</li>
-<li>Floats               -&gt; DoublePrecisionFloatObject</li>
-<li>Strings              -&gt; TextStringObject</li>
-<li>Booleans             -&gt; TrueObject or FalseObject</li>
-<li>Null                 -&gt; NullObject</li>
-</ul>
-<p>Objects are automatically converted to associative arrays using toAssociativeArray().</p>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$data</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The PHP data to convert.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$helper</span>
-                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;|object|null</span>
-                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional internal encoder helper used by toAssociativeArray.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="namespaces/oihana-core-cbor.html#function_phpToCbor#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
-                                                            
-                                                 <section class="phpdocumentor-description"><p>If the data type is not supported.</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (ekameleon)</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.8</span>
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\CBOR\CBORObject">CBORObject</abbr></span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>The constructed CBOR object tree.</p>
 </section>
 
             </section>
@@ -647,8 +524,6 @@ the system's limits (PHP_INT_MAX), it is preserved as a numeric string to preven
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="namespaces/oihana-core-cbor.html#function_cbor_decode">cbor_decode()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-cbor.html#function_cbor_encode">cbor_encode()</a></li>
-                                                    <li class=""><a href="namespaces/oihana-core-cbor.html#function_cborToPhp">cborToPhp()</a></li>
-                                                    <li class=""><a href="namespaces/oihana-core-cbor.html#function_phpToCbor">phpToCbor()</a></li>
                                             </ul>
                 </li>
                     </ul>
