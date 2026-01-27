@@ -76,13 +76,17 @@ function cborToPhp( CBORObject $object ): mixed
 
     if ( is_numeric( $value ) )
     {
-        $isInteger = ctype_digit($value) || (str_starts_with($value, '-') && ctype_digit(substr($value, 1)));
-        if ( $isInteger )
+        if ( preg_match('/^-?\d+$/', $value ) )
         {
-            if ( $value > PHP_INT_MIN && $value < PHP_INT_MAX )
+            if
+            (
+                bccomp( $value , (string) PHP_INT_MAX ) <= 0 &&
+                bccomp( $value , (string) PHP_INT_MIN ) >= 0
+            )
             {
-                return (int) $value;
+                return (int) $value ;
             }
+            return $value ;
         }
     }
 

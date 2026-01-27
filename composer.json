@@ -207,6 +207,7 @@
     },
     "require": {
         "php": ">=8.4",
+        "ext-bcmath" : "*" ,
         "ext-intl": "*" ,
         "ext-posix" : "*",
         "spomky-labs/cbor-php": "^3.2"

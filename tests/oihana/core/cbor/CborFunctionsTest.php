@@ -2,15 +2,11 @@
 
 namespace tests\oihana\core\cbor;
 
-use Beau\CborPHP\CborDecoder;
-use Beau\CborPHP\CborEncoder;
-use Beau\CborPHP\exceptions\CborException;
 use CBOR\MapObject;
 use JsonSerializable;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
-use function oihana\core\arrays\toArray;
 use function oihana\core\cbor\cbor_encode;
 use function oihana\core\cbor\cbor_decode;
 use function oihana\core\cbor\cborToPhp;
@@ -286,5 +282,120 @@ class CborFunctionsTest extends TestCase
             toAssociativeArray( $input , strict:true ) ,
             cbor_decode( cbor_encode( $input ) )
         ) ;
+    }
+
+    /**
+     * Test that CBOR integers are properly converted to PHP integers
+     * without being treated as strings, and that large integers are preserved.
+     */
+    public function testIntegerTypePreservation(): void
+    {
+        // Test standard integers
+        $smallInt = 42;
+        $negativeInt = -123;
+        $zero = 0;
+
+        $decodedSmall = cbor_decode(cbor_encode($smallInt));
+        $decodedNegative = cbor_decode(cbor_encode($negativeInt));
+        $decodedZero = cbor_decode(cbor_encode($zero));
+
+        $this->assertIsInt($decodedSmall, 'Small positive integer should be int');
+        $this->assertSame($smallInt, $decodedSmall);
+
+        $this->assertIsInt($decodedNegative, 'Negative integer should be int');
+        $this->assertSame($negativeInt, $decodedNegative);
+
+        $this->assertIsInt($decodedZero, 'Zero should be int');
+        $this->assertSame($zero, $decodedZero);
+    }
+
+    /**
+     * Test that numeric strings remain as strings and are not coerced to integers
+     */
+    public function testNumericStringFidelity(): void
+    {
+        $numericString = "12345";
+        $decoded = cbor_decode(cbor_encode($numericString));
+
+        $this->assertIsString($decoded, 'Numeric string should remain a string');
+        $this->assertSame($numericString, $decoded);
+    }
+
+    /**
+     * Test that large integers beyond PHP_INT_MAX are preserved as strings
+     * to prevent precision loss
+     */
+    public function testLargeIntegerPreservation(): void
+    {
+        // Create a number larger than PHP_INT_MAX
+        $largeNumber = (string)(PHP_INT_MAX + 1000);
+
+        $encoded  = cbor_encode($largeNumber);
+        $decoded  = cbor_decode($encoded);
+
+        // Should be preserved as string to avoid overflow
+        $this->assertIsString($decoded, 'Large integer should be preserved as string');
+        $this->assertSame($largeNumber, $decoded);
+    }
+
+    /**
+     * Test integer types in nested structures
+     */
+    public function testIntegerTypesInNestedStructures(): void
+    {
+        $input = [
+            'count' => 50,
+            'total' => 11793,
+            'id' => '105488', // This is a string in the original data
+            'nested' => [
+                'value' => 0,
+                'maxValue' => 2,
+                'minValue' => 1
+            ]
+        ];
+
+        $decoded = cbor_decode(cbor_encode($input));
+
+        // Integers should remain integers
+        $this->assertIsInt($decoded['count'], 'count should be int');
+        $this->assertSame(50, $decoded['count']);
+
+        $this->assertIsInt($decoded['total'], 'total should be int');
+        $this->assertSame(11793, $decoded['total']);
+
+        // String IDs should remain strings
+        $this->assertIsString($decoded['id'], 'id should remain string');
+        $this->assertSame('105488', $decoded['id']);
+
+        // Nested integers
+        $this->assertIsInt($decoded['nested']['value']);
+        $this->assertSame(0, $decoded['nested']['value']);
+
+        $this->assertIsInt($decoded['nested']['maxValue']);
+        $this->assertSame(2, $decoded['nested']['maxValue']);
+    }
+
+    /**
+     * Test that ID fields with numeric values are correctly typed
+     * based on their original PHP type (string vs int)
+     */
+    public function testIdFieldTypeConsistency(): void
+    {
+        $data = [
+            'numeric_id' => 123,      // Should be int
+            'string_id' => '123',     // Should be string
+            'mixed_id' => 'ABC123'    // Should be string
+        ];
+
+        $decoded = cbor_decode(cbor_encode($data));
+
+        $this->assertIsInt($decoded['numeric_id']);
+        $this->assertSame(123, $decoded['numeric_id']);
+
+        $this->assertIsString($decoded['string_id']);
+        $this->assertSame('123', $decoded['string_id']);
+
+        $this->assertIsString($decoded['mixed_id']);
+        $this->assertSame('ABC123', $decoded['mixed_id']);
     }
 }
