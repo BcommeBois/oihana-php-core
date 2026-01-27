@@ -21,7 +21,7 @@ use RuntimeException;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.8
  */
-function cbor_decode( mixed $data ) :mixed
+function cbor_decode( string $data ) :mixed
 {
     try
     {

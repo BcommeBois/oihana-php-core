@@ -159,11 +159,11 @@ function toAssociativeArray
                       :  get_object_vars( $document ) ;
         }
 
-        return array_map( function ( $value ) use ( $strict ) {
-            return is_array( $value ) || is_object( $value )
-                ? toAssociativeArray( $value , strict : $strict )
-                : $value;
-        } , $document );
+        return array_map
+        (
+            fn ( $value ) => is_array( $value ) || is_object( $value ) ? toAssociativeArray( $value , strict : $strict ) : $value
+            , $document
+        ) ;
     }
 
     $encoder = resolveCallable( $encoder ) ;

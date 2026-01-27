@@ -2,10 +2,15 @@
 
 namespace tests\oihana\core\cbor;
 
+use Beau\CborPHP\CborDecoder;
+use Beau\CborPHP\CborEncoder;
+use Beau\CborPHP\exceptions\CborException;
 use CBOR\MapObject;
+use JsonSerializable;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
+use function oihana\core\arrays\toArray;
 use function oihana\core\cbor\cbor_encode;
 use function oihana\core\cbor\cbor_decode;
 use function oihana\core\cbor\cborToPhp;
@@ -25,6 +30,12 @@ class CborFunctionsTest extends TestCase
         $this->assertSame(42, cbor_decode(cbor_encode(42)));
         $this->assertTrue(cbor_decode(cbor_encode(true)));
         $this->assertNull(cbor_decode(cbor_encode(null)));
+    }
+
+    public function testRoundTripList(): void
+    {
+        $input = ['id' , 'active' ];
+        $this->assertSame($input, cbor_decode(cbor_encode($input)));
     }
 
     public function testRoundTripArrays(): void
@@ -69,12 +80,29 @@ class CborFunctionsTest extends TestCase
 
     public function testComplexeAssociativeArray(): void
     {
+        $object = new class implements JsonSerializable
+        {
+            public string $name = "Oihana";
+            private string $secret = "Hidden";
+
+            public function jsonSerialize() : mixed
+            {
+                return
+                [
+                    "name"   => $this->name ,
+                    "secret" => $this->secret ,
+                    "array"  => [ "foo" => "bar" ]
+                ];
+            }
+        };
+
         $input =
         [
             "status" => "success",
             "url" => "http://mydomain.tdl/products?skin=full",
             "count" => 50,
             "total" => 11793,
+            "object" => $object ,
             "result" => [
                 [
                     "@type" => "Product",
@@ -247,15 +275,16 @@ class CborFunctionsTest extends TestCase
             ]
         ];
 
-        $data = toAssociativeArray( $input , strict:true ) ;
+        // echo json_encode
+        //(
+        //    toAssociativeArray( $input , strict:true ) ,
+        //    JSON_PRETTY_PRINT
+        // ) . PHP_EOL . PHP_EOL  ;
 
-        $this->assertSame($input, $data);
-
-        $encoded = cbor_encode( $input   ) ;
-        $output  = cbor_decode( $encoded ) ;
-
-        $this->assertSame($input, $output);
-        $this->assertSame(50, $output["count"]);
-        $this->assertSame(0, $output["result"][0]['length'] );
+        $this->assertSame
+        (
+            toAssociativeArray( $input , strict:true ) ,
+            cbor_decode( cbor_encode( $input ) )
+        ) ;
     }
 }
