@@ -210,7 +210,8 @@
         "ext-bcmath" : "*" ,
         "ext-intl": "*" ,
         "ext-posix" : "*",
-        "spomky-labs/cbor-php": "^3.2"
+        "spomky-labs/cbor-php": "^3.2",
+        "welpie21/cbor.php": "^2.0"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit" ,

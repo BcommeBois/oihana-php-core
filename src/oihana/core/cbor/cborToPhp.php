@@ -6,10 +6,17 @@ use CBOR\ByteStringObject;
 use CBOR\CBORObject;
 use CBOR\ListObject;
 use CBOR\MapObject;
+use CBOR\NegativeIntegerObject;
 use CBOR\OtherObject\DoublePrecisionFloatObject;
+use CBOR\OtherObject\FalseObject;
 use CBOR\OtherObject\HalfPrecisionFloatObject;
+use CBOR\OtherObject\NullObject;
+use CBOR\OtherObject\SimpleObject;
 use CBOR\OtherObject\SinglePrecisionFloatObject;
+use CBOR\OtherObject\TrueObject;
+use CBOR\OtherObject\UndefinedObject;
 use CBOR\TextStringObject;
+use CBOR\UnsignedIntegerObject;
 
 /**
  * Converts a CBORObject into a native PHP type with strict type fidelity.
@@ -31,64 +38,79 @@ use CBOR\TextStringObject;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.8
  */
-function cborToPhp( CBORObject $object ): mixed
+function cborToPhp(mixed $value): mixed
 {
-    if ( $object instanceof MapObject )
-    {
-        $data = [];
-        foreach ( $object as $entry )
-        {
-            $key        = cborToPhp( $entry->getKey()   ) ;
-            $value      = cborToPhp( $entry->getValue() ) ;
-            $data[$key] = $value ;
+    // Handle CBOR Map (associative array)
+    if ($value instanceof MapObject) {
+        $result = [];
+        foreach ($value as $key => $val) {
+            // Decode key recursively
+            $phpKey = cborToPhp($key);
+            // Decode value recursively
+            $result[$phpKey] = cborToPhp($val);
         }
-        return $data ;
+        return $result;
     }
 
-    if ( $object instanceof ListObject )
-    {
-        $data = [] ;
-        foreach ( $object as $item )
-        {
-            $data[] = cborToPhp( $item ) ;
+    // Handle CBOR List (indexed array)
+    if ($value instanceof ListObject) {
+        $result = [];
+        foreach ($value as $item) {
+            $result[] = cborToPhp($item);
         }
-        return $data;
+        return $result;
     }
 
-    if ( $object instanceof TextStringObject || $object instanceof ByteStringObject )
-    {
-        return $object->getValue() ;
+    // Handle text strings
+    if ($value instanceof TextStringObject) {
+        return $value->getValue();
     }
 
-    if ($object instanceof SinglePrecisionFloatObject ||
-        $object instanceof DoublePrecisionFloatObject ||
-        $object instanceof HalfPrecisionFloatObject)
-    {
-        return (float) $object->normalize() ;
+    // Handle byte strings
+    if ($value instanceof ByteStringObject) {
+        return $value->getValue();
     }
 
-    $value = $object->normalize();
-
-    if ( !is_string($value ) )
-    {
-        return $value ;
+    // Handle integers
+    if ($value instanceof UnsignedIntegerObject || $value instanceof NegativeIntegerObject) {
+        return $value->getValue();
     }
 
-    if ( is_numeric( $value ) )
-    {
-        if ( preg_match('/^-?\d+$/', $value ) )
-        {
-            if
-            (
-                bccomp( $value , (string) PHP_INT_MAX ) <= 0 &&
-                bccomp( $value , (string) PHP_INT_MIN ) >= 0
-            )
-            {
-                return (int) $value ;
-            }
-            return $value ;
-        }
+    // Handle booleans
+    if ($value instanceof TrueObject) {
+        return true;
+    }
+    if ($value instanceof FalseObject) {
+        return false;
     }
 
-    return $value ;
+    // Handle null/undefined
+    if ($value instanceof NullObject || $value instanceof UndefinedObject) {
+        return null;
+    }
+
+    // Handle floats
+    if ($value instanceof HalfPrecisionFloatObject
+        || $value instanceof SinglePrecisionFloatObject
+        || $value instanceof DoublePrecisionFloatObject) {
+        return $value->getValue();
+    }
+
+    // Handle simple values
+    if ($value instanceof SimpleObject) {
+        return $value->getValue();
+    }
+
+    // Handle tagged objects (dates, etc.)
+    if (method_exists($value, 'getValue')) {
+        return cborToPhp($value->getValue());
+    }
+
+    // Fallback for unknown types - try to cast to string
+    if (is_object($value) && method_exists($value, '__toString')) {
+        return (string)$value;
+    }
+
+    // Return as-is for scalars
+    return $value;
 }

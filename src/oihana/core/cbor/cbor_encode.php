@@ -2,6 +2,8 @@
 
 namespace oihana\core\cbor ;
 
+use Beau\CborPHP\CborEncoder;
+use Beau\CborPHP\exceptions\CborException;
 use CBOR\Encoder;
 use function oihana\core\objects\toAssociativeArray;
 
@@ -12,6 +14,8 @@ use function oihana\core\objects\toAssociativeArray;
  * @param mixed $data The data to encode (scalar, array, or object).
  *
  * @return string The binary CBOR string.
+ *
+ * @throws CborException
  *
  * @see toAssociativeArray() for details.
  *
@@ -30,12 +34,14 @@ function cbor_encode
         $data = toAssociativeArray( $data , strict:true ) ;
     }
 
-    static $cborEncoder = null;
+    // static $cborEncoder = null;
+    //
+    // if ( $cborEncoder === null )
+    // {
+    //     $cborEncoder = new Encoder() ;
+    // }
+    //
+    // return $cborEncoder->encode( $data ) ;
 
-    if ( $cborEncoder === null )
-    {
-        $cborEncoder = new Encoder() ;
-    }
-
-    return $cborEncoder->encode( $data ) ;
+    return CborEncoder::encode( $data ) ;
 }
