@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `ensureKeyValue` function : Ensures that one or more keys or properties exist in an array or object.
 - **Arrays**
   - Add the `append()` and `prepend()` functions 
+  - Add the `isCallableWithParams()` function 
   - Add the `omit()` and `pick()` functions
   - Add the `reduce()` function : Reduces an array by removing values based on conditions or using compress/clean.
   - Add the `reorder()` function : Reorders an associative array by placing specified keys first, optionally sorting the rest.

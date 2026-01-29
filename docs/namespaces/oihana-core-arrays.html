@@ -242,6 +242,13 @@
 <dd>Determines if an array is associative.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a class="" href="namespaces/oihana-core-arrays.html#function_isCallableWithParams">isCallableWithParams()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Check if an array represents a callable with parameters in simplified syntax.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a class="" href="namespaces/oihana-core-arrays.html#function_isIndexed">isIndexed()</a>
     <span>
                                 &nbsp;: bool    </span>
@@ -2103,6 +2110,146 @@ echo json_encode( isAssociative( $array ) ) ;
         <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>Indicates if the array is associative.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_isCallableWithParams">
+        isCallableWithParams()
+        <a href="namespaces/oihana-core-arrays.html#function_isCallableWithParams" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/oihana/core/arrays/isCallableWithParams.php"><a href="files/src-oihana-core-arrays-iscallablewithparams.html"><abbr title="src/oihana/core/arrays/isCallableWithParams.php">isCallableWithParams.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">69</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Check if an array represents a callable with parameters in simplified syntax.</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">isCallableWithParams</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$validNames</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"><p>Distinguishes between:</p>
+<ul>
+<li>['substring', 0, 3]        → callable with params (true)</li>
+<li>['trim', 'lower']          → chain of callables (false)</li>
+<li>[['trim', 1], 'lower']     → chain of callables (false)</li>
+<li>['lower']                  → single callable without params (false)</li>
+</ul>
+<p>This is useful for supporting simplified syntax in configurations:</p>
+<ul>
+<li>Simplified: ['functionName', param1, param2]</li>
+<li>Explicit:   [['functionName', param1, param2]]</li>
+</ul>
+<h3>Detection Rules:</h3>
+<ol>
+<li>Must have at least 2 elements (callable name + at least one param)</li>
+<li>First element must be a string (callable name)</li>
+<li>Optionally validate against a list of known callable names</li>
+<li>If second element is also a known callable name → it's a chain (false)</li>
+<li>If second element is an array → it's a chain (false)</li>
+<li>Otherwise → it's a callable with params (true)</li>
+</ol>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$array</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Array to check</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$validNames</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional list of valid callable names to validate against.
+If provided, both the first element and second element
+(if string) will be checked against this list.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="namespaces/oihana-core-arrays.html#function_isCallableWithParams#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><pre class="prettyprint"><code class="language-php">use function oihana\core\arrays\isCallableWithParams;
+
+// Without validation
+isCallableWithParams(['substring', 0, 3]);
+// Returns: true
+
+// With validation
+$validFunctions = ['trim', 'lower', 'upper', 'substring'];
+
+isCallableWithParams(['substring', 0, 3], $validFunctions);
+// Returns: true (substring is valid, params provided)
+
+isCallableWithParams(['trim', 'lower'], $validFunctions);
+// Returns: false (both are valid function names → chain)
+
+isCallableWithParams(['unknown', 0, 3], $validFunctions);
+// Returns: false (unknown is not in valid list)
+
+isCallableWithParams(['lower'], $validFunctions);
+// Returns: false (no params provided)
+
+// Real-world usage
+$config = ['cache', 'redis', 3600];
+if (isCallableWithParams($config, ['cache', 'log', 'queue']))
+{
+    [$method, ...$params] = $config;
+    $this-&gt;$method(...$params);
+}
+</code></pre>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Marc Alcaraz (eKameleon)</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">version</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.8</span>
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True if it's a single callable with parameters</p>
 </section>
 
             </section>
@@ -4109,6 +4256,7 @@ print_r($resultNumeric); // [1, 2, 3]
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_hasStringKeys">hasStringKeys()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_inBetween">inBetween()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_isAssociative">isAssociative()</a></li>
+                                                    <li class=""><a href="namespaces/oihana-core-arrays.html#function_isCallableWithParams">isCallableWithParams()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_isIndexed">isIndexed()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_merge">merge()</a></li>
                                                     <li class=""><a href="namespaces/oihana-core-arrays.html#function_omit">omit()</a></li>

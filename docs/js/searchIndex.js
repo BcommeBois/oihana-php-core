@@ -186,6 +186,11 @@ Search.appendIndex(
             "summary": "Determines\u0020if\u0020an\u0020array\u0020is\u0020associative.",
             "url": "namespaces/oihana-core-arrays.html#function_isAssociative"
         },                {
+            "fqsen": "\\oihana\\core\\arrays\\isCallableWithParams\u0028\u0029",
+            "name": "isCallableWithParams",
+            "summary": "Check\u0020if\u0020an\u0020array\u0020represents\u0020a\u0020callable\u0020with\u0020parameters\u0020in\u0020simplified\u0020syntax.",
+            "url": "namespaces/oihana-core-arrays.html#function_isCallableWithParams"
+        },                {
             "fqsen": "\\oihana\\core\\arrays\\isIndexed\u0028\u0029",
             "name": "isIndexed",
             "summary": "Determines\u0020if\u0020an\u0020array\u0020is\u0020indexed\u0020\u0028i.e.,\u0020has\u0020sequential\u0020integer\u0020keys\u0020starting\u0020at\u00200\u0029.",

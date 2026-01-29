@@ -58,6 +58,7 @@
             "src/oihana/core/arrays/hasStringKeys.php",
             "src/oihana/core/arrays/inBetween.php",
             "src/oihana/core/arrays/isAssociative.php",
+            "src/oihana/core/arrays/isCallableWithParams.php",
             "src/oihana/core/arrays/isIndexed.php",
             "src/oihana/core/arrays/merge.php",
             "src/oihana/core/arrays/omit.php",
