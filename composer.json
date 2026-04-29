@@ -184,6 +184,7 @@
             "src/oihana/core/strings/padBoth.php",
             "src/oihana/core/strings/padEnd.php",
             "src/oihana/core/strings/padStart.php",
+            "src/oihana/core/strings/parseSteps.php",
             "src/oihana/core/strings/predicate.php",
             "src/oihana/core/strings/predicates.php",
             "src/oihana/core/strings/prepend.php",

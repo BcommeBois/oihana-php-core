@@ -42,7 +42,7 @@ The library provides a suite of pure, side-effect-free utility functions organiz
 | `oihana\core\options`     | Provides Enums for configuring function behaviors (e.g., `CompressOption`).                                                                           |
 | `oihana\core\reflections` | Provides reflection utilities to inspect functions and their properties.                                                                              |
 | `oihana\core\strings`     | A comprehensive set of tools for string formatting, case conversion, validation, and generation.                                                      |
-| `oihana\core` (Utils)     | General-purpose utilities, such as `normalize()`, `ifNull()`,  `isLiteral()` and `toNumber()`.                                                         |
+| `oihana\core` (Utils)     | General-purpose utilities, such as `normalize()`, `ifNull()`,  `isLiteral()` and `toNumber()`.                                                        |
 
 ## Documentation
 

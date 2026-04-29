@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `cbor_encode()`, `cbor_decode()` functions
 - **Strings**
   - Add the `chunk()` function : Splits a string into groups of length, separated by a separator.
+  - Add the `parseSteps()` function :  * Parses a step-range expression into a sorted, deduplicated list of integer steps in `[1, $maxStep]`.
   - Add the `replace()` function : Replaces all occurrences of a substring within a string, with optional Unicode (grapheme-safe) and normalization support.
   - Add the `sanitize()` function : Sanitize a string based on configurable flags.
   - Add the `split()` function : Splits a string into an array using a regular expression separator.
