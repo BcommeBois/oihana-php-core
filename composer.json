@@ -108,6 +108,10 @@
 
             "src/oihana/core/encoding/base64UrlDecode.php",
             "src/oihana/core/encoding/base64UrlEncode.php",
+            "src/oihana/core/encoding/hexDecode.php",
+            "src/oihana/core/encoding/hexEncode.php",
+            "src/oihana/core/encoding/randomBase64Url.php",
+            "src/oihana/core/encoding/randomHex.php",
 
             "src/oihana/core/env/cpuCount.php",
             "src/oihana/core/env/isCli.php",
