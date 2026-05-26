@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `countCallableParam` function : Returns the number of parameters of a given callable.
 - **CBOR**
   - Add the `cbor_encode()`, `cbor_decode()` functions
+- **Encoding**
+  - Add the `base64UrlEncode()` and `base64UrlDecode()` functions : URL-safe base64 encoding/decoding (RFC 4648 §5) with strict alphabet validation and tolerant padding on decode.
 - **Strings**
   - Add the `chunk()` function : Splits a string into groups of length, separated by a separator.
   - Add the `parseSteps()` function :  * Parses a step-range expression into a sorted, deduplicated list of integer steps in `[1, $maxStep]`.
