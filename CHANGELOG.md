@@ -31,6 +31,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `replace()` function : Replaces all occurrences of a substring within a string, with optional Unicode (grapheme-safe) and normalization support.
   - Add the `sanitize()` function : Sanitize a string based on configurable flags.
   - Add the `split()` function : Splits a string into an array using a regular expression separator.
+  - Add the `stripDoubleQuotes()` function : Strips a single layer of surrounding `"…"` double quotes (RFC 7230 `quoted-string` compatible, without decoding quoted-pair escapes).
+  - Add the `unquote()` function : Strips a single layer of surrounding matching quote characters (`'`, `"`, `` ` ``, `«…»`, `“…”`, `‘…’`).
+  - Add the `isQuoted()` function : Predicate that returns `true` if a string is wrapped in a matching pair of quote characters.
+  - Add the `getQuoteChar()` function : Returns the opening quote character used to wrap a string, or `null`.
+  - Add the `splitOutsideQuotes()` function : Splits a string by a separator, ignoring separators inside quoted regions; supports backslash escape and multi-byte separators.
+  - Add the `parseParameters()` function : Generic `key=value; …` parser built on top of `splitOutsideQuotes()` and `unquote()`; configurable item/key-value separators and optional lowercase keys.
 - **Options**
   - Add the ArrayOption helper
 
