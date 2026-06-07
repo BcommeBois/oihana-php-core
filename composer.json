@@ -152,6 +152,7 @@
             "src/oihana/core/numbers/isOdd.php",
             "src/oihana/core/numbers/lerp.php",
             "src/oihana/core/numbers/mapRange.php",
+            "src/oihana/core/numbers/percentage.php",
             "src/oihana/core/numbers/sign.php",
 
             "src/oihana/core/objects/compress.php",

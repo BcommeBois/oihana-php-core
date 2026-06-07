@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `sign()` function : returns `-1`, `0` or `1`.
   - Add the `isEven()` function : integer even-parity test.
   - Add the `isOdd()` function : integer odd-parity test.
+  - Add the `percentage()` function : computes a part/total percentage, guarding against division by zero (returns `0.0`).
 
 ## [1.0.8] - 2026-06-07
 
