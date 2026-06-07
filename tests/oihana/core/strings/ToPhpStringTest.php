@@ -317,4 +317,23 @@ PHP;
         $this->assertSame( '[1, 2, \'hello\']' , toPhpString($test, [ 'useBrackets' => true ]));
     }
 
+    public function testEmptyObjectRendersNullComment()
+    {
+        $result = toPhpString( new class {} ) ;
+        $this->assertStringContainsString( '/* object(' , $result ) ;
+        $this->assertStringContainsString( ') */ null' , $result ) ;
+    }
+
+    public function testNestedObjectMaxDepthReached()
+    {
+        $nested = (object) [ 'a' => (object) [ 'b' => 1 ] ] ;
+        $result = toPhpString( $nested , [ 'maxDepth' => 1 ] ) ;
+        $this->assertStringContainsString( '<max-depth-reached>' , $result ) ;
+    }
+
+    public function testEmptyArrayNonInline()
+    {
+        $this->assertSame( 'array()' , toPhpString( [] , [ 'inline' => false ] ) ) ;
+    }
+
 }

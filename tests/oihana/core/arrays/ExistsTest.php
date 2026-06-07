@@ -177,4 +177,10 @@ class ExistsTest extends TestCase
         $this->assertFalse(exists($data, 'foo|bar|qux', '|'));
     }
 
+    public function testTraversingIntoScalarReturnsFalse()
+    {
+        // A path that descends into a scalar (neither array nor ArrayAccess) is false.
+        $this->assertFalse(exists(['a' => 1], 'a.b'));
+    }
+
 }

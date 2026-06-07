@@ -105,4 +105,9 @@ final class NormalizeTest extends TestCase
         $data->prop = 'value'; ;
         $this->assertNotNull(normalize($data, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL));
     }
+
+    public function testBareNullReturnsNull(): void
+    {
+        $this->assertNull(normalize(null));
+    }
 }

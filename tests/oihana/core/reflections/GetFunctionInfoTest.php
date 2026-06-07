@@ -86,4 +86,14 @@ class GetFunctionInfoTest extends TestCase
     {
         $this->assertNull( getFunctionInfo( 'NonExistentClassXyz::method' ) ) ;
     }
+
+    public function testReturnsNullForInvokableObject() : void
+    {
+        // An invokable object is callable but not handled (string/array/Closure) -> null.
+        $invokable = new class
+        {
+            public function __invoke() : void {}
+        } ;
+        $this->assertNull( getFunctionInfo( $invokable ) ) ;
+    }
 }

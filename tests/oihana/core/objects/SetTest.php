@@ -4,6 +4,7 @@ namespace tests\oihana\core\objects;
 
 use function oihana\core\objects\set;
 
+use InvalidArgumentException;
 use stdClass;
 
 use PHPUnit\Framework\TestCase;
@@ -101,5 +102,21 @@ class SetTest extends TestCase
         $this->assertInstanceOf(Address::class, $obj->users->{'123'}->address);
         $this->assertInstanceOf(GeoCoordinates::class, $obj->users->{'123'}->address->geo);
         $this->assertSame(35, $obj->users->{'123'}->address->geo->elevation);
+    }
+
+    public function testArrayFactoryFallsBackToStdClassForUnmappedPath(): void
+    {
+        $obj = new stdClass();
+        // The classFactory map does not contain the 'a' path -> intermediate stdClass.
+        set($obj, 'a.b', 'value', '.', false, ['other' => stdClass::class]);
+
+        $this->assertInstanceOf(stdClass::class, $obj->a);
+        $this->assertSame('value', $obj->a->b);
+    }
+
+    public function testStringFactoryThrowsWhenClassMissing(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        set(new stdClass(), 'x.y', 'value', '.', false, 'NoSuchClassXyz');
     }
 }
