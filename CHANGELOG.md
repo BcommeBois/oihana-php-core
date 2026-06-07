@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - **Arrays**
   - Add the `groupBy()` function : groups items into buckets keyed by a computed value (original keys preserved).
   - Add the `keyBy()` function : indexes items by a computed key (last one wins on collision).
+  - Add the `partition()` function : splits items into a `[ passed , failed ]` pair according to a predicate (keys preserved).
 - **Numbers**
   - Add the `clamp()` function : a clarified alias of `clip()` bounding a value between a min and a max (both names kept).
   - Add the `lerp()` function : linear interpolation between two values (unbounded factor, extrapolation allowed).

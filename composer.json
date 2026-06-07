@@ -64,6 +64,7 @@
             "src/oihana/core/arrays/keyBy.php",
             "src/oihana/core/arrays/merge.php",
             "src/oihana/core/arrays/omit.php",
+            "src/oihana/core/arrays/partition.php",
             "src/oihana/core/arrays/pick.php",
             "src/oihana/core/arrays/prepare.php",
             "src/oihana/core/arrays/prepend.php",
