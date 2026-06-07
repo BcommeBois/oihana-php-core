@@ -169,6 +169,7 @@
 
             "src/oihana/core/objects/compress.php",
             "src/oihana/core/objects/ensureObjectPath.php",
+            "src/oihana/core/objects/filter.php",
             "src/oihana/core/objects/hasAnyProperty.php",
             "src/oihana/core/objects/hasAllProperties.php",
             "src/oihana/core/objects/keys.php",

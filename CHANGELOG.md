@@ -35,6 +35,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `keys()` function : returns the list of an object's public property names.
   - Add the `values()` function : returns the list of an object's public property values.
   - Add the `map()` function : returns a new `stdClass` with each public property value transformed by `fn($value, $key)`.
+  - Add the `filter()` function : returns a new `stdClass` keeping the public properties for which `fn($value, $key)` is truthy.
 - **Strings**
   - Add the `slugify()` function : converts a string into a URL-friendly slug (latinize + lower-case + non-alphanumeric → separator).
   - Add the `truncate()` function : grapheme-safe truncation to a maximum length, appending an ellipsis (not counted in the length).
