@@ -43,6 +43,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `capitalize()` function : uppercases the first character and lowercases the rest (multibyte-safe).
   - Add the `ucFirst()` function : multibyte-safe uppercasing of the first character (rest untouched).
   - Add the `ucWords()` function : multibyte-safe uppercasing of the first letter of each word.
+  - Add the `pascal()` function : converts a string to PascalCase (builds on `camel()` + `ucFirst()`).
 
 ## [1.0.8] - 2026-06-07
 

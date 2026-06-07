@@ -224,6 +224,7 @@
             "src/oihana/core/strings/padStart.php",
             "src/oihana/core/strings/parseParameters.php",
             "src/oihana/core/strings/parseSteps.php",
+            "src/oihana/core/strings/pascal.php",
             "src/oihana/core/strings/predicate.php",
             "src/oihana/core/strings/predicates.php",
             "src/oihana/core/strings/prepend.php",
