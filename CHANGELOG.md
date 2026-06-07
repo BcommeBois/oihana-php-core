@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+- **Numbers**
+  - Add the `clamp()` function : a clarified alias of `clip()` bounding a value between a min and a max (both names kept).
+
 ## [1.0.8] - 2026-06-07
 
 ### Added
