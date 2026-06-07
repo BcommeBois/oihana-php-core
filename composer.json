@@ -171,6 +171,7 @@
             "src/oihana/core/objects/ensureObjectPath.php",
             "src/oihana/core/objects/hasAnyProperty.php",
             "src/oihana/core/objects/hasAllProperties.php",
+            "src/oihana/core/objects/omit.php",
             "src/oihana/core/objects/pick.php",
             "src/oihana/core/objects/set.php",
             "src/oihana/core/objects/setObjectValue.php",

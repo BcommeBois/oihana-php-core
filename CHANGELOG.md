@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `percentage()` function : computes a part/total percentage, guarding against division by zero (returns `0.0`).
 - **Objects**
   - Add the `pick()` function : returns a new `stdClass` keeping only the given public properties (source object untouched).
+  - Add the `omit()` function : returns a new `stdClass` without the given public properties (inverse of `pick()`).
 - **Strings**
   - Add the `slugify()` function : converts a string into a URL-friendly slug (latinize + lower-case + non-alphanumeric → separator).
   - Add the `truncate()` function : grapheme-safe truncation to a maximum length, appending an ellipsis (not counted in the length).
