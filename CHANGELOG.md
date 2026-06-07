@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `reorder()` function : Reorders an associative array by placing specified keys first, optionally sorting the rest.
   - Add the `merge()` function with the `MergeOption` and `NullsOption` helpers.
   - Add the `prepare()` function.
+- **Bits**
+  - Add the `BitFlagTrait` trait : shared `has()`, `isValid()`, `getFlags()` and `describe()` methods (plus the common `NONE = 0` constant) for bitmask flag enumerations such as `CleanFlag` and `SanitizeFlag`.
 - **Callables**
   - Add the `countCallableParam` function : Returns the number of parameters of a given callable.
 - **CBOR**
@@ -30,6 +32,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `parseSteps()` function :  * Parses a step-range expression into a sorted, deduplicated list of integer steps in `[1, $maxStep]`.
   - Add the `replace()` function : Replaces all occurrences of a substring within a string, with optional Unicode (grapheme-safe) and normalization support.
   - Add the `sanitize()` function : Sanitize a string based on configurable flags.
+  - Add the `SanitizeFlag` enumeration : the bitmask flags consumed by `sanitize()` (uses `BitFlagTrait`).
   - Add the `split()` function : Splits a string into an array using a regular expression separator.
   - Add the `stripDoubleQuotes()` function : Strips a single layer of surrounding `"…"` double quotes (RFC 7230 `quoted-string` compatible, without decoding quoted-pair escapes).
   - Add the `unquote()` function : Strips a single layer of surrounding matching quote characters (`'`, `"`, `` ` ``, `«…»`, `“…”`, `‘…’`).
@@ -39,15 +42,25 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `parseParameters()` function : Generic `key=value; …` parser built on top of `splitOutsideQuotes()` and `unquote()`; configurable item/key-value separators and optional lowercase keys.
 - **Options**
   - Add the ArrayOption helper
+- **Interfaces**
+  - Add the `ToAssociativeArray` interface : contract for objects exposing a `toArray( array $options = [] )` method.
 
 ### Changed
 - **Arrays**
   - Fix the removeKeys function to clone by default the passed-in array definition.
   - The `compress()` function accept the conditions with callable function with one or two arguments : `fn( $v , $k )` or `fn( $v )`.
+  - Reimplement `isIndexed()` and `isAssociative()` on top of the native `array_is_list()`.
+- **Strings**
+  - The `key()` function now accepts an array of segments (`null|string|array`), e.g. `key(['a','b'], 'doc')` returns `'doc.a.b'`.
 - **Objects**
   - Adds the optional 'encoder' argument in the `toAssociativeArray( array|object $data , string|array|object|null $encoder = null )` function.
+  - Adds the optional `strict` argument in `toAssociativeArray( … , bool $strict = false )`.
   - The `compress()` function accept the conditions with callable function with one or two arguments : `fn( $v , $k )` or `fn( $v )`.
-  
+
+### Fixed
+- **Reflections**
+  - Register `getFunctionInfo()` in the Composer autoload `files` list so the function is actually loadable (it was defined but never autoloaded, hence unusable).
+
 ## [1.0.7] - 2025-12-12
 
 ### Added
