@@ -172,6 +172,7 @@
             "src/oihana/core/objects/hasAnyProperty.php",
             "src/oihana/core/objects/hasAllProperties.php",
             "src/oihana/core/objects/keys.php",
+            "src/oihana/core/objects/map.php",
             "src/oihana/core/objects/omit.php",
             "src/oihana/core/objects/pick.php",
             "src/oihana/core/objects/set.php",
