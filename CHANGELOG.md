@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `find()` function : returns the first item matching a predicate, or a default value.
   - Add the `firstWhere()` function : readability alias of `find()`.
   - Add the `sortBy()` function : returns a stable copy sorted by a computed value, ascending or descending (keys preserved).
+- **Maths**
+  - Add the `mean()` function : arithmetic mean (average) of a list of numbers (throws on an empty array).
 - **Numbers**
   - Add the `clamp()` function : a clarified alias of `clip()` bounding a value between a min and a max (both names kept).
   - Add the `lerp()` function : linear interpolation between two values (unbounded factor, extrapolation allowed).
