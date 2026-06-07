@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\accessors;
+namespace tests\oihana\core\accessors;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
+use function oihana\core\accessors\deleteKeyValue;
 
 final class DeleteKeyValueTest extends TestCase
 {
