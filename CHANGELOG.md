@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `isEven()` function : integer even-parity test.
   - Add the `isOdd()` function : integer odd-parity test.
   - Add the `percentage()` function : computes a part/total percentage, guarding against division by zero (returns `0.0`).
+- **Strings**
+  - Add the `slugify()` function : converts a string into a URL-friendly slug (latinize + lower-case + non-alphanumeric → separator).
 
 ## [1.0.8] - 2026-06-07
 
