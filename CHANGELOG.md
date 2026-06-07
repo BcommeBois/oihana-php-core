@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.9] - 2026-06-07
+
 ### Added
 - **Arrays**
   - Add the `groupBy()` function : groups items into buckets keyed by a computed value (original keys preserved).
