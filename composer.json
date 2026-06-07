@@ -155,7 +155,9 @@
             "src/oihana/core/objects/set.php",
             "src/oihana/core/objects/setObjectValue.php",
             "src/oihana/core/objects/toAssociativeArray.php",
-            
+
+            "src/oihana/core/reflections/getFunctionInfo.php",
+
             "src/oihana/core/strings/append.php",
             "src/oihana/core/strings/between.php",
             "src/oihana/core/strings/betweenBraces.php",
@@ -227,7 +229,15 @@
     },
     "scripts": {
         "test": "./vendor/bin/phpunit" ,
+        "coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text --coverage-clover build/coverage/clover.xml --coverage-html build/coverage/html" ,
+        "coverage:md": [ "@coverage" , "php tools/clover-to-markdown.php build/coverage/clover.xml build/coverage/COVERAGE.md" ] ,
         "doc": "rm -rf docs && mkdir docs && cp -r .phpdoc/template/assets docs/assets && ./vendor/bin/phpdoc -c phpdoc.xml -v"
+    },
+    "scripts-descriptions": {
+        "test": "Run the PHPUnit test suite." ,
+        "coverage": "Run the suite with code coverage (text + Clover + HTML under build/coverage/). Requires Xdebug or PCOV." ,
+        "coverage:md": "Regenerate build/coverage/COVERAGE.md, a readable Markdown coverage summary (gitignored, never committed)." ,
+        "doc": "Generate the phpDocumentor API documentation under docs/."
     },
     "require-dev": {
         "phpunit/phpunit": "^12",
