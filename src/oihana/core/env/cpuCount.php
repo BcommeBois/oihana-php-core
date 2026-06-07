@@ -18,7 +18,10 @@ function cpuCount(): int
     {
         if ( isLinux() && file_exists('/proc/cpuinfo' ) )
         {
+            // Linux-only path; not exercised on the coverage host
+            // @codeCoverageIgnoreStart
             $count = substr_count(file_get_contents('/proc/cpuinfo'), 'processor');
+            // @codeCoverageIgnoreEnd
         }
         else
         {

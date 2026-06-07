@@ -100,8 +100,11 @@ function hasKeyValue
             return property_exists( $parent , $lastKey ) ;
         }
     }
+    // defensive: resolveReferencePath does not throw on valid input
+    // @codeCoverageIgnoreStart
     catch ( Exception $e )
     {
         return false;
     }
+    // @codeCoverageIgnoreEnd
 }

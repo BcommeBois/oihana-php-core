@@ -60,6 +60,8 @@ function cbor_decode( string $data , ?Closure $replacer = null ) :mixed
             previous : $e
         );
     }
+    // defensive: the decoder raises CborException, not bare Throwable
+    // @codeCoverageIgnoreStart
     catch ( Throwable $e )
     {
         throw new RuntimeException
@@ -69,4 +71,5 @@ function cbor_decode( string $data , ?Closure $replacer = null ) :mixed
             previous : $e
         );
     }
+    // @codeCoverageIgnoreEnd
 }

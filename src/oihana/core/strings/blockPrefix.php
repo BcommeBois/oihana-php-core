@@ -51,7 +51,10 @@ function blockPrefix( array|string $lines , string $prefix , string|int $indent 
     return implode( $separator , array_map
     (
         fn(string $line): string => $prefix === '' && $indent === '' && $line === '' && !$keepEmptyLines
+            // dead: empty lines are already filtered when !keepEmptyLines
+            // @codeCoverageIgnoreStart
             ? ''
+            // @codeCoverageIgnoreEnd
             : $indent . $prefix . $line,
         $lines
     ));

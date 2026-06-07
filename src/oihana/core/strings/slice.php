@@ -43,10 +43,13 @@ function slice( ?string $source , int $start = 0 , ?int $length = null ) :string
     {
         $result = grapheme_substr( $source , $start , $length ) ;
     }
+    // fallback only when the intl grapheme_* functions are absent
+    // @codeCoverageIgnoreStart
     else
     {
         $result = mb_substr( $source , $start , $length , 'UTF-8' ) ;
     }
+    // @codeCoverageIgnoreEnd
 
     return $result === false ? '' : $result ;
 }

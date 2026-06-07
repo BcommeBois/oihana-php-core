@@ -189,10 +189,13 @@ function convert( mixed $value , array $options , int $level , array &$cache ) :
     if ( is_resource( $value ) )
     {
         $type = get_resource_type( $value ) ;
+        // unreachable in PHP 8: is_resource() is false for closed resources
+        // @codeCoverageIgnoreStart
         if ( $type === 'Unknown' )
         {
             return "'<closed resource>'" ;
         }
+        // @codeCoverageIgnoreEnd
         return "'<resource of type " . $type . ">'";
     }
 

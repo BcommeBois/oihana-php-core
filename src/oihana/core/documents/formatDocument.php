@@ -114,10 +114,13 @@ function formatDocument
             }
             $processed[ $id ] = $result;
         }
+        // defensive: $doc is always an array or object here
+        // @codeCoverageIgnoreStart
         else
         {
             $result = $doc ; // Fallback (should never happen)
         }
+        // @codeCoverageIgnoreEnd
 
         $applyFormat = fn( $val ) => $formatter !== null
                                    ? $formatter ( $val , $root , $prefix , $suffix , $separator , $pattern , $preserveMissing )

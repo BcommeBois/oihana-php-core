@@ -99,10 +99,13 @@ function formatDocumentWith
 
             $processed[ spl_object_id( $doc ) ] = $result;
         }
+        // defensive: $doc is typed array|object, never a scalar here
+        // @codeCoverageIgnoreStart
         else
         {
             return $doc; // scalar or null
         }
+        // @codeCoverageIgnoreEnd
 
         $applyFormat = fn( $val ) => $formatter !== null
             ? $formatter( $val , $source , $prefix , $suffix , $separator , $pattern , $preserveMissing )

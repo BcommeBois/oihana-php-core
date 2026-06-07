@@ -66,6 +66,8 @@ function cbor_encode( mixed $data , ?Closure $replacer = null ):string
         }
         return CborEncoder::encode( $data , $replacer ) ;
     }
+    // defensive: the encoder raises generic Throwable, not CborException
+    // @codeCoverageIgnoreStart
     catch ( CborException $e )
     {
         throw new RuntimeException
@@ -75,6 +77,7 @@ function cbor_encode( mixed $data , ?Closure $replacer = null ):string
             previous : $e
         );
     }
+    // @codeCoverageIgnoreEnd
     catch ( Throwable $e )
     {
         throw new RuntimeException

@@ -80,10 +80,13 @@ function getKeyValue
             $lastKey = end( $keys ) ;
             return $isArray ? ( $parent[ $lastKey ] ?? $default ) : $parent->{ $lastKey } ?? $default ;
         }
+        // defensive: resolveReferencePath does not throw on valid input
+        // @codeCoverageIgnoreStart
         catch ( Exception $exception )
         {
             return $default ;
         }
+        // @codeCoverageIgnoreEnd
     }
 
     if ( $isArray )

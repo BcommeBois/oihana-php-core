@@ -88,10 +88,13 @@ function object( null|string|array $keyValues = [] , bool $useSpace = false ): s
             } , $keyValues , array_keys( $keyValues ) )
         ),
 
+        // defensive: $keyValues is typed null|string|array
+        // @codeCoverageIgnoreStart
         default => throw new InvalidArgumentException
         (
             'Invalid $keyValues type, must be array, string, or null'
         ),
+        // @codeCoverageIgnoreEnd
     };
 
     return betweenBraces($content === '' ? '' : $space . $content . $space);

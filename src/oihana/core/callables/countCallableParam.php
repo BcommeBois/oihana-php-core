@@ -104,10 +104,13 @@ function countCallableParam
     {
         $reflection = new ReflectionMethod( $resolved[0] ,  $resolved[1] ) ;
     }
+    // defensive: resolveCallable() already rejected unsupported types
+    // @codeCoverageIgnoreStart
     else
     {
         throw new InvalidArgumentException('Unsupported callable type' ) ;
     }
+    // @codeCoverageIgnoreEnd
 
     $count = $reflection->getNumberOfParameters() ;
 

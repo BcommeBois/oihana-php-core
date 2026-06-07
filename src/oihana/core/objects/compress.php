@@ -157,10 +157,13 @@ function compress( object $object , array $options = [] , int $currentDepth = 0 
                         break;
                     }
                 }
+                // defensive: conditions are pre-filtered to callables
+                // @codeCoverageIgnoreStart
                 catch ( InvalidArgumentException | ReflectionException )
                 {
                     continue ;
                 }
+                // @codeCoverageIgnoreEnd
             }
         }
     }

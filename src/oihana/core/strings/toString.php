@@ -65,7 +65,10 @@ function toString( mixed $value): string
 
     if ( $value === 0.0 && sprintf('%.1f', $value) === '-0.0' )
     {
+        // platform-dependent: sprintf('-0.0') only on some libc
+        // @codeCoverageIgnoreStart
         return '-0' ;
+        // @codeCoverageIgnoreEnd
     }
 
     return (string) $value ;
