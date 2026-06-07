@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `clamp()` function : a clarified alias of `clip()` bounding a value between a min and a max (both names kept).
   - Add the `lerp()` function : linear interpolation between two values (unbounded factor, extrapolation allowed).
   - Add the `mapRange()` function : re-maps a value from one range to another (throws `InvalidArgumentException` on a degenerate input range).
+  - Add the `sign()` function : returns `-1`, `0` or `1`.
 
 ## [1.0.8] - 2026-06-07
 
