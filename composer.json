@@ -153,7 +153,8 @@
             "src/oihana/core/maths/median.php" ,
             "src/oihana/core/maths/polarToCartesian.php" ,
             "src/oihana/core/maths/roundValue.php" ,
-            
+            "src/oihana/core/maths/variance.php" ,
+
             "src/oihana/core/numbers/clamp.php",
             "src/oihana/core/numbers/clip.php",
             "src/oihana/core/numbers/isEven.php",
