@@ -50,6 +50,7 @@
             "src/oihana/core/arrays/delete.php",
             "src/oihana/core/arrays/ensureArrayPath.php",
             "src/oihana/core/arrays/exists.php",
+            "src/oihana/core/arrays/find.php",
             "src/oihana/core/arrays/flatten.php",
             "src/oihana/core/arrays/get.php",
             "src/oihana/core/arrays/getFirstKey.php",
