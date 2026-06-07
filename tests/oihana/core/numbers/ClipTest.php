@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\numbers ;
+namespace tests\oihana\core\numbers;
+
+use function oihana\core\numbers\clip;
 
 use PHPUnit\Framework\TestCase;
 

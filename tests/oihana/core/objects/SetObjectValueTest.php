@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\objects;
+namespace tests\oihana\core\objects;
+
+use function oihana\core\objects\setObjectValue;
 
 use PHPUnit\Framework\TestCase;
 

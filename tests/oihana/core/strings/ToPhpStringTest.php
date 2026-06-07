@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\strings ;
+namespace tests\oihana\core\strings;
+
+use function oihana\core\strings\toPhpString;
 
 use PHPUnit\Framework\TestCase;
 use stdClass;
@@ -306,7 +308,7 @@ PHP;
             eval('enum Suit { case Hearts; case Spades; }');
         }
 
-        $this->assertSame('oihana\\core\\strings\\Suit::Hearts', toPhpString(Suit::Hearts));
+        $this->assertSame('tests\\oihana\\core\\strings\\Suit::Hearts', toPhpString(Suit::Hearts));
     }
 
     public function testArrayWithUseBrackets()

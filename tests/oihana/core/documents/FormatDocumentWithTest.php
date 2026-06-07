@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\documents ;
+namespace tests\oihana\core\documents;
+
+use function oihana\core\documents\formatDocumentWith;
 
 use PHPUnit\Framework\TestCase;
 use stdClass;

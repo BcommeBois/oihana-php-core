@@ -1,6 +1,9 @@
 <?php
 
-namespace oihana\core\callables;
+namespace tests\oihana\core\callables;
+
+use oihana\core\callables\CallableType;
+use function oihana\core\callables\getCallableType;
 
 use PHPUnit\Framework\TestCase;
 

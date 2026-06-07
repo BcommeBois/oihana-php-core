@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\accessors;
+namespace tests\oihana\core\accessors;
+
+use function oihana\core\accessors\ensureKeyValue;
+use function oihana\core\accessors\getKeyValue;
+use function oihana\core\accessors\hasKeyValue;
 
 use PHPUnit\Framework\TestCase;
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core ;
+namespace tests\oihana\core;
+
+use function oihana\core\toNumber;
 
 use PHPUnit\Framework\TestCase;
 

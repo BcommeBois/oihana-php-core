@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\arrays;
+namespace tests\oihana\core\arrays;
 
 use PHPUnit\Framework\TestCase;
+use function oihana\core\arrays\ensureArrayPath;
 
 final class EnsureArrayPathTest extends TestCase
 {

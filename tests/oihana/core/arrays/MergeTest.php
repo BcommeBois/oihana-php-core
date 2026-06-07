@@ -1,6 +1,9 @@
 <?php
 
-namespace oihana\core\arrays ;
+namespace tests\oihana\core\arrays;
+
+use oihana\core\arrays\CleanFlag;
+use function oihana\core\arrays\merge;
 
 use oihana\core\options\MergeOption;
 use oihana\core\options\NullsOption;

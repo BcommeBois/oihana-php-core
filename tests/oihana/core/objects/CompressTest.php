@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\objects ;
+namespace tests\oihana\core\objects;
+
+use function oihana\core\objects\compress;
 
 use PHPUnit\Framework\TestCase;
 use stdClass;

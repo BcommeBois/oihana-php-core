@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\reflections ;
+namespace tests\oihana\core\reflections;
+
+use function oihana\core\reflections\getFunctionInfo;
 
 use Closure;
 use DateTime;
@@ -27,12 +29,13 @@ class GetFunctionInfoTest extends TestCase
 
     public function testUserFunction() : void
     {
-        $info = getFunctionInfo( __NAMESPACE__ . '\getFunctionInfo' ) ;
+        $fqn  = 'oihana\core\reflections\getFunctionInfo' ;
+        $info = getFunctionInfo( $fqn ) ;
 
         $this->assertIsArray( $info ) ;
-        $this->assertSame( __NAMESPACE__ . '\getFunctionInfo' , $info['name'] ) ;
+        $this->assertSame( $fqn , $info['name'] ) ;
         $this->assertSame( 'getFunctionInfo' , $info['alias'] ) ;
-        $this->assertSame( __NAMESPACE__ , $info['namespace'] ) ;
+        $this->assertSame( 'oihana\core\reflections' , $info['namespace'] ) ;
         $this->assertTrue( $info['isUser'] ) ;
         $this->assertFalse( $info['isInternal'] ) ;
         $this->assertNotNull( $info['comment'] ) ;

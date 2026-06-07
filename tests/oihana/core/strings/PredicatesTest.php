@@ -1,6 +1,9 @@
 <?php
 
-namespace oihana\core\strings ;
+namespace tests\oihana\core\strings;
+
+use function oihana\core\strings\predicate;
+use function oihana\core\strings\predicates;
 
 use PHPUnit\Framework\TestCase;
 

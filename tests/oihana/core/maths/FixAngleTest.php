@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\maths ;
+namespace tests\oihana\core\maths;
+
+use function oihana\core\maths\fixAngle;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

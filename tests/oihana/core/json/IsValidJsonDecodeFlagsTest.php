@@ -1,5 +1,7 @@
 <?php
-namespace oihana\core\json;
+namespace tests\oihana\core\json;
+
+use function oihana\core\json\isValidJsonDecodeFlags;
 
 use PHPUnit\Framework\TestCase;
 

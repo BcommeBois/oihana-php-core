@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\strings\helpers ;
+namespace tests\oihana\core\strings\helpers;
+
+use oihana\core\strings\helpers\LatinConverter;
 
 use PHPUnit\Framework\TestCase;
 

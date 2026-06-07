@@ -1,6 +1,9 @@
 <?php
 
-namespace oihana\core\arrays ;
+namespace tests\oihana\core\arrays;
+
+use function oihana\core\arrays\getFirstKey;
+use function oihana\core\arrays\getFirstValue;
 
 use PHPUnit\Framework\TestCase;
 

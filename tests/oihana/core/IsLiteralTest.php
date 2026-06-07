@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace oihana\core ;
+namespace tests\oihana\core;
+
+use function oihana\core\isLiteral;
 
 use PHPUnit\Framework\TestCase;
 use stdClass;

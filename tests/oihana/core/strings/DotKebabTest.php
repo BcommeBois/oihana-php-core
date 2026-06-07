@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\strings ;
+namespace tests\oihana\core\strings;
+
+use function oihana\core\strings\dotKebab;
 
 use oihana\core\strings\helpers\SnakeCache;
 use PHPUnit\Framework\Attributes\DataProvider;

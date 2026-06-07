@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\options ;
+namespace tests\oihana\core\options;
+
+use oihana\core\options\NullsOption;
 
 use PHPUnit\Framework\TestCase;
 

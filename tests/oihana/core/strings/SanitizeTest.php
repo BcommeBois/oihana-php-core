@@ -1,6 +1,9 @@
 <?php
 
-namespace oihana\core\strings ;
+namespace tests\oihana\core\strings;
+
+use oihana\core\strings\SanitizeFlag;
+use function oihana\core\strings\sanitize;
 
 use Normalizer;
 use PHPUnit\Framework\TestCase;

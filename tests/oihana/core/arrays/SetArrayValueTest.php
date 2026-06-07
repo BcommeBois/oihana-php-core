@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\arrays;
+namespace tests\oihana\core\arrays;
+
+use function oihana\core\arrays\setArrayValue;
 
 use PHPUnit\Framework\TestCase;
 

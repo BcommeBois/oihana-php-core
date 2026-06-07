@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\date ;
+namespace tests\oihana\core\date;
+
+use function oihana\core\date\isDate;
 
 use PHPUnit\Framework\TestCase;
 

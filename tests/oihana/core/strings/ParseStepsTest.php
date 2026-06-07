@@ -1,6 +1,6 @@
 <?php
 
-namespace oihana\core\strings;
+namespace tests\oihana\core\strings;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;

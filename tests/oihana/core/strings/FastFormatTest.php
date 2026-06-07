@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\strings ;
+namespace tests\oihana\core\strings;
+
+use function oihana\core\strings\fastFormat;
 
 use PHPUnit\Framework\TestCase;
 use stdClass;

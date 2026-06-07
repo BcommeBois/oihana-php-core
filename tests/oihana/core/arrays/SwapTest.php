@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\arrays;
+namespace tests\oihana\core\arrays;
+
+use function oihana\core\arrays\swap;
 
 use PHPUnit\Framework\TestCase;
 

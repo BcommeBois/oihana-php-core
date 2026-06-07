@@ -1,5 +1,7 @@
 <?php
-namespace oihana\core\arrays;
+namespace tests\oihana\core\arrays;
+
+use function oihana\core\arrays\tail;
 
 use PHPUnit\Framework\TestCase;
 

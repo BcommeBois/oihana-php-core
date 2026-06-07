@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\arrays ;
+namespace tests\oihana\core\arrays;
+
+use oihana\core\arrays\CleanFlag;
 
 use PHPUnit\Framework\TestCase;
 use function oihana\core\bits\hasFlag;

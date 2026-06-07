@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\strings ;
+namespace tests\oihana\core\strings;
+
+use function oihana\core\strings\pad;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

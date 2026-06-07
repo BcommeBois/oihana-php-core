@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\objects;
+namespace tests\oihana\core\objects;
 
 use PHPUnit\Framework\TestCase;
 use stdClass;
+use function oihana\core\objects\ensureObjectPath;
 
 final class EnsureObjectPathTest extends TestCase
 {

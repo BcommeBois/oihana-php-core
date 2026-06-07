@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace oihana\core\accessors;
+namespace tests\oihana\core\accessors;
+
+use function oihana\core\accessors\setKeyValue;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

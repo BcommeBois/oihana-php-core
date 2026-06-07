@@ -1,6 +1,8 @@
 <?php
 
-namespace oihana\core\documents ;
+namespace tests\oihana\core\documents;
+
+use function oihana\core\documents\formatDocument;
 
 use tests\oihana\core\documents\mocks\MockFormatDocument;
 use PHPUnit\Framework\TestCase;

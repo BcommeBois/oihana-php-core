@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace oihana\core\strings;
+namespace tests\oihana\core\strings;
+
+use function oihana\core\strings\betweenParentheses;
 
 use PHPUnit\Framework\TestCase;
 

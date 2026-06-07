@@ -1,5 +1,7 @@
 <?php
-namespace oihana\core\arrays;
+namespace tests\oihana\core\arrays;
+
+use function oihana\core\arrays\inBetween;
 
 use PHPUnit\Framework\TestCase;
 
