@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `find()` function : returns the first item matching a predicate, or a default value.
   - Add the `firstWhere()` function : readability alias of `find()`.
   - Add the `sortBy()` function : returns a stable copy sorted by a computed value, ascending or descending (keys preserved).
+- **Date**
+  - Add the `isWeekend()` function : tells whether a date falls on a Saturday or a Sunday.
 - **Maths**
   - Add the `mean()` function : arithmetic mean (average) of a list of numbers (throws on an empty array).
   - Add the `median()` function : median of a list of numbers (sorts, then takes the middle value or averages the two central ones ; throws on an empty array).
