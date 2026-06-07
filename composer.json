@@ -177,6 +177,7 @@
             "src/oihana/core/objects/set.php",
             "src/oihana/core/objects/setObjectValue.php",
             "src/oihana/core/objects/toAssociativeArray.php",
+            "src/oihana/core/objects/values.php",
 
             "src/oihana/core/reflections/getFunctionInfo.php",
 
