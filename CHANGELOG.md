@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `sortBy()` function : returns a stable copy sorted by a computed value, ascending or descending (keys preserved).
 - **Date**
   - Add the `isWeekend()` function : tells whether a date falls on a Saturday or a Sunday.
+  - Add the `isPast()` function : tells whether a date is strictly before now (optional reference `$now`).
 - **Maths**
   - Add the `mean()` function : arithmetic mean (average) of a list of numbers (throws on an empty array).
   - Add the `median()` function : median of a list of numbers (sorts, then takes the middle value or averages the two central ones ; throws on an empty array).
