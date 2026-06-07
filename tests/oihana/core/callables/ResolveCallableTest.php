@@ -166,6 +166,14 @@ final class ResolveCallableTest extends TestCase
     }
 
     /**
+     * A plain object without __invoke is not a callable and resolves to null.
+     */
+    public function testResolveNonInvokableObjectReturnsNull()
+    {
+        $this->assertNull( resolveCallable( new \stdClass() ) );
+    }
+
+    /**
      * Helper: static method for testing
      */
     public static function staticTransform(string $value): string

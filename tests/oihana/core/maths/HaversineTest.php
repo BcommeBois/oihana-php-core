@@ -68,4 +68,10 @@ final class HaversineTest extends TestCase
         $this->expectException( InvalidArgumentException::class ) ;
         haversine(0.0, 0.0, 1.0, 1.0, 6371000, -1);
     }
+
+    public function testNonFiniteDistanceReturnsZero(): void
+    {
+        // An infinite radius yields a non-finite distance, clamped to 0.0.
+        $this->assertSame(0.0, haversine(0.0, 0.0, 10.0, 10.0, INF));
+    }
 }

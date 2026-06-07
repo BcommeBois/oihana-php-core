@@ -18,6 +18,7 @@ use function oihana\core\env\isMac;
 use function oihana\core\env\isOtherOS;
 use function oihana\core\env\isWeb ;
 use function oihana\core\env\isWindows ;
+use function oihana\core\env\phpVersion ;
 
 class EnvTest extends TestCase
 {

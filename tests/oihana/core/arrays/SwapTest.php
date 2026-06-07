@@ -67,4 +67,11 @@ class SwapTest extends TestCase
         $result = swap( $array , -1 , 0 ); // Dernier élément avec le premier
         $this->assertEquals([4, 2, 3, 1], $result);
     }
+
+    public function testSwapWithNegativeToIndex()
+    {
+        $array = [10, 20, 30];
+        $result = swap( $array , 1 , -1 ); // index 1 avec le dernier
+        $this->assertEquals([10, 30, 20], $result);
+    }
 }

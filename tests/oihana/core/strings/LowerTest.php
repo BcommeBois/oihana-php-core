@@ -41,4 +41,12 @@ class LowerTest extends TestCase
             $this->assertIsString( $result ) ;
         }
     }
+
+    public function testFallsBackToStrtolowerOnUndetectableEncoding()
+    {
+        // An invalid UTF-8 byte sequence makes strict mb_detect_encoding() return
+        // false, so lower() falls back to strtolower().
+        $bad = "\xc3\x28" ;
+        $this->assertSame( strtolower( $bad ) , lower( $bad ) ) ;
+    }
 }

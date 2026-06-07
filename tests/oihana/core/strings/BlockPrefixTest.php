@@ -43,4 +43,10 @@ class BlockPrefixTest extends TestCase
     {
         $this->assertSame('', blockPrefix([], '>>>'));
     }
+
+    public function testBlockPrefixArrayDropsEmptyLinesWhenDisabled(): void
+    {
+        // Array input + keepEmptyLines=false filters out the blank line.
+        $this->assertSame("#a\n#b", blockPrefix(['a', '', 'b'], '#', '', "\n", false));
+    }
 }

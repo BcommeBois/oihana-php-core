@@ -37,4 +37,10 @@ class BlockSuffixTest extends TestCase
     {
         $this->assertSame('', blockSuffix([], '<<<'));
     }
+
+    public function testBlockSuffixArrayDropsEmptyLinesWhenDisabled(): void
+    {
+        // Array input + keepEmptyLines=false filters out the blank line.
+        $this->assertSame("a#\nb#", blockSuffix(['a', '', 'b'], '#', '', "\n", false));
+    }
 }

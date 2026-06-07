@@ -25,4 +25,10 @@ class WrapBlockTest extends TestCase
 
         $this->assertSame($expected, wrapBlock($lines, '{', '}', 4, PHP_EOL, false));
     }
+
+    public function testWrapBlockWithEmptyInnerJoinsDelimiters(): void
+    {
+        // An empty block returns just the before/after delimiters concatenated.
+        $this->assertSame('{}', wrapBlock([], '{', '}'));
+    }
 }

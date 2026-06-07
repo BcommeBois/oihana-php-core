@@ -61,4 +61,16 @@ class ToStringTest extends TestCase
         $this->assertSame('1,2,3', toString([1, [2, 3]]));
         $this->assertSame('a,b,c,d', toString(['a', ['b', ['c', 'd']]]));
     }
+
+    public function testStringableObjectIsCastToString()
+    {
+        $stringable = new class
+        {
+            public function __toString() : string
+            {
+                return 'from-stringable' ;
+            }
+        } ;
+        $this->assertSame('from-stringable', toString($stringable));
+    }
 }
