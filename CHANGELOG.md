@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.8] - 2026-06-07
+
 ### Added
 - **Accessors**
   - Add the `ensureKeyValue` function : Ensures that one or more keys or properties exist in an array or object.
@@ -60,6 +62,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Fixed
 - **Reflections**
   - Register `getFunctionInfo()` in the Composer autoload `files` list so the function is actually loadable (it was defined but never autoloaded, hence unusable).
+- **Documentation**
+  - Correct wrong `@package` tags (`parseSteps`, `cbor_encode`/`cbor_decode`, `isLinux`/`isMac`/`isWindows`, `formatDocument`).
+  - Fix `getJsonType()` `@return` documentation (`'number'` instead of `'double'`).
+  - Complete missing `@param`, `@return`, `@throws` and `@example` tags across the library.
 
 ## [1.0.7] - 2025-12-12
 
