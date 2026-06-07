@@ -243,6 +243,7 @@
             "src/oihana/core/strings/toString.php",
             "src/oihana/core/strings/truncate.php",
             "src/oihana/core/strings/ucFirst.php",
+            "src/oihana/core/strings/ucWords.php",
             "src/oihana/core/strings/unquote.php",
             "src/oihana/core/strings/urlencode.php",
             "src/oihana/core/strings/uniqueKey.php",
