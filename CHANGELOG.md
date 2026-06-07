@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `median()` function : median of a list of numbers (sorts, then takes the middle value or averages the two central ones ; throws on an empty array).
   - Add the `variance()` function : population variance by default, sample variance (`N - 1`) when requested (throws on empty input, or on sample mode with fewer than two values).
   - Add the `stddev()` function : standard deviation (square root of `variance()`), population or sample (same guards as `variance()`).
+  - Add the `factorial()` function : factorial `n!` for `n` in `[0, 20]` (throws on a negative argument or above `20`, where the result would overflow `int`).
 - **Numbers**
   - Add the `clamp()` function : a clarified alias of `clip()` bounding a value between a min and a max (both names kept).
   - Add the `lerp()` function : linear interpolation between two values (unbounded factor, extrapolation allowed).

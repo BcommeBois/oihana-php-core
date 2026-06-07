@@ -145,6 +145,7 @@
             "src/oihana/core/maths/bearing.php" ,
             "src/oihana/core/maths/cartesianToPolar.php" ,
             "src/oihana/core/maths/ceilValue.php" ,
+            "src/oihana/core/maths/factorial.php" ,
             "src/oihana/core/maths/fixAngle.php" ,
             "src/oihana/core/maths/floorValue.php" ,
             "src/oihana/core/maths/gcd.php" ,
