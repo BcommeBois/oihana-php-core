@@ -27,12 +27,6 @@ class CleanFlag
     use BitFlagTrait ;
 
     /**
-     * No cleaning (edge case, returns original array)
-     * @var int
-     */
-    public const int NONE = 0 ;
-
-    /**
      * Remove null values
      * @var int
      */

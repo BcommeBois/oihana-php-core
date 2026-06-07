@@ -6,10 +6,12 @@ namespace oihana\core\bits;
  * Trait providing common methods for bitmask flag enumerations.
  *
  * Classes using this trait MUST define the following constants:
- * - `NONE` (int)
  * - `ALL` (int)
  * - `FLAGS` (array<int>)
  * - `FLAGS_NAME` (array<int, string>)
+ *
+ * The `NONE` constant (no flag set) is provided by the trait, as it is always 0
+ * for any bitmask.
  *
  * @package oihana\core\bits
  * @author  Marc Alcaraz
@@ -17,6 +19,12 @@ namespace oihana\core\bits;
  */
 trait BitFlagTrait
 {
+    /**
+     * Do nothing.
+     * @var int
+     */
+    public const int NONE = 0 ;
+
     /**
      * Checks whether a specific flag is set in a bitmask.
      */

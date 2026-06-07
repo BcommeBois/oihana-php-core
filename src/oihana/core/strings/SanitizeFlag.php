@@ -27,12 +27,6 @@ class SanitizeFlag
     use BitFlagTrait ;
 
     /**
-     * Do nothing.
-     * @var int
-     */
-    public const int NONE = 0 ;
-
-    /**
      * Trim spaces, tabs, and line breaks at the start and end
      */
     public const int TRIM = 1 << 0 ;
