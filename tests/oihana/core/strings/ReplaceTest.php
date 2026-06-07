@@ -120,4 +120,18 @@ final class ReplaceTest extends TestCase
         $to     = "e\u{0301}" ;
         $this->assertSame("caf" . "é", replace($source, $from, $to, false, true));
     }
+
+    public function testThrowsOnInvalidUtf8InFrom(): void
+    {
+        // Valid source but invalid UTF-8 in $from cannot be normalized.
+        $this->expectException(InvalidArgumentException::class);
+        replace('abc', "\xFF", 'x', false, true);
+    }
+
+    public function testThrowsOnInvalidUtf8InResult(): void
+    {
+        // A $to carrying invalid UTF-8 makes the result un-normalizable.
+        $this->expectException(InvalidArgumentException::class);
+        replace('abc', 'b', "\xFF", false, true);
+    }
 }

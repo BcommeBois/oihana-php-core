@@ -5,6 +5,7 @@ namespace tests\oihana\core\documents;
 use function oihana\core\documents\formatDocument;
 
 use tests\oihana\core\documents\mocks\MockFormatDocument;
+use tests\oihana\core\documents\mocks\MockRequiresConstructor;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -119,5 +120,14 @@ class FormatDocumentTest extends TestCase
         $result = formatDocument($data, preserveMissing: true);
 
         $this->assertSame('Hello Alice {{lastname}}!', $result['message']);
+    }
+
+    public function testFormatDocumentFallsBackToStdClassWhenConstructorFails(): void
+    {
+        // new $class() throws (required ctor arg) -> result falls back to stdClass.
+        $doc    = new MockRequiresConstructor( '{{name}}' );
+        $result = formatDocument( $doc );
+
+        $this->assertInstanceOf( stdClass::class, $result );
     }
 }

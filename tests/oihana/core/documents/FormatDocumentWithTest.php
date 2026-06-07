@@ -7,6 +7,7 @@ use function oihana\core\documents\formatDocumentWith;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use tests\oihana\core\documents\mocks\MockFormatDocument;
+use tests\oihana\core\documents\mocks\MockRequiresConstructor;
 
 class FormatDocumentWithTest extends TestCase
 {
@@ -144,5 +145,14 @@ class FormatDocumentWithTest extends TestCase
         $this->assertSame(42, $result['int']);
         $this->assertSame('Hi Alice', $result['str']);
         $this->assertSame('', $result['empty']);
+    }
+
+    public function testFallsBackToStdClassWhenConstructorFails(): void
+    {
+        // new $class() throws (required ctor arg) -> result falls back to stdClass.
+        $target = new MockRequiresConstructor( '{{name}}' );
+        $result = formatDocumentWith( $target , [ 'name' => 'Alice' ] );
+
+        $this->assertInstanceOf( stdClass::class, $result );
     }
 }

@@ -358,4 +358,10 @@ final class SanitizeTest extends TestCase
 
         $this->assertSame($expected, sanitize($input, $flags));
     }
+
+    public function testNoneFlagReturnsSourceUnchanged()
+    {
+        $input = "Héllo <b>x</b>  raw\n";
+        $this->assertSame($input, sanitize($input, SanitizeFlag::NONE));
+    }
 }
