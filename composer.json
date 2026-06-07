@@ -149,6 +149,7 @@
             "src/oihana/core/numbers/clamp.php",
             "src/oihana/core/numbers/clip.php",
             "src/oihana/core/numbers/lerp.php",
+            "src/oihana/core/numbers/mapRange.php",
             
             "src/oihana/core/objects/compress.php",
             "src/oihana/core/objects/ensureObjectPath.php",
