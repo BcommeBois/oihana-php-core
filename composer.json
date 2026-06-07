@@ -150,6 +150,7 @@
             "src/oihana/core/maths/gcd.php" ,
             "src/oihana/core/maths/haversine.php" ,
             "src/oihana/core/maths/mean.php" ,
+            "src/oihana/core/maths/median.php" ,
             "src/oihana/core/maths/polarToCartesian.php" ,
             "src/oihana/core/maths/roundValue.php" ,
             

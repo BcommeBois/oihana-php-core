@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `sortBy()` function : returns a stable copy sorted by a computed value, ascending or descending (keys preserved).
 - **Maths**
   - Add the `mean()` function : arithmetic mean (average) of a list of numbers (throws on an empty array).
+  - Add the `median()` function : median of a list of numbers (sorts, then takes the middle value or averages the two central ones ; throws on an empty array).
 - **Numbers**
   - Add the `clamp()` function : a clarified alias of `clip()` bounding a value between a min and a max (both names kept).
   - Add the `lerp()` function : linear interpolation between two values (unbounded factor, extrapolation allowed).
