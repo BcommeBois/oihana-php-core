@@ -7,8 +7,9 @@ use InvalidArgumentException;
 /**
  * Converts a polar coordinate to a cartesian vector.
  *
- * @param array{angle: float, radius: float} $vector  Polar coordinates with keys 'angle' and 'radius'.
- * @param bool                               $degrees Whether the angle is in degrees (default: true).
+ * @param array{angle: float, radius: float} $vector    Polar coordinates with keys 'angle' and 'radius'.
+ * @param bool                               $degrees   Whether the angle is in degrees (default: true).
+ * @param bool                               $throwable Whether to throw when the 'angle'/'radius' keys are missing (default: false).
  *
  * @return array{x: float, y: float} Cartesian representation with keys 'x' and 'y'.
  *

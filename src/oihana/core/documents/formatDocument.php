@@ -57,7 +57,15 @@ use function oihana\core\strings\format;
  *
  * @return array|object A new formatted document with same structure and class.
  *
- * @package oihana\core\arrays
+ * @example
+ * ```php
+ * use function oihana\core\documents\formatDocument;
+ *
+ * $doc = [ 'name' => 'Alice' , 'msg' => 'Hello {{name}}' ] ;
+ * print_r( formatDocument( $doc ) ) ; // [ 'name' => 'Alice', 'msg' => 'Hello Alice' ]
+ * ```
+ *
+ * @package oihana\core\documents
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */

@@ -5,6 +5,8 @@ namespace oihana\core\strings ;
 /**
  * Checks if a character is a known quote character.
  *
+ * @param string $char The single character to test.
+ *
  * @return bool True if the character is a quote, false otherwise.
  *
  * @package oihana\core\strings

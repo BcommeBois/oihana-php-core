@@ -52,7 +52,7 @@ use function oihana\core\objects\toAssociativeArray;
  *
  * @see toAssociativeArray() for details.
  *
- * @package oihana\core\json
+ * @package oihana\core\cbor
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.8
  */

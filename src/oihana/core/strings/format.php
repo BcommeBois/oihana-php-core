@@ -15,6 +15,7 @@ namespace oihana\core\strings ;
  * @param string              $suffix    Placeholder suffix (default `}}`).
  * @param string              $separator Separator used to traverse nested keys (default `.`).
  * @param string|null         $pattern   Optional full regex pattern to match placeholders (including delimiters).
+ * @param bool                $preserveMissing If true, leaves unresolved placeholders untouched instead of replacing them with an empty string. Default false.
  *
  * @return string The formatted string.
  *

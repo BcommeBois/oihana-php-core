@@ -43,7 +43,7 @@ use Throwable;
  *
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.8
- * @package oihana\core\json
+ * @package oihana\core\cbor
  */
 function cbor_decode( string $data , ?Closure $replacer = null ) :mixed
 {

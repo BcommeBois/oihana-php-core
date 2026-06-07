@@ -18,6 +18,8 @@ use stdClass;
  *
  * @return object The modified (or copied and modified) object.
  *
+ * @throws InvalidArgumentException If $classFactory is a string referencing a class that does not exist.
+ *
  * @example
  * 1. Basic usage with nested keys and default stdClass
  * ```php

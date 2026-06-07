@@ -58,6 +58,14 @@ use InvalidArgumentException;
  * @throws InvalidArgumentException
  * Thrown if `$size` is less than or equal to 0.
  *
+ * @example
+ * ```php
+ * use function oihana\core\strings\chunk;
+ *
+ * echo chunk( 'abcdef' , 2 , '-' ) ;  // 'ab-cd-ef'
+ * echo chunk( '12345'  , 3 ) ;        // '123 45'  (default separator: space)
+ * ```
+ *
  * @package oihana\core\strings
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.8

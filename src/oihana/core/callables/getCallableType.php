@@ -89,6 +89,16 @@ use ReflectionMethod;
  *                      {@see CallableType::OBJECT}, {@see CallableType::UNKNOWN},
  *                      or `false` if not a callable.
  *
+ * @example
+ * ```php
+ * use function oihana\core\callables\getCallableType;
+ *
+ * getCallableType( 'strlen' ) ;          // 'function'
+ * getCallableType( fn() => 1 ) ;         // 'closure'
+ * getCallableType( [ $obj , 'method' ] ); // 'object' (or 'static')
+ * getCallableType( 42 ) ;                // false
+ * ```
+ *
  * @see CallableType For the list of type constants returned by this function
  * @see is_callable() For PHP's native callable verification function
  * @see ReflectionMethod For the Reflection API used in strict mode

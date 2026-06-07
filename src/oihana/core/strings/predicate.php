@@ -22,6 +22,14 @@ namespace oihana\core\strings ;
  *
  * @return string The resulting predicate expression.
  *
+ * @example
+ * ```php
+ * use function oihana\core\strings\predicate;
+ *
+ * echo predicate( 'a' , '==' , 1 ) ;     // 'a == 1'
+ * echo predicate( 'name' , 'is null' ) ; // 'name is null'
+ * ```
+ *
  * @package oihana\core\strings
  * @since 1.0.0
  * @author Marc Alcaraz

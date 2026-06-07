@@ -8,7 +8,16 @@ namespace oihana\core\json ;
  * @param mixed  $value   The value to evaluates.
  * @param string $default The default return value if the type is not a valid JSON type.
  *
- * @return string
+ * @return string One of `'null'`, `'boolean'`, `'integer'`, `'number'`, `'string'`, `'array'`, `'object'`, or `$default`.
+ *
+ * @example
+ * ```php
+ * use function oihana\core\json\getJsonType;
+ *
+ * echo getJsonType( [ 1, 2 ] ) ; // 'array'
+ * echo getJsonType( 'x' ) ;      // 'string'
+ * echo getJsonType( null ) ;     // 'null'
+ * ```
  *
  * @package oihana\core\json
  * @author  Marc Alcaraz (ekameleon)

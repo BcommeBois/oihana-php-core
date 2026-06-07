@@ -18,6 +18,8 @@ use InvalidArgumentException;
  *
  * @return int The greatest common divisor of $a and $b.
  *
+ * @throws InvalidArgumentException If both $a and $b are zero and $throwable is true.
+ *
  * @example
  * ```php
  * echo gcd(48, 18); // Outputs: 6

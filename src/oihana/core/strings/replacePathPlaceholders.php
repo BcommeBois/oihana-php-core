@@ -59,6 +59,14 @@ namespace oihana\core\strings ;
  *
  * @return string The path with placeholders replaced by their corresponding values.
  *
+ * @example
+ * ```php
+ * use function oihana\core\strings\replacePathPlaceholders;
+ *
+ * echo replacePathPlaceholders( '/users/{id}' , [ 'id' => 42 ] ) ;                 // '/users/42'
+ * echo replacePathPlaceholders( '/p/{cat}/{id}' , [ 'cat' => 'book' , 'id' => 7 ] ); // '/p/book/7'
+ * ```
+ *
  * @package oihana\core\strings
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0

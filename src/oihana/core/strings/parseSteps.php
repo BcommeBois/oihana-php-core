@@ -145,7 +145,7 @@ function parseSteps( ?string $input , int $maxStep ) :array
  * @throws InvalidArgumentException When `$value` is not a positive integer or
  *                                  falls outside `[1, $maxStep]`.
  *
- * @package oihana\api\helpers
+ * @package oihana\core\strings
  * @author  Marc Alcaraz
  *
  * @internal

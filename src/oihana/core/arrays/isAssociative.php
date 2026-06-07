@@ -21,6 +21,15 @@ namespace oihana\core\arrays ;
  * @param array $array The array to evaluate.
  * @return bool Indicates if the array is associative.
  *
+ * @example
+ * ```php
+ * use function oihana\core\arrays\isAssociative;
+ *
+ * isAssociative( [ 'a' => 1 ] ) ; // true
+ * isAssociative( [ 1, 2, 3 ] ) ;  // false
+ * isAssociative( [] ) ;           // false
+ * ```
+ *
  * @package oihana\core\arrays
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0

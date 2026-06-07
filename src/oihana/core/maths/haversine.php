@@ -17,6 +17,8 @@ use InvalidArgumentException;
  *
  * @return float The distance between the two points in meters.
  *
+ * @throws InvalidArgumentException If $precision is not null and is negative.
+ *
  * @example
  * ```php
  * use function oihana\core\maths\haversine;

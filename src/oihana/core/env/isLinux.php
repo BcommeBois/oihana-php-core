@@ -17,7 +17,7 @@ namespace oihana\core\env ;
  * }
  * ```
  *
- * @package oihana\files
+ * @package oihana\core\env
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */

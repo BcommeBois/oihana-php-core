@@ -44,6 +44,8 @@ use InvalidArgumentException;
  *   - **Indexed arrays:** automatically reindex to remove numeric gaps.
  *   - null if the final array is empty and the CleanFlag::RETURN_NULL option is used.
  *
+ * @throws InvalidArgumentException If $flags is not a valid combination of CleanFlag constants.
+ *
  * @example
  * **1. Basic cleaning: remove nulls and empty strings**
  * ```php

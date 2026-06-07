@@ -74,6 +74,15 @@ use Normalizer;
  * @throws InvalidArgumentException
  * Thrown if `$from` or the resulting string is not valid UTF-8 and cannot be normalized when `$utf8` is true.
  *
+ * @example
+ * ```php
+ * use function oihana\core\strings\replace;
+ *
+ * echo replace( 'a.b.a' , 'a' , 'X' ) ;               // 'X.b.X'
+ * echo replace( 'Hello' , 'l' , 'L' ) ;               // 'HeLLo'
+ * echo replace( 'Café' , 'é' , 'e' , false , true ) ; // 'Cafe'  (Unicode / grapheme-safe)
+ * ```
+ *
  * @package oihana\core\strings
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.8

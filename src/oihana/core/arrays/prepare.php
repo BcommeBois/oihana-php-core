@@ -21,6 +21,21 @@ use oihana\core\options\ArrayOption;
  *                       - 'first_keys'  => array
  *                       - 'sort'        => bool
  *
+ * @return array The transformed array.
+ *
+ * @example
+ * ```php
+ * use function oihana\core\arrays\prepare;
+ * use oihana\core\options\ArrayOption;
+ *
+ * $result = prepare( [ 'b' => 2, 'a' => 1 ] ,
+ * [
+ *     ArrayOption::FIRST_KEYS => [ 'a' ] ,
+ *     ArrayOption::SORT       => true ,
+ * ]);
+ * // [ 'a' => 1, 'b' => 2 ]
+ * ```
+ *
  * @package oihana\core\arrays
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.8

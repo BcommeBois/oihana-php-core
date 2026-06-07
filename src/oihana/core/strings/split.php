@@ -70,6 +70,18 @@ use InvalidArgumentException;
  * @throws InvalidArgumentException
  * If the separator is empty.
  *
+ * @example
+ * ```php
+ * use function oihana\core\strings\split;
+ *
+ * // Plain separator (matched literally) :
+ * print_r( split( 'a,b,c' , ',' ) ) ;        // ['a', 'b', 'c']
+ *
+ * // Delimited regular-expression separator :
+ * print_r( split( 'a1b2c' , '/\d/' ) ) ;   // ['a', 'b', 'c']
+ * print_r( split( '1--2-3' , '/-+/' ) ) ;  // ['1', '2', '3']
+ * ```
+ *
  * @package oihana\core\strings
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.8
