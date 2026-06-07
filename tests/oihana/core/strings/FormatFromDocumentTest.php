@@ -115,4 +115,22 @@ class FormatFromDocumentTest extends TestCase
         $this->assertSame('City: {{user.address.city}}', $result, 'Missing nested placeholder should be preserved.');
     }
 
+    public function testExactSinglePlaceholderResolves(): void
+    {
+        // A template that is exactly one placeholder returns the raw value.
+        $result = formatFromDocument('{{name}}', ['name' => 'Alice']);
+        $this->assertSame('Alice', $result);
+    }
+
+    public function testExactSinglePlaceholderMissingIsRemoved(): void
+    {
+        $this->assertSame('', formatFromDocument('{{missing}}', []));
+    }
+
+    public function testExactSinglePlaceholderMissingIsPreserved(): void
+    {
+        $result = formatFromDocument('{{missing}}', [], '{{', '}}', '.', null, true);
+        $this->assertSame('{{missing}}', $result);
+    }
+
 }

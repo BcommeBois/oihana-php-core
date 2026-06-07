@@ -139,4 +139,40 @@ class MergeTest extends TestCase
             ]
         ] , $result ) ;
     }
+
+    public function testDeepRecursiveAssociativeMerge()
+    {
+        $a = [ 'user' => [ 'name' => 'Marc' ] ] ;
+        $b = [ 'user' => [ 'age'  => 30 ] ] ;
+
+        $result = merge( $a , $b , [ MergeOption::DEEP => true ] ) ;
+
+        $this->assertSame( [ 'user' => [ 'name' => 'Marc' , 'age' => 30 ] ] , $result ) ;
+    }
+
+    public function testIndexedStorageWrapsValues()
+    {
+        $result = merge( [] , [ 'a' => 1 ] , [ MergeOption::INDEXED => true ] ) ;
+        $this->assertSame( [ 'a' => [ 1 ] ] , $result ) ;
+    }
+
+    public function testNumericKeysPreserveAndAppendWhenUnique()
+    {
+        // Duplicate value with UNIQUE is skipped (continue), distinct value is appended.
+        $duplicate = merge( [ 0 => 'a' ] , [ 0 => 'a' ] ,
+        [
+            MergeOption::DEEP          => false ,
+            MergeOption::PRESERVE_KEYS => true  ,
+            MergeOption::UNIQUE        => true  ,
+        ]);
+        $this->assertSame( [ 'a' ] , $duplicate ) ;
+
+        $distinct = merge( [ 0 => 'a' ] , [ 0 => 'b' ] ,
+        [
+            MergeOption::DEEP          => false ,
+            MergeOption::PRESERVE_KEYS => true  ,
+            MergeOption::UNIQUE        => true  ,
+        ]);
+        $this->assertSame( [ 'a' , 'b' ] , $distinct ) ;
+    }
 }

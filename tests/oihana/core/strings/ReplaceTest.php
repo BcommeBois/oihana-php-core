@@ -97,4 +97,27 @@ final class ReplaceTest extends TestCase
             replace($source, $from, $to, false, true)
         );
     }
+
+    public function testUtf8EmptyFromReturnsSource(): void
+    {
+        // In UTF-8 mode an empty $from short-circuits and returns the source.
+        $this->assertSame('abc', replace('abc', '', 'x', false, true));
+    }
+
+    public function testUtf8DenormalizedFromIsNormalized(): void
+    {
+        // Both source and $from are NFD-decomposed; replace() normalizes them.
+        $source = "caf" . "e\u{0301}" ; // café (decomposed)
+        $from   = "e\u{0301}" ;          // é   (decomposed)
+        $this->assertSame('cafX', replace($source, $from, 'X', false, true));
+    }
+
+    public function testUtf8DenormalizedResultIsNormalized(): void
+    {
+        // A decomposed $to makes the raw result non-NFC, which replace() re-normalizes.
+        $source = "caf" . "e\u{0301}" ;
+        $from   = "e\u{0301}" ;
+        $to     = "e\u{0301}" ;
+        $this->assertSame("caf" . "é", replace($source, $from, $to, false, true));
+    }
 }

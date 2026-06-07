@@ -58,6 +58,23 @@ class CborFunctionsTest extends TestCase
         cbor_decode("\xFF"); // "break" code en CBOR invalide
     }
 
+    public function testEncodeUnsupportedValueThrowsServerError(): void
+    {
+        // A resource handle cannot be CBOR-encoded; the underlying error is
+        // wrapped as a RuntimeException with a 500 (server-side) code.
+        $resource = fopen('php://memory', 'r');
+        try
+        {
+            $this->expectException(RuntimeException::class);
+            $this->expectExceptionCode(500);
+            cbor_encode($resource);
+        }
+        finally
+        {
+            fclose($resource);
+        }
+    }
+
     public function testComplexeAssociativeArray(): void
     {
         $object = new class implements JsonSerializable
