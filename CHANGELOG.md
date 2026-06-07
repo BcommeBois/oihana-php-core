@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - **Strings**
   - Add the `slugify()` function : converts a string into a URL-friendly slug (latinize + lower-case + non-alphanumeric → separator).
   - Add the `truncate()` function : grapheme-safe truncation to a maximum length, appending an ellipsis (not counted in the length).
+  - Add the `mask()` function : masks the middle of a string, keeping a few grapheme clusters visible at each end (sensitive data).
 
 ## [1.0.8] - 2026-06-07
 
