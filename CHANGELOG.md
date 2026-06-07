@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `lerp()` function : linear interpolation between two values (unbounded factor, extrapolation allowed).
   - Add the `mapRange()` function : re-maps a value from one range to another (throws `InvalidArgumentException` on a degenerate input range).
   - Add the `sign()` function : returns `-1`, `0` or `1`.
+  - Add the `isEven()` function : integer even-parity test.
 
 ## [1.0.8] - 2026-06-07
 
