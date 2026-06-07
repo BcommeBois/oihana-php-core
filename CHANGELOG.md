@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `variance()` function : population variance by default, sample variance (`N - 1`) when requested (throws on empty input, or on sample mode with fewer than two values).
   - Add the `stddev()` function : standard deviation (square root of `variance()`), population or sample (same guards as `variance()`).
   - Add the `factorial()` function : factorial `n!` for `n` in `[0, 20]` (throws on a negative argument or above `20`, where the result would overflow `int`).
+  - Add the `isPrime()` function : primality test using `6k ± 1` trial division (any integer below `2` is not prime).
 - **Numbers**
   - Add the `clamp()` function : a clarified alias of `clip()` bounding a value between a min and a max (both names kept).
   - Add the `lerp()` function : linear interpolation between two values (unbounded factor, extrapolation allowed).
