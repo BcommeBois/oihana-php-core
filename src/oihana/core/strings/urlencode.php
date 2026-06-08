@@ -25,6 +25,9 @@ namespace oihana\core\strings ;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
+// PHP function names are case-insensitive: this shadows the builtin \urlencode() inside the
+// oihana\core\strings namespace, where an unqualified urlencode() resolves here. Use \urlencode() for the native one
+// (as this function itself does internally).
 function urlencode( string $uri ): array|string
 {
     $entities = [ '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' ];

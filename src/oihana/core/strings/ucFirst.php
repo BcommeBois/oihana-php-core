@@ -24,6 +24,8 @@ namespace oihana\core\strings ;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.9
  */
+// PHP function names are case-insensitive: this shadows the builtin \ucfirst() inside the
+// oihana\core\strings namespace, where an unqualified ucfirst() resolves here. Use \ucfirst() for the native one.
 function ucFirst( string $source ): string
 {
     if ( $source === '' )

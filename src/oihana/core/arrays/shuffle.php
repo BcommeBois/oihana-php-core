@@ -36,6 +36,8 @@ namespace oihana\core\arrays ;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
+// PHP function names are case-insensitive: this shadows the builtin \shuffle() inside the
+// oihana\core\arrays namespace, where an unqualified shuffle() resolves here. Use \shuffle() for the native one.
 function shuffle( array &$ar ): array
 {
     $len = count( $ar ) ;

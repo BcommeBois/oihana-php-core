@@ -42,6 +42,8 @@ namespace oihana\core\strings ;
  * @author  Marc Alcaraz
  * @since   1.0.0
  */
+// PHP function names are case-insensitive: this shadows the builtin \key() inside the
+// oihana\core\strings namespace, where an unqualified key() resolves here. Use \key() for the native one.
 function key( null|string|array $key , ?string $prefix = '' , string $separator = '.' ) :string
 {
     if ( $key === null )

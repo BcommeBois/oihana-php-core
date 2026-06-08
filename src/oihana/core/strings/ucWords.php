@@ -26,6 +26,8 @@ namespace oihana\core\strings ;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.9
  */
+// PHP function names are case-insensitive: this shadows the builtin \ucwords() inside the
+// oihana\core\strings namespace, where an unqualified ucwords() resolves here. Use \ucwords() for the native one.
 function ucWords( string $source ): string
 {
     return preg_replace_callback( '/(?<![\p{L}\p{N}])\p{L}/u' , fn( array $match ): string => mb_strtoupper( $match[ 0 ] , 'UTF-8' ) , $source ) ;
