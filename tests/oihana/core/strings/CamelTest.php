@@ -68,4 +68,12 @@ class CamelTest extends TestCase
     {
         $this->assertEquals('caféAuLait', camel('café_au_lait'));
     }
+
+    public function testMultibyteWordBoundaries(): void
+    {
+        // Each word boundary must upper-case the accented initial, and the very first
+        // character must be lower-cased in a multibyte-safe way.
+        $this->assertEquals('éléphantÉcole', camel('éléphant_école'));
+        $this->assertEquals('élanÀParis', camel('élan-à-paris'));
+    }
 }

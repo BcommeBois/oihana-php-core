@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Fixed
 - **CBOR**
   - `cbor_encode()` no longer recurses indefinitely on values the encoder cannot handle (e.g. a resource). The underlying encoder left such values to its identity replacer and recursed forever, which only Xdebug's nesting limit turned into a catchable error ; without Xdebug (as in CI) the process exhausted memory and was killed. A default replacer now rejects unencodable values so the failure deterministically surfaces as a `500` `RuntimeException`.
+- **Strings**
+  - `camel()` is now multibyte-safe and no longer mis-capitalizes after non-separator characters. Because PHP function names are case-insensitive, the unqualified `ucwords()` call resolved to the `ucWords()` helper added in 1.0.9 (which upper-cases after any non-alphanumeric char), so `camel('hello@world')` returned `'hello@World'`. It now builds on the multibyte `ucFirst()` applied per whitespace-split word, so only declared separators act as word boundaries and accented words convert correctly (e.g. `'éléphant_école'` -> `'éléphantÉcole'`).
 
 ## [1.0.9] - 2026-06-07
 
