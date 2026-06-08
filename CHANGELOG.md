@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Fixed
+- **CBOR**
+  - `cbor_encode()` no longer recurses indefinitely on values the encoder cannot handle (e.g. a resource). The underlying encoder left such values to its identity replacer and recursed forever, which only Xdebug's nesting limit turned into a catchable error ; without Xdebug (as in CI) the process exhausted memory and was killed. A default replacer now rejects unencodable values so the failure deterministically surfaces as a `500` `RuntimeException`.
+
 ## [1.0.9] - 2026-06-07
 
 ### Added

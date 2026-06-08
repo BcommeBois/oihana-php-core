@@ -64,6 +64,14 @@ function cbor_encode( mixed $data , ?Closure $replacer = null ):string
         {
             $data = toAssociativeArray( $data , strict:true ) ;
         }
+
+        // The encoder's default replacer returns unsupported values unchanged, so it recurses
+        // forever (e.g. on a resource) instead of failing — only Xdebug's nesting limit turns
+        // that into a catchable error. Reject any value the encoder cannot handle so the failure
+        // surfaces as the 500 below, with or without Xdebug.
+        $replacer ??= fn( mixed $key , mixed $value ) : mixed
+            => throw new RuntimeException( 'unsupported value of type ' . get_debug_type( $value ) , 500 ) ;
+
         return CborEncoder::encode( $data , $replacer ) ;
     }
     // defensive: the encoder raises generic Throwable, not CborException
