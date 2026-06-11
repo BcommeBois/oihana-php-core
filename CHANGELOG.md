@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+- **Numbers**
+  - Add the `modf()` function : splits a number into its integral and fractional parts like the C `modf()` (truncation toward zero, so the sign is preserved on both parts ; `INF` yields a `0.0` fraction and `NAN` propagates to both parts).
+
 ## [1.0.10] - 2026-06-08
 
 ### Fixed
