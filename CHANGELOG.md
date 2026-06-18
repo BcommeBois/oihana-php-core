@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- **Container**
+  - Add the `oihana\core\container\resolveDependency()` function : resolves a string id from a PSR-11 container (returns `$container->get($id)` when present) or returns a default otherwise — safe with a `null` container, a `null` or empty id, and a missing entry. New `psr/container` (`^2.0`) dependency. Relocated from `oihana\controllers\helpers` in `oihana/php-system` (a generic PSR-11 resolver with no HTTP/controllers link) so low-level libraries can depend on it without pulling the controllers layer.
 - **Numbers**
   - Add the `modf()` function : splits a number into its integral and fractional parts like the C `modf()` (truncation toward zero, so the sign is preserved on both parts ; `INF` yields a `0.0` fraction and `NAN` propagates to both parts).
 

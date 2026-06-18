@@ -102,7 +102,9 @@
             
             "src/oihana/core/cbor/cbor_decode.php",
             "src/oihana/core/cbor/cbor_encode.php",
-            
+
+            "src/oihana/core/container/resolveDependency.php",
+
             "src/oihana/core/date/addDays.php",
             "src/oihana/core/date/formatDateTime.php",
             "src/oihana/core/date/isDate.php",
@@ -262,6 +264,7 @@
         "ext-bcmath" : "*" ,
         "ext-intl": "*" ,
         "ext-posix" : "*",
+        "psr/container": "^2.0",
         "welpie21/cbor.php": "^2.0"
     },
     "scripts": {
