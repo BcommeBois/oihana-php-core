@@ -106,7 +106,9 @@
             "src/oihana/core/container/resolveDependency.php",
 
             "src/oihana/core/date/addDays.php",
+            "src/oihana/core/date/durationToSeconds.php",
             "src/oihana/core/date/formatDateTime.php",
+            "src/oihana/core/date/humanizeDuration.php",
             "src/oihana/core/date/isDate.php",
             "src/oihana/core/date/isFuture.php",
             "src/oihana/core/date/isPast.php",
@@ -148,6 +150,7 @@
             "src/oihana/core/json/isValidJsonDecodeFlags.php",
             "src/oihana/core/json/isValidJsonEncodeFlags.php",
             
+            "src/oihana/core/maths/aspectFit.php" ,
             "src/oihana/core/maths/bearing.php" ,
             "src/oihana/core/maths/cartesianToPolar.php" ,
             "src/oihana/core/maths/ceilValue.php" ,

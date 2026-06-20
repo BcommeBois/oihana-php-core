@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - **Container**
   - Add the `oihana\core\container\resolveDependency()` function : resolves a string id from a PSR-11 container (returns `$container->get($id)` when present) or returns a default otherwise — safe with a `null` container, a `null` or empty id, and a missing entry. New `psr/container` (`^2.0`) dependency. Relocated from `oihana\controllers\helpers` in `oihana/php-system` (a generic PSR-11 resolver with no HTTP/controllers link) so low-level libraries can depend on it without pulling the controllers layer.
+- **Date**
+  - Add the `durationToSeconds()` function : normalizes a duration — an int/float of seconds, a `"MM:SS"`/`"HH:MM:SS"` colon string, a `"1.5d 3h 15m 12.5s"` unit string (any subset, any order, decimals allowed), or `null` — into a number of seconds. A day is worth `$hoursPerDay` hours (default 24).
+  - Add the `humanizeDuration()` function : renders any of the above duration forms as a human-readable string (e.g. `"1h 2m 5s"`). Built on `durationToSeconds()` so every input is first reduced to seconds and then broken down, which makes overflow roll up consistently (`"90:00"` and `"1.5h"` both yield `"1h 30m"`) ; only the seconds component may carry a fractional part.
+  - Add the `DurationUnit` class : `DurationUnit::DAY` / `HOUR` / `MINUTE` / `SECOND` constants (plus `all()` / `isValid()`) for the `'d'` / `'h'` / `'m'` / `'s'` duration suffixes parsed by `durationToSeconds()` and emitted by `humanizeDuration()`, avoiding magic strings.
+- **Maths**
+  - Add the `aspectFit()` function : scales a width/height pair to a target width or height while preserving the original aspect ratio (returns `array{width:int,height:int}`). `targetWidth` takes precedence over `targetHeight` ; a non-positive original dimension returns the provided targets (or the originals) unchanged.
+  - Add the `Dimension` class : `Dimension::WIDTH` / `Dimension::HEIGHT` constants (plus `all()` / `isValid()`) for the canonical keys of a size pair, avoiding the `'width'` / `'height'` magic strings used by `aspectFit()`.
 - **Numbers**
   - Add the `modf()` function : splits a number into its integral and fractional parts like the C `modf()` (truncation toward zero, so the sign is preserved on both parts ; `INF` yields a `0.0` fraction and `NAN` propagates to both parts).
 
