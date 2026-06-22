@@ -21,7 +21,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Changed
 - **Tooling**
-  - Bump the `phpunit/phpunit` dev dependency from `^12` to `^13` and update the `phpunit.xml` schema reference to `13.2`. No production code change ; the full suite (1639 tests) stays green. PHPUnit 13 requires PHP ≥ 8.4, already the project's minimum.
+  - Bump the `phpunit/phpunit` dev dependency from `^12` to `^13` and update the `phpunit.xml` schema reference to `13.2`. The full suite (1639 tests) stays green. PHPUnit 13 requires PHP ≥ 8.4, already the project's minimum.
+
+### Fixed
+- **Strings**
+  - `blockPrefix()` : remove the unreachable `? ''` ternary branch in the per-line mapper. When `$keepEmptyLines` is `false`, empty lines are already stripped upstream (`PREG_SPLIT_NO_EMPTY` for a string input, `array_filter()` for an array input), so the `$line === '' && !$keepEmptyLines` guard could never be true. Behaviour is unchanged. This also drops the now-useless `@codeCoverageIgnore` annotation and restores 100% line coverage : `phpunit/php-code-coverage` 14 (pulled in by PHPUnit 13) attributes the arrow-function statement to a line just outside the ignored block, which had lowered coverage to 99.95%.
 
 ## [1.0.10] - 2026-06-08
 

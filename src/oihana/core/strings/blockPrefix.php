@@ -36,11 +36,11 @@ function blockPrefix( array|string $lines , string $prefix , string|int $indent 
 {
     if ( is_string( $lines ) )
     {
-        $lines = preg_split('/\R/', $lines, -1, $keepEmptyLines ? 0 : PREG_SPLIT_NO_EMPTY) ;
+        $lines = preg_split('/\R/' , $lines , -1 , $keepEmptyLines ? 0 : PREG_SPLIT_NO_EMPTY ) ;
     }
     elseif ( !$keepEmptyLines )
     {
-        $lines = array_filter($lines, fn(string $line): bool => trim($line) !== '');
+        $lines = array_filter($lines, fn( string $line ): bool => trim($line) !== '' ) ;
     }
 
     if ( is_int( $indent ) )
@@ -50,12 +50,7 @@ function blockPrefix( array|string $lines , string $prefix , string|int $indent 
 
     return implode( $separator , array_map
     (
-        fn(string $line): string => $prefix === '' && $indent === '' && $line === '' && !$keepEmptyLines
-            // dead: empty lines are already filtered when !keepEmptyLines
-            // @codeCoverageIgnoreStart
-            ? ''
-            // @codeCoverageIgnoreEnd
-            : $indent . $prefix . $line,
+        fn( string $line ) :string => $indent . $prefix . $line ,
         $lines
     ));
 }
