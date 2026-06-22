@@ -283,7 +283,7 @@
         "doc": "Generate the phpDocumentor API documentation under docs/."
     },
     "require-dev": {
-        "phpunit/phpunit": "^12",
+        "phpunit/phpunit": "^13",
         "nunomaduro/collision": "^8.8",
         "mikey179/vfsstream": "^1.6",
         "phpdocumentor/shim": "^3.8"
