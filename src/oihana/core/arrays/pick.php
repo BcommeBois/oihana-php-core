@@ -8,10 +8,10 @@ namespace oihana\core\arrays ;
  * This function returns a new array containing only the entries
  * whose keys are present in the given keys list.
  *
- * @param array $array The target array to filter.
- * @param array $keys  The list of keys to keep.
+ * @param array<int|string, mixed> $array The target array to filter.
+ * @param array<int, int|string> $keys  The list of keys to keep.
  *
- * @return array The filtered array containing only the specified keys.
+ * @return array<int|string, mixed> The filtered array containing only the specified keys.
  *
  * @example
  * ```php

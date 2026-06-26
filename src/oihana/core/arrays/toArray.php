@@ -10,7 +10,7 @@ namespace oihana\core\arrays ;
  *
  * @param mixed $value The value to encapsulate in an array.
  *
- * @return array The value wrapped in an array, or the original array if already an array.
+ * @return array<int|string, mixed> The value wrapped in an array, or the original array if already an array.
  *
  * @example
  * ```php

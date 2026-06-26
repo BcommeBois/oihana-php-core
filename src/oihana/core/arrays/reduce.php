@@ -10,13 +10,13 @@ namespace oihana\core\arrays ;
  * - `array`: Forward options to compress()
  * - `callable`: Custom filter function
  *
- * @param array                $array   The input array.
- * @param bool|array|callable  $reduce  Reduction mode:
+ * @param array<int|string, mixed> $array   The input array.
+ * @param bool|array<string, mixed>|callable  $reduce  Reduction mode:
  *                                      - `true`: compress with default options
  *                                      - `array`: compress with custom options
  *                                      - `callable`: fn($value, $key): bool
  *
- * @return array The reduced array.
+ * @return array<int|string, mixed> The reduced array.
  *
  * @example Remove nulls (default compress)
  * ```php

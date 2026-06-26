@@ -11,11 +11,11 @@ namespace oihana\core\arrays ;
  * If `$copy` is true, returns a new array with swapped values, leaving original intact.
  * Otherwise, swaps values directly on the passed array.
  *
- * @param array $ar The array of values to change
+ * @param array<int|string, mixed> $ar The array of values to change
  * @param int|string $from The first key/index position to swap (default: 0)
  * @param int|string $to The second key/index position to swap (default: 0)
  * @param bool $copy If true, returns a swapped clone of the passed-in array (default: false)
- * @return array The modified array reference.
+ * @return array<int|string, mixed> The modified array reference.
  *
  * @example
  * ```php

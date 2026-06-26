@@ -15,11 +15,11 @@ use oihana\core\options\NullsOption;
  * - Configurable handling of null values ('skip', 'keep', 'overwrite').
  * - Optional cleaning of the result using CleanFlag constants.
  *
- * @param array $original The original array to merge into.
- * @param array $external The array whose values will be merged into the original.
- * @param array $options Optional MergeOption array to control merge behavior.
+ * @param array<int|string, mixed> $original The original array to merge into.
+ * @param array<int|string, mixed> $external The array whose values will be merged into the original.
+ * @param array<string, mixed>     $options  Optional MergeOption array to control merge behavior.
  *
- * @return array The merged array, optionally cleaned according to CleanFlag.
+ * @return array<int|string, mixed> The merged array, optionally cleaned according to CleanFlag.
  *
  * @example
  * ```php

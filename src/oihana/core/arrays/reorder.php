@@ -7,11 +7,11 @@ namespace oihana\core\arrays ;
  *
  * This function is useful for JSON serialization where key order matters (e.g., @type, @context first).
  *
- * @param array    $array     The input associative array.
+ * @param array<string, mixed> $array     The input associative array.
  * @param string[] $firstKeys Keys that should appear first, in the given order.
  * @param bool     $sort      Whether to sort remaining keys alphabetically (default: true).
  *
- * @return array The reordered array.
+ * @return array<string, mixed> The reordered array.
  *
  * @example Basic reordering
  * ```php

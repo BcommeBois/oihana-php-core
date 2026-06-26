@@ -7,9 +7,9 @@ namespace oihana\core\arrays ;
  *
  * If the input array is empty, returns an empty array.
  *
- * @param array $array The input array.
+ * @param array<int|string, mixed> $array The input array.
  *
- * @return array A new array without the first element.
+ * @return array<int|string, mixed> A new array without the first element.
  *
  * @example
  * ```php

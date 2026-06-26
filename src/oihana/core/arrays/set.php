@@ -6,13 +6,13 @@ namespace oihana\core\arrays ;
  * Sets a value in an associative array using a key path.
  * If no key is given to the method, the entire array will be replaced.
  *
- * @param array       $array     The associative array to modify (by reference).
+ * @param array<string, mixed> $array     The associative array to modify (by reference).
  * @param string|null $key       The key path as a string. Can be null, in which case the function replaces the entire array.
  * @param mixed       $value     The value to set.
  * @param string      $separator The separator used to split the key into segments. Defaults to a dot ('.').
  * @param bool        $copy      If true, returns a modified copy instead of altering the original array.
  *
- * @return array The updated ( or copied and modified ) array.
+ * @return array<string, mixed> The updated ( or copied and modified ) array.
  *
  * @example
  * ```php

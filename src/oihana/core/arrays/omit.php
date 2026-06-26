@@ -12,10 +12,10 @@ namespace oihana\core\arrays ;
  * making it well suited for excluding sensitive or unwanted fields
  * (e.g. passwords, tokens, internal metadata).
  *
- * @param array $array The input array to filter.
- * @param array $keys  The list of keys to omit from the array.
+ * @param array<int|string, mixed> $array The input array to filter.
+ * @param array<int, int|string>   $keys  The list of keys to omit from the array.
  *
- * @return array The filtered array without the specified keys.
+ * @return array<int|string, mixed> The filtered array without the specified keys.
  *
  * @example
  * ```php

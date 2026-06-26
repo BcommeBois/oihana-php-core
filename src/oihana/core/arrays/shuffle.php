@@ -11,9 +11,9 @@ namespace oihana\core\arrays ;
  *
  * If the array has 0 or 1 element, it is returned as is without changes.
  *
- * @param array &$ar The array to shuffle (passed by reference).
+ * @param array<int|string, mixed> &$ar The array to shuffle (passed by reference).
  *
- * @return array The shuffled array.
+ * @return array<int|string, mixed> The shuffled array.
  *
  * @example
  * ```php

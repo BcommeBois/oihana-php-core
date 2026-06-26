@@ -5,10 +5,10 @@ namespace oihana\core\arrays ;
 /**
  * Prepends keys/values to the beginning of an array.
  *
- * @param array $array The target array.
- * @param array $before Keys/values to prepend.
+ * @param array<int|string, mixed> $array The target array.
+ * @param array<int|string, mixed> $before Keys/values to prepend.
  *
- * @return array The merged array with $before keys first.
+ * @return array<int|string, mixed> The merged array with $before keys first.
  *
  * @example
  * ```php

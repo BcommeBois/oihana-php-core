@@ -9,11 +9,11 @@ namespace oihana\core\arrays ;
  * If `$clone` is set to `true`, the original array is not modified; instead, a new array is returned.
  * Otherwise, the original array is modified directly (passed by value).
  *
- * @param array $array The input array to modify or clone.
- * @param array $keys An array of keys to remove from the input array.
+ * @param array<int|string, mixed> $array The input array to modify or clone.
+ * @param array<int, int|string> $keys An array of keys to remove from the input array.
  * @param bool $clone If true, operates on a copy of the array and returns it; otherwise, modifies the array in place (by value).
  *
- * @return array The resulting array with specified keys removed.
+ * @return array<int|string, mixed> The resulting array with specified keys removed.
  *
  * @example
  * ```php

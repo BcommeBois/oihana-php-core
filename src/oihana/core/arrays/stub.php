@@ -8,7 +8,7 @@ namespace oihana\core\arrays ;
  * This function is useful as a placeholder or default value generator
  * when an empty array is needed.
  *
- * @return array An empty array.
+ * @return array<int|string, mixed> An empty array.
  *
  * @example
  * ```php

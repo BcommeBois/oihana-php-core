@@ -13,15 +13,15 @@ use oihana\core\options\ArrayOption;
  *
  * This is typically used before serializing arrays for JSON output.
  *
- * @param array $array   The input array.
- * @param array $options Options for transformation:
+ * @param array<int|string, mixed> $array   The input array.
+ * @param array<string, mixed> $options Options for transformation:
  *                       - 'reduce'      => bool|array|callable
  *                       - 'before'      => array
  *                       - 'after'       => array
  *                       - 'first_keys'  => array
  *                       - 'sort'        => bool
  *
- * @return array The transformed array.
+ * @return array<int|string, mixed> The transformed array.
  *
  * @example
  * ```php

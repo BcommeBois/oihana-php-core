@@ -9,10 +9,10 @@ namespace oihana\core\arrays ;
  * Entries for which it returns a truthy value go into the first group, the others
  * into the second. Original keys are preserved in both groups.
  *
- * @param array    $items     The array to split.
- * @param callable $predicate The test callback: `fn( $value , $key ): bool`.
+ * @param array<int|string, mixed> $items     The array to split.
+ * @param callable                 $predicate The test callback: `fn( $value , $key ): bool`.
  *
- * @return array A pair `[ 0 => $passed , 1 => $failed ]`.
+ * @return array{0: array<int|string, mixed>, 1: array<int|string, mixed>} A pair `[ 0 => $passed , 1 => $failed ]`.
  *
  * @example
  * ```php

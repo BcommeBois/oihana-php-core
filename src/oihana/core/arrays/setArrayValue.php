@@ -11,11 +11,11 @@ namespace oihana\core\arrays ;
  * The array is returned with the updated value, leaving the original array
  * unmodified if passed by value.
  *
- * @param array  $document The associative array to modify.
+ * @param array<string, mixed> $document The associative array to modify.
  * @param string $key      The key at which to set the value.
  * @param mixed  $value    The value to assign to the key.
  *
- * @return array The modified array with the new or updated key/value pair.
+ * @return array<string, mixed> The modified array with the new or updated key/value pair.
  *
  * @example
  * ```php

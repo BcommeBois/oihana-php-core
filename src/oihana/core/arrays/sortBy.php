@@ -10,11 +10,11 @@ namespace oihana\core\arrays ;
  * `<=>`). The sort is stable (PHP ≥ 8.0): entries with equal weights keep their
  * original relative order. Original keys are preserved.
  *
- * @param array    $items    The array to sort.
+ * @param array<int|string, mixed> $items    The array to sort.
  * @param callable $selector The weight callback: `fn( $value , $key ): mixed`.
  * @param bool     $desc     Whether to sort in descending order. Default `false`.
  *
- * @return array A new array sorted by the computed weights, keys preserved.
+ * @return array<int|string, mixed> A new array sorted by the computed weights, keys preserved.
  *
  * @example
  * ```php

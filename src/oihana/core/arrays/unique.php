@@ -14,10 +14,10 @@ namespace oihana\core\arrays ;
  * - SORT_STRING: Compare items as strings.
  * - SORT_LOCALE_STRING: Compare items as strings, based on the current locale.
  *
- * @param array $array The input array.
+ * @param array<int|string, mixed> $array The input array.
  * @param int $flags [optional] Comparison behavior flag. Default is SORT_STRING.
  *
- * @return array The filtered array with unique values, reindexed from 0.
+ * @return array<int, mixed> The filtered array with unique values, reindexed from 0.
  *
  * @example
  * ```php
