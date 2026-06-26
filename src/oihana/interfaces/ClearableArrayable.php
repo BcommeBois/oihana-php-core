@@ -19,7 +19,7 @@ interface ClearableArrayable
      *
      * @param bool $clear Whether to remove null or empty values from the array. Default: false.
      *
-     * @return array The array representation of the object.
+     * @return array<string, mixed> The array representation of the object.
      */
     public function toArray( bool $clear = false ): array ;
 }

@@ -16,7 +16,7 @@ interface Arrayable
 {
     /**
      * Converts the object to an array.
-     * @return array The array representation of the object.
+     * @return array<int|string, mixed> The array representation of the object.
      */
     public function toArray(): array;
 }
