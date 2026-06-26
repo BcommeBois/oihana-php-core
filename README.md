@@ -259,6 +259,22 @@ To run a specific test file:
 $ composer test tests/oihana/core/arrays/FlattenTest.php
 ```
 
+## Static Analysis (PHPStan)
+
+The library is analysed with [PHPStan](https://phpstan.org/) at the strictest level (`max`). The configuration lives in `phpstan.neon`.
+
+```shell
+$ composer phpstan
+```
+
+Findings that pre-date the introduction of static analysis are frozen in `phpstan-baseline.neon`, so the command is **green** and only reports *new* issues — keeping every future change held to the `max` bar. The goal is to shrink the baseline over time: once you legitimately fix some of its entries, regenerate it with
+
+```shell
+$ composer phpstan:baseline
+```
+
+PHPStan does not need Xdebug and is independent from the test suite.
+
 ## Contributing
 
 Contributions are welcome! Whether you're fixing a bug, improving an existing feature, or proposing a new one, your help is appreciated.

@@ -1,0 +1,1321 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Function oihana\\core\\accessors\\assertDocumentKeyValid\(\) never assigns null to &\$isArray so it can be removed from the by\-ref type\.$#'
+			identifier: parameterByRef.unusedType
+			count: 1
+			path: src/oihana/core/accessors/assertDocumentKeyValid.php
+
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/oihana/core/accessors/deleteKeyValue.php
+
+		-
+			message: '#^Cannot access offset string on array\<string, mixed\>\|object\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/accessors/deleteKeyValue.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/accessors/deleteKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$object of function get_object_vars expects object, array\<string, mixed\>\|object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/deleteKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/oihana/core/accessors/deleteKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_contains expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/ensureKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/ensureKeyValue.php
+
+		-
+			message: '#^Parameter \#2 \$key of function oihana\\core\\accessors\\assertDocumentKeyValid expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/ensureKeyValue.php
+
+		-
+			message: '#^Parameter \#2 \$key of function oihana\\core\\accessors\\hasKeyValue expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/ensureKeyValue.php
+
+		-
+			message: '#^Parameter \#2 \$key of function oihana\\core\\accessors\\setKeyValue expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/oihana/core/accessors/ensureKeyValue.php
+
+		-
+			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/ensureKeyValue.php
+
+		-
+			message: '#^Cannot access offset string on array\<string, mixed\>\|object\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/accessors/getKeyValue.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/accessors/getKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/getKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$object_or_class of function property_exists expects object\|string, array\<string, mixed\>\|object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/hasKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$object_or_class of function property_exists expects object\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/hasKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/hasKeyValue.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_key_exists expects array, array\<string, mixed\>\|object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/hasKeyValue.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_key_exists expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/hasKeyValue.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/accessors/setKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$document of function oihana\\core\\arrays\\setArrayValue expects array\<string, mixed\>, array\<string, mixed\>\|object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/setKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$document of function oihana\\core\\objects\\setObjectValue expects object, array\<string, mixed\>\|object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/setKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/accessors/setKeyValue.php
+
+		-
+			message: '#^Parameter \#1 \$callable of function oihana\\core\\callables\\countCallableParam expects array\<int, object\|string\>\|\(callable\(\)\: mixed\)\|object\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/compress.php
+
+		-
+			message: '#^Parameter \#2 \$options of function oihana\\core\\arrays\\compress expects array\{clone\?\: bool, conditions\?\: array\<callable\(\)\: mixed\>\|\(callable\(\)\: mixed\), excludes\?\: array\<string\>, recursive\?\: bool, depth\?\: int\|null, removeKeys\?\: array\<string\>, throwable\?\: bool\}\|null, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/compress.php
+
+		-
+			message: '#^Parameter \#2 \$options of function oihana\\core\\objects\\compress expects array\{conditions\?\: array\<callable\(\)\: mixed\>\|\(callable\(\)\: mixed\), depth\?\: int\|null, excludes\?\: array\<string\>, recursive\?\: bool, removeKeys\?\: array\<string\>, throwable\?\: bool\}, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/compress.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/oihana/core/arrays/compress.php
+
+		-
+			message: '#^Trying to invoke mixed but it''s not a callable\.$#'
+			identifier: callable.nonCallable
+			count: 2
+			path: src/oihana/core/arrays/compress.php
+
+		-
+			message: '#^Parameter \#1 \$key of function array_key_exists expects int\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/delete.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/delete.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/exists.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/get.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/arrays/groupBy.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/arrays/keyBy.php
+
+		-
+			message: '#^Parameter \#2 \$flags of function oihana\\core\\arrays\\clean expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/merge.php
+
+		-
+			message: '#^Parameter \#1 \$array of function oihana\\core\\arrays\\reorder expects array\<string, mixed\>, array\<int\|string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/prepare.php
+
+		-
+			message: '#^Parameter \#2 \$after of function oihana\\core\\arrays\\append expects array\<int\|string, mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/prepare.php
+
+		-
+			message: '#^Parameter \#2 \$before of function oihana\\core\\arrays\\prepend expects array\<int\|string, mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/prepare.php
+
+		-
+			message: '#^Parameter \#2 \$firstKeys of function oihana\\core\\arrays\\reorder expects array\<string\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/prepare.php
+
+		-
+			message: '#^Parameter \#2 \$reduce of function oihana\\core\\arrays\\reduce expects array\<string, mixed\>\|bool\|\(callable\(\)\: mixed\), mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/prepare.php
+
+		-
+			message: '#^Parameter \#3 \$sort of function oihana\\core\\arrays\\reorder expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/prepare.php
+
+		-
+			message: '#^Parameter \#2 \$callback of function array_filter expects \(callable\(mixed, int\|string\)\: bool\)\|null, Closure\(mixed, mixed\)\: mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/reduce.php
+
+		-
+			message: '#^Parameter \#2 \$options of function oihana\\core\\arrays\\compress expects array\{clone\?\: bool, conditions\?\: array\<callable\(\)\: mixed\>\|\(callable\(\)\: mixed\), excludes\?\: array\<string\>, recursive\?\: bool, depth\?\: int\|null, removeKeys\?\: array\<string\>, throwable\?\: bool\}\|null, array\<0\|1\|string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/reduce.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/oihana/core/arrays/set.php
+
+		-
+			message: '#^Cannot access offset string\|null on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/arrays/set.php
+
+		-
+			message: '#^Function oihana\\core\\arrays\\set\(\) should return array\<string, mixed\> but returns mixed\.$#'
+			identifier: return.type
+			count: 2
+			path: src/oihana/core/arrays/set.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/set.php
+
+		-
+			message: '#^Parameter &\$array by\-ref type of function oihana\\core\\arrays\\set\(\) expects array\<string, mixed\>, array\<mixed\> given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/oihana/core/arrays/set.php
+
+		-
+			message: '#^Parameter &\$array by\-ref type of function oihana\\core\\arrays\\set\(\) expects array\<string, mixed\>, mixed given\.$#'
+			identifier: parameterByRef.type
+			count: 4
+			path: src/oihana/core/arrays/set.php
+
+		-
+			message: '#^Function oihana\\core\\arrays\\swap\(\) should return array\<int\|string, mixed\> but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/arrays/swap.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_keys expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/swap.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_key_exists expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/swap.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_unique expects an array of values castable to string and float, array\<int\|string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/arrays/unique.php
+
+		-
+			message: '#^Trying to invoke \(callable\(\)\: mixed\)\|null but it might not be a callable\.$#'
+			identifier: callable.nonCallable
+			count: 1
+			path: src/oihana/core/callables/chainCallables.php
+
+		-
+			message: '#^Cannot access offset int\|string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/callables/countCallableParam.php
+
+		-
+			message: '#^Function oihana\\core\\callables\\countCallableParam\(\) should return int but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/callables/countCallableParam.php
+
+		-
+			message: '#^Parameter \#1 \$callable of function oihana\\core\\callables\\resolveCallable expects array\<int, object\|string\>\|object\|string\|null, array\<int, object\|string\>\|\(callable\)\|object\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/callables/countCallableParam.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between 2 and 2 will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/oihana/core/callables/countCallableParam.php
+
+		-
+			message: '#^Parameter \#1 \$objectOrMethod of class ReflectionMethod constructor expects object\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^Parameter \#1 \$object_or_class of function method_exists expects object\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^Parameter \#2 \$method of class ReflectionMethod constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^Parameter \#2 \$method of function method_exists expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^Parameter &\$norm by\-ref type of function oihana\\core\\callables\\getCallableType\(\) expects \(callable\(\)\: mixed\)\|null, array\{object, mixed\} given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^Parameter &\$norm by\-ref type of function oihana\\core\\callables\\getCallableType\(\) expects \(callable\(\)\: mixed\)\|null, array\{string, mixed\} given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^Parameter &\$norm by\-ref type of function oihana\\core\\callables\\getCallableType\(\) expects \(callable\(\)\: mixed\)\|null, array\{string, string\} given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^Parameter &\$norm by\-ref type of function oihana\\core\\callables\\getCallableType\(\) expects \(callable\(\)\: mixed\)\|null, mixed given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^Parameter &\$norm by\-ref type of function oihana\\core\\callables\\getCallableType\(\) expects \(callable\(\)\: mixed\)\|null, non\-empty\-array given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/oihana/core/callables/getCallableType.php
+
+		-
+			message: '#^PHPDoc tag @var with type callable\(\)\: mixed is not subtype of native type object\.$#'
+			identifier: varTag.nativeType
+			count: 1
+			path: src/oihana/core/callables/resolveCallable.php
+
+		-
+			message: '#^Parameter \#1 \$document of function oihana\\core\\objects\\toAssociativeArray expects array\<string, mixed\>\|object, array\<mixed, mixed\>\|object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/cbor/cbor_encode.php
+
+		-
+			message: '#^Parameter \#1 \$format of method DateTimeImmutable\:\:format\(\) expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/date/formatDateTime.php
+
+		-
+			message: '#^Argument of an invalid type array\|object supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/oihana/core/documents/formatDocument.php
+
+		-
+			message: '#^Call to function is_object\(\) with object will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/oihana/core/documents/formatDocument.php
+
+		-
+			message: '#^Function oihana\\core\\documents\\formatDocument\(\) should return array\<string, mixed\>\|object but returns array\|object\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/documents/formatDocument.php
+
+		-
+			message: '#^Parameter \#1 \$template of function oihana\\core\\strings\\format expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/documents/formatDocument.php
+
+		-
+			message: '#^Argument of an invalid type array\|object supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/oihana/core/documents/formatDocumentWith.php
+
+		-
+			message: '#^Call to function is_object\(\) with object will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/oihana/core/documents/formatDocumentWith.php
+
+		-
+			message: '#^Function oihana\\core\\documents\\formatDocumentWith\(\) should return array\<string, mixed\>\|object but returns array\|object\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/documents/formatDocumentWith.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_contains expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/documents/formatDocumentWith.php
+
+		-
+			message: '#^Parameter \#1 \$template of function oihana\\core\\strings\\format expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/documents/formatDocumentWith.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/oihana/core/documents/resolvePlaceholders.php
+
+		-
+			message: '#^Parameter \#1 \$template of function oihana\\core\\strings\\format expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/documents/resolvePlaceholders.php
+
+		-
+			message: '#^Parameter &\$target by\-ref type of function oihana\\core\\documents\\resolvePlaceholders\(\) expects array\<string, mixed\>\|object, mixed given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/oihana/core/documents/resolvePlaceholders.php
+
+		-
+			message: '#^Function oihana\\core\\env\\cpuCount\(\) should return int but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/cpuCount.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function substr_count expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/env/cpuCount.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isCli\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isCli.php
+
+		-
+			message: '#^Cannot access offset 0 on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/env/isCliWithFile.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isCliWithFile\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isCliWithFile.php
+
+		-
+			message: '#^Parameter \#1 \$filename of function file_exists expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/env/isCliWithFile.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isColorTerminal\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isColorTerminal.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isCron\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isCron.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isDebug\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isDebug.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isDocker\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isDocker.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isInteractive\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isInteractive.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isLinux\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isLinux.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isMac\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isMac.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isWeb\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isWeb.php
+
+		-
+			message: '#^Function oihana\\core\\env\\isWindows\(\) should return bool but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/isWindows.php
+
+		-
+			message: '#^Function oihana\\core\\env\\phpVersion\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/env/phpVersion.php
+
+		-
+			message: '#^Call to function is_callable\(\) with callable\(\)\: mixed will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/oihana/core/helpers/conditions.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of function in_array expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/isLiteral.php
+
+		-
+			message: '#^Function oihana\\core\\maths\\ceilValue\(\) never returns int so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/oihana/core/maths/ceilValue.php
+
+		-
+			message: '#^Function oihana\\core\\maths\\floorValue\(\) never returns int so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/oihana/core/maths/floorValue.php
+
+		-
+			message: '#^Offset ''angle'' on array\{angle\: float, radius\: float\} in isset\(\) always exists and is not nullable\.$#'
+			identifier: isset.offset
+			count: 1
+			path: src/oihana/core/maths/polarToCartesian.php
+
+		-
+			message: '#^Offset ''angle'' on array\{angle\: float, radius\: float\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: src/oihana/core/maths/polarToCartesian.php
+
+		-
+			message: '#^Offset ''radius'' on array\{angle\: float, radius\: float\} in isset\(\) always exists and is not nullable\.$#'
+			identifier: isset.offset
+			count: 1
+			path: src/oihana/core/maths/polarToCartesian.php
+
+		-
+			message: '#^Offset ''radius'' on array\{angle\: float, radius\: float\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: src/oihana/core/maths/polarToCartesian.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 1
+			path: src/oihana/core/maths/polarToCartesian.php
+
+		-
+			message: '#^Result of \|\| is always false\.$#'
+			identifier: booleanOr.alwaysFalse
+			count: 1
+			path: src/oihana/core/maths/polarToCartesian.php
+
+		-
+			message: '#^Function oihana\\core\\maths\\roundValue\(\) never returns int so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/oihana/core/maths/roundValue.php
+
+		-
+			message: '#^Parameter \#1 \$callable of function oihana\\core\\callables\\countCallableParam expects array\<int, object\|string\>\|\(callable\(\)\: mixed\)\|object\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/objects/compress.php
+
+		-
+			message: '#^Parameter \#2 \$options of function oihana\\core\\arrays\\compress expects array\{clone\?\: bool, conditions\?\: array\<callable\(\)\: mixed\>\|\(callable\(\)\: mixed\), excludes\?\: array\<string\>, recursive\?\: bool, depth\?\: int\|null, removeKeys\?\: array\<string\>, throwable\?\: bool\}\|null, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/objects/compress.php
+
+		-
+			message: '#^Parameter \#2 \$options of function oihana\\core\\objects\\compress expects array\{conditions\?\: array\<callable\(\)\: mixed\>\|\(callable\(\)\: mixed\), depth\?\: int\|null, excludes\?\: array\<string\>, recursive\?\: bool, removeKeys\?\: array\<string\>, throwable\?\: bool\}, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/objects/compress.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/oihana/core/objects/compress.php
+
+		-
+			message: '#^Trying to invoke mixed but it''s not a callable\.$#'
+			identifier: callable.nonCallable
+			count: 2
+			path: src/oihana/core/objects/compress.php
+
+		-
+			message: '#^Function oihana\\core\\objects\\set\(\) should return object but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/objects/set.php
+
+		-
+			message: '#^Parameter \#1 \$object_or_class of function property_exists expects object\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/objects/set.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/objects/set.php
+
+		-
+			message: '#^Function oihana\\core\\objects\\toAssociativeArray\(\) should return array\<string, mixed\> but returns array\<mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/objects/toAssociativeArray.php
+
+		-
+			message: '#^Function oihana\\core\\objects\\toAssociativeArray\(\) should return array\<string, mixed\> but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/objects/toAssociativeArray.php
+
+		-
+			message: '#^Parameter \#1 \$document of function oihana\\core\\objects\\toAssociativeArray expects array\<string, mixed\>\|object, array\<mixed, mixed\>\|object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/objects/toAssociativeArray.php
+
+		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/objects/toAssociativeArray.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/objects/toAssociativeArray.php
+
+		-
+			message: '#^Parameter \#1 \$conditions of function oihana\\core\\helpers\\conditions expects array\<int, callable\(\)\: mixed\>\|\(callable\(\)\: mixed\)\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/options/CompressOption.php
+
+		-
+			message: '#^Parameter \#2 \$throwable of function oihana\\core\\helpers\\conditions expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/options/CompressOption.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between 2 and 2 will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/oihana/core/reflections/getFunctionInfo.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/strings/between.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, array\<int, string\>\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/block.php
+
+		-
+			message: '#^Parameter \#2 \$array of function implode expects array, array\<string\>\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/block.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, array\<int, string\>\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/blockPrefix.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, array\<int, string\>\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/blockSuffix.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, list\<string\>\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/camel.php
+
+		-
+			message: '#^Call to function is_bool\(\) with string\|null will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: src/oihana/core/strings/compile.php
+
+		-
+			message: '#^Call to function is_object\(\) with string\|null will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: src/oihana/core/strings/compile.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\compile\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/compile.php
+
+		-
+			message: '#^Parameter \#1 \$expressions of function oihana\\core\\strings\\compile expects array\<int\|string, mixed\>\|string\|Stringable\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/compile.php
+
+		-
+			message: '#^Parameter \#1 \$value of function count expects array\|Countable, array\<int\|string, mixed\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/compile.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, array\<int\|string, mixed\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/compile.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, array\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/compile.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/strings/fastFormat.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\fastFormat\(\) has parameter \$args with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/oihana/core/strings/fastFormat.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\fastFormat\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/fastFormat.php
+
+		-
+			message: '#^Parameter \#2 \$callback of function preg_replace_callback expects callable\(array\<string\>\)\: string, Closure\(mixed\)\: mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/fastFormat.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\format\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/format.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/strings/formatFromDocument.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\formatFromDocument\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/formatFromDocument.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\formatFromDocument\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/formatFromDocument.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/strings/formatRequestArgs.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\getQuoteChar\(\) should return string\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/getQuoteChar.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_find_key expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/getQuoteChar.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/oihana/core/strings/getQuoteChar.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function str_ends_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/getQuoteChar.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function str_starts_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/getQuoteChar.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of function in_array expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/isQuote.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_any expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/isQuoted.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/oihana/core/strings/isQuoted.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function str_ends_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/isQuoted.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function str_starts_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/isQuoted.php
+
+		-
+			message: '#^Binary operation "\." between mixed and string results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/oihana/core/strings/keyValue.php
+
+		-
+			message: '#^Cannot cast bool\|float\|int\|object\|string to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/strings/keyValue.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: src/oihana/core/strings/keyValue.php
+
+		-
+			message: '#^Binary operation "\*" between non\-empty\-string and 2 results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/oihana/core/strings/luhn.php
+
+		-
+			message: '#^Binary operation "\+\=" between \(float\|int\) and mixed results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 1
+			path: src/oihana/core/strings/luhn.php
+
+		-
+			message: '#^Binary operation "\-" between mixed and 9 results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/oihana/core/strings/luhn.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/luhn.php
+
+		-
+			message: '#^Call to function is_array\(\) with array\<int\|string, mixed\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/oihana/core/strings/object.php
+
+		-
+			message: '#^Parameter \#1 \$key of function oihana\\core\\strings\\keyValue expects bool\|float\|int\|object\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/object.php
+
+		-
+			message: '#^Parameter \#2 \$num2 of function intdiv expects int, int\<0, max\>\|false\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/pad.php
+
+		-
+			message: '#^Parameter \#3 \$length of function grapheme_substr expects int\|null, float given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/oihana/core/strings/pad.php
+
+		-
+			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, list\<int, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/predicate.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/replace.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\replacePathPlaceholders\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/replacePathPlaceholders.php
+
+		-
+			message: '#^Loose comparison using \=\= between non\-empty\-string and '''' will always evaluate to false\.$#'
+			identifier: equal.alwaysFalse
+			count: 1
+			path: src/oihana/core/strings/replacePathPlaceholders.php
+
+		-
+			message: '#^Parameter \#2 \$callback of function preg_replace_callback expects callable\(array\<string\>\)\: string, Closure\(mixed\)\: \(bool\|float\|int\|string\|Stringable\) given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/replacePathPlaceholders.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/strings/resolveList.php
+
+		-
+			message: '#^Parameter \#1 \$separator of function explode expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/resolveList.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\sanitize\(\) should return string\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#1 \$s of static method Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer\:\:normalize\(\) expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strip_tags expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#1 \$string of function trim expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#2 \$allowed_tags of function strip_tags expects array\<int, string\>\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#2 \$form of static method Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer\:\:normalize\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function preg_replace expects array\<float\|int\|string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/sanitize.php
+
+		-
+			message: '#^Parameter \#3 \$length of function grapheme_substr expects int\|null, int\|false\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/slice.php
+
+		-
+			message: '#^Parameter \#3 \$length of function mb_substr expects int\|null, int\|false\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/slice.php
+
+		-
+			message: '#^Parameter \#1 \$string of function trim expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/slugify.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\snake\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/snake.php
+
+		-
+			message: '#^Parameter \#1 \$string of function trim expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/snake.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function preg_replace expects array\<float\|int\|string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 5
+			path: src/oihana/core/strings/snake.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\split\(\) should return array\<int, string\> but returns list\<list\<int\|string\>\|string\>\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/split.php
+
+		-
+			message: '#^Cannot access offset int\|string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/strings/splitOutsideQuotes.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_keys expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/splitOutsideQuotes.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/splitOutsideQuotes.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/splitOutsideQuotes.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function substr_compare expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/splitOutsideQuotes.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function substr_compare expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/splitOutsideQuotes.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Parameter \#1 \$array of function oihana\\core\\strings\\convertArray expects array\<int\|string, mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Parameter \#1 \$obj of function oihana\\core\\strings\\convertObject expects object, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Parameter \#1 \$string of function str_repeat expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 4
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Parameter \#1 \$value of function oihana\\core\\strings\\formatQuotedString expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Parameter \#2 \$quote of function oihana\\core\\strings\\toPhpHumanReadableScalar expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Parameter \#2 \$quoteStyle of function oihana\\core\\strings\\formatQuotedString expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Parameter \#3 \$compact of function oihana\\core\\strings\\formatQuotedString expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Parameter \#3 \$compact of function oihana\\core\\strings\\toPhpHumanReadableScalar expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/toPhpString.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/strings/toString.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 1
+			path: src/oihana/core/strings/toString.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between ''0\.0'' and ''\-0\.0'' will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/oihana/core/strings/toString.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\ucWords\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/ucWords.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/oihana/core/strings/uniqueKey.php
+
+		-
+			message: '#^Function oihana\\core\\strings\\uniqueKey\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/oihana/core/strings/uniqueKey.php
+
+		-
+			message: '#^Parameter \#2 \$data of function hash expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/uniqueKey.php
+
+		-
+			message: '#^Cannot access offset mixed on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/oihana/core/strings/unquote.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_find_key expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/unquote.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 4
+			path: src/oihana/core/strings/unquote.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function str_ends_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/unquote.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function str_starts_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/oihana/core/strings/unquote.php

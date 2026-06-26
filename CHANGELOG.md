@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
     - `core/arrays` (part 2, `merge()` → `unique()`) : generic array inputs/returns as `array<int|string, mixed>` ; associative-only inputs (`reorder()`, `set()`, `setArrayValue()`) as `array<string, mixed>` ; option maps (`merge()`, `prepare()`, `reduce()`) as `array<string, mixed>` ; key lists (`omit()`, `pick()`, `removeKeys()`) as `array<int, int|string>` ; `partition()` return as `array{0: array<int|string, mixed>, 1: array<int|string, mixed>}` ; `unique()` return as `array<int, mixed>`.
   - With part 2 done, **every `missingType.iterableValue` error reported by PHPStan at level `max` is now resolved** (152 cleared across `interfaces` and all `core/*` namespaces). No runtime behaviour changed; the suite (1639 tests) stays green and coverage stays at 100%.
 - **Tooling**
+  - Add [PHPStan](https://phpstan.org/) (`phpstan/phpstan` `^2.2`) as a dev dependency with a `phpstan.neon` configured at level `max` over `src`. The 246 findings predating static analysis are frozen in `phpstan-baseline.neon` so `composer phpstan` is green and only reports new issues; shrink the baseline over time and regenerate it with `composer phpstan:baseline`. Documented under a new "Static Analysis (PHPStan)" section in the README.
   - Bump the `phpunit/phpunit` dev dependency from `^12` to `^13` and update the `phpunit.xml` schema reference to `13.2`. The full suite (1639 tests) stays green. PHPUnit 13 requires PHP ≥ 8.4, already the project's minimum.
 
 ### Fixed

@@ -1,0 +1,14 @@
+# PHPStan configuration — run with `composer phpstan` (or `vendor/bin/phpstan analyse`).
+#
+# The project is analysed at the strictest level (`max`). The findings that
+# existed when static analysis was introduced are frozen in phpstan-baseline.neon,
+# so the command stays green and only *new* issues are reported. Chip away at the
+# baseline over time; regenerate it with `composer phpstan:baseline` when you
+# legitimately resolve (or, rarely, accept) entries.
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: max
+    paths:
+        - src

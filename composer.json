@@ -274,12 +274,16 @@
         "test": "./vendor/bin/phpunit" ,
         "coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text --coverage-clover build/coverage/clover.xml --coverage-html build/coverage/html" ,
         "coverage:md": [ "@coverage" , "php tools/clover-to-markdown.php build/coverage/clover.xml build/coverage/COVERAGE.md" ] ,
+        "phpstan": "./vendor/bin/phpstan analyse" ,
+        "phpstan:baseline": "./vendor/bin/phpstan analyse --generate-baseline phpstan-baseline.neon" ,
         "doc": "rm -rf docs && mkdir docs && cp -r .phpdoc/template/assets docs/assets && ./vendor/bin/phpdoc -c phpdoc.xml -v"
     },
     "scripts-descriptions": {
         "test": "Run the PHPUnit test suite." ,
         "coverage": "Run the suite with code coverage (text + Clover + HTML under build/coverage/). Requires Xdebug or PCOV." ,
         "coverage:md": "Regenerate build/coverage/COVERAGE.md, a readable Markdown coverage summary (gitignored, never committed)." ,
+        "phpstan": "Run PHPStan static analysis (level max) using phpstan.neon. Stays green as long as no error outside the frozen phpstan-baseline.neon is introduced." ,
+        "phpstan:baseline": "Regenerate phpstan-baseline.neon (the frozen list of pre-existing findings). Run after legitimately resolving baseline entries so the list shrinks." ,
         "doc": "Generate the phpDocumentor API documentation under docs/."
     },
     "require-dev": {
