@@ -106,8 +106,8 @@ class CompressOption
      *
      * Fills in defaults for missing keys and ensures consistent option names.
      *
-     * @param array|null $options User-provided options
-     * @return array Normalized options with default values
+     * @param array<string, mixed>|null $options User-provided options
+     * @return array<string, mixed> Normalized options with default values
      *
      * @example
      * ```php

@@ -11,8 +11,8 @@ use InvalidArgumentException;
  * population standard deviation is returned ; when `$sample` is `true`, the sample
  * standard deviation is returned (Bessel's correction, `N - 1`).
  *
- * @param array $values A list of numeric values (at least one for population, two for sample).
- * @param bool  $sample Whether to compute the sample standard deviation (`N - 1`) instead of the population one (`N`).
+ * @param array<int, int|float> $values A list of numeric values (at least one for population, two for sample).
+ * @param bool                  $sample Whether to compute the sample standard deviation (`N - 1`) instead of the population one (`N`).
  *
  * @return float The standard deviation of the values.
  *

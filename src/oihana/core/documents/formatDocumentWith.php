@@ -10,17 +10,16 @@ use function oihana\core\strings\format;
 /**
  * Formats a document (array or object) using placeholders resolved from another source document.
  *
- * @param array|object  $target          The target document to format.
- * @param array|object  $source          The source document used for placeholder resolution.
- * @param string        $prefix          Placeholder prefix (default '{{').
- * @param string        $suffix          Placeholder suffix (default '}}').
- * @param string        $separator       Separator used in nested keys (default '.').
- * @param string|null   $pattern         Optional regex pattern to match placeholders.
- * @param callable|null $formatter       Optional custom formatter with signature:
- *                                       `function(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`
- * @param bool          $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
+ * @param array<string, mixed>|object  $target          The target document to format.
+ * @param array<string, mixed>|object  $source          The source document used for placeholder resolution.
+ * @param string                       $prefix          Placeholder prefix (default '{{').
+ * @param string                       $suffix          Placeholder suffix (default '}}').
+ * @param string                       $separator       Separator used in nested keys (default '.').
+ * @param string|null                  $pattern         Optional regex pattern to match placeholders.
+ * @param callable|null                $formatter       Optional custom formatter with signature: `function(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`
+ * @param bool                         $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
  *
- * @return array|object A new document with the same structure and class as `$target`, where all string placeholders have been resolved using `$source`.
+ * @return array<string, mixed>|object A new document with the same structure and class as `$target`, where all string placeholders have been resolved using `$source`.
  *
  * @see formatDocument()
  *

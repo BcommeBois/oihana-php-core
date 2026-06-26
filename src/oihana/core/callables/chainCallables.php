@@ -12,7 +12,7 @@ namespace oihana\core\callables;
  * Returns null if the array is empty or if any callable cannot be resolved.
  * Execution stops at the first unresolvable callable in the chain.
  *
- * @param array $callables An array of callables to execute in sequence.
+ * @param array<int, string|array<int, object|string>|object> $callables An array of callables to execute in sequence.
  *                          Each can be a string, array, object, or Closure.
  *
  * @return callable|null A new callable that executes the chain, or null if invalid

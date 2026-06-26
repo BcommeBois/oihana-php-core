@@ -11,7 +11,7 @@ use InvalidArgumentException;
  * and returns a consistent array of callable conditions. It is useful when you want
  * to filter, validate, or compress data using multiple dynamic rules.
  *
- * @param array|callable|string|null $conditions The conditions to normalize. Can be:
+ * @param array<int, callable>|callable|string|null $conditions The conditions to normalize. Can be:
  *  - null: defaults to a single condition that checks for null values.
  *  - callable: a single condition function.
  *  - array: an array of callable functions.

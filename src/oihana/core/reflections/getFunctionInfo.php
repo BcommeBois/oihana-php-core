@@ -16,7 +16,7 @@ use ReflectionMethod;
  *
  * @param callable|string $callable The callable to reflect: function name, closure, or method (as string or array).
  *
- * @return array|null Returns an associative array of function details if the function exists, or null otherwise.
+ * @return array{name: string, namespace: string, alias: string, file: string|false, startLine: int|false, endLine: int|false, isInternal: bool, isUser: bool, comment: string|null}|null Returns an associative array of function details if the function exists, or null otherwise.
  *                    The array contains:
  *                    - 'name'       : Full function or method name including class if applicable.
  *                    - 'namespace'  : Namespace the function or method belongs to.

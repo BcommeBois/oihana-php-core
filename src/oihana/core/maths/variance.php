@@ -11,8 +11,8 @@ use InvalidArgumentException;
  * by `N`). When `$sample` is `true`, the sample variance is returned instead (divided
  * by `N - 1`, Bessel's correction).
  *
- * @param array $values A list of numeric values (at least one for population, two for sample).
- * @param bool  $sample Whether to compute the sample variance (`N - 1`) instead of the population one (`N`).
+ * @param array<int, int|float> $values A list of numeric values (at least one for population, two for sample).
+ * @param bool                  $sample Whether to compute the sample variance (`N - 1`) instead of the population one (`N`).
  *
  * @return float The variance of the values.
  *

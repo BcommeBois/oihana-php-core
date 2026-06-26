@@ -10,7 +10,7 @@ use InvalidArgumentException;
  * The values are sorted numerically. For an odd number of values the middle one is
  * returned ; for an even number, the average of the two central values is returned.
  *
- * @param array $values A non-empty list of numeric values.
+ * @param array<int, int|float> $values A non-empty list of numeric values.
  *
  * @return float The median of the values.
  *

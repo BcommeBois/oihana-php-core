@@ -10,15 +10,15 @@ use function oihana\core\strings\format;
  * Hydrates or formats a document (array or object) in place by replacing placeholders
  * with corresponding values from a source document.
  *
- * @param array|object  &$target         The target document to format.
- * @param array|object  $source          The source document used for placeholder resolution.
- * @param string        $prefix          Placeholder prefix (default '{{').
- * @param string        $suffix          Placeholder suffix (default '}}').
- * @param string        $separator       Separator used in nested keys (default '.').
- * @param string|null   $pattern         Optional regex pattern to match placeholders.
- * @param callable|null $formatter       Optional custom formatter callable with signature
+ * @param array<string, mixed>|object  &$target         The target document to format.
+ * @param array<string, mixed>|object  $source          The source document used for placeholder resolution.
+ * @param string                       $prefix          Placeholder prefix (default '{{').
+ * @param string                       $suffix          Placeholder suffix (default '}}').
+ * @param string                       $separator       Separator used in nested keys (default '.').
+ * @param string|null                  $pattern         Optional regex pattern to match placeholders.
+ * @param callable|null                $formatter       Optional custom formatter callable with signature
  *                                        `fn(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`
- * @param bool          $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
+ * @param bool                         $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
  *
  * @return void
  *

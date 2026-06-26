@@ -111,9 +111,9 @@ class ArrayOption
      *
      * Fills in defaults for missing keys and ensures consistent option names.
      *
-     * @param array|null $options User-provided options
+     * @param array<string, mixed>|null $options User-provided options
      *
-     * @return array The options with default values.
+     * @return array<string, mixed> The options with default values.
      *
      * @example
      * ```php

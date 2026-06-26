@@ -20,7 +20,7 @@ use Closure;
  *
  * Returns null if the callable cannot be resolved (function/method does not exist or format is invalid).
  *
- * @param string|array|object|null $callable The callable candidate to resolve. Can be:
+ * @param string|array<int, object|string>|object|null $callable The callable candidate to resolve. Can be:
  *                                             - A string containing a function or method name
  *                                             - An array with object/class and method name
  *                                             - An object instance with __invoke method

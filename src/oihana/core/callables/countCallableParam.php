@@ -17,7 +17,7 @@ use ReflectionMethod;
  * Optionally, a cache can be used to avoid repeated reflection lookups for the same callable,
  * which is useful when the callable is repeatedly inspected (e.g., in loops or recursive functions).
  *
- * @param callable|string|array|object $callable The callable to inspect.
+ * @param callable|string|array<int, object|string>|object $callable The callable to inspect.
  * @param bool $useCache Whether to cache the computed parameter count. Default true.
  *
  * @return int The number of parameters declared by the callable.

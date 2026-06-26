@@ -7,7 +7,7 @@ use InvalidArgumentException;
 /**
  * Computes the arithmetic mean (average) of a list of numbers.
  *
- * @param array $values A non-empty list of numeric values.
+ * @param array<int, int|float> $values A non-empty list of numeric values.
  *
  * @return float The arithmetic mean of the values.
  *
