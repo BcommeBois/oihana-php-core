@@ -53,9 +53,9 @@ namespace oihana\core\strings ;
  * echo replacePathPlaceholders('');   // Output: ''
  * ```
  *
- * @param string|null $path The path containing placeholders, e.g., '/users/{id}'.
- * @param array $args Associative array of placeholder values (key = placeholder name).
- * @param string $pattern Regex pattern to detect placeholders (default: '/\{([a-zA-Z0-9_]+)(:[^}]+)?}/').
+ * @param string|null           $path The path containing placeholders, e.g., '/users/{id}'.
+ * @param array<string, scalar|\Stringable> $args Associative array of placeholder values (key = placeholder name).
+ * @param string                $pattern Regex pattern to detect placeholders (default: '/\{([a-zA-Z0-9_]+)(:[^}]+)?}/').
  *
  * @return string The path with placeholders replaced by their corresponding values.
  *

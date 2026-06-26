@@ -41,9 +41,9 @@ use Normalizer;
  * 9.  **TRIM**: Clean edges.
  * 10. **NULLIFY**: Final check for emptiness.
  *
- * @param string|null $source  The string to sanitize. Can be null.
- * @param int         $flags   A bitmask of SanitizeFlag constants. Defaults to `SanitizeFlag::DEFAULT`.
- * @param array       $options Optional parameters for specific flags:
+ * @param string|null          $source  The string to sanitize. Can be null.
+ * @param int                  $flags   A bitmask of SanitizeFlag constants. Defaults to `SanitizeFlag::DEFAULT`.
+ * @param array<string, mixed> $options Optional parameters for specific flags:
  *                             - `allowed_tags` (string|string[]): Used with `STRIP_TAGS`. allowable tags (e.g. '<p><a>').
  *                             - `unicode_form` (int): Used with `NORMALIZE_UNICODE`. Defaults to `Normalizer::NFC`.
  *

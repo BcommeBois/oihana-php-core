@@ -64,7 +64,7 @@ use InvalidArgumentException;
  * @param bool $utf8
  * Whether to enable UTF-8 (`/u`) mode.
  *
- * @return array
+ * @return array<int, string>
  * An array of split segments.
  *
  * @throws InvalidArgumentException

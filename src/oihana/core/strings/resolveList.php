@@ -10,10 +10,10 @@ namespace oihana\core\strings ;
  * - joins the list using the specified replacement
  * - returns $default if the resulting list is empty
  *
- * @param string|array|null $value     Input value (string or array)
- * @param string            $separator Separator for input string (default ';')
- * @param string            $replace   Separator for output string (default PHP_EOL)
- * @param string|null       $default   Default value if the result is empty
+ * @param string|array<int|string, mixed>|null $value     Input value (string or array)
+ * @param string                               $separator Separator for input string (default ';')
+ * @param string                               $replace   Separator for output string (default PHP_EOL)
+ * @param string|null                          $default   Default value if the result is empty
  *
  * @return string|null Normalized string or default
  *

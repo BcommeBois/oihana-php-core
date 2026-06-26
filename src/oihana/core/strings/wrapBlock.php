@@ -7,12 +7,12 @@ namespace oihana\core\strings ;
 /**
  * Wraps a block of lines with a header and footer line.
  *
- * @param array|string $lines          Array or string of lines to wrap.
- * @param string       $before         Line inserted before the block.
- * @param string       $after          Line inserted after the block.
- * @param string|int   $indent         Indentation for the inner block (default: '').
- * @param string       $separator      Line separator (defaults to PHP_EOL).
- * @param bool         $keepEmptyLines Whether to preserve empty lines (default: true).
+ * @param array<int, string>|string $lines          Array or string of lines to wrap.
+ * @param string                    $before         Line inserted before the block.
+ * @param string                    $after          Line inserted after the block.
+ * @param string|int                $indent         Indentation for the inner block (default: '').
+ * @param string                    $separator      Line separator (defaults to PHP_EOL).
+ * @param bool                      $keepEmptyLines Whether to preserve empty lines (default: true).
  *
  * @return string Final wrapped block.
  *

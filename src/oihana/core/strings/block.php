@@ -7,10 +7,10 @@ namespace oihana\core\strings ;
 /**
  * Format an indented multi-line text block.
  *
- * @param array|string $input          Lines as array or multi-line string.
- * @param string|int   $indent         Indentation as string or number of spaces.
- * @param string       $separator      Line separator (defaults to PHP_EOL).
- * @param bool         $keepEmptyLines Whether to preserve empty lines (default: true).
+ * @param array<int, string>|string $input          Lines as array or multi-line string.
+ * @param string|int                $indent         Indentation as string or number of spaces.
+ * @param string                    $separator      Line separator (defaults to PHP_EOL).
+ * @param bool                      $keepEmptyLines Whether to preserve empty lines (default: true).
  *
  * @return string A single string with the lines joined by $separator and indented.
  *

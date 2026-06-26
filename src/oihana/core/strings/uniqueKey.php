@@ -36,7 +36,7 @@ use Normalizer;
  *
  * @param string|null $context Context identifier (e.g., operation or query name)
  *                             used to differentiate cache entries.
- * @param array|null $binds    Associative array of parameters to include in the key.
+ * @param array<string, mixed>|null $binds    Associative array of parameters to include in the key.
  *                             Keys are sorted alphabetically to ensure consistency.
  *                             Values can be scalars, arrays, objects, or closures.
  *                             Example: ['provider' => 'P123', 'date' => '2025-01-15']

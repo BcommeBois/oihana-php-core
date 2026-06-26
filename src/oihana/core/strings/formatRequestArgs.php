@@ -9,8 +9,8 @@ namespace oihana\core\strings ;
  * Optionally replaces the value of the `from` key with `"now"` if `$useNow` is set to `true`.
  * This is useful for formatting request parameters in URLs or APIs.
  *
- * @param array $params The associative array of parameters (e.g., `['from' => 'yesterday', 'limit' => 10]`).
- * @param bool  $useNow Whether to override the `'from'` key with `'now'` if it exists.
+ * @param array<string, mixed> $params The associative array of parameters (e.g., `['from' => 'yesterday', 'limit' => 10]`).
+ * @param bool                 $useNow Whether to override the `'from'` key with `'now'` if it exists.
  *
  * @return string A URL-compatible query string, starting with `?`, or an empty string if `$params` is empty.
  *

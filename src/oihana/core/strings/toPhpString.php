@@ -147,7 +147,7 @@ function toPhpString( mixed $value , array $options = [] ): string
  * Handles circular references to prevent infinite loops.
  *
  * @param mixed $value   The value to convert (scalar, array, object, resource, etc.).
- * @param array $options Formatting options, including:
+ * @param array<string, mixed> $options Formatting options, including:
  *                       - 'maxDepth'    (int)    Maximum recursion depth allowed.
  *                       - 'indent'      (string) Indentation string (default 4 spaces).
  *                       - 'inline'      (bool)   Whether to output inline (no line breaks).
@@ -156,7 +156,7 @@ function toPhpString( mixed $value , array $options = [] ): string
  *                       - 'compact'     (bool)   Compact output for strings (no extra spaces).
  *                       - 'humanReadable' (bool) Whether to use simplified scalar formatting.
  * @param int   $level   Current recursion depth level (used internally).
- * @param array &$cache  Internal cache to track visited objects/arrays for circular reference detection.
+ * @param array<string, bool> &$cache  Internal cache to track visited objects/arrays for circular reference detection.
  *
  * @return string PHP code string representing the given value.
  *
@@ -232,7 +232,7 @@ function convert( mixed $value , array $options , int $level , array &$cache ) :
  * For generic objects, converts public properties recursively with indentation and formatting options.
  *
  * @param object $obj The object to convert.
- * @param array $options Formatting options including:
+ * @param array<string, mixed> $options Formatting options including:
  *                        - 'maxDepth'    (int)    Maximum recursion depth allowed.
  *                        - 'indent'      (string) Indentation string (default 4 spaces).
  *                        - 'inline'      (bool)   Whether to output inline (no line breaks).
@@ -240,7 +240,7 @@ function convert( mixed $value , array $options , int $level , array &$cache ) :
  *                        - 'quote'       (string) Quote style for strings ('single' or 'double').
  *                        - 'compact'     (bool)   Compact output for strings (no extra spaces).
  * @param int $level Current recursion depth level.
- * @param array  &$cache Internal cache to track visited objects for circular reference detection.
+ * @param array<string, bool> &$cache Internal cache to track visited objects for circular reference detection.
  *
  * @return string PHP code string representing the object.
  *
@@ -329,14 +329,14 @@ function convertObject( object $obj , array $options , int $level , array &$cach
  *
  * The output is intended for debugging, code generation, or inspection tools.
  *
- * @param array $array   The array to convert.
- * @param array $options An associative array of formatting options:
+ * @param array<int|string, mixed> $array   The array to convert.
+ * @param array<string, mixed> $options An associative array of formatting options:
  *                       - 'indent'       (string): The indentation string (e.g., `'    '`).
  *                       - 'inline'       (bool): If true, output the array on a single line.
  *                       - 'useBrackets'  (bool): If true, use `[]` instead of `array()`.
  *                       - 'maxDepth'     (int): The maximum recursion depth.
  * @param int   $level   The current depth level in the recursion (used for indentation).
- * @param array &$cache  A reference to a cache array used for detecting circular references.
+ * @param array<string, bool> &$cache  A reference to a cache array used for detecting circular references.
  *
  * @return string The PHP-like string representation of the array.
  *

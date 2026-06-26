@@ -7,10 +7,10 @@ use function oihana\core\arrays\clean;
 /**
  * Generate a complex logical expression with multiple predicates.
  *
- * @param array|null $conditions      List of predicate expressions.
- * @param string     $logicalOperator The logical operator to join predicates (e.g., 'AND', 'OR').
- * @param bool       $useParentheses  Whether to wrap the result in parentheses.
- * @param bool       $spacify         Whether to pad the operator with spaces (e.g. ` AND ` vs `AND`). Default true.
+ * @param array<int, string>|null $conditions      List of predicate expressions.
+ * @param string                  $logicalOperator The logical operator to join predicates (e.g., 'AND', 'OR').
+ * @param bool                    $useParentheses  Whether to wrap the result in parentheses.
+ * @param bool                    $spacify         Whether to pad the operator with spaces (e.g. ` AND ` vs `AND`). Default true.
  *
  * @return string|null The combined expression or null if empty.
  *

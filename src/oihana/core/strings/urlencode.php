@@ -10,6 +10,7 @@ namespace oihana\core\strings ;
  * matching RFC 3986 requirements.
  *
  * @param string $uri The URI string to encode.
+ *
  * @return string The RFC 3986 compliant encoded URI string.
  *
  * @example
@@ -28,7 +29,7 @@ namespace oihana\core\strings ;
 // PHP function names are case-insensitive: this shadows the builtin \urlencode() inside the
 // oihana\core\strings namespace, where an unqualified urlencode() resolves here. Use \urlencode() for the native one
 // (as this function itself does internally).
-function urlencode( string $uri ): array|string
+function urlencode( string $uri ): string
 {
     $entities = [ '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' ];
     $replacements = [ '!', '*', "'", "(", ")", ";", ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]" ] ;

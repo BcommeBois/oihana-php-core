@@ -22,8 +22,8 @@ use InvalidArgumentException;
  *
  * Optionally, spaces can be added around braces and after commas with `$useSpace`.
  *
- * @param array|string|null $keyValues $keyValues Array of pairs, associative array, string, or null
- * @param bool              $useSpace  Add spaces around braces and after commas
+ * @param array<int|string, mixed>|string|null $keyValues $keyValues Array of pairs, associative array, string, or null
+ * @param bool                                 $useSpace  Add spaces around braces and after commas
  *
  * @return string JavaScript-like object string
  *

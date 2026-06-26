@@ -19,9 +19,9 @@ use function oihana\core\arrays\clean;
  * - Booleans are converted to `'true'` or `'false'`.
  * - Null or unsupported types are converted to an empty string.
  *
- * @param string|Stringable|array|null $expressions The expression(s) to compile.
- * @param string                       $separator   The separator used when joining array values (default is a single space).
- * @param callable|null                $callback    An optional callback applied to each array element before compiling. Signature: `function(mixed $item): mixed`.
+ * @param string|Stringable|array<int|string, mixed>|null $expressions The expression(s) to compile.
+ * @param string                                          $separator   The separator used when joining array values (default is a single space).
+ * @param callable|null                                   $callback    An optional callback applied to each array element before compiling. Signature: `function(mixed $item): mixed`.
  *
  * @return string The compiled string expression.
  *

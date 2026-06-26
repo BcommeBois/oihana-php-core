@@ -9,7 +9,7 @@ namespace oihana\core\strings ;
  * separated by a custom separator. If the prefix is empty or null,
  * the original key is returned unchanged.
  *
- * @param null|string|array $key The key to transform :
+ * @param null|string|array<int, string> $key The key to transform :
  *                               - `null` returns an empty string
  *                               - `string` is used directly
  *                               - `array` is joined using the `$separator`

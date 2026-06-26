@@ -11,7 +11,7 @@ namespace oihana\core\strings\helpers ;
 class SnakeCache
 {
     /**
-     * @var array
+     * @var array<string, array<string, string>>
      */
     private static array $cache = [] ;
 

@@ -5,11 +5,11 @@ namespace oihana\core\strings ;
 /**
  * Suffix and indent each line of a multi-line string or array of lines.
  *
- * @param array|string $lines          Array of lines or multi-line string.
- * @param string       $suffix         Suffix to append to each line.
- * @param string|int   $indent         Indentation (string or number of spaces).
- * @param string       $separator      Line separator (default: PHP_EOL).
- * @param bool         $keepEmptyLines Whether to keep empty lines (default: true).
+ * @param array<int, string>|string $lines          Array of lines or multi-line string.
+ * @param string                    $suffix         Suffix to append to each line.
+ * @param string|int                $indent         Indentation (string or number of spaces).
+ * @param string                    $separator      Line separator (default: PHP_EOL).
+ * @param bool                      $keepEmptyLines Whether to keep empty lines (default: true).
  *
  * @return string Formatted multi-line string.
  *

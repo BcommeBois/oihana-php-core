@@ -8,9 +8,8 @@ namespace oihana\core\strings ;
  * This function transforms the input string by replacing specified separator characters
  * with spaces, capitalizing each word, removing spaces, and then lowercasing the first character.
  *
- * @param ?string $source      The input string to convert to camelCase. If null or empty, returns an empty string.
- * @param array   $separators  An array of separator characters to be replaced by spaces before conversion.
- *                             Defaults to ["_", "-", "/"].
+ * @param ?string            $source      The input string to convert to camelCase. If null or empty, returns an empty string.
+ * @param array<int, string> $separators  An array of separator characters to be replaced by spaces before conversion. Defaults to ["_", "-", "/"].
  *
  * @return string The camelCase representation of the input string.
  *

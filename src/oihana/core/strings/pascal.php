@@ -8,8 +8,8 @@ namespace oihana\core\strings ;
  * Builds on {@see camel()} and then upper-cases the first character via {@see ucFirst()}.
  * Returns an empty string when the source is `null` or empty.
  *
- * @param ?string $source     The input string to convert.
- * @param array   $separators Separator characters split into words before conversion. Defaults to `["_", "-", "/"]`.
+ * @param ?string            $source     The input string to convert.
+ * @param array<int, string> $separators Separator characters split into words before conversion. Defaults to `["_", "-", "/"]`.
  *
  * @return string The PascalCase representation of the input string.
  *
