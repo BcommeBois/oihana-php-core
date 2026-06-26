@@ -20,13 +20,13 @@ use InvalidArgumentException;
  * The input can be an associative array or a stdClass-like object.
  * Intermediate paths are ensured to exist before deletion.
  *
- * @param array|object $document  The data source (array or object) to operate on.
- * @param string|array $key       The key path(s) to delete (e.g. "foo.bar" or ["foo.bar", "baz.*"]).
+ * @param array<string, mixed>|object $document  The data source (array or object) to operate on.
+ * @param string|array<int, string> $key       The key path(s) to delete (e.g. "foo.bar" or ["foo.bar", "baz.*"]).
  * @param string       $separator The separator used to split the key path. Defaults to '.'.
  * @param bool|null    $isArray   Optional: force array (`true`) or object (`false`) mode; if `null`, auto-detects.
  * @param bool         $strict    If true, throws exception when key doesn't exist. Default: false.
  *
- * @return array|object The updated document after deletion.
+ * @return array<string, mixed>|object The updated document after deletion.
  *
  * @throws InvalidArgumentException If input is not array/object, if key is invalid,
  *                                  or if path traversal encounters a type mismatch.

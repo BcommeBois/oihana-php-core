@@ -17,7 +17,7 @@ use InvalidArgumentException;
  * If a mismatch between the inferred or forced type and the actual document type occurs,
  * an `InvalidArgumentException` is thrown.
  *
- * @param array|object $document The input document (either an array or an object).
+ * @param array<string, mixed>|object $document The input document (either an array or an object).
  * @param string $key The key or property name/path to validate.
  * @param string $separator The separator for nested paths (default is '.').
  * @param bool|null $isArray Optional reference: `true` for array, `false` for object, `null` to infer automatically.

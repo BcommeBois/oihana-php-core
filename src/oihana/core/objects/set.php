@@ -14,7 +14,7 @@ use stdClass;
  * @param mixed       $value The value to set.
  * @param string      $separator The separator used in the key path. Default is '.'.
  * @param bool        $copy If true, returns a deep copy of the object with the modification.
- * @param array|string|callable|null $classFactory A class name, factory callable, or array path => className to create intermediate objects (default: stdClass).
+ * @param array<string, class-string>|string|callable|null $classFactory A class name, factory callable, or array path => className to create intermediate objects (default: stdClass).
  *
  * @return object The modified (or copied and modified) object.
  *

@@ -8,7 +8,7 @@ namespace oihana\core\objects ;
  * If $notNull is set to true, the property must also be non-null.
  *
  * @param object $object    The object to inspect
- * @param array $properties List of property names to check
+ * @param array<int, string> $properties List of property names to check
  * @param bool $notNull     Whether to check for non-null values (default: false)
  *
  * @return bool True if at least one property exists (and is not null if $notNull = true)

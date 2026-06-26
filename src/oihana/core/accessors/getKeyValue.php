@@ -16,7 +16,7 @@ use InvalidArgumentException;
  *
  * The structure type can be explicitly specified using `$isArray`, or it will be inferred automatically.
  *
- * @param array|object $document The source structure (array or object).
+ * @param array<string, mixed>|object $document The source structure (array or object).
  * @param string $key The key or property to retrieve, supports nesting (e.g. 'user.name').
  * @param mixed $default The fallback value if the key does not exist. Default is `null`.
  * @param string $separator Separator used to split nested keys. Default is '.'.

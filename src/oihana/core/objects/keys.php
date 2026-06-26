@@ -10,7 +10,7 @@ namespace oihana\core\objects ;
  *
  * @param object $object The source object.
  *
- * @return array A list of the object's public property names.
+ * @return list<string> A list of the object's public property names.
  *
  * @example
  * ```php

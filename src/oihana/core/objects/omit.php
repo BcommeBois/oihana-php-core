@@ -12,7 +12,7 @@ use stdClass ;
  * of {@see pick()}.
  *
  * @param object $object The source object.
- * @param array  $keys   The list of property names to remove.
+ * @param array<int, string> $keys   The list of property names to remove.
  *
  * @return object A new `stdClass` without the omitted properties.
  *

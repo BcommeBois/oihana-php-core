@@ -20,14 +20,14 @@ use InvalidArgumentException;
  * - **Lazy Loading:** Pass a `Closure` as a default value to calculate it only if needed.
  * - **Typed Properties:** With `$enforce = true`, strictly checks initialized state of typed properties.
  *
- * @param array|object $document  The target document (array or object).
- * @param string|array $keys      A single key, a list of keys `['a', 'b']`, or an associative map `['key' => 'default']`.
+ * @param array<string, mixed>|object $document  The target document (array or object).
+ * @param string|array<int|string, mixed> $keys      A single key, a list of keys `['a', 'b']`, or an associative map `['key' => 'default']`.
  * @param mixed        $default   Global default value (or Closure) for keys without a specific default. Default is `null`.
  * @param string       $separator Separator used to split nested keys. Default is '.'.
  * @param bool|null    $isArray   Optional: true for array mode, false for object mode, null to auto-detect.
  * @param bool         $enforce   Force initialization of non-initialized typed properties. Default: false.
  *
- * @return array|object The updated document with ensured keys.
+ * @return array<string, mixed>|object The updated document with ensured keys.
  *
  * @throws InvalidArgumentException If the document or key definition is invalid.
  *

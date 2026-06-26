@@ -11,7 +11,7 @@ namespace oihana\core\objects ;
  *
  * @param object $object The source object.
  *
- * @return array A list of the object's public property values.
+ * @return list<mixed> A list of the object's public property values.
  *
  * @example
  * ```php

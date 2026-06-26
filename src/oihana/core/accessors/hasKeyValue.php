@@ -21,7 +21,7 @@ use InvalidArgumentException;
  * If any part of the path does not exist, `false` is returned. This function does not rely on
  * `__get()` or `__isset()` magic methods for objects.
  *
- * @param array|object $document   The document (array or object) to inspect.
+ * @param array<string, mixed>|object $document   The document (array or object) to inspect.
  * @param string       $key        The key or property path to check. Supports nesting with separator.
  * @param string       $separator  Separator used for nested paths. Default is '.'.
  * @param bool|null    $isArray    Optional: true if document is an array, false if object, null to auto-detect.

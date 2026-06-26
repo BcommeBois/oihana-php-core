@@ -18,13 +18,13 @@ use function oihana\core\objects\setObjectValue;
  *
  * The type of the structure can be explicitly forced with `$isArray`, or inferred automatically.
  *
- * @param array|object $document The target array or object to modify.
+ * @param array<string, mixed>|object $document The target array or object to modify.
  * @param string $key The key or property name to set. Supports nesting (e.g., "user.name").
  * @param mixed $value The value to assign.
  * @param string $separator Separator used to split nested keys. Default is '.'.
  * @param bool|null $isArray Optional: true for array mode, false for object mode, null to auto-detect.
  *
- * @return array|object The updated document after the value has been set.
+ * @return array<string, mixed>|object The updated document after the value has been set.
  *
  * @throws InvalidArgumentException If the provided type does not match the structure type.
  *

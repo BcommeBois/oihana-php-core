@@ -12,7 +12,7 @@ use stdClass ;
  * silently ignored.
  *
  * @param object $object The source object.
- * @param array  $keys   The list of property names to keep.
+ * @param array<int, string> $keys   The list of property names to keep.
  *
  * @return object A new `stdClass` with only the picked properties.
  *

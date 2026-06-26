@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - **Types / Static analysis**
   - Begin annotating array shapes for PHPStan (level max) — `@param`/`@return` value types on `array` so static analysis can reason about contents. No runtime behaviour changes; the suite stays green and coverage stays at 100%.
     - `interfaces` : `Arrayable::toArray()` (`array<int|string, mixed>`), `ClearableArrayable::toArray()` and `ToAssociativeArray::toArray()` / its `$options` parameter (`array<string, mixed>`).
+    - `core/accessors` : document shapes on `assertDocumentKeyValid()`, `deleteKeyValue()`, `ensureKeyValue()`, `getKeyValue()`, `hasKeyValue()`, `resolveReferencePath()` and `setKeyValue()` — `$document` and returns as `array<string, mixed>|object`, key-path lists as `array<int, string>` (`ensureKeyValue()`'s `$keys` map as `array<int|string, mixed>`).
+    - `core/objects` : property-name lists (`hasAllProperties()`, `hasAnyProperty()`, `omit()`, `pick()`) as `array<int, string>` ; `keys()`/`values()` returns as `list<string>`/`list<mixed>` ; `set()`'s `$classFactory` map as `array<string, class-string>` ; `toAssociativeArray()` document/encoder/return shapes.
 - **Tooling**
   - Bump the `phpunit/phpunit` dev dependency from `^12` to `^13` and update the `phpunit.xml` schema reference to `13.2`. The full suite (1639 tests) stays green. PHPUnit 13 requires PHP ≥ 8.4, already the project's minimum.
 
