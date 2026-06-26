@@ -7,7 +7,7 @@ namespace oihana\core\arrays ;
  *
  * This is a readability alias of {@see find()} ; both names are kept for convenience.
  *
- * @param array    $items     The array to search.
+ * @param array<int|string, mixed> $items     The array to search.
  * @param callable $predicate The test callback: `fn( $value , $key ): bool`.
  * @param mixed    $default   The value returned when no element matches. Default `null`.
  *

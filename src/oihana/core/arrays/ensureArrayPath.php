@@ -8,10 +8,10 @@ namespace oihana\core\arrays ;
  * If the key does not exist or is not an array, it initializes it as an empty array.
  * This is useful for building nested structures dynamically using references.
  *
- * @param array  &$current The parent array passed by reference.
+ * @param array<int|string, mixed>  &$current The parent array passed by reference.
  * @param string $segment  The key to check or initialize as an array.
  *
- * @return array A reference to the array stored at the specified key.
+ * @return array<int|string, mixed> A reference to the array stored at the specified key.
  *
  * @example
  * ```php

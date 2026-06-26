@@ -5,10 +5,10 @@ namespace oihana\core\arrays ;
 /**
  * Appends keys/values to the end of an array.
  *
- * @param array $array The target array.
- * @param array $after Keys/values to append.
+ * @param array<int|string, mixed> $array The target array.
+ * @param array<int|string, mixed> $after Keys/values to append.
  *
- * @return array The merged array with $after keys last.
+ * @return array<int|string, mixed> The merged array with $after keys last.
  *
  * @example
  * ```php

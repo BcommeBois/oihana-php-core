@@ -9,10 +9,10 @@ namespace oihana\core\arrays ;
  * must return the group key. Non `int|string` keys are cast to `string`.
  * Original keys are preserved inside each bucket.
  *
- * @param array    $items The array to group.
+ * @param array<int|string, mixed> $items The array to group.
  * @param callable $keyer The grouping callback: `fn( $value , $key ): int|string`.
  *
- * @return array An associative array of `groupKey => [ originalKey => value, … ]` buckets.
+ * @return array<int|string, array<int|string, mixed>> An associative array of `groupKey => [ originalKey => value, … ]` buckets.
  *
  * @example
  * ```php

@@ -5,9 +5,9 @@ namespace oihana\core\arrays ;
 /**
  * Insert an element between all the items in an array.
  *
- * @param array $source The source array
+ * @param array<int|string, mixed> $source The source array
  * @param mixed $element The element to insert between items
- * @return array A new array with elements inserted between original items
+ * @return array<int|string, mixed> A new array with elements inserted between original items
  *
  * @example
  * ```php

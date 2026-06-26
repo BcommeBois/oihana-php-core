@@ -18,7 +18,7 @@ namespace oihana\core\arrays ;
  * echo json_encode( isAssociative( $array ) ) ;
  * ```
  *
- * @param array $array The array to evaluate.
+ * @param array<int|string, mixed> $array The array to evaluate.
  * @return bool Indicates if the array is associative.
  *
  * @example

@@ -12,7 +12,7 @@ use ArrayAccess ;
  * - Returns `false` if the key is `null` or an empty string.
  * - Supports both native arrays and `ArrayAccess` objects.
  *
- * @param array|ArrayAccess $array     The array or object to inspect.
+ * @param array<int|string, mixed>|ArrayAccess<int|string, mixed> $array     The array or object to inspect.
  * @param string|int|null   $key       The key to check for existence.
  * @param string            $separator The separator used in the key path. Default is '.'.
  *

@@ -7,9 +7,9 @@ namespace oihana\core\arrays ;
  * This function recursively iterates through the nested arrays,
  * concatenating all nested values into one flat array.
  *
- * @param array $array The array to flatten.
+ * @param array<int|string, mixed> $array The array to flatten.
  *
- * @return array The flattened array, containing all nested values in order.
+ * @return array<int, mixed> The flattened array, containing all nested values in order.
  *
  * @example
  * ```php

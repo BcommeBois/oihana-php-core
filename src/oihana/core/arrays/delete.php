@@ -9,9 +9,9 @@ namespace oihana\core\arrays ;
  * - Supports string path ("a.b.c") or array path (['a','b','c']).
  * - If the path is partially invalid, the array is returned unchanged.
  *
- * @param mixed        $target    The array to modify (ignored if not an array).
- * @param string|array $key       The key path to delete.
- * @param string       $separator The separator for string key paths (default: '.').
+ * @param mixed                     $target    The array to modify (ignored if not an array).
+ * @param string|array<int, string> $key       The key path to delete.
+ * @param string                    $separator The separator for string key paths (default: '.').
  *
  * @return mixed The modified array (or original if not an array).
  *

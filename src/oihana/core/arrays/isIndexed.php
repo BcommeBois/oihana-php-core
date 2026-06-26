@@ -11,7 +11,7 @@ namespace oihana\core\arrays ;
  *
  * Empty arrays are considered indexed by definition.
  *
- * @param array $array The array to evaluate.
+ * @param array<int|string, mixed> $array The array to evaluate.
  *
  * @return bool True if the array is indexed, false otherwise.
  *

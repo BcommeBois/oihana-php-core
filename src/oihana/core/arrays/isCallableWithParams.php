@@ -23,8 +23,8 @@ namespace oihana\core\arrays;
  * 5. If second element is an array → it's a chain (false)
  * 6. Otherwise → it's a callable with params (true)
  *
- * @param array      $array      Array to check
- * @param array|null $validNames Optional list of valid callable names to validate against.
+ * @param array<int, mixed> $array      Array to check
+ * @param array<int, string>|null $validNames Optional list of valid callable names to validate against.
  *                                If provided, both the first element and second element
  *                                (if string) will be checked against this list.
  *

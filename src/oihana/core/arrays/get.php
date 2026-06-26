@@ -9,7 +9,7 @@ namespace oihana\core\arrays ;
  * composed of segments separated by a specified separator (default is a dot).
  * If the key is not found, the function returns a default value.
  *
- * @param array $array The associative array to search within.
+ * @param array<string, mixed> $array The associative array to search within.
  * @param string|null $key The key path as a string.
  *                         Can be null, in which case the function returns the entire array.
  * @param mixed $default The default value to return if the key is not found.

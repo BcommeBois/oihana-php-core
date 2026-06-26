@@ -9,10 +9,10 @@ namespace oihana\core\arrays ;
  * must return the new key. Non `int|string` keys are cast to `string`. When two
  * items resolve to the same key, the last one wins.
  *
- * @param array    $items The array to index.
+ * @param array<int|string, mixed> $items The array to index.
  * @param callable $keyer The indexing callback: `fn( $value , $key ): int|string`.
  *
- * @return array An associative array of `computedKey => value`.
+ * @return array<int|string, mixed> An associative array of `computedKey => value`.
  *
  * @example
  * ```php

@@ -33,6 +33,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
     - `core/options` : `ArrayOption`/`CompressOption`/`MergeOption` `normalize()` params and returns as `array<string, mixed>`.
     - `core/helpers/conditions()` : `$conditions` array form as `array<int, callable>`.
     - `core/reflections/getFunctionInfo()` : precise `@return` array shape (`array{name: string, namespace: string, alias: string, file: string|false, startLine: int|false, endLine: int|false, isInternal: bool, isUser: bool, comment: string|null}|null`).
+    - `core/arrays` (part 1, `append()` → `keyBy()`) : generic array inputs/returns as `array<int|string, mixed>` ; associative-only inputs (`get()`) as `array<string, mixed>` ; key-path / key-list params as `array<int, string>` / `array<int, int|string>` ; `flatten()` return as `array<int, mixed>` ; `groupBy()` return as `array<int|string, array<int|string, mixed>>` ; `exists()` accepts `ArrayAccess<int|string, mixed>` ; `isCallableWithParams()` `$array` as `array<int, mixed>`.
 - **Tooling**
   - Bump the `phpunit/phpunit` dev dependency from `^12` to `^13` and update the `phpunit.xml` schema reference to `13.2`. The full suite (1639 tests) stays green. PHPUnit 13 requires PHP ≥ 8.4, already the project's minimum.
 

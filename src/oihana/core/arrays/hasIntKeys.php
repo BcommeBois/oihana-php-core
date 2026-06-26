@@ -8,7 +8,7 @@ namespace oihana\core\arrays ;
  * This function checks if every key in the provided array is an integer.
  * Returns true only if *all* keys are integers, false otherwise.
  *
- * @param array $array The array to check.
+ * @param array<int|string, mixed> $array The array to check.
  * @return bool True if all keys are integers, false otherwise.
  *
  * @example

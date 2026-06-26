@@ -8,8 +8,8 @@ namespace oihana\core\arrays ;
  * - Associative keys (strings) are merged deeply : sub-arrays are merged récursivement.
  * - Numeric keys (ints) are appended, maintaining order.
  *
- * @param array ...$arrays The arrays to be merged.
- * @return array The deeply merged array.
+ * @param array<int|string, mixed> ...$arrays The arrays to be merged.
+ * @return array<int|string, mixed> The deeply merged array.
  *
  * @example
  * ```php

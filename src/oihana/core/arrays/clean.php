@@ -36,10 +36,10 @@ use InvalidArgumentException;
  * - empty arrays
  * - and also cleans nested arrays recursively.
  *
- * @param array $array The input array to clean. Nested arrays are processed only if `CleanFlag::RECURSIVE` is set.
+ * @param array<int|string, mixed> $array The input array to clean. Nested arrays are processed only if `CleanFlag::RECURSIVE` is set.
  * @param int   $flags A bitmask of `CleanFlag` values. Defaults to `CleanFlag::DEFAULT`.
  *
- * @return ?array The filtered array:
+ * @return array<int|string, mixed>|null The filtered array:
  *   - **Associative arrays:** keys are preserved.
  *   - **Indexed arrays:** automatically reindex to remove numeric gaps.
  *   - null if the final array is empty and the CleanFlag::RETURN_NULL option is used.

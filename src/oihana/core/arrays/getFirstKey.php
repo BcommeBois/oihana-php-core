@@ -6,8 +6,8 @@ namespace oihana\core\arrays ;
  * Returns the first key from the provided list of keys that exists in the given array.
  * If none of the keys exist, the default value is returned.
  *
- * @param array $array   The array to search within.
- * @param array $keys    An ordered list of keys to check in the array.
+ * @param array<int|string, mixed> $array   The array to search within.
+ * @param array<int, int|string> $keys    An ordered list of keys to check in the array.
  * @param mixed $default The value to return if none of the keys exist in the array. Default is null.
  *
  * @return mixed Returns the first matching key if found, otherwise returns the default value.

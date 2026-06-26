@@ -20,7 +20,7 @@ use function oihana\core\objects\compress as compressObject ;
  * Useful for cleaning associative arrays (e.g., form data, object exports) by removing
  * nulls, empty strings, or other unwanted values.
  *
- * @param array $array The input array to compress.
+ * @param array<int|string, mixed> $array The input array to compress.
  * @param array{
  *     clone?: bool ,                     // If true, operate on a cloned copy. Default: false.
  *     conditions?: callable|callable[] , // One or more callbacks: fn(mixed $value): bool.
@@ -34,7 +34,7 @@ use function oihana\core\objects\compress as compressObject ;
  * }|null $options Optional configuration.
  * @param int $currentDepth Internal counter used to track recursion depth.
  *
- * @return array The compressed array (or its clone if `clone=true`).
+ * @return array<int|string, mixed> The compressed array (or its clone if `clone=true`).
  *
  * @throws InvalidArgumentException If invalid callbacks are provided and 'throwable' is true.
  *

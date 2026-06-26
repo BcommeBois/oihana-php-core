@@ -9,7 +9,7 @@ namespace oihana\core\arrays ;
  * in iteration order, until it returns a truthy value. If no element matches, the
  * `$default` value is returned.
  *
- * @param array    $items     The array to search.
+ * @param array<int|string, mixed> $items     The array to search.
  * @param callable $predicate The test callback: `fn( $value , $key ): bool`.
  * @param mixed    $default   The value returned when no element matches. Default `null`.
  *
