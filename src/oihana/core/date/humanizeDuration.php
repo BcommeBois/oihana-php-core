@@ -36,7 +36,7 @@ use function oihana\core\date\durationToSeconds ;
  *
  * @package oihana\core\date
  * @author  Marc Alcaraz (ekameleon)
- * @since   1.2.0
+ * @since   1.1.0
  */
 function humanizeDuration( int|float|string|null $duration = null , int $hoursPerDay = 24 ) : string
 {

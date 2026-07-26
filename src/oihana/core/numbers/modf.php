@@ -33,7 +33,7 @@ namespace oihana\core\numbers ;
  *
  * @package oihana\core\numbers
  * @author  Marc Alcaraz (ekameleon)
- * @since   1.0.11
+ * @since   1.1.0
  */
 function modf( float $number ) :array
 {

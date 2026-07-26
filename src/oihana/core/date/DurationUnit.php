@@ -20,7 +20,7 @@ namespace oihana\core\date ;
  *
  * @package oihana\core\date
  * @author  Marc Alcaraz (ekameleon)
- * @since   1.2.0
+ * @since   1.1.0
  */
 class DurationUnit
 {

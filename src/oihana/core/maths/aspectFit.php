@@ -29,7 +29,7 @@ namespace oihana\core\maths ;
  *
  * @package oihana\core\maths
  * @author  Marc Alcaraz (ekameleon)
- * @since   1.2.0
+ * @since   1.1.0
  */
 function aspectFit( int $width , int $height , ?int $targetWidth = null , ?int $targetHeight = null ) : array
 {
