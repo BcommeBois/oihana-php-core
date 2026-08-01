@@ -4,6 +4,7 @@ namespace tests\oihana\core\arrays;
 
 use function oihana\core\arrays\set;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class SetTest extends TestCase
@@ -66,5 +67,14 @@ class SetTest extends TestCase
         $this->assertSame( [ 'country' => 'France' ] , $return ) ;
         $this->assertSame( 'France' , $data['user']['address']['country'] ) ;
         $this->assertSame( 'Marc' , $data['user']['name'] ) ;
+    }
+
+    public function testSetWithANullKeyRejectsANonArrayValue() : void
+    {
+        $data = [ 'a' => 1 ] ;
+
+        $this->expectException( InvalidArgumentException::class ) ;
+
+        set( $data , null , 'not-an-array' ) ;
     }
 }

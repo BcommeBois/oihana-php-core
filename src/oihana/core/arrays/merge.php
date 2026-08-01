@@ -17,7 +17,14 @@ use oihana\core\options\NullsOption;
  *
  * @param array<int|string, mixed> $original The original array to merge into.
  * @param array<int|string, mixed> $external The array whose values will be merged into the original.
- * @param array<string, mixed>     $options  Optional MergeOption array to control merge behavior.
+ * @param array{
+ *     clean?: int|null ,
+ *     deep?: bool ,
+ *     indexed?: bool ,
+ *     nulls?: string ,
+ *     preserveKeys?: bool ,
+ *     unique?: bool
+ * } $options  Optional MergeOption array to control merge behavior.
  *
  * @return array<int|string, mixed> The merged array, optionally cleaned according to CleanFlag.
  *

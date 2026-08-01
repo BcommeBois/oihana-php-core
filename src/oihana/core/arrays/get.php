@@ -14,7 +14,7 @@ namespace oihana\core\arrays ;
  *                         Can be null, in which case the function returns the entire array.
  * @param mixed $default The default value to return if the key is not found.
  *                        Defaults to null.
- * @param string $separator The separator used to split the key into segments.
+ * @param non-empty-string $separator The separator used to split the key into segments.
  *                          Defaults to a dot ('.').
  *
  * @return mixed The value found in the array or the default value if the key does not exist.

@@ -20,12 +20,13 @@ use function oihana\core\callables\resolveCallable;
  *
  * @param object $object The object to compress.
  * @param array{
- *     conditions?: callable|callable[] ,   // One or more callbacks to decide if a value should be removed.
- *     depth?: null|int ,                   // Maximum recursion depth (null = unlimited).
- *     excludes?: string[] ,                // Property names to exclude from filtering.
- *     recursive?: bool ,                   // Whether to recursively compress nested objects/arrays.
- *     removeKeys?: string[] ,              // List of keys/properties to always remove.
- *     throwable?: bool                     // If true, throws InvalidArgumentException on invalid callbacks.
+ *     clone?: bool ,                              // Ignored here, carried over by arrays\compress().
+ *     conditions?: callable|array<int, callable>|string|null , // One or more callbacks to decide if a value should be removed.
+ *     depth?: null|int ,                          // Maximum recursion depth (null = unlimited).
+ *     excludes?: array<int, string>|null ,        // Property names to exclude from filtering.
+ *     recursive?: bool ,                          // Whether to recursively compress nested objects/arrays.
+ *     removeKeys?: array<int, string>|null ,      // List of keys/properties to always remove.
+ *     throwable?: bool                            // If true, throws InvalidArgumentException on invalid callbacks.
  * } $options Optional configuration.
  * @param int $currentDepth Internal counter used to track recursion depth.
  *

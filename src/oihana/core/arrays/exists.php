@@ -14,7 +14,7 @@ use ArrayAccess ;
  *
  * @param array<int|string, mixed>|ArrayAccess<int|string, mixed> $array     The array or object to inspect.
  * @param string|int|null   $key       The key to check for existence.
- * @param string            $separator The separator used in the key path. Default is '.'.
+ * @param non-empty-string  $separator The separator used in the key path. Default is '.'.
  *
  * @return bool True if the key exists, false otherwise.
  *

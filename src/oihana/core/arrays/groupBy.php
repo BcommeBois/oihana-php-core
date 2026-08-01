@@ -10,7 +10,7 @@ namespace oihana\core\arrays ;
  * Original keys are preserved inside each bucket.
  *
  * @param array<int|string, mixed> $items The array to group.
- * @param callable $keyer The grouping callback: `fn( $value , $key ): int|string`.
+ * @param callable(mixed, int|string): (int|string|float|bool|null) $keyer The grouping callback: `fn( $value , $key ): int|string`. A `float`, `bool` or `null` return is cast to string.
  *
  * @return array<int|string, array<int|string, mixed>> An associative array of `groupKey => [ originalKey => value, … ]` buckets.
  *

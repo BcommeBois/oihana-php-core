@@ -36,22 +36,23 @@ function swap( array $ar , int|string $from = 0, int|string $to = 0, bool $copy 
 {
     if ( $copy )
     {
-        $ar = unserialize( serialize( $ar ) ) ; // deep copy
+        $copied = unserialize( serialize( $ar ) ) ; // deep copy
+        $ar     = is_array( $copied ) ? $copied : $ar ; // round-tripping our own serialize() cannot fail
     }
 
     $keys = array_keys( $ar ) ;
 
     if ( is_int( $from ) && $from < 0 )
     {
-        $from = $keys[count($keys) + $from] ?? null;
+        $from = $keys[ count($keys) + $from ] ?? null;
     }
 
     if ( is_int( $to ) && $to < 0 )
     {
-        $to = $keys[count($keys) + $to] ?? null;
+        $to = $keys[ count($keys) + $to ] ?? null;
     }
 
-    if ( $from !== null && $to !== null && array_key_exists($from, $ar) && array_key_exists($to, $ar))
+    if ( $from !== null && $to !== null && array_key_exists( $from , $ar ) && array_key_exists( $to , $ar ) )
     {
         $temp        = $ar[ $from ] ;
         $ar[ $from ] = $ar[ $to   ] ;

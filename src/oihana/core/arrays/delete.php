@@ -11,7 +11,7 @@ namespace oihana\core\arrays ;
  *
  * @param mixed                     $target    The array to modify (ignored if not an array).
  * @param string|array<int, string> $key       The key path to delete.
- * @param string                    $separator The separator for string key paths (default: '.').
+ * @param non-empty-string          $separator The separator for string key paths (default: '.').
  *
  * @return mixed The modified array (or original if not an array).
  *
@@ -64,6 +64,11 @@ function delete( mixed $target , string|array $key , string $separator = '.' ) :
 
     $segments = is_array( $key ) ? $key : explode( $separator , $key ) ;
     $segment  = array_shift($segments );
+
+    if ( $segment === null ) // an empty key list has nothing to delete
+    {
+        return $target ;
+    }
 
     if( $segment == '*' ) // ALL
     {

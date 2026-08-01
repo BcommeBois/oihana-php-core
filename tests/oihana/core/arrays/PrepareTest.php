@@ -35,7 +35,7 @@ final class PrepareTest extends TestCase
 
         $output = prepare( $input ,
         [
-            ArrayOption::REDUCE => fn( $k, $v) => $v !== 2
+            ArrayOption::REDUCE => fn( $v, $k ) => $v !== 2
         ]);
 
         $this->assertSame($expected, $output);

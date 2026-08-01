@@ -10,7 +10,7 @@ namespace oihana\core\arrays ;
  * items resolve to the same key, the last one wins.
  *
  * @param array<int|string, mixed> $items The array to index.
- * @param callable $keyer The indexing callback: `fn( $value , $key ): int|string`.
+ * @param callable(mixed, int|string): (int|string|float|bool|null) $keyer The indexing callback: `fn( $value , $key ): int|string`. A `float`, `bool` or `null` return is cast to string.
  *
  * @return array<int|string, mixed> An associative array of `computedKey => value`.
  *

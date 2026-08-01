@@ -14,12 +14,29 @@ use oihana\core\options\ArrayOption;
  * This is typically used before serializing arrays for JSON output.
  *
  * @param array<int|string, mixed> $array   The input array.
- * @param array<string, mixed> $options Options for transformation:
- *                       - 'reduce'      => bool|array|callable
- *                       - 'before'      => array
- *                       - 'after'       => array
- *                       - 'first_keys'  => array
- *                       - 'sort'        => bool
+ * @param array{
+ *     after?: array<string, mixed> ,
+ *     before?: array<string, mixed> ,
+ *     defaults?: array<string, mixed> ,
+ *     exclude?: array<int, string>|null ,
+ *     firstKeys?: array<int, string> ,
+ *     include?: array<int, string>|null ,
+ *     sort?: bool ,
+ *     reduce?: bool|callable|array{
+ *         clone?: bool ,
+ *         conditions?: callable|array<int, callable>|string|null ,
+ *         depth?: int|null ,
+ *         excludes?: array<int, string>|null ,
+ *         recursive?: bool ,
+ *         removeKeys?: array<int, string>|null ,
+ *         throwable?: bool
+ *     }
+ * } $options Options for transformation (see {@see ArrayOption}):
+ *                       - 'reduce'    => bool|array|callable
+ *                       - 'before'    => array
+ *                       - 'after'     => array
+ *                       - 'firstKeys' => array
+ *                       - 'sort'      => bool
  *
  * @return array<int|string, mixed> The transformed array.
  *
@@ -68,8 +85,8 @@ function prepare( array $array , array $options = [] ) :array
         $array = reorder
         (
             $array ,
-            $options[ ArrayOption::FIRST_KEYS ] ?? [],
-            $options[ ArrayOption::SORT ] ?? true
+            $options[ ArrayOption::FIRST_KEYS ] ,
+            $options[ ArrayOption::SORT ]
         );
     }
 

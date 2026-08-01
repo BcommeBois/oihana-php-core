@@ -2,17 +2,21 @@
 
 namespace oihana\core\arrays ;
 
+use InvalidArgumentException;
+
 /**
  * Sets a value in an associative array using a key path.
  * If no key is given to the method, the entire array will be replaced.
  *
- * @param array<string, mixed> $array     The associative array to modify (by reference).
- * @param string|null $key       The key path as a string. Can be null, in which case the function replaces the entire array.
+ * @param array<array-key, mixed> $array  The array to modify (by reference).
+ * @param string|null $key       The key path as a string. Can be null, in which case the function replaces the entire array — `$value` must then be an array.
  * @param mixed       $value     The value to set.
- * @param string      $separator The separator used to split the key into segments. Defaults to a dot ('.').
+ * @param non-empty-string $separator The separator used to split the key into segments. Defaults to a dot ('.').
  * @param bool        $copy      If true, returns a modified copy instead of altering the original array.
  *
- * @return array<string, mixed> The updated ( or copied and modified ) array.
+ * @return array<array-key, mixed> The updated ( or copied and modified ) array.
+ *
+ * @throws InvalidArgumentException If `$key` is null and `$value` is not an array.
  *
  * @example
  * ```php
@@ -44,11 +48,16 @@ function set
 {
     if ( $copy )
     {
-        $array = unserialize( serialize( $array ) ) ; // Deep copy
+        $copied = unserialize( serialize( $array ) ) ; // Deep copy
+        $array  = is_array( $copied ) ? $copied : $array ; // round-tripping our own serialize() cannot fail
     }
 
     if ( is_null( $key ) )
     {
+        if ( !is_array( $value ) )
+        {
+            throw new InvalidArgumentException( 'The $value argument must be an array when $key is null, the whole array being replaced.' ) ;
+        }
         return $array = $value ;
     }
 

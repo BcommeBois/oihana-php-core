@@ -57,4 +57,10 @@ class DeleteTest extends TestCase
 
         $this->assertSame('not an array', $result);
     }
+
+    public function testDeleteWithAnEmptyKeyListReturnsTheTargetUntouched() : void
+    {
+        // array_shift() on an empty list yields null, which is not a usable array key.
+        $this->assertSame( [ 'a' => 1 ] , delete( [ 'a' => 1 ] , [] ) ) ;
+    }
 }

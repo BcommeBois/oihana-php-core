@@ -23,13 +23,13 @@ use function oihana\core\objects\compress as compressObject ;
  * @param array<int|string, mixed> $array The input array to compress.
  * @param array{
  *     clone?: bool ,                     // If true, operate on a cloned copy. Default: false.
- *     conditions?: callable|callable[] , // One or more callbacks: fn(mixed $value): bool.
+ *     conditions?: callable|array<int, callable>|string|null , // One or more callbacks: fn(mixed $value): bool.
  *                                        // If any returns true, the entry is removed.
  *                                        // Default: [fn($v) => is_null($v)].
- *     excludes?: string[] ,              // Keys to exclude from filtering, even if matched.
+ *     excludes?: array<int, string>|null , // Keys to exclude from filtering, even if matched.
  *     recursive?: bool ,                 // Whether to compress nested arrays/objects. Default: false.
  *     depth?: int|null ,                 // Maximum recursion depth. null = unlimited.
- *     removeKeys?: string[] ,            // Keys to always remove from the array.
+ *     removeKeys?: array<int, string>|null , // Keys to always remove from the array.
  *     throwable?: bool                   // If true, throws InvalidArgumentException on invalid callbacks. Default: true.
  * }|null $options Optional configuration.
  * @param int $currentDepth Internal counter used to track recursion depth.
@@ -154,7 +154,7 @@ function compress( array $array , ?array $options = [], int $currentDepth = 0 ):
             continue;
         }
 
-        if ( !empty( $conditions ) && is_iterable( $conditions ) )
+        if ( !empty( $conditions ) )
         {
             foreach ( $conditions as $condition )
             {

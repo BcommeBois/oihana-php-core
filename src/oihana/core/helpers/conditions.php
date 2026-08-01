@@ -19,7 +19,7 @@ use InvalidArgumentException;
  * @param bool $throwable If true, invalid conditions will throw an InvalidArgumentException.
  *                        If false, invalid conditions are silently ignored.
  *
- * @return array<callable> Array of callable conditions.
+ * @return array<int, callable> Array of callable conditions.
  *
  * @throws InvalidArgumentException If $throwable=true and any provided condition is invalid.
  *

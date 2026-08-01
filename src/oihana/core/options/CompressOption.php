@@ -106,8 +106,24 @@ class CompressOption
      *
      * Fills in defaults for missing keys and ensures consistent option names.
      *
-     * @param array<string, mixed>|null $options User-provided options
-     * @return array<string, mixed> Normalized options with default values
+     * @param array{
+     *     clone?: bool ,
+     *     conditions?: callable|array<int, callable>|string|null ,
+     *     depth?: int|null ,
+     *     excludes?: array<int, string>|null ,
+     *     recursive?: bool ,
+     *     removeKeys?: array<int, string>|null ,
+     *     throwable?: bool
+     * }|null $options User-provided options
+     * @return array{
+     *     clone: bool ,
+     *     conditions: array<int, callable> ,
+     *     depth: int|null ,
+     *     excludes: array<int, string>|null ,
+     *     recursive: bool ,
+     *     removeKeys: array<int, string>|null ,
+     *     throwable: bool
+     * } Normalized options with default values
      *
      * @example
      * ```php

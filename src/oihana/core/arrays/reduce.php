@@ -11,9 +11,17 @@ namespace oihana\core\arrays ;
  * - `callable`: Custom filter function
  *
  * @param array<int|string, mixed> $array   The input array.
- * @param bool|array<string, mixed>|callable  $reduce  Reduction mode:
+ * @param bool|array{
+ *     clone?: bool ,
+ *     conditions?: callable|array<int, callable>|string|null ,
+ *     depth?: int|null ,
+ *     excludes?: array<int, string>|null ,
+ *     recursive?: bool ,
+ *     removeKeys?: array<int, string>|null ,
+ *     throwable?: bool
+ * }|callable $reduce Reduction mode:
  *                                      - `true`: compress with default options
- *                                      - `array`: compress with custom options
+ *                                      - `array`: compress with custom options ({@see CompressOption})
  *                                      - `callable`: fn($value, $key): bool
  *
  * @return array<int|string, mixed> The reduced array.
@@ -64,7 +72,7 @@ function reduce( array $array , bool|array|callable $reduce = true ): array
     {
         $reduce === true     => compress( $array ) ,
         is_array( $reduce )  => compress( $array , $reduce ) ,
-        is_callable($reduce) => array_filter( $array , fn( $v , $k ) => $reduce( $k , $v ) , ARRAY_FILTER_USE_BOTH),
+        is_callable($reduce) => array_filter( $array , fn( $v , $k ) :bool => (bool) $reduce( $v , $k ) , ARRAY_FILTER_USE_BOTH ) ,
         default              => $array
     };
 }

@@ -111,9 +111,43 @@ class ArrayOption
      *
      * Fills in defaults for missing keys and ensures consistent option names.
      *
-     * @param array<string, mixed>|null $options User-provided options
+     * @param array{
+     *     after?: array<string, mixed> ,
+     *     before?: array<string, mixed> ,
+     *     defaults?: array<string, mixed> ,
+     *     exclude?: array<int, string>|null ,
+     *     firstKeys?: array<int, string> ,
+     *     include?: array<int, string>|null ,
+     *     sort?: bool ,
+     *     reduce?: bool|callable|array{
+     *         clone?: bool ,
+     *         conditions?: callable|array<int, callable>|string|null ,
+     *         depth?: int|null ,
+     *         excludes?: array<int, string>|null ,
+     *         recursive?: bool ,
+     *         removeKeys?: array<int, string>|null ,
+     *         throwable?: bool
+     *     }
+     * }|null $options User-provided options
      *
-     * @return array<string, mixed> The options with default values.
+     * @return array{
+     *     after: array<string, mixed> ,
+     *     before: array<string, mixed> ,
+     *     defaults: array<string, mixed> ,
+     *     exclude: array<int, string>|null ,
+     *     firstKeys: array<int, string> ,
+     *     include: array<int, string>|null ,
+     *     sort: bool ,
+     *     reduce: bool|callable|array{
+     *         clone?: bool ,
+     *         conditions?: callable|array<int, callable>|string|null ,
+     *         depth?: int|null ,
+     *         excludes?: array<int, string>|null ,
+     *         recursive?: bool ,
+     *         removeKeys?: array<int, string>|null ,
+     *         throwable?: bool
+     *     }
+     * } The options with default values.
      *
      * @example
      * ```php
