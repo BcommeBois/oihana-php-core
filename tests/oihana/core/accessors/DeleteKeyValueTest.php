@@ -437,4 +437,13 @@ final class DeleteKeyValueTest extends TestCase
 
         $this->assertSame($expected, $result);
     }
+
+    public function testDeleteKeyValueWalksIntoAMixedStructure() : void
+    {
+        $document = [ 'data' => (object) [ 'name' => 'Alice' , 'age' => 30 ] ] ;
+
+        $result = deleteKeyValue( $document , 'data.age' ) ;
+
+        $this->assertSame( [ 'name' => 'Alice' ] , get_object_vars( $result[ 'data' ] ) ) ;
+    }
 }

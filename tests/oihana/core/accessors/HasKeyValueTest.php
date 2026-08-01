@@ -90,4 +90,17 @@ final class HasKeyValueTest extends TestCase
 
         $this->assertFalse(hasKeyValue($doc, 'foo'));
     }
+
+    public function testHasKeyValueWalksIntoAMixedStructure() : void
+    {
+        $document = [ 'data' => (object) [ 'name' => 'Alice' ] ] ;
+
+        $this->assertTrue ( hasKeyValue( $document , 'data.name' ) ) ;
+        $this->assertFalse( hasKeyValue( $document , 'data.nope' ) ) ;
+
+        $inverse = (object) [ 'data' => [ 'name' => 'Bob' ] ] ;
+
+        $this->assertTrue ( hasKeyValue( $inverse , 'data.name' ) ) ;
+        $this->assertFalse( hasKeyValue( $inverse , 'data.nope' ) ) ;
+    }
 }

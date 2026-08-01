@@ -21,7 +21,7 @@ use function oihana\core\objects\setObjectValue;
  * @param array<array-key, mixed>|object $document The target array or object to modify.
  * @param string $key The key or property name to set. Supports nesting (e.g., "user.name").
  * @param mixed $value The value to assign.
- * @param string $separator Separator used to split nested keys. Default is '.'.
+ * @param non-empty-string $separator Separator used to split nested keys. Default is '.'.
  * @param bool|null $isArray Optional: true for array mode, false for object mode, null to auto-detect.
  *
  * @return array<array-key, mixed>|object The updated document after the value has been set.
@@ -77,7 +77,7 @@ function setKeyValue
 
     if ( !str_contains( $key , $separator ) )
     {
-        return $isArray
+        return is_array( $document )
              ? setArrayValue  ( $document , $key , $value )
             : setObjectValue ( $document , $key , $value ) ;
     }
@@ -86,7 +86,7 @@ function setKeyValue
     $parent  = &resolveReferencePath( $document , $keys , $isArray ) ;
     $lastKey = end($keys ) ;
 
-    if ( $isArray )
+    if ( is_array( $parent ) )
     {
         $parent[ $lastKey ] = $value;
     }

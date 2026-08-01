@@ -19,8 +19,9 @@ use InvalidArgumentException;
  *
  * @param array<array-key, mixed>|object $document The input document (either an array or an object).
  * @param string $key The key or property name/path to validate.
- * @param string $separator The separator for nested paths (default is '.').
+ * @param string $separator The separator for nested paths (default is '.'). Rejected when empty — this is the check the other accessors rely on to declare it `non-empty-string`.
  * @param bool|null $isArray Optional reference: `true` for array, `false` for object, `null` to infer automatically.
+ * @param-out bool $isArray
  *
  * @return bool Returns the resolved value of `$isArray`: `true` for array, `false` for object.
  *

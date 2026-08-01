@@ -13,7 +13,7 @@ namespace oihana\core\strings ;
  * @param array<string, mixed>|object|string $document  Key-value pairs for placeholders.
  * @param string                             $prefix    Placeholder prefix (default `{{`).
  * @param string                             $suffix    Placeholder suffix (default `}}`).
- * @param string                             $separator Separator used to traverse nested keys (default `.`).
+ * @param non-empty-string                   $separator Separator used to traverse nested keys (default `.`).
  * @param string|null                        $pattern   Optional full regex pattern to match placeholders (including delimiters).
  * @param bool                               $preserveMissing If true, leaves unresolved placeholders untouched instead of replacing them with an empty string. Default false.
  *

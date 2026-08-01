@@ -23,7 +23,7 @@ use InvalidArgumentException;
  *
  * @param array<array-key, mixed>|object $document   The document (array or object) to inspect.
  * @param string       $key        The key or property path to check. Supports nesting with separator.
- * @param string       $separator  Separator used for nested paths. Default is '.'.
+ * @param non-empty-string $separator Separator used for nested paths. Default is '.'.
  * @param bool|null    $isArray    Optional: true if document is an array, false if object, null to auto-detect.
  *
  * @return bool True if the full key path exists, false otherwise.
@@ -77,7 +77,7 @@ function hasKeyValue
 
     if ( !str_contains( $key , $separator ) )
     {
-        if ( $isArray )
+        if ( is_array( $document ) )
         {
             return array_key_exists( $key , $document ) ;
         }
@@ -91,13 +91,13 @@ function hasKeyValue
         $parent  = &resolveReferencePath($document ,  $keys , $isArray ) ;
         $lastKey = end( $keys ) ;
 
-        if ( $isArray )
+        if ( is_array( $parent ) )
         {
             return array_key_exists( $lastKey , $parent ) ;
         }
         else
         {
-            return property_exists( $parent , $lastKey ) ;
+            return is_object( $parent ) && property_exists( $parent , $lastKey ) ;
         }
     }
     // defensive: resolveReferencePath does not throw on valid input

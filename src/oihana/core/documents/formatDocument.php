@@ -50,7 +50,7 @@ use function oihana\core\strings\format;
  * @param array<string, mixed>|object  $document        The document (array or object) to recursively format.
  * @param string                       $prefix          Placeholder prefix (default '{{').
  * @param string                       $suffix          Placeholder suffix (default '}}').
- * @param string                       $separator       Separator used in nested keys (default '.').
+ * @param non-empty-string             $separator       Separator used in nested keys (default '.').
  * @param string|null                  $pattern         Optional regex pattern to match placeholders.
  * @param callable|null                $formatter       Optional custom formatter callable.
  * @param bool                         $preserveMissing If true, unresolved placeholders will be preserved (default false).

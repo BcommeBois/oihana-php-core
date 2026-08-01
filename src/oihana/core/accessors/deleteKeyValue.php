@@ -21,8 +21,8 @@ use InvalidArgumentException;
  * Intermediate paths are ensured to exist before deletion.
  *
  * @param array<array-key, mixed>|object $document  The data source (array or object) to operate on.
- * @param string|array<int, string> $key       The key path(s) to delete (e.g. "foo.bar" or ["foo.bar", "baz.*"]).
- * @param string       $separator The separator used to split the key path. Defaults to '.'.
+ * @param string|array<int, mixed> $key        The key path(s) to delete (e.g. "foo.bar" or ["foo.bar", "baz.*"]). A non-string entry is rejected.
+ * @param non-empty-string $separator The separator used to split the key path. Defaults to '.'.
  * @param bool|null    $isArray   Optional: force array (`true`) or object (`false`) mode; if `null`, auto-detects.
  * @param bool         $strict    If true, throws exception when key doesn't exist. Default: false.
  *
@@ -143,7 +143,7 @@ function deleteKeyValue
 
     if ( $key === '*' )
     {
-        if ( $isArray )
+        if ( is_array( $document ) )
         {
             return [] ;
         }
@@ -170,7 +170,7 @@ function deleteKeyValue
         $target    = &resolveReferencePath($document , $keys , $isArray ) ;
         $lastKey   = end($keys ) ;
 
-        if ($isArray)
+        if ( is_array( $target ) )
         {
             if ( isset( $target[ $lastKey ] ) && is_array( $target[ $lastKey ] ) )
             {
@@ -193,7 +193,7 @@ function deleteKeyValue
 
     if ( !str_contains( $key , $separator ) )
     {
-        if ( $isArray )
+        if ( is_array( $document ) )
         {
             unset( $document[ $key ] );
         }

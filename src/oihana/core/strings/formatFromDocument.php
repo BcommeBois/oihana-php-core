@@ -16,7 +16,7 @@ use function oihana\core\accessors\getKeyValue ;
  * @param array<string, mixed>|object $document        Key-value pairs for placeholders.
  * @param string                      $prefix          Placeholder prefix (default `{{`).
  * @param string                      $suffix          Placeholder suffix (default `}}`).
- * @param string                      $separator       Separator used to traverse nested keys (default `.`).
+ * @param non-empty-string            $separator       Separator used to traverse nested keys (default `.`).
  * @param string|null                 $pattern         Optional full regex pattern to match placeholders (including delimiters).
  * @param bool                        $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
  *

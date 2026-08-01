@@ -134,4 +134,10 @@ final class GetKeyValueTest extends TestCase
         $doc = ['a' => 1];
         getKeyValue($doc, 'a', separator: '');
     }
+
+    public function testGetKeyValueWalksIntoAMixedStructure() : void
+    {
+        $this->assertSame( 'Alice' , getKeyValue( [ 'data' => (object) [ 'name' => 'Alice' ] ] , 'data.name' ) ) ;
+        $this->assertSame( 'Bob'   , getKeyValue( (object) [ 'data' => [ 'name' => 'Bob' ] ] , 'data.name' ) ) ;
+    }
 }

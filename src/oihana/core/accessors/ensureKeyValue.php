@@ -23,7 +23,7 @@ use InvalidArgumentException;
  * @param array<array-key, mixed>|object $document  The target document (array or object).
  * @param string|array<int|string, mixed> $keys      A single key, a list of keys `['a', 'b']`, or an associative map `['key' => 'default']`.
  * @param mixed        $default   Global default value (or Closure) for keys without a specific default. Default is `null`.
- * @param string       $separator Separator used to split nested keys. Default is '.'.
+ * @param non-empty-string $separator Separator used to split nested keys. Default is '.'.
  * @param bool|null    $isArray   Optional: true for array mode, false for object mode, null to auto-detect.
  * @param bool         $enforce   Force initialization of non-initialized typed properties. Default: false.
  *
@@ -101,6 +101,10 @@ function ensureKeyValue
         }
         else
         {
+            if ( !is_string( $valueOrKey ) )
+            {
+                throw new InvalidArgumentException('All keys must be strings.' ) ;
+            }
             $key           = $valueOrKey ;
             $targetDefault = $default ;
         }

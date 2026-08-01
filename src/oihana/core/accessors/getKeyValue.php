@@ -19,7 +19,7 @@ use InvalidArgumentException;
  * @param array<array-key, mixed>|object $document The source structure (array or object).
  * @param string $key The key or property to retrieve, supports nesting (e.g. 'user.name').
  * @param mixed $default The fallback value if the key does not exist. Default is `null`.
- * @param string $separator Separator used to split nested keys. Default is '.'.
+ * @param non-empty-string $separator Separator used to split nested keys. Default is '.'.
  * @param bool|null $isArray Optional: true for array mode, false for object mode, null for auto-detection.
  *
  * @return mixed The value found, or the default if the key path is not valid or not found.
@@ -78,7 +78,7 @@ function getKeyValue
         {
             $parent  = &resolveReferencePath($document, $keys, $isArray);
             $lastKey = end( $keys ) ;
-            return $isArray ? ( $parent[ $lastKey ] ?? $default ) : $parent->{ $lastKey } ?? $default ;
+            return is_array( $parent ) ? ( $parent[ $lastKey ] ?? $default ) : $parent->{ $lastKey } ?? $default ;
         }
         // defensive: resolveReferencePath does not throw on valid input
         // @codeCoverageIgnoreStart
@@ -89,7 +89,7 @@ function getKeyValue
         // @codeCoverageIgnoreEnd
     }
 
-    if ( $isArray )
+    if ( is_array( $document ) )
     {
         return $document[ $key ] ?? $default ;
     }

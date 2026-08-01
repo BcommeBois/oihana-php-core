@@ -14,7 +14,7 @@ use function oihana\core\strings\format;
  * @param array<string, mixed>|object  $source          The source document used for placeholder resolution.
  * @param string                       $prefix          Placeholder prefix (default '{{').
  * @param string                       $suffix          Placeholder suffix (default '}}').
- * @param string                       $separator       Separator used in nested keys (default '.').
+ * @param non-empty-string             $separator       Separator used in nested keys (default '.').
  * @param string|null                  $pattern         Optional regex pattern to match placeholders.
  * @param callable|null                $formatter       Optional custom formatter callable with signature
  *                                        `fn(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`

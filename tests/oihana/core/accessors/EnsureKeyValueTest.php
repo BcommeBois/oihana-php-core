@@ -8,6 +8,7 @@ use function oihana\core\accessors\ensureKeyValue;
 use function oihana\core\accessors\getKeyValue;
 use function oihana\core\accessors\hasKeyValue;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class EnsureKeyValueTest extends TestCase
@@ -246,5 +247,15 @@ final class EnsureKeyValueTest extends TestCase
         ensureKeyValue($root, 'middle.leaf.title', 'Hero', '.', null, true);
 
         $this->assertSame('Hero', $root->middle->leaf->title);
+    }
+
+    public function testEnsureKeyValueRejectsANonStringPositionalKey() : void
+    {
+        $document = [ 'a' => 1 ] ;
+
+        $this->expectException( InvalidArgumentException::class ) ;
+        $this->expectExceptionMessage( 'All keys must be strings.' ) ;
+
+        ensureKeyValue( $document , [ 42 ] ) ;
     }
 }

@@ -107,4 +107,21 @@ final class SetKeyValueTest extends TestCase
         $this->assertIsObject($updated->user);
         $this->assertSame('Bob', $updated->user->profile->name);
     }
+
+    public function testSetKeyValueWalksIntoAMixedStructure() : void
+    {
+        // resolveReferencePath() supports mixed structures : the node reached is not
+        // necessarily of the kind the document itself is.
+        $document = [ 'data' => (object) [ 'name' => 'Alice' ] ] ;
+
+        $result = setKeyValue( $document , 'data.age' , 30 ) ;
+
+        $this->assertSame( 30 , $result[ 'data' ]->age ) ;
+
+        $inverse = (object) [ 'data' => [ 'name' => 'Bob' ] ] ;
+
+        $result = setKeyValue( $inverse , 'data.age' , 42 ) ;
+
+        $this->assertSame( 42 , $result->data[ 'age' ] ) ;
+    }
 }
