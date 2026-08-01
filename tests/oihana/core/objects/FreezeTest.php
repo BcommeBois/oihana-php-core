@@ -2,6 +2,10 @@
 
 namespace tests\oihana\core\objects;
 
+use InvalidArgumentException;
+
+use oihana\core\arrays\CleanFlag;
+
 use function oihana\core\objects\freeze;
 
 use PHPUnit\Framework\TestCase;
@@ -90,6 +94,147 @@ class FreezeTest extends TestCase
         (
             [ 'name' => 'Alice' , 'url' => 'https://example.org' ] ,
             freeze( $thing , [ 'name' , 'url' , 'image' ] )
+        ) ;
+    }
+
+    // ------------- renaming
+
+    public function testRenamesPropertiesWithStringKeys() : void
+    {
+        $thing = (object) [ '_key' => 'aeb1' , 'name' => 'Alice' ] ;
+        $this->assertSame
+        (
+            [ '_key' => 'aeb1' , 'thingName' => 'Alice' ] ,
+            freeze( $thing , [ '_key' , 'thingName' => 'name' ] )
+        ) ;
+    }
+
+    public function testRenamingKeepsTheFieldsOrder() : void
+    {
+        $thing = (object) [ 'a' => 1 , 'b' => 2 ] ;
+        $this->assertSame( [ 'beta' => 2 , 'alpha' => 1 ] , freeze( $thing , [ 'beta' => 'b' , 'alpha' => 'a' ] ) ) ;
+    }
+
+    public function testRenamingAMissingPropertyDropsTheTargetKey() : void
+    {
+        $thing = (object) [ 'a' => 1 ] ;
+        $this->assertSame( [ 'alpha' => 1 ] , freeze( $thing , [ 'alpha' => 'a' , 'omega' => 'z' ] ) ) ;
+    }
+
+    public function testTheSamePropertyCanBeCopiedTwice() : void
+    {
+        $thing = (object) [ 'name' => 'Alice' ] ;
+        $this->assertSame
+        (
+            [ 'name' => 'Alice' , 'label' => 'Alice' ] ,
+            freeze( $thing , [ 'name' , 'label' => 'name' ] )
+        ) ;
+    }
+
+    // ------------- flags
+
+    public function testFlagsMainDiscardsEmptyStringsAndArrays() : void
+    {
+        $thing = (object) [ 'name' => 'Alice' , 'label' => '   ' , 'tags' => [] , 'score' => 0 , 'id' => null ] ;
+        $this->assertSame
+        (
+            [ 'name' => 'Alice' , 'score' => 0 ] ,
+            freeze( $thing , [ 'name' , 'label' , 'tags' , 'score' , 'id' ] , CleanFlag::MAIN )
+        ) ;
+    }
+
+    public function testFlagsFalsyDiscardsZeroAndFalse() : void
+    {
+        $thing = (object) [ 'name' => 'Alice' , 'score' => 0 , 'active' => false , 'zero' => '0' ] ;
+        $this->assertSame
+        (
+            [ 'name' => 'Alice' ] ,
+            freeze( $thing , [ 'name' , 'score' , 'active' , 'zero' ] , CleanFlag::FALSY )
+        ) ;
+    }
+
+    public function testZeroFlagsKeepsEverythingIncludingNulls() : void
+    {
+        $thing = (object) [ 'name' => 'Alice' , 'id' => null ] ;
+        $this->assertSame
+        (
+            [ 'name' => 'Alice' , 'id' => null , 'unknown' => null ] ,
+            freeze( $thing , [ 'name' , 'id' , 'unknown' ] , 0 )
+        ) ;
+    }
+
+    public function testRecursiveFlagCleansNestedArrays() : void
+    {
+        $thing = (object) [ 'meta' => [ 'a' => 1 , 'b' => null ] ] ;
+        $this->assertSame
+        (
+            [ 'meta' => [ 'a' => 1 ] ] ,
+            freeze( $thing , [ 'meta' ] , CleanFlag::NULLS | CleanFlag::RECURSIVE )
+        ) ;
+    }
+
+    public function testThrowsOnReturnNullFlag() : void
+    {
+        $this->expectException( InvalidArgumentException::class ) ;
+        $this->expectExceptionMessage( 'CleanFlag::RETURN_NULL' ) ;
+        freeze( (object) [ 'a' => 1 ] , [ 'a' ] , CleanFlag::NORMALIZE ) ;
+    }
+
+    public function testThrowsOnInvalidFlags() : void
+    {
+        $this->expectException( InvalidArgumentException::class ) ;
+        freeze( (object) [ 'a' => 1 ] , [ 'a' ] , 1 << 20 ) ;
+    }
+
+    // ------------- deep
+
+    public function testDeepConvertsNestedObjects() : void
+    {
+        $thing = (object) [ 'name' => 'Alice' , 'address' => (object) [ 'city' => 'Paris' ] ] ;
+        $this->assertSame
+        (
+            [ 'name' => 'Alice' , 'address' => [ 'city' => 'Paris' ] ] ,
+            freeze( $thing , [ 'name' , 'address' ] , deep : true )
+        ) ;
+    }
+
+    public function testDeepDetachesTheSnapshotFromTheSource() : void
+    {
+        $address = (object) [ 'city' => 'Paris' ] ;
+        $thing   = (object) [ 'address' => $address ] ;
+
+        $shallow = freeze( $thing , [ 'address' ] ) ;
+        $frozen  = freeze( $thing , [ 'address' ] , deep : true ) ;
+
+        $address->city = 'Lyon' ;
+
+        $this->assertSame( 'Lyon'  , $shallow[ 'address' ]->city   ) ; // shared instance
+        $this->assertSame( 'Paris' , $frozen [ 'address' ][ 'city' ] ) ; // detached copy
+    }
+
+    public function testDeepConvertsObjectsNestedInArrays() : void
+    {
+        $thing = (object) [ 'authors' => [ (object) [ 'name' => 'Alice' ] ] ] ;
+        $this->assertSame
+        (
+            [ 'authors' => [ [ 'name' => 'Alice' ] ] ] ,
+            freeze( $thing , [ 'authors' ] , deep : true )
+        ) ;
+    }
+
+    public function testDeepLeavesScalarsUntouched() : void
+    {
+        $thing = (object) [ 'name' => 'Alice' , 'score' => 42 ] ;
+        $this->assertSame( [ 'name' => 'Alice' , 'score' => 42 ] , freeze( $thing , [ 'name' , 'score' ] , deep : true ) ) ;
+    }
+
+    public function testDeepCombinedWithFlags() : void
+    {
+        $thing = (object) [ 'meta' => (object) [ 'a' => 1 , 'b' => null ] ] ;
+        $this->assertSame
+        (
+            [ 'meta' => [ 'a' => 1 ] ] ,
+            freeze( $thing , [ 'meta' ] , CleanFlag::NULLS | CleanFlag::RECURSIVE , true )
         ) ;
     }
 }

@@ -415,12 +415,6 @@ parameters:
 			path: src/oihana/core/callables/resolveCallable.php
 
 		-
-			message: '#^Parameter \#1 \$document of function oihana\\core\\objects\\toAssociativeArray expects array\<string, mixed\>\|object, array\<mixed, mixed\>\|object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/oihana/core/cbor/cbor_encode.php
-
-		-
 			message: '#^Parameter \#1 \$format of method DateTimeImmutable\:\:format\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -717,12 +711,6 @@ parameters:
 		-
 			message: '#^Function oihana\\core\\objects\\toAssociativeArray\(\) should return array\<string, mixed\> but returns mixed\.$#'
 			identifier: return.type
-			count: 1
-			path: src/oihana/core/objects/toAssociativeArray.php
-
-		-
-			message: '#^Parameter \#1 \$document of function oihana\\core\\objects\\toAssociativeArray expects array\<string, mixed\>\|object, array\<mixed, mixed\>\|object given\.$#'
-			identifier: argument.type
 			count: 1
 			path: src/oihana/core/objects/toAssociativeArray.php
 

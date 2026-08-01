@@ -8,7 +8,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
 - **Objects**
-  - Add the `oihana\core\objects\freeze()` function : builds a plain associative array snapshot of the given properties of an object, keeping only the non-null ones. Unlike `pick()` + `compress()`, it follows the order of the requested `$fields` (not the declaration order of the object) and reads through `$object->{ $field } ?? null`, so magic `__get()` / `__isset()` accessors are honoured. Missing, uninitialized and inaccessible properties are silently skipped ; only `null` is discarded, so `0`, `0.0`, `''`, `false` and `[]` are kept. Useful to freeze a reference to another document — copying the chosen properties onto the current one so the snapshot survives later changes to the source.
+  - Add the `oihana\core\objects\freeze()` function : builds a plain associative array snapshot of the chosen properties of an object. Useful to freeze a reference to another document — copying the selected properties onto the current one so the snapshot survives later changes to the source. Unlike `pick()` + `compress()`, it follows the order of the requested `$fields` (not the declaration order of the object) and reads through `$object->{ $field } ?? null`, so magic `__get()` / `__isset()` accessors are honoured ; missing, uninitialized and inaccessible properties read as `null`. The source object is never modified.
+    - **Renaming** : an entry of `$fields` carrying a string key uses that key as the property name in the snapshot, so `[ '_key' , 'thingName' => 'name' ]` lands the source `name` as `thingName`.
+    - **Filtering** : the collected values are handed to `arrays\clean()` with the `$flags` bitmask, so the whole `CleanFlag` vocabulary applies. The default, `CleanFlag::NULLS`, only discards `null` — `0`, `0.0`, `''`, `false` and `[]` are kept. `CleanFlag::RETURN_NULL` is rejected with an `InvalidArgumentException`, the function always returning an array.
+    - **Depth** : `$deep = true` converts every object or array value into a plain associative array with `toAssociativeArray()`, so the snapshot no longer shares any instance with the source. Left to `false` by default, where object values are copied by handle.
 
 ## [1.1.0] - 2026-07-26
 

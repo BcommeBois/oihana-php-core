@@ -12,7 +12,7 @@ use function oihana\core\callables\resolveCallable;
  *
  * Note that only public properties of the object will be included in the resulting array.
  *
- * @param array<string, mixed>|object $document An array or object to convert to a deep associative array .
+ * @param array<int|string, mixed>|object $document An array or object to convert to a deep associative array .
  *
  * @param string|array<int, object|string>|object|null $encoder Optional JSON encoder reference.
  * This value is resolved into a callable using {@see resolveCallable()}.
