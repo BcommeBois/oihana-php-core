@@ -23,6 +23,7 @@ namespace oihana\core\env ;
  */
 function isInteractive() :bool
 {
+    /** @var bool|null $interactive */
     static $interactive = null ;
     if ( $interactive === null )
     {

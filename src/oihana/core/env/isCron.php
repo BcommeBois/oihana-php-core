@@ -13,6 +13,7 @@ namespace oihana\core\env ;
  */
 function isCron(): bool
 {
+    /** @var bool|null $cron */
     static $cron = null ;
     if ( $cron === null )
     {

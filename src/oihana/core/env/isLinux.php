@@ -23,6 +23,7 @@ namespace oihana\core\env ;
  */
 function isLinux(): bool
 {
+    /** @var bool|null $isLinux */
     static $isLinux = null;
     if ( $isLinux === null )
     {

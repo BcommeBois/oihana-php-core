@@ -13,6 +13,7 @@ namespace oihana\core\env ;
  */
 function isDebug(): bool
 {
+    /** @var bool|null $debug */
     static $debug = null ;
     if ( $debug === null )
     {

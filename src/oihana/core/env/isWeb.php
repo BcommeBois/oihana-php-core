@@ -25,6 +25,7 @@ namespace oihana\core\env ;
  */
 function isWeb(): bool
 {
+    /** @var bool|null $web */
     static $web = null ;
     if ( $web === null )
     {

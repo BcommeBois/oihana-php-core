@@ -23,6 +23,7 @@ namespace oihana\core\env ;
  */
 function isWindows():bool
 {
+    /** @var bool|null $isWindows */
     static $isWindows = null;
     if ( $isWindows === null )
     {

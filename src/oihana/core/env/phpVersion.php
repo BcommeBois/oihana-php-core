@@ -22,6 +22,7 @@ namespace oihana\core\env ;
 // oihana\core\env namespace, where an unqualified phpversion() resolves here. Use \phpversion() for the native one.
 function phpVersion() :string
 {
+    /** @var string|null $version */
     static $version = null ;
     if ( $version === null )
     {

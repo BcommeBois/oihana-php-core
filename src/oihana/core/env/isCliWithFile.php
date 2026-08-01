@@ -29,10 +29,13 @@ namespace oihana\core\env ;
  */
 function isCliWithFile(): bool
 {
+    /** @var bool|null $cliFile */
     static $cliFile = null ;
     if ( $cliFile === null )
     {
-        $cliFile = isCli() && isset($_SERVER['argv'][0]) && file_exists($_SERVER['argv'][0]) ;
+        $argv    = $_SERVER[ 'argv' ] ?? null ;
+        $argv0   = is_array( $argv ) ? ( $argv[ 0 ] ?? null ) : null ;
+        $cliFile = isCli() && is_string( $argv0 ) && file_exists( $argv0 ) ;
     }
     return $cliFile ;
 }

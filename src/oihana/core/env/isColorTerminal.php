@@ -13,6 +13,7 @@ namespace oihana\core\env ;
  */
 function isColorTerminal(): bool
 {
+    /** @var bool|null $hasColor */
     static $hasColor = null;
     if ( $hasColor === null )
     {

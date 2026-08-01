@@ -23,6 +23,7 @@ namespace oihana\core\env ;
  */
 function isMac():bool
 {
+    /** @var bool|null $isMac */
     static $isMac = null ;
     if ( $isMac === null )
     {

@@ -25,6 +25,7 @@ namespace oihana\core\env ;
  */
 function isCli(): bool
 {
+    /** @var bool|null $cli */
     static $cli = null;
     if ( $cli === null )
     {

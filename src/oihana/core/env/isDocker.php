@@ -13,6 +13,7 @@ namespace oihana\core\env ;
  */
 function isDocker(): bool
 {
+    /** @var bool|null $docker */
     static $docker = null ;
     if ( $docker === null )
     {

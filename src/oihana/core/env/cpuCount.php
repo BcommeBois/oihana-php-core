@@ -13,6 +13,7 @@ namespace oihana\core\env ;
  */
 function cpuCount(): int
 {
+    /** @var int|null $count */
     static $count = null;
     if ( $count === null )
     {
@@ -20,7 +21,8 @@ function cpuCount(): int
         {
             // Linux-only path; not exercised on the coverage host
             // @codeCoverageIgnoreStart
-            $count = substr_count(file_get_contents('/proc/cpuinfo'), 'processor');
+            $cpuinfo = file_get_contents('/proc/cpuinfo') ;
+            $count   = $cpuinfo === false ? 1 : substr_count( $cpuinfo , 'processor' ) ; // unreadable /proc falls back like the branch below
             // @codeCoverageIgnoreEnd
         }
         else
