@@ -2,6 +2,8 @@
 
 namespace tests\oihana\core\arrays;
 
+use InvalidArgumentException;
+
 use oihana\core\arrays\CleanFlag;
 use function oihana\core\arrays\clean;
 
@@ -83,6 +85,27 @@ class CleanTest extends TestCase
         $input = ['a' => '   ', 'b' => '', 'c' => null, 'd' => 'ok'];
 
         $this->assertSame($input, clean($input, CleanFlag::TRIM));
+    }
+
+    public function testCleanEmptyArrayReturnsNullWhenReturnNullIsSet(): void
+    {
+        $this->assertNull(clean([], CleanFlag::NORMALIZE));
+        $this->assertNull(clean([], CleanFlag::NULLS | CleanFlag::RETURN_NULL));
+        $this->assertNull(clean([], CleanFlag::RETURN_NULL));
+    }
+
+    public function testCleanTreatsAnAlreadyEmptyInputLikeAnEmptiedOne(): void
+    {
+        $flags = CleanFlag::DEFAULT | CleanFlag::RETURN_NULL;
+
+        $this->assertSame(clean([], $flags), clean(['a' => null], $flags));
+        $this->assertSame(clean([], $flags), clean(['a' => '   '], $flags));
+    }
+
+    public function testCleanEmptyArrayStillValidatesFlagsFirst(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        clean([], 1 << 20);
     }
 
     public function testCleanReturnNullIsNotPropagatedToNestedArrays(): void

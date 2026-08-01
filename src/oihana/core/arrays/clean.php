@@ -22,8 +22,9 @@ use InvalidArgumentException;
  *                              Short-circuits `NULLS` / `EMPTY` / `TRIM`, and never applies to
  *                              arrays — combine it with `EMPTY_ARR` to also discard `[]`.
  * - `CleanFlag::MAIN`        : Shortcut for enabling all the main flags: `NULLS | EMPTY | EMPTY_ARR | TRIM`.
- * - `CleanFlag::RETURN_NULL` : Returns null if the final array is empty. Applies to the outermost
- *                              call only : a nested array that cleans to empty stays `[]`.
+ * - `CleanFlag::RETURN_NULL` : Returns null whenever nothing is left, including when the input was
+ *                              already empty. Applies to the outermost call only : a nested array
+ *                              that cleans to empty stays `[]`.
  *
  * ### Default behavior
  *
@@ -114,11 +115,14 @@ use InvalidArgumentException;
  * // Equivalent to CleanFlag::DEFAULT
  * ```
  *
- **7. Return null if the cleaned array is empty**
+ **7. Return null if nothing is left**
  * ```php
  * $data = ['', null, '   '];
  * $result = clean($data, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL);
  * // null (instead of [])
+ *
+ * $result = clean([], CleanFlag::DEFAULT | CleanFlag::RETURN_NULL);
+ * // null too : an already empty input is a "nothing left" case like any other
  *
  * // Useful for validation
  * $cleaned = clean($userInput, CleanFlag::DEFAULT | CleanFlag::RETURN_NULL);
@@ -149,10 +153,9 @@ function clean( array $array = [] , int $flags = CleanFlag::DEFAULT ): ?array
         );
     }
 
-    if ( empty( $array ) )
-    {
-        return [] ;
-    }
+    // No early return on an empty input : it would skip the RETURN_NULL test below, and `[]`
+    // would be the only "nothing left" case not honouring the flag. Falling through costs a
+    // handful of instructions and keeps a single decision point for the return contract.
 
     $checkNulls     = ( $flags & CleanFlag::NULLS     ) !== 0 ;
     $checkEmpty     = ( $flags & CleanFlag::EMPTY     ) !== 0 ;
