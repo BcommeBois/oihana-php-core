@@ -76,7 +76,12 @@ class CleanFlag
     public const int FALSY = 1 << 5 ;
 
     /**
-     * Return null instead of empty array when result is empty
+     * Return null instead of an empty array when the result is empty.
+     *
+     * In {@see clean()} this describes the contract of the **outermost** call only : the flag is
+     * stripped before recursing, so a nested array that cleans to empty stays `[]` and never
+     * becomes a `null` sitting in the result.
+     *
      * @var int
      */
     public const int RETURN_NULL = 1 << 6 ;

@@ -85,6 +85,39 @@ class CleanTest extends TestCase
         $this->assertSame($input, clean($input, CleanFlag::TRIM));
     }
 
+    public function testCleanReturnNullIsNotPropagatedToNestedArrays(): void
+    {
+        // Without EMPTY_ARR nothing intercepts a nested array that cleans to empty : it must
+        // stay [] and never become a null that the NULLS flag can no longer catch.
+        $flags = CleanFlag::NULLS | CleanFlag::RECURSIVE | CleanFlag::RETURN_NULL;
+
+        $this->assertSame(['a' => [], 'b' => 2], clean(['a' => ['x' => null], 'b' => 2], $flags));
+        $this->assertSame(['a' => ['b' => []], 'z' => 1], clean(['a' => ['b' => ['c' => null]], 'z' => 1], $flags));
+    }
+
+    public function testCleanReturnNullTreatsAlreadyEmptyAndEmptiedNestedArraysAlike(): void
+    {
+        $flags = CleanFlag::NULLS | CleanFlag::RECURSIVE | CleanFlag::RETURN_NULL;
+
+        $this->assertSame(clean(['a' => [], 'b' => 2], $flags), clean(['a' => ['x' => null], 'b' => 2], $flags));
+    }
+
+    public function testCleanReturnNullStillAppliesToTheOutermostCall(): void
+    {
+        $flags = CleanFlag::NULLS | CleanFlag::RECURSIVE | CleanFlag::RETURN_NULL;
+
+        $this->assertNull(clean(['x' => null], $flags));
+        $this->assertNull(clean(['a' => ['x' => null]], $flags | CleanFlag::EMPTY_ARR));
+    }
+
+    public function testCleanReturnNullWithEmptyArrIsUnchanged(): void
+    {
+        $input = ['a' => ['x' => null], 'b' => 2];
+
+        $this->assertSame(['b' => 2], clean($input, CleanFlag::NORMALIZE));
+        $this->assertSame(['b' => 2], clean($input, CleanFlag::DEFAULT));
+    }
+
     public function testCleanFalsyFlagNeverAppliesToArrays(): void
     {
         $input = [0, '', null, false, 'ok', [], '0'];

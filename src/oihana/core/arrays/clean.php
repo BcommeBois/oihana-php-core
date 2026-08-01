@@ -22,7 +22,8 @@ use InvalidArgumentException;
  *                              Short-circuits `NULLS` / `EMPTY` / `TRIM`, and never applies to
  *                              arrays — combine it with `EMPTY_ARR` to also discard `[]`.
  * - `CleanFlag::MAIN`        : Shortcut for enabling all the main flags: `NULLS | EMPTY | EMPTY_ARR | TRIM`.
- * - `CleanFlag::RETURN_NULL` : Returns null if the final array is empty.
+ * - `CleanFlag::RETURN_NULL` : Returns null if the final array is empty. Applies to the outermost
+ *                              call only : a nested array that cleans to empty stays `[]`.
  *
  * ### Default behavior
  *
@@ -172,7 +173,10 @@ function clean( array $array = [] , int $flags = CleanFlag::DEFAULT ): ?array
         {
             if ( $checkRecursive )
             {
-                $value = clean( $value , $flags ) ;
+                // RETURN_NULL describes the contract of the outermost call, not of the nested ones :
+                // propagating it would turn a sub-array that cleans to empty into a null stored in the result —
+                // a null that the NULLS flag can no longer catch, since the value already went down the array branch.
+                $value = clean( $value , $flags & ~CleanFlag::RETURN_NULL ) ;
             }
             if ( $checkEmptyArr && empty( $value ) )
             {
