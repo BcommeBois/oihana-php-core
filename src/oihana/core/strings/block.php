@@ -50,7 +50,7 @@ function block( array|string $input , string|int $indent = '' , string $separato
 
     if( is_string( $input ) )
     {
-        $input = preg_split('/\R/', $input, -1, $keepEmptyLines ? 0 : PREG_SPLIT_NO_EMPTY ) ;
+        $input = preg_split('/\R/', $input, -1, $keepEmptyLines ? 0 : PREG_SPLIT_NO_EMPTY ) ?: [] ;
     }
     else if ( !$keepEmptyLines )
     {

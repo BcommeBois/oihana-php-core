@@ -43,7 +43,7 @@ namespace oihana\core\strings ;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
-function fastFormat( ?string $pattern , ...$args ) :string
+function fastFormat( ?string $pattern , mixed ...$args ) :string
 {
     if( !isset( $pattern ) || ( $pattern === "" ) )
     {
@@ -61,7 +61,7 @@ function fastFormat( ?string $pattern , ...$args ) :string
     }
 
     // Search the tags {0}, {1}, etc.
-    return preg_replace_callback( '/\\{(\d+)\\}/' , function ( $matches ) use ( $args )
+    return preg_replace_callback( '/\\{(\d+)\\}/' , function ( array $matches ) use ( $args ) :string
     {
         $index = (int) $matches[1] ;
 
@@ -83,14 +83,16 @@ function fastFormat( ?string $pattern , ...$args ) :string
                 $toStringFunc = $value->__toString ?? null ;
                 if( isset( $toStringFunc ) && is_callable( $toStringFunc ) )
                 {
-                    return $toStringFunc() ;
+                    $string = $toStringFunc() ;
+                    return is_scalar( $string ) ? (string) $string : '[object ' . get_class( $value ) . ']' ;
                 }
                 return '[object ' . get_class($value) . ']' ;
             }
         }
 
-        return (string) $value;
+        // Arrays and resources have no string form: they are described rather than cast.
+        return is_scalar( $value ) ? (string) $value : '[' . get_debug_type( $value ) . ']' ;
     }
     ,
-    $pattern ) ;
+    $pattern ) ?? $pattern ;
 }

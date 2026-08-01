@@ -41,7 +41,9 @@ function pad( ?string $source , int $size , string $pad , int $type ) :string
         throw new InvalidArgumentException('Padding string cannot be empty.' ) ;
     }
 
-    if ( !mb_check_encoding($pad, 'UTF-8') )
+    $padLen = grapheme_strlen( $pad ) ;
+
+    if ( !is_int( $padLen ) ) // grapheme_strlen() fails on a malformed UTF-8 padding
     {
         throw new InvalidArgumentException('Padding is an invalid UTF-8 string.');
     }
@@ -53,7 +55,6 @@ function pad( ?string $source , int $size , string $pad , int $type ) :string
         return $source ;
     }
 
-    $padLen      = grapheme_strlen($pad);
     $freeLen     = $size - $length;
     $remainder   = $freeLen % $padLen;
     $repeatCount = intdiv( $freeLen , $padLen ) ;
@@ -71,7 +72,7 @@ function pad( ?string $source , int $size , string $pad , int $type ) :string
         }
         case STR_PAD_BOTH  :
         {
-            $rightLen = ceil($freeLen / 2);
+            $rightLen = (int) ceil($freeLen / 2);
             $leftLen  = $freeLen - $rightLen;
 
             $padLeft  = '';

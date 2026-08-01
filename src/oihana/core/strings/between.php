@@ -64,7 +64,7 @@ function between
     }
     else
     {
-        $expression = (string) $expression ;
+        $expression = toString( $expression ) ;
     }
 
     if (

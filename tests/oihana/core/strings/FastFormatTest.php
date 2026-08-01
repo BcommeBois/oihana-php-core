@@ -164,6 +164,11 @@ class FastFormatTest extends TestCase
         $this->assertEquals($expected, fastFormat("Value: {0}", [ $obj ] ) );
     }
 
+    public function testArrayArgumentIsDescribedNotCast()
+    {
+        $this->assertEquals("Value: [array]", fastFormat("Value: {0}", [ [ 1 , 2 ] ] ) );
+    }
+
     public function testFastFormatBasic()
     {
         $this->assertSame(

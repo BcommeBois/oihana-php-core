@@ -11,7 +11,7 @@ namespace oihana\core\strings ;
  * - returns $default if the resulting list is empty
  *
  * @param string|array<int|string, mixed>|null $value     Input value (string or array)
- * @param string                               $separator Separator for input string (default ';')
+ * @param non-empty-string                     $separator Separator for input string (default ';')
  * @param string                               $replace   Separator for output string (default PHP_EOL)
  * @param string|null                          $default   Default value if the result is empty
  *
@@ -47,7 +47,7 @@ function resolveList
     }
 
     $parts = is_string( $value ) ? explode( $separator , $value ) : $value ;
-    $parts = array_filter( array_map(fn($v) => trim( (string) $v ) , $parts ) , fn($v) => $v !== '' ) ;
+    $parts = array_filter( array_map(fn($v) => trim( toString( $v ) ) , $parts ) , fn($v) => $v !== '' ) ;
 
     if ( empty( $parts ) )
     {

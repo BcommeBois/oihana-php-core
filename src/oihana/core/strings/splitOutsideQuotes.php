@@ -63,6 +63,7 @@ function splitOutsideQuotes
         return [ $input ] ;
     }
 
+    /** @var array<string, string> $pairs */
     static $pairs =
     [
         "'" => "'" ,

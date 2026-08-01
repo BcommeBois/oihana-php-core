@@ -36,13 +36,13 @@ namespace oihana\core\strings ;
  */
 function predicate( mixed $leftOperand , ?string $operator = null , mixed $rightOperand = null ) :string
 {
-    $expression = [ $leftOperand ] ;
+    $expression = [ toString( $leftOperand ) ] ;
     if( !is_null( $operator ) )
     {
         $expression[] = $operator ;
         if ( $rightOperand !== null )
         {
-            $expression[] = $rightOperand;
+            $expression[] = toString( $rightOperand ) ;
         }
     }
     return implode( ' ' , $expression ) ;

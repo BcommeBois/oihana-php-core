@@ -32,7 +32,7 @@ function camel( ?string $source , array $separators = [ "_" , "-" , "/" ] ): str
     {
         return '' ;
     }
-    $words  = preg_split( '/\s+/u' , str_replace( $separators , ' ' , $source ) , -1 , PREG_SPLIT_NO_EMPTY ) ;
+    $words  = preg_split( '/\s+/u' , str_replace( $separators , ' ' , $source ) , -1 , PREG_SPLIT_NO_EMPTY ) ?: [] ; // false on a malformed UTF-8 source
     $result = implode( '' , array_map( ucFirst( ... ) , $words ) ) ;
     return mb_strtolower( mb_substr( $result , 0 , 1 , 'UTF-8' ) , 'UTF-8' ) . mb_substr( $result , 1 , null , 'UTF-8' ) ;
 }

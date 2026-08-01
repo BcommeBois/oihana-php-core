@@ -140,7 +140,7 @@ function replace
 
     while ( $tail !== '' && false !== ($i = $indexOf($tail, $from) ) )
     {
-        $slice   = grapheme_substr($tail, 0, $i) ;
+        $slice   = slice( $tail , 0 , $i ) ;
         $result .= $slice . $to ;
         $tail    = substr( $tail , strlen( $slice ) + strlen($from) ) ;
     }

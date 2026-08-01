@@ -47,6 +47,7 @@ function isQuoted( string $value ) :bool
         return false ;
     }
 
+    /** @var array<string, string> $pairs */
     static $pairs =
     [
         "'" => "'" ,

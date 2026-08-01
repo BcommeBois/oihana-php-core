@@ -9,7 +9,7 @@ use Stringable;
  *
  * This function ensures that both key and value are cast to strings.
  *
- * @param string|object|int|float|bool $key       The key (stringable value).
+ * @param string|Stringable|int|float|bool $key       The key (stringable value).
  * @param mixed                        $value     The value (will be cast to string).
  * @param string                       $separator The separator between key and value (default ':').
  *
@@ -28,15 +28,15 @@ use Stringable;
  * @author  Marc Alcaraz
  * @since   1.0.0
  */
-function keyValue( string|object|int|float|bool $key , mixed $value , string $separator = ':' ) :string
+function keyValue( string|Stringable|int|float|bool $key , mixed $value , string $separator = ':' ) :string
 {
     $keyStr   = (string) $key ;
     $valueStr = match ( true )
     {
-        is_array($value) => '[' . implode(', ' , array_map(fn($v) => (string)$v, $value)) . ']' ,
+        is_array($value) => '[' . implode(', ' , array_map(fn($v) => toString($v), $value)) . ']' ,
         is_bool($value)  => $value ? 'true' : 'false' ,
         $value === null  => 'null' ,
-        default          => (string) $value ,
+        default          => toString( $value ) ,
     };
 
     return $keyStr . $separator . $valueStr;

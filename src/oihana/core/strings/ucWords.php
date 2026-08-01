@@ -30,5 +30,6 @@ namespace oihana\core\strings ;
 // oihana\core\strings namespace, where an unqualified ucwords() resolves here. Use \ucwords() for the native one.
 function ucWords( string $source ): string
 {
-    return preg_replace_callback( '/(?<![\p{L}\p{N}])\p{L}/u' , fn( array $match ): string => mb_strtoupper( $match[ 0 ] , 'UTF-8' ) , $source ) ;
+    // The /u pattern fails as a whole on a malformed UTF-8 subject, which is then returned untouched.
+    return preg_replace_callback( '/(?<![\p{L}\p{N}])\p{L}/u' , fn( array $match ): string => mb_strtoupper( $match[ 0 ] , 'UTF-8' ) , $source ) ?? $source ;
 }

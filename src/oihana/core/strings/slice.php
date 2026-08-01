@@ -37,8 +37,6 @@ function slice( ?string $source , int $start = 0 , ?int $length = null ) :string
         return '' ;
     }
 
-    $length ??= grapheme_strlen( $source ) ;
-
     if ( function_exists('grapheme_substr' ) )
     {
         $result = grapheme_substr( $source , $start , $length ) ;

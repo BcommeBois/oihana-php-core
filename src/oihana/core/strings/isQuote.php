@@ -24,6 +24,7 @@ namespace oihana\core\strings ;
 function isQuote( string $char ) :bool
 {
     // List of characters considered as quotes
+    /** @var array<int, string> $quotes */
     static $quotes =
     [
         "'" , '"' , '`' ,  // single, double, backtick

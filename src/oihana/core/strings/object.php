@@ -59,12 +59,13 @@ function object( null|string|array $keyValues = [] , bool $useSpace = false ): s
     {
         is_null   ( $keyValues ) => '',
         is_string ( $keyValues ) => trim( $keyValues ) ,
-        is_array  ( $keyValues ) => implode
+        default => implode // $keyValues is natively typed null|string|array : only the array case is left
         (
             separator : ',' . $space,
             array     : array_map( static function ( $value , $key )
             {
-                $key = preg_match('/^\w+$/', $key) ? $key : "'$key'";
+                // an integer key is left as an int on purpose: the [key,value] pair form below relies on it
+                $key = preg_match('/^\w+$/', (string) $key ) ? $key : "'$key'";
 
                 if ( is_string( $key ) )
                 {
@@ -78,7 +79,7 @@ function object( null|string|array $keyValues = [] , bool $useSpace = false ): s
 
                 if ( is_array( $value ) && count( $value ) === 2 )
                 {
-                    return keyValue( $value[0] , $value[1] ) ;
+                    return keyValue( toString( $value[0] ) , $value[1] ) ;
                 }
 
                 throw new InvalidArgumentException
@@ -87,14 +88,6 @@ function object( null|string|array $keyValues = [] , bool $useSpace = false ): s
                 );
             } , $keyValues , array_keys( $keyValues ) )
         ),
-
-        // defensive: $keyValues is typed null|string|array
-        // @codeCoverageIgnoreStart
-        default => throw new InvalidArgumentException
-        (
-            'Invalid $keyValues type, must be array, string, or null'
-        ),
-        // @codeCoverageIgnoreEnd
     };
 
     return betweenBraces($content === '' ? '' : $space . $content . $space);

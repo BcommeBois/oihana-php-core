@@ -47,6 +47,7 @@ function getQuoteChar( string $value ) :?string
         return null ;
     }
 
+    /** @var array<string, string> $pairs */
     static $pairs =
     [
         "'" => "'" ,

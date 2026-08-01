@@ -40,6 +40,13 @@ class SnakeTest extends TestCase
         $this->assertEquals('', snake(null));
     }
 
+    public function testSnakeWithMalformedUtf8ReturnsEmptyString()
+    {
+        // Every pattern carries the /u modifier, so PCRE refuses the subject as a whole.
+        $this->assertEquals('', snake("he\xFFllo"));
+        $this->assertEquals('', snake("\xC3\x28"));
+    }
+
     public function testSnakeCache()
     {
         // Check that the cache is working by calling the same function several times.

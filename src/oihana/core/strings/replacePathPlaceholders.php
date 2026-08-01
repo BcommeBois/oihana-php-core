@@ -73,7 +73,7 @@ namespace oihana\core\strings ;
  */
 function replacePathPlaceholders( ?string $path , array $args = [] , string $pattern = '/\{([a-zA-Z0-9_]+)(:[^}]+)?}/' ): string
 {
-    if( $path == null || $path == '' )
+    if( $path === null || $path === '' )
     {
         return '' ;
     }
@@ -86,7 +86,7 @@ function replacePathPlaceholders( ?string $path , array $args = [] , string $pat
     return preg_replace_callback
     (
         $pattern ,
-        fn ( $matches ) => $args[ $matches[1] ] ?? $matches[0] , // fallback if undefined
+        fn ( array $matches ) :string => (string) ( $args[ $matches[1] ] ?? $matches[0] ) , // fallback if undefined
         $path
-    );
+    ) ?? $path ; // an unusable $pattern leaves the path untouched
 }

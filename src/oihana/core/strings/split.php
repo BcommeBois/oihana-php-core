@@ -64,8 +64,9 @@ use InvalidArgumentException;
  * @param bool $utf8
  * Whether to enable UTF-8 (`/u`) mode.
  *
- * @return array<int, string>
- * An array of split segments.
+ * @return array<int, string|array<int, int|string>>
+ * An array of split segments — each segment is a `[ segment , offset ]` pair
+ * when `PREG_SPLIT_OFFSET_CAPTURE` is passed in `$flags`, a plain string otherwise.
  *
  * @throws InvalidArgumentException
  * If the separator is empty.
@@ -130,5 +131,5 @@ function split
         $pattern .= 'u' ;
     }
 
-    return preg_split( $pattern, $source, $limit ?? -1, $flags ?? 0 ) ;
+    return preg_split( $pattern, $source, $limit ?? -1, $flags ?? 0 ) ?: [] ;
 }

@@ -32,4 +32,10 @@ class UcWordsTest extends TestCase
     {
         $this->assertSame( '' , ucWords( '' ) ) ;
     }
+
+    public function testUcWordsWithMalformedUtf8ReturnsTheSourceUntouched()
+    {
+        // The /u pattern makes preg_replace_callback() return null on such a subject.
+        $this->assertSame( "he\xFFllo" , ucWords( "he\xFFllo" ) );
+    }
 }

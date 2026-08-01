@@ -100,7 +100,7 @@ function uniqueKey
                 is_bool   ( $v ) => $v ? 'true' : 'false',
                 is_array  ( $v ) => json_encode($v, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ,
                 is_object ( $v ) => $v instanceof Closure ? 'closure' : serialize( $v ) ,
-                default   => ( string ) $v
+                default   => toString( $v )
             };
 
             $keyParts[] = $k . '=' . $serializedValue ;
@@ -109,7 +109,8 @@ function uniqueKey
 
     $fullKey = implode( $separator , $keyParts ) ;
 
-    $fullKey = Normalizer::normalize( $fullKey , Normalizer::FORM_C ) ?: $fullKey;
+    $normalized = Normalizer::normalize( $fullKey , Normalizer::FORM_C ) ;
+    $fullKey    = is_string( $normalized ) ? $normalized : $fullKey ; // false on failure — the polyfill declares no return type
 
     return $hash ? hash('sha256' , $fullKey ) : $fullKey ;
 }

@@ -36,7 +36,7 @@ function blockPrefix( array|string $lines , string $prefix , string|int $indent 
 {
     if ( is_string( $lines ) )
     {
-        $lines = preg_split('/\R/' , $lines , -1 , $keepEmptyLines ? 0 : PREG_SPLIT_NO_EMPTY ) ;
+        $lines = preg_split('/\R/' , $lines , -1 , $keepEmptyLines ? 0 : PREG_SPLIT_NO_EMPTY ) ?: [] ;
     }
     elseif ( !$keepEmptyLines )
     {

@@ -32,6 +32,6 @@ function slugify( string $source , string $separator = '-' ) :string
 {
     $slug = latinize( $source ) ;
     $slug = mb_strtolower( $slug , 'UTF-8' ) ;
-    $slug = preg_replace( '/[^a-z0-9]+/u' , $separator , $slug ) ;
+    $slug = preg_replace( '/[^a-z0-9]+/u' , $separator , $slug ) ?? $slug ;
     return trim( $slug , $separator ) ;
 }

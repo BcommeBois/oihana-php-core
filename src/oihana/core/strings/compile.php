@@ -19,9 +19,9 @@ use function oihana\core\arrays\clean;
  * - Booleans are converted to `'true'` or `'false'`.
  * - Null or unsupported types are converted to an empty string.
  *
- * @param string|Stringable|array<int|string, mixed>|null $expressions The expression(s) to compile.
- * @param string                                          $separator   The separator used when joining array values (default is a single space).
- * @param callable|null                                   $callback    An optional callback applied to each array element before compiling. Signature: `function(mixed $item): mixed`.
+ * @param mixed         $expressions The expression(s) to compile.
+ * @param string        $separator   The separator used when joining array values (default is a single space).
+ * @param callable|null $callback    An optional callback applied to each array element before compiling. Signature: `function(mixed $item): mixed`.
  *
  * @return string The compiled string expression.
  *
@@ -44,7 +44,7 @@ function compile( mixed $expressions , string $separator = ' ' , ?callable $call
 {
     if( is_array( $expressions ) )
     {
-        $expressions = clean( $expressions ) ;
+        $expressions = clean( $expressions ) ?? [] ;
         if ( count( $expressions ) === 0 )
         {
             return '' ;
@@ -66,7 +66,7 @@ function compile( mixed $expressions , string $separator = ' ' , ?callable $call
 
     if ( is_object( $expressions ) )
     {
-        return json_encode( $expressions ) ;
+        return json_encode( $expressions ) ?: '' ; // false only on an unencodable value (INF/NAN, malformed UTF-8)
     }
 
     if ( is_bool( $expressions ) )
@@ -79,5 +79,5 @@ function compile( mixed $expressions , string $separator = ' ' , ?callable $call
         return '' ;
     }
 
-    return (string) $expressions ;
+    return is_scalar( $expressions ) ? (string) $expressions : '' ; // resources have no string form
 }

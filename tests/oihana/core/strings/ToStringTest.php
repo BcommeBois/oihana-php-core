@@ -73,4 +73,9 @@ class ToStringTest extends TestCase
         } ;
         $this->assertSame('from-stringable', toString($stringable));
     }
+
+    public function testNonStringableObjectYieldsAnEmptyString()
+    {
+        $this->assertSame( '' , toString( new \stdClass() ) );
+    }
 }

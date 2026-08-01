@@ -54,7 +54,7 @@ function formatRequestArgs( array $params , bool $useNow = false ): string
         }
 
         $key   = rawurlencode( (string) $key   ) ;
-        $value = rawurlencode( (string) $value ) ;
+        $value = rawurlencode( toString( $value ) ) ;
 
         $str .= ($first ? '?' : '&') . $key . '=' . $value ;
         $first = false ;

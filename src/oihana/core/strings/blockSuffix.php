@@ -44,7 +44,7 @@ function blockSuffix
 {
     if ( is_string( $lines ) )
     {
-        $lines = preg_split('/\R/', $lines, -1, $keepEmptyLines ? 0 : PREG_SPLIT_NO_EMPTY ) ;
+        $lines = preg_split('/\R/', $lines, -1, $keepEmptyLines ? 0 : PREG_SPLIT_NO_EMPTY ) ?: [] ;
     }
     else if ( !$keepEmptyLines )
     {

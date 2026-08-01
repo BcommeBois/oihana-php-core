@@ -28,7 +28,7 @@ function luhn( string $number , bool $lazy = false ): bool
 {
     if( $lazy )
     {
-        $number = preg_replace('/\D/', '', $number ) ;
+        $number = preg_replace('/\D/', '', $number ) ?? '' ;
     }
 
     if ( strlen( $number ) === 0 )
@@ -46,7 +46,8 @@ function luhn( string $number , bool $lazy = false ): bool
 
     for( $i = strlen( $number ) - 1 ; $i >= 0 ; $i-- )
     {
-        $add = $flag++ & 1 ? $number[$i] * 2 : $number[$i] ;
+        $digit = (int) $number[$i] ;
+        $add   = $flag++ & 1 ? $digit * 2 : $digit ;
         $sum += $add > 9 ? $add - 9 : $add ;
     }
 

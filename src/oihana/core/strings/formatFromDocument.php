@@ -100,7 +100,7 @@ function formatFromDocument
         {
             return $preserveMissing ? $prefix . $key . $suffix : '' ;
         }
-        return $value ;
+        return toString( $value ) ;
     }
 
     return preg_replace_callback( $pattern , function ( $matches ) use ( $document ,$preserveMissing , $prefix , $separator , $suffix ): string
@@ -113,7 +113,7 @@ function formatFromDocument
             return $preserveMissing ? $prefix . $key . $suffix : '' ;
         }
 
-        return (string) $value;
+        return toString( $value ) ;
     }
-    , $template ) ;
+    , $template ) ?? $template ; // an unusable $pattern leaves the template untouched
 }

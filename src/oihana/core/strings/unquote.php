@@ -49,6 +49,7 @@ function unquote( string $value ) :string
         return $value ;
     }
 
+    /** @var array<string, string> $pairs */
     static $pairs =
     [
         "'" => "'" ,

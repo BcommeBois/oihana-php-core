@@ -73,7 +73,7 @@ function format
             $escapedSuffix = preg_quote( $suffix , '/' ) ;
             $pattern       = '/' . $escapedPrefix . '([a-zA-Z0-9_.\-\[\]]+)' . $escapedSuffix . '/' ;
         }
-        return preg_replace( $pattern , $document , $template ) ;
+        return preg_replace( $pattern , $document , $template ) ?? $template ; // an unusable $pattern leaves the template untouched
     }
 
     return formatFromDocument( $template , $document , $prefix , $suffix , $separator , $pattern , $preserveMissing );

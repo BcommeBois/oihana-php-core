@@ -80,36 +80,41 @@ function snake( ?string $source , string $delimiter = '_' , ?string $encoding = 
 
     $key = $source;
 
-    if ( SnakeCache::has( $key , $delimiter ) )
+    $cached = SnakeCache::get( $key , $delimiter ) ;
+
+    if ( $cached !== null )
     {
-        return SnakeCache::get( $key , $delimiter ) ;
+        return $cached ;
     }
 
-    // Replace spaces with delimiter
-    $source = preg_replace('/\s+/u', $delimiter, $source);
+    $quoted = preg_quote( $delimiter , '/' ) ;
 
-    // Separate camelCase / PascalCase
-    $source = preg_replace('/([\p{Ll}])([\p{Lu}])/u', '$1' . $delimiter . '$2', $source);
-    $source = preg_replace('/([\p{Lu}]+)([\p{Lu}][\p{Ll}])/u', '$1' . $delimiter . '$2', $source);
+    // Applied in order, each pattern operating on the result of the previous one.
+    // Note: numbers at the end of a word are NOT separated (like "helloWorld123").
+    $replacements =
+    [
+        '/\s+/u'                             => $delimiter ,                     // spaces become the delimiter
+        '/([\p{Ll}])([\p{Lu}])/u'            => '$1' . $delimiter . '$2' ,       // camelCase / PascalCase
+        '/([\p{Lu}]+)([\p{Lu}][\p{Ll}])/u'   => '$1' . $delimiter . '$2' ,       // acronym followed by a word
+        '/([\p{Lu}]{2,})(\p{N}+)/u'          => '$1' . $delimiter . '$2' ,       // 2+ uppercase letters then numbers ("ID42")
+        '/([^\p{L}\p{N}' . $quoted . ']+)/u' => $delimiter . '$1' . $delimiter , // emojis, symbols
+        '/' . $quoted . '+/u'                => $delimiter ,                     // duplicate delimiters
+    ];
 
-    // Separate sequences of 2+ uppercase letters followed by numbers (like "ID42")
-    $source = preg_replace('/([\p{Lu}]{2,})(\p{N}+)/u', '$1' . $delimiter . '$2', $source);
+    $source = preg_replace( array_keys( $replacements ) , array_values( $replacements ) , $source ) ;
 
-    // Do NOT separate numbers at the end of a word (like "helloWorld123")
-
-    // Separate non-alphanumeric characters (emojis, symbols) with delimiter
-    $source = preg_replace('/([^\p{L}\p{N}' . preg_quote($delimiter, '/') . ']+)/u', $delimiter . '$1' . $delimiter, $source);
-
-    // Clean up duplicate delimiters
-    $source = preg_replace('/' . preg_quote($delimiter, '/') . '+/u', $delimiter, $source);
+    if ( $source === null ) // the /u patterns all fail on a malformed UTF-8 subject
+    {
+        return '' ;
+    }
 
     // Remove delimiters at the beginning and end
-    $source = trim($source, $delimiter);
+    $source = trim( $source , $delimiter ) ;
 
     // Convert everything to lowercase
-    $source = mb_strtolower($source, $encoding);
+    $source = mb_strtolower( $source , $encoding ) ;
 
-    SnakeCache::set($key, $delimiter, $source);
+    SnakeCache::set( $key , $delimiter , $source ) ;
 
     return $source;
 }

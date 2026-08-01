@@ -4,6 +4,7 @@ namespace oihana\core\strings;
 
 use Closure;
 use DateTimeInterface;
+use UnitEnum;
 
 /**
  * Converts any PHP value into a valid PHP code string representation.
@@ -13,7 +14,7 @@ use DateTimeInterface;
  *    compact?: bool,
  *    humanReadable?: bool,
  *    inline?: bool,
- *    indent?: string|int,
+ *    indent?: string,
  *    maxDepth?: int,
  *    quote?: 'single'|'double',
  *    useBrackets?: bool
@@ -65,7 +66,7 @@ use DateTimeInterface;
  * [
  *     'useBrackets' => true,
  *     'inline' => false,
- *     'indent' => 2
+ *     'indent' => '  '
  * ]);
  * // Output:
  * // [
@@ -147,7 +148,7 @@ function toPhpString( mixed $value , array $options = [] ): string
  * Handles circular references to prevent infinite loops.
  *
  * @param mixed $value   The value to convert (scalar, array, object, resource, etc.).
- * @param array<string, mixed> $options Formatting options, including:
+ * @param array{compact?: bool, humanReadable?: bool, indent?: string, inline?: bool, maxDepth?: int, quote?: string, useBrackets?: bool} $options Formatting options, including:
  *                       - 'maxDepth'    (int)    Maximum recursion depth allowed.
  *                       - 'indent'      (string) Indentation string (default 4 spaces).
  *                       - 'inline'      (bool)   Whether to output inline (no line breaks).
@@ -199,26 +200,41 @@ function convert( mixed $value , array $options , int $level , array &$cache ) :
         return "'<resource of type " . $type . ">'";
     }
 
-    $type = gettype( $value ) ;
-
     $compact       = $options[ 'compact'       ] ?? false    ;
     $humanReadable = $options[ 'humanReadable' ] ?? false    ;
     $quote         = $options[ 'quote'         ] ?? 'single' ;
 
-    if ( $humanReadable && in_array( $type, [ 'string' , 'boolean' , 'double' , 'integer' ] ) )
+    if ( $humanReadable && is_scalar( $value ) )
     {
         return toPhpHumanReadableScalar( $value, $quote, $compact ) ;
     }
 
-    return match ( $type )
+    if ( is_string( $value ) )
     {
-        'string'             => formatQuotedString( $value , $quote , $compact ) ,
-        'boolean'            => $value ? 'true' : 'false',
-        'integer' , 'double' => var_export( $value , true ) ,
-        'array'              => convertArray  ( $value , $options , $level , $cache ) ,
-        'object'             => convertObject ( $value , $options , $level , $cache ) ,
-        default              => 'null',
-    };
+        return formatQuotedString( $value , $quote , $compact ) ;
+    }
+
+    if ( is_bool( $value ) )
+    {
+        return $value ? 'true' : 'false' ;
+    }
+
+    if ( is_int( $value ) || is_float( $value ) )
+    {
+        return var_export( $value , true ) ;
+    }
+
+    if ( is_array( $value ) )
+    {
+        return convertArray( $value , $options , $level , $cache ) ;
+    }
+
+    if ( is_object( $value ) )
+    {
+        return convertObject( $value , $options , $level , $cache ) ;
+    }
+
+    return 'null' ;
 }
 
 
@@ -232,7 +248,7 @@ function convert( mixed $value , array $options , int $level , array &$cache ) :
  * For generic objects, converts public properties recursively with indentation and formatting options.
  *
  * @param object $obj The object to convert.
- * @param array<string, mixed> $options Formatting options including:
+ * @param array{compact?: bool, humanReadable?: bool, indent?: string, inline?: bool, maxDepth?: int, quote?: string, useBrackets?: bool} $options Formatting options including:
  *                        - 'maxDepth'    (int)    Maximum recursion depth allowed.
  *                        - 'indent'      (string) Indentation string (default 4 spaces).
  *                        - 'inline'      (bool)   Whether to output inline (no line breaks).
@@ -264,7 +280,7 @@ function convertObject( object $obj , array $options , int $level , array &$cach
         return "'<circular-ref>'";
     }
 
-    if ( $options['maxDepth'] <= $level ) {
+    if ( ( $options['maxDepth'] ?? 10 ) <= $level ) {
         return "'<max-depth-reached>'";
     }
 
@@ -273,10 +289,10 @@ function convertObject( object $obj , array $options , int $level , array &$cach
     try {
         if ( $obj instanceof DateTimeInterface ) {
             return 'new \\' . get_class( $obj ) . '(' .
-                formatQuotedString( $obj->format( 'c' ) , $options['quote'] , $options['compact'] ) . ')';
+                formatQuotedString( $obj->format( 'c' ) , $options['quote'] ?? 'single' , $options['compact'] ?? false ) . ')';
         }
 
-        if ( function_exists( 'enum_exists' ) && enum_exists( get_class( $obj ) ) ) {
+        if ( $obj instanceof UnitEnum ) {
             return get_class( $obj ) . '::' . $obj->name;
         }
 
@@ -330,7 +346,7 @@ function convertObject( object $obj , array $options , int $level , array &$cach
  * The output is intended for debugging, code generation, or inspection tools.
  *
  * @param array<int|string, mixed> $array   The array to convert.
- * @param array<string, mixed> $options An associative array of formatting options:
+ * @param array{compact?: bool, humanReadable?: bool, indent?: string, inline?: bool, maxDepth?: int, quote?: string, useBrackets?: bool} $options An associative array of formatting options:
  *                       - 'indent'       (string): The indentation string (e.g., `'    '`).
  *                       - 'inline'       (bool): If true, output the array on a single line.
  *                       - 'useBrackets'  (bool): If true, use `[]` instead of `array()`.

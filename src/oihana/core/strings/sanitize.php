@@ -41,9 +41,9 @@ use Normalizer;
  * 9.  **TRIM**: Clean edges.
  * 10. **NULLIFY**: Final check for emptiness.
  *
- * @param string|null          $source  The string to sanitize. Can be null.
- * @param int                  $flags   A bitmask of SanitizeFlag constants. Defaults to `SanitizeFlag::DEFAULT`.
- * @param array<string, mixed> $options Optional parameters for specific flags:
+ * @param string|null $source  The string to sanitize. Can be null.
+ * @param int         $flags   A bitmask of SanitizeFlag constants. Defaults to `SanitizeFlag::DEFAULT`.
+ * @param array{allowed_tags?: string|array<int, string>|null, unicode_form?: int} $options Optional parameters for specific flags:
  *                             - `allowed_tags` (string|string[]): Used with `STRIP_TAGS`. allowable tags (e.g. '<p><a>').
  *                             - `unicode_form` (int): Used with `NORMALIZE_UNICODE`. Defaults to `Normalizer::NFC`.
  *
@@ -120,7 +120,7 @@ function sanitize
     // Step 2: Strip HTML/PHP tags
     if ( SanitizeFlag::has($flags, SanitizeFlag::STRIP_TAGS ) )
     {
-        $source      = preg_replace('#<(script|style).*?>.*?</\1>#si', '', $source);
+        $source      = preg_replace('#<(script|style).*?>.*?</\1>#si', '', $source) ?? $source;
         $allowedTags = $options['allowed_tags'] ?? null;
         $source      = strip_tags($source, $allowedTags);
     }
@@ -129,7 +129,7 @@ function sanitize
     if ( SanitizeFlag::has( $flags, SanitizeFlag::REMOVE_CONTROL_CHARS ) )
     {
         // Keep \t, \n, \r but remove other control chars
-        $source = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/', '', $source);
+        $source = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/', '', $source) ?? $source;
     }
 
     // Step 4: Remove invisible characters (more aggressive)
@@ -137,16 +137,12 @@ function sanitize
     if ( SanitizeFlag::has( $flags, SanitizeFlag::REMOVE_INVISIBLE ) )
     {
         $source = str_replace("\u{00A0}", ' ', $source) ;
-        $clean  = preg_replace
+        $source = preg_replace
         (
             '/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F\x{200B}-\x{200F}\x{202A}-\x{202E}\x{2060}-\x{2064}\x{FEFF}]+/u',
             '',
             $source
-        );
-        if ( $clean !== null )
-        {
-            $source = $clean ;
-        }
+        ) ?? $source ; // the /u pattern fails as a whole on a malformed UTF-8 subject, which is then left untouched
     }
 
     // Step 5: Normalize Unicode
@@ -156,7 +152,7 @@ function sanitize
         if ( class_exists('\Normalizer') )
         {
             $normalized = Normalizer::normalize( $source, $form );
-            if ( $normalized !== false )
+            if ( is_string( $normalized ) ) // false on failure — the polyfill declares no return type
             {
                 $source = $normalized;
             }
@@ -172,14 +168,14 @@ function sanitize
     // Step 7: Remove extra line breaks
     if ( SanitizeFlag::has( $flags , SanitizeFlag::REMOVE_EXTRA_LINE_BREAKS ) )
     {
-        $source = preg_replace("/\n{2,}/" , "\n" , $source ) ;
+        $source = preg_replace("/\n{2,}/" , "\n" , $source ) ?? $source ;
     }
 
     // Step 8: Collapse multiple spaces
     if ( SanitizeFlag::has( $flags, SanitizeFlag::COLLAPSE_SPACES ) )
     {
         // Replace multiple spaces/tabs with single space (preserving line breaks)
-        $source = preg_replace('/[^\S\n]+/', ' ', $source) ;
+        $source = preg_replace('/[^\S\n]+/', ' ', $source) ?? $source ;
     }
 
     // Step 9: Trim whitespace (after other operations)
@@ -188,7 +184,7 @@ function sanitize
         $source = trim( $source ) ;
         // If TRIM is enabled, also remove indentation (spaces/tabs) immediately following a line break.
         // \h matches horizontal whitespace (spaces, tabs).
-        $source = preg_replace('/(\r\n|\n|\r)\h+/' , '$1' , $source ) ;
+        $source = preg_replace('/(\r\n|\n|\r)\h+/' , '$1' , $source ) ?? $source ;
     }
 
     // Step 10: Apply NULLIFY flag if result is empty

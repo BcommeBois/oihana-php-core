@@ -13,6 +13,7 @@ use function oihana\core\arrays\flatten;
  * - Preserves the sign of `-0.0` as the string "-0".
  * - Converts arrays recursively by flattening and joining with commas.
  * - Accepts objects implementing `Stringable`.
+ * - Any other value (non-Stringable object, resource) yields an empty string.
  *
  * @param mixed $value The value to convert.
  * @return string The string representation of the value.
@@ -63,13 +64,6 @@ function toString( mixed $value): string
         return implode(',' , array_map( fn( $item ) => toString( $item ) , $value ) ) ;
     }
 
-    if ( $value === 0.0 && sprintf('%.1f', $value) === '-0.0' )
-    {
-        // platform-dependent: sprintf('-0.0') only on some libc
-        // @codeCoverageIgnoreStart
-        return '-0' ;
-        // @codeCoverageIgnoreEnd
-    }
-
-    return (string) $value ;
+    // Since PHP 8.0 the cast below already renders -0.0 as '-0'.
+    return is_scalar( $value ) ? (string) $value : '' ;
 }

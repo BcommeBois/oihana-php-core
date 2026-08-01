@@ -133,4 +133,9 @@ class FormatFromDocumentTest extends TestCase
         $this->assertSame('{{missing}}', $result);
     }
 
+    public function testExactSinglePlaceholderWithAnArrayValue()
+    {
+        // The fast path used to return the raw value, escaping the : string contract.
+        $this->assertSame( '1,2' , formatFromDocument( '{{list}}' , [ 'list' => [ 1 , 2 ] ] ) );
+    }
 }
