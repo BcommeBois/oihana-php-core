@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+- **Objects**
+  - Add the `oihana\core\objects\freeze()` function : builds a plain associative array snapshot of the given properties of an object, keeping only the non-null ones. Unlike `pick()` + `compress()`, it follows the order of the requested `$fields` (not the declaration order of the object) and reads through `$object->{ $field } ?? null`, so magic `__get()` / `__isset()` accessors are honoured. Missing, uninitialized and inaccessible properties are silently skipped ; only `null` is discarded, so `0`, `0.0`, `''`, `false` and `[]` are kept. Useful to freeze a reference to another document — copying the chosen properties onto the current one so the snapshot survives later changes to the source.
+
 ## [1.1.0] - 2026-07-26
 
 ### Added
