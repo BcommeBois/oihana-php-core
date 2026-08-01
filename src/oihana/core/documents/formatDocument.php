@@ -47,15 +47,15 @@ use function oihana\core\strings\format;
  * echo $formatted['api']; // outputs: https://example.com/api
  * ```
  *
- * @param array<string, mixed>|object  $document        The document (array or object) to recursively format.
+ * @param array<array-key, mixed>|object $document      The document (array or object) to recursively format.
  * @param string                       $prefix          Placeholder prefix (default '{{').
  * @param string                       $suffix          Placeholder suffix (default '}}').
  * @param non-empty-string             $separator       Separator used in nested keys (default '.').
  * @param string|null                  $pattern         Optional regex pattern to match placeholders.
- * @param callable|null                $formatter       Optional custom formatter callable.
+ * @param (callable(string, array<array-key, mixed>|object, string, string, string, string|null, bool): string)|null $formatter Optional custom formatter callable.
  * @param bool                         $preserveMissing If true, unresolved placeholders will be preserved (default false).
  *
- * @return array<string, mixed>|object A new formatted document with same structure and class.
+ * @return array<array-key, mixed>|object A new formatted document with same structure and class.
  *
  * @example
  * ```php
@@ -101,7 +101,7 @@ function formatDocument
         {
             $result = [];
         }
-        else if ( is_object( $doc ) )
+        else
         {
             $class = get_class($doc);
 
@@ -122,19 +122,12 @@ function formatDocument
             }
             $processed[ $id ] = $result;
         }
-        // defensive: $doc is always an array or object here
-        // @codeCoverageIgnoreStart
-        else
-        {
-            $result = $doc ; // Fallback (should never happen)
-        }
-        // @codeCoverageIgnoreEnd
 
-        $applyFormat = fn( $val ) => $formatter !== null
+        $applyFormat = fn( string $val ) :string => $formatter !== null
                                    ? $formatter ( $val , $root , $prefix , $suffix , $separator , $pattern , $preserveMissing )
                                    : format     ( $val , $root , $prefix , $suffix , $separator , $pattern , $preserveMissing ) ;
 
-        foreach ( $doc as $key => $value )
+        foreach ( is_array( $doc ) ? $doc : get_object_vars( $doc ) as $key => $value )
         {
             $formattedKey = $key;
 

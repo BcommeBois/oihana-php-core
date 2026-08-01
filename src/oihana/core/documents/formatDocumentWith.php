@@ -10,16 +10,16 @@ use function oihana\core\strings\format;
 /**
  * Formats a document (array or object) using placeholders resolved from another source document.
  *
- * @param array<string, mixed>|object  $target          The target document to format.
- * @param array<string, mixed>|object  $source          The source document used for placeholder resolution.
+ * @param array<array-key, mixed>|object $target        The target document to format.
+ * @param array<array-key, mixed>|object $source        The source document used for placeholder resolution.
  * @param string                       $prefix          Placeholder prefix (default '{{').
  * @param string                       $suffix          Placeholder suffix (default '}}').
  * @param non-empty-string             $separator       Separator used in nested keys (default '.').
  * @param string|null                  $pattern         Optional regex pattern to match placeholders.
- * @param callable|null                $formatter       Optional custom formatter with signature: `function(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`
+ * @param (callable(string, array<array-key, mixed>|object, string, string, string, string|null, bool): string)|null $formatter Optional custom formatter with signature: `function(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`
  * @param bool                         $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
  *
- * @return array<string, mixed>|object A new document with the same structure and class as `$target`, where all string placeholders have been resolved using `$source`.
+ * @return array<array-key, mixed>|object A new document with the same structure and class as `$target`, where all string placeholders have been resolved using `$source`.
  *
  * @see formatDocument()
  *
@@ -76,7 +76,7 @@ function formatDocumentWith
         {
             $result = [];
         }
-        else if ( is_object( $doc ) )
+        else
         {
             $class = get_class($doc);
 
@@ -98,19 +98,12 @@ function formatDocumentWith
 
             $processed[ spl_object_id( $doc ) ] = $result;
         }
-        // defensive: $doc is typed array|object, never a scalar here
-        // @codeCoverageIgnoreStart
-        else
-        {
-            return $doc; // scalar or null
-        }
-        // @codeCoverageIgnoreEnd
 
-        $applyFormat = fn( $val ) => $formatter !== null
+        $applyFormat = fn( string $val ) :string => $formatter !== null
             ? $formatter( $val , $source , $prefix , $suffix , $separator , $pattern , $preserveMissing )
             : format    ( $val , $source , $prefix , $suffix , $separator , $pattern , $preserveMissing ) ;
 
-        foreach ( $doc as $key => $value )
+        foreach ( is_array( $doc ) ? $doc : get_object_vars( $doc ) as $key => $value )
         {
             $formattedKey = $key;
 

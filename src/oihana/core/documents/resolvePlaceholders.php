@@ -2,6 +2,7 @@
 
 namespace oihana\core\documents ;
 
+use Closure;
 use SplObjectStorage;
 use function oihana\core\accessors\getKeyValue;
 use function oihana\core\strings\format;
@@ -10,13 +11,13 @@ use function oihana\core\strings\format;
  * Hydrates or formats a document (array or object) in place by replacing placeholders
  * with corresponding values from a source document.
  *
- * @param array<string, mixed>|object  &$target         The target document to format.
- * @param array<string, mixed>|object  $source          The source document used for placeholder resolution.
+ * @param array<array-key, mixed>|object &$target       The target document to format.
+ * @param array<array-key, mixed>|object $source        The source document used for placeholder resolution.
  * @param string                       $prefix          Placeholder prefix (default '{{').
  * @param string                       $suffix          Placeholder suffix (default '}}').
  * @param non-empty-string             $separator       Separator used in nested keys (default '.').
  * @param string|null                  $pattern         Optional regex pattern to match placeholders.
- * @param callable|null                $formatter       Optional custom formatter callable with signature
+ * @param (callable(string, array<array-key, mixed>|object, string, string, string, string|null, bool): string)|null $formatter Optional custom formatter callable with signature
  *                                        `fn(string $value, array|object $source, string $prefix, string $suffix, string $separator, ?string $pattern, bool $preserveMissing): string`
  * @param bool                         $preserveMissing If true, preserves unresolved placeholders instead of removing them (default false).
  *
@@ -65,13 +66,14 @@ function resolvePlaceholders
 )
 : void
 {
-    $applyFormat = fn( $val ) => $formatter !== null
+    $applyFormat = fn( string $val ) :string => $formatter !== null
                  ? $formatter( $val , $source , $prefix , $suffix , $separator , $pattern , $preserveMissing )
                  : format    ( $val , $source , $prefix , $suffix , $separator , $pattern , $preserveMissing ) ;
 
     $visited = new SplObjectStorage();
 
-    $recurse = function ( &$doc ) use (&$recurse, $applyFormat, $prefix, $preserveMissing , $suffix, $separator, $source, &$visited)
+    /** @var Closure(array<array-key, mixed>|object): void $recurse */
+    $recurse = function ( array|object &$doc ) use (&$recurse, $applyFormat, $prefix, $preserveMissing , $suffix, $separator, $source, &$visited) :void
     {
         if ( is_object( $doc ) )
         {
@@ -82,8 +84,21 @@ function resolvePlaceholders
             $visited->attach( $doc ) ;
         }
 
-        foreach ( $doc as $key => &$value )
+        // Iterating the keys keeps the by-reference write working on both shapes : an object
+        // cannot be walked with `foreach ( $doc as $k => &$v )` without losing static typing.
+        $keys = is_array( $doc ) ? array_keys( $doc ) : array_keys( get_object_vars( $doc ) ) ;
+
+        foreach ( $keys as $key )
         {
+            if ( is_array( $doc ) )
+            {
+                $value = &$doc[ $key ] ;
+            }
+            else
+            {
+                $value = &$doc->{ $key } ;
+            }
+
             if ( is_array( $value ) || ( is_object( $value ) && (array) $value ) )
             {
                 $recurse( $value );
@@ -112,6 +127,8 @@ function resolvePlaceholders
                     $value = $applyFormat( $value ) ;
                 }
             }
+
+            unset( $value ) ;
         }
     };
 
