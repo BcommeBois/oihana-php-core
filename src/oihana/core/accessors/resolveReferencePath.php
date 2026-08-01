@@ -22,7 +22,7 @@ use function oihana\core\objects\ensureObjectPath;
  * - `ensureArrayPath()` (creates intermediate arrays)
  * - `ensureObjectPath()` (creates intermediate objects)
  *
- * @param array<string, mixed>|object &$document The root document to navigate through (passed by reference).
+ * @param array<array-key, mixed>|object &$document The root document to navigate through (passed by reference).
  * @param array<int, string> $keys The exploded path as array segments (e.g. ['user', 'profile', 'name']).
  * @param bool $isArray If true, treat the structure as arrays; if false, as objects.
  *

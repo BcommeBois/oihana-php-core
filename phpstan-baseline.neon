@@ -13,7 +13,7 @@ parameters:
 			path: src/oihana/core/accessors/deleteKeyValue.php
 
 		-
-			message: '#^Cannot access offset string on array\<string, mixed\>\|object\.$#'
+			message: '#^Cannot access offset string on array\<mixed\>\|object\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/oihana/core/accessors/deleteKeyValue.php
@@ -25,7 +25,7 @@ parameters:
 			path: src/oihana/core/accessors/deleteKeyValue.php
 
 		-
-			message: '#^Parameter \#1 \$object of function get_object_vars expects object, array\<string, mixed\>\|object given\.$#'
+			message: '#^Parameter \#1 \$object of function get_object_vars expects object, array\<mixed\>\|object given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/oihana/core/accessors/deleteKeyValue.php
@@ -73,7 +73,7 @@ parameters:
 			path: src/oihana/core/accessors/ensureKeyValue.php
 
 		-
-			message: '#^Cannot access offset string on array\<string, mixed\>\|object\.$#'
+			message: '#^Cannot access offset string on array\<mixed\>\|object\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/oihana/core/accessors/getKeyValue.php
@@ -91,7 +91,7 @@ parameters:
 			path: src/oihana/core/accessors/getKeyValue.php
 
 		-
-			message: '#^Parameter \#1 \$object_or_class of function property_exists expects object\|string, array\<string, mixed\>\|object given\.$#'
+			message: '#^Parameter \#1 \$object_or_class of function property_exists expects object\|string, array\<mixed\>\|object given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/oihana/core/accessors/hasKeyValue.php
@@ -109,7 +109,7 @@ parameters:
 			path: src/oihana/core/accessors/hasKeyValue.php
 
 		-
-			message: '#^Parameter \#2 \$array of function array_key_exists expects array, array\<string, mixed\>\|object given\.$#'
+			message: '#^Parameter \#2 \$array of function array_key_exists expects array, array\<mixed\>\|object given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/oihana/core/accessors/hasKeyValue.php
@@ -127,13 +127,13 @@ parameters:
 			path: src/oihana/core/accessors/setKeyValue.php
 
 		-
-			message: '#^Parameter \#1 \$document of function oihana\\core\\arrays\\setArrayValue expects array\<string, mixed\>, array\<string, mixed\>\|object given\.$#'
+			message: '#^Parameter \#1 \$document of function oihana\\core\\arrays\\setArrayValue expects array\<string, mixed\>, array\<mixed\>\|object given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/oihana/core/accessors/setKeyValue.php
 
 		-
-			message: '#^Parameter \#1 \$document of function oihana\\core\\objects\\setObjectValue expects object, array\<string, mixed\>\|object given\.$#'
+			message: '#^Parameter \#1 \$document of function oihana\\core\\objects\\setObjectValue expects object, array\<mixed\>\|object given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/oihana/core/accessors/setKeyValue.php
