@@ -39,10 +39,18 @@ class CleanFlag
     public const int EMPTY = 1 << 1 ;
 
     /**
-     * Treat whitespace-only strings as empty (implies CLEAN_EMPTY)
+     * Treat whitespace-only strings as empty.
+     *
+     * Its interpretation depends on the consumer :
+     * - {@see clean()} : this is a **modifier** of {@see self::EMPTY}, widening the test that
+     *   decides whether a string is dropped from `$value !== ''` to `trim( $value ) !== ''`.
+     *   On its own it does nothing — it must be combined with {@see self::EMPTY} — and the
+     *   values that are kept are never altered : `'  x  '` stays `'  x  '`.
+     * - {@see \oihana\core\normalize()} : the string is actually trimmed, whether or not {@see self::EMPTY} is set.
+     *
      * @var int
      */
-    public const int TRIM = 1 << 2 ;  //
+    public const int TRIM = 1 << 2 ;
 
     /**
      * Clean nested arrays recursively
@@ -57,7 +65,12 @@ class CleanFlag
     public const int EMPTY_ARR = 1 << 4 ;
 
     /**
-     * Remove the falsy values : '0', false, ...
+     * Remove every falsy **scalar** : `null`, `''`, `0`, `0.0`, `'0'` and `false`.
+     *
+     * In {@see clean()} this flag short-circuits {@see self::NULLS}, {@see self::EMPTY} and
+     * {@see self::TRIM} — combining them with it changes nothing. It never applies to arrays :
+     * pair it with {@see self::EMPTY_ARR} to also discard `[]`.
+     *
      * @var int
      */
     public const int FALSY = 1 << 5 ;

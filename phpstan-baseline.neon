@@ -163,12 +163,6 @@ parameters:
 			path: src/oihana/core/arrays/compress.php
 
 		-
-			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
-			count: 1
-			path: src/oihana/core/arrays/compress.php
-
-		-
 			message: '#^Trying to invoke mixed but it''s not a callable\.$#'
 			identifier: callable.nonCallable
 			count: 2
@@ -333,7 +327,7 @@ parameters:
 		-
 			message: '#^Cannot access offset int\|string on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
+			count: 2
 			path: src/oihana/core/callables/countCallableParam.php
 
 		-
@@ -669,12 +663,6 @@ parameters:
 		-
 			message: '#^Parameter \#2 \$options of function oihana\\core\\objects\\compress expects array\{conditions\?\: array\<callable\(\)\: mixed\>\|\(callable\(\)\: mixed\), depth\?\: int\|null, excludes\?\: array\<string\>, recursive\?\: bool, removeKeys\?\: array\<string\>, throwable\?\: bool\}, array\<string, mixed\> given\.$#'
 			identifier: argument.type
-			count: 1
-			path: src/oihana/core/objects/compress.php
-
-		-
-			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
 			count: 1
 			path: src/oihana/core/objects/compress.php
 

@@ -14,10 +14,13 @@ use InvalidArgumentException;
  *
  * - `CleanFlag::NULLS`       : Removes `null` values.
  * - `CleanFlag::EMPTY`       : Removes empty strings (`''`).
- * - `CleanFlag::TRIM`        : Trims strings and treats whitespace-only strings as empty.
+ * - `CleanFlag::TRIM`        : Modifier of `EMPTY` : whitespace-only strings count as empty.
+ *                              Has no effect on its own, and never alters the values it keeps.
  * - `CleanFlag::EMPTY_ARR`   : Removes empty arrays (after recursive cleaning).
  * - `CleanFlag::RECURSIVE`   : Cleans nested arrays recursively.
- * - `CleanFlag::FALSY`       : Removes all PHP falsy values (`null`, `''`, `0`, `0.0`, `'0'`, `false`, `[]`).
+ * - `CleanFlag::FALSY`       : Removes every falsy scalar (`null`, `''`, `0`, `0.0`, `'0'`, `false`).
+ *                              Short-circuits `NULLS` / `EMPTY` / `TRIM`, and never applies to
+ *                              arrays — combine it with `EMPTY_ARR` to also discard `[]`.
  * - `CleanFlag::MAIN`        : Shortcut for enabling all the main flags: `NULLS | EMPTY | EMPTY_ARR | TRIM`.
  * - `CleanFlag::RETURN_NULL` : Returns null if the final array is empty.
  *
@@ -94,10 +97,13 @@ use InvalidArgumentException;
  * // ]
  * ```
  *
- * **5. Remove all falsy values at once**
+ * **5. Remove all falsy scalars at once**
  * ```php
  * $data   = [0, '', null, false, 'ok', [], '0'];
  * $result = clean($data, CleanFlag::FALSY);
+ * // ['ok', []]  -- FALSY never applies to arrays
+ *
+ * $result = clean($data, CleanFlag::FALSY | CleanFlag::EMPTY_ARR);
  * // ['ok']
  * ```
  *

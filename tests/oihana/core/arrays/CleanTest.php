@@ -70,12 +70,27 @@ class CleanTest extends TestCase
         $this->assertSame($expected, clean($input, CleanFlag::FALSY));
     }
 
-    public function testCleanTrimsWhitespaceStringsWhenTrimFlagIsSet(): void
+    public function testCleanDropsWhitespaceOnlyStringsWhenTrimIsCombinedWithEmpty(): void
     {
         $input    = ['a' => '   ', 'b' => "\n\t", 'c' => ' ok '];
-        $expected = ['c' => ' ok '];
+        $expected = ['c' => ' ok ']; // the kept value is never trimmed
 
         $this->assertSame($expected, clean($input, CleanFlag::TRIM | CleanFlag::EMPTY ) );
+    }
+
+    public function testCleanTrimFlagAloneHasNoEffect(): void
+    {
+        $input = ['a' => '   ', 'b' => '', 'c' => null, 'd' => 'ok'];
+
+        $this->assertSame($input, clean($input, CleanFlag::TRIM));
+    }
+
+    public function testCleanFalsyFlagNeverAppliesToArrays(): void
+    {
+        $input = [0, '', null, false, 'ok', [], '0'];
+
+        $this->assertSame(['ok', []], clean($input, CleanFlag::FALSY));
+        $this->assertSame(['ok'],     clean($input, CleanFlag::FALSY | CleanFlag::EMPTY_ARR));
     }
 
     public function testCleanRecursiveRemovesNestedEmptyStrings(): void

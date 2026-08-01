@@ -13,6 +13,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
     - **Filtering** : the collected values are handed to `arrays\clean()` with the `$flags` bitmask, so the whole `CleanFlag` vocabulary applies. The default, `CleanFlag::NULLS`, only discards `null` — `0`, `0.0`, `''`, `false` and `[]` are kept. `CleanFlag::RETURN_NULL` is rejected with an `InvalidArgumentException`, the function always returning an array.
     - **Depth** : `$deep = true` converts every object or array value into a plain associative array with `toAssociativeArray()`, so the snapshot no longer shares any instance with the source. Left to `false` by default, where object values are copied by handle.
 
+### Fixed
+- **Arrays / Documentation**
+  - `CleanFlag::TRIM` was documented as trimming strings and as implying `CleanFlag::EMPTY`. In `clean()` it does neither : it is a modifier of `EMPTY` — widening the drop test from `$value !== ''` to `trim( $value ) !== ''` — so it has no effect on its own, and the values it keeps are never altered (`'  x  '` stays `'  x  '`). The constant now documents both readings, since `normalize()` reads the same flag and there the string *is* trimmed, independently of `EMPTY`.
+  - `CleanFlag::FALSY` was documented as removing `[]`. It only ever applies to the scalar branch of `clean()`, so empty arrays survive it — `CleanFlag::EMPTY_ARR` is required to discard them. The flag list and example 5 of the `clean()` PHPDoc, which announced `['ok']` where the function returns `['ok', []]`, are corrected accordingly.
+  - No behaviour change : documentation only, with regression tests added to lock both behaviours.
+- **Static analysis**
+  - Regenerate `phpstan-baseline.neon` from a cold result cache. The committed baseline had been generated with a warm one and did not survive `phpstan clear-result-cache`, so a fresh checkout — as on CI — reported errors on an otherwise green tree. Two stale `identical.alwaysFalse` entries in `arrays/compress.php` and `objects/compress.php` are gone, and an `offsetAccess.nonOffsetAccessible` count on `callables/countCallableParam.php` is corrected from 1 to 2.
+
 ## [1.1.0] - 2026-07-26
 
 ### Added
