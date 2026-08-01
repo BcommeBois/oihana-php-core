@@ -144,7 +144,7 @@ function compress( object $object , array $options = [] , int $currentDepth = 0 
             continue;
         }
 
-        if ( !empty( $conditions ) && is_iterable( $conditions ) )
+        if ( !empty( $conditions ) )
         {
             foreach ( $conditions as $condition )
             {

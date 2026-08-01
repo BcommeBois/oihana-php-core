@@ -68,6 +68,7 @@ function countCallableParam
 )
 :int
 {
+    /** @var array<int|string, int> $cacheCountCallableParam */
     static $cacheCountCallableParam = [] ;
 
     $key = is_string( $callable ) ? $callable : spl_object_id( ( object ) $callable ) ;
@@ -100,7 +101,7 @@ function countCallableParam
     {
         $reflection = new ReflectionMethod( $resolved , '__invoke' ) ;
     }
-    else if ( is_array( $resolved ) && count( $resolved ) === 2 )
+    else if ( is_array( $resolved ) )
     {
         $reflection = new ReflectionMethod( $resolved[0] ,  $resolved[1] ) ;
     }

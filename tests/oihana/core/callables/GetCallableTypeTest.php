@@ -86,6 +86,6 @@ final class GetCallableTypeTest extends TestCase
         $type = getCallableType( 123 , false , $norm );
 
         $this->assertFalse( $type );
-        $this->assertSame( 123 , $norm );
+        $this->assertNull( $norm ); // a value that is not callable has no normalized form
     }
 }

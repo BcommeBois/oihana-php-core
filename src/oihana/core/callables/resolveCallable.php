@@ -20,7 +20,7 @@ use Closure;
  *
  * Returns null if the callable cannot be resolved (function/method does not exist or format is invalid).
  *
- * @param string|array<int, object|string>|object|null $callable The callable candidate to resolve. Can be:
+ * @param string|array<int, object|string>|object|callable|null $callable The callable candidate to resolve. Can be:
  *                                             - A string containing a function or method name
  *                                             - An array with object/class and method name
  *                                             - An object instance with __invoke method
@@ -66,7 +66,7 @@ use Closure;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.7
  */
-function resolveCallable( string|array|object|null $callable ) :?callable
+function resolveCallable( mixed $callable ) :?callable
 {
     // Handle null and Closure instances immediately
     if ( $callable === null || $callable instanceof Closure )
@@ -77,7 +77,6 @@ function resolveCallable( string|array|object|null $callable ) :?callable
     // Handle invokable objects
     if ( is_object( $callable ) && method_exists( $callable , '__invoke' ) )
     {
-        /** @var callable $callable */
         return $callable ;
     }
 

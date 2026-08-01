@@ -128,26 +128,28 @@ function getCallableType( mixed $callable , bool $strict = true , ?callable & $n
     {
         [ $target, $method ] = $callable ;
 
-        if ( method_exists( $target, $method ) )
+        if ( ( is_string( $target ) || is_object( $target ) ) && is_string( $method ) && method_exists( $target, $method ) )
         {
             $rm = new ReflectionMethod( $target, $method ) ;
 
             // Case: static method called on a class (string)
             if ( is_string( $target ) && ( ! $strict || $rm->isStatic() ) )
             {
-                $norm = [ $target , $method ] ;
+                $pair = [ $target , $method ] ;
+                $norm = is_callable( $pair ) ? $pair : null ;
                 return CallableType::STATIC ;
             }
 
             // Case: instance method called on an object
             if ( is_object( $target ) && ( ! $strict || ! $rm->isStatic() ) )
             {
-                $norm = [ $target , $method ] ;
+                $pair = [ $target , $method ] ;
+                $norm = is_callable( $pair ) ? $pair : null ;
                 return CallableType::OBJECT ;
             }
         }
 
-        $norm = $callable ;
+        $norm = is_callable( $callable ) ? $callable : null ;
         return CallableType::UNKNOWN ;
     }
 
@@ -176,7 +178,8 @@ function getCallableType( mixed $callable , bool $strict = true , ?callable & $n
                     // In non-strict mode OR if the method is static
                     if ( ! $strict || $rm->isStatic() )
                     {
-                        $norm = [ $class , $method ] ;
+                        $pair = [ $class , $method ] ;
+                        $norm = is_callable( $pair ) ? $pair : null ;
                         return CallableType::STATIC ;
                     }
                 }
@@ -184,7 +187,8 @@ function getCallableType( mixed $callable , bool $strict = true , ?callable & $n
         }
     }
 
-    $norm = $callable ;
+    // $norm only ever carries a usable callable : a value that is not one leaves it null.
+    $norm = is_callable( $callable ) ? $callable : null ;
 
-    return is_callable( $callable ) ? CallableType::UNKNOWN : false ;
+    return $norm !== null ? CallableType::UNKNOWN : false ;
 }

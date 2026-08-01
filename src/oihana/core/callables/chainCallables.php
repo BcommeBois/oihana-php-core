@@ -74,11 +74,12 @@ function chainCallables( array $callables = [] ) : ?callable
     $resolved = [] ;
     foreach ( $callables as $callable )
     {
-        $resolved[] = resolveCallable( $callable ) ;
-        if ( $resolved[ count( $resolved ) - 1 ] === null )
+        $fn = resolveCallable( $callable ) ;
+        if ( $fn === null )
         {
             return null ;
         }
+        $resolved[] = $fn ;
     }
 
     return fn( $input ) => array_reduce
