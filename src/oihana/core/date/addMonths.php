@@ -75,7 +75,7 @@ function daysInGregorianMonth( int $year , int $month ): int
     /** @var array<int, int> $days */
     static $days = [ 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 ] ;
 
-    if ( $month === 2 && ( $year % 4 === 0 && ( $year % 100 !== 0 || $year % 400 === 0 ) ) )
+    if ( $month === 2 && isLeapYear( $year ) )
     {
         return 29 ;
     }
