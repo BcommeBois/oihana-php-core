@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- **Date**
+  - Add the `oihana\core\date\addHours()`, `addMinutes()`, `addSeconds()` functions : shift a `DateTimeInterface` by an absolute duration, returning a new `DateTimeImmutable` (the source is never modified). Elapsed-time arithmetic — across a DST transition, `addHours( $d , 1 )` shifts by exactly one real hour, which can land on a different wall-clock time than a calendar shift of the same nominal span (`addDays()`).
+  - Add the `oihana\core\date\addWeeks()` function : calendar arithmetic equivalent to `addDays( $date , $weeks * 7 )`, preserving the wall-clock time of day.
+  - Add the `oihana\core\date\addMonths()` and `addYears()` functions : calendar arithmetic that **clamps day overflow** to the last day of the target month, instead of the native `DateTimeImmutable::modify( '+1 month' )` overflow behaviour (`2026-01-31` + 1 month lands on `2026-02-28`, not `2026-03-03`). `addYears()` delegates to `addMonths( $date , $years * 12 )`, so a leap day clamps the same way (`2028-02-29` + 1 year lands on `2029-02-28`). The day-in-month computation is pure arithmetic (a Gregorian leap-year check, no string parsing), so it holds for any integer year, including zero and negative ones, where constructing a `DateTimeImmutable` from a short negative-year string is ambiguous and throws in PHP's own parser.
+  - Add the matching `subHours()`, `subMinutes()`, `subSeconds()`, `subWeeks()`, `subMonths()`, `subYears()` — each a thin `add*( $date , -$n )` wrapper, for call-site readability.
+  - First batch ("shifting") of the `date/` toolkit planned in `ROADMAP.md`.
 - **Objects**
   - Add the `oihana\core\objects\freeze()` function : builds a plain associative array snapshot of the chosen properties of an object. Useful to freeze a reference to another document — copying the selected properties onto the current one so the snapshot survives later changes to the source. Unlike `pick()` + `compress()`, it follows the order of the requested `$fields` (not the declaration order of the object) and reads through `$object->{ $field } ?? null`, so magic `__get()` / `__isset()` accessors are honoured ; missing, uninitialized and inaccessible properties read as `null`. The source object is never modified.
     - **Renaming** : an entry of `$fields` carrying a string key uses that key as the property name in the snapshot, so `[ '_key' , 'thingName' => 'name' ]` lands the source `name` as `thingName`.
