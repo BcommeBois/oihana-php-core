@@ -28,6 +28,7 @@ namespace oihana\core ;
  */
 function isLiteral( mixed $value ) :bool
 {
+    /** @var array<int, string> $literals */
     static $literals = [ 'true' , 'false' , 'null' ] ;
     return is_string( $value ) && in_array( strtolower( $value ) , $literals , true ) ;
 }

@@ -2,7 +2,9 @@
 
 namespace oihana\core\objects ;
 
+use InvalidArgumentException;
 use JsonSerializable;
+
 use function oihana\core\callables\resolveCallable;
 
 /**
@@ -27,7 +29,7 @@ use function oihana\core\callables\resolveCallable;
  *
  * @param bool $strict If strict, not use json_encode but a standard loop.
  *
- * @return array<string, mixed> The resulting associative array.
+ * @return array<array-key, mixed> The resulting associative array.
  *
  * @example
  * Convert an object :
@@ -159,6 +161,11 @@ function toAssociativeArray
                       :  get_object_vars( $document ) ;
         }
 
+        if ( !is_array( $document ) )
+        {
+            throw new InvalidArgumentException( 'JsonSerializable::jsonSerialize() must return an array when $strict is true.' ) ;
+        }
+
         return array_map
         (
             fn ( $value ) => is_array( $value ) || is_object( $value ) ? toAssociativeArray( $value , strict : $strict ) : $value
@@ -170,5 +177,12 @@ function toAssociativeArray
 
     $json = $encoder !== null ? $encoder( $document ) : json_encode( $document ) ;
 
-    return json_decode( $json , true ) ;
+    if ( !is_string( $json ) )
+    {
+        throw new InvalidArgumentException( 'The JSON encoder must return a string.' ) ;
+    }
+
+    $decoded = json_decode( $json , true ) ;
+
+    return is_array( $decoded ) ? $decoded : [] ;
 }

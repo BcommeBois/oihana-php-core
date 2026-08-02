@@ -97,4 +97,10 @@ class FormatDateTimeTest extends TestCase
 
         $this->assertNotEquals($resultUTC, $resultParis);
     }
+    public function testNullFormatFallsBackToTheDefaultPattern(): void
+    {
+        $result = formatDateTime('2023-07-14T12:34:56.789', 'UTC', null);
+
+        $this->assertSame('2023-07-14T12:34:56.789Z', $result);
+    }
 }

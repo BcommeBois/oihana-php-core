@@ -159,4 +159,38 @@ class ToAssociativeArrayTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+    #[Test]
+    public function it_throws_when_strict_and_json_serialize_does_not_return_an_array(): void
+    {
+        $object = new class implements \JsonSerializable
+        {
+            public function jsonSerialize(): mixed
+            {
+                return 'not-an-array';
+            }
+        };
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        toAssociativeArray($object, strict: true);
+    }
+
+    #[Test]
+    public function it_throws_when_the_encoder_does_not_return_a_string(): void
+    {
+        $object = new TestUser();
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        toAssociativeArray($object, fn(mixed $data): array => (array) $data);
+    }
+    #[Test]
+    public function it_returns_an_empty_array_when_the_encoder_produces_malformed_json(): void
+    {
+        $object = new TestUser();
+
+        $result = toAssociativeArray($object, fn(mixed $data): string => 'not valid json {{{');
+
+        $this->assertSame([], $result);
+    }
 }

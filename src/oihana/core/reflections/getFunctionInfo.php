@@ -66,7 +66,7 @@ function getFunctionInfo( callable|string $callable ) : ?array
                 $ref = new ReflectionFunction($callable);
             }
         }
-        elseif ( is_array( $callable ) && count( $callable ) === 2 )
+        elseif ( is_array( $callable ) )
         {
             $ref = new ReflectionMethod( $callable[0] , $callable[1] ) ; // Method as [object|string, method]
         }

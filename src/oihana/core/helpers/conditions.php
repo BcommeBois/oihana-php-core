@@ -11,10 +11,10 @@ use InvalidArgumentException;
  * and returns a consistent array of callable conditions. It is useful when you want
  * to filter, validate, or compress data using multiple dynamic rules.
  *
- * @param array<int, callable>|callable|string|null $conditions The conditions to normalize. Can be:
+ * @param array<int, mixed>|callable|string|null $conditions The conditions to normalize. Can be:
  *  - null: defaults to a single condition that checks for null values.
  *  - callable: a single condition function.
- *  - array: an array of callable functions.
+ *  - array: an array of callables — a non-callable entry is dropped, or rejected when `$throwable` is true. PHP does not enforce array value types, so this is a genuine runtime check, not a defensive one.
  *  - string: (optional) a single callable function name or expression.
  * @param bool $throwable If true, invalid conditions will throw an InvalidArgumentException.
  *                        If false, invalid conditions are silently ignored.
@@ -78,18 +78,18 @@ function conditions( array|callable|string|null $conditions = null , bool $throw
     }
     elseif ( is_array( $conditions ) )
     {
-        return array_filter( $conditions , function ( $condition ) use ( $throwable )
+        if ( $throwable )
         {
-            if ( !is_callable( $condition ) )
+            foreach ( $conditions as $condition )
             {
-                if ( $throwable )
+                if ( !is_callable( $condition ) )
                 {
                     throw new InvalidArgumentException("All conditions in the array must be callable.");
                 }
-                return false ;
             }
-            return true ;
-        });
+        }
+
+        return array_filter( $conditions , 'is_callable' ) ;
     }
     else if ( $throwable )
     {

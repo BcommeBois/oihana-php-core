@@ -21,7 +21,7 @@ use DateTimeZone;
  *
  * @param string|null $date     The input date/time string to format. If null or invalid, "now" is used.
  * @param string      $timezone The timezone identifier (e.g., 'Europe/Paris'). Defaults to 'UTC'.
- * @param string|null $format   The date format string compatible with DateTime::format().
+ * @param string|null $format   The date format string compatible with DateTime::format(). If null, the default format is used.
  *                              Defaults to 'Y-m-d\TH:i:s.v\Z' (ISO 8601 UTC with milliseconds).
  *
  * @return string The formatted date/time string, or null if creation fails.
@@ -64,5 +64,5 @@ function formatDateTime( ?string $date = null , string $timezone = 'UTC' , ?stri
         ) ;
     }
 
-    return $dateTime->format( $format ) ;
+    return $dateTime->format( $format ?? 'Y-m-d\TH:i:s.v\Z' ) ;
 }

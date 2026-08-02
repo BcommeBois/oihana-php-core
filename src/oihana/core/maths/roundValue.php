@@ -7,7 +7,7 @@ namespace oihana\core\maths ;
  *
  * @param int|float $value The number to round.
  * @param int $floatCount The number of decimal places to round to.
- * @return int|float The rounded number.
+ * @return float The rounded number.
  *
  * @example
  * ```php
@@ -20,7 +20,7 @@ namespace oihana\core\maths ;
  * @author  Marc Alcaraz (ekameleon)
  * @since   1.0.0
  */
-function roundValue( int|float $value , int $floatCount = 0 ) : int|float
+function roundValue( int|float $value , int $floatCount = 0 ) : float
 {
     $r = 1 ;
     $i = - 1 ;

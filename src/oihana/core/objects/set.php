@@ -12,7 +12,7 @@ use stdClass;
  * @param object      $object The object to modify (or copy).
  * @param string|null $key The key path to set (e.g. 'user.address.country'). If null, replaces entire object.
  * @param mixed       $value The value to set.
- * @param string      $separator The separator used in the key path. Default is '.'.
+ * @param non-empty-string $separator The separator used in the key path. Default is '.'.
  * @param bool        $copy If true, returns a deep copy of the object with the modification.
  * @param array<string, class-string>|string|callable|null $classFactory A class name, factory callable, or array path => className to create intermediate objects (default: stdClass).
  *
@@ -78,7 +78,8 @@ function set
 {
     if ( $copy )
     {
-        $object = unserialize( serialize( $object ) ) ; // deep clone
+        $cloned = unserialize( serialize( $object ) ) ; // deep clone
+        $object = is_object( $cloned ) ? $cloned : $object ; // round-tripping our own serialize() cannot fail
     }
 
     if ( $key === null ) {
@@ -109,7 +110,9 @@ function set
         default => fn() => new stdClass() ,
     };
 
-    $ref         = &$object;
+    // No & needed here : object properties mutate through their handle regardless of aliasing,
+    // unlike arrays\set()'s array-backed walk, which genuinely requires by-reference indirection.
+    $ref         = $object;
     $keys        = explode( $separator , $key );
     $currentPath = '' ;
 
@@ -126,7 +129,8 @@ function set
                            : $createInstance() ;
         }
 
-        $ref = &$ref->$segment;
+        $next = $ref->$segment ;
+        $ref  = is_object( $next ) ? $next : $ref ; // the block above just ensured it is one
     }
 
     $ref->{ array_shift( $keys ) } = $value;
