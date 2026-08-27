@@ -4,6 +4,8 @@ namespace tests\oihana\core\date;
 
 use function oihana\core\date\formatDateTime;
 
+use oihana\core\date\DateFormat;
+
 use DateInvalidTimeZoneException;
 use DateMalformedStringException;
 use DateTime;
@@ -102,5 +104,117 @@ class FormatDateTimeTest extends TestCase
         $result = formatDateTime('2023-07-14T12:34:56.789', 'UTC', null);
 
         $this->assertSame('2023-07-14T12:34:56.789Z', $result);
+    }
+
+    /**
+     * A date string carrying its own offset says which moment it is ; the default format
+     * ends on a literal Z, so that moment must be converted to UTC before being labelled.
+     *
+     * @return void
+     * @throws DateInvalidTimeZoneException
+     * @throws DateMalformedStringException
+     */
+    public function testOffsetBearingInputIsConvertedToUtcByTheDefaultFormat(): void
+    {
+        $this->assertSame
+        (
+            '2025-07-20T07:30:00.000Z' ,
+            formatDateTime('2025-07-20T09:30:00+02:00')
+        );
+    }
+
+    /**
+     * Same rule when the offset comes from the $timezone argument rather than the string.
+     *
+     * @return void
+     * @throws DateInvalidTimeZoneException
+     * @throws DateMalformedStringException
+     */
+    public function testNonUtcTimezoneIsConvertedToUtcByTheDefaultFormat(): void
+    {
+        $this->assertSame
+        (
+            '2025-07-20T07:30:00.000Z' ,
+            formatDateTime('2025-07-20 09:30:00', 'Europe/Paris')
+        );
+    }
+
+    /**
+     * The explicit default pattern behaves as the implicit one.
+     *
+     * @return void
+     * @throws DateInvalidTimeZoneException
+     * @throws DateMalformedStringException
+     */
+    public function testExplicitZuluFormatIsConvertedToUtc(): void
+    {
+        $this->assertSame
+        (
+            '2025-07-20T07:30:00Z' ,
+            formatDateTime('2025-07-20 09:30:00', 'Europe/Paris', 'Y-m-d\TH:i:s\Z')
+        );
+
+        $this->assertSame
+        (
+            '2025-07-20T07:30:00.000Z' ,
+            formatDateTime('2025-07-20 09:30:00', 'Europe/Paris', DateFormat::DEFAULT)
+        );
+    }
+
+    /**
+     * A format without a literal Z keeps rendering in the timezone the moment was parsed in.
+     *
+     * This is what the timestamped-filename helpers of `oihana/php-files` rely on.
+     *
+     * @return void
+     * @throws DateInvalidTimeZoneException
+     * @throws DateMalformedStringException
+     */
+    public function testFormatWithoutLiteralZuluKeepsTheParsedTimezone(): void
+    {
+        $this->assertSame
+        (
+            '2025-07-20T09:30:00' ,
+            formatDateTime('2025-07-20 09:30:00', 'Europe/Paris', 'Y-m-d\TH:i:s')
+        );
+
+        $this->assertSame
+        (
+            '2025-07-20 09:30' ,
+            formatDateTime('2025-07-20 09:30:00', 'Europe/Paris', 'Y-m-d H:i')
+        );
+    }
+
+    /**
+     * A format carrying a real offset token says its own timezone, so it is left alone.
+     *
+     * @return void
+     * @throws DateInvalidTimeZoneException
+     * @throws DateMalformedStringException
+     */
+    public function testOffsetBearingFormatIsLeftInItsOwnTimezone(): void
+    {
+        $this->assertSame
+        (
+            '2025-07-20T09:30:00+02:00' ,
+            formatDateTime('2025-07-20T09:30:00+02:00', 'UTC', 'Y-m-d\TH:i:sP')
+        );
+    }
+
+    /**
+     * `\\Z` is an escaped backslash followed by the native Z token (offset in seconds),
+     * not a Zulu designator — no conversion, and the token stays live.
+     *
+     * @return void
+     * @throws DateInvalidTimeZoneException
+     * @throws DateMalformedStringException
+     */
+    public function testEscapedBackslashBeforeZIsNotAZuluDesignator(): void
+    {
+        $this->assertSame
+        (
+            '\\7200' ,
+            formatDateTime('2025-07-20 09:30:00', 'Europe/Paris', '\\\\Z')
+        );
     }
 }

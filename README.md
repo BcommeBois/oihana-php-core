@@ -235,7 +235,11 @@ stdClass Object
 ```php
 use function oihana\core\date\formatDateTime;
 
-echo formatDateTime('2023-10-27 10:00:00', 'd/m/Y H:i'); // 27/10/2023 10:00
+echo formatDateTime('2023-10-27 10:00:00', 'Europe/Paris', 'd/m/Y H:i'); // 27/10/2023 10:00
+
+// The default format ends on a literal Z, the ISO-8601 designator for UTC,
+// so the moment is converted before being labelled.
+echo formatDateTime('2023-10-27T10:00:00+02:00'); // 2023-10-27T08:00:00.000Z
 ```
 
 ### Numbers: clamping a value

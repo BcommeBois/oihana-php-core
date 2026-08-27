@@ -120,6 +120,7 @@
             "src/oihana/core/date/endOfWeek.php",
             "src/oihana/core/date/endOfYear.php",
             "src/oihana/core/date/formatDateTime.php",
+            "src/oihana/core/date/hasLiteralZulu.php",
             "src/oihana/core/date/humanizeDuration.php",
             "src/oihana/core/date/isDate.php",
             "src/oihana/core/date/isFuture.php",
