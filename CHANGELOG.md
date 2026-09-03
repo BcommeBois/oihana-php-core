@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-09-03
+
 ### Added
 - **Date**
   - Add the `oihana\core\date\addHours()`, `addMinutes()`, `addSeconds()` functions : shift a `DateTimeInterface` by an absolute duration, returning a new `DateTimeImmutable` (the source is never modified). Elapsed-time arithmetic — across a DST transition, `addHours( $d , 1 )` shifts by exactly one real hour, which can land on a different wall-clock time than a calendar shift of the same nominal span (`addDays()`).
@@ -27,6 +29,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Third and final batch ("predicates and gaps") of the `date/` toolkit planned in `ROADMAP.md`, closing the toolkit's three-batch plan.
   - Add the `oihana\core\date\hasLiteralZulu()` function : tells whether a date format pattern carries a **literal** `Z`, the ISO-8601 designator for UTC — i.e. whether the pattern asserts that what it renders is expressed in UTC. Not the naive `str_contains( $format , '\Z' )` : in `'\\Z'` the backslash escapes a backslash, leaving `Z` as the native token for the offset in seconds, so the pattern is walked and whatever follows an escape is stepped over. Consumed by `formatDateTime()` to decide whether to convert the moment before formatting it.
   - Add the `oihana\core\date\DateFormat` class : the canonical date/time format patterns of the library. `DateFormat::ZULU_MILLI` (`'Y-m-d\TH:i:s.v\Z'`) is aliased as `DateFormat::DEFAULT`, the pattern `formatDateTime()` and `now()` fall back to — the literal was until now duplicated in both signatures.
+
+- **Accessors**
+  - Add the `oihana\core\accessors\carriesKeyValue()` function : a stricter `hasKeyValue()` that asks whether a document **holds a value** for a key, rather than whether its class declares one. The two diverge on objects only, and only on typed properties : `hasKeyValue()` falls back on `property_exists()`, which is true of a property declared without a default long before anything fills it. A caller iterating over supplied data then acts on a field nobody supplied, and writes back whatever it computes from nothing — an absence turned into an assertion. On arrays the two agree, `array_key_exists()` already asking the right question ; nested paths are delegated to `hasKeyValue()`, which owns the traversal.
+  - 🔑 **Initialized, never non-null** : a property holding `null` *is* carried, and the function says so — like `hasKeyValue()`, unlike `isset()`. Properties declared `= null` are commonplace and reading `null` as absence would discard every one of them.
+
 - **Objects**
   - Add the `oihana\core\objects\freeze()` function : builds a plain associative array snapshot of the chosen properties of an object. Useful to freeze a reference to another document — copying the selected properties onto the current one so the snapshot survives later changes to the source. Unlike `pick()` + `compress()`, it follows the order of the requested `$fields` (not the declaration order of the object) and reads through `$object->{ $field } ?? null`, so magic `__get()` / `__isset()` accessors are honoured ; missing, uninitialized and inaccessible properties read as `null`. The source object is never modified.
     - **Renaming** : an entry of `$fields` carrying a string key uses that key as the property name in the snapshot, so `[ '_key' , 'thingName' => 'name' ]` lands the source `name` as `thingName`.
