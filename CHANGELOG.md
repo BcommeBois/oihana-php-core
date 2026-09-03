@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+- **Numbers**
+  - Add the `oihana\core\numbers\isNear()` function : whether a ratio is within a relative tolerance of a target, comparing `abs( $ratio - $target )` against `abs( $target ) * $tolerance` — the allowed gap scales with the target's magnitude, so the same `$tolerance` reads as a relative margin (e.g. `0.05` for "within 5%") regardless of the target's sign.
+  - Add the `oihana\core\numbers\toInt()` function : converts a value to an integer, defaulting to `0` — an `int` passes through, any other numeric value is cast, anything non-numeric falls back to `0`.
+
+- **Arrays**
+  - Add the `oihana\core\arrays\delta()` function : diffs two lists of identifiers (e.g. the ids of a previous run versus the current one) into a `[ $removed , $added , $kept ]` 3-tuple, each re-indexed from `0`.
+  - Add the `oihana\core\arrays\toStrings()` function : filters a value (passed through `toArray()`) down to a list of strings, keeping `string` and `int` items (cast to `string`) and dropping everything else.
+
 ## [1.2.0] - 2026-09-03
 
 ### Added
