@@ -62,4 +62,21 @@ class RoundValueTest extends TestCase
         $this->assertEquals(-2.0, roundValue(-1.5));
         $this->assertEquals(-3.0, roundValue(-2.5));
     }
+
+    /**
+     * A decimal number is almost never exact in memory : `0.235 * 2.5 * 1000` holds
+     * `587.4999999999999`, which used to round down, away from the exact arithmetic.
+     */
+    public function testRoundValueIgnoresTheFloatNoise() : void
+    {
+        $this->assertSame(0.588, roundValue(0.235 * 2.5, 3));
+        $this->assertSame(1.1, roundValue(0.50 * 2.2, 2));
+        $this->assertSame(0.29, roundValue(0.29, 2));
+    }
+
+    public function testRoundValueStillRoundsAHalfWayValueUp() : void
+    {
+        $this->assertSame(0.588, roundValue(0.5875, 3));
+        $this->assertSame(0.587, roundValue(0.58749, 3));
+    }
 }

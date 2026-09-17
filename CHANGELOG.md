@@ -15,6 +15,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `oihana\core\arrays\delta()` function : diffs two lists of identifiers (e.g. the ids of a previous run versus the current one) into a `[ $removed , $added , $kept ]` 3-tuple, each re-indexed from `0`.
   - Add the `oihana\core\arrays\toStrings()` function : filters a value (passed through `toArray()`) down to a list of strings, keeping `string` and `int` items (cast to `string`) and dropping everything else.
 
+### Fixed
+- **Maths**
+  - `oihana\core\maths\ceilValue()`, `floorValue()` and `roundValue()` no longer round the float noise instead of the number. The three scaled the value, rounded it and divided back (`ceil( $value * $r ) / $r`), but a decimal number is almost never exact in memory : `1.1 * 100` holds `110.00000000000001` and `8.2 * 100` holds `819.9999999999999`, so `ceilValue( 1.1 , 2 )` answered `1.11` and `floorValue( 8.2 , 2 )` answered `8.19` — off by one unit of the last decimal place kept, and always in the same direction. The scaled value is now rounded to six decimals **before** the ceiling, floor or rounding is taken : a scaled value within one millionth of an integer is treated as sitting exactly on it, so only a real excess or shortfall moves the result. A value a hundredth over a limit still climbs, and a half-way value still rounds up.
+  - The loop that built the scaling factor is replaced by `10 ** max( 0 , $floatCount )` : the same factor, and a negative decimal count keeps reading as `0`, as it already did.
+
 ## [1.2.0] - 2026-09-03
 
 ### Added

@@ -55,4 +55,21 @@ class FloorValueTest extends TestCase
         $this->assertEquals(0.0, floorValue(0.0, 0));
         $this->assertEquals(0.999, floorValue(0.9999, 3));
     }
+
+    /**
+     * A decimal number is almost never exact in memory : `8.2 * 100` holds `819.9999999999999`.
+     * Before the noise was ignored, each of these dropped by one hundredth.
+     */
+    public function testFloorValueIgnoresTheFloatNoise() : void
+    {
+        $this->assertSame(8.2, floorValue(8.2, 2));
+        $this->assertSame(0.29, floorValue(0.29, 2));
+        $this->assertSame(1.1, floorValue(0.50 * 2.2, 2));
+    }
+
+    public function testFloorValueStillDropsOnARealShortfall() : void
+    {
+        $this->assertSame(8.19, floorValue(8.199, 2));
+        $this->assertSame(0.28, floorValue(0.2899, 2));
+    }
 }
