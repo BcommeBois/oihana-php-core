@@ -83,6 +83,7 @@
             "src/oihana/core/arrays/swap.php",
             "src/oihana/core/arrays/tail.php",
             "src/oihana/core/arrays/toArray.php",
+            "src/oihana/core/arrays/toIntegers.php",
             "src/oihana/core/arrays/toStrings.php",
             "src/oihana/core/arrays/unique.php",
             

@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - **Arrays**
   - Add the `oihana\core\arrays\delta()` function : diffs two lists of identifiers (e.g. the ids of a previous run versus the current one) into a `[ $removed , $added , $kept ]` 3-tuple, each re-indexed from `0`.
   - Add the `oihana\core\arrays\toStrings()` function : filters a value (passed through `toArray()`) down to a list of strings, keeping `string` and `int` items (cast to `string`) and dropping everything else.
+  - Add the `oihana\core\arrays\toIntegers()` function : filters a value (passed through `toArray()`) down to a list of integers — the twin of `toStrings()`. An `int` is kept ; a `string` is kept and cast when it writes an integer and nothing else (sign, digits, surrounding spaces, leading zeros : `'007'` gives `7`). Everything else is dropped, a `float` included even when whole (`350.0`) : a list of codes has no place for a decimal, and truncating one would pass a typo for a value. Order and duplicates are kept. Not built on `filter_var( … , FILTER_VALIDATE_INT )`, which accepts `350.0`, turns `true` into `1` and refuses `'007'`.
 
 ### Fixed
 - **Maths**
