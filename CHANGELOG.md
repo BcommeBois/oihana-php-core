@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 
 ### Added
+- **Maths**
+  - Add the `oihana\core\maths\shedFloatNoise()` function : sheds the binary noise a computed figure carries — `202799.4000000001` back to `202799.4`, `45292.249999999985` back to `45292.25`, `0.1 + 0.2` back to `0.3` — by rounding it to a count of **significant digits**, twelve by default, where a double holds fifteen to seventeen. The scale follows the size of the value, because the noise an addition of floats leaves sits at a relative distance of the figure and not at a fixed decimal : a fixed count of decimals cleans a small sum and leaves a large one untouched. Every decimal a source records survives (`13039.42858`, `0.0073`), zero, an infinite figure and a NaN are answered as they are, and an integer comes back as a whole float. Not a rounding : two decimals on an amount are a business rule, written where the figure is shown or stored (`roundValue()`) ; this function only removes what an addition left behind.
+
 - **Numbers**
   - Add the `oihana\core\numbers\isNear()` function : whether a ratio is within a relative tolerance of a target, comparing `abs( $ratio - $target )` against `abs( $target ) * $tolerance` — the allowed gap scales with the target's magnitude, so the same `$tolerance` reads as a relative margin (e.g. `0.05` for "within 5%") regardless of the target's sign.
   - Add the `oihana\core\numbers\toInt()` function : converts a value to an integer, defaulting to `0` — an `int` passes through, any other numeric value is cast, anything non-numeric falls back to `0`.
