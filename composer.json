@@ -45,6 +45,7 @@
             "src/oihana/core/accessors/setKeyValue.php" ,
             
             "src/oihana/core/arrays/append.php",
+            "src/oihana/core/arrays/arrayOrEmpty.php",
             "src/oihana/core/arrays/clean.php",
             "src/oihana/core/arrays/compress.php",
             "src/oihana/core/arrays/deepMerge.php",

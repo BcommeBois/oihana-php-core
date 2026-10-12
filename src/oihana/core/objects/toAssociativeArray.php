@@ -5,6 +5,7 @@ namespace oihana\core\objects ;
 use InvalidArgumentException;
 use JsonSerializable;
 
+use function oihana\core\arrays\arrayOrEmpty;
 use function oihana\core\callables\resolveCallable;
 
 /**
@@ -184,5 +185,5 @@ function toAssociativeArray
 
     $decoded = json_decode( $json , true ) ;
 
-    return is_array( $decoded ) ? $decoded : [] ;
+    return arrayOrEmpty( $decoded ) ;
 }
