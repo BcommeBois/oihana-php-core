@@ -112,7 +112,7 @@ Advanced JSON utilities:
 
 Smart numeric rounding helpers:
 - `ceilValue()`, `floorValue()`, `roundValue()`
-- Float noise: `shedFloatNoise()` — sheds the binary noise of a computed figure by significant digits, never a business rounding
+- Float noise: `shedFloatNoise()` — sheds the binary noise of a computed figure by significant digits, never a business rounding ; `scale:` reckons them on the largest term of a sum whose terms cancel
 - Geolocation: `haversine()`, `bearing()`
 
 ### 🔢 Numbers (`oihana\core\numbers`)

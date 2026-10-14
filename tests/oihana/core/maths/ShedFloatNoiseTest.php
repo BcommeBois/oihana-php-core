@@ -93,4 +93,45 @@ final class ShedFloatNoiseTest extends TestCase
         $this->assertSame( INF , shedFloatNoise( INF ) ) ;
         $this->assertNan( shedFloatNoise( NAN ) ) ;
     }
+
+    /**
+     * 🚨 Terms that nearly cancel leave a result too small to say where the noise
+     * starts : twelve digits of `0.009999999999990905` are the noise itself. Reckoned
+     * on the size of the largest term, the same twelve digits clean it.
+     */
+    public function testASumWhoseTermsCancelIsCleanedAtTheScaleOfItsTerms() :void
+    {
+        $this->assertSame( 0.01 , shedFloatNoise( 1000.01 - 1000.00 , scale: 1000.01 ) ) ;
+        $this->assertSame( 0.0  , shedFloatNoise( 1000.00 - 999.99 - 0.01 , scale: 1000 ) ) ;
+    }
+
+    /**
+     * Without a scale, the result alone sets the digits : the limit the scale exists
+     * for, asserted so that it stays known.
+     */
+    public function testWithoutAScaleACancelledSumKeepsItsDust() :void
+    {
+        $this->assertNotSame( 0.01 , shedFloatNoise( 1000.01 - 1000.00 ) ) ;
+    }
+
+    /**
+     * A scale smaller than the value never keeps more digits than the value alone
+     * would : the larger of the two sets them.
+     */
+    public function testASmallerScaleChangesNothing() :void
+    {
+        $this->assertSame( 202799.4 , shedFloatNoise( 202799.4000000001 , scale: 1.0 ) ) ;
+        $this->assertSame( 0.3      , shedFloatNoise( 0.1 + 0.2 , scale: 0.001 ) ) ;
+    }
+
+    /**
+     * 🚨 A negative zero prints as `-0`. PHP compares it equal to `0.0`, so the sign is
+     * read through a division : one over a positive zero is a positive infinity.
+     */
+    public function testAShedFigureIsNeverANegativeZero() :void
+    {
+        $this->assertSame( INF , fdiv( 1.0 , shedFloatNoise( -0.0 ) ) ) ;
+        $this->assertSame( INF , fdiv( 1.0 , shedFloatNoise( 1000.00 - 999.99 - 0.01 , scale: 1000 ) ) ) ;
+        $this->assertSame( '0' , json_encode( shedFloatNoise( 1000.00 - 999.99 - 0.01 , scale: 1000 ) ) ) ;
+    }
 }
