@@ -2,7 +2,7 @@
 
 namespace oihana\core\date ;
 
-use function oihana\core\date\durationToSeconds ;
+use function oihana\core\date\durationParts ;
 
 /**
  * Returns a human-readable representation of a duration, e.g. `"1d 2h 3m 4s"`.
@@ -14,8 +14,8 @@ use function oihana\core\date\durationToSeconds ;
  * - or `null` (treated as a zero duration → `"0s"`).
  *
  * Whatever the input form, the duration is first normalized into a number of
- * seconds and then broken down so that every component stays within its natural
- * range (seconds < 60, minutes < 60, hours < `$hoursPerDay`). Fractional input
+ * seconds and then broken down by {@see durationParts()} so that every component
+ * stays within its natural range (seconds < 60, minutes < 60, hours < `$hoursPerDay`). Fractional input
  * therefore rolls up correctly: `"90:00"` and `"1.5h"` both yield `"1h 30m"`.
  * Only the seconds component may carry a fractional part (e.g. `"5.5s"`).
  *
@@ -40,26 +40,12 @@ use function oihana\core\date\durationToSeconds ;
  */
 function humanizeDuration( int|float|string|null $duration = null , int $hoursPerDay = 24 ) : string
 {
-    $total = durationToSeconds( $duration , $hoursPerDay ) ;
+    $parts = durationParts( $duration , $hoursPerDay ) ;
 
-    $secondsPerHour = $hoursPerDay > 0 ? $hoursPerDay * 3600 : 0 ;
-
-    $days = 0 ;
-    if ( $secondsPerHour > 0 )
-    {
-        $days   = (int) floor( $total / $secondsPerHour ) ;
-        $total -= $days * $secondsPerHour ;
-    }
-
-    $hours   = (int) floor( $total / 3600 ) ; $total -= $hours   * 3600 ;
-    $minutes = (int) floor( $total / 60 )   ; $total -= $minutes * 60 ;
-
-    // Drop floating-point noise then collapse a whole number of seconds to an int.
-    $seconds = round( $total , 6 ) ;
-    if ( $seconds == (int) $seconds )
-    {
-        $seconds = (int) $seconds ;
-    }
+    $days    = $parts[ DurationUnit::DAY    ] ;
+    $hours   = $parts[ DurationUnit::HOUR   ] ;
+    $minutes = $parts[ DurationUnit::MINUTE ] ;
+    $seconds = $parts[ DurationUnit::SECOND ] ;
 
     $output = '' ;
 

@@ -14,6 +14,13 @@ class DurationUnitTest extends TestCase
         $this->assertSame( 'h' , DurationUnit::HOUR ) ;
         $this->assertSame( 'm' , DurationUnit::MINUTE ) ;
         $this->assertSame( 's' , DurationUnit::SECOND ) ;
+        $this->assertSame( ':' , DurationUnit::SEPARATOR ) ;
+    }
+
+    public function testTheSeparatorIsNotASuffix() : void
+    {
+        $this->assertNotContains( DurationUnit::SEPARATOR , DurationUnit::all() ) ;
+        $this->assertFalse( DurationUnit::isValid( DurationUnit::SEPARATOR ) ) ;
     }
 
     public function testAllReturnsEverySuffixLargestToSmallest() : void

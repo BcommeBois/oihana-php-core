@@ -49,6 +49,13 @@ class DurationUnit
     public const string SECOND = 's' ;
 
     /**
+     * The separator of the clock notation (`MM:SS`, `HH:MM:SS`), read by {@see durationToSeconds()}
+     * and written by {@see formatDuration()}. It is not a unit suffix : {@see self::all()} leaves it out.
+     * Type: string
+     */
+    public const string SEPARATOR = ':' ;
+
+    /**
      * Returns the list of valid duration unit suffixes, from the largest to the smallest.
      *
      * @return string[]

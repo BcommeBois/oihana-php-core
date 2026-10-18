@@ -48,9 +48,9 @@ function durationToSeconds( int|float|string|null $duration = null , int $hoursP
 
     $seconds = 0.0 ;
 
-    if ( str_contains( $duration , ':' ) )
+    if ( str_contains( $duration , DurationUnit::SEPARATOR ) )
     {
-        $parts = explode( ':' , $duration ) ;
+        $parts = explode( DurationUnit::SEPARATOR , $duration ) ;
 
         if ( count( $parts ) === 2 )
         {
