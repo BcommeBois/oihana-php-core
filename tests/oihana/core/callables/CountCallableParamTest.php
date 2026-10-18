@@ -83,6 +83,70 @@ final class CountCallableParamTest extends TestCase
     }
 
     /**
+     * 🚨 PHP hands the identifier of a freed object to the next one. A cache keyed by that
+     * identifier gave a new closure the count of an old one : a two-parameter condition of
+     * compress() was then called with one argument, and threw.
+     *
+     * @throws ReflectionException
+     */
+    public function testAFreedClosureNeverLendsItsCountToTheNextOne(): void
+    {
+        for ( $round = 0 ; $round < 50 ; $round++ )
+        {
+            $one = fn( $a ) => $a ;
+            $this->assertSame( 1 , countCallableParam( $one ) , "round $round, one parameter" ) ;
+            unset( $one ) ;
+
+            $two = fn( $a , $b ) => $a ;
+            $this->assertSame( 2 , countCallableParam( $two ) , "round $round, two parameters" ) ;
+            unset( $two ) ;
+        }
+    }
+
+    /**
+     * An array callable was cast to a temporary object to build its cache key : two different
+     * methods could meet under the same identifier.
+     *
+     * @throws ReflectionException
+     */
+    public function testArrayCallablesAreNeverConfused(): void
+    {
+        $obj = new CountCallableParamClass();
+
+        for ( $round = 0 ; $round < 20 ; $round++ )
+        {
+            $this->assertSame( 3 , countCallableParam( [ $obj , 'objectMethod' ] ) , "round $round" ) ;
+            $this->assertSame( 2 , countCallableParam( [ CountCallableParamClass::class , 'staticMethod' ] ) , "round $round" ) ;
+        }
+    }
+
+    /**
+     * The count of a method belongs to its class, not to an instance : any instance finds it.
+     *
+     * @throws ReflectionException
+     */
+    public function testTwoInstancesShareTheCountOfTheirMethod(): void
+    {
+        $this->assertSame( 3 , countCallableParam( [ new CountCallableParamClass() , 'objectMethod' ] ) ) ;
+        $this->assertSame( 3 , countCallableParam( [ new CountCallableParamClass() , 'objectMethod' ] ) ) ;
+    }
+
+    /**
+     * A static method written as a string and as an array is one method : both forms share one
+     * entry of the cache, and the string is still read by reflection when the cache is off.
+     *
+     * @throws ReflectionException
+     */
+    public function testAStaticMethodStringAndArrayShareOneCount(): void
+    {
+        $string = CountCallableParamClass::class . '::staticMethod' ;
+
+        $this->assertSame( 2 , countCallableParam( $string , false ) ) ;
+        $this->assertSame( 2 , countCallableParam( $string ) ) ;
+        $this->assertSame( 2 , countCallableParam( [ CountCallableParamClass::class , 'staticMethod' ] ) ) ;
+    }
+
+    /**
      * @throws ReflectionException
      */
     public function testInvalidCallable(): void
