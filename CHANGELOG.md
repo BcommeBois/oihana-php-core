@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-18
+
 ### Added
 - **Date**
   - Add the `oihana\core\date\durationParts()` function : breaks a duration down into days, hours, minutes and seconds, keyed by the `DurationUnit` suffixes. It reads anything `durationToSeconds()` reads and normalizes it first, so every component stays within its range (`"90:00"` gives 1 hour and 30 minutes); only the seconds keep a fraction. `humanizeDuration()` now breaks its duration down through it — same results, its tests unchanged.
@@ -13,10 +15,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
   - Add the `oihana\core\date\DurationUnit::SEPARATOR` constant (`':'`) : the separator of the clock notation, read by `durationToSeconds()` and written by `formatDuration()`. It is not a unit suffix, so `DurationUnit::all()` leaves it out.
 
 - **Maths**
-  - Add the `oihana\core\maths\aspectRatio()` function : the aspect ratio of a width and a height, simplified by `gcd()` — `1920 × 1080` → `"16:9"`, `1280 × 1080` → `"32:27"`; the separator can be changed (`"16/9"`). A width or a height of zero or below throws an `InvalidArgumentException`, rather than a ratio a screen would show without anyone knowing why. It is the `ratio()` of the former `oihana\graphics\AspectRatio`; scaling a size is `aspectFit()`.
-
-- **Maths**
   - Add the `oihana\core\maths\shedFloatNoise()` function : sheds the binary noise a computed figure carries — `202799.4000000001` back to `202799.4`, `45292.249999999985` back to `45292.25`, `0.1 + 0.2` back to `0.3` — by rounding it to a count of **significant digits**, twelve by default, where a double holds fifteen to seventeen. The scale follows the size of the value, because the noise an addition of floats leaves sits at a relative distance of the figure and not at a fixed decimal : a fixed count of decimals cleans a small sum and leaves a large one untouched. Every decimal a source records survives (`13039.42858`, `0.0073`), zero, an infinite figure and a NaN are answered as they are, and an integer comes back as a whole float. Not a rounding : two decimals on an amount are a business rule, written where the figure is shown or stored (`roundValue()`) ; this function only removes what an addition left behind. A third parameter, `$scale`, reckons the digits on the size of the largest term of a sum rather than on the result : when the terms nearly cancel, the result is too small to say where the noise starts — `1000.01 - 1000.00` holds `0.009999999999990905`, which twelve of its own digits keep whole — and `shedFloatNoise( $sum , scale: $largest )` gives `0.01`. The larger of the value and the scale is used, so a scale never keeps more digits than the value alone would. The result is never a negative zero : a dust below zero shed to nothing comes back as `0.0`, not as the `-0` it would print.
+  - Add the `oihana\core\maths\aspectRatio()` function : the aspect ratio of a width and a height, simplified by `gcd()` — `1920 × 1080` → `"16:9"`, `1280 × 1080` → `"32:27"`; the separator can be changed (`"16/9"`). A width or a height of zero or below throws an `InvalidArgumentException`, rather than a ratio a screen would show without anyone knowing why. It is the `ratio()` of the former `oihana\graphics\AspectRatio`; scaling a size is `aspectFit()`.
 
 - **Numbers**
   - Add the `oihana\core\numbers\isNear()` function : whether a ratio is within a relative tolerance of a target, comparing `abs( $ratio - $target )` against `abs( $target ) * $tolerance` — the allowed gap scales with the target's magnitude, so the same `$tolerance` reads as a relative margin (e.g. `0.05` for "within 5%") regardless of the target's sign.
