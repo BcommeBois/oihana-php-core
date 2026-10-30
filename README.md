@@ -32,8 +32,10 @@ The library provides a suite of pure, side-effect-free utility functions organiz
 | `oihana\core\arrays`      | A rich suite of utilities for array manipulation, including transformations, access, and structural analysis.                                         |
 | `oihana\core\bits`        | A set of utilities for bit masks manipulation.                                                                                                        |
 | `oihana\core\callables`   | A set of utilities for functions and callable definitions.                                                                                            |
+| `oihana\core\cron`        | Reading cron expressions: the values a field matches, and the longest time a schedule can leave between two runs.                                     |
 | `oihana\core\date`        | Helpers for date formatting and validation.                                                                                                           |
 | `oihana\core\documents`   | Utilities for placeholder resolution and document formatting.                                                                                         |
+| `oihana\core\encoding`    | Hexadecimal and base64url encoding, random tokens, and passwords meant to be copied rather than remembered.                                         |
 | `oihana\core\env`         | Functions to detect the current environment (CLI, Docker, OS) and PHP settings.                                                                       |
 | `oihana\core\json`        | Helpers for advanced JSON serialization and flag validation.                                                                                          |
 | `oihana\core\maths`       | Functions for smart numeric rounding operations (ceil, floor, round).                                                                                 |
@@ -81,6 +83,13 @@ Advanced array utilities:
 - Access and mutation: `get()`, `set()`, `delete()`, `exists()`
 - Transformations: `flatten()`, `tail()`, `unique()`, `shuffle()`, `swap()`, `toArray()`, `stub()`
 - Structure detection: `isIndexed()`, `hasIntKeys()`, `hasStringKeys()`
+- Merging: `deepMerge()` (lists appended), `overlay()` (tables merged key by key, lists replaced whole — the way a configuration file overrides its defaults)
+
+### ⏰ Cron (`oihana\core\cron`)
+
+Reading cron expressions:
+- `cronFieldValues()` — the values one field matches (`*`, `3`, `1-5`, `0,30`, steps), or `null` rather than a guess
+- `cronScheduleGap()` — the longest time a schedule can leave between two runs (`30 2 * * 1-5` → 72 hours, across the weekend), or `null` for a schedule it will not guess at
 
 ### 📅 Date (`oihana\core\date`)
 
@@ -136,7 +145,8 @@ String formatting, case conversions, and utilities:
 - Case & slug: `camel()`, `snake()`, `kebab()`, `hyphenate()`, `lower()`, `latinize()`
 - Format & identifiers: `fastFormat()`, `formatRequestArgs()`, `urlencode()`, `toString()`
 - Validation: `isRegexp()`, `luhn()`
-- Random generation: `randomKey()`
+- Random generation: `randomKey()` — and, in `oihana\core\encoding`, `randomHex()`, `randomBase64Url()` and `randomPassword()` (letters and digits, without the five that are misread)
+- Comparison: `differingLines()` — how many lines two texts differ by, order aside
 
 ### 🛠️ Utils (`oihana\core`)
 

@@ -69,6 +69,7 @@
             "src/oihana/core/arrays/keyBy.php",
             "src/oihana/core/arrays/merge.php",
             "src/oihana/core/arrays/omit.php",
+            "src/oihana/core/arrays/overlay.php",
             "src/oihana/core/arrays/partition.php",
             "src/oihana/core/arrays/pick.php",
             "src/oihana/core/arrays/prepare.php",
@@ -109,6 +110,9 @@
             "src/oihana/core/cbor/cbor_encode.php",
 
             "src/oihana/core/container/resolveDependency.php",
+
+            "src/oihana/core/cron/cronFieldValues.php",
+            "src/oihana/core/cron/cronScheduleGap.php",
 
             "src/oihana/core/date/addDays.php",
             "src/oihana/core/date/addHours.php",
@@ -161,6 +165,7 @@
             "src/oihana/core/encoding/hexEncode.php",
             "src/oihana/core/encoding/randomBase64Url.php",
             "src/oihana/core/encoding/randomHex.php",
+            "src/oihana/core/encoding/randomPassword.php",
 
             "src/oihana/core/env/cpuCount.php",
             "src/oihana/core/env/isCli.php",
@@ -243,6 +248,7 @@
             "src/oihana/core/strings/betweenQuotes.php",
             "src/oihana/core/strings/chunk.php" ,
             "src/oihana/core/strings/compile.php" ,
+            "src/oihana/core/strings/differingLines.php" ,
             "src/oihana/core/strings/block.php",
             "src/oihana/core/strings/blockPrefix.php" ,
             "src/oihana/core/strings/blockSuffix.php" ,

@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+- **Arrays**
+  - Add the `oihana\core\arrays\overlay()` function : lays one array over another the way a configuration file is read — what the second says for a key is what applies to that key. Tables (associative arrays) are merged key by key, recursively ; **lists are replaced whole**, an empty one included, which is how an override says "none" ; any other value replaces what was there. It is the counterpart of `deepMerge()`, which appends to integer-keyed arrays, so an overriding list could only ever add to its base and never shorten it ; and not `array_replace_recursive()`, which replaces a list index by index — `[ 'x' ]` over `[ 'a' , 'b' , 'c' ]` gives `[ 'x' , 'b' , 'c' ]`, a list nobody wrote. Both behaviours are asserted next to it in the tests.
+
+- **Cron** — a new `oihana\core\cron` namespace.
+  - Add the `oihana\core\cron\cronFieldValues()` function : expands one field of a cron expression into the values it matches — a star, a number, a range, a step over a star or a range, and any comma-separated mix — ascending and each once. A field it cannot read (out of range, backwards, a zero step, a name, a preset) gives `null` rather than a guess.
+  - Add the `oihana\core\cron\cronScheduleGap()` function : the **longest** time a five-field expression can leave between two runs, in seconds — the number a "this job has not run for too long" check needs. Not the average : `30 2 * * 1-5` runs five times a week, about every 33 hours, and leaves 72 hours across the weekend ; a threshold below that alerts every Sunday on a job running as configured. Computed by laying out one cycle (a day, a week, or 31 days — the pessimistic month, since a job on the 31st skips the short ones) and taking the widest interval, wrapping around its end. `null` for what it will not guess : an unreadable field, a month restriction, or a restricted day of the month **and** day of the week, which cron reads as either one.
+
+- **Encoding**
+  - Add the `oihana\core\encoding\randomPassword()` function : a password nobody chose and nobody has to remember, drawn with `random_int()` from letters and digits **without the five that are misread** when copied from a screen — `l`, `I`, `1`, `O`, `0`. No punctuation, so it travels through a shell, a configuration file or a URL with nothing to escape. 28 characters by default, about 163 bits. A length under 16 is raised to 16 rather than refused — unlike `randomHex()`, which throws on a length it cannot honour.
+
+- **Strings**
+  - Add the `oihana\core\strings\differingLines()` function : how far apart two texts are, in lines — the lines found on one side and not on the other, compared as a multiset and **without regard to their order**. A changed line counts two, an added or removed one counts one, lines that only moved count nothing ; zero only for two identical texts, one at least otherwise, so a trailing blank or a final line break still reads as a difference. A size, not a diff.
+
 ## [1.3.0] - 2026-10-18
 
 ### Added
