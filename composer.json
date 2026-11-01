@@ -141,6 +141,7 @@
             "src/oihana/core/date/isToday.php",
             "src/oihana/core/date/isValidTimezone.php",
             "src/oihana/core/date/isWeekend.php",
+            "src/oihana/core/date/nextTimeOfDay.php",
             "src/oihana/core/date/now.php",
             "src/oihana/core/date/startOfDay.php",
             "src/oihana/core/date/startOfMonth.php",
@@ -167,6 +168,7 @@
             "src/oihana/core/encoding/randomHex.php",
             "src/oihana/core/encoding/randomPassword.php",
 
+            "src/oihana/core/env/completePath.php",
             "src/oihana/core/env/cpuCount.php",
             "src/oihana/core/env/isCli.php",
             "src/oihana/core/env/isCliWithFile.php",
@@ -182,6 +184,7 @@
             "src/oihana/core/env/isWeb.php",
             "src/oihana/core/env/isWindows.php",
             "src/oihana/core/env/phpVersion.php",
+            "src/oihana/core/env/programLocations.php",
             
             "src/oihana/core/helpers/conditions.php",
             

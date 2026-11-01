@@ -33,10 +33,10 @@ The library provides a suite of pure, side-effect-free utility functions organiz
 | `oihana\core\bits`        | A set of utilities for bit masks manipulation.                                                                                                        |
 | `oihana\core\callables`   | A set of utilities for functions and callable definitions.                                                                                            |
 | `oihana\core\cron`        | Reading cron expressions: the values a field matches, and the longest time a schedule can leave between two runs.                                     |
-| `oihana\core\date`        | Helpers for date formatting and validation.                                                                                                           |
+| `oihana\core\date`        | Helpers for date formatting, validation, and the next moment a time of day comes round.                                                               |
 | `oihana\core\documents`   | Utilities for placeholder resolution and document formatting.                                                                                         |
 | `oihana\core\encoding`    | Hexadecimal and base64url encoding, random tokens, and passwords meant to be copied rather than remembered.                                         |
-| `oihana\core\env`         | Functions to detect the current environment (CLI, Docker, OS) and PHP settings.                                                                       |
+| `oihana\core\env`         | Functions to detect the current environment (CLI, Docker, OS), PHP settings, and what a PATH finds.                                                   |
 | `oihana\core\json`        | Helpers for advanced JSON serialization and flag validation.                                                                                          |
 | `oihana\core\maths`       | Functions for smart numeric rounding operations (ceil, floor, round).                                                                                 |
 | `oihana\core\numbers`     | Utilities for handling numbers, such as clamping a value within a specific range.                                                                     |
@@ -97,6 +97,7 @@ Date manipulation and validation:
 - `formatDateTime()`
 - `isDate()`, `isValidTimezone()`
 - `now()`
+- `nextTimeOfDay()` — the next moment it is `HH:MM`, strictly after a given one
 
 ### 📄 Documents (`oihana\core\documents`)
 
@@ -110,6 +111,7 @@ Environment detection helpers:
 - OS detection: `isLinux()`, `isMac()`, `isWindows()`
 - Environment type: `isCli()`, `isWeb()`, `isDocker()`
 - PHP info: `phpVersion()`, `isExtensionLoaded()`
+- PATH: `completePath()` — adds the standard directories a PATH lacks, at its end ; `programLocations()` — where a PATH finds each program
 
 ### 🧬 JSON (`oihana\core\json`)
 
