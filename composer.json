@@ -252,6 +252,7 @@
             "src/oihana/core/strings/chunk.php" ,
             "src/oihana/core/strings/compile.php" ,
             "src/oihana/core/strings/differingLines.php" ,
+            "src/oihana/core/strings/escapeShellArgument.php" ,
             "src/oihana/core/strings/block.php",
             "src/oihana/core/strings/blockPrefix.php" ,
             "src/oihana/core/strings/blockSuffix.php" ,

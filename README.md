@@ -149,6 +149,7 @@ String formatting, case conversions, and utilities:
 - Validation: `isRegexp()`, `luhn()`
 - Random generation: `randomKey()` — and, in `oihana\core\encoding`, `randomHex()`, `randomBase64Url()` and `randomPassword()` (letters and digits, without the five that are misread)
 - Comparison: `differingLines()` — how many lines two texts differ by, order aside
+- Shell: `escapeShellArgument()` — a value between single quotes, passed by a POSIX shell exactly as it is, whatever the locale
 
 ### 🛠️ Utils (`oihana\core`)
 

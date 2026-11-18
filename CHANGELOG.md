@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - **Strings**
   - Add the `oihana\core\strings\differingLines()` function : how far apart two texts are, in lines — the lines found on one side and not on the other, compared as a multiset and **without regard to their order**. A changed line counts two, an added or removed one counts one, lines that only moved count nothing ; zero only for two identical texts, one at least otherwise, so a trailing blank or a final line break still reads as a difference. A size, not a diff.
+  - Add the `oihana\core\strings\escapeShellArgument()` function : quotes a value so a POSIX shell passes it to the program exactly as it is — between single quotes, a single quote inside written `'\''`, so nothing is expanded and nothing between backquotes is run. Unlike `escapeshellarg()`, the result does not depend on the locale, which after `setlocale( LC_ALL , '' )` in a `C` locale drops every byte that is not ASCII (`'Café'` becomes `'Caf'`). A NUL byte, which no command-line argument can carry, is refused. A test hands each quoted value to a real shell and reads back what the program received.
 
 ## [1.3.0] - 2026-10-18
 
